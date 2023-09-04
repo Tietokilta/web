@@ -46,7 +46,7 @@ export const IS_ALIGN_JUSTIFY = 4;
 export const IS_ALIGN_START = 5;
 export const IS_ALIGN_END = 6;
 
-export const TEXT_TYPE_TO_FORMAT: Record<TextFormatType | string, number> = {
+export const TEXT_TYPE_TO_FORMAT: Record<TextFormatType, number> = {
   bold: IS_BOLD,
   code: IS_CODE,
   italic: IS_ITALIC,

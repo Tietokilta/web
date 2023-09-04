@@ -1,5 +1,6 @@
-import { draftMode } from "next/headers";
 import { AdminBarClient } from "./AdminBarClient";
+
+import { draftMode } from "next/headers";
 import { Config } from "payload/generated-types";
 
 export function AdminBar({

@@ -1,5 +1,6 @@
-import { Payload } from "payload";
 import { defaultUser } from "./seedData/user";
+
+import { Payload } from "payload";
 /**
  * Runs the seeding process if the root user does not exist, otherwise skips it
  * @param payload Payload instance
