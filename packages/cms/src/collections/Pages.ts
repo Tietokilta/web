@@ -5,7 +5,7 @@ import { generatePreviewUrl } from "../preview";
 
 import { Page } from "payload/generated-types";
 
-import { isNil, pick, omitBy } from "lodash";
+import { isNil, omitBy } from "lodash";
 import { CollectionConfig, FieldHook } from "payload/types";
 import {
   HorizontalRuleFeature,
@@ -29,12 +29,16 @@ const onlyJsonContentForUnauthorized: FieldHook<Page> = ({
   }
 };
 
-const formatPath: FieldHook<Page> = ({ data }) => {
+const formatPath: FieldHook<Page> = async ({ data, req }) => {
   if (data) {
     if (data.topic && data.slug) {
-      return "/".concat(data.topic, "/").concat(data.slug);
+      const topic = await req.payload.findByID({
+        collection: "topics",
+        id: data.topic.value,
+      });
+      return `/${topic.slug}/${data.slug}`;
     } else if (data.slug) {
-      return "/".concat(data.slug);
+      return `/${data.slug}`;
     }
   }
 };
@@ -101,7 +105,8 @@ const Pages: CollectionConfig = {
     },
     {
       name: "topic",
-      type: "text",
+      type: "relationship",
+      relationTo: ["topics"],
       admin: {
         position: "sidebar",
       },
@@ -133,9 +138,18 @@ const Pages: CollectionConfig = {
   },
   hooks: {
     afterChange: [
-      revalidatePage<Page>("pages", (doc) =>
-        omitBy(pick(doc, ["slug", "topic"]), isNil),
-      ),
+      revalidatePage<Page>("pages", (doc) => ({
+        where: omitBy(
+          {
+            slug: { equals: doc.slug },
+            topic:
+              typeof doc?.topic?.value === "object"
+                ? { slug: { equals: doc.topic.value.slug } }
+                : null,
+          },
+          isNil,
+        ),
+      })),
     ],
   },
 };

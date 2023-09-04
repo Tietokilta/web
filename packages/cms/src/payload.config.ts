@@ -1,5 +1,6 @@
 import Media from "./collections/Media";
 import Pages from "./collections/Pages";
+import Topics from "./collections/Topics";
 import Users from "./collections/Users";
 import { defaultUser } from "./seeding/seedData/user";
 
@@ -16,7 +17,7 @@ export default buildConfig({
         ? defaultUser
         : false,
   },
-  collections: [Users, Pages, Media],
+  collections: [Users, Pages, Media, Topics],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
