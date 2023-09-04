@@ -34,7 +34,7 @@ const formatPath: FieldHook<Page> = async ({ data, req }) => {
     if (data.topic && data.slug) {
       const topic = await req.payload.findByID({
         collection: "topics",
-        id: data.topic.value,
+        id: data.topic.value as string,
       });
       return `/${topic.slug}/${data.slug}`;
     } else if (data.slug) {
@@ -138,18 +138,23 @@ const Pages: CollectionConfig = {
   },
   hooks: {
     afterChange: [
-      revalidatePage<Page>("pages", (doc) => ({
-        where: omitBy(
-          {
-            slug: { equals: doc.slug },
-            topic:
-              typeof doc?.topic?.value === "object"
-                ? { slug: { equals: doc.topic.value.slug } }
-                : null,
-          },
-          isNil,
-        ),
-      })),
+      revalidatePage<Page>("pages", async (doc, req) => {
+        const topic =
+          doc.topic &&
+          (await req.payload.findByID({
+            collection: "topics",
+            id: doc.topic.value as string,
+          }));
+        return {
+          where: omitBy(
+            {
+              slug: { equals: doc.slug },
+              topic: topic ? { slug: { equals: topic.slug } } : null,
+            },
+            isNil,
+          ),
+        };
+      }),
     ],
   },
 };
