@@ -2,6 +2,7 @@ import type {
   AfterChangeHook,
   TypeWithID,
 } from "payload/dist/collections/config/types";
+import { PayloadRequest } from "payload/types";
 
 // revalidate the page in the background, so the user doesn't have to wait
 // notice that the hook itself is not async and we are not awaiting `revalidate`
@@ -9,7 +10,7 @@ import type {
 export const revalidatePage =
   <T extends TypeWithID>(
     collection: string,
-    getFetchData: (doc: T) => unknown,
+    getFetchData: (doc: T, req: PayloadRequest) => Promise<unknown>,
   ): AfterChangeHook<T> =>
   ({ doc, req, operation }) => {
     if (
@@ -18,7 +19,7 @@ export const revalidatePage =
     ) {
       const revalidate = async (): Promise<void> => {
         try {
-          const fetchData = JSON.stringify(getFetchData(doc));
+          const fetchData = JSON.stringify(await getFetchData(doc, req));
           const res = await fetch(
             `${
               process.env.PAYLOAD_PUBLIC_FRONTEND_URL

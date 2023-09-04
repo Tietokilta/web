@@ -16,25 +16,28 @@ const Page = async ({ params: { path } }: NextPage<{ path: string[] }>) => {
     return notFound();
   }
 
-  const page = await fetchPage(
-    path.length === 1 ? { slug: path[0] } : { slug: path[1], topic: path[0] },
-  );
+  const page = await fetchPage({
+    where:
+      path.length === 1
+        ? { slug: { equals: path[0] } }
+        : { slug: { equals: path[1] }, topic: { slug: { equals: path[0] } } },
+  });
 
   if (!page) return notFound();
+
+  const content = page.content as unknown as
+    | {
+        jsonContent: SerializedLexicalEditorState;
+      }
+    | undefined;
 
   return (
     <>
       <AdminBar collection="pages" id={page.id} />
       <h1>{page.title}</h1>
-      <LexicalSerializer
-        nodes={
-          (
-            page.content as unknown as {
-              jsonContent: SerializedLexicalEditorState;
-            }
-          ).jsonContent.root.children
-        }
-      />
+      {content && (
+        <LexicalSerializer nodes={content.jsonContent.root.children} />
+      )}
     </>
   );
 };
