@@ -11,12 +11,17 @@ app.get("/", (_, res) => {
 
 const start = async () => {
   // Initialize Payload
+
   await payload.init({
     secret: process.env.PAYLOAD_SECRET,
     mongoURL: process.env.MONGODB_URI,
     express: app,
-    onInit: async () => {
+    onInit: async (payload) => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+      if (process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_AND_SEEDING === "true") {
+        const { seedPayload } = await import("./seeding/seed");
+        await seedPayload(payload);
+      }
     },
   });
 
