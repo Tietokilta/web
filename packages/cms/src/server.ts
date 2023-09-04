@@ -1,7 +1,9 @@
+import dotenv from "dotenv";
 import express from "express";
 import payload from "payload";
 
-require("dotenv").config();
+dotenv.config();
+
 const app = express();
 
 // Redirect root to Admin panel
@@ -28,4 +30,4 @@ const start = async () => {
   app.listen(3001);
 };
 
-start();
+void start();

@@ -44,7 +44,7 @@ export const revalidatePage =
         }
       };
 
-      revalidate();
+      void revalidate();
     }
 
     return doc;

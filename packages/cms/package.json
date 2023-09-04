@@ -12,27 +12,27 @@
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/server.js",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
-    "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema",
-    "prettier": "prettier"
+    "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema"
   },
   "dependencies": {
     "@lexical/headless": "^0.12.0",
     "@lexical/html": "^0.12.0",
     "@payloadcms/plugin-cloud": "^0.0.10",
     "cross-env": "^7.0.3",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "jsdom": "^22.1.0",
     "lodash": "^4.17.21",
     "payload": "latest",
-    "payload-plugin-lexical": "^0.6.6"
+    "payload-plugin-lexical": "^0.6.6",
+    "pino": "^8.15.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.9",
     "@types/jsdom": "^21.1.2",
+    "@types/lodash": "^4.14.197",
     "copyfiles": "^2.4.1",
     "nodemon": "^2.0.6",
-    "prettier": "^3.0.3",
     "ts-node": "^9.1.1",
     "typescript": "^4.8.4"
   }

@@ -1,5 +1,6 @@
-import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { mapKeys } from "lodash";
+
+import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
 export const fetcher =
   <Request, Response>(
@@ -53,7 +54,7 @@ export const getAll = <
   fetcher<Request, Response>(
     (req) => `get_${path}_${getSortedJSON(req)}`,
     async (req, draft, fetchOptions): Promise<Response | undefined> => {
-      const res: { docs?: Response } = await fetch(
+      const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}${path}?${new URLSearchParams({
           ...mapKeys(req, (_, key) => `where[${key}][equals]`),
           ...(draft ? { draft: "true" } : {}),
@@ -62,7 +63,7 @@ export const getAll = <
           method: "GET",
           ...fetchOptions,
         },
-      ).then((res) => res.json());
+      ).then((res) => res.json() as Promise<{ docs?: Response }>);
 
       return res?.docs ?? undefined;
     },
