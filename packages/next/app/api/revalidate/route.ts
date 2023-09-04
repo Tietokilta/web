@@ -1,5 +1,4 @@
-import { getSortedJSON } from "../../../api/fetcher";
-
+import stringify from "json-stable-stringify";
 import { revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
@@ -18,11 +17,7 @@ export function GET(request: NextRequest): NextResponse {
   }
 
   if (typeof collection === "string" && typeof fetchData === "string") {
-    revalidateTag(
-      `get_/api/${collection}_${getSortedJSON(
-        JSON.parse(fetchData) as Record<string, unknown>,
-      )}`,
-    );
+    revalidateTag(`get_/api/${collection}_${stringify(JSON.parse(fetchData))}`);
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }
 
