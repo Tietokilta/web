@@ -1,4 +1,4 @@
-export type SerializedLexicalEditorState = {
+export interface SerializedLexicalEditorState {
   root: {
     type: string;
     format: string;
@@ -6,9 +6,9 @@ export type SerializedLexicalEditorState = {
     version: number;
     children: SerializedLexicalNode[];
   };
-};
+}
 
-export type SerializedLexicalNode = {
+export interface SerializedLexicalNode {
   children?: SerializedLexicalNode[];
   direction: string;
   format: number;
@@ -18,5 +18,5 @@ export type SerializedLexicalNode = {
   style?: string;
   mode?: string;
   text?: string;
-  [other: string]: any;
-};
+  [other: string]: unknown;
+}

@@ -13,7 +13,6 @@ export async function GET(
   const payloadToken = req.cookies.get("payload-token")?.value;
   const { searchParams } = new URL(req.url);
   const url = searchParams.get("url");
-  const secret = searchParams.get("secret");
 
   if (!url) {
     return new Response("No URL provided", { status: 404 });
@@ -33,7 +32,7 @@ export async function GET(
     },
   );
 
-  const userRes = await userReq.json();
+  const userRes = (await userReq.json()) as { user?: unknown } | null;
 
   if (!userReq.ok || !userRes?.user) {
     draftMode().disable();

@@ -1,14 +1,15 @@
-import React from "react";
-import { notFound } from "next/navigation";
 import { fetchPage } from "../../api/pages";
 import { AdminBar } from "../../components/AdminBar";
 import { LexicalSerializer } from "../../components/lexical/LexicalSerializer";
 import { SerializedLexicalEditorState } from "../../components/lexical/types";
 
-type NextPage<Params extends { [key: string]: unknown }> = {
+import { notFound } from "next/navigation";
+import React from "react";
+
+interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
-  searchParams: { [key: string]: string | string[] | undefined };
-};
+  searchParams: Record<string, string | string[] | undefined>;
+}
 
 const Page = async ({ params: { path } }: NextPage<{ path: string[] }>) => {
   if (path.length !== 1 && path.length !== 2) {

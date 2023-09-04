@@ -1,6 +1,8 @@
-import { CollectionConfig } from "payload/types";
-import path from "path";
 import { loggedIn } from "../access/loggedIn";
+
+import { CollectionConfig } from "payload/types";
+
+import path from "path";
 
 const Media: CollectionConfig = {
   slug: "media",

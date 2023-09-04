@@ -1,10 +1,12 @@
-import { buildConfig } from "payload/config";
-import path from "path";
-import Users from "./collections/Users";
-import Pages from "./collections/Pages";
-import { LexicalPlugin } from "payload-plugin-lexical";
 import Media from "./collections/Media";
+import Pages from "./collections/Pages";
+import Users from "./collections/Users";
 import { defaultUser } from "./seeding/seedData/user";
+
+import { buildConfig } from "payload/config";
+import { LexicalPlugin } from "payload-plugin-lexical";
+
+import path from "path";
 
 export default buildConfig({
   admin: {
