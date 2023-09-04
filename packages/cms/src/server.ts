@@ -1,6 +1,5 @@
 import express from "express";
 import payload from "payload";
-import { seedPayload } from "./seeding/seed";
 
 require("dotenv").config();
 const app = express();
@@ -20,6 +19,7 @@ const start = async () => {
     onInit: async (payload) => {
       payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
       if (process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_AND_SEEDING === "true") {
+        const { seedPayload } = await import("./seeding/seed");
         await seedPayload(payload);
       }
     },
