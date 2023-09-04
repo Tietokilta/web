@@ -1,16 +1,43 @@
-import { CollectionConfig } from "payload/types";
-import { generatePreviewUrl } from "../preview";
-import { publishedAndVisibleOrLoggedIn } from "../access/publishedAndVisibleOrLoggedIn";
 import { loggedIn } from "../access/loggedIn";
+import { publishedAndVisibleOrLoggedIn } from "../access/publishedAndVisibleOrLoggedIn";
+import { revalidatePage } from "../hooks/revalidatePage";
+import { generatePreviewUrl } from "../preview";
+
+import { Page } from "payload/generated-types";
+
+import { isNil, pick, omitBy } from "lodash";
+import { CollectionConfig, FieldHook } from "payload/types";
 import {
   HorizontalRuleFeature,
   LinkFeature,
   YouTubeFeature,
   lexicalRichTextField,
 } from "payload-plugin-lexical";
-import { revalidatePage } from "../hooks/revalidatePage";
-import { isNil, pick, omitBy } from "lodash";
-import { Page } from "payload/generated-types";
+
+const onlyJsonContentForUnauthorized: FieldHook<Page> = ({
+  data,
+  req: { user },
+}) => {
+  if (user) {
+    return data?.content;
+  } else if (data) {
+    // Warning: the content data can contain, for example, `comments`, which are not public
+    return {
+      jsonContent: (data.content as unknown as { jsonContent: unknown })
+        .jsonContent,
+    };
+  }
+};
+
+const formatPath: FieldHook<Page> = ({ data }) => {
+  if (data) {
+    if (data.topic && data.slug) {
+      return "/".concat(data.topic, "/").concat(data.slug);
+    } else if (data.slug) {
+      return "/".concat(data.slug);
+    }
+  }
+};
 
 const Pages: CollectionConfig = {
   slug: "pages",
@@ -58,35 +85,14 @@ const Pages: CollectionConfig = {
         return defaultEditorConfig;
       },
       hooks: {
-        afterRead: [
-          ({ data, req: { user } }) => {
-            if (user) {
-              return data?.content;
-            } else if (data) {
-              // Warning: the content data can contain, for example, `comments`, which are not public
-              return {
-                jsonContent: data.content.jsonContent,
-              };
-            }
-          },
-        ],
+        afterRead: [onlyJsonContentForUnauthorized],
       },
     }),
     {
       name: "path",
       type: "text",
       hooks: {
-        afterRead: [
-          ({ data }) => {
-            if (data) {
-              if (data.topic && data.slug) {
-                return "/".concat(data.topic, "/").concat(data.slug);
-              } else if (data.slug) {
-                return "/".concat(data.slug);
-              }
-            }
-          },
-        ],
+        afterRead: [formatPath],
       },
       admin: {
         readOnly: true,

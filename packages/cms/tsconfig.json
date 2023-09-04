@@ -1,4 +1,5 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -8,10 +9,7 @@
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "./src",
-    "jsx": "react",
-    "paths": {
-      "payload/generated-types": ["./src/payload-types.ts"]
-    }
+    "jsx": "react"
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "build"],

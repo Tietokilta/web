@@ -1,5 +1,3 @@
-import React, { Fragment } from "react";
-
 import {
   IS_BOLD,
   IS_ITALIC,
@@ -10,8 +8,13 @@ import {
   IS_SUPERSCRIPT,
 } from "./RichTextNodeFormat";
 
-import type { SerializedLexicalNode } from "./types";
 import Link from "next/link";
+import React, { Fragment } from "react";
+
+import type {
+  SerializedLexicalEditorState,
+  SerializedLexicalNode,
+} from "./types";
 
 interface Props {
   nodes: SerializedLexicalNode[];
@@ -95,7 +98,7 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
             type List = Extract<keyof JSX.IntrinsicElements, "ul" | "ol">;
             const Tag = node?.tag as List;
             return (
-              <Tag key={index} className={node?.listType}>
+              <Tag key={index} className={node?.listType as string}>
                 {serializedChildren}
               </Tag>
             );
@@ -110,7 +113,7 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
                       ? "component--list-item-checkbox-checked"
                       : "component--list-item-checked-unchecked"
                   }`}
-                  value={node?.value}
+                  value={node?.value as string}
                   role="checkbox"
                   aria-checked={node.checked ? "true" : "false"}
                   tabIndex={-1}
@@ -120,7 +123,7 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
               );
             } else {
               return (
-                <li key={index} value={node?.value}>
+                <li key={index} value={node?.value as string}>
                   {serializedChildren}
                 </li>
               );
@@ -130,15 +133,15 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
             return <blockquote key={index}>{serializedChildren}</blockquote>;
           }
           case "link": {
-            const attributes: {
-              doc?: any;
+            const attributes = node.attributes as {
+              doc?: { data: { path?: string } };
               linkType?: "custom" | "internal";
               newTab?: boolean;
               nofollow?: boolean;
               rel?: string;
               sponsored?: boolean;
               url?: string;
-            } = node.attributes;
+            };
 
             if (attributes.linkType === "custom") {
               const rel = `${attributes?.rel ?? ""} ${
@@ -165,29 +168,31 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
                 </Link>
               );
             }
-          }
-          case "inline-image": {
-            // TODO: inline-images based on InlineImagePlugin
-            return (
-              <span key={index} style={{ fontStyle: "italic" }}>
-                (An inline image will appear here! Honest!)
-              </span>
-            );
+            break;
           }
           case "youtube": {
             return (
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${node.videoID}`}
+                src={`https://www.youtube-nocookie.com/embed/${
+                  node.videoID as string
+                }`}
               />
             );
           }
           case "upload": {
+            const data = node.data as {
+              url: string;
+              width: number;
+              height: number;
+              alt: string;
+            };
             const img = (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={node.data.url}
-                width={node.data.width}
-                height={node.data.height}
-                alt={node.data.alt}
+                src={data.url}
+                width={data.width}
+                height={data.height}
+                alt={data.alt}
                 key={index}
               />
             );
@@ -196,7 +201,13 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
                 {img}
                 <figcaption>
                   <LexicalSerializer
-                    nodes={node.caption.editorState.root.children}
+                    nodes={
+                      (
+                        node.caption as {
+                          editorState: SerializedLexicalEditorState;
+                        }
+                      ).editorState.root.children
+                    }
                   />
                 </figcaption>
               </figure>
@@ -208,9 +219,12 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
             return <Fragment key={index}>{serializedChildren}</Fragment>;
           }
           default:
+            // eslint-disable-next-line no-console
             console.warn("Unknown node:", node);
             return null;
         }
+
+        return null;
       })}
     </Fragment>
   );
