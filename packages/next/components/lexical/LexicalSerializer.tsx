@@ -76,7 +76,7 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
                 (child) =>
                   allowedPTypes.includes(child.type) ||
                   (child.type === "upload" && !child.showCaption) ||
-                  (child.type === "mark" && hasAllowedChildren(child))
+                  (child.type === "mark" && hasAllowedChildren(child)),
               );
             const ParagraphTag = hasAllowedChildren(node) ? "p" : "div";
             return (

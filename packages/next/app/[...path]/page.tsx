@@ -16,7 +16,7 @@ const Page = async ({ params: { path } }: NextPage<{ path: string[] }>) => {
   }
 
   const page = await fetchPage(
-    path.length === 1 ? { slug: path[0] } : { slug: path[1], topic: path[0] }
+    path.length === 1 ? { slug: path[0] } : { slug: path[1], topic: path[0] },
   );
 
   if (!page) return notFound();

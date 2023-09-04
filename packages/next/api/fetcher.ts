@@ -7,8 +7,8 @@ export const fetcher =
     dataFetcher: (
       req: Request,
       draft: boolean,
-      fetchOptions: RequestInit
-    ) => Promise<Response | undefined | null>
+      fetchOptions: RequestInit,
+    ) => Promise<Response | undefined | null>,
   ) =>
   async (req: Request): Promise<Response | undefined | null> => {
     let payloadToken: RequestCookie | undefined;
@@ -46,9 +46,9 @@ export const getSortedJSON = (data: object): string =>
 
 export const getAll = <
   Request extends Record<string, string>,
-  Response extends unknown[]
+  Response extends unknown[],
 >(
-  path: string
+  path: string,
 ) =>
   fetcher<Request, Response>(
     (req) => `get_${path}_${getSortedJSON(req)}`,
@@ -61,11 +61,11 @@ export const getAll = <
         {
           method: "GET",
           ...fetchOptions,
-        }
+        },
       ).then((res) => res.json());
 
       return res?.docs ?? undefined;
-    }
+    },
   );
 
 export const getOne =

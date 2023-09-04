@@ -1,5 +1,7 @@
 {
   "scripts": {
-    "dev": "pnpm run -r --reporter append-only dev"
+    "dev": "pnpm run -r --reporter append-only dev",
+    "prettier":"pnpm run -r --reporter append-only prettier --check .",
+    "format":"pnpm run -r --reporter append-only prettier --write ."
   }
 }
