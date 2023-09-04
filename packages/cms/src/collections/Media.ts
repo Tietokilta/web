@@ -28,11 +28,6 @@ const Media: CollectionConfig = {
       required: true,
     },
   ],
-  versions: {
-    drafts: {
-      autosave: true,
-    },
-  },
 };
 
 export default Media;
