@@ -6,6 +6,8 @@ settings:
 
 importers:
 
+  .: {}
+
   packages/cms:
     dependencies:
       '@lexical/headless':
@@ -51,6 +53,9 @@ importers:
       nodemon:
         specifier: ^2.0.6
         version: 2.0.22
+      prettier:
+        specifier: ^3.0.3
+        version: 3.0.3
       ts-node:
         specifier: ^9.1.1
         version: 9.1.1(typescript@4.9.5)
@@ -108,6 +113,10 @@ importers:
       typescript:
         specifier: 5.2.2
         version: 5.2.2
+    devDependencies:
+      prettier:
+        specifier: ^3.0.3
+        version: 3.0.3
 
 packages:
 
@@ -8539,6 +8548,12 @@ packages:
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: false
+
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
+    engines: {node: '>=14'}
+    hasBin: true
+    dev: true
 
   /pretty-error@4.0.0:
     resolution: {integrity: sha512-AoJ5YMAcXKYxKhuJGdcvse+Voc6v1RgnsR3nWcYU7q4t6z0Q6T86sv5Zq8VIRbOWWFpvdGE83LtdSMNd+6Y0xw==}
