@@ -36,7 +36,7 @@ export interface Page {
   path?: string;
   topic?: {
     value: string | Topic;
-    relationTo: 'topics';
+    relationTo: "topics";
   };
   slug: string;
   hidden: boolean;

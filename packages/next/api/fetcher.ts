@@ -1,4 +1,5 @@
-import { mapKeys } from "lodash";
+import stringify from "json-stable-stringify";
+import qs from "qs";
 
 import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 
@@ -42,23 +43,22 @@ export const fetcher =
     return res ?? null;
   };
 
-export const getSortedJSON = (data: object): string =>
-  JSON.stringify(data, Object.keys(data).sort());
-
 export const getAll = <
-  Request extends Record<string, string>,
+  Request extends Record<string, unknown>,
   Response extends unknown[],
 >(
   path: string,
 ) =>
   fetcher<Request, Response>(
-    (req) => `get_${path}_${getSortedJSON(req)}`,
+    (req) => `get_${path}_${stringify(req)}`,
     async (req, draft, fetchOptions): Promise<Response | undefined> => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}${path}?${new URLSearchParams({
-          ...mapKeys(req, (_, key) => `where[${key}][equals]`),
-          ...(draft ? { draft: "true" } : {}),
-        }).toString()}`,
+        `${process.env.NEXT_PUBLIC_API_URL}${path}?${qs
+          .stringify({
+            ...req,
+            ...(draft ? { draft: "true" } : {}),
+          })
+          .toString()}`,
         {
           method: "GET",
           ...fetchOptions,
@@ -70,6 +70,6 @@ export const getAll = <
   );
 
 export const getOne =
-  <Request extends Record<string, string>, Response>(path: string) =>
+  <Request extends Record<string, unknown>, Response>(path: string) =>
   (req: Request) =>
     getAll<Request, Response[]>(path)(req).then((res) => res?.[0]);
