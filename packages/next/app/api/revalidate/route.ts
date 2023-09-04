@@ -17,7 +17,7 @@ export async function GET(request: NextRequest): Promise<unknown> {
 
   if (typeof collection === "string" && typeof fetchData === "string") {
     revalidateTag(
-      `get_/api/${collection}_${getSortedJSON(JSON.parse(fetchData))}`
+      `get_/api/${collection}_${getSortedJSON(JSON.parse(fetchData))}`,
     );
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }

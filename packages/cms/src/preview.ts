@@ -5,6 +5,6 @@ export const generatePreviewUrl =
   (doc, { locale }) => {
     // TODO: locale
     return `${process.env.PAYLOAD_PUBLIC_FRONTEND_URL}/api/preview?url=${getUrl(
-      doc as T
+      doc as T,
     )}`;
   };

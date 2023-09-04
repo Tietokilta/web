@@ -9,7 +9,7 @@ import type {
 export const revalidatePage =
   <T extends TypeWithID>(
     collection: string,
-    getFetchData: (doc: T) => unknown
+    getFetchData: (doc: T) => unknown,
   ): AfterChangeHook<T> =>
   ({ doc, req, operation }) => {
     if (
@@ -26,20 +26,20 @@ export const revalidatePage =
               secret: process.env.PAYLOAD_PRIVATE_REVALIDATION_KEY ?? "",
               collection,
               fetchData,
-            }).toString()}`
+            }).toString()}`,
           );
           if (res.ok) {
             req.payload.logger.info(
-              `Revalidated collection ${collection} with data ${fetchData}`
+              `Revalidated collection ${collection} with data ${fetchData}`,
             );
           } else {
             req.payload.logger.error(
-              `Error revalidating collection ${collection} with data ${fetchData}`
+              `Error revalidating collection ${collection} with data ${fetchData}`,
             );
           }
         } catch (err: unknown) {
           req.payload.logger.error(
-            `Error hitting revalidate collection ${collection}`
+            `Error hitting revalidate collection ${collection}`,
           );
         }
       };

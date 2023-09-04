@@ -8,7 +8,7 @@ export async function GET(
         value: string;
       };
     };
-  }
+  },
 ): Promise<Response> {
   const payloadToken = req.cookies.get("payload-token")?.value;
   const { searchParams } = new URL(req.url);
@@ -30,7 +30,7 @@ export async function GET(
       headers: {
         Authorization: `JWT ${payloadToken}`,
       },
-    }
+    },
   );
 
   const userRes = await userReq.json();

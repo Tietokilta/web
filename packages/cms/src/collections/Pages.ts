@@ -128,7 +128,7 @@ const Pages: CollectionConfig = {
   hooks: {
     afterChange: [
       revalidatePage<Page>("pages", (doc) =>
-        omitBy(pick(doc, ["slug", "topic"]), isNil)
+        omitBy(pick(doc, ["slug", "topic"]), isNil),
       ),
     ],
   },

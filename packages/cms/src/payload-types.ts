@@ -38,5 +38,5 @@ export interface Page {
   hidden: boolean;
   updatedAt: string;
   createdAt: string;
-  _status?: 'draft' | 'published';
+  _status?: "draft" | "published";
 }
