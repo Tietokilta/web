@@ -9,6 +9,8 @@ export interface Config {
   collections: {
     users: User;
     pages: Page;
+    media: Media;
+    topics: Topic;
   };
   globals: {};
 }
@@ -28,14 +30,36 @@ export interface User {
 export interface Page {
   id: string;
   title: string;
-  content?: {
+  content: {
     [k: string]: unknown;
   }[];
   path?: string;
-  topic?: string;
+  topic?: {
+    value: string | Topic;
+    relationTo: 'topics';
+  };
   slug: string;
   hidden: boolean;
   updatedAt: string;
   createdAt: string;
   _status?: "draft" | "published";
+}
+export interface Topic {
+  id: string;
+  title: string;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Media {
+  id: string;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string;
+  filename?: string;
+  mimeType?: string;
+  filesize?: number;
+  width?: number;
+  height?: number;
 }
