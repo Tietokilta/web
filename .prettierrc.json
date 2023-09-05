@@ -4,5 +4,6 @@
   "semi": true,
   "singleQuote": false,
   "trailingComma": "all",
-  "bracketSpacing": true
+  "bracketSpacing": true,
+  "plugins": ["prettier-plugin-packagejson", "prettier-plugin-tailwindcss"]
 }
