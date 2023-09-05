@@ -4,7 +4,6 @@ import { LexicalSerializer } from "../../components/lexical/LexicalSerializer";
 import { SerializedLexicalEditorState } from "../../components/lexical/types";
 
 import { notFound } from "next/navigation";
-import React from "react";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
