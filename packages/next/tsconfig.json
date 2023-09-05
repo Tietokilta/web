@@ -18,8 +18,14 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "composite": true
   },
+  "references": [
+    {
+      "path": "../ui/tsconfig.json"
+    }
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
