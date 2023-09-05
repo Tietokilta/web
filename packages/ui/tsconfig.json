@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "checkJs": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "types": ["vite/client", "vitest/globals"]
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "storybook-static",
+    "vite.config.ts.timestamp-*"
+  ],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "extends": "../../tsconfig.json"
+}

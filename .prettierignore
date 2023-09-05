@@ -1,2 +1,8 @@
 /packages/next/.next
 *.yaml
+
+/packages/ui/dist
+/packages/ui/storybook-static
+/packages/ui/pnpm-lock.yaml
+/packages/ui/CHANGELOG.md
+/packages/ui/vite.config.ts.timestamp-*
