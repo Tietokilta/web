@@ -6312,7 +6312,12 @@ packages:
     peerDependencies:
       vite: ^4.1.0-beta.0
     dependencies:
+      '@babel/core': 7.22.15
+      '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.15)
+      '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.15)
       '@swc/core': 1.3.78
+      magic-string: 0.27.0
+      react-refresh: 0.14.0
       vite: 4.4.9(@types/node@20.5.9)
     transitivePeerDependencies:
       - supports-color
@@ -9848,7 +9853,7 @@ packages:
       he: 1.2.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 5.19.4
+      terser: 5.19.3
     dev: false
 
   /html-parse-stringify@3.0.1:
@@ -9905,8 +9910,8 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /http-status@1.7.0:
-    resolution: {integrity: sha512-6HZ8T2ywZKtNKOrRA22x4Z+fK+UiWzimWYSTROVHrZ46RX+hKsg9wCQiodRtfNrKfsvOkwsXA6R9q+TmDY+8nQ==}
+  /http-status@1.6.2:
+    resolution: {integrity: sha512-oUExvfNckrpTpDazph7kNG8sQi5au3BeTo0idaZFXEhTaJKu7GNJCLHI0rYY2wljm548MSTM+Ljj/c6anqu2zQ==}
     engines: {node: '>= 0.4.0'}
     dev: false
 
@@ -12010,7 +12015,7 @@ packages:
       graphql-scalars: 1.22.2(graphql@16.8.0)
       graphql-type-json: 0.3.2(graphql@16.8.0)
       html-webpack-plugin: 5.5.3(webpack@5.88.2)
-      http-status: 1.7.0
+      http-status: 1.6.2
       i18next: 22.5.1
       i18next-browser-languagedetector: 6.1.8
       i18next-http-middleware: 3.3.2
@@ -14899,12 +14904,12 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
-      terser: 5.19.4
+      terser: 5.19.3
       webpack: 5.88.2(@swc/core@1.3.78)(webpack-cli@4.10.0)
     dev: false
 
-  /terser@5.19.4:
-    resolution: {integrity: sha512-6p1DjHeuluwxDXcuT9VR8p64klWJKo1ILiy19s6C9+0Bh2+NWTX6nD9EPppiER4ICkHDVB1RkVpin/YW2nQn/g==}
+  /terser@5.19.3:
+    resolution: {integrity: sha512-pQzJ9UJzM0IgmT4FAtYI6+VqFf0lj/to58AV0Xfgg0Up37RyPG7Al+1cepC6/BVuAxR9oNb41/DL4DEoHJvTdg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:

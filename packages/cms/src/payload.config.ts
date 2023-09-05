@@ -2,6 +2,7 @@ import Media from "./collections/Media";
 import Pages from "./collections/Pages";
 import Topics from "./collections/Topics";
 import Users from "./collections/Users";
+import MainNavigation from "./globals/MainNavigation";
 import { defaultUser } from "./seeding/seedData/user";
 
 import { buildConfig } from "payload/config";
@@ -18,6 +19,7 @@ export default buildConfig({
         : false,
   },
   collections: [Users, Pages, Media, Topics],
+  globals: [MainNavigation],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
