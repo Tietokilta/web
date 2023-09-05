@@ -1,8 +1,9 @@
+import { PayloadRequest } from "payload/types";
+
 import type {
   AfterChangeHook,
   TypeWithID,
 } from "payload/dist/collections/config/types";
-import { PayloadRequest } from "payload/types";
 
 // revalidate the page in the background, so the user doesn't have to wait
 // notice that the hook itself is not async and we are not awaiting `revalidate`
