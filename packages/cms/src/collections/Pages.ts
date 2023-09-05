@@ -23,8 +23,9 @@ const onlyJsonContentForUnauthorized: FieldHook<Page> = ({
   } else if (data) {
     // Warning: the content data can contain, for example, `comments`, which are not public
     return {
-      jsonContent: (data.content as unknown as { jsonContent: unknown })
-        .jsonContent,
+      jsonContent: (
+        data.content as unknown as { jsonContent: unknown } | undefined
+      )?.jsonContent,
     };
   }
 };
