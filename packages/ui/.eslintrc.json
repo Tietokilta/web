@@ -1,0 +1,16 @@
+{
+  "extends": ["plugin:storybook/recommended", "../../.eslintrc.json"],
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
+  "overrides": [
+    {
+      "files": "**/*.{ts,tsx}",
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "."
+      }
+    }
+  ]
+}

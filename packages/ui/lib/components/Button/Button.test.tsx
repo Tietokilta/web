@@ -1,6 +1,7 @@
 import { Button } from ".";
 
 import { render, screen } from "@testing-library/react";
+import { expect, describe, it } from "vitest";
 
 describe("Button", () => {
   it("renders a button with text", () => {
