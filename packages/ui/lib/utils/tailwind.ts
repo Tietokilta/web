@@ -1,8 +1,10 @@
-import type { Config } from "tailwindcss";
+import tailwindConfig from "../../tailwind.config";
+
 import { mergeWith } from "lodash";
 
-import tailwindConfig from "../../tailwind.config";
 import { join } from "path";
+
+import type { Config } from "tailwindcss";
 
 export const tailwindTiKUI = (config: Config): Config =>
   mergeWith(
