@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "pnpm run -r --reporter append-only dev",
+    "dev": "pnpm run -r --reporter append-only --parallel dev",
     "format": "prettier --write .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings 0 .",
     "lint:fix": "pnpm run lint --fix",
