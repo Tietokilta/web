@@ -10,8 +10,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
+    "baseUrl": ".",
     "paths": {
-      "payload/generated-types": ["./packages/cms/src/payload-types.ts"]
+      "payload/generated-types": ["./packages/cms/src/payload-types.ts"],
+      "@/ui": ["./packages/ui/lib/main.ts"],
+      "@/ui/*": ["./packages/ui/lib/components/*"]
     }
   },
   "exclude": ["node_modules"]
