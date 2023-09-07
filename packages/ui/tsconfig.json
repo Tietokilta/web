@@ -6,14 +6,14 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "jsx": "react-jsx",
-    "types": ["vite/client", "vitest/globals"]
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "declaration": true,
+    "types": ["@testing-library/jest-dom"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "storybook-static",
-    "vite.config.ts.timestamp-*"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }],
+  "exclude": ["node_modules", "dist", "storybook-static"],
   "extends": "../../tsconfig.json"
 }

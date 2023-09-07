@@ -1,6 +1,7 @@
 import * as Tabs from ".";
 
 import { render, screen } from "@testing-library/react";
+import { expect, describe, it } from "vitest";
 
 describe("Tabs", () => {
   it("renders have defaultTab initially selected", () => {
