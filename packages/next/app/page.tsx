@@ -1,4 +1,4 @@
-import { Button } from "@tietokilta/ui";
+import { Button } from "@/ui";
 import Image from "next/image";
 
 export default function Home() {

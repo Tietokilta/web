@@ -1,3 +1,4 @@
+/** @type {import('next').NextConfig} */
 module.exports = {
   async rewrites() {
     return [
@@ -15,5 +16,8 @@ module.exports = {
         destination: `${process.env.NEXT_PUBLIC_CMS_URL}/media/:path*`,
       },
     ];
+  },
+  experimental: {
+    externalDir: true,
   },
 };
