@@ -163,6 +163,9 @@ importers:
       clsx:
         specifier: ^2.0.0
         version: 2.0.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       tailwind-merge:
         specifier: ^1.14.0
         version: 1.14.0
@@ -212,9 +215,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^6.6.0
         version: 6.6.0(eslint@8.48.0)(typescript@5.2.2)
-      '@vitejs/plugin-react-swc':
-        specifier: ^3.3.2
-        version: 3.3.2(vite@4.4.9)
+      '@vitejs/plugin-react':
+        specifier: ^4.0.4
+        version: 4.0.4(vite@4.4.9)
       autoprefixer:
         specifier: ^10.4.15
         version: 10.4.15(postcss@8.4.29)
@@ -227,9 +230,6 @@ importers:
       eslint-plugin-storybook:
         specifier: ^0.6.13
         version: 0.6.13(eslint@8.48.0)(typescript@5.2.2)
-      eslint-plugin-vitest-globals:
-        specifier: ^1.4.0
-        version: 1.4.0
       jsdom:
         specifier: ^22.1.0
         version: 22.1.0
@@ -248,9 +248,6 @@ importers:
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
-      vite:
-        specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.5.9)
       vitest:
         specifier: ^0.34.3
         version: 0.34.3(jsdom@22.1.0)
@@ -6309,27 +6306,27 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@vitejs/plugin-react-swc@3.3.2(vite@4.4.9):
-    resolution: {integrity: sha512-VJFWY5sfoZerQRvJrh518h3AcQt6f/yTuWn4/TRB+dqmYU0NX1qz7qM5Wfd+gOQqUzQW4gxKqKN3KpE/P3+zrA==}
-    peerDependencies:
-      vite: ^4
-    dependencies:
-      '@swc/core': 1.3.78
-      vite: 4.4.9(@types/node@20.5.9)
-    transitivePeerDependencies:
-      - '@swc/helpers'
-    dev: true
-
   /@vitejs/plugin-react@3.1.0(vite@4.4.9):
     resolution: {integrity: sha512-AfgcRL8ZBhAlc3BFdigClmTUMISmmzHn7sB2h9U1odvc5U/MjWXsAaz18b/WoppUTDBzxOJwo2VdClfUcItu9g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.1.0-beta.0
     dependencies:
+      '@swc/core': 1.3.78
+      vite: 4.4.9(@types/node@20.5.9)
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@vitejs/plugin-react@4.0.4(vite@4.4.9):
+    resolution: {integrity: sha512-7wU921ABnNYkETiMaZy7XqpueMnpu5VxvVps13MjmCo+utBdD79sZzrApHawHtVX66cCJQQTXFcjH0y9dSUK8g==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: ^4.2.0
+    dependencies:
       '@babel/core': 7.22.15
       '@babel/plugin-transform-react-jsx-self': 7.22.5(@babel/core@7.22.15)
       '@babel/plugin-transform-react-jsx-source': 7.22.5(@babel/core@7.22.15)
-      magic-string: 0.27.0
       react-refresh: 0.14.0
       vite: 4.4.9(@types/node@20.5.9)
     transitivePeerDependencies:
@@ -8821,10 +8818,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
       - typescript
-    dev: true
-
-  /eslint-plugin-vitest-globals@1.4.0:
-    resolution: {integrity: sha512-WE+YlK9X9s4vf5EaYRU0Scw7WItDZStm+PapFSYlg2ABNtaQ4zIG7wEqpoUB3SlfM+SgkhgmzR0TeJOO5k3/Nw==}
     dev: true
 
   /eslint-scope@5.1.1:

@@ -3,24 +3,12 @@
   "version": "0.0.1",
   "license": "MIT",
   "author": "Mikael Siidorow <mikael@siidorow.com> (https://siidorow.com)",
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/ui.d.ts",
-      "import": "./dist/ui.js",
-      "require": "./dist/ui.umd.cjs"
-    }
-  },
-  "main": "./dist/ui.umd.cjs",
-  "module": "./dist/ui.js",
-  "types": "./dist/ui.d.ts",
-  "files": [
-    "dist"
-  ],
+  "module": "./dist/lib/main.js",
+  "types": "./dist/lib/main.d.ts",
   "scripts": {
-    "build": "tsc && vite build && dts-bundle-generator -o ./dist/ui.d.ts ./lib/main.ts",
+    "build": "tsc && tailwindcss -i ./lib/main.css -o ./dist/lib/main.css",
     "build-storybook": "storybook build --disable-telemetry && touch ./storybook-static/.nojekyll",
-    "check": "tsc",
+    "check": "tsc --noEmit",
     "dev": "storybook dev --no-open -p 6006 --disable-telemetry",
     "test": "vitest"
   },
@@ -29,6 +17,7 @@
     "@radix-ui/react-tabs": "1.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
+    "lodash": "^4.17.21",
     "tailwind-merge": "^1.14.0"
   },
   "devDependencies": {
@@ -47,19 +36,17 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.6.0",
     "@typescript-eslint/parser": "^6.6.0",
-    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitejs/plugin-react": "^4.0.4",
     "autoprefixer": "^10.4.15",
     "dts-bundle-generator": "^8.0.1",
     "eslint": "^8.48.0",
     "eslint-plugin-storybook": "^0.6.13",
-    "eslint-plugin-vitest-globals": "^1.4.0",
     "jsdom": "^22.1.0",
     "postcss": "^8.4.29",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "7.4.0",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.9",
     "vitest": "^0.34.3"
   },
   "peerDependencies": {
