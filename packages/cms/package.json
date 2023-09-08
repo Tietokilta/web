@@ -15,7 +15,7 @@
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema"
   },
   "dependencies": {
-    "@payloadcms/plugin-cloud": "^0.0.10",
+    "@payloadcms/plugin-cloud": "^2.2.1",
     "cross-env": "^7.0.3",
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
