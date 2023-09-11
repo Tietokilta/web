@@ -55,10 +55,10 @@ importers:
         version: 4.17.21
       payload:
         specifier: latest
-        version: 1.15.4(typescript@5.2.2)
+        version: 1.15.5(typescript@5.2.2)
       payload-plugin-lexical:
         specifier: ^0.6.6
-        version: 0.6.6(payload@1.15.4)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.7)
+        version: 0.6.6(payload@1.15.5)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.7)
       pino:
         specifier: ^8.15.0
         version: 8.15.0
@@ -7190,7 +7190,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /payload-plugin-lexical@0.6.6(payload@1.15.4)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.7):
+  /payload-plugin-lexical@0.6.6(payload@1.15.5)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.7):
     resolution: {integrity: sha512-6CaexCys3A1oBF0z3rL7VJF+RybbkeyGsNEo+BuJoCLBNe/kbGKW4lSHuXcSCalPhfWA3CR991U0/oVLEctFCA==}
     peerDependencies:
       payload: ^1.6.32
@@ -7216,7 +7216,7 @@ packages:
       katex: 0.16.7
       lexical: 0.10.0
       openai: 3.3.0
-      payload: 1.15.4(typescript@5.2.2)
+      payload: 1.15.5(typescript@5.2.2)
       react: 18.2.0
     transitivePeerDependencies:
       - debug
@@ -7224,8 +7224,8 @@ packages:
       - yjs
     dev: false
 
-  /payload@1.15.4(typescript@5.2.2):
-    resolution: {integrity: sha512-VN+ERihzzFfM+ZUgqy7fjlfUffW6qIHQ1zO+N/aoqNsyZ1DIH4sS50gRfXuDfKXWe9Se5HlTQvMTDfT5a4YMpw==}
+  /payload@1.15.5(typescript@5.2.2):
+    resolution: {integrity: sha512-w7r8MFB5i5RrP7dRDPszx+UgxPC0lERGPjJWoXqyTG7tnuOEw68oaNtoYwba0dpEemeQWJ01EW34E46+/NiXlw==}
     engines: {node: '>=14', yarn: '>=1.22 <2'}
     hasBin: true
     dependencies:
