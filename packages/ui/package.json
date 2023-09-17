@@ -5,6 +5,10 @@
   "author": "Mikael Siidorow <mikael@siidorow.com> (https://siidorow.com)",
   "module": "./dist/lib/main.js",
   "types": "./dist/lib/main.d.ts",
+  "files": [
+    "./dist/lib",
+    "./dist/tailwind.config.js"
+  ],
   "scripts": {
     "build": "tsc && tailwindcss -i ./lib/main.css -o ./dist/lib/main.css",
     "build-storybook": "storybook build --disable-telemetry && touch ./storybook-static/.nojekyll",
