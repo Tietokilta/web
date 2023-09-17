@@ -12,8 +12,12 @@ export {
   BookMarkedIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  ChevronsUpDownIcon,
+  CircleIcon,
   ImageIcon,
   InboxIcon,
   LanguagesIcon,
   MenuIcon,
+  XIcon,
 } from "lucide-react";
+export { default as TikLogo } from "./TikLogo";

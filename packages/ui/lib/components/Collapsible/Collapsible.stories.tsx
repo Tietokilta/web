@@ -1,8 +1,7 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from ".";
 
+import { ChevronsUpDownIcon } from "../../icons";
 import { Button } from "../Button";
-
-import { ChevronsUpDown } from "lucide-react";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
@@ -28,7 +27,7 @@ export const Default = {
           className="flex w-full items-center justify-between"
         >
           <span>Can I use this in my project?</span>
-          <ChevronsUpDown className="h-4 w-4" />
+          <ChevronsUpDownIcon className="h-4 w-4" />
           <span className="sr-only">Toggle</span>
         </Button>
       </CollapsibleTrigger>

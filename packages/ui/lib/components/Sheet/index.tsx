@@ -1,8 +1,8 @@
+import { XIcon } from "../../icons";
 import { cn } from "../../utils";
 
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
-import { X } from "lucide-react";
 import * as React from "react";
 
 const Sheet = SheetPrimitive.Root;
@@ -11,11 +11,8 @@ const SheetTrigger = SheetPrimitive.Trigger;
 
 const SheetClose = SheetPrimitive.Close;
 
-const SheetPortal = ({
-  className,
-  ...props
-}: SheetPrimitive.DialogPortalProps) => (
-  <SheetPrimitive.Portal className={cn(className)} {...props} />
+const SheetPortal = (props: SheetPrimitive.DialogPortalProps) => (
+  <SheetPrimitive.Portal {...props} />
 );
 SheetPortal.displayName = SheetPrimitive.Portal.displayName;
 
@@ -70,7 +67,7 @@ const SheetContent = React.forwardRef<
     >
       {children}
       <SheetPrimitive.Close className="absolute right-4 top-4 -m-2 rounded-full p-2 hover:bg-gray-300 focus:ring-2 focus:ring-gray-900 focus-visible:outline-none disabled:pointer-events-none data-[state=open]:bg-gray-900">
-        <X className="h-6 w-6" />
+        <XIcon className="h-6 w-6" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
     </SheetPrimitive.Content>
