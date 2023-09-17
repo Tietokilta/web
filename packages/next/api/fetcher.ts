@@ -71,5 +71,5 @@ export const getAll = <
 
 export const getOne =
   <Request extends Record<string, unknown>, Response>(path: string) =>
-  (req: Request) =>
+  (req: Request & { locale?: string }) =>
     getAll<Request, Response[]>(path)(req).then((res) => res?.[0]);
