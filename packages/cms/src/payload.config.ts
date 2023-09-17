@@ -2,6 +2,7 @@ import Media from "./collections/Media";
 import Pages from "./collections/Pages";
 import Topics from "./collections/Topics";
 import Users from "./collections/Users";
+import Footer from "./globals/Footer";
 import LandingPage from "./globals/LandingPage";
 import MainNavigation from "./globals/MainNavigation";
 
@@ -22,7 +23,7 @@ export default buildConfig({
         : false,
   },
   collections: [Users, Pages, Media, Topics],
-  globals: [MainNavigation, LandingPage],
+  globals: [MainNavigation, LandingPage, Footer],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },

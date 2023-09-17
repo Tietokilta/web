@@ -14,6 +14,14 @@ export type MainNavigationItem = {
   topicConfig?: MainNavigationTopicConfig;
   id?: string;
 }[];
+export type LinkRowBlockLink = {
+  icon: 'PhotographOutline' | 'CashOutline' | 'BookmarkAltOutline';
+  label: string;
+  linkType?: 'external' | 'internal';
+  url: string;
+  page: string | Page;
+  id?: string;
+}[];
 
 export interface Config {
   collections: {
@@ -24,6 +32,7 @@ export interface Config {
   };
   globals: {
     'main-navigation': MainNavigation;
+    footer: Footer;
   };
 }
 export interface User {
@@ -97,4 +106,28 @@ export interface MainNavigationTopicConfig {
     }[];
     id?: string;
   }[];
+}
+export interface Footer {
+  id: string;
+  layout: (
+    | {
+        showLabel: boolean;
+        links?: LinkRowBlockLink;
+        id?: string;
+        blockName?: string;
+        blockType: 'link-row';
+      }
+    | {
+        logos?: {
+          image: string | Media;
+          link?: string;
+          id?: string;
+        }[];
+        id?: string;
+        blockName?: string;
+        blockType: 'logo-row';
+      }
+  )[];
+  updatedAt?: string;
+  createdAt?: string;
 }
