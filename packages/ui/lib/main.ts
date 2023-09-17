@@ -1,5 +1,6 @@
 "use client";
 
-export * from "./components/Button";
-export * from "./components/Tabs";
+export * from "./components";
+export * from "./icons";
+
 export { tailwindTiKUI } from "./utils/tailwind";
