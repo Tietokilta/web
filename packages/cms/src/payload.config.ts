@@ -2,6 +2,7 @@ import Media from "./collections/Media";
 import Pages from "./collections/Pages";
 import Topics from "./collections/Topics";
 import Users from "./collections/Users";
+import LandingPage from "./globals/LandingPage";
 import MainNavigation from "./globals/MainNavigation";
 import { defaultUser } from "./seeding/seedData/user";
 
@@ -19,7 +20,7 @@ export default buildConfig({
         : false,
   },
   collections: [Users, Pages, Media, Topics],
-  globals: [MainNavigation],
+  globals: [MainNavigation, LandingPage],
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
