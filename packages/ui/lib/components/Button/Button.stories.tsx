@@ -1,56 +1,64 @@
 import { Button } from ".";
 
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
 /**
  * ```typescript
  * import { Button } from "@tietokilta/ui";
  * ```
  */
-export default {
+const meta = {
   title: "Button",
   component: Button,
-} as Meta<typeof Button>;
+} satisfies Meta<typeof Button>;
+export default meta;
 
-const Template: StoryFn<typeof Button> = (args) => <Button {...args} />;
+type Story = StoryObj<typeof Button>;
 
-export const Default = Template.bind({});
-Default.args = {
-  children: "Button",
-};
+export const Default = {
+  args: {
+    children: "Button",
+  },
+} satisfies Story;
 
-export const Destructive = Template.bind({});
-Destructive.args = {
-  ...Default.args,
-  variant: "destructive",
-};
+export const Destructive = {
+  args: {
+    ...Default.args,
+    variant: "destructive",
+  },
+} satisfies Story;
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  ...Default.args,
-  variant: "secondary",
-};
+export const Secondary = {
+  args: {
+    ...Default.args,
+    variant: "secondary",
+  },
+} satisfies Story;
 
-export const Outline = Template.bind({});
-Outline.args = {
-  ...Default.args,
-  variant: "outline",
-};
+export const Outline = {
+  args: {
+    ...Default.args,
+    variant: "outline",
+  },
+} satisfies Story;
 
-export const Ghost = Template.bind({});
-Ghost.args = {
-  ...Default.args,
-  variant: "ghost",
-};
+export const Ghost = {
+  args: {
+    ...Default.args,
+    variant: "ghost",
+  },
+} satisfies Story;
 
-export const Link = Template.bind({});
-Link.args = {
-  ...Default.args,
-  variant: "link",
-};
+export const Link = {
+  args: {
+    ...Default.args,
+    variant: "link",
+  },
+} satisfies Story;
 
-export const OutlineLink = Template.bind({});
-OutlineLink.args = {
-  ...Default.args,
-  variant: "outlineLink",
-};
+export const OutlineLink = {
+  args: {
+    ...Default.args,
+    variant: "outlineLink",
+  },
+} satisfies Story;
