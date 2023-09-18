@@ -23,3 +23,7 @@ updates:
           - "prettier"
         exclude-patterns:
           - "eslint-config-next"
+      storybook:
+        patterns:
+          - "storybook"
+          - "@storybook/*"
