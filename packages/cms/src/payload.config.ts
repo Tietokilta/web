@@ -3,7 +3,6 @@ import Pages from "./collections/Pages";
 import Topics from "./collections/Topics";
 import Users from "./collections/Users";
 import MainNavigation from "./globals/MainNavigation";
-import { defaultUser } from "./seeding/seedData/user";
 
 import { buildConfig } from "payload/config";
 import { LexicalPlugin } from "payload-plugin-lexical";
@@ -15,7 +14,10 @@ export default buildConfig({
     user: Users.slug,
     autoLogin:
       process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_AND_SEEDING === "true"
-        ? defaultUser
+        ? {
+            email: "root@tietokilta.fi",
+            password: "root",
+          }
         : false,
   },
   collections: [Users, Pages, Media, Topics],
