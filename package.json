@@ -4,9 +4,12 @@
     "format": "prettier --write .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings 0 .",
     "lint:fix": "pnpm run lint --fix",
+    "mongo:clear": "docker compose down -v",
+    "mongo:start": "docker compose up -d",
+    "mongo:stop": "docker compose down",
     "prettier": "prettier --check .",
     "seeding:generate": "./packages/cms/scripts/generate_seeding_data.sh",
-    "seeding:populate": "docker compose up -d && ./packages/cms/scripts/import_seeding_data.sh"
+    "seeding:populate": "pnpm mongo:start && ./packages/cms/scripts/import_seeding_data.sh"
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",
