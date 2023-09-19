@@ -15,7 +15,8 @@
       "payload/generated-types": ["./packages/cms/src/payload-types.ts"],
       "@/ui": ["./packages/ui/lib/main.ts"],
       "@/ui/*": ["./packages/ui/lib/components/*"]
-    }
+    },
+    "rootDir": "."
   },
   "exclude": ["node_modules"]
   /* "extends": "@tsconfig/strictest/tsconfig.json" */
