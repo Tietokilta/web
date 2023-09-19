@@ -28,8 +28,8 @@
   ],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "../../**/*.ts",
+    "../../**/*.tsx",
     ".next/types/**/*.ts",
     "../../reset.d.ts"
   ],
