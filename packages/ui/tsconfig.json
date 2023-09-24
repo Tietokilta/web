@@ -12,7 +12,8 @@
     "skipLibCheck": true,
     "noEmit": false,
     "declaration": true,
-    "types": ["@testing-library/jest-dom"]
+    "types": ["@testing-library/jest-dom"],
+    "composite": true
   },
   "exclude": ["node_modules", "dist", "storybook-static"],
   "extends": "../../tsconfig.json"
