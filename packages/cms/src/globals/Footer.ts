@@ -5,6 +5,7 @@ import { Block, GlobalConfig } from "payload/types";
 
 const LinkRowBlock: Block = {
   slug: "link-row",
+  interfaceName: "LinkRowBlock",
   fields: [
     {
       name: "showLabel",
@@ -68,6 +69,7 @@ const LinkRowBlock: Block = {
 
 const LogoRowBlock: Block = {
   slug: "logo-row",
+  interfaceName: "LogoRowBlock",
   fields: [
     {
       name: "logos",
