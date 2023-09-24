@@ -73,3 +73,24 @@ export const getOne =
   <Request extends Record<string, unknown>, Response>(path: string) =>
   (req: Request & { locale?: string }) =>
     getAll<Request, Response[]>(path)(req).then((res) => res?.[0]);
+
+export const getGlobal = <Response>(path: string) =>
+  fetcher<Record<string, never>, Response>(
+    () => `getGlobal_${path}`,
+    async (_, draft, fetchOptions): Promise<Response | undefined> => {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}${path}?${qs
+          .stringify({
+            depth: 1,
+            ...(draft ? { draft: "true" } : {}),
+          })
+          .toString()}`,
+        {
+          method: "GET",
+          ...fetchOptions,
+        },
+      ).then((res) => res.json() as Promise<Response>);
+
+      return res;
+    },
+  );
