@@ -42,6 +42,8 @@ export interface Config {
 }
 export interface User {
   id: string;
+  name?: string;
+  sub?: string;
   updatedAt: string;
   createdAt: string;
   enableAPIKey?: boolean | null;

@@ -10,6 +10,10 @@ module.exports = {
         source: "/api/:path*",
         destination: `${process.env.NEXT_PUBLIC_CMS_URL}/api/:path*`,
       },
+      {
+        source: "/oauth2/:path*",
+        destination: `${process.env.NEXT_PUBLIC_CMS_URL}/oauth2/:path*`,
+      },
       // TODO: only for dev:
       {
         source: "/media/:path*",
