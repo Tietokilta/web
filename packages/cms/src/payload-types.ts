@@ -160,6 +160,19 @@ export interface LandingPage {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+export interface LandingPage {
+  id: string;
+  heroText: string;
+  heroImages: {
+    image?: string | Media;
+    id?: string;
+  }[];
+  body: {
+    [k: string]: unknown;
+  }[];
+  updatedAt?: string;
+  createdAt?: string;
+}
 export interface Footer {
   id: string;
   layout: (
