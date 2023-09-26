@@ -1,0 +1,16 @@
+version: "3"
+# NOTE: This is only for testing azure cloud storage, use local files for development
+services:
+  azure-storage:
+    image: mcr.microsoft.com/azure-storage/azurite:latest
+    restart: always
+    command: "azurite --loose --blobHost 0.0.0.0 --tableHost 0.0.0.0 --queueHost 0.0.0.0 --skipApiVersionCheck"
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+      - "10002:10002"
+    volumes:
+      - azurite:/opt/azurite
+
+volumes:
+  azurite:
