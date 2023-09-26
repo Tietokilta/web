@@ -5,6 +5,8 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import type { Config } from "@tietokilta/cms-types/payload";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
+import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
+import { azureBlobStorageAdapter } from "@payloadcms/plugin-cloud-storage/azure";
 import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
 import { Topics } from "./collections/topics";
@@ -20,6 +22,16 @@ declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
   export interface GeneratedTypes extends Config {}
 }
+const {
+  AZURE_STORAGE_CONNECTION_STRING,
+  AZURE_STORAGE_CONTAINER_NAME,
+  AZURE_STORAGE_ACCOUNT_BASEURL,
+} = process.env;
+
+const useCloudStorage =
+  typeof AZURE_STORAGE_CONNECTION_STRING === "string" &&
+  typeof AZURE_STORAGE_CONTAINER_NAME === "string" &&
+  typeof AZURE_STORAGE_ACCOUNT_BASEURL === "string";
 
 export default buildConfig({
   // TODO: should probably enable this for production but it breaks auth in development
@@ -107,6 +119,20 @@ export default buildConfig({
         saveUninitialized: false,
         // PAYLOAD_SECRET existing is verified in server.ts
         secret: process.env.PAYLOAD_SECRET ?? "",
+      },
+    }),
+    cloudStorage({
+      enabled: useCloudStorage,
+      collections: {
+        [Media.slug]: {
+          adapter: azureBlobStorageAdapter({
+            connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
+            containerName: AZURE_STORAGE_CONTAINER_NAME ?? "",
+            allowContainerCreate:
+              process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
+            baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
+          }),
+        },
       },
     }),
   ],
