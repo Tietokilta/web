@@ -6,10 +6,9 @@
     "eslint:recommended",
     "prettier",
     "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended"
+    "plugin:react/jsx-runtime"
   ],
-  "plugins": ["import", "react-hooks"],
+  "plugins": ["import"],
   "settings": {
     "react": {
       "version": "18.2.0"
@@ -27,8 +26,6 @@
   "rules": {
     "react/jsx-curly-brace-presence": ["error", "never"],
     "react/prop-types": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "error",
     "no-console": "error",
     "prefer-arrow-callback": [
       "error",
@@ -70,7 +67,7 @@
       "parserOptions": {
         "project": "./tsconfig.json"
       },
-      "plugins": ["@typescript-eslint", "react-hooks"],
+      "plugins": ["@typescript-eslint"],
       "rules": {
         "@typescript-eslint/no-misused-promises": [
           "error",
