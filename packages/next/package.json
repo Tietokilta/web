@@ -9,7 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "autoprefixer": "10.4.15",
+    "autoprefixer": "10.4.16",
     "json-stable-stringify": "^1.0.2",
     "lodash": "^4.17.21",
     "next": "14.0.1",
@@ -18,16 +18,16 @@
     "qs": "^6.11.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.3.3"
+    "tailwindcss": "3.3.5"
   },
   "devDependencies": {
-    "@types/json-stable-stringify": "^1.0.34",
-    "@types/lodash": "^4.14.198",
-    "@types/node": "^20.6.0",
-    "@types/qs": "^6.9.8",
-    "@types/react": "^18.2.33",
+    "@types/json-stable-stringify": "^1.0.35",
+    "@types/lodash": "^4.14.200",
+    "@types/node": "^20.8.10",
+    "@types/qs": "^6.9.9",
+    "@types/react": "^18.2.35",
     "@types/react-dom": "^18.2.14",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "eslint-config-next": "^14.0.1"
   }
 }
