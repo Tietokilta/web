@@ -6,13 +6,16 @@ import Footer from "./globals/Footer";
 import LandingPage from "./globals/LandingPage";
 import MainNavigation from "./globals/MainNavigation";
 
+import { viteBundler } from "@payloadcms/bundler-vite";
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { LinkFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload/config";
-import { LexicalPlugin } from "payload-plugin-lexical";
 
 import path from "path";
 
 export default buildConfig({
   admin: {
+    bundler: viteBundler(),
     user: Users.slug,
     autoLogin:
       process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_AND_SEEDING === "true"
@@ -32,5 +35,11 @@ export default buildConfig({
     defaultLocale: "fi",
     fallback: true,
   },
-  plugins: [LexicalPlugin({})],
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [...defaultFeatures, LinkFeature({})],
+  }),
+  db: mongooseAdapter({
+    url: process.env.MONGODB_URI,
+  }),
+  plugins: [],
 });

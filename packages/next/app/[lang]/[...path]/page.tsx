@@ -28,18 +28,14 @@ const Page = async ({
   if (!page) return notFound();
 
   const content = page.content as unknown as
-    | {
-        jsonContent: SerializedLexicalEditorState;
-      }
+    | SerializedLexicalEditorState
     | undefined;
 
   return (
     <>
       <AdminBar collection="pages" id={page.id} />
       <h1>{page.title}</h1>
-      {content && (
-        <LexicalSerializer nodes={content.jsonContent.root.children} />
-      )}
+      {content && <LexicalSerializer nodes={content.root.children} />}
     </>
   );
 };
