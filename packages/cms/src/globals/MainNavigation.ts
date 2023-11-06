@@ -104,6 +104,7 @@ const MainNavigation: GlobalConfig = {
                   name: "title",
                   type: "text",
                   required: true,
+                  localized: true,
                 },
                 {
                   name: "pages",
