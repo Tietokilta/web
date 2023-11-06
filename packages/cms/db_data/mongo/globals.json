@@ -1,0 +1,205 @@
+[{
+	"_id": {
+		"$oid": "6548f2bfd7febb86e2235faf"
+	},
+	"items": [
+		{
+			"type": "topic",
+			"pageConfig": {},
+			"topicConfig": {
+				"topic": "6548f0f4d7febb86e2235b89",
+				"categories": [
+					{
+						"title": {
+							"fi": "Ajankohtaista",
+							"en": "Topical"
+						},
+						"pages": [
+							{
+								"page": "6548f1fad7febb86e2235ec9",
+								"id": "6548f244611be65a813f889d"
+							}
+						],
+						"externalLinks": [],
+						"id": "6548f23d611be65a813f889c"
+					},
+					{
+						"title": {
+							"fi": "Aktiivit",
+							"en": "Actives"
+						},
+						"pages": [
+							{
+								"page": "6548f0d5d7febb86e2235b69",
+								"id": "6548f252611be65a813f889f"
+							},
+							{
+								"page": "6548f1c8d7febb86e2235e0e",
+								"id": "6548f257611be65a813f88a0"
+							}
+						],
+						"externalLinks": [],
+						"id": "6548f24d611be65a813f889e"
+					},
+					{
+						"title": {
+							"fi": "Työkalut",
+							"en": "Tools"
+						},
+						"pages": [],
+						"externalLinks": [
+							{
+								"title": "Kuvagalleria",
+								"href": "http://tietokilta.kuvat.fi/",
+								"icon": "PhotographOutline",
+								"id": "6548f263611be65a813f88a2"
+							},
+							{
+								"title": "Laskugeneraattori",
+								"href": "https://tietokilta.fi/kilta/laskugeneraattori/",
+								"icon": "CashOutline",
+								"id": "6548f278611be65a813f88a3"
+							},
+							{
+								"title": "Histotik",
+								"href": "http://histotik.tietokilta.fi/",
+								"icon": "BookmarkAltOutline",
+								"id": "6548f284611be65a813f88a4"
+							}
+						],
+						"id": "6548f25d611be65a813f88a1"
+					}
+				]
+			},
+			"id": "6548f22d611be65a813f889b"
+		},
+		{
+			"type": "page",
+			"pageConfig": {
+				"page": "6548f141d7febb86e2235c4d"
+			},
+			"topicConfig": {
+				"categories": []
+			},
+			"id": "6548f2a4611be65a813f88a5"
+		},
+		{
+			"type": "page",
+			"pageConfig": {
+				"page": "6548f179d7febb86e2235cf2"
+			},
+			"topicConfig": {
+				"categories": []
+			},
+			"id": "6548f2aa611be65a813f88a6"
+		},
+		{
+			"type": "page",
+			"pageConfig": {
+				"page": "6548f1a7d7febb86e2235d7c"
+			},
+			"topicConfig": {
+				"categories": []
+			},
+			"id": "6548f2b5611be65a813f88a7"
+		}
+	],
+	"globalType": "main-navigation",
+	"createdAt": {
+		"$date": "2023-11-06T14:05:51.452Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:07:58.692Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6548f4ab88334626ab27fb53"
+	},
+	"layout": [
+		{
+			"showLabel": false,
+			"links": [
+				{
+					"icon": "CashOutline",
+					"label": {
+						"fi": "Instagram",
+						"en": "Instagram"
+					},
+					"linkType": "external",
+					"url": "https://www.instagram.com/tietokilta/",
+					"id": "6548f493854a99217b8fbd39"
+				},
+				{
+					"icon": "CashOutline",
+					"label": {
+						"fi": "TikTok",
+						"en": "TikTok"
+					},
+					"linkType": "external",
+					"url": "https://www.tiktok.com/@tietokilta",
+					"id": "6548f4b2854a99217b8fbd3a"
+				},
+				{
+					"icon": "CashOutline",
+					"label": {
+						"fi": "Facebook",
+						"en": "Facebook"
+					},
+					"linkType": "external",
+					"url": "https://www.facebook.com/Tietokilta/",
+					"id": "6548f4ba854a99217b8fbd3b"
+				},
+				{
+					"icon": "CashOutline",
+					"label": {
+						"fi": "GitHub",
+						"en": "GitHub"
+					},
+					"linkType": "external",
+					"url": "https://github.com/tietokilta",
+					"id": "6548f4d0854a99217b8fbd3c"
+				}
+			],
+			"id": "6548f48f854a99217b8fbd38",
+			"blockType": "link-row"
+		},
+		{
+			"showLabel": true,
+			"links": [
+				{
+					"icon": "CashOutline",
+					"label": {
+						"fi": "Yhteystiedot",
+						"en": "Contact"
+					},
+					"linkType": "internal",
+					"page": "6548f21ed7febb86e2235f5f",
+					"id": "6548f51e854a99217b8fbd3f"
+				},
+				{
+					"icon": "CashOutline",
+					"label": {
+						"fi": "Palautelomake",
+						"en": "Give feedback"
+					},
+					"linkType": "external",
+					"url": "https://tietokilta.fi/kilta/palautelomake",
+					"id": "6548f4e9854a99217b8fbd3e"
+				}
+			],
+			"id": "6548f4e6854a99217b8fbd3d",
+			"blockType": "link-row"
+		}
+	],
+	"globalType": "footer",
+	"createdAt": {
+		"$date": "2023-11-06T14:14:03.116Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:17:11.148Z"
+	},
+	"__v": 0
+}]
+
