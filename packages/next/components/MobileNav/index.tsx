@@ -4,11 +4,11 @@ import { fetchFooter } from "../../api/footer";
 import { fetchMainNavigation } from "../../api/main-navigation";
 
 import {
-  Sheet,
-  SheetTrigger,
   Button,
-  SheetContent,
   MenuIcon,
+  Sheet,
+  SheetContent,
+  SheetTrigger,
   TikLogo,
 } from "@/ui";
 import { cn } from "@/ui/utils";
@@ -16,10 +16,11 @@ import { LinkRowBlock } from "payload/generated-types";
 
 export async function MobileNav({
   className,
+  locale,
   ...rest
-}: React.ComponentPropsWithoutRef<"header">) {
-  const mainNav = await fetchMainNavigation({});
-  const footer = await fetchFooter({});
+}: React.ComponentPropsWithoutRef<"header"> & { locale: string }) {
+  const mainNav = await fetchMainNavigation(locale)({});
+  const footer = await fetchFooter(locale)({});
 
   if (!mainNav || !footer) return null;
 
