@@ -1,5 +1,3 @@
-import { richTextField } from "../fields/richTextField";
-
 import { GlobalConfig } from "payload/types";
 
 const LandingPage: GlobalConfig = {
@@ -27,11 +25,12 @@ const LandingPage: GlobalConfig = {
         },
       ],
     },
-    richTextField({
+    {
       name: "body",
+      type: "richText",
       required: true,
       localized: true,
-    }),
+    },
   ],
 };
 
