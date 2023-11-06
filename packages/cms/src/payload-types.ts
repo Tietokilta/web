@@ -162,29 +162,28 @@ export interface LandingPage {
 }
 export interface Footer {
   id: string;
-  layout: (
-    | {
-        showLabel: boolean;
-        links?: LinkRowBlockLink;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'link-row';
-      }
-    | {
-        logos?:
-          | {
-              image: string | Media;
-              link?: string | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-        blockName?: string | null;
-        blockType: 'logo-row';
-      }
-  )[];
+  layout: (LinkRowBlock | LogoRowBlock)[];
   updatedAt?: string | null;
   createdAt?: string | null;
+}
+export interface LinkRowBlock {
+  showLabel: boolean;
+  links?: LinkRowBlockLink;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'link-row';
+}
+export interface LogoRowBlock {
+  logos?:
+    | {
+        image: string | Media;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'logo-row';
 }
 
 

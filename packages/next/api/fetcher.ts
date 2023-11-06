@@ -74,7 +74,7 @@ export const getOne =
   (req: Request & { locale?: string }) =>
     getAll<Request, Response[]>(path)(req).then((res) => res?.[0]);
 
-export const getGlobal = <Response>(path: string) =>
+export const getGlobal = <Response>(path: string, locale?: string) =>
   fetcher<Record<string, never>, Response>(
     () => `getGlobal_${path}`,
     async (_, draft, fetchOptions): Promise<Response | undefined> => {
@@ -83,6 +83,7 @@ export const getGlobal = <Response>(path: string) =>
           .stringify({
             depth: 1,
             ...(draft ? { draft: "true" } : {}),
+            ...(locale ? { locale } : {}),
           })
           .toString()}`,
         {

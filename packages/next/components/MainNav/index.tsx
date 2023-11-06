@@ -10,10 +10,11 @@ import {
 } from "@/ui";
 import Link from "next/link";
 
-export async function MainNav(
-  props: React.ComponentPropsWithoutRef<typeof NavigationMenu>,
-) {
-  const mainNav = await fetchMainNavigation({});
+export async function MainNav({
+  locale,
+  ...props
+}: React.ComponentPropsWithoutRef<typeof NavigationMenu> & { locale: string }) {
+  const mainNav = await fetchMainNavigation(locale)({});
 
   if (!mainNav) return null;
 
