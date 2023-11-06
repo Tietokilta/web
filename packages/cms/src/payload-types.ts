@@ -7,21 +7,23 @@
  */
 
 export type MainNavigationItem = {
-  type?: 'page' | 'topic';
+  type?: ('page' | 'topic') | null;
   pageConfig?: {
     page: string | Page;
   };
   topicConfig?: MainNavigationTopicConfig;
-  id?: string;
+  id?: string | null;
 }[];
-export type LinkRowBlockLink = {
-  icon: 'PhotographOutline' | 'CashOutline' | 'BookmarkAltOutline';
-  label: string;
-  linkType?: 'external' | 'internal';
-  url: string;
-  page: string | Page;
-  id?: string;
-}[];
+export type LinkRowBlockLink =
+  | {
+      icon: 'PhotographOutline' | 'CashOutline' | 'BookmarkAltOutline';
+      label: string;
+      linkType?: ('external' | 'internal') | null;
+      url?: string | null;
+      page?: (string | null) | Page;
+      id?: string | null;
+    }[]
+  | null;
 
 export interface Config {
   collections: {
@@ -29,9 +31,12 @@ export interface Config {
     pages: Page;
     media: Media;
     topics: Topic;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {
     'main-navigation': MainNavigation;
+    'landing-page': LandingPage;
     footer: Footer;
   };
 }
@@ -39,14 +44,17 @@ export interface User {
   id: string;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  salt?: string;
-  hash?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  password?: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password: string | null;
 }
 export interface Page {
   id: string;
@@ -54,16 +62,16 @@ export interface Page {
   content: {
     [k: string]: unknown;
   }[];
-  path?: string;
+  path?: string | null;
   topic?: {
-    value: string | Topic;
     relationTo: 'topics';
-  };
+    value: string | Topic;
+  } | null;
   slug: string;
   hidden: boolean;
   updatedAt: string;
   createdAt: string;
-  _status?: 'draft' | 'published';
+  _status?: ('draft' | 'published') | null;
 }
 export interface Topic {
   id: string;
@@ -77,35 +85,80 @@ export interface Media {
   alt: string;
   updatedAt: string;
   createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+export interface PayloadPreference {
+  id: string;
+  user: {
+    relationTo: 'users';
+    value: string | User;
+  };
+  key?: string | null;
+  value?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface PayloadMigration {
+  id: string;
+  name?: string | null;
+  batch?: number | null;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface MainNavigation {
   id: string;
   items: MainNavigationItem;
-  updatedAt?: string;
-  createdAt?: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 export interface MainNavigationTopicConfig {
   topic: string | Topic;
-  categories: {
-    title: string;
-    pages?: {
-      page: string | Page;
-      id?: string;
-    }[];
-    externalLinks?: {
-      title: string;
-      href: string;
-      icon: 'PhotographOutline' | 'CashOutline' | 'BookmarkAltOutline';
-      id?: string;
-    }[];
-    id?: string;
+  categories?:
+    | {
+        title: string;
+        pages?:
+          | {
+              page: string | Page;
+              id?: string | null;
+            }[]
+          | null;
+        externalLinks?:
+          | {
+              title: string;
+              href: string;
+              icon: 'PhotographOutline' | 'CashOutline' | 'BookmarkAltOutline';
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+}
+export interface LandingPage {
+  id: string;
+  heroText: string;
+  heroImages: {
+    image?: (string | null) | Media;
+    id?: string | null;
   }[];
+  body: {
+    [k: string]: unknown;
+  }[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 export interface Footer {
   id: string;
@@ -113,21 +166,28 @@ export interface Footer {
     | {
         showLabel: boolean;
         links?: LinkRowBlockLink;
-        id?: string;
-        blockName?: string;
+        id?: string | null;
+        blockName?: string | null;
         blockType: 'link-row';
       }
     | {
-        logos?: {
-          image: string | Media;
-          link?: string;
-          id?: string;
-        }[];
-        id?: string;
-        blockName?: string;
+        logos?:
+          | {
+              image: string | Media;
+              link?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
         blockType: 'logo-row';
       }
   )[];
-  updatedAt?: string;
-  createdAt?: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
 }
