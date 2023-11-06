@@ -1,0 +1,630 @@
+[{
+	"_id": {
+		"$oid": "6548f0d5d7febb86e2235b69"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2023-11-06T13:57:41.824Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T13:59:06.674Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hallitus",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Board page",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"path": "/kilta/board",
+	"slug": {
+		"fi": "hallitus",
+		"en": "board"
+	},
+	"title": {
+		"fi": "Hallitus",
+		"en": "Board"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "6548f141d7febb86e2235c4d"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2023-11-06T13:59:29.144Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:00:12.81Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hakijat",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 2,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "\t",
+								"type": "tab",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Applicants",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"slug": {
+		"fi": "hakijat",
+		"en": "applicants"
+	},
+	"title": {
+		"fi": "Hakijat",
+		"en": "Applicants"
+	},
+	"path": "/hakijat"
+},
+{
+	"_id": {
+		"$oid": "6548f179d7febb86e2235cf2"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2023-11-06T14:00:25.121Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:18:30.666Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksit",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksis",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 2,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "\t",
+								"type": "tab",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"path": "/fuksit",
+	"slug": {
+		"fi": "fuksit",
+		"en": "fuksit"
+	},
+	"title": {
+		"fi": "Fuksit",
+		"en": "Fuksis"
+	}
+},
+{
+	"_id": {
+		"$oid": "6548f1a7d7febb86e2235d7c"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2023-11-06T14:01:11.528Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:01:38.176Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Yritykset",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 2,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "\t",
+								"type": "tab",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Companies",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"path": "/yritykset",
+	"slug": {
+		"fi": "yritykset",
+		"en": "companies"
+	},
+	"title": {
+		"fi": "Yritykset",
+		"en": "Companies"
+	}
+},
+{
+	"_id": {
+		"$oid": "6548f1c8d7febb86e2235e0e"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2023-11-06T14:01:44.347Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:18:18.695Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hallinto",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Administration",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"path": "/kilta/administration",
+	"slug": {
+		"fi": "hallinto",
+		"en": "administration"
+	},
+	"title": {
+		"fi": "Hallinto",
+		"en": "Administration"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "6548f1fad7febb86e2235ec9"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2023-11-06T14:02:34.104Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:03:01.184Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kiltatuotteet",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Guild merch",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"path": "/kilta/tuottee",
+	"slug": {
+		"fi": "tuotteet",
+		"en": "merch"
+	},
+	"title": {
+		"fi": "Kiltatuotteet",
+		"en": "Guild Merch"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "6548f21ed7febb86e2235f5f"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2023-11-06T14:03:10.838Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:15:53.709Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Yhteystiedot",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 2,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "\t",
+								"type": "tab",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Contact",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"path": "/yhteystiedot",
+	"slug": {
+		"fi": "yhteystiedot",
+		"en": "contact"
+	},
+	"title": {
+		"fi": "Yhteystiedot",
+		"en": "Contact"
+	}
+}]
+
