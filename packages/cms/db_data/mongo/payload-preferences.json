@@ -1,0 +1,154 @@
+[{
+	"_id": {
+		"$oid": "6548f0d1d7febb86e2235b5e"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "locale",
+	"value": "fi",
+	"createdAt": {
+		"$date": "2023-11-06T13:57:37.441Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:18:25.456Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6548f0e9d7febb86e2235b83"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "topics-list",
+	"value": {
+		"limit": "10",
+		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
+			{
+				"accessor": "slug",
+				"active": true
+			},
+			{
+				"accessor": "title",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": false
+			},
+			{
+				"accessor": "updatedAt",
+				"active": false
+			},
+			{
+				"accessor": "createdAt",
+				"active": false
+			}
+		]
+	},
+	"createdAt": {
+		"$date": "2023-11-06T13:58:01.582Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T13:58:01.582Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6548f101d7febb86e2235ba0"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "pages-list",
+	"value": {
+		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
+			{
+				"accessor": "path",
+				"active": true
+			},
+			{
+				"accessor": "title",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": false
+			},
+			{
+				"accessor": "content",
+				"active": false
+			},
+			{
+				"accessor": "topic",
+				"active": false
+			},
+			{
+				"accessor": "slug",
+				"active": false
+			},
+			{
+				"accessor": "hidden",
+				"active": false
+			},
+			{
+				"accessor": "updatedAt",
+				"active": false
+			},
+			{
+				"accessor": "createdAt",
+				"active": false
+			},
+			{
+				"accessor": "_status",
+				"active": false
+			}
+		]
+	},
+	"createdAt": {
+		"$date": "2023-11-06T13:58:25.008Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:18:32.29Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6548f4b188334626ab27fb58"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "global-footer",
+	"value": {
+		"fields": {
+			"layout.0.links": {
+				"collapsed": []
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2023-11-06T14:14:09.525Z"
+	},
+	"updatedAt": {
+		"$date": "2023-11-06T14:16:51.762Z"
+	},
+	"__v": 0
+}]
+

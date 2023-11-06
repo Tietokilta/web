@@ -12,11 +12,11 @@ fi
 # Loop to import each JSON file into a MongoDB collection
 cd mongo
 for filename in *.json; do
-    COLLECTION_NAME="${filename%.json}"
-    echo "Importing $COLLECTION_NAME collection..."
-    mongoimport --uri="$MONGODB_URI" --collection="$COLLECTION_NAME" --file="$filename" --jsonArray
+  COLLECTION_NAME="${filename%.json}"
+  echo "Importing $COLLECTION_NAME collection..."
+  mongoimport --uri="$MONGODB_URI" --collection="$COLLECTION_NAME" --file="$filename" --jsonArray
 done
-# Copy images from images to ../uploads folder 
+# Copy images from images to ../uploads folder
 # TODO: change this implementation when using cloud storage plugin
 cd ..
 mkdir -p ../uploads
