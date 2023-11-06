@@ -1,6 +1,5 @@
 import { loggedIn } from "../access/loggedIn";
 import { publishedAndVisibleOrLoggedIn } from "../access/publishedAndVisibleOrLoggedIn";
-import { richTextField } from "../fields/richTextField";
 import { revalidatePage } from "../hooks/revalidatePage";
 import { generatePreviewUrl } from "../preview";
 
@@ -16,7 +15,7 @@ const formatPath: FieldHook<Page> = async ({ data, req }) => {
         collection: "topics",
         id: data.topic.value as string,
       });
-      return `/${topic.slug}/${data.slug}`;
+      return `/${topic.slug as string}/${data.slug}`;
     } else if (data.slug) {
       return `/${data.slug}`;
     }
@@ -44,11 +43,12 @@ const Pages: CollectionConfig = {
       required: true,
       localized: true,
     },
-    richTextField({
+    {
       name: "content",
+      type: "richText",
       localized: true,
       required: true,
-    }),
+    },
     {
       name: "path",
       type: "text",
