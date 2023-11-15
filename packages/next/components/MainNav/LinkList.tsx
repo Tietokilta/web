@@ -27,11 +27,13 @@ export const LinkList = ({ links }: { links: MainNavigationItem }) =>
             {(pageOrTopic.topicConfig?.topic as Topic).title}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="flex gap-8 px-8 py-4">
+            <ul className="flex gap-16 px-8 py-4">
               {pageOrTopic.topicConfig?.categories?.map(
                 (linkCategorySublist) => (
                   <li key={linkCategorySublist.title}>
-                    <span className="text-lg">{linkCategorySublist.title}</span>
+                    <span className="text-lg font-bold">
+                      {linkCategorySublist.title}
+                    </span>
                     <ul>
                       {linkCategorySublist.pages?.map(({ page }) => (
                         <li key={(page as Page).id}>
