@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@tietokilta/ui": "workspace:*",
     "autoprefixer": "10.4.16",
     "json-stable-stringify": "^1.0.2",
     "lodash": "^4.17.21",

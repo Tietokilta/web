@@ -17,7 +17,5 @@ module.exports = {
       },
     ];
   },
-  experimental: {
-    externalDir: true,
-  },
+  transpilePackages: ["@tietokilta/ui"],
 };

@@ -17,6 +17,9 @@
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      },
       "typescript": {
         "alwaysTryTypes": true,
         "project": ["packages/*/tsconfig.json", "./tsconfig.json"]
@@ -65,7 +68,7 @@
       ],
       "parser": "@typescript-eslint/parser",
       "parserOptions": {
-        "project": "./tsconfig.json"
+        "project": ["./tsconfig.json", "./packages/*/tsconfig.json"]
       },
       "plugins": ["@typescript-eslint"],
       "rules": {

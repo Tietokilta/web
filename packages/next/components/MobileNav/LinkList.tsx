@@ -2,15 +2,16 @@
 
 import {
   Button,
-  ScrollArea,
+  ChevronDownIcon,
+  ChevronUpIcon,
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  RenderIcon,
+  ScrollArea,
   Separator,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from "@/ui";
-import { cn } from "@/ui/utils";
+} from "@tietokilta/ui";
+import { cn } from "@tietokilta/ui/utils";
 import Link from "next/link";
 import {
   LinkRowBlock,
@@ -51,7 +52,7 @@ export const LinkList = ({
                 </span>
               </CollapsibleTrigger>
               <CollapsibleContent className="space-y-3 px-6 py-3 text-base">
-                {pageOrTopic.topicConfig?.categories.map(
+                {pageOrTopic.topicConfig?.categories?.map(
                   (linkCategorySublist) => (
                     <ul key={linkCategorySublist.title}>
                       <li className="text-lg">{linkCategorySublist.title}</li>
@@ -77,7 +78,10 @@ export const LinkList = ({
                               className="my-3 flex w-full items-center justify-start gap-2"
                             >
                               <Link href={externalLink.href ?? "#broken"}>
-                                {externalLink.icon}
+                                <RenderIcon
+                                  name={externalLink.icon}
+                                  className="h-6 w-6"
+                                />
                                 <span>{externalLink.title}</span>
                               </Link>
                             </Button>
@@ -99,7 +103,7 @@ export const LinkList = ({
         <li key={linkRow.id}>
           <ul
             className={cn(
-              "max-w-xs overflow-x-clip",
+              "max-w-full overflow-x-clip",
               !linkRow.showLabel && "flex items-center justify-center gap-6",
             )}
           >
@@ -114,7 +118,7 @@ export const LinkList = ({
                       "-m-2 block rounded-full p-2 hover:bg-gray-300",
                   )}
                 >
-                  {link.icon}
+                  <RenderIcon name={link.icon} className="h-6 w-6" />
                   <span className={cn(!linkRow.showLabel && "sr-only")}>
                     {link.label}
                   </span>
