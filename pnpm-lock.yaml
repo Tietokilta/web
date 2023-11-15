@@ -56,6 +56,9 @@ importers:
       '@payloadcms/richtext-lexical':
         specifier: ^0.1.16
         version: 0.1.16(@lexical/clipboard@0.12.2)(payload@2.0.15)(typescript@5.3.3)(yjs@13.6.10)
+      '@tietokilta/ui':
+        specifier: workspace:*
+        version: link:../ui
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -99,6 +102,9 @@ importers:
 
   packages/next:
     dependencies:
+      '@tietokilta/ui':
+        specifier: workspace:*
+        version: link:../ui
       autoprefixer:
         specifier: 10.4.16
         version: 10.4.16(postcss@8.4.31)

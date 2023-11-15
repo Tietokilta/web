@@ -1,4 +1,4 @@
-import { Button } from "@/ui";
+import { Button } from "@tietokilta/ui";
 
 export default function Home() {
   return (
