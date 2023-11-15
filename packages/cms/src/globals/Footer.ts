@@ -43,8 +43,10 @@ const LinkRowBlock: Block = {
           type: "text",
           required: true,
           admin: {
-            condition: (_, siblingData: Partial<LinkRowBlockLink[number]>) =>
-              siblingData.linkType === "external",
+            condition: (
+              _,
+              siblingData: Partial<NonNullable<LinkRowBlockLink>[number]>,
+            ) => siblingData.linkType === "external",
           },
         },
         {
@@ -53,8 +55,10 @@ const LinkRowBlock: Block = {
           relationTo: "pages",
           required: true,
           admin: {
-            condition: (_, siblingData: Partial<LinkRowBlockLink[number]>) =>
-              siblingData.linkType === "internal",
+            condition: (
+              _,
+              siblingData: Partial<NonNullable<LinkRowBlockLink>[number]>,
+            ) => siblingData.linkType === "internal",
           },
         },
       ],
