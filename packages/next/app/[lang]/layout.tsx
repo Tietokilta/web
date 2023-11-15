@@ -2,7 +2,7 @@ import { MainNav } from "../../components/MainNav";
 import { MobileNav } from "../../components/MobileNav";
 import "./globals.css";
 
-import { cn } from "@/ui/utils";
+import { cn } from "@tietokilta/ui/utils";
 import { Inter, Roboto_Mono } from "next/font/google";
 
 import type { Metadata } from "next";

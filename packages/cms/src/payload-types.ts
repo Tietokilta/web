@@ -16,7 +16,26 @@ export type MainNavigationItem = {
 }[];
 export type LinkRowBlockLink =
   | {
-      icon: 'PhotographOutline' | 'CashOutline' | 'BookmarkAltOutline';
+      icon:
+        | 'Facebook'
+        | 'Github'
+        | 'Linkedin'
+        | 'Instagram'
+        | 'Telegram'
+        | 'Tiktok'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'ChevronDown'
+        | 'ChevronUp'
+        | 'ChevronsUpDown'
+        | 'Circle'
+        | 'Image'
+        | 'Inbox'
+        | 'Languages'
+        | 'Menu'
+        | 'X'
+        | 'TikLogo';
       label: string;
       linkType?: ('external' | 'internal') | null;
       url?: string | null;
@@ -139,7 +158,26 @@ export interface MainNavigationTopicConfig {
           | {
               title: string;
               href: string;
-              icon: 'PhotographOutline' | 'CashOutline' | 'BookmarkAltOutline';
+              icon:
+                | 'Facebook'
+                | 'Github'
+                | 'Linkedin'
+                | 'Instagram'
+                | 'Telegram'
+                | 'Tiktok'
+                | 'AtSign'
+                | 'Banknote'
+                | 'BookMarked'
+                | 'ChevronDown'
+                | 'ChevronUp'
+                | 'ChevronsUpDown'
+                | 'Circle'
+                | 'Image'
+                | 'Inbox'
+                | 'Languages'
+                | 'Menu'
+                | 'X'
+                | 'TikLogo';
               id?: string | null;
             }[]
           | null;
