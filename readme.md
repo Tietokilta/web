@@ -1,0 +1,63 @@
+# Tietokilta Web
+
+Monorepo containing packages used for the Tietokilta website.
+
+## Getting started
+
+Prerequisites: [Node.js](https://nodejs.org/en/) and [Docker](https://www.docker.com/) installed
+
+```sh
+# install pnpm
+npm install -g pnpm
+
+# install dependencies
+pnpm install
+
+# start the local database
+docker compose up -d
+
+# seed the database with data
+pnpm seeding:populate
+
+# start the dev server
+pnpm dev
+```
+
+Recommended VSCode settings:
+
+```json
+{
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
+}
+```
+
+## Packages
+
+### `packages/cms`
+
+Admin panel and CMS, Express server using [Payload CMS](https://payloadcms.com/)
+
+### `packages/next`
+
+Main website, [Next.js](https://nextjs.org/) 14 with the App Router setup
+
+### `packages/ui` (`@tietokilta/ui`)
+
+React UI component library and Storybook. Built with Tailwind and [shadcn/ui](https://ui.shadcn.com/)
