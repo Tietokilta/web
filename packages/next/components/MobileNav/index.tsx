@@ -10,8 +10,8 @@ import {
   SheetContent,
   SheetTrigger,
   TikLogo,
-} from "@/ui";
-import { cn } from "@/ui/utils";
+} from "@tietokilta/ui";
+import { cn } from "@tietokilta/ui/utils";
 import { LinkRowBlock } from "payload/generated-types";
 
 export async function MobileNav({

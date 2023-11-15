@@ -7,7 +7,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
   TikLogo,
-} from "@/ui";
+} from "@tietokilta/ui";
 import Link from "next/link";
 
 export async function MainNav({

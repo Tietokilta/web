@@ -1,11 +1,33 @@
 {
   "name": "@tietokilta/ui",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "Mikael Siidorow <mikael@siidorow.com> (https://siidorow.com)",
   "type": "module",
-  "module": "./dist/lib/main.js",
-  "types": "./dist/lib/main.d.ts",
+  "exports": {
+    ".": "./lib/main.ts",
+    "./icons": "./lib/icons/index.tsx",
+    "./components": "./lib/components/index.tsx",
+    "./utils": "./lib/utils/index.ts",
+    "./tailwind.config": "./tailwind.config.js"
+  },
+  "types": "./lib/main.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./lib/main.ts"
+      ],
+      "icons": [
+        "./lib/icons/index.tsx"
+      ],
+      "components": [
+        "./lib/components/index.tsx"
+      ],
+      "utils": [
+        "./lib/utils/index.ts"
+      ]
+    }
+  },
   "files": [
     "./dist/lib",
     "./dist/tailwind.config.js"
@@ -74,5 +96,15 @@
   },
   "engines": {
     "node": "^16.14 || >=18.12"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": "./dist/lib/main.js",
+      "./icons": "./dist/lib/icons/index.js",
+      "./components": "./dist/lib/components/index.js",
+      "./utils": "./dist/lib/utils/index.js",
+      "./tailwind.config": "./dist/tailwind.config.js"
+    },
+    "types": "./dist/lib/main.d.ts"
   }
 }

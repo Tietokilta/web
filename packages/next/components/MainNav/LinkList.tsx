@@ -6,8 +6,9 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuTrigger,
+  RenderIcon,
   navigationMenuTriggerStyle,
-} from "@/ui";
+} from "@tietokilta/ui";
 import Link from "next/link";
 import { MainNavigationItem, Page, Topic } from "payload/generated-types";
 
@@ -54,7 +55,10 @@ export const LinkList = ({ links }: { links: MainNavigationItem }) =>
                               className="my-3 flex w-full items-center justify-start gap-2"
                             >
                               <Link href={externalLink.href}>
-                                {externalLink.icon}
+                                <RenderIcon
+                                  name={externalLink.icon}
+                                  className="h-6 w-6"
+                                />
                                 <span>{externalLink.title}</span>
                               </Link>
                             </Button>

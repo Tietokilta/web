@@ -1,3 +1,5 @@
+import { icons } from "@tietokilta/ui/icons";
+
 import type { Field, FieldBase } from "payload/dist/fields/config/types";
 
 export const iconField = (
@@ -7,9 +9,8 @@ export const iconField = (
   hasMany: false,
   ...base,
   type: "select",
-  options: [
-    { label: "PhotographOutline", value: "PhotographOutline" },
-    { label: "CashOutline", value: "CashOutline" },
-    { label: "BookmarkAltOutline", value: "BookmarkAltOutline" },
-  ], // TODO: load these automatically from the UI library
+  options: Object.keys(icons).map((label) => ({
+    label,
+    value: label,
+  })),
 });
