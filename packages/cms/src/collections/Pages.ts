@@ -15,7 +15,7 @@ const formatPath: FieldHook<Page> = async ({ data, req }) => {
         collection: "topics",
         id: data.topic.value as string,
       });
-      return `/${topic.slug as string}/${data.slug}`;
+      return `/${topic.slug}/${data.slug}`;
     } else if (data.slug) {
       return `/${data.slug}`;
     }
