@@ -74,8 +74,8 @@ importers:
       payload:
         specifier: ^2.0.15
         version: 2.0.15(typescript@5.2.2)(webpack@5.89.0)
-      payload-plugin-oauth:
-        specifier: ^2.0.1
+      payload-oauth:
+        specifier: workspace:*
         version: link:../cms-plugin-oauth
       pino:
         specifier: ^8.16.1
@@ -117,6 +117,9 @@ importers:
       express-session:
         specifier: ^1
         version: 1.17.3
+      jsonwebtoken:
+        specifier: ^9
+        version: 9.0.1
       passport-oauth2:
         specifier: ^1
         version: 1.7.0

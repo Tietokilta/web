@@ -48,7 +48,7 @@ export interface oAuthPluginOptions extends StrategyOptions {
   callbackPath?: string;
 
   components?: {
-    Button?: ComponentType<any>;
+    Button?: ComponentType;
   };
   userCollection?: {
     /** Defaults to "users" */

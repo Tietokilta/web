@@ -9,8 +9,8 @@ import MainNavigation from "./globals/MainNavigation";
 import { viteBundler } from "@payloadcms/bundler-vite";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { LinkFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
-import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
+import { oAuthPlugin } from "payload-oauth";
 
 import path from "path";
 
@@ -64,6 +64,7 @@ export default buildConfig({
             console.error(res);
             throw new Error(res.statusText);
           }
+
           return res.json() as unknown as {
             sub: string;
             name: string;

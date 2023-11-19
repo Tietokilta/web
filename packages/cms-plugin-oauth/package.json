@@ -1,15 +1,16 @@
 {
-  "name": "payload-plugin-oauth",
-  "version": "2.0.1",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "clean": "rm -rf dist",
-    "build": "tsc",
-    "fix": "npx prettier src --write",
-    "test": "echo 'no tests'"
+  "name": "payload-oauth",
+  "version": "1.0.0",
+  "homepage": "https://github.com/thgh/payload-plugin-oauth",
+  "bugs": {
+    "url": "https://github.com/thgh/payload-plugin-oauth/issues"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thgh/payload-plugin-oauth"
+  },
+  "license": "MIT",
+  "author": "Thomas Ghysels <info@thomasg.be>",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -17,14 +18,23 @@
     },
     "./dist/*": "./dist/*"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "fix": "npx prettier src --write",
+    "test": "echo 'no tests'"
+  },
   "dependencies": {
     "@bothrs/util": "^3",
     "connect-mongo": "^4",
     "debug": "^4",
     "express-session": "^1",
+    "jsonwebtoken": "^9",
     "passport-oauth2": "^1"
   },
   "devDependencies": {
@@ -43,14 +53,5 @@
     "passport": "^0.6",
     "payload": "^2",
     "react": "^18"
-  },
-  "author": "Thomas Ghysels <info@thomasg.be>",
-  "homepage": "https://github.com/thgh/payload-plugin-oauth",
-  "bugs": {
-    "url": "https://github.com/thgh/payload-plugin-oauth/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/thgh/payload-plugin-oauth"
   }
 }
