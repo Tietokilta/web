@@ -9,8 +9,8 @@ import MainNavigation from "./globals/MainNavigation";
 import { viteBundler } from "@payloadcms/bundler-vite";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { LinkFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
-import { buildConfig } from "payload/config";
 import { oAuthPlugin } from "payload-plugin-oauth";
+import { buildConfig } from "payload/config";
 
 import path from "path";
 
