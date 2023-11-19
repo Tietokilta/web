@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "pnpm run -r --reporter append-only --parallel dev",
     "format": "prettier --write .",
+    "postinstall": "pnpm --filter payload-oauth build",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings 0 .",
     "lint:fix": "pnpm run lint --fix",
     "mongo:clear": "docker compose down -v",
