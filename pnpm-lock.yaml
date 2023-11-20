@@ -48,8 +48,8 @@ importers:
   packages/cms:
     dependencies:
       '@payloadcms/bundler-vite':
-        specifier: ^0.1.3
-        version: 0.1.3(@types/node@20.9.0)(payload@2.0.15)(react-dom@18.2.0)
+        specifier: ^0.1.4
+        version: 0.1.4(@types/node@20.9.0)(payload@2.0.15)(react-dom@18.2.0)
       '@payloadcms/db-mongodb':
         specifier: ^1.0.6
         version: 1.0.6(payload@2.0.15)
@@ -3168,8 +3168,8 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
 
-  /@payloadcms/bundler-vite@0.1.3(@types/node@20.9.0)(payload@2.0.15)(react-dom@18.2.0):
-    resolution: {integrity: sha512-a85RJWVLm95D4PyTzbq6DNeJDRSkDEm37P9KyaYpXU2SIa/K9w15KnQk09d/XMStVset/YLFz54g1vFUDmYJ0Q==}
+  /@payloadcms/bundler-vite@0.1.4(@types/node@20.9.0)(payload@2.0.15)(react-dom@18.2.0):
+    resolution: {integrity: sha512-x/GL9ZYKtuBwIvBDvRpl5HaqGfq6K68HM0hO5mDYqNq0Ul3j8/9zYdPRd5FosqBSXr/mpx4vAltlkfAMeNJP1Q==}
     peerDependencies:
       payload: ^2.0.0
       react-dom: 18.2.0
