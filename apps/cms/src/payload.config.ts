@@ -3,6 +3,7 @@ import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import type { Config } from "@tietokilta/cms-types/payload";
+import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
 import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
@@ -11,6 +12,9 @@ import { Users } from "./collections/users";
 import { Footer } from "./globals/footer";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
+
+const { CLIENT_ID, CLIENT_SECRET, MONGODB_URI, PUBLIC_FRONTEND_URL } =
+  process.env;
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -60,4 +64,50 @@ export default buildConfig({
     url: process.env.PAYLOAD_DATABASE_URL,
   }),
   editor: lexicalEditor({}),
+  plugins: [
+    oAuthPlugin({
+      databaseUri: MONGODB_URI ?? "",
+      clientID: CLIENT_ID ?? "",
+      clientSecret: CLIENT_SECRET ?? "",
+      authorizationURL: "https://accounts.google.com/o/oauth2/v2/auth",
+      tokenURL: "https://www.googleapis.com/oauth2/v4/token",
+      callbackURL: `${PUBLIC_FRONTEND_URL ?? "http://localhost:3000"}/oauth2/callback`,
+      scope: ["profile", "email"],
+      async userinfo(accessToken: string) {
+        const user = await fetch(
+          `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${accessToken}`,
+        ).then((res) => {
+          if (!res.ok) {
+            // eslint-disable-next-line no-console -- logging error here is fine
+            console.error(res);
+            throw new Error(res.statusText);
+          }
+          return res.json() as unknown as {
+            sub: string;
+            name: string;
+            given_name: string;
+            family_name: string;
+            email: string;
+          };
+        });
+        return {
+          sub: user.sub,
+
+          // Custom fields to fill in if user is created
+          name:
+            user.name ||
+            `${user.given_name} ${user.family_name}` ||
+            "Teemu Teekkari",
+          email: user.email,
+        };
+      },
+      userCollection: Users,
+      sessionOptions: {
+        resave: false,
+        saveUninitialized: false,
+        // PAYLOAD_SECRET existing is verified in server.ts
+        secret: process.env.PAYLOAD_SECRET ?? "",
+      },
+    }),
+  ],
 });

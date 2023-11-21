@@ -29,6 +29,7 @@ type Query {
 
 type User {
   id: String
+  sub: String
   updatedAt: DateTime
   createdAt: DateTime
   enableAPIKey: Boolean
@@ -80,6 +81,7 @@ type Users {
 }
 
 input User_where {
+  sub: User_sub_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   enableAPIKey: User_enableAPIKey_operator
@@ -88,6 +90,17 @@ input User_where {
   id: User_id_operator
   AND: [User_where_and]
   OR: [User_where_or]
+}
+
+input User_sub_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
 }
 
 input User_updatedAt_operator {
@@ -151,6 +164,7 @@ input User_id_operator {
 }
 
 input User_where_and {
+  sub: User_sub_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   enableAPIKey: User_enableAPIKey_operator
@@ -162,6 +176,7 @@ input User_where_and {
 }
 
 input User_where_or {
+  sub: User_sub_operator
   updatedAt: User_updatedAt_operator
   createdAt: User_createdAt_operator
   enableAPIKey: User_enableAPIKey_operator
@@ -182,12 +197,36 @@ type usersDocAccess {
 }
 
 type UsersDocAccessFields {
+  sub: UsersDocAccessFields_sub
   updatedAt: UsersDocAccessFields_updatedAt
   createdAt: UsersDocAccessFields_createdAt
   enableAPIKey: UsersDocAccessFields_enableAPIKey
   apiKey: UsersDocAccessFields_apiKey
   email: UsersDocAccessFields_email
   password: UsersDocAccessFields_password
+}
+
+type UsersDocAccessFields_sub {
+  create: UsersDocAccessFields_sub_Create
+  read: UsersDocAccessFields_sub_Read
+  update: UsersDocAccessFields_sub_Update
+  delete: UsersDocAccessFields_sub_Delete
+}
+
+type UsersDocAccessFields_sub_Create {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_sub_Read {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_sub_Update {
+  permission: Boolean!
+}
+
+type UsersDocAccessFields_sub_Delete {
+  permission: Boolean!
 }
 
 type UsersDocAccessFields_updatedAt {
@@ -2979,12 +3018,36 @@ type usersAccess {
 }
 
 type UsersFields {
+  sub: UsersFields_sub
   updatedAt: UsersFields_updatedAt
   createdAt: UsersFields_createdAt
   enableAPIKey: UsersFields_enableAPIKey
   apiKey: UsersFields_apiKey
   email: UsersFields_email
   password: UsersFields_password
+}
+
+type UsersFields_sub {
+  create: UsersFields_sub_Create
+  read: UsersFields_sub_Read
+  update: UsersFields_sub_Update
+  delete: UsersFields_sub_Delete
+}
+
+type UsersFields_sub_Create {
+  permission: Boolean!
+}
+
+type UsersFields_sub_Read {
+  permission: Boolean!
+}
+
+type UsersFields_sub_Update {
+  permission: Boolean!
+}
+
+type UsersFields_sub_Delete {
+  permission: Boolean!
 }
 
 type UsersFields_updatedAt {
@@ -4763,6 +4826,7 @@ type Mutation {
 }
 
 input mutationUserInput {
+  sub: String
   updatedAt: String
   createdAt: String
   enableAPIKey: Boolean
@@ -4779,6 +4843,7 @@ input mutationUserInput {
 }
 
 input mutationUserUpdateInput {
+  sub: String
   updatedAt: String
   createdAt: String
   enableAPIKey: Boolean
