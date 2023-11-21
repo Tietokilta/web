@@ -1,0 +1,69 @@
+import Users from "../../collections/Users";
+
+import { type SessionOptions } from "express-session";
+import { ComponentType } from "react";
+
+import type { Config as PayloadConfig, User } from "../../payload-types";
+import type { StrategyOptions } from "passport-oauth2";
+export interface oAuthPluginOptions extends StrategyOptions {
+  /** Database connection URI in case the lib needs access to database */
+  databaseUri: string;
+
+  /** Options to pass to express-session
+   * @default
+   * ```js
+   * {
+   *    resave: false,
+   *    saveUninitialized: false,
+   *    secret: process.env.PAYLOAD_SECRET,
+   *    store: options.databaseUri
+   *        ? MongoStore.create({ mongoUrl: options.databaseUri })
+   *        : undefined,
+   * }),
+   * ```
+   *
+   */
+  sessionOptions: SessionOptions;
+
+  /** Endpoint to handle callback from oauth provider
+   * Defaults to /oauth/authorize
+   * Note that this will have /api prepended to it.
+   * So the default value is actually /api/oauth/authorize
+   *
+   * @default /oauth/authorize
+   */
+  authorizePath?: string;
+
+  /** Map an authentication result to a user */
+  userinfo: (accessToken: string) => Promise<{
+    /** Unique identifier for the linked account */
+    sub: string;
+    /** Unique identifier for the linked account */
+    email: string;
+    /** A password will be generated for new users */
+    password?: string;
+    /** Example of a custom field */
+    name?: string;
+  }>;
+
+  /** Which path to mount in express, defaults to the path in callbackURL */
+  callbackPath?: string;
+
+  components?: {
+    Button?: ComponentType;
+  };
+  userCollection?: typeof Users & {
+    /** Defaults to "users" */
+    slug?: UserCollectionKeys;
+  };
+  /** If the collection does not have a field with name "sub", it will be created */
+  subField?: {
+    /** Defaults to "sub" */
+    name?: string;
+  };
+}
+type UserCollectionKeys = {
+  [K in keyof PayloadConfig["collections"]]: PayloadConfig["collections"][K] extends User
+    ? K
+    : never;
+}[keyof PayloadConfig["collections"]];
