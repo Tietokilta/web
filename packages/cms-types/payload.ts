@@ -63,6 +63,7 @@ export interface Config {
 }
 export interface User {
   id: string;
+  sub?: string | null;
   updatedAt: string;
   createdAt: string;
   enableAPIKey?: boolean | null;
