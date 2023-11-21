@@ -6,7 +6,8 @@ export function middleware(request: NextRequest): NextResponse {
   if (
     pathname.startsWith("/admin") ||
     pathname.startsWith("/media") ||
-    pathname.startsWith("/api")
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/oauth2")
   ) {
     const destination = new URL(process.env.PUBLIC_SERVER_URL || "");
     const url = request.nextUrl.clone();
