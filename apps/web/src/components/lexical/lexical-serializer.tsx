@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key -- okay here */
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise */
-
 import Link from "next/link";
 import { Fragment } from "react";
+import { lexicalNodeToTextContent } from "../../lib/utils";
 import {
   IS_BOLD,
   IS_CODE,
@@ -97,7 +97,17 @@ export function LexicalSerializer({
               "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
             >;
             const Tag = node.tag as Heading;
-            return <Tag key={index}>{serializedChildren}</Tag>;
+
+            return (
+              <Tag
+                id={lexicalNodeToTextContent(node)
+                  .toLocaleLowerCase()
+                  .replace(/\s/g, "-")}
+                key={index}
+              >
+                {serializedChildren}
+              </Tag>
+            );
           }
           case "list": {
             type List = Extract<keyof JSX.IntrinsicElements, "ul" | "ol">;
@@ -137,8 +147,8 @@ export function LexicalSerializer({
             return <blockquote key={index}>{serializedChildren}</blockquote>;
           }
           case "link": {
-            const attributes = node.attributes as {
-              doc?: { data: { path?: string } };
+            const fields = node.fields as {
+              doc?: { value: { path?: string } };
               linkType?: "custom" | "internal";
               newTab?: boolean;
               nofollow?: boolean;
@@ -147,26 +157,26 @@ export function LexicalSerializer({
               url?: string;
             };
 
-            if (attributes.linkType === "custom") {
-              const rel = `${attributes.rel ?? ""} ${
-                attributes.nofollow ? " nofollow" : ""
+            if (fields.linkType === "custom") {
+              const rel = `${fields.rel ?? ""} ${
+                fields.nofollow ? " nofollow" : ""
               }`;
               return (
                 <a
-                  href={attributes.url}
+                  href={fields.url}
                   key={index}
                   rel={rel}
-                  target={attributes.newTab ? "_blank" : undefined}
+                  target={fields.newTab ? "_blank" : undefined}
                 >
                   {serializedChildren}
                 </a>
               );
-            } else if (attributes.linkType === "internal") {
+            } else if (fields.linkType === "internal") {
               return (
                 <Link
-                  href={attributes.doc?.data.path ?? "#no-path"}
+                  href={fields.doc?.value.path ?? "#no-path"}
                   key={index}
-                  target={attributes.newTab ? "_blank" : undefined}
+                  target={fields.newTab ? "_blank" : undefined}
                 >
                   {serializedChildren}
                 </Link>

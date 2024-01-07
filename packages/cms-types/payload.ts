@@ -81,6 +81,7 @@ export interface User {
 export interface Page {
   id: string;
   title: string;
+  description: string;
   content: {
     root: {
       children: {
