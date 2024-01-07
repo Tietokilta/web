@@ -1,3 +1,4 @@
+import { Footer } from "../../components/Footer";
 import { MainNav } from "../../components/MainNav";
 import { MobileNav } from "../../components/MobileNav";
 import { Locale, getDictionary } from "../../lib/dictionaries";
@@ -50,6 +51,7 @@ export default async function RootLayout({
           />
           <MainNav locale={lang} className="sticky top-0 hidden md:block" />
           <div className="flex-1">{children}</div>
+          <Footer locale={lang} />
         </div>
       </body>
     </html>
