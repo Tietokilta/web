@@ -2,7 +2,6 @@
 cd packages/cms
 #import .env variables
 set -o allexport && source .env && set +o allexport
-rm -rf generated && mkdir -p generated/mongo generated/images
 # Define MongoDB URI
 if [ -z "$MONGODB_URI" ]; then
   echo "MONGODB_URI is not set. Using default value."
@@ -25,11 +24,11 @@ for COLLECTION_NAME in $COLLECTIONS; do
   fi
   if [ "$COUNT" -gt "0" ]; then
     echo "Exporting $COLLECTION_NAME collection..."
-    mongoexport --uri="$MONGODB_URI" --collection="$COLLECTION_NAME" --out="generated/mongo/$COLLECTION_NAME.json" --jsonArray --pretty
+    mongoexport --uri="$MONGODB_URI" --collection="$COLLECTION_NAME" --out="db_data/mongo/$COLLECTION_NAME.json" --jsonArray --pretty
   else
     echo "Skipping empty collection $COLLECTION_NAME"
   fi
 done
 
-# Copy images from uploads to generated/images
-cp -r uploads/* generated/images
+# Copy images from uploads to db_data/images
+cp -r uploads/* db_data/images
