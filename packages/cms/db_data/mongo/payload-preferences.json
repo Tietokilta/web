@@ -12,7 +12,7 @@
 		"$date": "2023-11-06T13:57:37.441Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-07T19:10:06.007Z"
+		"$date": "2024-01-07T19:49:43.421Z"
 	},
 	"__v": 0
 },
@@ -149,7 +149,11 @@
 				]
 			},
 			"layout": {
-				"collapsed": []
+				"collapsed": [
+					"6548f4e6854a99217b8fbd3d",
+					"6548f48f854a99217b8fbd38",
+					"659afc2cf080efa8fb14e6a2"
+				]
 			}
 		}
 	},
@@ -157,7 +161,7 @@
 		"$date": "2023-11-06T14:14:09.525Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-07T16:51:49.288Z"
+		"$date": "2024-01-07T19:50:35.366Z"
 	},
 	"__v": 0
 },
@@ -207,6 +211,72 @@
 	},
 	"updatedAt": {
 		"$date": "2024-01-07T10:20:11.558Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "659afc8bfab28407b9c6807a"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "media-list",
+	"value": {
+		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
+			{
+				"accessor": "filename",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": true
+			},
+			{
+				"accessor": "alt",
+				"active": true
+			},
+			{
+				"accessor": "updatedAt",
+				"active": true
+			},
+			{
+				"accessor": "createdAt",
+				"active": false
+			},
+			{
+				"accessor": "url",
+				"active": false
+			},
+			{
+				"accessor": "mimeType",
+				"active": false
+			},
+			{
+				"accessor": "filesize",
+				"active": false
+			},
+			{
+				"accessor": "width",
+				"active": false
+			},
+			{
+				"accessor": "height",
+				"active": false
+			}
+		],
+		"limit": "10"
+	},
+	"createdAt": {
+		"$date": "2024-01-07T19:33:31.695Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-07T20:02:48.951Z"
 	},
 	"__v": 0
 }]

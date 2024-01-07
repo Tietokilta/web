@@ -1,19 +1,67 @@
 [{
 	"_id": {
-		"$oid": "6506c8a65aa66b4f985ebb37"
+		"$oid": "659afc6bfab28407b9c68069"
 	},
-	"alt": "digitmk",
-	"filename": "digitmk.jpg",
-	"mimeType": "image/jpeg",
-	"filesize": 171977,
-	"width": 640,
-	"height": 640,
+	"alt": {
+		"fi": "Reaktor kirjoitettuna erittäin lihavoidulla tekstillä",
+		"en": "Reaktor written in very bold typography"
+	},
+	"filename": "Reaktor.png",
+	"mimeType": "image/png",
+	"filesize": 2556,
+	"width": 155,
+	"height": 47,
 	"createdAt": {
-		"$date": "2023-09-19T14:24:35.475Z"
+		"$date": "2024-01-07T19:32:59.305Z"
 	},
 	"updatedAt": {
-		"$date": "2023-09-19T14:24:35.475Z"
+		"$date": "2024-01-07T19:46:34.316Z"
 	},
-	"__v": 0
+	"__v": 0,
+	"url": "/media/Reaktor.png"
+},
+{
+	"_id": {
+		"$oid": "659affde2252cfbb398aa590"
+	},
+	"alt": {
+		"fi": "Harvaan asetettuja viivoja siilin muodossa, alhaalla isoilla kirjaimilla Siili",
+		"en": "Sparse lines in the shape of a hedgehog, with capital letters at the bottom, Siili"
+	},
+	"filename": "Siili.png",
+	"mimeType": "image/png",
+	"filesize": 25802,
+	"width": 1182,
+	"height": 916,
+	"createdAt": {
+		"$date": "2024-01-07T19:47:42.143Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-07T19:49:52.372Z"
+	},
+	"__v": 0,
+	"url": "/media/Siili.png"
+},
+{
+	"_id": {
+		"$oid": "659b00362252cfbb398aa5a6"
+	},
+	"alt": {
+		"fi": "Yksinkertainen salama logo mustassa neliössä, Smartly.io isoilla kirjaimilla",
+		"en": "Simple lightning logo in a black square, Smartly.io in capital letters"
+	},
+	"filename": "Smartly.png",
+	"mimeType": "image/png",
+	"filesize": 997874,
+	"width": 1008,
+	"height": 247,
+	"createdAt": {
+		"$date": "2024-01-07T19:49:10.023Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-07T19:49:34.927Z"
+	},
+	"__v": 0,
+	"url": "/media/Smartly.png"
 }]
 
