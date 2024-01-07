@@ -1,5 +1,7 @@
 "use client";
 
+import { localisePath } from "../../lib/utils";
+
 import {
   Button,
   ExternalLinkIcon,
@@ -13,12 +15,23 @@ import {
 import Link from "next/link";
 import { MainNavigationItem, Page, Topic } from "payload/generated-types";
 
-export const LinkList = ({ links }: { links: MainNavigationItem }) =>
+export const LinkList = ({
+  links,
+  locale,
+}: {
+  links: MainNavigationItem;
+  locale: string;
+}) =>
   links.map((pageOrTopic) => (
     <NavigationMenuItem key={pageOrTopic.id}>
       {pageOrTopic.type === "page" ? (
         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-          <Link href={(pageOrTopic.pageConfig?.page as Page).path ?? "#broken"}>
+          <Link
+            href={localisePath(
+              (pageOrTopic.pageConfig?.page as Page).path ?? "#broken",
+              locale,
+            )}
+          >
             {(pageOrTopic.pageConfig?.page as Page).title}
           </Link>
         </NavigationMenuLink>
@@ -28,7 +41,7 @@ export const LinkList = ({ links }: { links: MainNavigationItem }) =>
             {(pageOrTopic.topicConfig?.topic as Topic).title}
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="flex gap-16 px-8 py-4">
+            <ul className="flex gap-16 p-8">
               {pageOrTopic.topicConfig?.categories?.map(
                 (linkCategorySublist) => (
                   <li key={linkCategorySublist.title}>
@@ -43,7 +56,12 @@ export const LinkList = ({ links }: { links: MainNavigationItem }) =>
                             variant="link"
                             className="w-full border-b-0 pl-0"
                           >
-                            <Link href={(page as Page).path ?? "#broken"}>
+                            <Link
+                              href={localisePath(
+                                (page as Page).slug ?? "#broken",
+                                locale,
+                              )}
+                            >
                               {(page as Page).title}
                             </Link>
                           </Button>

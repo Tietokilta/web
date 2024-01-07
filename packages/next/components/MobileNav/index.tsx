@@ -12,6 +12,7 @@ import {
   TikLogo,
 } from "@tietokilta/ui";
 import { cn } from "@tietokilta/ui/utils";
+import Link from "next/link";
 import { LinkRowBlock } from "payload/generated-types";
 
 export async function MobileNav({
@@ -37,19 +38,20 @@ export async function MobileNav({
       )}
       {...rest}
     >
-      <TikLogo className="h-16 w-16" />
+      <Link href={`/${locale}`} className="rounded-full hover:text-gray-400">
+        <TikLogo className="h-16 w-16" />
+      </Link>
       <Sheet>
         <SheetTrigger asChild>
-          <Button
-            variant="ghost"
-            className="hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
-          >
+          <Button variant="ghost" className="hover:bg-transparent">
             <MenuIcon className="h-6 w-6" />
             <span className="sr-only">Toggle menu</span>
           </Button>
         </SheetTrigger>
-        <SheetContent className="px-0 pb-0">
-          <LinkList links={links} footerLinks={footerLinks} />
+        <SheetContent>
+          <nav>
+            <LinkList links={links} footerLinks={footerLinks} locale={locale} />
+          </nav>
         </SheetContent>
       </Sheet>
     </header>
