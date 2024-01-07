@@ -1,5 +1,7 @@
 "use client";
 
+import { localisePath } from "../../lib/utils";
+
 import {
   Button,
   ChevronDownIcon,
@@ -24,23 +26,28 @@ import {
 export const LinkList = ({
   links,
   footerLinks,
+  locale,
 }: {
   links: MainNavigationItem;
   footerLinks: LinkRowBlock[];
+  locale: string;
 }) => (
-  <ScrollArea className="h-[calc(100lvh-1.5rem)] font-mono text-xl font-bold text-gray-900">
-    <ul className="flex flex-col gap-6 p-4">
+  <ScrollArea className="h-[100lvh] font-mono text-xl font-semibold text-gray-900">
+    <ul className="mt-6 flex flex-col gap-6 p-4">
       {links.map((pageOrTopic) => (
         <li key={pageOrTopic.id}>
           {pageOrTopic.type === "page" ? (
             <Link
               className="underline-offset-2 hover:underline"
-              href={(pageOrTopic.pageConfig?.page as Page).path ?? "#broken"}
+              href={localisePath(
+                (pageOrTopic.pageConfig?.page as Page).path ?? "#broken",
+                locale,
+              )}
             >
               <span>{(pageOrTopic.pageConfig?.page as Page).title}</span>
             </Link>
           ) : (
-            <Collapsible className="space-y-3">
+            <Collapsible>
               <CollapsibleTrigger className="group flex items-center gap-2">
                 <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
                 <ChevronDownIcon className="block h-6 w-6 group-data-[state=open]:hidden" />
@@ -52,7 +59,7 @@ export const LinkList = ({
                   Close
                 </span>
               </CollapsibleTrigger>
-              <CollapsibleContent className="space-y-3 px-6 py-3 text-base">
+              <CollapsibleContent className="space-y-3 p-3 text-base">
                 {pageOrTopic.topicConfig?.categories?.map(
                   (linkCategorySublist) => (
                     <ul key={linkCategorySublist.title}>
@@ -62,9 +69,14 @@ export const LinkList = ({
                           <Button
                             asChild
                             variant="link"
-                            className="w-full border-b-0"
+                            className="w-full border-b-0 pl-0"
                           >
-                            <Link href={(page as Page).path ?? "#broken"}>
+                            <Link
+                              href={localisePath(
+                                (page as Page).path ?? "#broken",
+                                locale,
+                              )}
+                            >
                               {(page as Page).title}
                             </Link>
                           </Button>
@@ -106,13 +118,22 @@ export const LinkList = ({
           <ul
             className={cn(
               "max-w-full overflow-x-clip",
-              !linkRow.showLabel && "flex items-center justify-center gap-6",
+              !linkRow.showLabel &&
+                "flex items-center justify-center gap-6 py-2",
+              linkRow.showLabel && "space-y-6",
             )}
           >
             {linkRow.links?.map((link) => (
               <li key={link.id}>
                 <Link
-                  href={link.url ?? "#broken"}
+                  href={
+                    "url" in link
+                      ? link.url ?? "#broken"
+                      : localisePath(
+                          (link.page as Page).path ?? "#broken",
+                          locale,
+                        )
+                  }
                   className={cn(
                     linkRow.showLabel &&
                       "flex items-center gap-2 underline-offset-2 hover:underline",

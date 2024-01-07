@@ -26,13 +26,16 @@ export async function MainNav({
   return (
     <NavigationMenu {...props}>
       <NavigationMenuList className="w-screen">
-        <LinkList links={leftLinks} />
+        <LinkList links={leftLinks} locale={locale} />
         <NavigationMenuItem>
-          <Link href="/" className="hover:text-gray-400">
+          <Link
+            href={`/${locale}`}
+            className="rounded-full hover:text-gray-400"
+          >
             <TikLogo />
           </Link>
         </NavigationMenuItem>
-        <LinkList links={rightLinks} />
+        <LinkList links={rightLinks} locale={locale} />
       </NavigationMenuList>
     </NavigationMenu>
   );
