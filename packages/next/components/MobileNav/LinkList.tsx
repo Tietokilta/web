@@ -1,5 +1,6 @@
 "use client";
 
+import { Dictionary } from "../../lib/dictionaries";
 import { localisePath } from "../../lib/utils";
 
 import {
@@ -15,99 +16,137 @@ import {
   Separator,
 } from "@tietokilta/ui";
 import { cn } from "@tietokilta/ui/utils";
-import Link from "next/link";
+import NextLink from "next/link";
+import { usePathname } from "next/navigation";
 import {
   LinkRowBlock,
   MainNavigationItem,
   Page,
   Topic,
 } from "payload/generated-types";
+import { ComponentPropsWithoutRef } from "react";
+
+const Link = ({
+  href,
+  ...props
+}: ComponentPropsWithoutRef<typeof NextLink>) => {
+  const pathname = usePathname();
+  const isActive = pathname === href;
+
+  return (
+    <NextLink
+      aria-current={isActive ? "page" : undefined}
+      href={href}
+      {...props}
+    />
+  );
+};
+
+const NavigationLink = ({
+  pageOrTopic,
+  locale,
+  dict,
+}: {
+  pageOrTopic: MainNavigationItem[number];
+  locale: string;
+  dict: {
+    Open: string;
+    Close: string;
+  };
+}) => {
+  if (pageOrTopic.type === "page") {
+    const localisedPath = localisePath(
+      `${(pageOrTopic.pageConfig?.page as Page).path}` ?? "#broken",
+      locale,
+    );
+
+    return (
+      <Link
+        className="underline-offset-2 hover:underline aria-[current='page']:underline"
+        href={localisedPath}
+      >
+        <span>{(pageOrTopic.pageConfig?.page as Page).title}</span>
+      </Link>
+    );
+  }
+
+  return (
+    <Collapsible>
+      <CollapsibleTrigger className="group flex items-center gap-2">
+        <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
+        <ChevronDownIcon className="block h-6 w-6 group-data-[state=open]:hidden" />
+        <span className="sr-only block group-data-[state=open]:hidden">
+          {dict.Open}
+        </span>
+        <ChevronUpIcon className="hidden h-6 w-6 group-data-[state=open]:block" />
+        <span className="sr-only hidden group-data-[state=open]:block">
+          {dict.Close}
+        </span>
+      </CollapsibleTrigger>
+      <CollapsibleContent className="space-y-3 p-3 text-base">
+        {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
+          <ul key={linkCategorySublist.title}>
+            <li className="text-lg">{linkCategorySublist.title}</li>
+            {linkCategorySublist.pages?.map(({ page }) => (
+              <li key={(page as Page).id}>
+                <Button
+                  asChild
+                  variant="link"
+                  className="w-full border-b-0 pl-0"
+                >
+                  <Link
+                    href={localisePath(
+                      (page as Page).path ?? "#broken",
+                      locale,
+                    )}
+                  >
+                    {(page as Page).title}
+                  </Link>
+                </Button>
+              </li>
+            ))}
+            {linkCategorySublist.externalLinks?.map((externalLink) => (
+              <li key={externalLink.title}>
+                <Button
+                  asChild
+                  variant="outlineLink"
+                  className="my-3 flex w-full items-center justify-start gap-2"
+                >
+                  <Link href={externalLink.href ?? "#broken"}>
+                    <RenderIcon name={externalLink.icon} className="h-6 w-6" />
+                    <span>{externalLink.title}</span>
+                    <ExternalLinkIcon className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </li>
+            ))}
+          </ul>
+        ))}
+      </CollapsibleContent>
+    </Collapsible>
+  );
+};
 
 export const LinkList = ({
   links,
   footerLinks,
   locale,
+  dictionary: dict,
 }: {
   links: MainNavigationItem;
   footerLinks: LinkRowBlock[];
   locale: string;
+  dictionary: Dictionary["action"];
 }) => (
   <ScrollArea className="h-[100lvh] font-mono text-xl font-semibold text-gray-900">
     <ul className="mt-6 flex flex-col gap-6 p-4">
       {links.map((pageOrTopic) => (
         <li key={pageOrTopic.id}>
-          {pageOrTopic.type === "page" ? (
-            <Link
-              className="underline-offset-2 hover:underline"
-              href={localisePath(
-                (pageOrTopic.pageConfig?.page as Page).path ?? "#broken",
-                locale,
-              )}
-            >
-              <span>{(pageOrTopic.pageConfig?.page as Page).title}</span>
-            </Link>
-          ) : (
-            <Collapsible>
-              <CollapsibleTrigger className="group flex items-center gap-2">
-                <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
-                <ChevronDownIcon className="block h-6 w-6 group-data-[state=open]:hidden" />
-                <span className="sr-only block group-data-[state=open]:hidden">
-                  Open
-                </span>
-                <ChevronUpIcon className="hidden h-6 w-6 group-data-[state=open]:block" />
-                <span className="sr-only hidden group-data-[state=open]:block">
-                  Close
-                </span>
-              </CollapsibleTrigger>
-              <CollapsibleContent className="space-y-3 p-3 text-base">
-                {pageOrTopic.topicConfig?.categories?.map(
-                  (linkCategorySublist) => (
-                    <ul key={linkCategorySublist.title}>
-                      <li className="text-lg">{linkCategorySublist.title}</li>
-                      {linkCategorySublist.pages?.map(({ page }) => (
-                        <li key={(page as Page).id}>
-                          <Button
-                            asChild
-                            variant="link"
-                            className="w-full border-b-0 pl-0"
-                          >
-                            <Link
-                              href={localisePath(
-                                (page as Page).path ?? "#broken",
-                                locale,
-                              )}
-                            >
-                              {(page as Page).title}
-                            </Link>
-                          </Button>
-                        </li>
-                      ))}
-                      {linkCategorySublist.externalLinks?.map(
-                        (externalLink) => (
-                          <li key={externalLink.title}>
-                            <Button
-                              asChild
-                              variant="outlineLink"
-                              className="my-3 flex w-full items-center justify-start gap-2"
-                            >
-                              <Link href={externalLink.href ?? "#broken"}>
-                                <RenderIcon
-                                  name={externalLink.icon}
-                                  className="h-6 w-6"
-                                />
-                                <span>{externalLink.title}</span>
-                                <ExternalLinkIcon className="h-4 w-4" />
-                              </Link>
-                            </Button>
-                          </li>
-                        ),
-                      )}
-                    </ul>
-                  ),
-                )}
-              </CollapsibleContent>
-            </Collapsible>
-          )}
+          <NavigationLink
+            dict={dict}
+            pageOrTopic={pageOrTopic}
+            locale={locale}
+          />
         </li>
       ))}
     </ul>
@@ -135,6 +174,7 @@ export const LinkList = ({
                         )
                   }
                   className={cn(
+                    "aria-[current='page']:underline",
                     linkRow.showLabel &&
                       "flex items-center gap-2 underline-offset-2 hover:underline",
                     !linkRow.showLabel &&
