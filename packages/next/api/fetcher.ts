@@ -81,7 +81,8 @@ export const getGlobal = <Response>(path: string, locale?: string) =>
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}${path}?${qs
           .stringify({
-            depth: 1,
+            depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+            // Needs to be bigger than 1 to get media / images
             ...(draft ? { draft: "true" } : {}),
             ...(locale ? { locale } : {}),
           })
