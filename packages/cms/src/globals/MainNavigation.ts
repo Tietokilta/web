@@ -17,7 +17,7 @@ const filterPagesOfTopic: FilterOptions<MainNavigation> = ({
     equals:
       data.items.find(
         (item) =>
-          item.topicConfig?.categories.some(
+          item.topicConfig?.categories?.some(
             (category) =>
               category.pages?.some(
                 (page) => page.id === (siblingData as { id: string }).id,

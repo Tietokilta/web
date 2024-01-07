@@ -39,7 +39,7 @@ export default buildConfig({
     features: ({ defaultFeatures }) => [...defaultFeatures, LinkFeature({})],
   }),
   db: mongooseAdapter({
-    url: process.env.MONGODB_URI,
+    url: process.env.MONGODB_URI!,
   }),
   plugins: [],
 });
