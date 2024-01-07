@@ -49,13 +49,13 @@
 						"pages": [],
 						"externalLinks": [
 							{
-								"title": "Kuvagalleria",
+								"title": "Gallery",
 								"href": "http://tietokilta.kuvat.fi/",
 								"icon": "Image",
 								"id": "6548f263611be65a813f88a2"
 							},
 							{
-								"title": "Laskugeneraattori",
+								"title": "Invoice",
 								"href": "https://tietokilta.fi/kilta/laskugeneraattori/",
 								"icon": "Banknote",
 								"id": "6548f278611be65a813f88a3"
@@ -109,7 +109,7 @@
 		"$date": "2023-11-06T14:05:51.452Z"
 	},
 	"updatedAt": {
-		"$date": "2023-11-15T19:04:57.809Z"
+		"$date": "2024-01-07T16:40:42.452Z"
 	},
 	"__v": 0
 },
@@ -118,6 +118,34 @@
 		"$oid": "6548f4ab88334626ab27fb53"
 	},
 	"layout": [
+		{
+			"showLabel": true,
+			"links": [
+				{
+					"icon": "AtSign",
+					"label": {
+						"fi": "Yhteystiedot",
+						"en": "Contact"
+					},
+					"linkType": "internal",
+					"page": "6548f21ed7febb86e2235f5f",
+					"id": "6548f51e854a99217b8fbd3f"
+				},
+				{
+					"icon": "Inbox",
+					"label": {
+						"fi": "Palautelomake",
+						"en": "Give feedback"
+					},
+					"linkType": "external",
+					"url": "https://tietokilta.fi/kilta/palautelomake",
+					"id": "6548f4e9854a99217b8fbd3e"
+				}
+			],
+			"id": "6548f4e6854a99217b8fbd3d",
+			"blockName": "Footer Links",
+			"blockType": "link-row"
+		},
 		{
 			"showLabel": false,
 			"links": [
@@ -163,33 +191,7 @@
 				}
 			],
 			"id": "6548f48f854a99217b8fbd38",
-			"blockType": "link-row"
-		},
-		{
-			"showLabel": true,
-			"links": [
-				{
-					"icon": "AtSign",
-					"label": {
-						"fi": "Yhteystiedot",
-						"en": "Contact"
-					},
-					"linkType": "internal",
-					"page": "6548f21ed7febb86e2235f5f",
-					"id": "6548f51e854a99217b8fbd3f"
-				},
-				{
-					"icon": "Inbox",
-					"label": {
-						"fi": "Palautelomake",
-						"en": "Give feedback"
-					},
-					"linkType": "external",
-					"url": "https://tietokilta.fi/kilta/palautelomake",
-					"id": "6548f4e9854a99217b8fbd3e"
-				}
-			],
-			"id": "6548f4e6854a99217b8fbd3d",
+			"blockName": "Social Media",
 			"blockType": "link-row"
 		}
 	],
@@ -198,7 +200,7 @@
 		"$date": "2023-11-06T14:14:03.116Z"
 	},
 	"updatedAt": {
-		"$date": "2023-11-15T19:48:26.364Z"
+		"$date": "2023-11-19T14:00:56.667Z"
 	},
 	"__v": 0
 }]

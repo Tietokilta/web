@@ -12,7 +12,7 @@
 		"$date": "2023-11-06T13:57:37.441Z"
 	},
 	"updatedAt": {
-		"$date": "2023-11-06T14:18:25.456Z"
+		"$date": "2024-01-07T16:41:32.812Z"
 	},
 	"__v": 0
 },
@@ -26,7 +26,6 @@
 	},
 	"key": "topics-list",
 	"value": {
-		"limit": "10",
 		"columns": [
 			{
 				"accessor": "_select",
@@ -58,7 +57,7 @@
 		"$date": "2023-11-06T13:58:01.582Z"
 	},
 	"updatedAt": {
-		"$date": "2023-11-06T13:58:01.582Z"
+		"$date": "2024-01-07T16:34:20.542Z"
 	},
 	"__v": 0
 },
@@ -117,13 +116,14 @@
 				"accessor": "_status",
 				"active": false
 			}
-		]
+		],
+		"sort": "path"
 	},
 	"createdAt": {
 		"$date": "2023-11-06T13:58:25.008Z"
 	},
 	"updatedAt": {
-		"$date": "2023-11-06T14:18:32.29Z"
+		"$date": "2024-01-07T16:41:20.013Z"
 	},
 	"__v": 0
 },
@@ -139,7 +139,17 @@
 	"value": {
 		"fields": {
 			"layout.0.links": {
-				"collapsed": []
+				"collapsed": [
+					"6548f493854a99217b8fbd39",
+					"6548f4b2854a99217b8fbd3a",
+					"6548f4ba854a99217b8fbd3b",
+					"6548f4d0854a99217b8fbd3c"
+				]
+			},
+			"layout": {
+				"collapsed": [
+					"6548f48f854a99217b8fbd38"
+				]
 			}
 		}
 	},
@@ -147,7 +157,56 @@
 		"$date": "2023-11-06T14:14:09.525Z"
 	},
 	"updatedAt": {
-		"$date": "2023-11-06T14:16:51.762Z"
+		"$date": "2024-01-07T12:54:44.617Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "659a7ad0cc9da16a2590ffab"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "users-list",
+	"value": {
+		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
+			{
+				"accessor": "email",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": true
+			},
+			{
+				"accessor": "updatedAt",
+				"active": true
+			},
+			{
+				"accessor": "createdAt",
+				"active": true
+			},
+			{
+				"accessor": "enableAPIKey",
+				"active": false
+			},
+			{
+				"accessor": "apiKey",
+				"active": false
+			}
+		]
+	},
+	"createdAt": {
+		"$date": "2024-01-07T10:20:00.755Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-07T10:20:11.558Z"
 	},
 	"__v": 0
 }]
