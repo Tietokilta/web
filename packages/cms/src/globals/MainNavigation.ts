@@ -126,6 +126,7 @@ const MainNavigation: GlobalConfig = {
                     {
                       name: "title",
                       type: "text",
+                      localized: true,
                       required: true,
                     },
                     {
