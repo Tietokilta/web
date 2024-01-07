@@ -41,7 +41,7 @@ export async function MobileNav({
   return (
     <header
       className={cn(
-        "flex items-center justify-between bg-gray-900 p-2 text-gray-100 sm:p-4",
+        "flex items-center justify-between bg-gray-900 p-2 text-gray-100",
         className,
       )}
       {...rest}
