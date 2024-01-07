@@ -4,11 +4,11 @@ Monorepo containing packages used for the Tietokilta website.
 
 ## Getting started
 
-Prerequisites: [Node.js](https://nodejs.org/en/) and [Docker](https://www.docker.com/) installed
+Prerequisites: [Node.js](https://nodejs.org/en/), [Docker](https://www.docker.com/), [MongoDB Database Tools](https://www.mongodb.com/docs/database-tools/#installation)(for seeding the dev-db) installed
 
 ```sh
 # install pnpm
-npm install -g pnpm
+npm corepack enable
 
 # install dependencies
 pnpm install
