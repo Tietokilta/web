@@ -8,7 +8,7 @@ import * as React from "react";
  * Adds button styles to any component, for use with Next.js <Link /> components.
  */
 const buttonVariants = cva(
-  "inline-flex font-mono items-center justify-center rounded-md text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-gray-100",
+  "inline-flex font-mono items-center justify-center rounded-md text-sm font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-gray-100",
   {
     variants: {
       variant: {
@@ -21,7 +21,7 @@ const buttonVariants = cva(
         secondary:
           "border-2 border-gray-900 bg-gray-200 text-gray-800 hover:bg-gray-300/80 shadow-solid",
         ghost: "hover:bg-gray-100",
-        link: "justify-between border-b-2 border-gray-900 rounded-none text-gray-900 after:content-['>>'] after:ml-2 hover:after:translate-x-2",
+        link: "justify-between border-b-2 border-gray-900 rounded-none text-gray-900 after:content-['>>'] after:ml-2 hover:after:translate-x-1",
         outlineLink:
           "border-2 border-gray-900 hover:border-gray-800 hover:bg-gray-300/90 shadow-solid",
       },
