@@ -19,18 +19,28 @@ interface LayoutProps {
 
 const localizedMetadata = {
   fi: {
-    title: "Tietokilta",
+    title: {
+      template: "%s - Tietokilta",
+      default: "Tietokilta",
+    },
     description: "Tietokilta ry:n kotisivut",
   },
   en: {
-    title: "Computer Science Guild",
+    title: {
+      template: "%s - Computer Science Guild",
+      default: "Computer Science Guild",
+    },
     description: "Homepage of the Computer Science Guild",
   },
 } as const;
 
-export const generateMetadata = ({ params: { lang } }: LayoutProps): Metadata =>
+export const generateMetadata = ({
+  params: { lang },
+}: LayoutProps): Metadata => ({
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive
-  localizedMetadata[lang] ?? localizedMetadata.fi;
+  ...(localizedMetadata[lang] || localizedMetadata.fi),
+  metadataBase: new URL("https://tietokilta.fi"),
+});
 
 export default async function RootLayout({
   children,
@@ -45,12 +55,15 @@ export default async function RootLayout({
       <body className={cn(inter.className, robotoMono.className)}>
         <div className="flex min-h-screen flex-col">
           <MobileNav
-            className="sticky top-0 md:hidden"
+            className="sticky top-0 z-10 md:hidden"
             dictionary={dictionary}
             locale={lang}
           />
-          <MainNav className="sticky top-0 hidden md:block" locale={lang} />
-          <div className="flex-1">{children}</div>
+          <MainNav
+            className="sticky top-0 z-10 hidden h-20 md:block"
+            locale={lang}
+          />
+          <div className="min-h-screen flex-1">{children}</div>
           <Footer locale={lang} />
         </div>
       </body>

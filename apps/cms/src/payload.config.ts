@@ -1,7 +1,7 @@
 import path from "path";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { HeadingFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 import type { Config } from "@tietokilta/cms-types/payload";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
@@ -76,7 +76,6 @@ export default buildConfig({
     // @ts-expect-error DATABASE_URL is validated by payload on start
     url: process.env.PAYLOAD_DATABASE_URL,
   }),
-  editor: lexicalEditor({}),
   plugins: [
     oAuthPlugin({
       databaseUri: MONGODB_URI ?? "",
@@ -137,4 +136,12 @@ export default buildConfig({
       },
     }),
   ],
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      HeadingFeature({
+        enabledHeadingSizes: ["h2", "h3"],
+      }),
+    ],
+  }),
 });
