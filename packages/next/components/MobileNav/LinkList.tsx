@@ -7,6 +7,7 @@ import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
+  ExternalLinkIcon,
   RenderIcon,
   ScrollArea,
   Separator,
@@ -83,6 +84,7 @@ export const LinkList = ({
                                   className="h-6 w-6"
                                 />
                                 <span>{externalLink.title}</span>
+                                <ExternalLinkIcon className="h-4 w-4" />
                               </Link>
                             </Button>
                           </li>
