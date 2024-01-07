@@ -7,7 +7,8 @@ import path from "path";
 const Media: CollectionConfig = {
   slug: "media",
   access: {
-    read: ({ req, id }) => !!req.user || !!id,
+    // TODO: this
+    read: () => true,
     create: loggedIn,
     update: loggedIn,
     delete: loggedIn,
@@ -18,12 +19,14 @@ const Media: CollectionConfig = {
   },
   upload: {
     // TODO: this
+    staticURL: "/media",
     staticDir: path.resolve(__dirname, "../../uploads"),
   },
   fields: [
     {
       name: "alt",
       label: "Alt Text",
+      localized: true,
       type: "text",
       required: true,
     },
