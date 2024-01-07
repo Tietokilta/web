@@ -1,129 +1,5 @@
 [{
 	"_id": {
-		"$oid": "6548f2bfd7febb86e2235faf"
-	},
-	"items": [
-		{
-			"type": "topic",
-			"pageConfig": {},
-			"topicConfig": {
-				"topic": "6548f0f4d7febb86e2235b89",
-				"categories": [
-					{
-						"title": {
-							"fi": "Ajankohtaista",
-							"en": "Topical"
-						},
-						"pages": [
-							{
-								"page": "6548f1fad7febb86e2235ec9",
-								"id": "6548f244611be65a813f889d"
-							}
-						],
-						"externalLinks": [],
-						"id": "6548f23d611be65a813f889c"
-					},
-					{
-						"title": {
-							"fi": "Aktiivit",
-							"en": "Actives"
-						},
-						"pages": [
-							{
-								"page": "6548f0d5d7febb86e2235b69",
-								"id": "6548f252611be65a813f889f"
-							},
-							{
-								"page": "6548f1c8d7febb86e2235e0e",
-								"id": "6548f257611be65a813f88a0"
-							}
-						],
-						"externalLinks": [],
-						"id": "6548f24d611be65a813f889e"
-					},
-					{
-						"title": {
-							"fi": "Työkalut",
-							"en": "Tools"
-						},
-						"pages": [],
-						"externalLinks": [
-							{
-								"title": {
-									"fi": "Kuvagalleria",
-									"en": "Gallery"
-								},
-								"href": "http://tietokilta.kuvat.fi/",
-								"icon": "Image",
-								"id": "6548f263611be65a813f88a2"
-							},
-							{
-								"title": {
-									"fi": "Laskugeneraattori",
-									"en": "Invoice"
-								},
-								"href": "https://tietokilta.fi/kilta/laskugeneraattori/",
-								"icon": "Banknote",
-								"id": "6548f278611be65a813f88a3"
-							},
-							{
-								"title": {
-									"fi": "Histotik",
-									"en": "Histotik"
-								},
-								"href": "http://histotik.tietokilta.fi/",
-								"icon": "BookMarked",
-								"id": "6548f284611be65a813f88a4"
-							}
-						],
-						"id": "6548f25d611be65a813f88a1"
-					}
-				]
-			},
-			"id": "6548f22d611be65a813f889b"
-		},
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "6548f141d7febb86e2235c4d"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "6548f2a4611be65a813f88a5"
-		},
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "6548f179d7febb86e2235cf2"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "6548f2aa611be65a813f88a6"
-		},
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "6548f1a7d7febb86e2235d7c"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "6548f2b5611be65a813f88a7"
-		}
-	],
-	"globalType": "main-navigation",
-	"createdAt": {
-		"$date": "2023-11-06T14:05:51.452Z"
-	},
-	"updatedAt": {
-		"$date": "2024-01-07T17:32:45.053Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
 		"$oid": "6548f4ab88334626ab27fb53"
 	},
 	"layout": [
@@ -232,6 +108,130 @@
 	},
 	"updatedAt": {
 		"$date": "2024-01-07T19:50:31.844Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6548f2bfd7febb86e2235faf"
+	},
+	"items": [
+		{
+			"type": "topic",
+			"pageConfig": {},
+			"topicConfig": {
+				"topic": "6548f0f4d7febb86e2235b89",
+				"categories": [
+					{
+						"title": {
+							"fi": "Ajankohtaista",
+							"en": "Topical"
+						},
+						"pages": [
+							{
+								"page": "6548f1fad7febb86e2235ec9",
+								"id": "6548f244611be65a813f889d"
+							}
+						],
+						"externalLinks": [],
+						"id": "6548f23d611be65a813f889c"
+					},
+					{
+						"title": {
+							"fi": "Aktiivit",
+							"en": "Actives"
+						},
+						"pages": [
+							{
+								"page": "65a2d95d598aa16e52bc885a",
+								"id": "6548f252611be65a813f889f"
+							},
+							{
+								"page": "65a2d9c0598aa16e52bc895d",
+								"id": "6548f257611be65a813f88a0"
+							}
+						],
+						"externalLinks": [],
+						"id": "6548f24d611be65a813f889e"
+					},
+					{
+						"title": {
+							"fi": "Työkalut",
+							"en": "Tools"
+						},
+						"pages": [],
+						"externalLinks": [
+							{
+								"title": {
+									"fi": "Kuvagalleria",
+									"en": "Gallery"
+								},
+								"href": "http://tietokilta.kuvat.fi/",
+								"icon": "Image",
+								"id": "6548f263611be65a813f88a2"
+							},
+							{
+								"title": {
+									"fi": "Laskugeneraattori",
+									"en": "Invoice"
+								},
+								"href": "https://tietokilta.fi/kilta/laskugeneraattori/",
+								"icon": "Banknote",
+								"id": "6548f278611be65a813f88a3"
+							},
+							{
+								"title": {
+									"fi": "Histotik",
+									"en": "Histotik"
+								},
+								"href": "http://histotik.tietokilta.fi/",
+								"icon": "BookMarked",
+								"id": "6548f284611be65a813f88a4"
+							}
+						],
+						"id": "6548f25d611be65a813f88a1"
+					}
+				]
+			},
+			"id": "6548f22d611be65a813f889b"
+		},
+		{
+			"type": "page",
+			"pageConfig": {
+				"page": "6548f141d7febb86e2235c4d"
+			},
+			"topicConfig": {
+				"categories": []
+			},
+			"id": "6548f2a4611be65a813f88a5"
+		},
+		{
+			"type": "page",
+			"pageConfig": {
+				"page": "6548f179d7febb86e2235cf2"
+			},
+			"topicConfig": {
+				"categories": []
+			},
+			"id": "6548f2aa611be65a813f88a6"
+		},
+		{
+			"type": "page",
+			"pageConfig": {
+				"page": "6548f1a7d7febb86e2235d7c"
+			},
+			"topicConfig": {
+				"categories": []
+			},
+			"id": "6548f2b5611be65a813f88a7"
+		}
+	],
+	"globalType": "main-navigation",
+	"createdAt": {
+		"$date": "2023-11-06T14:05:51.452Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-13T18:48:32.972Z"
 	},
 	"__v": 0
 }]

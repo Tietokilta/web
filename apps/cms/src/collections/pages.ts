@@ -43,6 +43,13 @@ export const Pages: CollectionConfig = {
       localized: true,
     },
     {
+      name: "description",
+      maxLength: 360,
+      type: "textarea",
+      localized: true,
+      required: true,
+    },
+    {
       name: "content",
       type: "richText",
       localized: true,
