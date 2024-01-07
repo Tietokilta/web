@@ -2,6 +2,7 @@ import { LinkList } from "./LinkList";
 
 import { fetchFooter } from "../../api/footer";
 import { fetchMainNavigation } from "../../api/main-navigation";
+import { Dictionary } from "../../lib/dictionaries";
 
 import {
   Button,
@@ -18,8 +19,12 @@ import { LinkRowBlock } from "payload/generated-types";
 export async function MobileNav({
   className,
   locale,
+  dictionary,
   ...rest
-}: React.ComponentPropsWithoutRef<"header"> & { locale: string }) {
+}: React.ComponentPropsWithoutRef<"header"> & {
+  locale: string;
+  dictionary: Dictionary;
+}) {
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});
 
@@ -45,12 +50,17 @@ export async function MobileNav({
         <SheetTrigger asChild>
           <Button variant="ghost" className="hover:bg-transparent">
             <MenuIcon className="h-6 w-6" />
-            <span className="sr-only">Toggle menu</span>
+            <span className="sr-only">{dictionary.action["Toggle menu"]}</span>
           </Button>
         </SheetTrigger>
         <SheetContent>
           <nav>
-            <LinkList links={links} footerLinks={footerLinks} locale={locale} />
+            <LinkList
+              dictionary={dictionary.action}
+              links={links}
+              footerLinks={footerLinks}
+              locale={locale}
+            />
           </nav>
         </SheetContent>
       </Sheet>
