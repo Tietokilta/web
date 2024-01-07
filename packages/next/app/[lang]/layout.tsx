@@ -1,5 +1,6 @@
 import { MainNav } from "../../components/MainNav";
 import { MobileNav } from "../../components/MobileNav";
+import { Locale, getDictionary } from "../../lib/dictionaries";
 import "./globals.css";
 
 import { cn } from "@tietokilta/ui/utils";
@@ -12,7 +13,7 @@ const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 interface Props {
   params: {
-    lang: "en" | "fi";
+    lang: Locale;
   };
 }
 
@@ -30,16 +31,22 @@ const localizedMetadata = {
 export const generateMetadata = ({ params: { lang } }: Props): Metadata =>
   localizedMetadata[lang] || localizedMetadata.fi;
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { lang },
 }: {
   children: React.ReactNode;
 } & Props) {
+  const dictionary = await getDictionary(lang);
+
   return (
     <html lang={lang}>
       <body className={cn(inter.className, robotoMono.className)}>
-        <MobileNav locale={lang} className="sticky top-0 md:hidden" />
+        <MobileNav
+          dictionary={dictionary}
+          locale={lang}
+          className="sticky top-0 md:hidden"
+        />
         <MainNav locale={lang} className="sticky top-0 hidden md:block" />
         <div>{children}</div>
       </body>
