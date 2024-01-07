@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 import payload from "payload";
 
+import path from "node:path";
+
 dotenv.config();
 
 const app = express();
@@ -10,6 +12,8 @@ const app = express();
 app.get("/", (_, res) => {
   res.redirect("/admin");
 });
+
+app.use("/media", express.static(path.join(__dirname, "../uploads")));
 
 const start = async () => {
   // Initialize Payload

@@ -6,5 +6,5 @@ export function middleware(request: NextRequest) {
   );
 }
 export const config = {
-  matcher: ["/((?!_next|api|admin|fi|en).*)"],
+  matcher: ["/((?!_next|api|media|admin|fi|en).*)"],
 };
