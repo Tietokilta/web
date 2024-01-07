@@ -8,10 +8,12 @@ import {
   NavigationMenuList,
   TikLogo,
 } from "@tietokilta/ui";
+import { cn } from "@tietokilta/ui/utils";
 import Link from "next/link";
 
 export async function MainNav({
   locale,
+  className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof NavigationMenu> & { locale: string }) {
   const mainNav = await fetchMainNavigation(locale)({});
@@ -24,8 +26,8 @@ export async function MainNav({
   const rightLinks = links.slice(middleIndex);
 
   return (
-    <NavigationMenu {...props}>
-      <NavigationMenuList className="w-screen">
+    <NavigationMenu className={cn("w-full max-w-none", className)} {...props}>
+      <NavigationMenuList>
         <LinkList links={leftLinks} locale={locale} />
         <NavigationMenuItem>
           <Link

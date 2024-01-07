@@ -42,13 +42,15 @@ export default async function RootLayout({
   return (
     <html lang={lang}>
       <body className={cn(inter.className, robotoMono.className)}>
-        <MobileNav
-          dictionary={dictionary}
-          locale={lang}
-          className="sticky top-0 md:hidden"
-        />
-        <MainNav locale={lang} className="sticky top-0 hidden md:block" />
-        <div>{children}</div>
+        <div className="flex min-h-screen flex-col">
+          <MobileNav
+            dictionary={dictionary}
+            locale={lang}
+            className="sticky top-0 md:hidden"
+          />
+          <MainNav locale={lang} className="sticky top-0 hidden md:block" />
+          <div className="flex-1">{children}</div>
+        </div>
       </body>
     </html>
   );
