@@ -1,7 +1,9 @@
 /packages/next/.next
 *.yaml
 
-/packages/ui/dist
+dist
+build
+
 /packages/ui/storybook-static
 /packages/ui/pnpm-lock.yaml
 /packages/ui/CHANGELOG.md
