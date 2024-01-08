@@ -24,6 +24,7 @@ pnpm dev
 ```
 
 In case you run into issues when changing branches etc. Try re-seeding your local dev DB:
+
 ```sh
 pnpm mongo:clear
 pnpm seeding:populate
