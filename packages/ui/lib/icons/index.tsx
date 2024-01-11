@@ -27,7 +27,7 @@ import {
 } from "lucide-react";
 import React from "react";
 
-import type { IconType } from "@icons-pack/react-simple-icons/types";
+import type { IconType } from "@icons-pack/react-simple-icons";
 
 export const icons = {
   AtSign: AtSignIcon,
