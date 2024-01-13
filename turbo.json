@@ -1,0 +1,45 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalDotEnv": [".env"],
+  "globalEnv": [
+    "PAYLOAD_DATABASE_URL",
+    "PAYLOAD_SECRET",
+    "PAYLOAD_REVALIDATION_KEY",
+    "PAYLOAD_PORT",
+    "PAYLOAD_DEVELOPMENT_AUTOLOGIN_EMAIL",
+    "PAYLOAD_DEVELOPMENT_AUTOLOGIN_PASSWORD",
+    "PAYLOAD_LOCAL_DEVELOPMENT",
+    "NEXT_REVALIDATION_KEY",
+    "PUBLIC_FRONTEND_URL",
+    "PUBLIC_SERVER_URL"
+  ],
+  "pipeline": {
+    "build": {
+      // "outputs" are defined in Workspace Configurations: https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces
+      "dependsOn": ["^build"]
+    },
+    "codegen": {
+      "dependsOn": ["^build", "^codegen"]
+    },
+    "lint": {
+      "dependsOn": ["^build", "codegen", "^codegen"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build", "codegen", "^codegen"]
+    },
+    "dev": {
+      "dependsOn": ["^build", "codegen", "^codegen"],
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "dependsOn": ["^build", "codegen", "^codegen"],
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}
