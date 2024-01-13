@@ -1,29 +1,36 @@
 {
+  "private": true,
   "scripts": {
-    "dev": "pnpm run -r --reporter append-only --parallel dev",
-    "format": "prettier --write .",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings 0 .",
-    "lint:fix": "pnpm run lint --fix",
-    "mongo:clear": "docker compose down -v",
-    "mongo:start": "docker compose up -d",
-    "mongo:stop": "docker compose down",
-    "prettier": "prettier --check .",
-    "seeding:generate": "./packages/cms/scripts/generate_seeding_data.sh",
-    "seeding:populate": "pnpm mongo:start && ./packages/cms/scripts/import_seeding_data.sh"
+    "build": "dotenv -- turbo run build",
+    "clean": "turbo run clean",
+    "codegen": "dotenv -- turbo run codegen",
+    "db:clear": "docker compose down -v",
+    "db:export": "dotenv -- ./scripts/generate_seeding_data.sh",
+    "db:populate": "dotenv -- ./scripts/import_seeding_data.sh",
+    "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
+    "db:start": "docker compose up -d",
+    "db:stop": "docker compose down",
+    "dev": "dotenv -- turbo run dev",
+    "docker:build:cms": "docker build . --tag cms --build-arg PROJECT=cms",
+    "docker:build:web": "docker build . --tag web --build-arg PROJECT=web",
+    "docker:compose:build": "docker compose -f docker-compose.prod.yml up --build",
+    "docker:compose:start": "docker compose -f docker-compose.prod.yml up",
+    "docker:start:cms": "docker run -p 3001:3001 cms",
+    "docker:start:web": "docker run -p 3000:3000 web",
+    "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
+    "lint": "turbo run lint",
+    "start": "dotenv -- turbo run start",
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
-    "@total-typescript/ts-reset": "^0.5.1",
-    "@tsconfig/strictest": "^2.0.2",
-    "@types/node": "^20.8.10",
-    "@typescript-eslint/eslint-plugin": "^6.18.0",
-    "eslint": "8.56.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.1.1",
-    "prettier-plugin-packagejson": "^2.4.6",
+    "dotenv-cli": "^7.3.0",
+    "prettier": "^3.2.1",
+    "prettier-plugin-packagejson": "^2.4.9",
     "prettier-plugin-tailwindcss": "^0.5.11",
-    "typescript": "^5.2.2"
+    "turbo": "^1.11.3"
+  },
+  "packageManager": "pnpm@8.9.0",
+  "engines": {
+    "node": ">=18"
   }
 }

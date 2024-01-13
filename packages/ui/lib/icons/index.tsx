@@ -1,5 +1,4 @@
-import { default as TikLogo } from "./TikLogo";
-
+import type { IconType } from "@icons-pack/react-simple-icons";
 import {
   SiFacebook as FacebookIcon,
   SiGithub as GithubIcon,
@@ -8,6 +7,7 @@ import {
   SiTelegram as TelegramIcon,
   SiTiktok as TiktokIcon,
 } from "@icons-pack/react-simple-icons";
+import type { LucideProps } from "lucide-react";
 import {
   AtSignIcon,
   BanknoteIcon,
@@ -21,13 +21,11 @@ import {
   ImageIcon,
   InboxIcon,
   LanguagesIcon,
-  LucideProps,
   MenuIcon,
   XIcon,
 } from "lucide-react";
 import React from "react";
-
-import type { IconType } from "@icons-pack/react-simple-icons";
+import { default as TikLogo } from "./tik-logo";
 
 export const icons = {
   AtSign: AtSignIcon,
@@ -83,7 +81,8 @@ type RenderIconProps = {
   name: IconName;
 } & (LucideProps | React.ComponentProps<IconType>);
 
-export const RenderIcon = ({ name, ...props }: RenderIconProps) => {
+export function RenderIcon({ name, ...props }: RenderIconProps): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive
   const IconComponent = icons[name] ?? icons.HelpCircle;
   return <IconComponent {...props} />;
-};
+}

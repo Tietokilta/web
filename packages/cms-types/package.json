@@ -1,0 +1,20 @@
+{
+  "name": "@tietokilta/cms-types",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "typesVersions": {
+    "*": {
+      "payload": [
+        "./payload.ts"
+      ]
+    }
+  },
+  "files": [
+    "payload.ts",
+    "schema.gql"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
