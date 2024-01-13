@@ -1,12 +1,17 @@
-# Tietokilta Web
+# Tietokilta Website
 
-Monorepo containing packages used for the Tietokilta website.
+Monorepo containing apps and packages used for the Tietokilta website.
 
 ## Getting started
+
+### Set up
 
 Prerequisites: [Node.js](https://nodejs.org/en/), [Docker](https://www.docker.com/), [MongoDB Database Tools](https://www.mongodb.com/docs/database-tools/#installation)(for seeding the dev-db) installed
 
 ```sh
+# copy .env.example to .env
+cp .env.example .env
+
 # install pnpm
 npm corepack enable
 
@@ -14,10 +19,10 @@ npm corepack enable
 pnpm install
 
 # start the local database
-docker compose up -d
+pnpm db:start
 
 # seed the database with data
-pnpm seeding:populate
+pnpm db:populate
 
 # start the dev server
 pnpm dev
@@ -26,11 +31,10 @@ pnpm dev
 In case you run into issues when changing branches etc. Try re-seeding your local dev DB:
 
 ```sh
-pnpm mongo:clear
-pnpm seeding:populate
+pnpm db:reset
 ```
 
-Recommended VSCode settings:
+### Recommended VSCode settings
 
 ```json
 {
@@ -49,22 +53,46 @@ Recommended VSCode settings:
     "typescript",
     "typescriptreact"
   ],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ]
 }
 ```
 
-## Packages
+### Other utilities
 
-### `packages/cms`
+```sh
+# lint all packages
+pnpm lint
 
-Admin panel and CMS, Express server using [Payload CMS](https://payloadcms.com/)
+# format all packages
+pnpm format
 
-### `packages/next`
+# typecheck all packages
+pnpm typecheck
 
-Main website, [Next.js](https://nextjs.org/) 14 with the App Router setup
+# codegen (currently includes cms types and graphql schema)
+pnpm codegen
 
-### `packages/ui` (`@tietokilta/ui`)
+# export database to version control
+pnpm db:export
+```
 
-React UI component library and Storybook. Built with Tailwind and [shadcn/ui](https://ui.shadcn.com/)
+## What's inside?
+
+This repo includes the following packages and apps:
+
+### Apps and Packages
+
+- `@tietokilta/cms`: a [Payload CMS](https://payloadcms.com/) server, admin panel and CMS
+- `@tietokilta/web`: a [Next.js](https://nextjs.org/) app, main website using Next 14 and App Router
+- `@tietokilta/ui`: React UI component library. Built with Tailwind and [shadcn/ui](https://ui.shadcn.com/)
+- `@tietokilta/config-typescript`: tsconfigs used throughout the monorepo
+- `@tietokilta/eslint-config`: eslintconfigs used throughout the monorepo
+
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).

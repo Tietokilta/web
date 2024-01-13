@@ -1,20 +1,8 @@
 {
+  "extends": "@tietokilta/config-typescript/react-library.json",
   "compilerOptions": {
-    "useDefineForClassFields": true,
-    "checkJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "jsx": "react-jsx",
-    "outDir": "./dist",
-    "rootDir": "./",
-    "strict": true,
-    "skipLibCheck": true,
-    "noEmit": false,
-    "declaration": true,
-    "types": ["@testing-library/jest-dom"],
-    "composite": true
+    "lib": ["dom", "ES2015"]
   },
-  "exclude": ["node_modules", "dist", "storybook-static"],
-  "extends": "../../tsconfig.json"
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
 }
