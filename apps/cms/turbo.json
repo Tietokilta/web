@@ -1,0 +1,11 @@
+{
+  "extends": ["//"],
+  "pipeline": {
+    "build": {
+      "outputs": ["dist/**", "build/**"]
+    },
+    "codegen": {
+      "outputs": ["../../packages/cms-types/*.{ts,gql}"]
+    }
+  }
+}
