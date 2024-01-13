@@ -5086,5 +5086,847 @@
 		"relationTo": "topics"
 	},
 	"path": "/kilta/tunnukset"
+},
+{
+	"_id": {
+		"$oid": "65a2df8e3aa4329c52083af9"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-01-13T19:07:58.501Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-13T19:21:04.233Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Normitekstiä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kakkosotsikko",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kolmosotsikko",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Numeroitu",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Testi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Lista",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "number",
+						"start": 1,
+						"tag": "ol"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Numeroimaton",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "testi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "lista",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Testi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Todo",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "lista",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Tsekattu",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"checked": true,
+								"value": 4
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "check",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Palikkalainaus",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "quote",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Alhaalla kuva",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"format": "",
+						"type": "upload",
+						"version": 1,
+						"fields": null,
+						"relationTo": "media",
+						"value": {
+							"id": "659afc6bfab28407b9c68069"
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ylhäällä kuva",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Alhaalla \"Page Relationship\"",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "6548f21ed7febb86e2235f5f"
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ylhäällä \"Page Relationship\"",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Linkki ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "sivuille",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://",
+									"doc": {
+										"value": "65a2df8e3aa4329c52083af9",
+										"relationTo": "pages"
+									},
+									"newTab": false,
+									"linkType": "internal"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ", linkki ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "ulos",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://google.com",
+									"newTab": false,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ", linkki ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "uuteen välilehteen",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://google.com",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Sisennetty teksti",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 1,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tupla sisennetty teksti",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 2,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Testi ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "boldattuna",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ", ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 2,
+								"mode": "normal",
+								"style": "",
+								"text": "italisoituna",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ", ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 3,
+								"mode": "normal",
+								"style": "",
+								"text": "boldattuna ja italisoituna, ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 8,
+								"mode": "normal",
+								"style": "",
+								"text": "alaviivattuna",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ", ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 11,
+								"mode": "normal",
+								"style": "",
+								"text": "kaikkea kolmea",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 4,
+								"mode": "normal",
+								"style": "",
+								"text": "Yliviivattuna",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Matikkaa! x",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 32,
+								"mode": "normal",
+								"style": "",
+								"text": "2 ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "ja muuta e",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 64,
+								"mode": "normal",
+								"style": "",
+								"text": "x",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ".",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Koodia!",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 16,
+								"mode": "normal",
+								"style": "",
+								"text": "print(\"Hello\")",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Coding",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "This page has all rich text stuffs in the Finnish version!",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"description": {
+		"fi": "Nettisivujen koodaus on kivaa",
+		"en": "Coding the website is fun!"
+	},
+	"path": "/kilta/koodaus",
+	"slug": {
+		"fi": "koodaus",
+		"en": "coding"
+	},
+	"title": {
+		"fi": "Koodaus",
+		"en": "Coding"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
 }]
 
