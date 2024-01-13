@@ -18,10 +18,12 @@ export default buildConfig({
     bundler: viteBundler(),
     user: Users.slug,
     autoLogin:
-      process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_AND_SEEDING === "true"
+      process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT === "true" &&
+      process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_EMAIL &&
+      process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_PASSWORD
         ? {
-            email: "root@tietokilta.fi",
-            password: "root",
+            email: process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_EMAIL,
+            password: process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT_PASSWORD,
           }
         : false,
   },
