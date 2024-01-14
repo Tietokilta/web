@@ -1,20 +1,21 @@
 "use client";
 
+import type { EditorState } from "@tietokilta/cms-types/lexical";
 import { ChevronDownIcon } from "@tietokilta/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
-import { cn, lexicalNodeToTextContent } from "../../lib/utils";
-import type { SerializedLexicalEditorState } from "../lexical/types";
+import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
 
 interface TocItem {
   text: string;
   level: 2 | 3;
 }
 
-const generateToc = (content: SerializedLexicalEditorState): TocItem[] => {
+const generateToc = (content: EditorState): TocItem[] => {
   const toc: TocItem[] = [];
 
   for (const node of content.root.children) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
     if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
       const tag = node.tag;
       const level = parseInt(tag[1], 10) as 2 | 3;
@@ -53,10 +54,10 @@ function HeadingList({
           <Link
             className={cn(
               "underline-offset-2 hover:underline focus-visible:font-bold focus-visible:outline-2 focus-visible:outline-offset-8",
-              item.text.toLocaleLowerCase().replace(/\s/g, "-") ===
-                activeHeadingId && "font-bold underline",
+              stringToId(item.text) === activeHeadingId &&
+                "font-bold underline",
             )}
-            href={`#${item.text.toLocaleLowerCase().replace(/\s/g, "-")}`}
+            href={`#${stringToId(item.text)}`}
             onClick={() => onHeadingClick?.(item)}
           >
             {item.text}
@@ -100,8 +101,7 @@ function Mobile({
   className?: string;
 }) {
   const activeHeading = toc.find(
-    (item) =>
-      item.text.toLocaleLowerCase().replace(/\s/g, "-") === activeHeadingId,
+    (item) => stringToId(item.text) === activeHeadingId,
   );
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
@@ -206,11 +206,7 @@ const useActiveHeading = () => {
   return activeId;
 };
 
-export function TableOfContents({
-  content,
-}: {
-  content?: SerializedLexicalEditorState;
-}) {
+export function TableOfContents({ content }: { content?: EditorState }) {
   const activeHeadingId = useActiveHeading();
 
   if (!content) return null;

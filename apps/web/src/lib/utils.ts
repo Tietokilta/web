@@ -1,6 +1,6 @@
+import type { Node } from "@tietokilta/cms-types/lexical";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { SerializedLexicalNode } from "../components/lexical/types";
 
 export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
 
@@ -22,5 +22,16 @@ export const jsxToTextContent = (element: JSX.Element | undefined): string => {
   return jsxToTextContent(children);
 };
 
-export const lexicalNodeToTextContent = (node: SerializedLexicalNode): string =>
-  node.children?.map((child) => child.text ?? "").join("") ?? "";
+export const lexicalNodeToTextContent = (node: Node): string => {
+  if (!("children" in node)) {
+    if (node.type === "text") return node.text;
+
+    return "";
+  }
+
+  const children = (node.children ?? []) as Node[];
+  return children.map((child) => lexicalNodeToTextContent(child)).join("");
+};
+
+export const stringToId = (string: string): string =>
+  string.toLocaleLowerCase().replace(/\s/g, "-");
