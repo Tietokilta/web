@@ -52,7 +52,7 @@ function HeadingList({
         >
           <Link
             className={cn(
-              "underline-offset-2 hover:underline",
+              "underline-offset-2 hover:underline focus-visible:font-bold focus-visible:outline-2 focus-visible:outline-offset-8",
               item.level === 3 && "text-sm",
               item.text.toLocaleLowerCase().replace(/\s/g, "-") ===
                 activeHeadingId && "font-bold underline",
@@ -111,12 +111,12 @@ function Mobile({
   return (
     <details
       className={cn(
-        "group sticky top-20 -mx-4 -mt-4 flex w-[calc(100%+2rem)] flex-col gap-2 bg-gray-100/80 p-4 backdrop-blur-sm",
+        "group fixed left-0 top-24 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 backdrop-blur-sm",
         className,
       )}
       ref={detailsRef}
     >
-      <summary className="flex justify-between">
+      <summary className="flex cursor-pointer items-center justify-between p-4">
         <span
           className={cn(
             "text-2xl font-bold before:me-[2ch] before:text-gray-600",
@@ -128,7 +128,7 @@ function Mobile({
         </span>
         <ChevronDownIcon className="h-6 w-6 transition-all group-open:rotate-180" />
       </summary>
-      <nav className="py-2">
+      <nav className="px-4 py-2">
         <HeadingList
           activeHeadingId={activeHeadingId}
           onHeadingClick={() => detailsRef.current?.removeAttribute("open")}
@@ -140,33 +140,48 @@ function Mobile({
 }
 
 const useActiveHeading = () => {
-  const [activeId, setActiveId] = useState<string | undefined>();
+  const [activeId, setActiveId] = useState<string>();
 
   const headingElementsRef: MutableRefObject<
     Record<string, IntersectionObserverEntry>
   > = useRef({});
+  const articleRef = useRef<IntersectionObserverEntry>();
   useEffect(() => {
-    const callback: IntersectionObserverCallback = (headings) => {
+    const callback: IntersectionObserverCallback = (entries) => {
+      const leadParagraph = entries.at(0);
+      const headings =
+        leadParagraph?.target.tagName !== "p" ? entries : entries.slice(1);
+
+      articleRef.current = leadParagraph;
       headingElementsRef.current = headings.reduce((map, heading) => {
         map[heading.target.id] = heading;
         return map;
       }, headingElementsRef.current);
 
       const visibleHeadings: IntersectionObserverEntry[] = [];
-      Object.keys(headingElementsRef.current).forEach((key) => {
-        const headingElement = headingElementsRef.current[key];
+      Object.values(headingElementsRef.current).forEach((headingElement) => {
         if (headingElement.isIntersecting) visibleHeadings.push(headingElement);
       });
 
-      const getIndexFromId = (id: string) =>
-        headingElements.findIndex((heading) => heading.id === id);
+      if (visibleHeadings.length === 0 && articleRef.current?.isIntersecting) {
+        setActiveId(undefined);
+        return;
+      }
 
       if (visibleHeadings.length === 1) {
         setActiveId(visibleHeadings[0].target.id);
-      } else if (visibleHeadings.length > 1) {
-        const sortedVisibleHeadings = visibleHeadings.sort(
-          (a, b) => getIndexFromId(b.target.id) - getIndexFromId(a.target.id),
-        );
+        return;
+      }
+
+      const getIndexFromId = (id: string) =>
+        headingElements.findIndex((heading) => heading.id === id);
+      const byIndex = (
+        a: IntersectionObserverEntry,
+        b: IntersectionObserverEntry,
+      ) => getIndexFromId(a.target.id) - getIndexFromId(b.target.id);
+
+      if (visibleHeadings.length > 1) {
+        const sortedVisibleHeadings = visibleHeadings.sort(byIndex);
         setActiveId(sortedVisibleHeadings[0].target.id);
       }
     };
@@ -175,6 +190,10 @@ const useActiveHeading = () => {
       rootMargin: "-96px 0px -60% 0px",
     });
 
+    const leadParagraph = document.querySelector("main p:first-of-type");
+    if (leadParagraph) {
+      observer.observe(leadParagraph);
+    }
     const headingElements = Array.from(document.querySelectorAll("h2, h3"));
     headingElements.forEach((element) => {
       observer.observe(element);
