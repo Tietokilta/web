@@ -92,7 +92,7 @@ function NavigationLink({
                       className="my-3 flex w-full items-center justify-start gap-2"
                       variant="outlineLink"
                     >
-                      <Link href={externalLink.href}>
+                      <Link href={externalLink.href} target="_blank">
                         <RenderIcon
                           className="h-6 w-6"
                           name={externalLink.icon}
