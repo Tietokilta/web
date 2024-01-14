@@ -1,9 +1,10 @@
 /* eslint-disable react/no-array-index-key -- okay here */
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise */
-import type { Config } from "@tietokilta/cms-types/payload";
+import type { Node, PageRelationshipNode } from "@tietokilta/cms-types/lexical";
+import { FileIcon } from "@tietokilta/ui";
+import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
-import { lexicalNodeToTextContent } from "../../lib/utils";
+import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
 import {
   IS_BOLD,
   IS_CODE,
@@ -13,16 +14,8 @@ import {
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
 } from "./rich-text-node-format";
-import type {
-  SerializedLexicalEditorState,
-  SerializedLexicalNode,
-} from "./types";
 
-export function LexicalSerializer({
-  nodes,
-}: {
-  nodes: SerializedLexicalNode[];
-}): JSX.Element {
+export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
   return (
     <>
       {nodes.map((node, index): JSX.Element | null => {
@@ -62,34 +55,50 @@ export function LexicalSerializer({
         }
 
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- null check
-        if (node === null) {
+        if (node === null || node === undefined) {
           return null;
         }
 
-        const serializedChildren = node.children && (
-          <LexicalSerializer nodes={node.children} />
-        );
+        const serializedChildren =
+          "children" in node && node.children ? (
+            <LexicalSerializer nodes={node.children} />
+          ) : null;
 
         switch (node.type) {
-          case "tab": {
-            return <span key={index}>&emsp;</span>;
-          }
           case "linebreak": {
             return <br key={index} />;
           }
           case "paragraph": {
             const allowedPTypes = ["text", "link", "linebreak"];
-            const hasAllowedChildren = (n: SerializedLexicalNode): boolean =>
-              !n.children ||
-              n.children.every(
+            const hasAllowedChildren = (n: Node): boolean => {
+              if (!("children" in n)) return true;
+              const children = n.children as Node[];
+              if (children.length === 0) return true;
+              return children.every(
                 (child) =>
                   allowedPTypes.includes(child.type) ||
                   (child.type === "upload" && !child.showCaption) ||
-                  (child.type === "mark" && hasAllowedChildren(child)),
+                  hasAllowedChildren(child),
               );
+            };
             const ParagraphTag = hasAllowedChildren(node) ? "p" : "div";
             return (
-              <ParagraphTag key={index}>{serializedChildren}</ParagraphTag>
+              <ParagraphTag
+                className={cn(
+                  node.indent === 1 && "ml-[4ch]",
+                  node.indent === 2 && "ml-[8ch]",
+                  node.indent === 3 && "ml-[12ch]",
+                  node.indent === 4 && "ml-[16ch]",
+                  node.indent === 5 && "ml-[20ch]",
+
+                  node.format === "left" && "text-left",
+                  node.format === "center" && "text-center",
+                  node.format === "right" && "text-right",
+                )}
+                key={index}
+              >
+                {serializedChildren}
+              </ParagraphTag>
             );
           }
           case "heading": {
@@ -100,12 +109,7 @@ export function LexicalSerializer({
             const Tag = node.tag as Heading;
 
             return (
-              <Tag
-                id={lexicalNodeToTextContent(node)
-                  .toLocaleLowerCase()
-                  .replace(/\s/g, "-")}
-                key={index}
-              >
+              <Tag id={stringToId(lexicalNodeToTextContent(node))} key={index}>
                 {serializedChildren}
               </Tag>
             );
@@ -120,26 +124,8 @@ export function LexicalSerializer({
             );
           }
           case "listitem": {
-            if (node.checked !== null) {
-              return (
-                <li
-                  aria-checked={node.checked ? "true" : "false"}
-                  className={`component--list-item-checkbox ${
-                    node.checked
-                      ? "component--list-item-checkbox-checked"
-                      : "component--list-item-checked-unchecked"
-                  }`}
-                  key={index}
-                  role="checkbox"
-                  tabIndex={-1}
-                  value={node.value as string}
-                >
-                  {serializedChildren}
-                </li>
-              );
-            }
             return (
-              <li key={index} value={node.value as string}>
+              <li key={index} value={node.value}>
                 {serializedChildren}
               </li>
             );
@@ -159,16 +145,15 @@ export function LexicalSerializer({
             };
 
             if (fields.linkType === "custom") {
-              const rel = `${fields.rel ?? ""} ${
-                fields.nofollow ? " nofollow" : ""
-              }`;
+              const newTabProps = fields.newTab
+                ? {
+                    target: "_blank",
+                    rel: "noopener",
+                  }
+                : {};
+
               return (
-                <a
-                  href={fields.url}
-                  key={index}
-                  rel={rel}
-                  target={fields.newTab ? "_blank" : undefined}
-                >
+                <a href={fields.url} key={index} {...newTabProps}>
                   {serializedChildren}
                 </a>
               );
@@ -185,57 +170,30 @@ export function LexicalSerializer({
             }
             break;
           }
-          case "youtube": {
-            return (
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${
-                  node.videoID as string
-                }`}
-                title={node.title as string}
-              />
-            );
-          }
           case "upload": {
-            const data = node.value as {
-              url: string;
-              width: number;
-              height: number;
-              alt: string;
-            };
             const img = (
-              // eslint-disable-next-line @next/next/no-img-element -- TODO: set up next/image later
-              <img
-                alt={data.alt}
-                height={data.height}
+              <Image
+                alt={node.value.alt}
+                height={node.value.height ?? 0}
                 key={index}
-                src={data.url}
-                width={data.width}
+                src={node.value.url ?? "#broken-url"}
+                width={node.value.width ?? 0}
               />
             );
-            return node.showCaption ? (
+
+            if (!node.fields?.caption) return img;
+
+            return (
               <figure key={index}>
                 {img}
                 <figcaption>
-                  <LexicalSerializer
-                    nodes={
-                      (
-                        node.caption as {
-                          editorState: SerializedLexicalEditorState;
-                        }
-                      ).editorState.root.children
-                    }
-                  />
+                  <span>{node.fields.caption}</span>
                 </figcaption>
               </figure>
-            ) : (
-              img
             );
           }
-          case "mark": {
-            return <Fragment key={index}>{serializedChildren}</Fragment>;
-          }
           case "relationship": {
-            return <Relationship node={node as unknown as RelationshipNode} />;
+            return <Relationship key={index} node={node} />;
           }
           default:
             // eslint-disable-next-line no-console -- Nice to know if something is missing
@@ -249,19 +207,28 @@ export function LexicalSerializer({
   );
 }
 
-interface RelationshipNode {
-  type: "relationship";
-  relationTo: keyof Omit<
-    Config["collections"],
-    "payload-preferences" | "payloda-migrations"
-  >;
-  value: Record<string, unknown>;
-}
-
-function Relationship({ node }: { node: RelationshipNode }) {
+function Relationship({ node }: { node: PageRelationshipNode }) {
   switch (node.relationTo) {
     // TODO: Implement these
+    case "pages": {
+      return (
+        <Link
+          className="not-prose shadow-solid my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
+          data-relation
+          href={node.value.path ?? "#no-path"}
+        >
+          <FileIcon className="h-6 w-6" />
+          <p className="flex flex-col">
+            <span className="font-mono font-semibold">{node.value.title}</span>
+            <span className="line-clamp-2 max-w-80 text-sm text-gray-700">
+              {node.value.description}
+            </span>
+          </p>
+        </Link>
+      );
+    }
     default: {
+      // eslint-disable-next-line no-console -- Nice to know if something is missing
       console.warn("Unknown relationTo:", node.relationTo);
       return null;
     }

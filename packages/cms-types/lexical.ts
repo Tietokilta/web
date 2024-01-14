@@ -1,0 +1,120 @@
+import type { Media, Page } from "./payload";
+
+type BaseNode = {
+  version: number;
+  type: string;
+  children?: Node[];
+  [k: string]: unknown;
+};
+
+type BaseTextNode = BaseNode & {
+  indent: number;
+  direction: Page["content"]["root"]["direction"];
+  format: Page["content"]["root"]["format"];
+};
+
+export type TextNode = Omit<BaseTextNode, "format"> & {
+  type: "text";
+  detail: number;
+  format: number;
+  mode: "normal";
+  style: "";
+  text: string;
+};
+
+export type ParagraphNode = BaseTextNode & {
+  type: "paragraph";
+  children: Node[];
+};
+
+export type HeadingNode = BaseTextNode & {
+  type: "heading";
+  tag: "h2" | "h3";
+  children: Node[];
+};
+
+export type ListNode = {
+  type: "list";
+  start: number;
+  children: Node[];
+} & (
+  | {
+      listType: "number";
+      tag: "ol";
+    }
+  | {
+      listType: "bullet";
+      tag: "ul";
+    }
+);
+
+export type QuoteNode = BaseTextNode & {
+  type: "quote";
+  children: Node[];
+};
+
+export type UploadNode = BaseNode & {
+  type: "upload";
+  relationTo: "media";
+  value: Media;
+  fields?: {
+    caption?: string;
+  } | null;
+};
+
+export type PageRelationshipNode = BaseNode & {
+  type: "relationship";
+  relationTo: "pages";
+  value: Page;
+};
+
+export type ListItemNode = BaseTextNode & {
+  type: "listitem";
+  value: number;
+  children: Node[];
+};
+
+export type LinkNode = BaseTextNode & {
+  type: "link";
+  fields: {
+    url: string;
+    newTab: boolean;
+  } & (
+    | {
+        linkType: "internal";
+        doc: Page;
+      }
+    | {
+        linkType: "custom";
+      }
+  );
+};
+
+export type LinebreakNode = {
+  type: "linebreak";
+  version: number;
+};
+
+export type Node =
+  | TextNode
+  | ParagraphNode
+  | HeadingNode
+  | ListNode
+  | QuoteNode
+  | UploadNode
+  | PageRelationshipNode
+  | ListItemNode
+  | LinkNode
+  | LinebreakNode;
+
+export type RootNode = {
+  type: "root";
+  format: Page["content"]["root"]["format"];
+  indent: Page["content"]["root"]["indent"];
+  version: Page["content"]["root"]["version"];
+  children: Node[];
+};
+
+export type EditorState = {
+  root: RootNode;
+};
