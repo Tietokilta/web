@@ -45,15 +45,14 @@ function HeadingList({
         <li
           className={cn(
             "before:me-[2ch] before:text-gray-600",
-            item.level === 2 && "mb-2 before:content-['#'] last:mb-0",
-            item.level === 3 && "mb-1 text-sm before:content-['##'] last:mb-0",
+            item.level === 2 && "mb-2 text-lg before:content-['#'] last:mb-0",
+            item.level === 3 && "mb-1 before:content-['##'] last:mb-0",
           )}
           key={`${item.level}-${item.text}`}
         >
           <Link
             className={cn(
               "underline-offset-2 hover:underline focus-visible:font-bold focus-visible:outline-2 focus-visible:outline-offset-8",
-              item.level === 3 && "text-sm",
               item.text.toLocaleLowerCase().replace(/\s/g, "-") ===
                 activeHeadingId && "font-bold underline",
             )}
@@ -80,7 +79,7 @@ function Desktop({
   return (
     <div
       className={cn(
-        "absolute h-full -translate-x-[calc(100%+1.5rem)]",
+        "absolute h-full -translate-x-[calc(100%+1.5rem)] font-mono",
         className,
       )}
     >
@@ -111,7 +110,7 @@ function Mobile({
   return (
     <details
       className={cn(
-        "group fixed left-0 top-24 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 backdrop-blur-sm",
+        "group fixed left-0 top-24 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 font-mono backdrop-blur-sm",
         className,
       )}
       ref={detailsRef}
