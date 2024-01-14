@@ -1,8 +1,8 @@
+import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AdminBar } from "../../../components/admin-bar";
 import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
-import type { SerializedLexicalEditorState } from "../../../components/lexical/types";
 import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
 import type { Locale } from "../../../lib/dictionaries";
@@ -43,15 +43,11 @@ export const generateMetadata = async ({
   };
 };
 
-function Content({
-  content,
-}: {
-  content: SerializedLexicalEditorState | undefined;
-}) {
+function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-40 prose-headings:font-mono prose-headings:xl:scroll-mt-24 max-w-prose">
+    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose">
       <LexicalSerializer nodes={content.root.children} />
     </article>
   );
@@ -59,9 +55,7 @@ function Content({
 
 const Page = async ({ params: { path, lang } }: Props) => {
   const page = await getPage(path, lang);
-  const content = page.content as unknown as
-    | SerializedLexicalEditorState
-    | undefined;
+  const content = page.content as unknown as EditorState | undefined;
 
   return (
     <>
