@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key -- okay here */
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise */
+import type { Config } from "@tietokilta/cms-types/payload";
 import Link from "next/link";
 import { Fragment } from "react";
 import { lexicalNodeToTextContent } from "../../lib/utils";
@@ -195,7 +196,7 @@ export function LexicalSerializer({
             );
           }
           case "upload": {
-            const data = node.data as {
+            const data = node.value as {
               url: string;
               width: number;
               height: number;
@@ -233,6 +234,9 @@ export function LexicalSerializer({
           case "mark": {
             return <Fragment key={index}>{serializedChildren}</Fragment>;
           }
+          case "relationship": {
+            return <Relationship node={node as unknown as RelationshipNode} />;
+          }
           default:
             // eslint-disable-next-line no-console -- Nice to know if something is missing
             console.warn("Unknown node:", node);
@@ -243,4 +247,23 @@ export function LexicalSerializer({
       })}
     </>
   );
+}
+
+interface RelationshipNode {
+  type: "relationship";
+  relationTo: keyof Omit<
+    Config["collections"],
+    "payload-preferences" | "payloda-migrations"
+  >;
+  value: Record<string, unknown>;
+}
+
+function Relationship({ node }: { node: RelationshipNode }) {
+  switch (node.relationTo) {
+    // TODO: Implement these
+    default: {
+      console.warn("Unknown relationTo:", node.relationTo);
+      return null;
+    }
+  }
 }
