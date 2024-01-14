@@ -5097,7 +5097,7 @@
 		"$date": "2024-01-13T19:07:58.501Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-13T19:21:04.233Z"
+		"$date": "2024-01-14T18:21:00.074Z"
 	},
 	"__v": 0,
 	"content": {
@@ -5115,7 +5115,43 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Normitekstiä",
+								"text": "Normitekstiä lyhyt kappale",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Phasellus fermentum dui est, eget tincidunt sapien varius vel. Phasellus eleifend massa facilisis efficitur convallis. Duis ut eros eget metus ornare molestie. Etiam porttitor, nulla eget elementum faucibus, nulla velit maximus ante, at feugiat orci tortor at augue. Ut feugiat fermentum orci, sed commodo justo pellentesque nec. Curabitur et sapien nulla. Cras pharetra, tortor quis lobortis vulputate, sapien elit ultrices dui, et hendrerit ligula dui non tellus. Donec posuere purus sit amet dui cursus pulvinar. Pellentesque feugiat tortor purus, vel rhoncus nulla mattis id. Vivamus tincidunt fringilla sapien, eu egestas sem finibus vestibulum. Vivamus suscipit porta pulvinar. In est orci, fringilla non dui volutpat, tristique tincidunt neque. In tincidunt ipsum in purus sollicitudin, rhoncus lacinia urna fringilla. Aliquam laoreet faucibus libero eu gravida. Duis pellentesque orci in ante rhoncus mollis.",
 								"type": "text",
 								"version": 1
 							}
@@ -5305,100 +5341,11 @@
 					{
 						"children": [
 							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "Testi",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "listitem",
-								"version": 1,
-								"value": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "Todo",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "listitem",
-								"version": 1,
-								"value": 2
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "lista",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "listitem",
-								"version": 1,
-								"value": 3
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "Tsekattu",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "listitem",
-								"version": 1,
-								"checked": true,
-								"value": 4
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "list",
-						"version": 1,
-						"listType": "check",
-						"start": 1,
-						"tag": "ul"
-					},
-					{
-						"children": [
-							{
 								"detail": 0,
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Palikkalainaus",
+								"text": "Yhden rivin palikkalainaus",
 								"type": "text",
 								"version": 1
 							}
@@ -5410,8 +5357,18 @@
 						"version": 1
 					},
 					{
-						"children": [],
-						"direction": null,
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tekstiä välissä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
 						"format": "",
 						"indent": 0,
 						"type": "paragraph",
@@ -5424,7 +5381,25 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Alhaalla kuva",
+								"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "quote",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Alhaalla kuva tähän kuva",
 								"type": "text",
 								"version": 1
 							}
@@ -5439,7 +5414,9 @@
 						"format": "",
 						"type": "upload",
 						"version": 1,
-						"fields": null,
+						"fields": {
+							"caption": "testi captioni hello"
+						},
 						"relationTo": "media",
 						"value": {
 							"id": "659afc6bfab28407b9c68069"
@@ -5470,7 +5447,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Alhaalla \"Page Relationship\"",
+								"text": "\"Page Relationship\":",
 								"type": "text",
 								"version": 1
 							}
@@ -5491,22 +5468,13 @@
 						}
 					},
 					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Ylhäällä \"Page Relationship\"",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
 						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "6548f179d7febb86e2235cf2"
+						}
 					},
 					{
 						"children": [
@@ -5624,7 +5592,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Sisennetty teksti",
+								"text": "Sisennetty teksti ijfosd jfosadhf oashdf hasdfou housadhf uisahdf iuasdhf iuashdf iuhsadfsdaf",
 								"type": "text",
 								"version": 1
 							}
@@ -5650,6 +5618,78 @@
 						"direction": "ltr",
 						"format": "",
 						"indent": 2,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Vasen alignattu teksti",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Keski alignattu teksti",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "center",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Oikea alignattu teksti",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "right",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"format": "",
+						"type": "upload",
+						"version": 1,
+						"fields": null,
+						"relationTo": "media",
+						"value": {
+							"id": "659affde2252cfbb398aa590"
+						}
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
 						"type": "paragraph",
 						"version": 1
 					},
@@ -5852,7 +5892,47 @@
 						"version": 1
 					},
 					{
-						"children": [],
+						"format": "",
+						"type": "upload",
+						"version": 1,
+						"fields": {
+							"caption": "Smartly very cool :OOO"
+						},
+						"relationTo": "media",
+						"value": {
+							"id": "659b00362252cfbb398aa5a6"
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "quote",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Phasellus fermentum dui est, eget tincidunt sapien varius vel. Phasellus eleifend massa facilisis efficitur convallis. Duis ut eros eget metus ornare molestie. Etiam porttitor, nulla eget elementum faucibus, nulla velit maximus ante, at feugiat orci tortor at augue. Ut feugiat fermentum orci, sed commodo justo pellentesque nec. Curabitur et sapien nulla. Cras pharetra, tortor quis lobortis vulputate, sapien elit ultrices dui, et hendrerit ligula dui non tellus. Donec posuere purus sit amet dui cursus pulvinar. Pellentesque feugiat tortor purus, vel rhoncus nulla mattis id. Vivamus tincidunt fringilla sapien, eu egestas sem finibus vestibulum. Vivamus suscipit porta pulvinar. In est orci, fringilla non dui volutpat, tristique tincidunt neque. In tincidunt ipsum in purus sollicitudin, rhoncus lacinia urna fringilla. Aliquam laoreet faucibus libero eu gravida. Duis pellentesque orci in ante rhoncus mollis.",
+								"type": "text",
+								"version": 1
+							}
+						],
 						"direction": "ltr",
 						"format": "",
 						"indent": 0,
