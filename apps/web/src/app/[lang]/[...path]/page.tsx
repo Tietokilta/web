@@ -51,7 +51,7 @@ function Content({
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-24">
+    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose">
       <LexicalSerializer nodes={content.root.children} />
     </article>
   );
@@ -73,7 +73,7 @@ const Page = async ({ params: { path, lang } }: Props) => {
 
         <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
           <TableOfContents content={content} />
-          <p className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
+          <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}
           </p>
           <Content content={content} />
