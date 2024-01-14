@@ -51,7 +51,7 @@ function Content({
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose">
+    <article className="prose prose-headings:scroll-mt-40 prose-headings:font-mono prose-headings:xl:scroll-mt-24 max-w-prose">
       <LexicalSerializer nodes={content.root.children} />
     </article>
   );
@@ -68,7 +68,7 @@ const Page = async ({ params: { path, lang } }: Props) => {
       <AdminBar collection="pages" id={page.id} />
       <main className="relative mb-8 flex flex-col items-center gap-2 md:gap-6">
         <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 text-gray-100 md:h-[25svh]">
-          <h1 className="text-4xl md:text-5xl">{page.title}</h1>
+          <h1 className="font-mono text-4xl md:text-5xl">{page.title}</h1>
         </header>
 
         <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
