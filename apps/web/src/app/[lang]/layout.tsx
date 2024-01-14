@@ -4,12 +4,15 @@ import { Inter, Roboto_Mono } from "next/font/google";
 import { Footer } from "../../components/footer";
 import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
-import { cn } from "../../lib/utils";
 import { getDictionary, type Locale } from "../../lib/dictionaries";
+import { cn } from "../../lib/utils";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
-const robotoMono = Roboto_Mono({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+});
 
 interface LayoutProps {
   params: {
@@ -52,7 +55,7 @@ export default async function RootLayout({
 
   return (
     <html lang={lang}>
-      <body className={cn(inter.className, robotoMono.className)}>
+      <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <div className="flex min-h-screen flex-col">
           <MobileNav
             className="sticky top-0 z-10 md:hidden"
