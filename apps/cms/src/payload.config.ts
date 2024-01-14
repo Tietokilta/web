@@ -1,11 +1,29 @@
 import path from "path";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { HeadingFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
+import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
+import {
+  AlignFeature,
+  BlockQuoteFeature,
+  BoldTextFeature,
+  HeadingFeature,
+  IndentFeature,
+  InlineCodeTextFeature,
+  ItalicTextFeature,
+  LinkFeature,
+  OrderedListFeature,
+  ParagraphFeature,
+  RelationshipFeature,
+  StrikethroughTextFeature,
+  SubscriptTextFeature,
+  UnderlineTextFeature,
+  UnorderedListFeature,
+  UploadFeature,
+  lexicalEditor,
+} from "@payloadcms/richtext-lexical";
 import type { Config } from "@tietokilta/cms-types/payload";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
-import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
 import { azureBlobStorageAdapter } from "@payloadcms/plugin-cloud-storage/azure";
 import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
@@ -38,6 +56,7 @@ export default buildConfig({
   // TODO: should probably enable this for production but it breaks auth in development
   // serverURL: process.env.PUBLIC_SERVER_URL,
   admin: {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- stupid eslint doesn't find the type
     bundler: webpackBundler(),
     user: Users.slug,
     autoLogin:
@@ -75,6 +94,47 @@ export default buildConfig({
   db: mongooseAdapter({
     // @ts-expect-error DATABASE_URL is validated by payload on start
     url: process.env.PAYLOAD_DATABASE_URL,
+  }),
+  editor: lexicalEditor({
+    features: [
+      BoldTextFeature(),
+      ItalicTextFeature(),
+      UnderlineTextFeature(),
+      StrikethroughTextFeature(),
+      SubscriptTextFeature(),
+      InlineCodeTextFeature(),
+      ParagraphFeature(),
+      HeadingFeature({
+        enabledHeadingSizes: ["h2", "h3"],
+      }),
+      AlignFeature(),
+      IndentFeature(),
+      UnorderedListFeature(),
+      OrderedListFeature(),
+      LinkFeature({
+        enabledCollections: ["pages"],
+      }),
+      RelationshipFeature({
+        enabledCollections: ["pages"],
+      }),
+      BlockQuoteFeature(),
+      UploadFeature({
+        collections: {
+          media: {
+            fields: [
+              {
+                name: "caption",
+                label: "Caption",
+                localized: true,
+                type: "text",
+                minLength: 20,
+                maxLength: 100,
+              },
+            ],
+          },
+        },
+      }),
+    ],
   }),
   plugins: [
     oAuthPlugin({
@@ -136,12 +196,4 @@ export default buildConfig({
       },
     }),
   ],
-  editor: lexicalEditor({
-    features: ({ defaultFeatures }) => [
-      ...defaultFeatures,
-      HeadingFeature({
-        enabledHeadingSizes: ["h2", "h3"],
-      }),
-    ],
-  }),
 });
