@@ -1,9 +1,6 @@
 name: CI
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    types: [opened, synchronize]
 jobs:
   build:
     name: Build
@@ -28,11 +25,3 @@ jobs:
 
       - name: Build all
         run: pnpm build
-        env:
-          PAYLOAD_DATABASE_URL: ${{ secrets.PAYLOAD_DATABASE_URL }}
-          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
-          PAYLOAD_REVALIDATION_KEY: ${{ secrets.PAYLOAD_REVALIDATION_KEY }}
-          PAYLOAD_PORT: ${{ secrets.PAYLOAD_PORT }}
-          NEXT_REVALIDATION_KEY: ${{ secrets.NEXT_REVALIDATION_KEY }}
-          PUBLIC_FRONTEND_URL: ${{ vars.PUBLIC_FRONTEND_URL }}
-          PUBLIC_SERVER_URL: ${{ vars.PUBLIC_SERVER_URL }}
