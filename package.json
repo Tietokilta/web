@@ -10,7 +10,7 @@
     "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
-    "dev": "dotenv -- turbo run dev",
+    "dev": "pnpm db:start && dotenv -- turbo run dev",
     "docker:build:cms": "docker build . --tag cms --build-arg PROJECT=cms",
     "docker:build:web": "docker build . --tag web --build-arg PROJECT=web",
     "docker:compose:build": "docker compose -f docker-compose.prod.yml up --build",
