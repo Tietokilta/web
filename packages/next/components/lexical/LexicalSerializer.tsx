@@ -83,7 +83,7 @@ export function LexicalSerializer({ nodes }: Props): JSX.Element {
               );
             const ParagraphTag = hasAllowedChildren(node) ? "p" : "div";
             return (
-              <ParagraphTag key={index}>{serializedChildren}</ParagraphTag>
+              <ParagraphTag key={index} className="mb-3">{serializedChildren}</ParagraphTag>
             );
           }
           case "heading": {

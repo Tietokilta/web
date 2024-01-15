@@ -7,7 +7,7 @@ import path from "path";
 const Media: CollectionConfig = {
   slug: "media",
   access: {
-    read: ({ req, id }) => !!req.user || !!id,
+    read: () => true,
     create: loggedIn,
     update: loggedIn,
     delete: loggedIn,
