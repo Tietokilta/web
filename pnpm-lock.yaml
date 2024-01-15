@@ -12,14 +12,14 @@ importers:
         specifier: ^7.3.0
         version: 7.3.0
       prettier:
-        specifier: ^3.2.1
-        version: 3.2.1
+        specifier: ^3.2.2
+        version: 3.2.2
       prettier-plugin-packagejson:
         specifier: ^2.4.9
-        version: 2.4.9(prettier@3.2.1)
+        version: 2.4.9(prettier@3.2.2)
       prettier-plugin-tailwindcss:
         specifier: ^0.5.11
-        version: 0.5.11(prettier@3.2.1)
+        version: 0.5.11(prettier@3.2.2)
       turbo:
         specifier: ^1.11.3
         version: 1.11.3
@@ -28,7 +28,7 @@ importers:
     dependencies:
       '@payloadcms/bundler-webpack':
         specifier: ^1.0.6
-        version: 1.0.6(@swc/core@1.3.76)(payload@2.8.1)
+        version: 1.0.6(@swc/core@1.3.103)(payload@2.8.1)
       '@payloadcms/db-mongodb':
         specifier: ^1.3.1
         version: 1.3.1(payload@2.8.1)
@@ -173,13 +173,13 @@ importers:
     devDependencies:
       '@vercel/style-guide':
         specifier: ^5.1.0
-        version: 5.1.0(eslint@8.56.0)(prettier@3.2.1)(typescript@5.3.3)
+        version: 5.1.0(eslint@8.56.0)(prettier@3.2.2)(typescript@5.3.3)
       eslint-config-turbo:
         specifier: ^1.11.3
         version: 1.11.3(eslint@8.56.0)
       eslint-plugin-mdx:
-        specifier: ^3.1.4
-        version: 3.1.4(eslint@8.56.0)
+        specifier: ^3.1.5
+        version: 3.1.5(eslint@8.56.0)
       eslint-plugin-only-warn:
         specifier: ^1.1.0
         version: 1.1.0
@@ -348,16 +348,16 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/client-cognito-identity@3.489.0:
-    resolution: {integrity: sha512-NGcvONQwyq/zEVy8S++G+aKpNeUYa2QngxKa2qP+5sL6LGIigXQQjR8+IfG/zbu91hsx5R9P0QYuUnvXrlZotQ==}
+  /@aws-sdk/client-cognito-identity@3.490.0:
+    resolution: {integrity: sha512-P2C8yBOUK0iIIYMb6AUkiE5qoWu032tMVxIZWya9dBYu8uqlnzO0duC5P3UGn6lETZX/59PQ926vRc/6YMyMLg==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/client-sts': 3.489.0
-      '@aws-sdk/core': 3.485.0
-      '@aws-sdk/credential-provider-node': 3.489.0
+      '@aws-sdk/client-sts': 3.490.0
+      '@aws-sdk/core': 3.490.0
+      '@aws-sdk/credential-provider-node': 3.490.0
       '@aws-sdk/middleware-host-header': 3.489.0
       '@aws-sdk/middleware-logger': 3.489.0
       '@aws-sdk/middleware-recursion-detection': 3.489.0
@@ -398,14 +398,14 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/client-sso@3.489.0:
-    resolution: {integrity: sha512-SZPXiYnByYnd3Vy0qY/PnWD2e9JA3Lwi000Tyz+ZQvjK9emH0B6aeWaxFZ7W4jscJVwQVc5kgvRPsJi5zY3w1w==}
+  /@aws-sdk/client-sso@3.490.0:
+    resolution: {integrity: sha512-yfxoHmCL1w/IKmFRfzCxdVCQrGlSQf4eei9iVEm5oi3iE8REFyPj3o/BmKQEHG3h2ITK5UbdYDb5TY4xoYHsyA==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/core': 3.485.0
+      '@aws-sdk/core': 3.490.0
       '@aws-sdk/middleware-host-header': 3.489.0
       '@aws-sdk/middleware-logger': 3.489.0
       '@aws-sdk/middleware-recursion-detection': 3.489.0
@@ -445,15 +445,15 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/client-sts@3.489.0:
-    resolution: {integrity: sha512-AAQ9+oEJPIPHXWtQL7ahZCKata+d+vZMXpQp92st7KzgmcgsUBdDTBOH0ImN8LXwZwIMAzfn98wWf4s1xtqUeg==}
+  /@aws-sdk/client-sts@3.490.0:
+    resolution: {integrity: sha512-n2vQ5Qu2qi2I0XMI+IH99ElpIRHOJTa1+sqNC4juMYxKQBMvw+EnsqUtaL3QvTHoyxNB/R7mpkeBB6SzPQ1TtA==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
       '@aws-crypto/sha256-browser': 3.0.0
       '@aws-crypto/sha256-js': 3.0.0
-      '@aws-sdk/core': 3.485.0
-      '@aws-sdk/credential-provider-node': 3.489.0
+      '@aws-sdk/core': 3.490.0
+      '@aws-sdk/credential-provider-node': 3.490.0
       '@aws-sdk/middleware-host-header': 3.489.0
       '@aws-sdk/middleware-logger': 3.489.0
       '@aws-sdk/middleware-recursion-detection': 3.489.0
@@ -495,8 +495,8 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/core@3.485.0:
-    resolution: {integrity: sha512-Yvi80DQcbjkYCft471ClE3HuetuNVqntCs6eFOomDcrJaqdOFrXv2kJAxky84MRA/xb7bGlDGAPbTuj1ICputg==}
+  /@aws-sdk/core@3.490.0:
+    resolution: {integrity: sha512-TSBWkXtxMU7q1Zo6w3v5wIOr/sj7P5Jw3OyO7lJrFGsPsDC2xwpxkVqTesDxkzgMRypO52xjYEmveagn1xxBHg==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
@@ -509,12 +509,12 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/credential-provider-cognito-identity@3.489.0:
-    resolution: {integrity: sha512-OlcNLOeIq4kdMAJNhM/FuiolTUf4B6e/kb4LJW4vzcI8/Il55xfLGihuGJHIgbKi4HW5RSvMXCVAoUAALQAsiQ==}
+  /@aws-sdk/credential-provider-cognito-identity@3.490.0:
+    resolution: {integrity: sha512-tm07p+jladfKJYFhFqQjT8PC3mM0zagVud/NnYx6w/MB7pHPrixhCRoG1hK+ckAjnUAUVP2uuGXhTVkTfrkTXg==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
-      '@aws-sdk/client-cognito-identity': 3.489.0
+      '@aws-sdk/client-cognito-identity': 3.490.0
       '@aws-sdk/types': 3.489.0
       '@smithy/property-provider': 2.0.17
       '@smithy/types': 2.8.0
@@ -553,14 +553,14 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/credential-provider-ini@3.489.0:
-    resolution: {integrity: sha512-lB5yufriHMzraQaAlsVKgzXKLGhRHt+ybgcVD+SIegw0QwabWL2va8h1KuRUGqEOUFH6BNTCx9HnI+uH5EadVA==}
+  /@aws-sdk/credential-provider-ini@3.490.0:
+    resolution: {integrity: sha512-7m63zyCpVqj9FsoDxWMWWRvL6c7zZzOcXYkHZmHujVVlmAXH0RT/vkXFkYgt+Ku+ov+v5NQrzwO5TmVoRt6O8g==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
       '@aws-sdk/credential-provider-env': 3.489.0
       '@aws-sdk/credential-provider-process': 3.489.0
-      '@aws-sdk/credential-provider-sso': 3.489.0
+      '@aws-sdk/credential-provider-sso': 3.490.0
       '@aws-sdk/credential-provider-web-identity': 3.489.0
       '@aws-sdk/types': 3.489.0
       '@smithy/credential-provider-imds': 2.1.5
@@ -573,15 +573,15 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/credential-provider-node@3.489.0:
-    resolution: {integrity: sha512-HXjYjG5oqQflLOSkxjDTfWOeE5UX3CvPhcvexZLen8TWyI7azIT81PjFVLq5CJdnFaoeVRxvhp/DIgL7RrNivw==}
+  /@aws-sdk/credential-provider-node@3.490.0:
+    resolution: {integrity: sha512-Gh33u2O5Xbout8G3z/Z5H/CZzdG1ophxf/XS3iMFxA1cazQ7swY1UMmGvB7Lm7upvax5anXouItD1Ph3gzKc4w==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
       '@aws-sdk/credential-provider-env': 3.489.0
-      '@aws-sdk/credential-provider-ini': 3.489.0
+      '@aws-sdk/credential-provider-ini': 3.490.0
       '@aws-sdk/credential-provider-process': 3.489.0
-      '@aws-sdk/credential-provider-sso': 3.489.0
+      '@aws-sdk/credential-provider-sso': 3.490.0
       '@aws-sdk/credential-provider-web-identity': 3.489.0
       '@aws-sdk/types': 3.489.0
       '@smithy/credential-provider-imds': 2.1.5
@@ -607,12 +607,12 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/credential-provider-sso@3.489.0:
-    resolution: {integrity: sha512-tN+7q7xKA4VZmVSMolStvBd8UeHf43kt3TR/tTfqaSvOQR1hKUrDyVgg2rTdyXWxyQPy1O3rtwMKPsorhc/BTA==}
+  /@aws-sdk/credential-provider-sso@3.490.0:
+    resolution: {integrity: sha512-3UUBUoPbFvT58IhS4Vb23omYj/QPNkjgxu9p9ruQ3KSjLkanI4w8t/l/jljA65q83P7CoLnM5UKG9L7RA8/V1Q==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
-      '@aws-sdk/client-sso': 3.489.0
+      '@aws-sdk/client-sso': 3.490.0
       '@aws-sdk/token-providers': 3.489.0
       '@aws-sdk/types': 3.489.0
       '@smithy/property-provider': 2.0.17
@@ -636,21 +636,21 @@ packages:
     dev: false
     optional: true
 
-  /@aws-sdk/credential-providers@3.489.0:
-    resolution: {integrity: sha512-18u+qDG4R5YuGORgTZfVTxSTFbNL9UgTNdihJXCxlVeJzK3LcboilMabig9fN0pEJs8BryRocBzQm/pZyem8gw==}
+  /@aws-sdk/credential-providers@3.490.0:
+    resolution: {integrity: sha512-b66SfI3A2H5qVKYkuaYtnNmHApcj2Vju6wRWDr+nZX2iVqBcpCFIs6jMBY0QWmwn+xhlVvAX9tI4AoqGumzKWg==}
     engines: {node: '>=14.0.0'}
     requiresBuild: true
     dependencies:
-      '@aws-sdk/client-cognito-identity': 3.489.0
-      '@aws-sdk/client-sso': 3.489.0
-      '@aws-sdk/client-sts': 3.489.0
-      '@aws-sdk/credential-provider-cognito-identity': 3.489.0
+      '@aws-sdk/client-cognito-identity': 3.490.0
+      '@aws-sdk/client-sso': 3.490.0
+      '@aws-sdk/client-sts': 3.490.0
+      '@aws-sdk/credential-provider-cognito-identity': 3.490.0
       '@aws-sdk/credential-provider-env': 3.489.0
       '@aws-sdk/credential-provider-http': 3.489.0
-      '@aws-sdk/credential-provider-ini': 3.489.0
-      '@aws-sdk/credential-provider-node': 3.489.0
+      '@aws-sdk/credential-provider-ini': 3.490.0
+      '@aws-sdk/credential-provider-node': 3.490.0
       '@aws-sdk/credential-provider-process': 3.489.0
-      '@aws-sdk/credential-provider-sso': 3.489.0
+      '@aws-sdk/credential-provider-sso': 3.490.0
       '@aws-sdk/credential-provider-web-identity': 3.489.0
       '@aws-sdk/types': 3.489.0
       '@smithy/credential-provider-imds': 2.1.5
@@ -2432,8 +2432,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /@mongodb-js/saslprep@1.1.3:
-    resolution: {integrity: sha512-SyCxhJfmK6MoLNV5SbDpNdUy9SDv5H7y9/9rl3KpnwgTHWuNNMc87zWqbcIZXNWY+aUjxLGLEcvHoLagG4tWCg==}
+  /@mongodb-js/saslprep@1.1.4:
+    resolution: {integrity: sha512-8zJ8N1x51xo9hwPh6AWnKdLGEC5N3lDa6kms1YHmFBoRhTpJR6HG8wWk0td1MVCu9cD4YBrvjZEtd5Obw0Fbnw==}
     requiresBuild: true
     dependencies:
       sparse-bitfield: 3.0.3
@@ -2584,7 +2584,7 @@ packages:
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dev: true
 
-  /@payloadcms/bundler-webpack@1.0.6(@swc/core@1.3.76)(payload@2.8.1):
+  /@payloadcms/bundler-webpack@1.0.6(@swc/core@1.3.103)(payload@2.8.1):
     resolution: {integrity: sha512-hKnRqF2IhYCqNwb8FjKNnjR9fKCXVK2PJgPu3R89dvFhvMnwkbkbj86LMCC4dLmQ9RXmmh/drw4Q5acQ/Xec8g==}
     peerDependencies:
       payload: ^2.0.0
@@ -2606,11 +2606,11 @@ packages:
       process: 0.11.10
       sass-loader: 12.6.0(webpack@5.89.0)
       style-loader: 2.0.0(webpack@5.89.0)
-      swc-loader: 0.2.3(@swc/core@1.3.76)(webpack@5.89.0)
-      swc-minify-webpack-plugin: 2.1.1(@swc/core@1.3.76)(webpack@5.89.0)
-      terser-webpack-plugin: 5.3.10(@swc/core@1.3.76)(webpack@5.89.0)
+      swc-loader: 0.2.3(@swc/core@1.3.103)(webpack@5.89.0)
+      swc-minify-webpack-plugin: 2.1.1(@swc/core@1.3.103)(webpack@5.89.0)
+      terser-webpack-plugin: 5.3.10(@swc/core@1.3.103)(webpack@5.89.0)
       url-loader: 4.1.1(file-loader@6.2.0)(webpack@5.89.0)
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
       webpack-bundle-analyzer: 4.10.1
       webpack-cli: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack@5.89.0)
       webpack-dev-middleware: 6.0.1(webpack@5.89.0)
@@ -3828,10 +3828,28 @@ packages:
       lodash: 4.17.21
     dev: true
 
+  /@swc/core-darwin-arm64@1.3.103:
+    resolution: {integrity: sha512-Dqqz48mvdm/3PHPPA6YeAEofkF9H5Krgqd/baPf0dXcarzng6U9Ilv2aCtDjq7dfI9jfkVCW5zuwq98PE2GEdw==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@swc/core-darwin-arm64@1.3.76:
     resolution: {integrity: sha512-ovviEhZ/1E81Z9OGrO0ivLWk4VCa3I3ZzM+cd3gugglRRwVwtlIaoIYqY5S3KiCAupDd1+UCl5X7Vbio7a/V8g==}
     engines: {node: '>=10'}
     cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@swc/core-darwin-x64@1.3.103:
+    resolution: {integrity: sha512-mhUVSCEAyFLqtrDtwr9qPbe891J8cKxq53CD873/ZsUnyasHMPyWXzTvy9qjmbYyfDIArm6fGqjF5YsDKwGGNg==}
+    engines: {node: '>=10'}
+    cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: false
@@ -3846,6 +3864,15 @@ packages:
     dev: false
     optional: true
 
+  /@swc/core-linux-arm-gnueabihf@1.3.103:
+    resolution: {integrity: sha512-rYLmwxr01ZHOI6AzooqwB0DOkMm0oU8Jznk6uutV1lHgcwyxsNiC1Css8yf77Xr/sYTvKvuTfBjThqa5H716pA==}
+    engines: {node: '>=10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@swc/core-linux-arm-gnueabihf@1.3.76:
     resolution: {integrity: sha512-apgzpGWy1AwoMF4urAAASsAjE7rEzZFIF+p6utuxhS7cNHzE0AyEVDYJbo+pzBdlZ8orBdzzsHtFwoEgKOjebA==}
     engines: {node: '>=10'}
@@ -3855,8 +3882,26 @@ packages:
     dev: false
     optional: true
 
+  /@swc/core-linux-arm64-gnu@1.3.103:
+    resolution: {integrity: sha512-w+5XFpUqxiAGUBiyRyYR28Ghddp5uVyo+dHAkCnY1u3V6RsZkY3vRwmoXT7/HxVGV7csodJ1P9Cp9VaRnNvTKA==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@swc/core-linux-arm64-gnu@1.3.76:
     resolution: {integrity: sha512-c3c0zz6S0eludqidDpuqbadE0WT3OZczyQxe9Vw8lFFXES85mvNGtwYzyGK2o7TICpsuHrndwDIoYpmpWk879g==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@swc/core-linux-arm64-musl@1.3.103:
+    resolution: {integrity: sha512-lS5p8ewAIar7adX6t0OrkICTcw92PXrn3ZmYyG5hvfjUg4RPQFjMfFMDQSne32ZJhGXHBf0LVm1R8wHwkcpwgA==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
@@ -3873,8 +3918,26 @@ packages:
     dev: false
     optional: true
 
+  /@swc/core-linux-x64-gnu@1.3.103:
+    resolution: {integrity: sha512-Lf2cHDoEPNB6TwexHBEZCsAO2C7beb0YljhtQS+QfjWLLVqCiwt5LRCPuKN2Bav7el9KZXOI5baXedUeFj0oFg==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@swc/core-linux-x64-gnu@1.3.76:
     resolution: {integrity: sha512-iwCeRzd9oSvUzqt7nU6p/ztceAWfnO9XVxBn502R5gs6QCBbE1HCKrWHDO77aKPK7ss+0NcIGHvXTd9L8/wRzw==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@swc/core-linux-x64-musl@1.3.103:
+    resolution: {integrity: sha512-HR1Y9iiLEO3F49P47vjbHczBza9RbdXWRWC8NpcOcGJ4Wnw0c2DLWAh416fGH3VYCF/19EuglLEXhvSj0NXGuA==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
@@ -3891,10 +3954,28 @@ packages:
     dev: false
     optional: true
 
+  /@swc/core-win32-arm64-msvc@1.3.103:
+    resolution: {integrity: sha512-3/GfROD1GPyf2hi6R0l4iZ5nrrKG8IU29hYhZCb7r0ZqhL/58kktVPlkib8X/EAJI8xbhM/NMl76h8ElrnyH5w==}
+    engines: {node: '>=10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@swc/core-win32-arm64-msvc@1.3.76:
     resolution: {integrity: sha512-+swEFtjdMezS0vKUhJC3psdSDtOJGY5pEOt4e8XOPvn7aQpKQ9LfF49XVtIwDSk5SGuWtVoLFzkSY3reWUJCyg==}
     engines: {node: '>=10'}
     cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@swc/core-win32-ia32-msvc@1.3.103:
+    resolution: {integrity: sha512-9ejEFjfgPi0ibNmtuiRbYq9p4RRV6oH1DN9XjkYM8zh2qHlpZHKQZ3n4eHS0VtJO4rEGZxL8ebcnTNs62wqJig==}
+    engines: {node: '>=10'}
+    cpu: [ia32]
     os: [win32]
     requiresBuild: true
     dev: false
@@ -3909,6 +3990,15 @@ packages:
     dev: false
     optional: true
 
+  /@swc/core-win32-x64-msvc@1.3.103:
+    resolution: {integrity: sha512-/1RvaOmZolXurWAUdnELYynVlFUiT0hj3PyTPoo+YK6+KV7er4EqUalRsoUf3zzGepQuhKFZFDpQn6Xi9kJX1A==}
+    engines: {node: '>=10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@swc/core-win32-x64-msvc@1.3.76:
     resolution: {integrity: sha512-CiMpWLLlR3Cew9067E7XxaLBwYYJ90r9EhGSO6V1pvYSWj7ET/Ppmtj1ZhzPJMqRXAP6xflfl5R5o4ee1m4WLA==}
     engines: {node: '>=10'}
@@ -3917,6 +4007,31 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@swc/core@1.3.103:
+    resolution: {integrity: sha512-PYtt8KzRXIFDwxeD7BA9ylmXNQ4hRVcmDVuAmL3yvL9rgx7Tn3qn6T37wiMVZnP1OjqGyhuHRPNycd+ssr+byw==}
+    engines: {node: '>=10'}
+    requiresBuild: true
+    peerDependencies:
+      '@swc/helpers': ^0.5.0
+    peerDependenciesMeta:
+      '@swc/helpers':
+        optional: true
+    dependencies:
+      '@swc/counter': 0.1.2
+      '@swc/types': 0.1.5
+    optionalDependencies:
+      '@swc/core-darwin-arm64': 1.3.103
+      '@swc/core-darwin-x64': 1.3.103
+      '@swc/core-linux-arm-gnueabihf': 1.3.103
+      '@swc/core-linux-arm64-gnu': 1.3.103
+      '@swc/core-linux-arm64-musl': 1.3.103
+      '@swc/core-linux-x64-gnu': 1.3.103
+      '@swc/core-linux-x64-musl': 1.3.103
+      '@swc/core-win32-arm64-msvc': 1.3.103
+      '@swc/core-win32-ia32-msvc': 1.3.103
+      '@swc/core-win32-x64-msvc': 1.3.103
+    dev: false
 
   /@swc/core@1.3.76:
     resolution: {integrity: sha512-aYYTA2aVYkwJAZepQXtPnkUthhOfn8qd6rsh+lrJxonFrjmpI7RHt2tMDVTXP6XDX7fvnvrVtT1bwZfmBFPh0Q==}
@@ -3940,6 +4055,10 @@ packages:
       '@swc/core-win32-x64-msvc': 1.3.76
     dev: false
 
+  /@swc/counter@0.1.2:
+    resolution: {integrity: sha512-9F4ys4C74eSTEUNndnER3VJ15oru2NumfQxS8geE+f3eB5xvfxpWyqE5XlVnxb/R14uoXi6SLbBwwiDSkv+XEw==}
+    dev: false
+
   /@swc/helpers@0.5.2:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==}
     dependencies:
@@ -3956,6 +4075,10 @@ packages:
       lodash.clonedeep: 4.5.0
       pirates: 4.0.6
       source-map-support: 0.5.21
+    dev: false
+
+  /@swc/types@0.1.5:
+    resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
     dev: false
 
   /@tokenizer/token@0.3.0:
@@ -4049,7 +4172,7 @@ packages:
   /@types/hast@3.0.3:
     resolution: {integrity: sha512-2fYGlaDy/qyLlhidX42wAH0KBi2TCjKMH8CHmBXgRlJ3Y+OXTiqsPQ6IWarZKwF1JoUcAJdPogv1d4b0COTpmQ==}
     dependencies:
-      '@types/unist': 2.0.10
+      '@types/unist': 3.0.2
     dev: true
 
   /@types/html-minifier-terser@6.1.0:
@@ -4103,7 +4226,7 @@ packages:
   /@types/mdast@4.0.3:
     resolution: {integrity: sha512-LsjtqsyF+d2/yFOYaN22dHZI1Cpwkrj+g06G8+qtUKlhovPW89YhqSnfKtMbkgmEtYpH2gydRNULd6y8mciAFg==}
     dependencies:
-      '@types/unist': 2.0.10
+      '@types/unist': 3.0.2
     dev: true
 
   /@types/mime@1.3.5:
@@ -4424,7 +4547,7 @@ packages:
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
-  /@vercel/style-guide@5.1.0(eslint@8.56.0)(prettier@3.2.1)(typescript@5.3.3):
+  /@vercel/style-guide@5.1.0(eslint@8.56.0)(prettier@3.2.2)(typescript@5.3.3):
     resolution: {integrity: sha512-L9lWYePIycm7vIOjDLj+mmMdmmPkW3/brHjgq+nJdvMOrL7Hdk/19w8X583HYSk0vWsq494o5Qkh6x5+uW7ljg==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -4461,8 +4584,8 @@ packages:
       eslint-plugin-testing-library: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-tsdoc: 0.2.17
       eslint-plugin-unicorn: 48.0.1(eslint@8.56.0)
-      prettier: 3.2.1
-      prettier-plugin-packagejson: 2.4.6(prettier@3.2.1)
+      prettier: 3.2.2
+      prettier-plugin-packagejson: 2.4.6(prettier@3.2.2)
       typescript: 5.3.3
     transitivePeerDependencies:
       - eslint-import-resolver-node
@@ -4583,7 +4706,7 @@ packages:
       webpack: 4.x.x || 5.x.x
       webpack-cli: 4.x.x
     dependencies:
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
       webpack-cli: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack@5.89.0)
     dev: false
 
@@ -5568,7 +5691,7 @@ packages:
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.5.4
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /css-minimizer-webpack-plugin@5.0.1(webpack@5.89.0):
@@ -5602,7 +5725,7 @@ packages:
       postcss: 8.4.33
       schema-utils: 4.2.0
       serialize-javascript: 6.0.2
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /css-prefers-color-scheme@9.0.1(postcss@8.4.31):
@@ -6443,8 +6566,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-mdx@3.1.4(eslint@8.56.0):
-    resolution: {integrity: sha512-e8INdT4Up8bPT/QuaoUYOXJHOI8XZKq9qtHMPkTV5BVwolu6Cgfo4qqOtEDDSUFo9Nmw/8CQ8dJB5ncZvPG1Dw==}
+  /eslint-mdx@3.1.5(eslint@8.56.0):
+    resolution: {integrity: sha512-ynztX0k7CQ3iDL7fDEIeg3g0O/d6QPv7IBI9fdYLhXp5fAp0fi8X22xF/D3+Pk0f90R27uwqa1clHpay6t0l8Q==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: '>=8.0.0'
@@ -6602,14 +6725,14 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-mdx@3.1.4(eslint@8.56.0):
-    resolution: {integrity: sha512-KTeauZahLAhA5J+NcqnpuZzhv9lmI2paKbesmPj6Q6rgeSg8jorfIhhcLSoUiSIobl7MSYgjULR2FDb8KE6PKg==}
+  /eslint-plugin-mdx@3.1.5(eslint@8.56.0):
+    resolution: {integrity: sha512-lUE7tP7IrIRHU3gTtASDe5u4YM2SvQveYVJfuo82yn3MLh/B/v05FNySURCK4aIxIYF1QYo3IRemQG/lyQzpAg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       eslint: '>=8.0.0'
     dependencies:
       eslint: 8.56.0
-      eslint-mdx: 3.1.4(eslint@8.56.0)
+      eslint-mdx: 3.1.5(eslint@8.56.0)
       eslint-plugin-markdown: 3.0.1(eslint@8.56.0)
       remark-mdx: 3.0.0
       remark-parse: 11.0.0
@@ -7055,7 +7178,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /file-type@16.5.4:
@@ -7634,7 +7757,7 @@ packages:
       lodash: 4.17.21
       pretty-error: 4.0.0
       tapable: 2.2.1
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /htmlparser2@6.1.0:
@@ -9062,7 +9185,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
       webpack-sources: 1.4.3
     dev: false
 
@@ -9121,8 +9244,8 @@ packages:
       mongodb-connection-string-url: 2.6.0
       socks: 2.7.1
     optionalDependencies:
-      '@aws-sdk/credential-providers': 3.489.0
-      '@mongodb-js/saslprep': 1.1.3
+      '@aws-sdk/credential-providers': 3.490.0
+      '@mongodb-js/saslprep': 1.1.4
     transitivePeerDependencies:
       - aws-crt
     dev: false
@@ -10249,7 +10372,7 @@ packages:
       klona: 2.0.6
       postcss: 8.4.31
       semver: 7.5.4
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /postcss-logical@7.0.1(postcss@8.4.31):
@@ -10715,7 +10838,7 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-packagejson@2.4.6(prettier@3.2.1):
+  /prettier-plugin-packagejson@2.4.6(prettier@3.2.2):
     resolution: {integrity: sha512-5JGfzkJRL0DLNyhwmiAV9mV0hZLHDwddFCs2lc9CNxOChpoWUQVe8K4qTMktmevmDlMpok2uT10nvHUyU59sNw==}
     peerDependencies:
       prettier: '>= 1.16.0'
@@ -10723,12 +10846,12 @@ packages:
       prettier:
         optional: true
     dependencies:
-      prettier: 3.2.1
+      prettier: 3.2.2
       sort-package-json: 2.6.0
       synckit: 0.8.5
     dev: true
 
-  /prettier-plugin-packagejson@2.4.9(prettier@3.2.1):
+  /prettier-plugin-packagejson@2.4.9(prettier@3.2.2):
     resolution: {integrity: sha512-b3Q7agXVqxK3UpYEJr0xLD51SxriYXESWUCjmxOBUGqnPFZOg9jZGZ+Ptzq252I6OqzXN2rj1tJIFq6KOGLLJw==}
     peerDependencies:
       prettier: '>= 1.16.0'
@@ -10736,12 +10859,12 @@ packages:
       prettier:
         optional: true
     dependencies:
-      prettier: 3.2.1
+      prettier: 3.2.2
       sort-package-json: 2.6.0
       synckit: 0.9.0
     dev: true
 
-  /prettier-plugin-tailwindcss@0.5.11(prettier@3.2.1):
+  /prettier-plugin-tailwindcss@0.5.11(prettier@3.2.2):
     resolution: {integrity: sha512-AvI/DNyMctyyxGOjyePgi/gqj5hJYClZ1avtQvLlqMT3uDZkRbi4HhGUpok3DRzv9z7Lti85Kdj3s3/1CeNI0w==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -10790,7 +10913,7 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
-      prettier: 3.2.1
+      prettier: 3.2.2
     dev: true
 
   /prettier@2.8.8:
@@ -10799,8 +10922,8 @@ packages:
     hasBin: true
     dev: false
 
-  /prettier@3.2.1:
-    resolution: {integrity: sha512-qSUWshj1IobVbKc226Gw2pync27t0Kf0EdufZa9j7uBSJay1CC+B3K5lAAZoqgX3ASiKuWsk6OmzKRetXNObWg==}
+  /prettier@3.2.2:
+    resolution: {integrity: sha512-HTByuKZzw7utPiDO523Tt2pLtEyK7OibUD9suEJQrPUCYQqrHr74GGX6VidMrovbf/I50mPqr8j/II6oBAuc5A==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -11609,7 +11732,7 @@ packages:
     dependencies:
       klona: 2.0.6
       neo-async: 2.6.2
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /sass@1.69.4:
@@ -12169,7 +12292,7 @@ packages:
     dependencies:
       loader-utils: 2.0.4
       schema-utils: 3.3.0
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /styled-jsx@5.1.1(react@18.2.0):
@@ -12258,6 +12381,16 @@ packages:
       picocolors: 1.0.0
     dev: false
 
+  /swc-loader@0.2.3(@swc/core@1.3.103)(webpack@5.89.0):
+    resolution: {integrity: sha512-D1p6XXURfSPleZZA/Lipb3A8pZ17fP4NObZvFCDjK/OKljroqDpPmsBdTraWhVBqUNpcWBQY1imWdoPScRlQ7A==}
+    peerDependencies:
+      '@swc/core': ^1.2.147
+      webpack: '>=2'
+    dependencies:
+      '@swc/core': 1.3.103
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
+    dev: false
+
   /swc-loader@0.2.3(@swc/core@1.3.76)(webpack@5.89.0):
     resolution: {integrity: sha512-D1p6XXURfSPleZZA/Lipb3A8pZ17fP4NObZvFCDjK/OKljroqDpPmsBdTraWhVBqUNpcWBQY1imWdoPScRlQ7A==}
     peerDependencies:
@@ -12265,17 +12398,17 @@ packages:
       webpack: '>=2'
     dependencies:
       '@swc/core': 1.3.76
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
-  /swc-minify-webpack-plugin@2.1.1(@swc/core@1.3.76)(webpack@5.89.0):
+  /swc-minify-webpack-plugin@2.1.1(@swc/core@1.3.103)(webpack@5.89.0):
     resolution: {integrity: sha512-/9ud/libNWUC5p71vXWhW/O2Nc0essW8D9pY4P4ol0ceM8OcFbNr41R9YFqTkmktqUL2t0WwXau+FkR4T1+PJA==}
     peerDependencies:
       '@swc/core': ^1.0.0
       webpack: ^5.0.0
     dependencies:
-      '@swc/core': 1.3.76
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      '@swc/core': 1.3.103
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /synckit@0.8.5:
@@ -12381,7 +12514,7 @@ packages:
       streamx: 2.15.6
     dev: false
 
-  /terser-webpack-plugin@5.3.10(@swc/core@1.3.76)(webpack@5.89.0):
+  /terser-webpack-plugin@5.3.10(@swc/core@1.3.103)(webpack@5.89.0):
     resolution: {integrity: sha512-BKFPWlPDndPs+NGGCr1U59t0XScL5317Y0UReNrHaw9/FwhPENlq6bfgs+4yPfyP51vqC1bQ4rp1EfXW5ZSH9w==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -12398,12 +12531,12 @@ packages:
         optional: true
     dependencies:
       '@jridgewell/trace-mapping': 0.3.20
-      '@swc/core': 1.3.76
+      '@swc/core': 1.3.103
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.26.0
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /terser-webpack-plugin@5.3.9(@swc/core@1.3.76)(webpack@5.89.0):
@@ -12428,7 +12561,7 @@ packages:
       schema-utils: 3.3.0
       serialize-javascript: 6.0.2
       terser: 5.26.0
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /terser@5.26.0:
@@ -12969,7 +13102,7 @@ packages:
       loader-utils: 2.0.4
       mime-types: 2.1.35
       schema-utils: 3.3.0
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /use-callback-ref@1.3.1(@types/react@18.2.47)(react@18.2.0):
@@ -13225,7 +13358,7 @@ packages:
       import-local: 3.1.0
       interpret: 2.2.0
       rechoir: 0.7.1
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
       webpack-bundle-analyzer: 4.10.1
       webpack-merge: 5.10.0
     dev: false
@@ -13241,7 +13374,7 @@ packages:
       mime-types: 2.1.35
       range-parser: 1.2.1
       schema-utils: 4.2.0
-      webpack: 5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0)
+      webpack: 5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0)
     dev: false
 
   /webpack-hot-middleware@2.26.0:
@@ -13273,7 +13406,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /webpack@5.89.0(@swc/core@1.3.76)(webpack-cli@4.10.0):
+  /webpack@5.89.0(@swc/core@1.3.103)(webpack-cli@4.10.0):
     resolution: {integrity: sha512-qyfIC10pOr70V+jkmud8tMfajraGCZMBWJtrmuBymQKCrLTRejBI8STDp1MCyZu/QTdZSeacCQYpYNQVOzX5kw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
@@ -13304,7 +13437,7 @@ packages:
       neo-async: 2.6.2
       schema-utils: 3.3.0
       tapable: 2.2.1
-      terser-webpack-plugin: 5.3.10(@swc/core@1.3.76)(webpack@5.89.0)
+      terser-webpack-plugin: 5.3.10(@swc/core@1.3.103)(webpack@5.89.0)
       watchpack: 2.4.0
       webpack-cli: 4.10.0(webpack-bundle-analyzer@4.10.1)(webpack@5.89.0)
       webpack-sources: 3.2.3
