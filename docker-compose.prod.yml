@@ -20,7 +20,7 @@ services:
     depends_on:
       - mongo
     env_file:
-      - .env
+      - .env.docker-compose.prod
     expose:
       - 3001
 
@@ -30,11 +30,13 @@ services:
       args:
         - PROJECT=web
     depends_on:
-      - mongo
+      - cms
     env_file:
-      - .env
+      - .env.docker-compose.prod
     expose:
       - 3000
+    ports:
+      - 3000:3000
 
 volumes:
   data:
