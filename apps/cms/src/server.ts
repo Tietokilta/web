@@ -12,7 +12,6 @@ const app = express();
 app.get("/", (_, res) => {
   res.redirect("/admin");
 });
-
 const start = async (): Promise<void> => {
   // Initialize Payload
   await payload.init({
@@ -22,12 +21,13 @@ const start = async (): Promise<void> => {
       payloadInstance.logger.info(
         `Payload Admin URL: ${payloadInstance.getAdminURL()}`,
       );
-      if (process.env.PAYLOAD_LOCAL_DEVELOPMENT === "true") {
-        const email = process.env.PAYLOAD_DEVELOPMENT_AUTOLOGIN_EMAIL;
-        const password = process.env.PAYLOAD_DEVELOPMENT_AUTOLOGIN_PASSWORD;
+      if (process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT === "true") {
+        const email = process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL;
+        const password =
+          process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD;
         if (!email || !password) {
           throw new Error(
-            "PAYLOAD_DEVELOPMENT_AUTOLOGIN_EMAIL and PAYLOAD_DEVELOPMENT_AUTOLOGIN_PASSWORD must be set when PAYLOAD_LOCAL_DEVELOPMENT is true",
+            "PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL and PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD must be set when PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT is true",
           );
         }
         // check if the user exists, if not, create it

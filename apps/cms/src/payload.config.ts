@@ -15,19 +15,20 @@ import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
 import { createAzureBlobAdapter } from "./adapters/azure-blob-storage";
 
-const { CLIENT_ID, CLIENT_SECRET, MONGODB_URI, PUBLIC_FRONTEND_URL } =
-  process.env;
-
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
   export interface GeneratedTypes extends Config {}
 }
+
 const {
+  CLIENT_ID,
+  CLIENT_SECRET,
+  MONGODB_URI,
+  PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
   AZURE_STORAGE_CONTAINER_NAME,
   AZURE_STORAGE_ACCOUNT_BASEURL,
 } = process.env;
-
 const useCloudStorage =
   typeof AZURE_STORAGE_CONNECTION_STRING === "string" &&
   typeof AZURE_STORAGE_CONTAINER_NAME === "string" &&
@@ -40,12 +41,12 @@ export default buildConfig({
     bundler: webpackBundler(),
     user: Users.slug,
     autoLogin:
-      process.env.PAYLOAD_LOCAL_DEVELOPMENT === "true" &&
-      process.env.PAYLOAD_DEVELOPMENT_AUTOLOGIN_EMAIL &&
-      process.env.PAYLOAD_DEVELOPMENT_AUTOLOGIN_PASSWORD
+      process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT === "true" &&
+      process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL &&
+      process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD
         ? {
-            email: process.env.PAYLOAD_DEVELOPMENT_AUTOLOGIN_EMAIL,
-            password: process.env.PAYLOAD_DEVELOPMENT_AUTOLOGIN_PASSWORD,
+            email: process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL,
+            password: process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD,
           }
         : false,
   },
