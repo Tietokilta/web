@@ -7,55 +7,12 @@
 		"value": "6509af23590d33984d2cdc5e"
 	},
 	"key": "locale",
-	"value": "fi",
+	"value": "en",
 	"createdAt": {
 		"$date": "2023-11-06T13:57:37.441Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-14T13:10:26.433Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "6548f0e9d7febb86e2235b83"
-	},
-	"user": {
-		"relationTo": "users",
-		"value": "6509af23590d33984d2cdc5e"
-	},
-	"key": "topics-list",
-	"value": {
-		"columns": [
-			{
-				"accessor": "slug",
-				"active": true
-			},
-			{
-				"accessor": "title",
-				"active": true
-			},
-			{
-				"accessor": "id",
-				"active": false
-			},
-			{
-				"accessor": "updatedAt",
-				"active": false
-			},
-			{
-				"accessor": "createdAt",
-				"active": false
-			}
-		],
-		"limit": "10",
-		"sort": null
-	},
-	"createdAt": {
-		"$date": "2023-11-06T13:58:01.582Z"
-	},
-	"updatedAt": {
-		"$date": "2024-01-13T19:13:11.742Z"
+		"$date": "2024-01-16T09:27:59.341Z"
 	},
 	"__v": 0
 },
@@ -70,6 +27,10 @@
 	"key": "media-list",
 	"value": {
 		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
 			{
 				"accessor": "filename",
 				"active": true
@@ -118,7 +79,7 @@
 		"$date": "2024-01-07T19:33:31.695Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-14T18:19:54.236Z"
+		"$date": "2024-01-16T09:28:10.727Z"
 	},
 	"__v": 0
 },
@@ -153,6 +114,100 @@
 	},
 	"updatedAt": {
 		"$date": "2024-01-13T18:48:41.559Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "659a7ad0cc9da16a2590ffab"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "users-list",
+	"value": {
+		"columns": [
+			{
+				"accessor": "email",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": true
+			},
+			{
+				"accessor": "updatedAt",
+				"active": true
+			},
+			{
+				"accessor": "createdAt",
+				"active": true
+			},
+			{
+				"accessor": "enableAPIKey",
+				"active": false
+			},
+			{
+				"accessor": "apiKey",
+				"active": false
+			}
+		],
+		"sort": null,
+		"limit": "10"
+	},
+	"createdAt": {
+		"$date": "2024-01-07T10:20:00.755Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-16T09:28:16.776Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6548f0e9d7febb86e2235b83"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "topics-list",
+	"value": {
+		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
+			{
+				"accessor": "slug",
+				"active": true
+			},
+			{
+				"accessor": "title",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": false
+			},
+			{
+				"accessor": "updatedAt",
+				"active": false
+			},
+			{
+				"accessor": "createdAt",
+				"active": false
+			}
+		],
+		"limit": "10",
+		"sort": ""
+	},
+	"createdAt": {
+		"$date": "2023-11-06T13:58:01.582Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-16T10:24:51.663Z"
 	},
 	"__v": 0
 },
@@ -212,59 +267,14 @@
 				"active": false
 			}
 		],
-		"sort": null
+		"sort": null,
+		"limit": "10"
 	},
 	"createdAt": {
 		"$date": "2023-11-06T13:58:25.008Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-14T18:14:58.537Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "659a7ad0cc9da16a2590ffab"
-	},
-	"user": {
-		"relationTo": "users",
-		"value": "6509af23590d33984d2cdc5e"
-	},
-	"key": "users-list",
-	"value": {
-		"columns": [
-			{
-				"accessor": "email",
-				"active": true
-			},
-			{
-				"accessor": "id",
-				"active": true
-			},
-			{
-				"accessor": "updatedAt",
-				"active": true
-			},
-			{
-				"accessor": "createdAt",
-				"active": true
-			},
-			{
-				"accessor": "enableAPIKey",
-				"active": false
-			},
-			{
-				"accessor": "apiKey",
-				"active": false
-			}
-		],
-		"sort": null
-	},
-	"createdAt": {
-		"$date": "2024-01-07T10:20:00.755Z"
-	},
-	"updatedAt": {
-		"$date": "2024-01-14T13:11:33.176Z"
+		"$date": "2024-01-16T09:28:17.932Z"
 	},
 	"__v": 0
 }]
