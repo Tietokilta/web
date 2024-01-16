@@ -7,12 +7,13 @@ import { cn } from "../../utils";
 const NavigationMenu = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Root>,
   React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
->(({ className, children, ...props }, ref) => (
+>(({ className, children, delayDuration = 0, ...props }, ref) => (
   <NavigationMenuPrimitive.Root
     className={cn(
       "relative z-50 flex max-w-max items-center justify-center bg-gray-900 font-mono text-gray-100",
       className,
     )}
+    delayDuration={delayDuration}
     ref={ref}
     {...props}
   >
@@ -40,7 +41,7 @@ NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
-  "group inline-flex h-6 w-max items-center justify-center rounded-md px-4 py-2 transition-colors hover:text-gray-400 focus-visible:text-gray-400 disabled:pointer-events-none disabled:opacity-50 outline-gray-100 data-[active]:underline underline-offset-2  data-[state=open]:underline text-lg font-semibold",
+  "group inline-flex h-6 w-max items-center justify-center rounded-md px-4 py-2 transition-colors hover:text-gray-400 focus-visible:text-gray-400 disabled:pointer-events-none disabled:opacity-50 outline-gray-100 data-[active]:underline underline-offset-2 data-[state=open]:underline text-lg font-semibold",
 );
 
 const NavigationMenuTrigger = React.forwardRef<
