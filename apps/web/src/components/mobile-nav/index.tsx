@@ -5,14 +5,13 @@ import {
   Sheet,
   SheetContent,
   SheetTrigger,
-  TikLogo,
 } from "@tietokilta/ui";
-import Link from "next/link";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import type { Dictionary } from "../../lib/dictionaries";
 import { cn } from "../../lib/utils";
 import { LinkList } from "./link-list";
+import { LogoLink } from "./logo-link";
 
 export async function MobileNav({
   className,
@@ -46,9 +45,7 @@ export async function MobileNav({
       )}
       {...rest}
     >
-      <Link className="rounded-full hover:text-gray-400" href={`/${locale}`}>
-        <TikLogo className="h-16 w-16" />
-      </Link>
+      <LogoLink locale={locale} />
       <Sheet>
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">
