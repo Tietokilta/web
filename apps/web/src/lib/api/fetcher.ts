@@ -1,18 +1,17 @@
 import stringify from "json-stable-stringify";
 import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+import { cookies, draftMode } from "next/headers";
 import { stringify as qsStringify } from "qs";
-import { draftMode, cookies } from "next/headers";
 
-export const fetcher =
-  <Request, Response>(
-    tag: (req: Request) => string,
-    dataFetcher: (
-      req: Request,
-      draft: boolean,
-      fetchOptions: RequestInit,
-    ) => Promise<Response | undefined | null>,
-  ) =>
-  async (req: Request): Promise<Response | undefined | null> => {
+export function fetcher<TRequest, TResponse>(
+  tag: (req: TRequest) => string,
+  dataFetcher: (
+    req: TRequest,
+    draft: boolean,
+    fetchOptions: RequestInit,
+  ) => Promise<TResponse | undefined | null>,
+) {
+  return async (req: TRequest): Promise<TResponse | undefined | null> => {
     let payloadToken: RequestCookie | undefined;
 
     const { isEnabled: isDraftMode } = draftMode();
@@ -46,16 +45,15 @@ export const fetcher =
 
     return res ?? null;
   };
+}
 
-export const getAll = <
-  Request extends Record<string, unknown>,
-  Response extends unknown[],
->(
-  path: string,
-) =>
-  fetcher<Request, Response>(
+export function getAll<
+  TRequest extends Record<string, unknown>,
+  TResponse extends unknown[],
+>(path: string) {
+  return fetcher<TRequest, TResponse>(
     (req) => `get_${path}_${stringify(req)}`,
-    async (req, draft, fetchOptions): Promise<Response | undefined> => {
+    async (req, draft, fetchOptions): Promise<TResponse | undefined> => {
       const result = await fetch(
         `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
           ...req,
@@ -66,24 +64,28 @@ export const getAll = <
           credentials: "include",
           ...fetchOptions,
         },
-      ).then((res) => res.json() as Promise<{ docs?: Response }>);
+      ).then((res) => res.json() as Promise<{ docs?: TResponse }>);
 
       return result.docs ?? undefined;
     },
   );
+}
 
-export const getOne =
-  <Request extends Record<string, unknown>, Response>(path: string) =>
-  (req: Request & { locale: string }) =>
-    getAll<Request, Response[]>(path)(req).then((res) => res?.[0]);
+export function getOne<TRequest extends Record<string, unknown>, TResponse>(
+  path: string,
+) {
+  return (req: TRequest & { locale: string }) =>
+    getAll<TRequest, TResponse[]>(path)(req).then((res) => res?.[0]);
+}
 
-export const getGlobal = <Response>(path: string, locale: string) =>
-  fetcher<Record<string, never>, Response>(
+export function getGlobal<TResponse>(path: string, locale: string) {
+  return fetcher<Record<string, never>, TResponse>(
     () => `getGlobal_${path}?locale=${locale}`,
-    async (_, draft, fetchOptions): Promise<Response | undefined> => {
+    async (_, draft, fetchOptions): Promise<TResponse | undefined> => {
       const fetchUrl = `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
         locale,
         depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+
         // Needs to be bigger than 1 to get media / images
         ...(draft ? { draft: "true" } : {}),
       }).toString()}`;
@@ -92,6 +94,7 @@ export const getGlobal = <Response>(path: string, locale: string) =>
         `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
           locale,
           depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+
           // Needs to be bigger than 1 to get media / images
           ...(draft ? { draft: "true" } : {}),
         }).toString()}`,
@@ -100,8 +103,9 @@ export const getGlobal = <Response>(path: string, locale: string) =>
           credentials: "include",
           ...fetchOptions,
         },
-      ).then((res) => res.json() as Promise<Response>);
+      ).then((res) => res.json() as Promise<TResponse>);
 
       return result;
     },
   );
+}
