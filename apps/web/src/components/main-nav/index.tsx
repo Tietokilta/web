@@ -1,6 +1,7 @@
 import { NavigationMenu, NavigationMenuList } from "@tietokilta/ui";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
+import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
 
@@ -26,6 +27,7 @@ export async function MainNav({
         <LinkList links={leftLinks} locale={locale} />
         <LogoLink locale={locale} />
         <LinkList links={rightLinks} locale={locale} />
+        <LanguageSelector />
       </NavigationMenuList>
     </NavigationMenu>
   );
