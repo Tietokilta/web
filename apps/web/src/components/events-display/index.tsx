@@ -21,14 +21,16 @@ const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
 function EventItem({
   event,
   ilmolinkText,
+  locale,
 }: {
   event: IlmomasiinaEvent;
   ilmolinkText: string;
+  locale: string;
 }) {
   const date = new Date(event.date);
 
   // get date in format "su 12.2. klo 18"
-  const formattedDate = new Intl.DateTimeFormat("fi-FI", {
+  const formattedDate = new Intl.DateTimeFormat(`${locale}-FI`, {
     weekday: "short",
     day: "numeric",
     month: "numeric",
@@ -65,13 +67,24 @@ function EventItem({
   );
 }
 
-async function EventList({ ilmolinkText }: { ilmolinkText: string }) {
+async function EventList({
+  ilmolinkText,
+  locale,
+}: {
+  ilmolinkText: string;
+  locale: string;
+}) {
   const events = await fetchEvents();
 
   return (
     <ul className="space-y-4">
       {events.map((event) => (
-        <EventItem event={event} ilmolinkText={ilmolinkText} key={event.id} />
+        <EventItem
+          event={event}
+          ilmolinkText={ilmolinkText}
+          key={event.id}
+          locale={locale}
+        />
       ))}
     </ul>
   );
@@ -80,9 +93,11 @@ async function EventList({ ilmolinkText }: { ilmolinkText: string }) {
 export function EventsDisplay({
   ilmolinkText,
   ilmoheaderText,
+  locale,
 }: {
   ilmolinkText: string;
   ilmoheaderText: string;
+  locale: string;
 }) {
   return (
     <section className="space-y-4">
@@ -90,7 +105,7 @@ export function EventsDisplay({
         {ilmoheaderText}
       </h3>
       <Suspense fallback={<EventListSkeleton />}>
-        <EventList ilmolinkText={ilmolinkText} />
+        <EventList ilmolinkText={ilmolinkText} locale={locale} />
       </Suspense>
     </section>
   );
