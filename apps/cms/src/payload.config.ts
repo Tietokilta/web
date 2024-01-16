@@ -2,6 +2,7 @@ import path from "path";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
+import { azureBlobStorageAdapter } from "@payloadcms/plugin-cloud-storage/azure";
 import {
   AlignFeature,
   BlockQuoteFeature,
@@ -24,7 +25,8 @@ import {
 import type { Config } from "@tietokilta/cms-types/payload";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
-import { azureBlobStorageAdapter } from "@payloadcms/plugin-cloud-storage/azure";
+import { BoardMembers } from "./collections/board/board-members";
+import { Boards } from "./collections/board/boards";
 import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
 import { Topics } from "./collections/topics";
@@ -66,12 +68,12 @@ export default buildConfig({
           }
         : false,
   },
-  collections: [Users, Pages, Media, Topics],
   upload: {
     limits: {
       fileSize: 5000000, // 5MB, written in bytes
     },
   },
+  collections: [Users, Pages, Media, Topics, BoardMembers, Boards],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
     locales: ["fi", "en"],
