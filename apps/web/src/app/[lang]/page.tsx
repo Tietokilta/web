@@ -48,6 +48,7 @@ export default async function Home({
         <EventsDisplay
           ilmoheaderText={dictionary.heading["Upcoming events"]}
           ilmolinkText={dictionary.action["Sign up"]}
+          locale={lang}
         />
       </div>
     </main>
