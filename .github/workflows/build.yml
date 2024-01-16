@@ -1,9 +1,11 @@
 name: CI
 on:
   push:
+  release:
+    types: [published]
 jobs:
   build:
-    name: Build
+    name: Format, Lint, Check types & Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,6 +24,53 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
+      - name: Format (to ensure that code has been formatted)
+        run: pnpm format && git diff --quiet
+      - name: Lint
+        run: pnpm lint
+      - name: Generate Payload types (to ensure that they are up to date)
+        run: pnpm codegen && git diff --quiet
       - name: Build all
         run: pnpm build
+  docker:
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
+    needs: build
+    strategy:
+      matrix:
+        project: [web, cms]
+    name: Push Docker image to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to GHCR
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Docker metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghcr.io/tietokilta/${{matrix.project}}
+          tags: |
+            type=semver,pattern={{version}},enable=${{ github.ref_type == 'tag' }}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ github.ref_type == 'tag' }}
+            type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            PROJECT=${{matrix.project}}
