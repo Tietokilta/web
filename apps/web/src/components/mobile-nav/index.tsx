@@ -10,6 +10,7 @@ import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import type { Dictionary } from "../../lib/dictionaries";
 import { cn } from "../../lib/utils";
+import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
 
@@ -55,6 +56,7 @@ export async function MobileNav({
         </SheetTrigger>
         <SheetContent>
           <nav>
+            <LanguageSelector />
             <LinkList
               dictionary={dictionary.action}
               footerLinks={footerLinks}
