@@ -15,6 +15,12 @@ type Query {
   Topic(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
   Topics(draft: Boolean, where: Topic_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Topics
   docAccessTopic(id: String!): topicsDocAccess
+  BoardMember(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): BoardMember
+  BoardMembers(draft: Boolean, where: BoardMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): BoardMembers
+  docAccessBoardMember(id: String!): board_membersDocAccess
+  Board(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Board
+  Boards(draft: Boolean, where: Board_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Boards
+  docAccessBoard(id: String!): boardsDocAccess
   PayloadPreference(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
@@ -1806,6 +1812,927 @@ type TopicsDeleteDocAccess {
   where: JSONObject
 }
 
+type BoardMember {
+  id: String
+  guildYear: BoardMember_guildYear!
+  photo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
+  name: String!
+  title: String
+  email: EmailAddress!
+  telegram: String!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum BoardMember_guildYear {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+type BoardMembers {
+  docs: [BoardMember]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input BoardMember_where {
+  guildYear: BoardMember_guildYear_operator
+  photo: BoardMember_photo_operator
+  name: BoardMember_name_operator
+  title: BoardMember_title_operator
+  email: BoardMember_email_operator
+  telegram: BoardMember_telegram_operator
+  updatedAt: BoardMember_updatedAt_operator
+  createdAt: BoardMember_createdAt_operator
+  id: BoardMember_id_operator
+  AND: [BoardMember_where_and]
+  OR: [BoardMember_where_or]
+}
+
+input BoardMember_guildYear_operator {
+  equals: BoardMember_guildYear_Input
+  not_equals: BoardMember_guildYear_Input
+  in: [BoardMember_guildYear_Input]
+  not_in: [BoardMember_guildYear_Input]
+  all: [BoardMember_guildYear_Input]
+}
+
+enum BoardMember_guildYear_Input {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input BoardMember_photo_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input BoardMember_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input BoardMember_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input BoardMember_email_operator {
+  equals: EmailAddress
+  not_equals: EmailAddress
+  like: EmailAddress
+  contains: EmailAddress
+  in: [EmailAddress]
+  not_in: [EmailAddress]
+  all: [EmailAddress]
+}
+
+input BoardMember_telegram_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input BoardMember_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input BoardMember_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input BoardMember_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input BoardMember_where_and {
+  guildYear: BoardMember_guildYear_operator
+  photo: BoardMember_photo_operator
+  name: BoardMember_name_operator
+  title: BoardMember_title_operator
+  email: BoardMember_email_operator
+  telegram: BoardMember_telegram_operator
+  updatedAt: BoardMember_updatedAt_operator
+  createdAt: BoardMember_createdAt_operator
+  id: BoardMember_id_operator
+  AND: [BoardMember_where_and]
+  OR: [BoardMember_where_or]
+}
+
+input BoardMember_where_or {
+  guildYear: BoardMember_guildYear_operator
+  photo: BoardMember_photo_operator
+  name: BoardMember_name_operator
+  title: BoardMember_title_operator
+  email: BoardMember_email_operator
+  telegram: BoardMember_telegram_operator
+  updatedAt: BoardMember_updatedAt_operator
+  createdAt: BoardMember_createdAt_operator
+  id: BoardMember_id_operator
+  AND: [BoardMember_where_and]
+  OR: [BoardMember_where_or]
+}
+
+type board_membersDocAccess {
+  fields: BoardMembersDocAccessFields
+  create: BoardMembersCreateDocAccess
+  read: BoardMembersReadDocAccess
+  update: BoardMembersUpdateDocAccess
+  delete: BoardMembersDeleteDocAccess
+}
+
+type BoardMembersDocAccessFields {
+  guildYear: BoardMembersDocAccessFields_guildYear
+  photo: BoardMembersDocAccessFields_photo
+  name: BoardMembersDocAccessFields_name
+  title: BoardMembersDocAccessFields_title
+  email: BoardMembersDocAccessFields_email
+  telegram: BoardMembersDocAccessFields_telegram
+  updatedAt: BoardMembersDocAccessFields_updatedAt
+  createdAt: BoardMembersDocAccessFields_createdAt
+}
+
+type BoardMembersDocAccessFields_guildYear {
+  create: BoardMembersDocAccessFields_guildYear_Create
+  read: BoardMembersDocAccessFields_guildYear_Read
+  update: BoardMembersDocAccessFields_guildYear_Update
+  delete: BoardMembersDocAccessFields_guildYear_Delete
+}
+
+type BoardMembersDocAccessFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_photo {
+  create: BoardMembersDocAccessFields_photo_Create
+  read: BoardMembersDocAccessFields_photo_Read
+  update: BoardMembersDocAccessFields_photo_Update
+  delete: BoardMembersDocAccessFields_photo_Delete
+}
+
+type BoardMembersDocAccessFields_photo_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_photo_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_photo_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_photo_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_name {
+  create: BoardMembersDocAccessFields_name_Create
+  read: BoardMembersDocAccessFields_name_Read
+  update: BoardMembersDocAccessFields_name_Update
+  delete: BoardMembersDocAccessFields_name_Delete
+}
+
+type BoardMembersDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_title {
+  create: BoardMembersDocAccessFields_title_Create
+  read: BoardMembersDocAccessFields_title_Read
+  update: BoardMembersDocAccessFields_title_Update
+  delete: BoardMembersDocAccessFields_title_Delete
+}
+
+type BoardMembersDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_email {
+  create: BoardMembersDocAccessFields_email_Create
+  read: BoardMembersDocAccessFields_email_Read
+  update: BoardMembersDocAccessFields_email_Update
+  delete: BoardMembersDocAccessFields_email_Delete
+}
+
+type BoardMembersDocAccessFields_email_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_email_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_email_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_email_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_telegram {
+  create: BoardMembersDocAccessFields_telegram_Create
+  read: BoardMembersDocAccessFields_telegram_Read
+  update: BoardMembersDocAccessFields_telegram_Update
+  delete: BoardMembersDocAccessFields_telegram_Delete
+}
+
+type BoardMembersDocAccessFields_telegram_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_telegram_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_telegram_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_telegram_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_updatedAt {
+  create: BoardMembersDocAccessFields_updatedAt_Create
+  read: BoardMembersDocAccessFields_updatedAt_Read
+  update: BoardMembersDocAccessFields_updatedAt_Update
+  delete: BoardMembersDocAccessFields_updatedAt_Delete
+}
+
+type BoardMembersDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_createdAt {
+  create: BoardMembersDocAccessFields_createdAt_Create
+  read: BoardMembersDocAccessFields_createdAt_Read
+  update: BoardMembersDocAccessFields_createdAt_Update
+  delete: BoardMembersDocAccessFields_createdAt_Delete
+}
+
+type BoardMembersDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardMembersReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardMembersUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardMembersDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Board {
+  id: String
+  year: Board_year!
+  description: String
+  groupPhoto(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
+  boardMembers: [Board_BoardMembers!]!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum Board_year {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+type Board_BoardMembers {
+  boardMember(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): BoardMember
+  id: String
+}
+
+type Boards {
+  docs: [Board]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Board_where {
+  year: Board_year_operator
+  description: Board_description_operator
+  groupPhoto: Board_groupPhoto_operator
+  boardMembers__boardMember: Board_boardMembers__boardMember_operator
+  boardMembers__id: Board_boardMembers__id_operator
+  updatedAt: Board_updatedAt_operator
+  createdAt: Board_createdAt_operator
+  id: Board_id_operator
+  AND: [Board_where_and]
+  OR: [Board_where_or]
+}
+
+input Board_year_operator {
+  equals: Board_year_Input
+  not_equals: Board_year_Input
+  in: [Board_year_Input]
+  not_in: [Board_year_Input]
+  all: [Board_year_Input]
+}
+
+enum Board_year_Input {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input Board_description_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+}
+
+input Board_groupPhoto_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Board_boardMembers__boardMember_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Board_boardMembers__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Board_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Board_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Board_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Board_where_and {
+  year: Board_year_operator
+  description: Board_description_operator
+  groupPhoto: Board_groupPhoto_operator
+  boardMembers__boardMember: Board_boardMembers__boardMember_operator
+  boardMembers__id: Board_boardMembers__id_operator
+  updatedAt: Board_updatedAt_operator
+  createdAt: Board_createdAt_operator
+  id: Board_id_operator
+  AND: [Board_where_and]
+  OR: [Board_where_or]
+}
+
+input Board_where_or {
+  year: Board_year_operator
+  description: Board_description_operator
+  groupPhoto: Board_groupPhoto_operator
+  boardMembers__boardMember: Board_boardMembers__boardMember_operator
+  boardMembers__id: Board_boardMembers__id_operator
+  updatedAt: Board_updatedAt_operator
+  createdAt: Board_createdAt_operator
+  id: Board_id_operator
+  AND: [Board_where_and]
+  OR: [Board_where_or]
+}
+
+type boardsDocAccess {
+  fields: BoardsDocAccessFields
+  create: BoardsCreateDocAccess
+  read: BoardsReadDocAccess
+  update: BoardsUpdateDocAccess
+  delete: BoardsDeleteDocAccess
+}
+
+type BoardsDocAccessFields {
+  year: BoardsDocAccessFields_year
+  description: BoardsDocAccessFields_description
+  groupPhoto: BoardsDocAccessFields_groupPhoto
+  boardMembers: BoardsDocAccessFields_boardMembers
+  updatedAt: BoardsDocAccessFields_updatedAt
+  createdAt: BoardsDocAccessFields_createdAt
+}
+
+type BoardsDocAccessFields_year {
+  create: BoardsDocAccessFields_year_Create
+  read: BoardsDocAccessFields_year_Read
+  update: BoardsDocAccessFields_year_Update
+  delete: BoardsDocAccessFields_year_Delete
+}
+
+type BoardsDocAccessFields_year_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_year_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_year_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_year_Delete {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_description {
+  create: BoardsDocAccessFields_description_Create
+  read: BoardsDocAccessFields_description_Read
+  update: BoardsDocAccessFields_description_Update
+  delete: BoardsDocAccessFields_description_Delete
+}
+
+type BoardsDocAccessFields_description_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_description_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_description_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_description_Delete {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_groupPhoto {
+  create: BoardsDocAccessFields_groupPhoto_Create
+  read: BoardsDocAccessFields_groupPhoto_Read
+  update: BoardsDocAccessFields_groupPhoto_Update
+  delete: BoardsDocAccessFields_groupPhoto_Delete
+}
+
+type BoardsDocAccessFields_groupPhoto_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_groupPhoto_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_groupPhoto_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_groupPhoto_Delete {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers {
+  create: BoardsDocAccessFields_boardMembers_Create
+  read: BoardsDocAccessFields_boardMembers_Read
+  update: BoardsDocAccessFields_boardMembers_Update
+  delete: BoardsDocAccessFields_boardMembers_Delete
+  fields: BoardsDocAccessFields_boardMembers_Fields
+}
+
+type BoardsDocAccessFields_boardMembers_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_Delete {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_Fields {
+  boardMember: BoardsDocAccessFields_boardMembers_boardMember
+  id: BoardsDocAccessFields_boardMembers_id
+}
+
+type BoardsDocAccessFields_boardMembers_boardMember {
+  create: BoardsDocAccessFields_boardMembers_boardMember_Create
+  read: BoardsDocAccessFields_boardMembers_boardMember_Read
+  update: BoardsDocAccessFields_boardMembers_boardMember_Update
+  delete: BoardsDocAccessFields_boardMembers_boardMember_Delete
+}
+
+type BoardsDocAccessFields_boardMembers_boardMember_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_boardMember_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_boardMember_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_boardMember_Delete {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_id {
+  create: BoardsDocAccessFields_boardMembers_id_Create
+  read: BoardsDocAccessFields_boardMembers_id_Read
+  update: BoardsDocAccessFields_boardMembers_id_Update
+  delete: BoardsDocAccessFields_boardMembers_id_Delete
+}
+
+type BoardsDocAccessFields_boardMembers_id_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_id_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_id_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_boardMembers_id_Delete {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_updatedAt {
+  create: BoardsDocAccessFields_updatedAt_Create
+  read: BoardsDocAccessFields_updatedAt_Read
+  update: BoardsDocAccessFields_updatedAt_Update
+  delete: BoardsDocAccessFields_updatedAt_Delete
+}
+
+type BoardsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_createdAt {
+  create: BoardsDocAccessFields_createdAt_Create
+  read: BoardsDocAccessFields_createdAt_Read
+  update: BoardsDocAccessFields_createdAt_Update
+  delete: BoardsDocAccessFields_createdAt_Delete
+}
+
+type BoardsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type BoardsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type BoardsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -3054,6 +3981,8 @@ type Access {
   pages: pagesAccess
   media: mediaAccess
   topics: topicsAccess
+  board_members: board_membersAccess
+  boards: boardsAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -3912,6 +4841,456 @@ type TopicsUpdateAccess {
 }
 
 type TopicsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type board_membersAccess {
+  fields: BoardMembersFields
+  create: BoardMembersCreateAccess
+  read: BoardMembersReadAccess
+  update: BoardMembersUpdateAccess
+  delete: BoardMembersDeleteAccess
+}
+
+type BoardMembersFields {
+  guildYear: BoardMembersFields_guildYear
+  photo: BoardMembersFields_photo
+  name: BoardMembersFields_name
+  title: BoardMembersFields_title
+  email: BoardMembersFields_email
+  telegram: BoardMembersFields_telegram
+  updatedAt: BoardMembersFields_updatedAt
+  createdAt: BoardMembersFields_createdAt
+}
+
+type BoardMembersFields_guildYear {
+  create: BoardMembersFields_guildYear_Create
+  read: BoardMembersFields_guildYear_Read
+  update: BoardMembersFields_guildYear_Update
+  delete: BoardMembersFields_guildYear_Delete
+}
+
+type BoardMembersFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_photo {
+  create: BoardMembersFields_photo_Create
+  read: BoardMembersFields_photo_Read
+  update: BoardMembersFields_photo_Update
+  delete: BoardMembersFields_photo_Delete
+}
+
+type BoardMembersFields_photo_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_photo_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_photo_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_photo_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_name {
+  create: BoardMembersFields_name_Create
+  read: BoardMembersFields_name_Read
+  update: BoardMembersFields_name_Update
+  delete: BoardMembersFields_name_Delete
+}
+
+type BoardMembersFields_name_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_name_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_name_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_name_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_title {
+  create: BoardMembersFields_title_Create
+  read: BoardMembersFields_title_Read
+  update: BoardMembersFields_title_Update
+  delete: BoardMembersFields_title_Delete
+}
+
+type BoardMembersFields_title_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_title_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_title_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_title_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_email {
+  create: BoardMembersFields_email_Create
+  read: BoardMembersFields_email_Read
+  update: BoardMembersFields_email_Update
+  delete: BoardMembersFields_email_Delete
+}
+
+type BoardMembersFields_email_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_email_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_email_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_email_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_telegram {
+  create: BoardMembersFields_telegram_Create
+  read: BoardMembersFields_telegram_Read
+  update: BoardMembersFields_telegram_Update
+  delete: BoardMembersFields_telegram_Delete
+}
+
+type BoardMembersFields_telegram_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_telegram_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_telegram_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_telegram_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_updatedAt {
+  create: BoardMembersFields_updatedAt_Create
+  read: BoardMembersFields_updatedAt_Read
+  update: BoardMembersFields_updatedAt_Update
+  delete: BoardMembersFields_updatedAt_Delete
+}
+
+type BoardMembersFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_createdAt {
+  create: BoardMembersFields_createdAt_Create
+  read: BoardMembersFields_createdAt_Read
+  update: BoardMembersFields_createdAt_Update
+  delete: BoardMembersFields_createdAt_Delete
+}
+
+type BoardMembersFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardMembersReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardMembersUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardMembersDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type boardsAccess {
+  fields: BoardsFields
+  create: BoardsCreateAccess
+  read: BoardsReadAccess
+  update: BoardsUpdateAccess
+  delete: BoardsDeleteAccess
+}
+
+type BoardsFields {
+  year: BoardsFields_year
+  description: BoardsFields_description
+  groupPhoto: BoardsFields_groupPhoto
+  boardMembers: BoardsFields_boardMembers
+  updatedAt: BoardsFields_updatedAt
+  createdAt: BoardsFields_createdAt
+}
+
+type BoardsFields_year {
+  create: BoardsFields_year_Create
+  read: BoardsFields_year_Read
+  update: BoardsFields_year_Update
+  delete: BoardsFields_year_Delete
+}
+
+type BoardsFields_year_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_year_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_year_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_year_Delete {
+  permission: Boolean!
+}
+
+type BoardsFields_description {
+  create: BoardsFields_description_Create
+  read: BoardsFields_description_Read
+  update: BoardsFields_description_Update
+  delete: BoardsFields_description_Delete
+}
+
+type BoardsFields_description_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_description_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_description_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_description_Delete {
+  permission: Boolean!
+}
+
+type BoardsFields_groupPhoto {
+  create: BoardsFields_groupPhoto_Create
+  read: BoardsFields_groupPhoto_Read
+  update: BoardsFields_groupPhoto_Update
+  delete: BoardsFields_groupPhoto_Delete
+}
+
+type BoardsFields_groupPhoto_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_groupPhoto_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_groupPhoto_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_groupPhoto_Delete {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers {
+  create: BoardsFields_boardMembers_Create
+  read: BoardsFields_boardMembers_Read
+  update: BoardsFields_boardMembers_Update
+  delete: BoardsFields_boardMembers_Delete
+  fields: BoardsFields_boardMembers_Fields
+}
+
+type BoardsFields_boardMembers_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_Delete {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_Fields {
+  boardMember: BoardsFields_boardMembers_boardMember
+  id: BoardsFields_boardMembers_id
+}
+
+type BoardsFields_boardMembers_boardMember {
+  create: BoardsFields_boardMembers_boardMember_Create
+  read: BoardsFields_boardMembers_boardMember_Read
+  update: BoardsFields_boardMembers_boardMember_Update
+  delete: BoardsFields_boardMembers_boardMember_Delete
+}
+
+type BoardsFields_boardMembers_boardMember_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_boardMember_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_boardMember_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_boardMember_Delete {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_id {
+  create: BoardsFields_boardMembers_id_Create
+  read: BoardsFields_boardMembers_id_Read
+  update: BoardsFields_boardMembers_id_Update
+  delete: BoardsFields_boardMembers_id_Delete
+}
+
+type BoardsFields_boardMembers_id_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_id_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_id_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_boardMembers_id_Delete {
+  permission: Boolean!
+}
+
+type BoardsFields_updatedAt {
+  create: BoardsFields_updatedAt_Create
+  read: BoardsFields_updatedAt_Read
+  update: BoardsFields_updatedAt_Update
+  delete: BoardsFields_updatedAt_Delete
+}
+
+type BoardsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type BoardsFields_createdAt {
+  create: BoardsFields_createdAt_Create
+  read: BoardsFields_createdAt_Read
+  update: BoardsFields_createdAt_Update
+  delete: BoardsFields_createdAt_Delete
+}
+
+type BoardsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type BoardsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type BoardsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type BoardsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type BoardsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type BoardsDeleteAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -4893,6 +6272,12 @@ type Mutation {
   createTopic(data: mutationTopicInput!, draft: Boolean, locale: LocaleInputType): Topic
   updateTopic(id: String!, autosave: Boolean, data: mutationTopicUpdateInput!, draft: Boolean, locale: LocaleInputType): Topic
   deleteTopic(id: String!): Topic
+  createBoardMember(data: mutationBoardMemberInput!, draft: Boolean, locale: LocaleInputType): BoardMember
+  updateBoardMember(id: String!, autosave: Boolean, data: mutationBoardMemberUpdateInput!, draft: Boolean, locale: LocaleInputType): BoardMember
+  deleteBoardMember(id: String!): BoardMember
+  createBoard(data: mutationBoardInput!, draft: Boolean, locale: LocaleInputType): Board
+  updateBoard(id: String!, autosave: Boolean, data: mutationBoardUpdateInput!, draft: Boolean, locale: LocaleInputType): Board
+  deleteBoard(id: String!): Board
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -5047,6 +6432,224 @@ input mutationTopicUpdateInput {
   slug: String
   updatedAt: String
   createdAt: String
+}
+
+input mutationBoardMemberInput {
+  guildYear: BoardMember_guildYear_MutationInput!
+  photo: String
+  name: String!
+  title: String
+  email: String!
+  telegram: String!
+  updatedAt: String
+  createdAt: String
+}
+
+enum BoardMember_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationBoardMemberUpdateInput {
+  guildYear: BoardMemberUpdate_guildYear_MutationInput
+  photo: String
+  name: String
+  title: String
+  email: String
+  telegram: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum BoardMemberUpdate_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationBoardInput {
+  year: Board_year_MutationInput!
+  description: String
+  groupPhoto: String
+  boardMembers: [mutationBoard_BoardMembersInput!]
+  updatedAt: String
+  createdAt: String
+}
+
+enum Board_year_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationBoard_BoardMembersInput {
+  boardMember: String
+  id: String
+}
+
+input mutationBoardUpdateInput {
+  year: BoardUpdate_year_MutationInput
+  description: String
+  groupPhoto: String
+  boardMembers: [mutationBoardUpdate_BoardMembersInput]
+  updatedAt: String
+  createdAt: String
+}
+
+enum BoardUpdate_year_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationBoardUpdate_BoardMembersInput {
+  boardMember: String
+  id: String
 }
 
 input mutationPayloadPreferenceInput {

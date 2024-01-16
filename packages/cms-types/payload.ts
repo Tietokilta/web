@@ -55,6 +55,8 @@ export interface Config {
     pages: Page;
     media: Media;
     topics: Topic;
+    'board-members': BoardMember;
+    boards: Board;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -129,6 +131,107 @@ export interface Media {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+}
+export interface BoardMember {
+  id: string;
+  guildYear:
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  photo?: (string | null) | Media;
+  name: string;
+  title: string;
+  email: string;
+  telegram: string;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Board {
+  id: string;
+  year:
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  description: string;
+  groupPhoto?: (string | null) | Media;
+  boardMembers: {
+    boardMember?: (string | null) | BoardMember;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
 }
 export interface PayloadPreference {
   id: string;

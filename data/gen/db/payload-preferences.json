@@ -12,7 +12,7 @@
 		"$date": "2023-11-06T13:57:37.441Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-16T09:27:59.341Z"
+		"$date": "2024-01-16T16:47:54.318Z"
 	},
 	"__v": 0
 },
@@ -153,14 +153,14 @@
 				"active": false
 			}
 		],
-		"sort": null,
+		"sort": "",
 		"limit": "10"
 	},
 	"createdAt": {
 		"$date": "2024-01-07T10:20:00.755Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-16T09:28:16.776Z"
+		"$date": "2024-01-16T16:56:51.714Z"
 	},
 	"__v": 0
 },
@@ -200,14 +200,13 @@
 				"active": false
 			}
 		],
-		"limit": "10",
 		"sort": ""
 	},
 	"createdAt": {
 		"$date": "2023-11-06T13:58:01.582Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-16T10:24:51.663Z"
+		"$date": "2024-01-16T16:56:54.258Z"
 	},
 	"__v": 0
 },
@@ -222,6 +221,10 @@
 	"key": "pages-list",
 	"value": {
 		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
 			{
 				"accessor": "path",
 				"active": true
@@ -267,14 +270,148 @@
 				"active": false
 			}
 		],
-		"sort": null,
-		"limit": "10"
+		"sort": ""
 	},
 	"createdAt": {
 		"$date": "2023-11-06T13:58:25.008Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-16T09:28:17.932Z"
+		"$date": "2024-01-16T16:56:46.18Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "65a6aa27ec7f992ea899bb0a"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "board-members-list",
+	"value": {
+		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": false
+			},
+			{
+				"accessor": "photo",
+				"active": true
+			},
+			{
+				"accessor": "name",
+				"active": true
+			},
+			{
+				"accessor": "title",
+				"active": true
+			},
+			{
+				"accessor": "email",
+				"active": false
+			},
+			{
+				"accessor": "telegram",
+				"active": false
+			},
+			{
+				"accessor": "updatedAt",
+				"active": false
+			},
+			{
+				"accessor": "createdAt",
+				"active": false
+			},
+			{
+				"accessor": "guildYear",
+				"active": true
+			}
+		]
+	},
+	"createdAt": {
+		"$date": "2024-01-16T16:09:11.938Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-16T17:05:57.938Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "65a6aa29ec7f992ea899bb0e"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "nav",
+	"value": {
+		"open": true
+	},
+	"createdAt": {
+		"$date": "2024-01-16T16:09:13.923Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-16T16:09:17.957Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "65a6abe8c653ae138bb3c0a1"
+	},
+	"user": {
+		"relationTo": "users",
+		"value": "6509af23590d33984d2cdc5e"
+	},
+	"key": "boards-list",
+	"value": {
+		"columns": [
+			{
+				"accessor": "_select",
+				"active": true
+			},
+			{
+				"accessor": "id",
+				"active": false
+			},
+			{
+				"accessor": "year",
+				"active": true
+			},
+			{
+				"accessor": "description",
+				"active": false
+			},
+			{
+				"accessor": "groupPhoto",
+				"active": true
+			},
+			{
+				"accessor": "boardMembers",
+				"active": false
+			},
+			{
+				"accessor": "updatedAt",
+				"active": false
+			},
+			{
+				"accessor": "createdAt",
+				"active": false
+			}
+		],
+		"limit": "10"
+	},
+	"createdAt": {
+		"$date": "2024-01-16T16:16:40.884Z"
+	},
+	"updatedAt": {
+		"$date": "2024-01-16T17:05:44.67Z"
 	},
 	"__v": 0
 }]
