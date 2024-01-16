@@ -49,11 +49,11 @@ function EventItem({
         </Button>
       </div>
       <div className="flex-grow-[1/3] truncate font-medium">
-        <span className="block truncate">
+        <span className="block truncate" title={formattedDate}>
           <ClockIcon className="mr-1 inline-block h-4 w-4" />
           {formattedDate}
         </span>
-        <span className="block truncate">
+        <span className="block truncate" title={event.location}>
           <MapPinIcon className="mr-1 inline-block h-4 w-4" />
           {event.location}
         </span>
