@@ -63,7 +63,7 @@ export default async function RootLayout({
             locale={lang}
           />
           <MainNav
-            className="sticky top-0 z-50 hidden h-20 md:block"
+            className="sticky top-0 z-50 hidden md:block"
             locale={lang}
           />
           <div className="min-h-screen flex-1">{children}</div>
