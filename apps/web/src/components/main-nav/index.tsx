@@ -23,7 +23,10 @@ export async function MainNav({
   const rightLinks = links.slice(middleIndex);
 
   return (
-    <NavigationMenu className={cn("w-full max-w-none", className)} {...props}>
+    <NavigationMenu
+      className={cn("h-20 w-full max-w-none", className)}
+      {...props}
+    >
       <NavigationMenuList>
         <LinkList links={leftLinks} locale={locale} />
         <NavigationMenuItem>
@@ -31,7 +34,7 @@ export async function MainNav({
             className="rounded-full hover:text-gray-400"
             href={`/${locale}`}
           >
-            <TikLogo />
+            <TikLogo className="h-20 w-20" />
           </Link>
         </NavigationMenuItem>
         <LinkList links={rightLinks} locale={locale} />
