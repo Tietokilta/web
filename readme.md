@@ -6,7 +6,13 @@ Monorepo containing apps and packages used for the Tietokilta website.
 
 ### Set up
 
-Prerequisites: [Node.js](https://nodejs.org/en/), [Docker](https://www.docker.com/), [MongoDB Database Tools](https://www.mongodb.com/docs/database-tools/#installation)(for seeding the dev-db) installed
+Prerequisites:
+
+- [Node.js](https://nodejs.org/en/), usage of [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm) recommended
+- [Docker](https://www.docker.com/) and docker-compose
+- [MongoDB Database Tools](https://www.mongodb.com/docs/database-tools/installation/installation/) (for seeding the dev-db).
+
+  NOTE: make sure you are installing MongoDB Database Tools, not something else, the documentation for Linux is quite wonky.
 
 ```sh
 # copy .env.example to .env
@@ -43,7 +49,6 @@ pnpm db:reset
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
-    "source.organizeImports": true,
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
