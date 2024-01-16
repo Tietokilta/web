@@ -58,12 +58,12 @@ export default async function RootLayout({
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <div className="flex min-h-screen flex-col">
           <MobileNav
-            className="sticky top-0 z-10 md:hidden"
+            className="sticky top-0 z-50 md:hidden"
             dictionary={dictionary}
             locale={lang}
           />
           <MainNav
-            className="sticky top-0 z-10 hidden h-20 md:block"
+            className="sticky top-0 z-50 hidden h-20 md:block"
             locale={lang}
           />
           <div className="min-h-screen flex-1">{children}</div>
