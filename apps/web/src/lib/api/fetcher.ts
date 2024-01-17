@@ -56,7 +56,7 @@ export const getAll = <
     (req) => `get_${path}_${stringify(req)}`,
     async (req, draft, fetchOptions): Promise<Response | undefined> => {
       const result = await fetch(
-        `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
+        `${process.env.SERVER_URL}${path}?${qsStringify({
           ...req,
           ...(draft ? { draft: "true" } : {}),
         }).toString()}`,
@@ -81,7 +81,7 @@ export const getGlobal = <Response>(path: string, locale?: string) =>
     () => `getGlobal_${path}`,
     async (_, draft, fetchOptions): Promise<Response | undefined> => {
       const result = await fetch(
-        `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
+        `${process.env.SERVER_URL}${path}?${qsStringify({
           depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
           ...(draft ? { draft: "true" } : {}),
