@@ -94,6 +94,9 @@ export default buildConfig({
     ),
   },
   db: mongooseAdapter({
+    connectOptions: {
+      dbName: process.env.PAYLOAD_MONGO_DB_NAME,
+    },
     // @ts-expect-error DATABASE_URL is validated by payload on start
     url: process.env.PAYLOAD_MONGO_CONNECTION_STRING,
   }),
