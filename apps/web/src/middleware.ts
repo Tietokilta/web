@@ -21,5 +21,5 @@ export function middleware(request: NextRequest): NextResponse {
   );
 }
 export const config = {
-  matcher: ["/((?!_next|fi|en).*)"],
+  matcher: ["/((?!_next|fi|en|next_api).*)"],
 };
