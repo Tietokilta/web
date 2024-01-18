@@ -3,7 +3,7 @@
   "globalDependencies": ["**/.env.*local"],
   "globalDotEnv": [".env"],
   "globalEnv": [
-    "PAYLOAD_DATABASE_URL",
+    "PAYLOAD_MONGO_CONNECTION_STRING",
     "PAYLOAD_SECRET",
     "PAYLOAD_REVALIDATION_KEY",
     "PAYLOAD_PORT",
