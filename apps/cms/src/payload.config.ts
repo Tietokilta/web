@@ -97,8 +97,8 @@ export default buildConfig({
     connectOptions: {
       dbName: process.env.PAYLOAD_MONGO_DB_NAME,
     },
-    // @ts-expect-error DATABASE_URL is validated by payload on start
-    url: process.env.PAYLOAD_MONGO_CONNECTION_STRING,
+    // webpack build crashes if these are not set i.e. have to default empty
+    url: process.env.PAYLOAD_MONGO_CONNECTION_STRING ?? "",
   }),
   editor: lexicalEditor({
     features: [
