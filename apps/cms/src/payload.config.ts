@@ -39,8 +39,8 @@ declare module "payload" {
 }
 
 const {
-  CLIENT_ID,
-  CLIENT_SECRET,
+  GOOGLE_OAUTH_CLIENT_ID,
+  GOOGLE_OAUTH_CLIENT_SECRET,
   MONGODB_URI,
   PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
@@ -93,7 +93,7 @@ export default buildConfig({
   },
   db: mongooseAdapter({
     // @ts-expect-error DATABASE_URL is validated by payload on start
-    url: process.env.PAYLOAD_DATABASE_URL,
+    url: process.env.PAYLOAD_MONGO_CONNECTION_STRING,
   }),
   editor: lexicalEditor({
     features: [
@@ -139,8 +139,8 @@ export default buildConfig({
   plugins: [
     oAuthPlugin({
       databaseUri: MONGODB_URI ?? "",
-      clientID: CLIENT_ID ?? "",
-      clientSecret: CLIENT_SECRET ?? "",
+      clientID: GOOGLE_OAUTH_CLIENT_ID ?? "",
+      clientSecret: GOOGLE_OAUTH_CLIENT_SECRET ?? "",
       authorizationURL: "https://accounts.google.com/o/oauth2/v2/auth",
       tokenURL: "https://www.googleapis.com/oauth2/v4/token",
       callbackURL: `${PUBLIC_FRONTEND_URL ?? "http://localhost:3000"}/oauth2/callback`,
