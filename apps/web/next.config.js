@@ -15,5 +15,5 @@ module.exports = {
         ]
       : undefined,
   },
-  assetPrefix: isProd ? "https://cdn.alpha.tietokilta.fi" : undefined,
+  //assetPrefix: isProd ? "https://cdn.alpha.tietokilta.fi" : undefined,
 };
