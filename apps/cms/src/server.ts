@@ -1,11 +1,11 @@
 import express from "express";
 import payload from "payload";
+import { useCloudStorage, useGoogleAuth } from "./util";
 
 const secret = process.env.PAYLOAD_SECRET;
 if (!secret) {
   throw new Error("PAYLOAD_SECRET is not set");
 }
-
 const app = express();
 
 // Redirect root to Admin panel
@@ -21,6 +21,12 @@ const start = async (): Promise<void> => {
       payloadInstance.logger.info(
         `Payload Admin URL: ${payloadInstance.getAdminURL()}`,
       );
+      if (useCloudStorage()) {
+        payloadInstance.logger.info("Using Azure Blob Storage");
+      }
+      if (useGoogleAuth()) {
+        payloadInstance.logger.info("Using Google OAuth2");
+      }
       if (process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT === "true") {
         const email = process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL;
         const password =

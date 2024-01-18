@@ -32,6 +32,7 @@ import { Users } from "./collections/users";
 import { Footer } from "./globals/footer";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
+import { useCloudStorage } from "./util";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -47,10 +48,6 @@ const {
   AZURE_STORAGE_CONTAINER_NAME,
   AZURE_STORAGE_ACCOUNT_BASEURL,
 } = process.env;
-const useCloudStorage =
-  typeof AZURE_STORAGE_CONNECTION_STRING === "string" &&
-  typeof AZURE_STORAGE_CONTAINER_NAME === "string" &&
-  typeof AZURE_STORAGE_ACCOUNT_BASEURL === "string";
 
 export default buildConfig({
   // TODO: should probably enable this for production but it breaks auth in development
@@ -187,9 +184,10 @@ export default buildConfig({
       },
     }),
     cloudStorage({
-      enabled: useCloudStorage,
+      enabled: useCloudStorage(),
       collections: {
         [Media.slug]: {
+          disableLocalStorage: true,
           adapter: azureBlobStorageAdapter({
             connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
             containerName: AZURE_STORAGE_CONTAINER_NAME ?? "",

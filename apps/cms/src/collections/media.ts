@@ -1,6 +1,7 @@
 import path from "path";
 import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../access/signed-in";
+import { useCloudStorage } from "../util";
 
 export const Media: CollectionConfig = {
   slug: "media",
@@ -18,7 +19,9 @@ export const Media: CollectionConfig = {
   upload: {
     // TODO: this
     staticURL: "/media",
-    staticDir: path.resolve(__dirname, "../../uploads"),
+    staticDir: !useCloudStorage()
+      ? path.resolve(__dirname, "../../uploads")
+      : undefined,
   },
   fields: [
     {
