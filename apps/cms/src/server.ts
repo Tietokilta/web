@@ -6,8 +6,13 @@ const secret = process.env.PAYLOAD_SECRET;
 if (!secret) {
   throw new Error("PAYLOAD_SECRET is not set");
 }
-const app = express();
+const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 
+const app = express();
+app.use((_, res, next) => {
+  res.setHeader("X-Git-Commit-Sha", gitSha);
+  next();
+});
 // Redirect root to Admin panel
 app.get("/", (_, res) => {
   res.redirect("/admin");
