@@ -74,3 +74,4 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             PROJECT=${{matrix.project}}
+            GIT_COMMIT_SHA=${{github.sha}}

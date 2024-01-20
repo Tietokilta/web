@@ -17,7 +17,8 @@ RUN pnpm install --global turbo
 # Build argument for specifying the project
 # Introduce a build argument 'PROJECT' to specify which project in the monorepo to build.
 ARG PROJECT=web
-
+ARG GIT_COMMIT_SHA=development
+ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 # Install all dependencies in the monorepo
 # Start a new stage for handling dependencies. This stage uses the previously setup image with pnpm and turbo installed.
 FROM setup AS dependencies
@@ -71,6 +72,8 @@ RUN rm -rf ./**/*/src
 FROM base AS runner
 #this needs to be here for some reason again, otherwise the WORKDIR command doesn't pick it up
 ARG PROJECT=web
+ARG GIT_COMMIT_SHA=development
+ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 # Create a non-root user and group for better security.
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
