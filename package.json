@@ -6,7 +6,7 @@
     "codegen": "dotenv -- turbo run codegen",
     "db:clear": "docker compose down -v",
     "db:export": "dotenv -- ./scripts/generate_seeding_data.sh",
-    "db:populate": "dotenv -- ./scripts/import_seeding_data.sh",
+    "db:populate": "dotenv -- ./scripts/import_seeding_data.sh --all",
     "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
