@@ -45,11 +45,15 @@ const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
 export const fetchEvents = async (): Promise<
   ApiResponse<IlmomasiinaEvent[]>
 > => {
-  const response = await fetch(`${baseUrl}/api/events`);
-  if (!response.ok) {
+  try {
+    const response = await fetch(`${baseUrl}/api/events`);
+    if (!response.ok) {
+      return err("ilmomasiina-fetch-fail");
+    }
+    const data = (await response.json()) as IlmomasiinaResponse;
+
+    return ok(data);
+  } catch (error) {
     return err("ilmomasiina-fetch-fail");
   }
-  const data = (await response.json()) as IlmomasiinaResponse;
-
-  return ok(data);
 };
