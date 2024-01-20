@@ -26,13 +26,13 @@ module.exports = {
             key: "x-git-commit-sha",
             value: gitSha,
           },
-          {
-            key: "Access-Control-Allow-Origin",
-            value: cdnUrl,
-          },
+          // {
+          //   key: "Access-Control-Allow-Origin",
+          //   value: cdnUrl,
+          // },
         ],
       },
     ];
   },
-  assetPrefix: isProd ? cdnUrl : undefined,
+  // assetPrefix: isProd ? cdnUrl : undefined,
 };
