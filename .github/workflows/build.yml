@@ -3,6 +3,13 @@ on:
   push:
   release:
     types: [published]
+
+permissions:
+  id-token: write
+  contents: read
+env:
+  # Change this to upload the built image to your own organization.
+  docker_tag_prefix: ghcr.io/tietokilta
 jobs:
   build:
     name: Format, Lint, Check types & Build
@@ -32,7 +39,7 @@ jobs:
         run: pnpm codegen && git diff --quiet
       - name: Build all
         run: pnpm build
-  docker:
+  docker-build-and-push:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
     needs: build
     strategy:
@@ -58,11 +65,11 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/tietokilta/${{matrix.project}}
+          images: ${{env.docker_tag_prefix}}/${{matrix.project}}
           tags: |
             type=semver,pattern={{version}},enable=${{ github.ref_type == 'tag' }}
             type=semver,pattern={{major}}.{{minor}},enable=${{ github.ref_type == 'tag' }}
-            type=sha
+            type=raw,value=sha-${{github.sha}}
             type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Push to GitHub Packages
@@ -75,3 +82,21 @@ jobs:
           build-args: |
             PROJECT=${{matrix.project}}
             GIT_COMMIT_SHA=${{github.sha}}
+  deploy:
+    name: Deploy to Azure
+    runs-on: ubuntu-latest
+    needs: docker-build-and-push
+    strategy:
+      matrix:
+        project: [web, cms]
+    steps:
+      - name: Login via Azure CLI
+        uses: azure/login@v1
+        with:
+          client-id: ${{secrets.AZURE_CLIENT_ID}}
+          subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+          tenant-id: ${{secrets.AZURE_TENANT_ID}}
+      - uses: azure/webapps-deploy@v2
+        with:
+          app-name: tikweb-${{matrix.project}}-prod # TODO: if we ever setup more envs than prod, make this variable customizable
+          images: "${{ env.docker_tag_prefix }}/${{matrix.project}}:sha-${{ github.sha }}"
