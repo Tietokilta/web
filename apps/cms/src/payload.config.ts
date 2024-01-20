@@ -51,7 +51,7 @@ const {
 
 export default buildConfig({
   // TODO: should probably enable this for production but it breaks auth in development
-  // serverURL: process.env.SERVER_URL,
+  // serverURL: process.env.PUBLIC_SERVER_URL,
   admin: {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- stupid eslint doesn't find the type
     bundler: webpackBundler(),
