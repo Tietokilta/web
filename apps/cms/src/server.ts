@@ -32,13 +32,14 @@ const start = async (): Promise<void> => {
       if (useGoogleAuth()) {
         payloadInstance.logger.info("Using Google OAuth2");
       }
-      if (process.env.PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT === "true") {
-        const email = process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL;
-        const password =
-          process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD;
+      const { PAYLOAD_DEFAULT_USER_EMAIL, PAYLOAD_DEFAULT_USER_PASSWORD } =
+        process.env;
+      if (PAYLOAD_DEFAULT_USER_EMAIL && PAYLOAD_DEFAULT_USER_PASSWORD) {
+        const email = PAYLOAD_DEFAULT_USER_EMAIL;
+        const password = PAYLOAD_DEFAULT_USER_PASSWORD;
         if (!email || !password) {
-          throw new Error(
-            "PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL and PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD must be set when PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT is true",
+          payloadInstance.logger.warn(
+            `PAYLOAD_DEFAULT_USER_EMAIL and PAYLOAD_DEFAULT_USER_PASSWORD are not set, first user has to be created manually through the admin panel`,
           );
         }
         // check if the user exists, if not, create it
@@ -48,9 +49,11 @@ const start = async (): Promise<void> => {
         });
         if (user.totalDocs === 0) {
           payloadInstance.logger.warn(`user ${email} not found, creating...`);
-          payloadInstance.logger.warn(
-            "NOTE that it is recommended to use the seeding scripts (`pnpm db:reset`) to a get filled database for local development",
-          );
+          if (process.env.NODE_ENV !== "production") {
+            payloadInstance.logger.warn(
+              "NOTE that it is recommended to use the seeding scripts (`pnpm db:reset`) to a get filled database for local development",
+            );
+          }
           await payloadInstance.create({
             collection: "users",
             data: {
@@ -58,7 +61,6 @@ const start = async (): Promise<void> => {
               password,
             },
           });
-          payloadInstance.logger.warn("Payload autologin enabled!");
         }
       }
     },
