@@ -27,7 +27,6 @@ WORKDIR /app
 COPY packages/ ./packages/
 COPY turbo.json ./
 COPY package.json turbo.json packages ./
-COPY apps/${PROJECT} ./apps/${PROJECT}
 COPY pnpm-lock.yaml pnpm-workspace.yaml ./
 # Install dependencies as per the lockfile to ensure consistent dependency resolution.
 RUN pnpm install --frozen-lockfile
@@ -35,6 +34,7 @@ RUN pnpm install --frozen-lockfile
 # Prune projects to focus on the specified project scope
 # Start a new stage to prune the monorepo, focusing only on the necessary parts for the specified project.
 FROM dependencies AS pruner
+COPY apps/${PROJECT} ./apps/${PROJECT}
 RUN turbo prune --scope=${PROJECT} --docker
 # Remove all empty node_modules folders. This is a cleanup step to remove unnecessary directories and reduce image size.
 RUN rm -rf /app/out/full/*/*/node_modules
