@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "dist/server.js",
   "scripts": {
-    "build": "pnpm copyfiles && pnpm build:payload && pnpm build:server",
+    "build": "NODE_ENV=production pnpm copyfiles && pnpm build:payload && pnpm build:server",
     "build:payload": "payload build",
     "build:server": "tsc",
     "clean": "rm -rf dist",
@@ -15,7 +15,7 @@
     "generate:graphQLSchema": "PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema",
     "generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
     "lint": "eslint  \"./src/**/*.{js,ts}\"",
-    "start": "PAYLOAD_CONFIG_PATH=dist/payload.config.js node dist/server.js",
+    "start": "NODE_ENV=production PAYLOAD_CONFIG_PATH=dist/payload.config.js node dist/server.js",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

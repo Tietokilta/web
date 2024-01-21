@@ -76,9 +76,14 @@ async function EventList({
 }) {
   const events = await fetchEvents();
 
+  if (!events.ok) {
+    console.warn("Failed to fetch events from Ilmomasiina", events.error);
+    return null;
+  }
+
   return (
     <ul className="space-y-4">
-      {events.map((event) => (
+      {events.data.map((event) => (
         <EventItem
           event={event}
           ilmolinkText={ilmolinkText}

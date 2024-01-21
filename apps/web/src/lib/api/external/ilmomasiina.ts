@@ -1,3 +1,6 @@
+import type { ApiResponse } from "./helpers";
+import { err, ok } from "./helpers";
+
 export type IlmomasiinaResponse = IlmomasiinaEvent[];
 
 export interface IlmomasiinaEvent {
@@ -39,9 +42,18 @@ export interface EventQuota {
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ideally would throw during build, but let's at least throw here if it's missing
 const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
 
-export const fetchEvents = async (): Promise<IlmomasiinaResponse> => {
-  const response = await fetch(`${baseUrl}/api/events`);
-  const data = (await response.json()) as IlmomasiinaResponse;
+export const fetchEvents = async (): Promise<
+  ApiResponse<IlmomasiinaEvent[]>
+> => {
+  try {
+    const response = await fetch(`${baseUrl}/api/events`);
+    if (!response.ok) {
+      return err("ilmomasiina-fetch-fail");
+    }
+    const data = (await response.json()) as IlmomasiinaResponse;
 
-  return data;
+    return ok(data);
+  } catch (error) {
+    return err("ilmomasiina-fetch-fail");
+  }
 };

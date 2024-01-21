@@ -18,17 +18,26 @@ export const revalidatePage =
       (!("_status" in doc) || doc._status === "published")
     ) {
       const revalidate = async (): Promise<void> => {
+        const revalidationKey = process.env.PAYLOAD_REVALIDATION_KEY;
+        if (!revalidationKey) {
+          req.payload.logger.error(
+            "PAYLOAD_REVALIDATION_KEY not set, cannot revalidate",
+          );
+          return;
+        }
         try {
           const fetchData = JSON.stringify(await getFetchData(doc, req));
-          const res = await fetch(
-            `${
-              process.env.PUBLIC_FRONTEND_URL
-            }/api/revalidate?${new URLSearchParams({
-              secret: process.env.PAYLOAD_REVALIDATION_KEY ?? "",
-              collection,
-              fetchData,
-            }).toString()}`,
+          const fetchUrl = `${
+            process.env.PUBLIC_FRONTEND_URL
+          }/next_api/revalidate?${new URLSearchParams({
+            secret: revalidationKey,
+            collection,
+            fetchData,
+          }).toString()}`;
+          req.payload.logger.info(
+            `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
           );
+          const res = await fetch(fetchUrl);
           if (res.ok) {
             req.payload.logger.info(
               `Revalidated collection ${collection} with data ${fetchData}`,

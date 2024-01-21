@@ -53,7 +53,7 @@ const {
 
 export default buildConfig({
   // TODO: should probably enable this for production but it breaks auth in development
-  // serverURL: process.env.SERVER_URL,
+  // serverURL: process.env.PUBLIC_SERVER_URL,
   admin: {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- stupid eslint doesn't find the type
     bundler: webpackBundler(),
@@ -70,7 +70,7 @@ export default buildConfig({
   },
   upload: {
     limits: {
-      fileSize: 5000000, // 5MB, written in bytes
+      fileSize: 10000000, // 10MB, written in bytes
     },
   },
   collections: [Users, Pages, Media, Topics, BoardMembers, Boards],
@@ -99,8 +99,8 @@ export default buildConfig({
     connectOptions: {
       dbName: process.env.PAYLOAD_MONGO_DB_NAME,
     },
-    // @ts-expect-error DATABASE_URL is validated by payload on start
-    url: process.env.PAYLOAD_MONGO_CONNECTION_STRING,
+    // webpack build crashes if these are not set i.e. have to default empty
+    url: process.env.PAYLOAD_MONGO_CONNECTION_STRING ?? "",
   }),
   editor: lexicalEditor({
     features: [

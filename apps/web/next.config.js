@@ -1,5 +1,7 @@
 /** @type {import("next").NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
+const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
+const cdnUrl = "https://next-cdn-endpoint-prod.azureedge.net";
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -15,5 +17,22 @@ module.exports = {
         ]
       : undefined,
   },
-  assetPrefix: isProd ? "https://cdn.alpha.tietokilta.fi" : undefined,
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "x-git-commit-sha",
+            value: gitSha,
+          },
+          // {
+          //   key: "Access-Control-Allow-Origin",
+          //   value: cdnUrl,
+          // },
+        ],
+      },
+    ];
+  },
+  // assetPrefix: isProd ? cdnUrl : undefined,
 };

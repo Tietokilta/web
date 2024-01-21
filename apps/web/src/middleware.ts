@@ -9,7 +9,7 @@ export function middleware(request: NextRequest): NextResponse {
     pathname.startsWith("/api") ||
     pathname.startsWith("/oauth2")
   ) {
-    const destination = new URL(process.env.SERVER_URL || "");
+    const destination = new URL(process.env.PUBLIC_SERVER_URL || "");
     const url = request.nextUrl.clone();
     url.host = destination.host;
     url.port = destination.port;
@@ -17,9 +17,9 @@ export function middleware(request: NextRequest): NextResponse {
     return NextResponse.rewrite(url);
   }
   return NextResponse.redirect(
-    new URL(`/fi/${request.nextUrl.pathname}`, request.url),
+    new URL(`/fi${request.nextUrl.pathname}`, request.url),
   );
 }
 export const config = {
-  matcher: ["/((?!_next|fi|en).*)"],
+  matcher: ["/((?!_next|fi|en|next_api).*)"],
 };

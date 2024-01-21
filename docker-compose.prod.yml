@@ -17,6 +17,7 @@ services:
       context: .
       args:
         - PROJECT=cms
+        - GIT_COMMIT_SHA=test
     depends_on:
       - mongo
     env_file:
@@ -29,6 +30,7 @@ services:
       context: .
       args:
         - PROJECT=web
+        - GIT_COMMIT_SHA=test
     depends_on:
       - cms
     env_file:
