@@ -33,8 +33,8 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6(@swc/core@1.3.105)(payload@2.8.1)
       '@payloadcms/db-mongodb':
-        specifier: ^1.3.1
-        version: 1.3.1(payload@2.8.1)
+        specifier: ^1.3.2
+        version: 1.3.2(payload@2.8.1)
       '@payloadcms/plugin-cloud-storage':
         specifier: ^1.1.1
         version: 1.1.1(@azure/storage-blob@12.17.0)(payload@2.8.1)
@@ -2761,8 +2761,8 @@ packages:
       - webpack-dev-server
     dev: false
 
-  /@payloadcms/db-mongodb@1.3.1(payload@2.8.1):
-    resolution: {integrity: sha512-lZnQwROCunKO6X8Jd/71j9ZUfEbDN8OpdnahQiauTKmTFow66pP1UCJnFDQv906IZTyBL9VqKiz3ltFrwr0pvA==}
+  /@payloadcms/db-mongodb@1.3.2(payload@2.8.1):
+    resolution: {integrity: sha512-4eXlhy1tLHNY6fluLZF89mgkveyPoMqvoC3z763iBbowECz5dWd8lWKuO43ce+N38TDeRRjfzG2x0HzwPuVzLQ==}
     peerDependencies:
       payload: ^2.0.0
     dependencies:
