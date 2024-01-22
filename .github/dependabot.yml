@@ -6,6 +6,10 @@ updates:
     schedule:
       interval: weekly
     groups:
+      payload:
+        patterns:
+          - "payload"
+          - "@payloadcms/*"
       next:
         patterns:
           - "next"
