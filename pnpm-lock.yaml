@@ -31,16 +31,16 @@ importers:
         version: 12.17.0
       '@payloadcms/bundler-webpack':
         specifier: ^1.0.6
-        version: 1.0.6(@swc/core@1.3.105)(payload@2.8.1)
+        version: 1.0.6(@swc/core@1.3.105)(payload@2.8.2)
       '@payloadcms/db-mongodb':
-        specifier: ^1.3.1
-        version: 1.3.1(payload@2.8.1)
+        specifier: ^1.3.2
+        version: 1.3.2(payload@2.8.2)
       '@payloadcms/plugin-cloud-storage':
         specifier: ^1.1.1
-        version: 1.1.1(@azure/storage-blob@12.17.0)(payload@2.8.1)
+        version: 1.1.1(@azure/storage-blob@12.17.0)(payload@2.8.2)
       '@payloadcms/richtext-lexical':
         specifier: ^0.5.2
-        version: 0.5.2(@lexical/clipboard@0.12.6)(payload@2.8.1)(typescript@5.3.3)(yjs@13.6.11)
+        version: 0.5.2(@lexical/clipboard@0.12.6)(payload@2.8.2)(typescript@5.3.3)(yjs@13.6.11)
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
@@ -51,11 +51,11 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       payload:
-        specifier: ^2.8.1
-        version: 2.8.1(typescript@5.3.3)(webpack@5.89.0)
+        specifier: ^2.8.2
+        version: 2.8.2(typescript@5.3.3)(webpack@5.89.0)
       payload-plugin-oauth:
         specifier: ^2.1.1
-        version: 2.1.1(mongodb@4.17.2)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.8.1)(react@18.2.0)
+        version: 2.1.1(mongodb@4.17.2)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.8.2)(react@18.2.0)
     devDependencies:
       '@tietokilta/cms-types':
         specifier: workspace:*
@@ -2709,7 +2709,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dev: false
 
-  /@payloadcms/bundler-webpack@1.0.6(@swc/core@1.3.105)(payload@2.8.1):
+  /@payloadcms/bundler-webpack@1.0.6(@swc/core@1.3.105)(payload@2.8.2):
     resolution: {integrity: sha512-hKnRqF2IhYCqNwb8FjKNnjR9fKCXVK2PJgPu3R89dvFhvMnwkbkbj86LMCC4dLmQ9RXmmh/drw4Q5acQ/Xec8g==}
     peerDependencies:
       payload: ^2.0.0
@@ -2724,7 +2724,7 @@ packages:
       md5: 2.3.0
       mini-css-extract-plugin: 1.6.2(webpack@5.89.0)
       path-browserify: 1.0.1
-      payload: 2.8.1(typescript@5.3.3)(webpack@5.89.0)
+      payload: 2.8.2(typescript@5.3.3)(webpack@5.89.0)
       postcss: 8.4.31
       postcss-loader: 6.2.1(postcss@8.4.31)(webpack@5.89.0)
       postcss-preset-env: 9.0.0(postcss@8.4.31)
@@ -2761,8 +2761,8 @@ packages:
       - webpack-dev-server
     dev: false
 
-  /@payloadcms/db-mongodb@1.3.1(payload@2.8.1):
-    resolution: {integrity: sha512-lZnQwROCunKO6X8Jd/71j9ZUfEbDN8OpdnahQiauTKmTFow66pP1UCJnFDQv906IZTyBL9VqKiz3ltFrwr0pvA==}
+  /@payloadcms/db-mongodb@1.3.2(payload@2.8.2):
+    resolution: {integrity: sha512-4eXlhy1tLHNY6fluLZF89mgkveyPoMqvoC3z763iBbowECz5dWd8lWKuO43ce+N38TDeRRjfzG2x0HzwPuVzLQ==}
     peerDependencies:
       payload: ^2.0.0
     dependencies:
@@ -2773,7 +2773,7 @@ packages:
       mongoose: 6.12.3
       mongoose-aggregate-paginate-v2: 1.0.6
       mongoose-paginate-v2: 1.7.22
-      payload: 2.8.1(typescript@5.3.3)(webpack@5.89.0)
+      payload: 2.8.2(typescript@5.3.3)(webpack@5.89.0)
       prompts: 2.4.2
       uuid: 9.0.0
     transitivePeerDependencies:
@@ -2781,7 +2781,7 @@ packages:
       - supports-color
     dev: false
 
-  /@payloadcms/plugin-cloud-storage@1.1.1(@azure/storage-blob@12.17.0)(payload@2.8.1):
+  /@payloadcms/plugin-cloud-storage@1.1.1(@azure/storage-blob@12.17.0)(payload@2.8.2):
     resolution: {integrity: sha512-WFqfZcT7R1LD+FfKKKYNsJPDRE+0VlYEMxzGuPKeUQn9w9sqTy2UD01YCEl0Zcyuq8fD9mRUjeLitSo1aAUimQ==}
     peerDependencies:
       '@aws-sdk/client-s3': ^3.142.0
@@ -2800,11 +2800,11 @@ packages:
         optional: true
     dependencies:
       '@azure/storage-blob': 12.17.0
-      payload: 2.8.1(typescript@5.3.3)(webpack@5.89.0)
+      payload: 2.8.2(typescript@5.3.3)(webpack@5.89.0)
       range-parser: 1.2.1
     dev: false
 
-  /@payloadcms/richtext-lexical@0.5.2(@lexical/clipboard@0.12.6)(payload@2.8.1)(typescript@5.3.3)(yjs@13.6.11):
+  /@payloadcms/richtext-lexical@0.5.2(@lexical/clipboard@0.12.6)(payload@2.8.2)(typescript@5.3.3)(yjs@13.6.11):
     resolution: {integrity: sha512-7FU/zDL+KRLdqE/zDsEDuRQx27ZYe7RPadVCW5hRy7aqke5+68rN/kACrLW0NiW2v90XXTHiDkUYmYAb+DRh5Q==}
     peerDependencies:
       payload: ^2.4.0
@@ -2825,7 +2825,7 @@ packages:
       i18next: 22.5.1
       lexical: 0.12.6
       lodash: 4.17.21
-      payload: 2.8.1(typescript@5.3.3)(webpack@5.89.0)
+      payload: 2.8.2(typescript@5.3.3)(webpack@5.89.0)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-error-boundary: 4.0.12(react@18.2.0)
@@ -10193,7 +10193,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /payload-plugin-oauth@2.1.1(mongodb@4.17.2)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.8.1)(react@18.2.0):
+  /payload-plugin-oauth@2.1.1(mongodb@4.17.2)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.8.2)(react@18.2.0):
     resolution: {integrity: sha512-SQCcjXj9geh+H1QQRVlEIuHH0FAc9N3U3y2xuw3AViPqUHB0awLSmMCDCUBhUr8csVPGg4CVyroVq4eEcRpa+w==}
     peerDependencies:
       passport: ^0.6
@@ -10206,7 +10206,7 @@ packages:
       express-session: 1.17.3
       passport: 0.6.0
       passport-oauth2: 1.7.0
-      payload: 2.8.1(typescript@5.3.3)(webpack@5.89.0)
+      payload: 2.8.2(typescript@5.3.3)(webpack@5.89.0)
       react: 18.2.0
     transitivePeerDependencies:
       - mongodb
@@ -10214,8 +10214,8 @@ packages:
       - supports-color
     dev: false
 
-  /payload@2.8.1(typescript@5.3.3)(webpack@5.89.0):
-    resolution: {integrity: sha512-g+FbNWmmx4b/4I9fLxXbx5cKNPCwWJBDTH2SoLqCooAsX5r/NS78Ae5KcWwRH+xVdoiMXG2vQ9Li4npJ+ckJlQ==}
+  /payload@2.8.2(typescript@5.3.3)(webpack@5.89.0):
+    resolution: {integrity: sha512-n1WXnhZKe/wHFz4akW+w16OUzCU45i2fFJzgiXakMGC58JbvpDGo/yh287ENrdiHOdtb/a/YkPsKpa6lbZ+gBA==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -11969,6 +11969,7 @@ packages:
 
   /resolve@2.0.0-next.5:
     resolution: {integrity: sha512-U7WjGVG9sH8tvjW5SmGbQuui75FiyjAX72HX15DwBBwF9dNiQZRQAg9nnPhYy+TUnE0+VcrttuvNI8oSxZcocA==}
+    hasBin: true
     dependencies:
       is-core-module: 2.13.1
       path-parse: 1.0.7
