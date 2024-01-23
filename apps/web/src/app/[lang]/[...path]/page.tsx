@@ -1,6 +1,6 @@
 import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { AdminBar } from "../../../components/admin-bar";
 import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
 import { TableOfContents } from "../../../components/table-of-contents";
@@ -27,7 +27,34 @@ const getPage = async (path: string[], lang: Locale) => {
     locale: lang,
   });
 
-  if (!page) return notFound();
+  if (!page) {
+    const otherLang = lang === "fi" ? "en" : "fi";
+    const localizedSlug = `slug.${otherLang}` as const;
+    const localizedTopic = `topic.${otherLang}` as const;
+    const otherPage = await fetchPage({
+      // @ts-expect-error Typescript doesn't get as const keys in object assignments it seems
+      where:
+        path.length === 1
+          ? { [localizedSlug]: { equals: path[0] } }
+          : {
+              [localizedSlug]: { equals: path[1] },
+              [localizedTopic]: { [localizedSlug]: { equals: path[0] } },
+            },
+      locale: "all",
+    });
+
+    if (!otherPage?.path) {
+      return notFound();
+    }
+
+    const localizedPath = otherPage.path as unknown as Record<Locale, string>;
+
+    if (!localizedPath[lang]) {
+      return notFound();
+    }
+
+    return redirect(localizedPath[lang]);
+  }
 
   return page;
 };
