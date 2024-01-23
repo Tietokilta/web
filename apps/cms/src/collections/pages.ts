@@ -8,19 +8,56 @@ import { generatePreviewUrl } from "../preview";
 import { getLocale } from "../util";
 
 const formatPath: FieldHook<Page> = async ({ data, req }) => {
-  const locale = getLocale(req) ?? "fi";
-  if (data) {
-    if (data.topic && data.slug) {
-      const topic = await req.payload.findByID({
-        collection: "topics",
-        id: data.topic.value as string,
-        locale,
-      });
-      return `/${locale}/${topic.slug}/${data.slug}`;
-    } else if (data.slug) {
-      return `/${locale}/${data.slug}`;
-    }
+  if (!data?.slug || !req.payload.config.localization) {
+    req.payload.logger.warn(
+      "Could not format page path: missing slug or localization config",
+      data,
+    );
+    return;
   }
+
+  const availableLocales = req.payload.config.localization.localeCodes;
+  const reqLocale = getLocale(req) ?? "fi";
+  const requestedAllLocales = reqLocale === "all" || reqLocale === "*";
+
+  if (!data.topic) {
+    if (!requestedAllLocales) {
+      return `/${reqLocale}/${data.slug}`;
+    }
+
+    const slug = data.slug as unknown as Record<string, string>;
+    const localizedPaths = availableLocales.reduce<Record<string, string>>(
+      (allPaths, locale) => ({
+        ...allPaths,
+        [locale]: `/${locale}/${slug[locale]}`,
+      }),
+      {},
+    );
+
+    return localizedPaths;
+  }
+
+  const topic = await req.payload.findByID({
+    collection: "topics",
+    id: data.topic.value as string,
+    locale: req.locale,
+  });
+
+  if (!requestedAllLocales) {
+    return `/${reqLocale}/${topic.slug}/${data.slug}`;
+  }
+
+  const topicSlug = topic.slug as unknown as Record<string, string>;
+  const pageSlug = data.slug as unknown as Record<string, string>;
+  const localizedPaths = availableLocales.reduce<Record<string, string>>(
+    (allPaths, locale) => ({
+      ...allPaths,
+      [locale]: `/${locale}/${topicSlug[locale]}/${pageSlug[locale]}`,
+    }),
+    {},
+  );
+
+  return localizedPaths;
 };
 
 export const Pages: CollectionConfig = {
