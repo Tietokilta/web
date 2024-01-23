@@ -12,13 +12,23 @@ export function GET(request: NextRequest): NextResponse {
   const secret = request.nextUrl.searchParams.get("secret");
 
   if (secret !== process.env.NEXT_REVALIDATION_KEY) {
+    // eslint-disable-next-line no-console -- for debugging purposes
+    console.log("invalid secret from revalidate request: ", secret);
     return NextResponse.json({ revalidated: false, now: Date.now() });
   }
 
   if (typeof collection === "string" && typeof fetchData === "string") {
-    revalidateTag(`get_/api/${collection}_${stringify(JSON.parse(fetchData))}`);
+    const tagToRevalidate = `get_/api/${collection}_${stringify(JSON.parse(fetchData))}`;
+    // eslint-disable-next-line no-console -- for debugging purposes
+    console.log("revalidating tag: ", tagToRevalidate);
+    revalidateTag(tagToRevalidate);
     return NextResponse.json({ revalidated: true, now: Date.now() });
   }
-
+  // eslint-disable-next-line no-console -- for debugging purposes
+  console.log(
+    "invalid collection or fetchData from revalidate request: ",
+    collection,
+    fetchData,
+  );
   return NextResponse.json({ revalidated: false, now: Date.now() });
 }
