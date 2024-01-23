@@ -39,6 +39,10 @@ export const revalidatePage =
           );
           const res = await fetch(fetchUrl);
           if (res.ok) {
+            const thing = await res.json();
+            req.payload.logger.info(
+              `revalidate response ${JSON.stringify(thing)}`,
+            );
             req.payload.logger.info(
               `Revalidated collection ${collection} with data ${fetchData}`,
             );
