@@ -74,19 +74,19 @@ export const getAll = <
 
 export const getOne =
   <Request extends Record<string, unknown>, Response>(path: string) =>
-  (req: Request & { locale?: string }) =>
+  (req: Request & { locale: string }) =>
     getAll<Request, Response[]>(path)(req).then((res) => res?.[0]);
 
-export const getGlobal = <Response>(path: string, locale?: string) =>
+export const getGlobal = <Response>(path: string, locale: string) =>
   fetcher<Record<string, never>, Response>(
-    () => `getGlobal_${path}`,
+    () => `getGlobal_${path}?locale=${locale}`,
     async (_, draft, fetchOptions): Promise<Response | undefined> => {
       const result = await fetch(
         `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
+          locale,
           depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
           ...(draft ? { draft: "true" } : {}),
-          ...(locale ? { locale } : {}),
         }).toString()}`,
         {
           method: "GET",
