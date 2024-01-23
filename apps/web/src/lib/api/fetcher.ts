@@ -20,7 +20,10 @@ export const fetcher =
     if (isDraftMode) {
       payloadToken = cookies().get("payload-token");
     }
-
+    const tagToCache =
+      tag(req) + (isDraftMode && payloadToken ? `_${Date.now()}` : "");
+    // eslint-disable-next-line no-console -- for debugging purposes
+    console.log("tagToCache", tagToCache);
     const res = await dataFetcher(
       req,
       Boolean(isDraftMode) && Boolean(payloadToken),
@@ -29,9 +32,7 @@ export const fetcher =
         // we do this by calling `revalidateTag()` using the same key
         // see `app/api/revalidate.ts` for more info
         next: {
-          tags: [
-            tag(req) + (isDraftMode && payloadToken ? `_${Date.now()}` : ""),
-          ],
+          tags: [tagToCache],
         },
         ...(isDraftMode && payloadToken
           ? {
