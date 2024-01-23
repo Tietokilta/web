@@ -7,9 +7,15 @@ import { NextResponse } from "next/server";
 // this is to achieve on-demand revalidation of pages that use this data
 // send either `collection` and `slug` or `revalidatePath` as query params
 export function GET(request: NextRequest): NextResponse {
-  const collection = request.nextUrl.searchParams.get("collection");
-  const fetchData = request.nextUrl.searchParams.get("fetchData");
-  const secret = request.nextUrl.searchParams.get("secret");
+  const collection = decodeURIComponent(
+    request.nextUrl.searchParams.get("collection") ?? "",
+  );
+  const fetchData = decodeURIComponent(
+    request.nextUrl.searchParams.get("fetchData") ?? "",
+  );
+  const secret = decodeURIComponent(
+    request.nextUrl.searchParams.get("secret") ?? "",
+  );
 
   if (secret !== process.env.NEXT_REVALIDATION_KEY) {
     // eslint-disable-next-line no-console -- for debugging purposes
