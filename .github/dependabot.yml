@@ -32,3 +32,6 @@ updates:
         patterns:
           - "storybook"
           - "@storybook/*"
+      patches:
+        update-types:
+          - "patch"
