@@ -116,6 +116,7 @@ export const Pages: CollectionConfig = {
             },
             isNil,
           ),
+          locale: req.query.locale,
         };
       }),
     ],
