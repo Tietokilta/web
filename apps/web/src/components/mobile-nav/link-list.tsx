@@ -17,6 +17,7 @@ import {
   RenderIcon,
   ScrollArea,
   Separator,
+  SheetClose,
   cn,
 } from "@tietokilta/ui";
 import NextLink, { type LinkProps } from "next/link";
@@ -32,11 +33,13 @@ function Link({
   const isActive = pathname === href;
 
   return (
-    <NextLink
-      aria-current={isActive ? "page" : undefined}
-      href={href}
-      {...props}
-    />
+    <SheetClose asChild>
+      <NextLink
+        aria-current={isActive ? "page" : undefined}
+        href={href}
+        {...props}
+      />
+    </SheetClose>
   );
 }
 
