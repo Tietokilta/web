@@ -35,6 +35,7 @@ import { Footer } from "./globals/footer";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
 import { useCloudStorage } from "./util";
+import { revalidateGlobal } from "./hooks/revalidate-globals";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -203,5 +204,21 @@ export default buildConfig({
         },
       },
     }),
+    // add revalidateGlobal hook to all globals
+    (config) => {
+      return {
+        ...config,
+        globals: config.globals?.map((global) => ({
+          ...global,
+          hooks: {
+            ...global.hooks,
+            afterChange: [
+              ...(global.hooks?.afterChange ?? []),
+              revalidateGlobal,
+            ],
+          },
+        })),
+      };
+    },
   ],
 });

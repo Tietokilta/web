@@ -22,7 +22,7 @@ export default async function Home({
 }) {
   const dictionary = await getDictionary(lang);
 
-  const landingPageData = await fetchLandingPage({});
+  const landingPageData = await fetchLandingPage(lang)({});
   if (!landingPageData) {
     // TODO: Real error handling / show error page
     return "Unable to fetch landing page data, please refresh";
