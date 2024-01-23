@@ -17,7 +17,10 @@ export function middleware(request: NextRequest): NextResponse {
     return NextResponse.rewrite(url);
   }
   return NextResponse.redirect(
-    new URL(`/fi${request.nextUrl.pathname}`, request.url),
+    new URL(
+      `/fi${request.nextUrl.pathname.length === 1 ? "" : request.nextUrl.pathname}`,
+      request.url,
+    ),
   );
 }
 export const config = {
