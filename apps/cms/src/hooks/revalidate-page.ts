@@ -29,7 +29,7 @@ export const revalidatePage =
           const fetchData = JSON.stringify(await getFetchData(doc, req));
           const fetchUrl = `${
             process.env.PUBLIC_FRONTEND_URL
-          }/next_api/revalidate?${new URLSearchParams({
+          }/next_api/revalidate-page?${new URLSearchParams({
             secret: encodeURIComponent(revalidationKey),
             collection: encodeURIComponent(collection),
             fetchData: encodeURIComponent(fetchData),
