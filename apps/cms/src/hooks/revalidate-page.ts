@@ -30,9 +30,9 @@ export const revalidatePage =
           const fetchUrl = `${
             process.env.PUBLIC_FRONTEND_URL
           }/next_api/revalidate?${new URLSearchParams({
-            secret: revalidationKey,
-            collection,
-            fetchData,
+            secret: encodeURIComponent(revalidationKey),
+            collection: encodeURIComponent(collection),
+            fetchData: encodeURIComponent(fetchData),
           }).toString()}`;
           req.payload.logger.info(
             `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
