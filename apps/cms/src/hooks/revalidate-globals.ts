@@ -1,0 +1,52 @@
+// revalidate the page in the background, so the user doesn't have to wait
+// notice that the hook itself is not async and we are not awaiting `revalidate`
+
+import type { AfterChangeHook } from "payload/dist/globals/config/types";
+
+// only revalidate existing docs that are published (not drafts)
+export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
+  const locale = req.locale;
+  if (!locale) {
+    req.payload.logger.error("locale not set, cannot revalidate");
+    return;
+  }
+  const revalidate = async (): Promise<void> => {
+    const revalidationKey = process.env.PAYLOAD_REVALIDATION_KEY;
+    if (!revalidationKey) {
+      req.payload.logger.error(
+        "PAYLOAD_REVALIDATION_KEY not set, cannot revalidate",
+      );
+      return;
+    }
+    try {
+      const fetchUrl = `${
+        process.env.PUBLIC_FRONTEND_URL
+      }/next_api/revalidate-global?${new URLSearchParams({
+        secret: encodeURIComponent(revalidationKey),
+        global: encodeURIComponent(global.slug),
+        locale: encodeURIComponent(locale),
+      }).toString()}`;
+      req.payload.logger.info(
+        `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
+      );
+      const res = await fetch(fetchUrl);
+      if (res.ok) {
+        const thing = await res.json();
+        req.payload.logger.info(`revalidate response ${JSON.stringify(thing)}`);
+        req.payload.logger.info(`Revalidated global ${global.slug}`);
+      } else {
+        req.payload.logger.error(
+          `Error revalidating collection ${global.slug}`,
+        );
+      }
+    } catch (err: unknown) {
+      req.payload.logger.error(
+        `Error hitting revalidate collection ${global.slug}`,
+      );
+    }
+  };
+
+  void revalidate();
+
+  return doc;
+};
