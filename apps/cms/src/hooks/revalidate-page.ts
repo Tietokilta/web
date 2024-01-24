@@ -37,8 +37,9 @@ export const revalidatePage =
           req.payload.logger.info(
             `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
           );
-          const res = await fetch(fetchUrl);
+          const res = await fetch(fetchUrl, { method: "POST" });
           if (res.ok) {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- is ok
             const thing = await res.json();
             req.payload.logger.info(
               `revalidate response ${JSON.stringify(thing)}`,

@@ -5,6 +5,7 @@ import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-o
 import { signedIn } from "../access/signed-in";
 import { revalidatePage } from "../hooks/revalidate-page";
 import { generatePreviewUrl } from "../preview";
+import { getLocale } from "../util";
 
 const formatPath: FieldHook<Page> = async ({ data, req }) => {
   if (data) {
@@ -102,11 +103,19 @@ export const Pages: CollectionConfig = {
   hooks: {
     afterChange: [
       revalidatePage<Page>("pages", async (doc, req) => {
+        const locale = getLocale(req);
+        if (!locale) {
+          req.payload.logger.error(
+            "locale not set, cannot revalidate properly",
+          );
+          return;
+        }
         const topic =
           doc.topic &&
           (await req.payload.findByID({
             collection: "topics",
             id: doc.topic.value as string,
+            locale,
           }));
         return {
           where: omitBy(
@@ -116,7 +125,7 @@ export const Pages: CollectionConfig = {
             },
             isNil,
           ),
-          locale: req.query.locale,
+          locale,
         };
       }),
     ],

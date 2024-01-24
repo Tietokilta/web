@@ -2,12 +2,13 @@
 // notice that the hook itself is not async and we are not awaiting `revalidate`
 
 import type { AfterChangeHook } from "payload/dist/globals/config/types";
+import { getLocale } from "../util";
 
 // only revalidate existing docs that are published (not drafts)
 export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
-  const locale = req.locale;
+  const locale = getLocale(req);
   if (!locale) {
-    req.payload.logger.error("locale not set, cannot revalidate");
+    req.payload.logger.error("locale not set, cannot revalidate properly");
     return;
   }
   const revalidate = async (): Promise<void> => {
@@ -29,8 +30,9 @@ export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
       req.payload.logger.info(
         `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
       );
-      const res = await fetch(fetchUrl);
+      const res = await fetch(fetchUrl, { method: "POST" });
       if (res.ok) {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- is ok trust me bro
         const thing = await res.json();
         req.payload.logger.info(`revalidate response ${JSON.stringify(thing)}`);
         req.payload.logger.info(`Revalidated global ${global.slug}`);
@@ -48,5 +50,6 @@ export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
 
   void revalidate();
 
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- ¯\_(ツ)_/¯
   return doc;
 };

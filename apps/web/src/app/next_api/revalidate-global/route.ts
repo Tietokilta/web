@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 // this endpoint will revalidate a page by tag or path
 // this is to achieve on-demand revalidation of pages that use this data
 // send either `collection` and `slug` or `revalidatePath` as query params
-export function GET(request: NextRequest): NextResponse {
+export function POST(request: NextRequest): NextResponse {
   const global = decodeURIComponent(
     request.nextUrl.searchParams.get("global") ?? "",
   );
