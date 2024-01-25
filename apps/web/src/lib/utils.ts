@@ -4,9 +4,6 @@ import { twMerge } from "tailwind-merge";
 
 export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
 
-export const localisePath = (path: string, locale: string) =>
-  `/${locale}${path}` as const;
-
 export const jsxToTextContent = (element: JSX.Element | undefined): string => {
   if (!element) return "";
 

@@ -1,6 +1,7 @@
 import stringify from "json-stable-stringify";
 import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { stringify as qsStringify } from "qs";
+import { draftMode, cookies } from "next/headers";
 
 export const fetcher =
   <Request, Response>(
@@ -14,7 +15,6 @@ export const fetcher =
   async (req: Request): Promise<Response | undefined | null> => {
     let payloadToken: RequestCookie | undefined;
 
-    const { draftMode, cookies } = await import("next/headers");
     const { isEnabled: isDraftMode } = draftMode();
 
     if (isDraftMode) {
@@ -81,6 +81,13 @@ export const getGlobal = <Response>(path: string, locale: string) =>
   fetcher<Record<string, never>, Response>(
     () => `getGlobal_${path}?locale=${locale}`,
     async (_, draft, fetchOptions): Promise<Response | undefined> => {
+      const fetchUrl = `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
+        locale,
+        depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+        // Needs to be bigger than 1 to get media / images
+        ...(draft ? { draft: "true" } : {}),
+      }).toString()}`;
+      console.log("fetchUrl", fetchUrl);
       const result = await fetch(
         `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
           locale,

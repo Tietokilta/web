@@ -8,16 +8,17 @@ import { generatePreviewUrl } from "../preview";
 import { getLocale } from "../util";
 
 const formatPath: FieldHook<Page> = async ({ data, req }) => {
+  const locale = getLocale(req) ?? "fi";
   if (data) {
     if (data.topic && data.slug) {
       const topic = await req.payload.findByID({
         collection: "topics",
         id: data.topic.value as string,
-        locale: req.locale,
+        locale,
       });
-      return `/${topic.slug}/${data.slug}`;
+      return `/${locale}/${topic.slug}/${data.slug}`;
     } else if (data.slug) {
-      return `/${data.slug}`;
+      return `/${locale}/${data.slug}`;
     }
   }
 };
@@ -28,7 +29,9 @@ export const Pages: CollectionConfig = {
     useAsTitle: "title",
     defaultColumns: ["path", "title"],
     listSearchableFields: ["path", "title"],
-    preview: generatePreviewUrl<Page>((doc) => doc.path ?? "/"),
+    preview: generatePreviewUrl<Page>((doc) => {
+      return doc.path ?? "/";
+    }),
   },
   access: {
     read: publishedAndVisibleOrSignedIn,

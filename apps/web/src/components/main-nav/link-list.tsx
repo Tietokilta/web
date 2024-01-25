@@ -18,7 +18,6 @@ import {
 import NextLink, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import type { HTMLProps } from "react";
-import { localisePath } from "../../lib/utils";
 
 function Link({
   href,
@@ -37,16 +36,13 @@ function Link({
 
 function NavigationLink({
   pageOrTopic,
-  locale,
 }: {
   pageOrTopic: MainNavigationItem[number];
-  locale: string;
 }) {
   if (pageOrTopic.type === "page") {
-    const localisedPath = localisePath(
-      (pageOrTopic.pageConfig?.page as Page | undefined)?.path ?? "#broken",
-      locale,
-    );
+    const localisedPath =
+      (pageOrTopic.pageConfig?.page as Page | undefined)?.path ?? "#broken";
+
     return (
       <Link className={navigationMenuTriggerStyle()} href={localisedPath}>
         {(pageOrTopic.pageConfig?.page as Page).title}
@@ -74,12 +70,7 @@ function NavigationLink({
                       className="mb-2 w-full border-b-0 pb-0 pl-0"
                       variant="link"
                     >
-                      <Link
-                        href={localisePath(
-                          (page as Page).path ?? "#broken",
-                          locale,
-                        )}
-                      >
+                      <Link href={(page as Page).path ?? "#broken"}>
                         {(page as Page).title}
                       </Link>
                     </Button>
@@ -114,13 +105,12 @@ function NavigationLink({
 
 export const LinkList = ({
   links,
-  locale,
 }: {
   links: MainNavigationItem;
   locale: string;
 }) =>
   links.map((pageOrTopic) => (
     <NavigationMenuItem key={pageOrTopic.id}>
-      <NavigationLink locale={locale} pageOrTopic={pageOrTopic} />
+      <NavigationLink pageOrTopic={pageOrTopic} />
     </NavigationMenuItem>
   ));
