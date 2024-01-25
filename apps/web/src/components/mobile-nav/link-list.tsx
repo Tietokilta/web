@@ -23,7 +23,6 @@ import NextLink, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import type { HTMLProps } from "react";
 import type { Dictionary } from "../../lib/dictionaries";
-import { localisePath } from "../../lib/utils";
 
 function Link({
   href,
@@ -43,7 +42,6 @@ function Link({
 
 function NavigationLink({
   pageOrTopic,
-  locale,
   dict,
 }: {
   pageOrTopic: MainNavigationItem[number];
@@ -54,15 +52,12 @@ function NavigationLink({
   };
 }) {
   if (pageOrTopic.type === "page") {
-    const localisedPath = localisePath(
-      (pageOrTopic.pageConfig?.page as Page).path ?? "#broken",
-      locale,
-    );
+    const path = (pageOrTopic.pageConfig?.page as Page).path ?? "#broken";
 
     return (
       <Link
         className="underline-offset-2 hover:underline aria-[current='page']:underline"
-        href={localisedPath}
+        href={path}
       >
         <span>{(pageOrTopic.pageConfig?.page as Page).title}</span>
       </Link>
@@ -93,12 +88,7 @@ function NavigationLink({
                   className="w-full border-b-0 pl-0"
                   variant="link"
                 >
-                  <Link
-                    href={localisePath(
-                      (page as Page).path ?? "#broken",
-                      locale,
-                    )}
-                  >
+                  <Link href={(page as Page).path ?? "#broken"}>
                     {(page as Page).title}
                   </Link>
                 </Button>
@@ -175,10 +165,7 @@ export function LinkList({
                     href={
                       "url" in link
                         ? link.url ?? "#broken"
-                        : localisePath(
-                            (link.page as Page).path ?? "#broken",
-                            locale,
-                          )
+                        : (link.page as Page).path ?? "#broken"
                     }
                   >
                     <RenderIcon className="h-6 w-6" name={link.icon} />

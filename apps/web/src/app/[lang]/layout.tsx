@@ -52,7 +52,6 @@ export default async function RootLayout({
   children: React.ReactNode;
 } & LayoutProps) {
   const dictionary = await getDictionary(lang);
-
   return (
     <html lang={lang}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
