@@ -44,6 +44,11 @@ if [ "$UPSERT_FLAG" = true ] ; then
 else
   UPSERT_FLAG=""
 fi
+# Copy images from images to ../uploads folder
+# TODO: change this implementation when using cloud storage plugin
+mkdir -p apps/cms/uploads
+find data/gen/images -type f -exec cp {} apps/cms/uploads/ \;
+
 # if argument is passed, only import that collection
 if [ -n "$1" ]; then
   if [ "$ALL_FLAG" = true ] ; then
@@ -66,8 +71,3 @@ if [ "$ALL_FLAG" = true ] ; then
   done
   exit 0
 fi
-
-# Copy images from images to ../uploads folder
-# TODO: change this implementation when using cloud storage plugin
-mkdir -p apps/cms/uploads
-find data/gen/images -type f -exec cp {} apps/cms/uploads/ \;
