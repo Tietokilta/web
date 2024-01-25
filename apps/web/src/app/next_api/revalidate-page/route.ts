@@ -20,7 +20,10 @@ export function POST(request: NextRequest): NextResponse {
   if (secret !== process.env.NEXT_REVALIDATION_KEY) {
     // eslint-disable-next-line no-console -- for debugging purposes
     console.log("invalid secret from revalidate request: ", secret);
-    return NextResponse.json({ revalidated: false, now: Date.now() });
+    return NextResponse.json(
+      { revalidated: false, now: Date.now() },
+      { status: 401 },
+    );
   }
 
   if (typeof collection === "string" && typeof fetchData === "string") {
