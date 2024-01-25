@@ -8,7 +8,7 @@ import { RenderIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { fetchFooter } from "../../lib/api/footer";
-import { cn, localisePath } from "../../lib/utils";
+import { cn } from "../../lib/utils";
 
 export async function Footer({ locale }: { locale: string }) {
   const footer = await fetchFooter(locale)({});
@@ -65,10 +65,7 @@ export async function Footer({ locale }: { locale: string }) {
                 href={
                   "url" in link
                     ? link.url ?? "#broken"
-                    : localisePath(
-                        (link.page as Page).path ?? "#broken",
-                        locale,
-                      )
+                    : (link.page as Page).path ?? "#broken"
                 }
               >
                 <RenderIcon className="h-6 w-6" name={link.icon} />
