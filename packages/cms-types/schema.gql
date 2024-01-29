@@ -1,29 +1,29 @@
 type Query {
-  User(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): User
+  User(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): User
   Users(draft: Boolean, where: User_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Users
-  docAccessUser(id: String!): usersDocAccess
+  docAccessUser(id: Int!): usersDocAccess
   meUser: usersMe
   initializedUser: Boolean
-  Page(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Page
+  Page(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Page
   Pages(draft: Boolean, where: Page_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Pages
-  docAccessPage(id: String!): pagesDocAccess
-  versionPage(id: String, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PageVersion
+  docAccessPage(id: Int!): pagesDocAccess
+  versionPage(id: Int, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PageVersion
   versionsPages(where: versionsPage_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): versionsPages
-  Media(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Media
+  Media(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Media
   allMedia(draft: Boolean, where: Media_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allMedia
-  docAccessMedia(id: String!): mediaDocAccess
-  Topic(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
+  docAccessMedia(id: Int!): mediaDocAccess
+  Topic(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
   Topics(draft: Boolean, where: Topic_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Topics
-  docAccessTopic(id: String!): topicsDocAccess
-  BoardMember(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): BoardMember
+  docAccessTopic(id: Int!): topicsDocAccess
+  BoardMember(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): BoardMember
   BoardMembers(draft: Boolean, where: BoardMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): BoardMembers
-  docAccessBoardMember(id: String!): board_membersDocAccess
-  Board(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Board
+  docAccessBoardMember(id: Int!): board_membersDocAccess
+  Board(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Board
   Boards(draft: Boolean, where: Board_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Boards
-  docAccessBoard(id: String!): boardsDocAccess
-  PayloadPreference(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
+  docAccessBoard(id: Int!): boardsDocAccess
+  PayloadPreference(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
-  docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
+  docAccessPayloadPreference(id: Int!): payload_preferencesDocAccess
   Footer(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Footer
   docAccessFooter: footerDocAccess
   LandingPage(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): LandingPage
@@ -34,7 +34,7 @@ type Query {
 }
 
 type User {
-  id: String
+  id: Int
   sub: String
   updatedAt: DateTime
   createdAt: DateTime
@@ -159,13 +159,12 @@ input User_email_operator {
 }
 
 input User_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -411,7 +410,7 @@ type usersMe {
 }
 
 type Page {
-  id: String
+  id: Int
   title: String
   description: String
   content(depth: Int): JSON
@@ -441,7 +440,7 @@ enum Page_Topic_RelationTo {
 union Page_Topic = Topic
 
 type Topic {
-  id: String
+  id: Int
   title: String
   slug: String
   updatedAt: DateTime
@@ -579,13 +578,12 @@ enum Page__status_Input {
 }
 
 input Page_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -905,7 +903,7 @@ type PageVersion {
   updatedAt: DateTime
   latest: Boolean
   autosave: Boolean
-  id: String
+  id: Int
 }
 
 type PageVersion_Version {
@@ -1111,13 +1109,12 @@ input versionsPage_autosave_operator {
 }
 
 input versionsPage_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -1164,7 +1161,7 @@ input versionsPage_where_or {
 }
 
 type Media {
-  id: String
+  id: Int
   alt: String
   updatedAt: DateTime
   createdAt: DateTime
@@ -1301,13 +1298,12 @@ input Media_height_operator {
 }
 
 input Media_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -1655,13 +1651,12 @@ input Topic_createdAt_operator {
 }
 
 input Topic_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -1813,7 +1808,7 @@ type TopicsDeleteDocAccess {
 }
 
 type BoardMember {
-  id: String
+  id: Int
   guildYear: BoardMember_guildYear!
   photo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
   name: String!
@@ -2016,13 +2011,12 @@ input BoardMember_createdAt_operator {
 }
 
 input BoardMember_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -2278,7 +2272,7 @@ type BoardMembersDeleteDocAccess {
 }
 
 type Board {
-  id: String
+  id: Int
   year: Board_year!
   description: String
   groupPhoto(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
@@ -2470,13 +2464,12 @@ input Board_createdAt_operator {
 }
 
 input Board_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -2734,7 +2727,7 @@ type BoardsDeleteDocAccess {
 }
 
 type PayloadPreference {
-  id: String
+  id: Int
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
   key: String
   value: JSON
@@ -2831,13 +2824,12 @@ input PayloadPreference_createdAt_operator {
 }
 
 input PayloadPreference_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
   exists: Boolean
 }
 
@@ -6253,8 +6245,8 @@ type MainNavigationUpdateAccess {
 
 type Mutation {
   createUser(data: mutationUserInput!, draft: Boolean, locale: LocaleInputType): User
-  updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean, locale: LocaleInputType): User
-  deleteUser(id: String!): User
+  updateUser(id: Int!, autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean, locale: LocaleInputType): User
+  deleteUser(id: Int!): User
   refreshTokenUser(token: String): usersRefreshedUser
   logoutUser: String
   unlockUser(email: String!): Boolean!
@@ -6263,24 +6255,24 @@ type Mutation {
   resetPasswordUser(password: String, token: String): usersResetPassword
   verifyEmailUser(token: String): Boolean
   createPage(data: mutationPageInput!, draft: Boolean, locale: LocaleInputType): Page
-  updatePage(id: String!, autosave: Boolean, data: mutationPageUpdateInput!, draft: Boolean, locale: LocaleInputType): Page
-  deletePage(id: String!): Page
-  restoreVersionPage(id: String): Page
+  updatePage(id: Int!, autosave: Boolean, data: mutationPageUpdateInput!, draft: Boolean, locale: LocaleInputType): Page
+  deletePage(id: Int!): Page
+  restoreVersionPage(id: Int): Page
   createMedia(data: mutationMediaInput!, draft: Boolean, locale: LocaleInputType): Media
-  updateMedia(id: String!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean, locale: LocaleInputType): Media
-  deleteMedia(id: String!): Media
+  updateMedia(id: Int!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean, locale: LocaleInputType): Media
+  deleteMedia(id: Int!): Media
   createTopic(data: mutationTopicInput!, draft: Boolean, locale: LocaleInputType): Topic
-  updateTopic(id: String!, autosave: Boolean, data: mutationTopicUpdateInput!, draft: Boolean, locale: LocaleInputType): Topic
-  deleteTopic(id: String!): Topic
+  updateTopic(id: Int!, autosave: Boolean, data: mutationTopicUpdateInput!, draft: Boolean, locale: LocaleInputType): Topic
+  deleteTopic(id: Int!): Topic
   createBoardMember(data: mutationBoardMemberInput!, draft: Boolean, locale: LocaleInputType): BoardMember
-  updateBoardMember(id: String!, autosave: Boolean, data: mutationBoardMemberUpdateInput!, draft: Boolean, locale: LocaleInputType): BoardMember
-  deleteBoardMember(id: String!): BoardMember
+  updateBoardMember(id: Int!, autosave: Boolean, data: mutationBoardMemberUpdateInput!, draft: Boolean, locale: LocaleInputType): BoardMember
+  deleteBoardMember(id: Int!): BoardMember
   createBoard(data: mutationBoardInput!, draft: Boolean, locale: LocaleInputType): Board
-  updateBoard(id: String!, autosave: Boolean, data: mutationBoardUpdateInput!, draft: Boolean, locale: LocaleInputType): Board
-  deleteBoard(id: String!): Board
+  updateBoard(id: Int!, autosave: Boolean, data: mutationBoardUpdateInput!, draft: Boolean, locale: LocaleInputType): Board
+  deleteBoard(id: Int!): Board
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
-  updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
-  deletePayloadPreference(id: String!): PayloadPreference
+  updatePayloadPreference(id: Int!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
+  deletePayloadPreference(id: Int!): PayloadPreference
   updateFooter(data: mutationFooterInput!, draft: Boolean, locale: LocaleInputType): Footer
   updateLandingPage(data: mutationLandingPageInput!, draft: Boolean, locale: LocaleInputType): LandingPage
   updateMainNavigation(data: mutationMainNavigationInput!, draft: Boolean, locale: LocaleInputType): MainNavigation
@@ -6436,7 +6428,7 @@ input mutationTopicUpdateInput {
 
 input mutationBoardMemberInput {
   guildYear: BoardMember_guildYear_MutationInput!
-  photo: String
+  photo: Int
   name: String!
   title: String
   email: String!
@@ -6489,7 +6481,7 @@ enum BoardMember_guildYear_MutationInput {
 
 input mutationBoardMemberUpdateInput {
   guildYear: BoardMemberUpdate_guildYear_MutationInput
-  photo: String
+  photo: Int
   name: String
   title: String
   email: String
@@ -6543,7 +6535,7 @@ enum BoardMemberUpdate_guildYear_MutationInput {
 input mutationBoardInput {
   year: Board_year_MutationInput!
   description: String
-  groupPhoto: String
+  groupPhoto: Int
   boardMembers: [mutationBoard_BoardMembersInput!]
   updatedAt: String
   createdAt: String
@@ -6592,14 +6584,14 @@ enum Board_year_MutationInput {
 }
 
 input mutationBoard_BoardMembersInput {
-  boardMember: String
+  boardMember: Int
   id: String
 }
 
 input mutationBoardUpdateInput {
   year: BoardUpdate_year_MutationInput
   description: String
-  groupPhoto: String
+  groupPhoto: Int
   boardMembers: [mutationBoardUpdate_BoardMembersInput]
   updatedAt: String
   createdAt: String
@@ -6648,7 +6640,7 @@ enum BoardUpdate_year_MutationInput {
 }
 
 input mutationBoardUpdate_BoardMembersInput {
-  boardMember: String
+  boardMember: Int
   id: String
 }
 
@@ -6701,7 +6693,7 @@ input mutationLandingPageInput {
 }
 
 input mutationLandingPage_HeroImagesInput {
-  image: String
+  image: Int
   id: String
 }
 
@@ -6719,11 +6711,11 @@ input mutationMainNavigation_ItemsInput {
 }
 
 input mutationMainNavigation_Items_PageConfigInput {
-  page: String
+  page: Int
 }
 
 input mutationMainNavigation_Items_TopicConfigInput {
-  topic: String
+  topic: Int
   categories: [mutationMainNavigation_Items_TopicConfig_CategoriesInput]
 }
 
@@ -6735,7 +6727,7 @@ input mutationMainNavigation_Items_TopicConfig_CategoriesInput {
 }
 
 input mutationMainNavigation_Items_TopicConfig_Categories_PagesInput {
-  page: String
+  page: Int
   id: String
 }
 

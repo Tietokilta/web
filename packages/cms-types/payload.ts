@@ -36,14 +36,14 @@ export type LinkRowBlockLink =
       label: string;
       linkType?: ('external' | 'internal') | null;
       url?: string | null;
-      page?: (string | null) | Page;
+      page?: (number | null) | Page;
       id?: string | null;
     }[]
   | null;
 export type MainNavigationItem = {
   type?: ('page' | 'topic') | null;
   pageConfig?: {
-    page: string | Page;
+    page: number | Page;
   };
   topicConfig?: MainNavigationTopicConfig;
   id?: string | null;
@@ -67,7 +67,7 @@ export interface Config {
   };
 }
 export interface User {
-  id: string;
+  id: number;
   sub?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -84,7 +84,7 @@ export interface User {
   password: string | null;
 }
 export interface Page {
-  id: string;
+  id: number;
   title: string;
   description: string;
   content: {
@@ -105,7 +105,7 @@ export interface Page {
   path?: string | null;
   topic?: {
     relationTo: 'topics';
-    value: string | Topic;
+    value: number | Topic;
   } | null;
   slug: string;
   hidden: boolean;
@@ -114,14 +114,14 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 export interface Topic {
-  id: string;
+  id: number;
   title: string;
   slug: string;
   updatedAt: string;
   createdAt: string;
 }
 export interface Media {
-  id: string;
+  id: number;
   alt: string;
   updatedAt: string;
   createdAt: string;
@@ -133,7 +133,7 @@ export interface Media {
   height?: number | null;
 }
 export interface BoardMember {
-  id: string;
+  id: number;
   guildYear:
     | '2024'
     | '2023'
@@ -174,7 +174,7 @@ export interface BoardMember {
     | '1988'
     | '1987'
     | '1986';
-  photo?: (string | null) | Media;
+  photo?: (number | null) | Media;
   name: string;
   title: string;
   email: string;
@@ -183,7 +183,7 @@ export interface BoardMember {
   createdAt: string;
 }
 export interface Board {
-  id: string;
+  id: number;
   year:
     | '2024'
     | '2023'
@@ -225,19 +225,19 @@ export interface Board {
     | '1987'
     | '1986';
   description: string;
-  groupPhoto?: (string | null) | Media;
+  groupPhoto?: (number | null) | Media;
   boardMembers: {
-    boardMember?: (string | null) | BoardMember;
+    boardMember?: (number | null) | BoardMember;
     id?: string | null;
   }[];
   updatedAt: string;
   createdAt: string;
 }
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -253,14 +253,14 @@ export interface PayloadPreference {
   createdAt: string;
 }
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
 }
 export interface Footer {
-  id: string;
+  id: number;
   layout: (LinkRowBlock | SponsorLogoRowBlock)[];
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -275,7 +275,7 @@ export interface LinkRowBlock {
 export interface SponsorLogoRowBlock {
   logos?:
     | {
-        image: string | Media;
+        image: number | Media;
         link: string;
         id?: string | null;
       }[]
@@ -285,10 +285,10 @@ export interface SponsorLogoRowBlock {
   blockType: 'logo-row';
 }
 export interface LandingPage {
-  id: string;
+  id: number;
   heroText: string;
   heroImages: {
-    image?: (string | null) | Media;
+    image?: (number | null) | Media;
     id?: string | null;
   }[];
   body: {
@@ -310,19 +310,19 @@ export interface LandingPage {
   createdAt?: string | null;
 }
 export interface MainNavigation {
-  id: string;
+  id: number;
   items: MainNavigationItem;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 export interface MainNavigationTopicConfig {
-  topic: string | Topic;
+  topic: number | Topic;
   categories?:
     | {
         title: string;
         pages?:
           | {
-              page: string | Page;
+              page: number | Page;
               id?: string | null;
             }[]
           | null;

@@ -40,6 +40,12 @@ In case you run into issues when changing branches etc. Try re-seeding your loca
 pnpm db:reset
 ```
 
+## Known Database gotchas:
+
+`error: relation "main_navigation_items_topic_config_categories_external_links_lo" already exists`:
+
+- This happens due to Postgres
+
 ### Recommended VSCode settings
 
 ```json

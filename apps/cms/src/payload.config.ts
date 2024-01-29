@@ -1,6 +1,5 @@
 import path from "path";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
-import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
 import { azureBlobStorageAdapter } from "@payloadcms/plugin-cloud-storage/azure";
 import {
@@ -25,6 +24,7 @@ import {
 import type { Config } from "@tietokilta/cms-types/payload";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
+import { postgresAdapter } from "@payloadcms/db-postgres";
 import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
 import { Media } from "./collections/media";
@@ -96,12 +96,10 @@ export default buildConfig({
       "schema.gql",
     ),
   },
-  db: mongooseAdapter({
-    connectOptions: {
-      dbName: process.env.PAYLOAD_MONGO_DB_NAME,
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.PAYLOAD_POSTGRES_CONNECTION_STRING ?? "",
     },
-    // webpack build crashes if these are not set i.e. have to default empty
-    url: process.env.PAYLOAD_MONGO_CONNECTION_STRING ?? "",
   }),
   editor: lexicalEditor({
     features: [
