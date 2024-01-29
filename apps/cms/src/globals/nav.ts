@@ -1,7 +1,7 @@
 import type {
   MainNavigationItem,
   MainNavigationTopicConfig,
-  MainNavigation as MainNavigationType,
+  Nav as MainNavigationType,
 } from "@tietokilta/cms-types/payload";
 import type { FilterOptions } from "payload/dist/fields/config/types";
 import type { GlobalConfig } from "payload/types";
@@ -10,21 +10,24 @@ import { iconField } from "../fields/icon-field";
 const filterPagesOfTopic: FilterOptions<MainNavigationType> = ({
   data,
   siblingData,
-}) => ({
-  "topic.value": {
-    equals:
-      data.items.find((item) =>
-        item.topicConfig?.categories?.some((category) =>
-          category.pages?.some(
-            (page) => page.id === (siblingData as { id: string }).id,
+}) => {
+  console.log({ data, siblingData });
+  return {
+    "topic.value": {
+      equals:
+        data.items.find((item) =>
+          item.topicConfig?.ctgrs?.some((category) =>
+            category.pages?.some(
+              (page) => page.id === (siblingData as { id: string }).id,
+            ),
           ),
-        ),
-      )?.topicConfig?.topic ?? null,
-  },
-});
+        )?.topicConfig?.topic ?? null,
+    },
+  };
+};
 
 export const MainNavigation: GlobalConfig = {
-  slug: "main-navigation",
+  slug: "nav",
   access: {
     read: () => true,
   },
@@ -85,7 +88,7 @@ export const MainNavigation: GlobalConfig = {
               required: true,
             },
             {
-              name: "categories",
+              name: "ctgrs", //categories
               type: "array",
               required: true,
               minRows: 1,
@@ -111,12 +114,12 @@ export const MainNavigation: GlobalConfig = {
                       type: "relationship",
                       relationTo: "pages",
                       required: true,
-                      filterOptions: filterPagesOfTopic,
+                      // filterOptions: filterPagesOfTopic,
                     },
                   ],
                 },
                 {
-                  name: "externalLinks",
+                  name: "extLinks",
                   type: "array",
                   fields: [
                     {

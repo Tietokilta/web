@@ -52,9 +52,9 @@ export type MainNavigationItem = {
 export interface Config {
   collections: {
     users: User;
+    topics: Topic;
     pages: Page;
     media: Media;
-    topics: Topic;
     'board-members': BoardMember;
     boards: Board;
     'payload-preferences': PayloadPreference;
@@ -62,8 +62,8 @@ export interface Config {
   };
   globals: {
     footer: Footer;
-    'landing-page': LandingPage;
-    'main-navigation': MainNavigation;
+    landing: Landing;
+    nav: Nav;
   };
 }
 export interface User {
@@ -82,6 +82,13 @@ export interface User {
   loginAttempts?: number | null;
   lockUntil?: string | null;
   password: string | null;
+}
+export interface Topic {
+  id: number;
+  title: string;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
 }
 export interface Page {
   id: number;
@@ -112,13 +119,6 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
-}
-export interface Topic {
-  id: number;
-  title: string;
-  slug: string;
-  updatedAt: string;
-  createdAt: string;
 }
 export interface Media {
   id: number;
@@ -284,7 +284,7 @@ export interface SponsorLogoRowBlock {
   blockName?: string | null;
   blockType: 'logo-row';
 }
-export interface LandingPage {
+export interface Landing {
   id: number;
   heroText: string;
   heroImages: {
@@ -309,7 +309,7 @@ export interface LandingPage {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
-export interface MainNavigation {
+export interface Nav {
   id: number;
   items: MainNavigationItem;
   updatedAt?: string | null;
@@ -317,7 +317,7 @@ export interface MainNavigation {
 }
 export interface MainNavigationTopicConfig {
   topic: number | Topic;
-  categories?:
+  ctgrs?:
     | {
         title: string;
         pages?:
@@ -326,7 +326,7 @@ export interface MainNavigationTopicConfig {
               id?: string | null;
             }[]
           | null;
-        externalLinks?:
+        extLinks?:
           | {
               title: string;
               href: string;

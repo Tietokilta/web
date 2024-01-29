@@ -47,13 +47,13 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- CREATE TYPE "enum_main_navigation_items_type" AS ENUM('page', 'topic');
+ CREATE TYPE "enum_nav_items_type" AS ENUM('page', 'topic');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- CREATE TYPE "enum_main_navigation_items_topic_config_categories_external_links_icon" AS ENUM('AtSign', 'Banknote', 'BookMarked', 'ChevronDown', 'ChevronUp', 'ChevronsUpDown', 'Circle', 'Clock', 'ExternalLink', 'File', 'Facebook', 'Github', 'HelpCircle', 'Image', 'Inbox', 'Instagram', 'Languages', 'Linkedin', 'MapPin', 'Menu', 'Telegram', 'TikLogo', 'Tiktok', 'X');
+ CREATE TYPE "enum_nav_items_topic_config_ctgrs_ext_links_icon" AS ENUM('AtSign', 'Banknote', 'BookMarked', 'ChevronDown', 'ChevronUp', 'ChevronsUpDown', 'Circle', 'Clock', 'ExternalLink', 'File', 'Facebook', 'Github', 'HelpCircle', 'Image', 'Inbox', 'Instagram', 'Languages', 'Linkedin', 'MapPin', 'Menu', 'Telegram', 'TikLogo', 'Tiktok', 'X');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -73,6 +73,21 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"hash" varchar,
 	"login_attempts" numeric,
 	"lock_until" timestamp(3) with time zone
+);
+
+CREATE TABLE IF NOT EXISTS "topics" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
+	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS "topics_locales" (
+	"title" varchar NOT NULL,
+	"slug" varchar NOT NULL,
+	"id" serial PRIMARY KEY NOT NULL,
+	"_locale" "_locales" NOT NULL,
+	"_parent_id" integer NOT NULL,
+	CONSTRAINT "topics_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
 );
 
 CREATE TABLE IF NOT EXISTS "pages" (
@@ -154,21 +169,6 @@ CREATE TABLE IF NOT EXISTS "media_locales" (
 	"_locale" "_locales" NOT NULL,
 	"_parent_id" integer NOT NULL,
 	CONSTRAINT "media_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
-);
-
-CREATE TABLE IF NOT EXISTS "topics" (
-	"id" serial PRIMARY KEY NOT NULL,
-	"updated_at" timestamp(3) with time zone DEFAULT now() NOT NULL,
-	"created_at" timestamp(3) with time zone DEFAULT now() NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS "topics_locales" (
-	"title" varchar NOT NULL,
-	"slug" varchar NOT NULL,
-	"id" serial PRIMARY KEY NOT NULL,
-	"_locale" "_locales" NOT NULL,
-	"_parent_id" integer NOT NULL,
-	CONSTRAINT "topics_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
 );
 
 CREATE TABLE IF NOT EXISTS "board_members" (
@@ -307,28 +307,28 @@ CREATE TABLE IF NOT EXISTS "footer_rels" (
 	"media_id" integer
 );
 
-CREATE TABLE IF NOT EXISTS "landing_page_hero_images" (
+CREATE TABLE IF NOT EXISTS "landing_hero_images" (
 	"_order" integer NOT NULL,
 	"_parent_id" integer NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "landing_page" (
+CREATE TABLE IF NOT EXISTS "landing" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"updated_at" timestamp(3) with time zone,
 	"created_at" timestamp(3) with time zone
 );
 
-CREATE TABLE IF NOT EXISTS "landing_page_locales" (
+CREATE TABLE IF NOT EXISTS "landing_locales" (
 	"hero_text" varchar NOT NULL,
 	"body" jsonb NOT NULL,
 	"id" serial PRIMARY KEY NOT NULL,
 	"_locale" "_locales" NOT NULL,
 	"_parent_id" integer NOT NULL,
-	CONSTRAINT "landing_page_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
+	CONSTRAINT "landing_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
 );
 
-CREATE TABLE IF NOT EXISTS "landing_page_rels" (
+CREATE TABLE IF NOT EXISTS "landing_rels" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"order" integer,
 	"parent_id" integer NOT NULL,
@@ -336,56 +336,56 @@ CREATE TABLE IF NOT EXISTS "landing_page_rels" (
 	"media_id" integer
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation_items_topic_config_categories_pages" (
+CREATE TABLE IF NOT EXISTS "nav_items_topic_config_ctgrs_pages" (
 	"_order" integer NOT NULL,
 	"_parent_id" varchar NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation_items_topic_config_categories_external_links" (
+CREATE TABLE IF NOT EXISTS "nav_items_topic_config_ctgrs_ext_links" (
 	"_order" integer NOT NULL,
 	"_parent_id" varchar NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL,
 	"href" varchar,
-	"icon" "enum_main_navigation_items_topic_config_categories_external_links_icon"
+	"icon" "enum_nav_items_topic_config_ctgrs_ext_links_icon"
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation_items_topic_config_categories_external_links_locales" (
+CREATE TABLE IF NOT EXISTS "nav_items_topic_config_ctgrs_ext_links_locales" (
 	"title" varchar,
 	"id" serial PRIMARY KEY NOT NULL,
 	"_locale" "_locales" NOT NULL,
 	"_parent_id" varchar NOT NULL,
-	CONSTRAINT "main_navigation_items_topic_config_categories_external_links_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
+	CONSTRAINT "nav_items_topic_config_ctgrs_ext_links_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation_items_topic_config_categories" (
+CREATE TABLE IF NOT EXISTS "nav_items_topic_config_ctgrs" (
 	"_order" integer NOT NULL,
 	"_parent_id" varchar NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation_items_topic_config_categories_locales" (
+CREATE TABLE IF NOT EXISTS "nav_items_topic_config_ctgrs_locales" (
 	"title" varchar,
 	"id" serial PRIMARY KEY NOT NULL,
 	"_locale" "_locales" NOT NULL,
 	"_parent_id" varchar NOT NULL,
-	CONSTRAINT "main_navigation_items_topic_config_categories_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
+	CONSTRAINT "nav_items_topic_config_ctgrs_locales_locale_parent_id_unique" UNIQUE("_locale","_parent_id")
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation_items" (
+CREATE TABLE IF NOT EXISTS "nav_items" (
 	"_order" integer NOT NULL,
 	"_parent_id" integer NOT NULL,
 	"id" varchar PRIMARY KEY NOT NULL,
-	"type" "enum_main_navigation_items_type"
+	"type" "enum_nav_items_type"
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation" (
+CREATE TABLE IF NOT EXISTS "nav" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"updated_at" timestamp(3) with time zone,
 	"created_at" timestamp(3) with time zone
 );
 
-CREATE TABLE IF NOT EXISTS "main_navigation_rels" (
+CREATE TABLE IF NOT EXISTS "nav_rels" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"order" integer,
 	"parent_id" integer NOT NULL,
@@ -396,6 +396,7 @@ CREATE TABLE IF NOT EXISTS "main_navigation_rels" (
 
 CREATE INDEX IF NOT EXISTS "created_at_idx" ON "users" ("created_at");
 CREATE UNIQUE INDEX IF NOT EXISTS "email_idx" ON "users" ("email");
+CREATE INDEX IF NOT EXISTS "created_at_idx" ON "topics" ("created_at");
 CREATE INDEX IF NOT EXISTS "created_at_idx" ON "pages" ("created_at");
 CREATE INDEX IF NOT EXISTS "order_idx" ON "pages_rels" ("order");
 CREATE INDEX IF NOT EXISTS "parent_idx" ON "pages_rels" ("parent_id");
@@ -409,7 +410,6 @@ CREATE INDEX IF NOT EXISTS "parent_idx" ON "_pages_v_rels" ("parent_id");
 CREATE INDEX IF NOT EXISTS "path_idx" ON "_pages_v_rels" ("path");
 CREATE INDEX IF NOT EXISTS "created_at_idx" ON "media" ("created_at");
 CREATE UNIQUE INDEX IF NOT EXISTS "filename_idx" ON "media" ("filename");
-CREATE INDEX IF NOT EXISTS "created_at_idx" ON "topics" ("created_at");
 CREATE INDEX IF NOT EXISTS "created_at_idx" ON "board_members" ("created_at");
 CREATE INDEX IF NOT EXISTS "order_idx" ON "board_members_rels" ("order");
 CREATE INDEX IF NOT EXISTS "parent_idx" ON "board_members_rels" ("parent_id");
@@ -438,22 +438,28 @@ CREATE INDEX IF NOT EXISTS "path_idx" ON "footer_blocks_logo_row" ("_path");
 CREATE INDEX IF NOT EXISTS "order_idx" ON "footer_rels" ("order");
 CREATE INDEX IF NOT EXISTS "parent_idx" ON "footer_rels" ("parent_id");
 CREATE INDEX IF NOT EXISTS "path_idx" ON "footer_rels" ("path");
-CREATE INDEX IF NOT EXISTS "_order_idx" ON "landing_page_hero_images" ("_order");
-CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "landing_page_hero_images" ("_parent_id");
-CREATE INDEX IF NOT EXISTS "order_idx" ON "landing_page_rels" ("order");
-CREATE INDEX IF NOT EXISTS "parent_idx" ON "landing_page_rels" ("parent_id");
-CREATE INDEX IF NOT EXISTS "path_idx" ON "landing_page_rels" ("path");
-CREATE INDEX IF NOT EXISTS "_order_idx" ON "main_navigation_items_topic_config_categories_pages" ("_order");
-CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "main_navigation_items_topic_config_categories_pages" ("_parent_id");
-CREATE INDEX IF NOT EXISTS "_order_idx" ON "main_navigation_items_topic_config_categories_external_links" ("_order");
-CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "main_navigation_items_topic_config_categories_external_links" ("_parent_id");
-CREATE INDEX IF NOT EXISTS "_order_idx" ON "main_navigation_items_topic_config_categories" ("_order");
-CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "main_navigation_items_topic_config_categories" ("_parent_id");
-CREATE INDEX IF NOT EXISTS "_order_idx" ON "main_navigation_items" ("_order");
-CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "main_navigation_items" ("_parent_id");
-CREATE INDEX IF NOT EXISTS "order_idx" ON "main_navigation_rels" ("order");
-CREATE INDEX IF NOT EXISTS "parent_idx" ON "main_navigation_rels" ("parent_id");
-CREATE INDEX IF NOT EXISTS "path_idx" ON "main_navigation_rels" ("path");
+CREATE INDEX IF NOT EXISTS "_order_idx" ON "landing_hero_images" ("_order");
+CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "landing_hero_images" ("_parent_id");
+CREATE INDEX IF NOT EXISTS "order_idx" ON "landing_rels" ("order");
+CREATE INDEX IF NOT EXISTS "parent_idx" ON "landing_rels" ("parent_id");
+CREATE INDEX IF NOT EXISTS "path_idx" ON "landing_rels" ("path");
+CREATE INDEX IF NOT EXISTS "_order_idx" ON "nav_items_topic_config_ctgrs_pages" ("_order");
+CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "nav_items_topic_config_ctgrs_pages" ("_parent_id");
+CREATE INDEX IF NOT EXISTS "_order_idx" ON "nav_items_topic_config_ctgrs_ext_links" ("_order");
+CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "nav_items_topic_config_ctgrs_ext_links" ("_parent_id");
+CREATE INDEX IF NOT EXISTS "_order_idx" ON "nav_items_topic_config_ctgrs" ("_order");
+CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "nav_items_topic_config_ctgrs" ("_parent_id");
+CREATE INDEX IF NOT EXISTS "_order_idx" ON "nav_items" ("_order");
+CREATE INDEX IF NOT EXISTS "_parent_id_idx" ON "nav_items" ("_parent_id");
+CREATE INDEX IF NOT EXISTS "order_idx" ON "nav_rels" ("order");
+CREATE INDEX IF NOT EXISTS "parent_idx" ON "nav_rels" ("parent_id");
+CREATE INDEX IF NOT EXISTS "path_idx" ON "nav_rels" ("path");
+DO $$ BEGIN
+ ALTER TABLE "topics_locales" ADD CONSTRAINT "topics_locales__parent_id_topics_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "topics"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
 DO $$ BEGIN
  ALTER TABLE "pages_locales" ADD CONSTRAINT "pages_locales__parent_id_pages_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "pages"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
@@ -498,12 +504,6 @@ END $$;
 
 DO $$ BEGIN
  ALTER TABLE "media_locales" ADD CONSTRAINT "media_locales__parent_id_media_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "media"("id") ON DELETE cascade ON UPDATE no action;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
-
-DO $$ BEGIN
- ALTER TABLE "topics_locales" ADD CONSTRAINT "topics_locales__parent_id_topics_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "topics"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -617,79 +617,79 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "landing_page_hero_images" ADD CONSTRAINT "landing_page_hero_images__parent_id_landing_page_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "landing_page"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "landing_hero_images" ADD CONSTRAINT "landing_hero_images__parent_id_landing_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "landing"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "landing_page_locales" ADD CONSTRAINT "landing_page_locales__parent_id_landing_page_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "landing_page"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "landing_locales" ADD CONSTRAINT "landing_locales__parent_id_landing_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "landing"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "landing_page_rels" ADD CONSTRAINT "landing_page_rels_parent_id_landing_page_id_fk" FOREIGN KEY ("parent_id") REFERENCES "landing_page"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "landing_rels" ADD CONSTRAINT "landing_rels_parent_id_landing_id_fk" FOREIGN KEY ("parent_id") REFERENCES "landing"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "landing_page_rels" ADD CONSTRAINT "landing_page_rels_media_id_media_id_fk" FOREIGN KEY ("media_id") REFERENCES "media"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "landing_rels" ADD CONSTRAINT "landing_rels_media_id_media_id_fk" FOREIGN KEY ("media_id") REFERENCES "media"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_items_topic_config_categories_pages" ADD CONSTRAINT "main_navigation_items_topic_config_categories_pages__parent_id_main_navigation_items_topic_config_categories_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "main_navigation_items_topic_config_categories"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_items_topic_config_ctgrs_pages" ADD CONSTRAINT "nav_items_topic_config_ctgrs_pages__parent_id_nav_items_topic_config_ctgrs_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "nav_items_topic_config_ctgrs"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_items_topic_config_categories_external_links" ADD CONSTRAINT "main_navigation_items_topic_config_categories_external_links__parent_id_main_navigation_items_topic_config_categories_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "main_navigation_items_topic_config_categories"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_items_topic_config_ctgrs_ext_links" ADD CONSTRAINT "nav_items_topic_config_ctgrs_ext_links__parent_id_nav_items_topic_config_ctgrs_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "nav_items_topic_config_ctgrs"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_items_topic_config_categories_external_links_locales" ADD CONSTRAINT "main_navigation_items_topic_config_categories_external_links_locales__parent_id_main_navigation_items_topic_config_categories_external_links_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "main_navigation_items_topic_config_categories_external_links"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_items_topic_config_ctgrs_ext_links_locales" ADD CONSTRAINT "nav_items_topic_config_ctgrs_ext_links_locales__parent_id_nav_items_topic_config_ctgrs_ext_links_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "nav_items_topic_config_ctgrs_ext_links"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_items_topic_config_categories" ADD CONSTRAINT "main_navigation_items_topic_config_categories__parent_id_main_navigation_items_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "main_navigation_items"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_items_topic_config_ctgrs" ADD CONSTRAINT "nav_items_topic_config_ctgrs__parent_id_nav_items_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "nav_items"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_items_topic_config_categories_locales" ADD CONSTRAINT "main_navigation_items_topic_config_categories_locales__parent_id_main_navigation_items_topic_config_categories_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "main_navigation_items_topic_config_categories"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_items_topic_config_ctgrs_locales" ADD CONSTRAINT "nav_items_topic_config_ctgrs_locales__parent_id_nav_items_topic_config_ctgrs_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "nav_items_topic_config_ctgrs"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_items" ADD CONSTRAINT "main_navigation_items__parent_id_main_navigation_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "main_navigation"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_items" ADD CONSTRAINT "nav_items__parent_id_nav_id_fk" FOREIGN KEY ("_parent_id") REFERENCES "nav"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_rels" ADD CONSTRAINT "main_navigation_rels_parent_id_main_navigation_id_fk" FOREIGN KEY ("parent_id") REFERENCES "main_navigation"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_parent_id_nav_id_fk" FOREIGN KEY ("parent_id") REFERENCES "nav"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_rels" ADD CONSTRAINT "main_navigation_rels_pages_id_pages_id_fk" FOREIGN KEY ("pages_id") REFERENCES "pages"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_pages_id_pages_id_fk" FOREIGN KEY ("pages_id") REFERENCES "pages"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "main_navigation_rels" ADD CONSTRAINT "main_navigation_rels_topics_id_topics_id_fk" FOREIGN KEY ("topics_id") REFERENCES "topics"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "nav_rels" ADD CONSTRAINT "nav_rels_topics_id_topics_id_fk" FOREIGN KEY ("topics_id") REFERENCES "topics"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -701,6 +701,8 @@ export async function down({ payload }: MigrateDownArgs): Promise<void> {
 await payload.db.drizzle.execute(sql`
 
 DROP TABLE "users";
+DROP TABLE "topics";
+DROP TABLE "topics_locales";
 DROP TABLE "pages";
 DROP TABLE "pages_locales";
 DROP TABLE "pages_rels";
@@ -709,8 +711,6 @@ DROP TABLE "_pages_v_locales";
 DROP TABLE "_pages_v_rels";
 DROP TABLE "media";
 DROP TABLE "media_locales";
-DROP TABLE "topics";
-DROP TABLE "topics_locales";
 DROP TABLE "board_members";
 DROP TABLE "board_members_locales";
 DROP TABLE "board_members_rels";
@@ -728,17 +728,17 @@ DROP TABLE "footer_blocks_logo_row_logos";
 DROP TABLE "footer_blocks_logo_row";
 DROP TABLE "footer";
 DROP TABLE "footer_rels";
-DROP TABLE "landing_page_hero_images";
-DROP TABLE "landing_page";
-DROP TABLE "landing_page_locales";
-DROP TABLE "landing_page_rels";
-DROP TABLE "main_navigation_items_topic_config_categories_pages";
-DROP TABLE "main_navigation_items_topic_config_categories_external_links";
-DROP TABLE "main_navigation_items_topic_config_categories_external_links_locales";
-DROP TABLE "main_navigation_items_topic_config_categories";
-DROP TABLE "main_navigation_items_topic_config_categories_locales";
-DROP TABLE "main_navigation_items";
-DROP TABLE "main_navigation";
-DROP TABLE "main_navigation_rels";`);
+DROP TABLE "landing_hero_images";
+DROP TABLE "landing";
+DROP TABLE "landing_locales";
+DROP TABLE "landing_rels";
+DROP TABLE "nav_items_topic_config_ctgrs_pages";
+DROP TABLE "nav_items_topic_config_ctgrs_ext_links";
+DROP TABLE "nav_items_topic_config_ctgrs_ext_links_locales";
+DROP TABLE "nav_items_topic_config_ctgrs";
+DROP TABLE "nav_items_topic_config_ctgrs_locales";
+DROP TABLE "nav_items";
+DROP TABLE "nav";
+DROP TABLE "nav_rels";`);
 
 };

@@ -1,7 +1,7 @@
 import type { GlobalConfig } from "payload/types";
 
 export const LandingPage: GlobalConfig = {
-  slug: "landing-page",
+  slug: "landing",
   access: {
     read: () => true,
   },

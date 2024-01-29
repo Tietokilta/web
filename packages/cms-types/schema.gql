@@ -4,6 +4,9 @@ type Query {
   docAccessUser(id: Int!): usersDocAccess
   meUser: usersMe
   initializedUser: Boolean
+  Topic(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
+  Topics(draft: Boolean, where: Topic_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Topics
+  docAccessTopic(id: Int!): topicsDocAccess
   Page(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Page
   Pages(draft: Boolean, where: Page_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Pages
   docAccessPage(id: Int!): pagesDocAccess
@@ -12,9 +15,6 @@ type Query {
   Media(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Media
   allMedia(draft: Boolean, where: Media_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allMedia
   docAccessMedia(id: Int!): mediaDocAccess
-  Topic(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
-  Topics(draft: Boolean, where: Topic_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Topics
-  docAccessTopic(id: Int!): topicsDocAccess
   BoardMember(id: Int!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): BoardMember
   BoardMembers(draft: Boolean, where: BoardMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): BoardMembers
   docAccessBoardMember(id: Int!): board_membersDocAccess
@@ -26,10 +26,10 @@ type Query {
   docAccessPayloadPreference(id: Int!): payload_preferencesDocAccess
   Footer(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Footer
   docAccessFooter: footerDocAccess
-  LandingPage(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): LandingPage
-  docAccessLandingPage: landing_pageDocAccess
-  MainNavigation(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): MainNavigation
-  docAccessMainNavigation: main_navigationDocAccess
+  Landing(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Landing
+  docAccessLanding: landingDocAccess
+  Nav(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Nav
+  docAccessNav: navDocAccess
   Access: Access
 }
 
@@ -409,6 +409,237 @@ type usersMe {
   user: User
 }
 
+type Topic {
+  id: Int
+  title: String
+  slug: String
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Topics {
+  docs: [Topic]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Topic_where {
+  title: Topic_title_operator
+  slug: Topic_slug_operator
+  updatedAt: Topic_updatedAt_operator
+  createdAt: Topic_createdAt_operator
+  id: Topic_id_operator
+  AND: [Topic_where_and]
+  OR: [Topic_where_or]
+}
+
+input Topic_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Topic_slug_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Topic_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Topic_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Topic_id_operator {
+  equals: Int
+  not_equals: Int
+  greater_than_equal: Int
+  greater_than: Int
+  less_than_equal: Int
+  less_than: Int
+  exists: Boolean
+}
+
+input Topic_where_and {
+  title: Topic_title_operator
+  slug: Topic_slug_operator
+  updatedAt: Topic_updatedAt_operator
+  createdAt: Topic_createdAt_operator
+  id: Topic_id_operator
+  AND: [Topic_where_and]
+  OR: [Topic_where_or]
+}
+
+input Topic_where_or {
+  title: Topic_title_operator
+  slug: Topic_slug_operator
+  updatedAt: Topic_updatedAt_operator
+  createdAt: Topic_createdAt_operator
+  id: Topic_id_operator
+  AND: [Topic_where_and]
+  OR: [Topic_where_or]
+}
+
+type topicsDocAccess {
+  fields: TopicsDocAccessFields
+  create: TopicsCreateDocAccess
+  read: TopicsReadDocAccess
+  update: TopicsUpdateDocAccess
+  delete: TopicsDeleteDocAccess
+}
+
+type TopicsDocAccessFields {
+  title: TopicsDocAccessFields_title
+  slug: TopicsDocAccessFields_slug
+  updatedAt: TopicsDocAccessFields_updatedAt
+  createdAt: TopicsDocAccessFields_createdAt
+}
+
+type TopicsDocAccessFields_title {
+  create: TopicsDocAccessFields_title_Create
+  read: TopicsDocAccessFields_title_Read
+  update: TopicsDocAccessFields_title_Update
+  delete: TopicsDocAccessFields_title_Delete
+}
+
+type TopicsDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_slug {
+  create: TopicsDocAccessFields_slug_Create
+  read: TopicsDocAccessFields_slug_Read
+  update: TopicsDocAccessFields_slug_Update
+  delete: TopicsDocAccessFields_slug_Delete
+}
+
+type TopicsDocAccessFields_slug_Create {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_slug_Read {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_slug_Update {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_slug_Delete {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_updatedAt {
+  create: TopicsDocAccessFields_updatedAt_Create
+  read: TopicsDocAccessFields_updatedAt_Read
+  update: TopicsDocAccessFields_updatedAt_Update
+  delete: TopicsDocAccessFields_updatedAt_Delete
+}
+
+type TopicsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_createdAt {
+  create: TopicsDocAccessFields_createdAt_Create
+  read: TopicsDocAccessFields_createdAt_Read
+  update: TopicsDocAccessFields_createdAt_Update
+  delete: TopicsDocAccessFields_createdAt_Delete
+}
+
+type TopicsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type TopicsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TopicsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TopicsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TopicsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type Page {
   id: Int
   title: String
@@ -438,14 +669,6 @@ enum Page_Topic_RelationTo {
 }
 
 union Page_Topic = Topic
-
-type Topic {
-  id: Int
-  title: String
-  slug: String
-  updatedAt: DateTime
-  createdAt: DateTime
-}
 
 enum Page__status {
   draft
@@ -1580,229 +1803,6 @@ type MediaUpdateDocAccess {
 }
 
 type MediaDeleteDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type Topics {
-  docs: [Topic]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
-  nextPage: Int
-  offset: Int
-  page: Int
-  pagingCounter: Int
-  prevPage: Int
-  totalDocs: Int
-  totalPages: Int
-}
-
-input Topic_where {
-  title: Topic_title_operator
-  slug: Topic_slug_operator
-  updatedAt: Topic_updatedAt_operator
-  createdAt: Topic_createdAt_operator
-  id: Topic_id_operator
-  AND: [Topic_where_and]
-  OR: [Topic_where_or]
-}
-
-input Topic_title_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input Topic_slug_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input Topic_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Topic_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Topic_id_operator {
-  equals: Int
-  not_equals: Int
-  greater_than_equal: Int
-  greater_than: Int
-  less_than_equal: Int
-  less_than: Int
-  exists: Boolean
-}
-
-input Topic_where_and {
-  title: Topic_title_operator
-  slug: Topic_slug_operator
-  updatedAt: Topic_updatedAt_operator
-  createdAt: Topic_createdAt_operator
-  id: Topic_id_operator
-  AND: [Topic_where_and]
-  OR: [Topic_where_or]
-}
-
-input Topic_where_or {
-  title: Topic_title_operator
-  slug: Topic_slug_operator
-  updatedAt: Topic_updatedAt_operator
-  createdAt: Topic_createdAt_operator
-  id: Topic_id_operator
-  AND: [Topic_where_and]
-  OR: [Topic_where_or]
-}
-
-type topicsDocAccess {
-  fields: TopicsDocAccessFields
-  create: TopicsCreateDocAccess
-  read: TopicsReadDocAccess
-  update: TopicsUpdateDocAccess
-  delete: TopicsDeleteDocAccess
-}
-
-type TopicsDocAccessFields {
-  title: TopicsDocAccessFields_title
-  slug: TopicsDocAccessFields_slug
-  updatedAt: TopicsDocAccessFields_updatedAt
-  createdAt: TopicsDocAccessFields_createdAt
-}
-
-type TopicsDocAccessFields_title {
-  create: TopicsDocAccessFields_title_Create
-  read: TopicsDocAccessFields_title_Read
-  update: TopicsDocAccessFields_title_Update
-  delete: TopicsDocAccessFields_title_Delete
-}
-
-type TopicsDocAccessFields_title_Create {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_title_Read {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_title_Update {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_title_Delete {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_slug {
-  create: TopicsDocAccessFields_slug_Create
-  read: TopicsDocAccessFields_slug_Read
-  update: TopicsDocAccessFields_slug_Update
-  delete: TopicsDocAccessFields_slug_Delete
-}
-
-type TopicsDocAccessFields_slug_Create {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_slug_Read {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_slug_Update {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_slug_Delete {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_updatedAt {
-  create: TopicsDocAccessFields_updatedAt_Create
-  read: TopicsDocAccessFields_updatedAt_Read
-  update: TopicsDocAccessFields_updatedAt_Update
-  delete: TopicsDocAccessFields_updatedAt_Delete
-}
-
-type TopicsDocAccessFields_updatedAt_Create {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_updatedAt_Read {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_updatedAt_Update {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_updatedAt_Delete {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_createdAt {
-  create: TopicsDocAccessFields_createdAt_Create
-  read: TopicsDocAccessFields_createdAt_Read
-  update: TopicsDocAccessFields_createdAt_Update
-  delete: TopicsDocAccessFields_createdAt_Delete
-}
-
-type TopicsDocAccessFields_createdAt_Create {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_createdAt_Read {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_createdAt_Update {
-  permission: Boolean!
-}
-
-type TopicsDocAccessFields_createdAt_Delete {
-  permission: Boolean!
-}
-
-type TopicsCreateDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type TopicsReadDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type TopicsUpdateDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type TopicsDeleteDocAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -3167,211 +3167,211 @@ type FooterUpdateDocAccess {
   where: JSONObject
 }
 
-type LandingPage {
+type Landing {
   heroText: String
-  heroImages: [LandingPage_HeroImages!]!
+  heroImages: [Landing_HeroImages!]!
   body(depth: Int): JSON
   updatedAt: DateTime
   createdAt: DateTime
 }
 
-type LandingPage_HeroImages {
+type Landing_HeroImages {
   image(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
   id: String
 }
 
-type landing_pageDocAccess {
-  fields: LandingPageDocAccessFields
-  read: LandingPageReadDocAccess
-  update: LandingPageUpdateDocAccess
+type landingDocAccess {
+  fields: LandingDocAccessFields
+  read: LandingReadDocAccess
+  update: LandingUpdateDocAccess
 }
 
-type LandingPageDocAccessFields {
-  heroText: LandingPageDocAccessFields_heroText
-  heroImages: LandingPageDocAccessFields_heroImages
-  body: LandingPageDocAccessFields_body
-  updatedAt: LandingPageDocAccessFields_updatedAt
-  createdAt: LandingPageDocAccessFields_createdAt
+type LandingDocAccessFields {
+  heroText: LandingDocAccessFields_heroText
+  heroImages: LandingDocAccessFields_heroImages
+  body: LandingDocAccessFields_body
+  updatedAt: LandingDocAccessFields_updatedAt
+  createdAt: LandingDocAccessFields_createdAt
 }
 
-type LandingPageDocAccessFields_heroText {
-  create: LandingPageDocAccessFields_heroText_Create
-  read: LandingPageDocAccessFields_heroText_Read
-  update: LandingPageDocAccessFields_heroText_Update
-  delete: LandingPageDocAccessFields_heroText_Delete
+type LandingDocAccessFields_heroText {
+  create: LandingDocAccessFields_heroText_Create
+  read: LandingDocAccessFields_heroText_Read
+  update: LandingDocAccessFields_heroText_Update
+  delete: LandingDocAccessFields_heroText_Delete
 }
 
-type LandingPageDocAccessFields_heroText_Create {
+type LandingDocAccessFields_heroText_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_Read {
+type LandingDocAccessFields_heroText_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_Update {
+type LandingDocAccessFields_heroText_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_Delete {
+type LandingDocAccessFields_heroText_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages {
-  create: LandingPageDocAccessFields_heroImages_Create
-  read: LandingPageDocAccessFields_heroImages_Read
-  update: LandingPageDocAccessFields_heroImages_Update
-  delete: LandingPageDocAccessFields_heroImages_Delete
-  fields: LandingPageDocAccessFields_heroImages_Fields
+type LandingDocAccessFields_heroImages {
+  create: LandingDocAccessFields_heroImages_Create
+  read: LandingDocAccessFields_heroImages_Read
+  update: LandingDocAccessFields_heroImages_Update
+  delete: LandingDocAccessFields_heroImages_Delete
+  fields: LandingDocAccessFields_heroImages_Fields
 }
 
-type LandingPageDocAccessFields_heroImages_Create {
+type LandingDocAccessFields_heroImages_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_Read {
+type LandingDocAccessFields_heroImages_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_Update {
+type LandingDocAccessFields_heroImages_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_Delete {
+type LandingDocAccessFields_heroImages_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_Fields {
-  image: LandingPageDocAccessFields_heroImages_image
-  id: LandingPageDocAccessFields_heroImages_id
+type LandingDocAccessFields_heroImages_Fields {
+  image: LandingDocAccessFields_heroImages_image
+  id: LandingDocAccessFields_heroImages_id
 }
 
-type LandingPageDocAccessFields_heroImages_image {
-  create: LandingPageDocAccessFields_heroImages_image_Create
-  read: LandingPageDocAccessFields_heroImages_image_Read
-  update: LandingPageDocAccessFields_heroImages_image_Update
-  delete: LandingPageDocAccessFields_heroImages_image_Delete
+type LandingDocAccessFields_heroImages_image {
+  create: LandingDocAccessFields_heroImages_image_Create
+  read: LandingDocAccessFields_heroImages_image_Read
+  update: LandingDocAccessFields_heroImages_image_Update
+  delete: LandingDocAccessFields_heroImages_image_Delete
 }
 
-type LandingPageDocAccessFields_heroImages_image_Create {
+type LandingDocAccessFields_heroImages_image_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_image_Read {
+type LandingDocAccessFields_heroImages_image_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_image_Update {
+type LandingDocAccessFields_heroImages_image_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_image_Delete {
+type LandingDocAccessFields_heroImages_image_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_id {
-  create: LandingPageDocAccessFields_heroImages_id_Create
-  read: LandingPageDocAccessFields_heroImages_id_Read
-  update: LandingPageDocAccessFields_heroImages_id_Update
-  delete: LandingPageDocAccessFields_heroImages_id_Delete
+type LandingDocAccessFields_heroImages_id {
+  create: LandingDocAccessFields_heroImages_id_Create
+  read: LandingDocAccessFields_heroImages_id_Read
+  update: LandingDocAccessFields_heroImages_id_Update
+  delete: LandingDocAccessFields_heroImages_id_Delete
 }
 
-type LandingPageDocAccessFields_heroImages_id_Create {
+type LandingDocAccessFields_heroImages_id_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_id_Read {
+type LandingDocAccessFields_heroImages_id_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_id_Update {
+type LandingDocAccessFields_heroImages_id_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroImages_id_Delete {
+type LandingDocAccessFields_heroImages_id_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_body {
-  create: LandingPageDocAccessFields_body_Create
-  read: LandingPageDocAccessFields_body_Read
-  update: LandingPageDocAccessFields_body_Update
-  delete: LandingPageDocAccessFields_body_Delete
+type LandingDocAccessFields_body {
+  create: LandingDocAccessFields_body_Create
+  read: LandingDocAccessFields_body_Read
+  update: LandingDocAccessFields_body_Update
+  delete: LandingDocAccessFields_body_Delete
 }
 
-type LandingPageDocAccessFields_body_Create {
+type LandingDocAccessFields_body_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_body_Read {
+type LandingDocAccessFields_body_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_body_Update {
+type LandingDocAccessFields_body_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_body_Delete {
+type LandingDocAccessFields_body_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_updatedAt {
-  create: LandingPageDocAccessFields_updatedAt_Create
-  read: LandingPageDocAccessFields_updatedAt_Read
-  update: LandingPageDocAccessFields_updatedAt_Update
-  delete: LandingPageDocAccessFields_updatedAt_Delete
+type LandingDocAccessFields_updatedAt {
+  create: LandingDocAccessFields_updatedAt_Create
+  read: LandingDocAccessFields_updatedAt_Read
+  update: LandingDocAccessFields_updatedAt_Update
+  delete: LandingDocAccessFields_updatedAt_Delete
 }
 
-type LandingPageDocAccessFields_updatedAt_Create {
+type LandingDocAccessFields_updatedAt_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_updatedAt_Read {
+type LandingDocAccessFields_updatedAt_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_updatedAt_Update {
+type LandingDocAccessFields_updatedAt_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_updatedAt_Delete {
+type LandingDocAccessFields_updatedAt_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_createdAt {
-  create: LandingPageDocAccessFields_createdAt_Create
-  read: LandingPageDocAccessFields_createdAt_Read
-  update: LandingPageDocAccessFields_createdAt_Update
-  delete: LandingPageDocAccessFields_createdAt_Delete
+type LandingDocAccessFields_createdAt {
+  create: LandingDocAccessFields_createdAt_Create
+  read: LandingDocAccessFields_createdAt_Read
+  update: LandingDocAccessFields_createdAt_Update
+  delete: LandingDocAccessFields_createdAt_Delete
 }
 
-type LandingPageDocAccessFields_createdAt_Create {
+type LandingDocAccessFields_createdAt_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_createdAt_Read {
+type LandingDocAccessFields_createdAt_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_createdAt_Update {
+type LandingDocAccessFields_createdAt_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_createdAt_Delete {
+type LandingDocAccessFields_createdAt_Delete {
   permission: Boolean!
 }
 
-type LandingPageReadDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LandingPageUpdateDocAccess {
+type LandingReadDocAccess {
   permission: Boolean!
   where: JSONObject
 }
 
-type MainNavigation {
+type LandingUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Nav {
   items: [MainNavigationItem!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -3395,29 +3395,29 @@ type MainNavigationItem_PageConfig {
 
 type MainNavigationTopicConfig {
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Topic
-  categories: [MainNavigationTopicConfig_Categories!]
+  ctgrs: [MainNavigationTopicConfig_Ctgrs!]
 }
 
-type MainNavigationTopicConfig_Categories {
+type MainNavigationTopicConfig_Ctgrs {
   title: String
-  pages: [MainNavigationTopicConfig_Categories_Pages!]
-  externalLinks: [MainNavigationTopicConfig_Categories_ExternalLinks!]
+  pages: [MainNavigationTopicConfig_Ctgrs_Pages!]
+  extLinks: [MainNavigationTopicConfig_Ctgrs_ExtLinks!]
   id: String
 }
 
-type MainNavigationTopicConfig_Categories_Pages {
+type MainNavigationTopicConfig_Ctgrs_Pages {
   page(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   id: String
 }
 
-type MainNavigationTopicConfig_Categories_ExternalLinks {
+type MainNavigationTopicConfig_Ctgrs_ExtLinks {
   title: String
   href: String
-  icon: MainNavigationTopicConfig_Categories_ExternalLinks_icon
+  icon: MainNavigationTopicConfig_Ctgrs_ExtLinks_icon
   id: String
 }
 
-enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
+enum MainNavigationTopicConfig_Ctgrs_ExtLinks_icon {
   AtSign
   Banknote
   BookMarked
@@ -3444,525 +3444,525 @@ enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
   X
 }
 
-type main_navigationDocAccess {
-  fields: MainNavigationDocAccessFields
-  read: MainNavigationReadDocAccess
-  update: MainNavigationUpdateDocAccess
+type navDocAccess {
+  fields: NavDocAccessFields
+  read: NavReadDocAccess
+  update: NavUpdateDocAccess
 }
 
-type MainNavigationDocAccessFields {
-  items: MainNavigationDocAccessFields_items
-  updatedAt: MainNavigationDocAccessFields_updatedAt
-  createdAt: MainNavigationDocAccessFields_createdAt
+type NavDocAccessFields {
+  items: NavDocAccessFields_items
+  updatedAt: NavDocAccessFields_updatedAt
+  createdAt: NavDocAccessFields_createdAt
 }
 
-type MainNavigationDocAccessFields_items {
-  create: MainNavigationDocAccessFields_items_Create
-  read: MainNavigationDocAccessFields_items_Read
-  update: MainNavigationDocAccessFields_items_Update
-  delete: MainNavigationDocAccessFields_items_Delete
-  fields: MainNavigationDocAccessFields_items_Fields
+type NavDocAccessFields_items {
+  create: NavDocAccessFields_items_Create
+  read: NavDocAccessFields_items_Read
+  update: NavDocAccessFields_items_Update
+  delete: NavDocAccessFields_items_Delete
+  fields: NavDocAccessFields_items_Fields
 }
 
-type MainNavigationDocAccessFields_items_Create {
+type NavDocAccessFields_items_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_Read {
+type NavDocAccessFields_items_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_Update {
+type NavDocAccessFields_items_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_Delete {
+type NavDocAccessFields_items_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_Fields {
-  type: MainNavigationDocAccessFields_items_type
-  pageConfig: MainNavigationDocAccessFields_items_pageConfig
-  topicConfig: MainNavigationDocAccessFields_items_topicConfig
-  id: MainNavigationDocAccessFields_items_id
+type NavDocAccessFields_items_Fields {
+  type: NavDocAccessFields_items_type
+  pageConfig: NavDocAccessFields_items_pageConfig
+  topicConfig: NavDocAccessFields_items_topicConfig
+  id: NavDocAccessFields_items_id
 }
 
-type MainNavigationDocAccessFields_items_type {
-  create: MainNavigationDocAccessFields_items_type_Create
-  read: MainNavigationDocAccessFields_items_type_Read
-  update: MainNavigationDocAccessFields_items_type_Update
-  delete: MainNavigationDocAccessFields_items_type_Delete
+type NavDocAccessFields_items_type {
+  create: NavDocAccessFields_items_type_Create
+  read: NavDocAccessFields_items_type_Read
+  update: NavDocAccessFields_items_type_Update
+  delete: NavDocAccessFields_items_type_Delete
 }
 
-type MainNavigationDocAccessFields_items_type_Create {
+type NavDocAccessFields_items_type_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_type_Read {
+type NavDocAccessFields_items_type_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_type_Update {
+type NavDocAccessFields_items_type_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_type_Delete {
+type NavDocAccessFields_items_type_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig {
-  create: MainNavigationDocAccessFields_items_pageConfig_Create
-  read: MainNavigationDocAccessFields_items_pageConfig_Read
-  update: MainNavigationDocAccessFields_items_pageConfig_Update
-  delete: MainNavigationDocAccessFields_items_pageConfig_Delete
-  fields: MainNavigationDocAccessFields_items_pageConfig_Fields
+type NavDocAccessFields_items_pageConfig {
+  create: NavDocAccessFields_items_pageConfig_Create
+  read: NavDocAccessFields_items_pageConfig_Read
+  update: NavDocAccessFields_items_pageConfig_Update
+  delete: NavDocAccessFields_items_pageConfig_Delete
+  fields: NavDocAccessFields_items_pageConfig_Fields
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_Create {
+type NavDocAccessFields_items_pageConfig_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_Read {
+type NavDocAccessFields_items_pageConfig_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_Update {
+type NavDocAccessFields_items_pageConfig_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_Delete {
+type NavDocAccessFields_items_pageConfig_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_Fields {
-  page: MainNavigationDocAccessFields_items_pageConfig_page
+type NavDocAccessFields_items_pageConfig_Fields {
+  page: NavDocAccessFields_items_pageConfig_page
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_page {
-  create: MainNavigationDocAccessFields_items_pageConfig_page_Create
-  read: MainNavigationDocAccessFields_items_pageConfig_page_Read
-  update: MainNavigationDocAccessFields_items_pageConfig_page_Update
-  delete: MainNavigationDocAccessFields_items_pageConfig_page_Delete
+type NavDocAccessFields_items_pageConfig_page {
+  create: NavDocAccessFields_items_pageConfig_page_Create
+  read: NavDocAccessFields_items_pageConfig_page_Read
+  update: NavDocAccessFields_items_pageConfig_page_Update
+  delete: NavDocAccessFields_items_pageConfig_page_Delete
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_page_Create {
+type NavDocAccessFields_items_pageConfig_page_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_page_Read {
+type NavDocAccessFields_items_pageConfig_page_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_page_Update {
+type NavDocAccessFields_items_pageConfig_page_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_pageConfig_page_Delete {
+type NavDocAccessFields_items_pageConfig_page_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig {
-  create: MainNavigationDocAccessFields_items_topicConfig_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_Delete
-  fields: MainNavigationDocAccessFields_items_topicConfig_Fields
+type NavDocAccessFields_items_topicConfig {
+  create: NavDocAccessFields_items_topicConfig_Create
+  read: NavDocAccessFields_items_topicConfig_Read
+  update: NavDocAccessFields_items_topicConfig_Update
+  delete: NavDocAccessFields_items_topicConfig_Delete
+  fields: NavDocAccessFields_items_topicConfig_Fields
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_Create {
+type NavDocAccessFields_items_topicConfig_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_Read {
+type NavDocAccessFields_items_topicConfig_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_Update {
+type NavDocAccessFields_items_topicConfig_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_Delete {
+type NavDocAccessFields_items_topicConfig_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_Fields {
-  topic: MainNavigationDocAccessFields_items_topicConfig_topic
-  categories: MainNavigationDocAccessFields_items_topicConfig_categories
+type NavDocAccessFields_items_topicConfig_Fields {
+  topic: NavDocAccessFields_items_topicConfig_topic
+  ctgrs: NavDocAccessFields_items_topicConfig_ctgrs
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_topic {
-  create: MainNavigationDocAccessFields_items_topicConfig_topic_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_topic_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_topic_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_topic_Delete
+type NavDocAccessFields_items_topicConfig_topic {
+  create: NavDocAccessFields_items_topicConfig_topic_Create
+  read: NavDocAccessFields_items_topicConfig_topic_Read
+  update: NavDocAccessFields_items_topicConfig_topic_Update
+  delete: NavDocAccessFields_items_topicConfig_topic_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_topic_Create {
+type NavDocAccessFields_items_topicConfig_topic_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_topic_Read {
+type NavDocAccessFields_items_topicConfig_topic_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_topic_Update {
+type NavDocAccessFields_items_topicConfig_topic_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_topic_Delete {
+type NavDocAccessFields_items_topicConfig_topic_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_Delete
-  fields: MainNavigationDocAccessFields_items_topicConfig_categories_Fields
+type NavDocAccessFields_items_topicConfig_ctgrs {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_Delete
+  fields: NavDocAccessFields_items_topicConfig_ctgrs_Fields
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_Fields {
-  title: MainNavigationDocAccessFields_items_topicConfig_categories_title
-  pages: MainNavigationDocAccessFields_items_topicConfig_categories_pages
-  externalLinks: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks
-  id: MainNavigationDocAccessFields_items_topicConfig_categories_id
+type NavDocAccessFields_items_topicConfig_ctgrs_Fields {
+  title: NavDocAccessFields_items_topicConfig_ctgrs_title
+  pages: NavDocAccessFields_items_topicConfig_ctgrs_pages
+  extLinks: NavDocAccessFields_items_topicConfig_ctgrs_extLinks
+  id: NavDocAccessFields_items_topicConfig_ctgrs_id
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_title {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_title_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_title_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_title_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_title_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_title {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_title_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_title_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_title_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_title_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_title_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_title_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_title_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_title_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_title_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_title_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_title_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_title_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_pages_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_pages_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_pages_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_pages_Delete
-  fields: MainNavigationDocAccessFields_items_topicConfig_categories_pages_Fields
+type NavDocAccessFields_items_topicConfig_ctgrs_pages {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_pages_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_pages_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_pages_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_pages_Delete
+  fields: NavDocAccessFields_items_topicConfig_ctgrs_pages_Fields
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_Fields {
-  page: MainNavigationDocAccessFields_items_topicConfig_categories_pages_page
-  id: MainNavigationDocAccessFields_items_topicConfig_categories_pages_id
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_Fields {
+  page: NavDocAccessFields_items_topicConfig_ctgrs_pages_page
+  id: NavDocAccessFields_items_topicConfig_ctgrs_pages_id
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_page {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_page {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_page_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_page_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_id {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_id {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_pages_id_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_pages_id_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Delete
-  fields: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Fields
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Delete
+  fields: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Fields
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_Fields {
-  title: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title
-  href: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href
-  icon: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon
-  id: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_Fields {
+  title: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title
+  href: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href
+  icon: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon
+  id: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_title_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_title_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_href_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_href_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_icon_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_icon_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_externalLinks_id_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_extLinks_id_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_id {
-  create: MainNavigationDocAccessFields_items_topicConfig_categories_id_Create
-  read: MainNavigationDocAccessFields_items_topicConfig_categories_id_Read
-  update: MainNavigationDocAccessFields_items_topicConfig_categories_id_Update
-  delete: MainNavigationDocAccessFields_items_topicConfig_categories_id_Delete
+type NavDocAccessFields_items_topicConfig_ctgrs_id {
+  create: NavDocAccessFields_items_topicConfig_ctgrs_id_Create
+  read: NavDocAccessFields_items_topicConfig_ctgrs_id_Read
+  update: NavDocAccessFields_items_topicConfig_ctgrs_id_Update
+  delete: NavDocAccessFields_items_topicConfig_ctgrs_id_Delete
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_id_Create {
+type NavDocAccessFields_items_topicConfig_ctgrs_id_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_id_Read {
+type NavDocAccessFields_items_topicConfig_ctgrs_id_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_id_Update {
+type NavDocAccessFields_items_topicConfig_ctgrs_id_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_topicConfig_categories_id_Delete {
+type NavDocAccessFields_items_topicConfig_ctgrs_id_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_id {
-  create: MainNavigationDocAccessFields_items_id_Create
-  read: MainNavigationDocAccessFields_items_id_Read
-  update: MainNavigationDocAccessFields_items_id_Update
-  delete: MainNavigationDocAccessFields_items_id_Delete
+type NavDocAccessFields_items_id {
+  create: NavDocAccessFields_items_id_Create
+  read: NavDocAccessFields_items_id_Read
+  update: NavDocAccessFields_items_id_Update
+  delete: NavDocAccessFields_items_id_Delete
 }
 
-type MainNavigationDocAccessFields_items_id_Create {
+type NavDocAccessFields_items_id_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_id_Read {
+type NavDocAccessFields_items_id_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_id_Update {
+type NavDocAccessFields_items_id_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_items_id_Delete {
+type NavDocAccessFields_items_id_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_updatedAt {
-  create: MainNavigationDocAccessFields_updatedAt_Create
-  read: MainNavigationDocAccessFields_updatedAt_Read
-  update: MainNavigationDocAccessFields_updatedAt_Update
-  delete: MainNavigationDocAccessFields_updatedAt_Delete
+type NavDocAccessFields_updatedAt {
+  create: NavDocAccessFields_updatedAt_Create
+  read: NavDocAccessFields_updatedAt_Read
+  update: NavDocAccessFields_updatedAt_Update
+  delete: NavDocAccessFields_updatedAt_Delete
 }
 
-type MainNavigationDocAccessFields_updatedAt_Create {
+type NavDocAccessFields_updatedAt_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_updatedAt_Read {
+type NavDocAccessFields_updatedAt_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_updatedAt_Update {
+type NavDocAccessFields_updatedAt_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_updatedAt_Delete {
+type NavDocAccessFields_updatedAt_Delete {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_createdAt {
-  create: MainNavigationDocAccessFields_createdAt_Create
-  read: MainNavigationDocAccessFields_createdAt_Read
-  update: MainNavigationDocAccessFields_createdAt_Update
-  delete: MainNavigationDocAccessFields_createdAt_Delete
+type NavDocAccessFields_createdAt {
+  create: NavDocAccessFields_createdAt_Create
+  read: NavDocAccessFields_createdAt_Read
+  update: NavDocAccessFields_createdAt_Update
+  delete: NavDocAccessFields_createdAt_Delete
 }
 
-type MainNavigationDocAccessFields_createdAt_Create {
+type NavDocAccessFields_createdAt_Create {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_createdAt_Read {
+type NavDocAccessFields_createdAt_Read {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_createdAt_Update {
+type NavDocAccessFields_createdAt_Update {
   permission: Boolean!
 }
 
-type MainNavigationDocAccessFields_createdAt_Delete {
+type NavDocAccessFields_createdAt_Delete {
   permission: Boolean!
 }
 
-type MainNavigationReadDocAccess {
+type NavReadDocAccess {
   permission: Boolean!
   where: JSONObject
 }
 
-type MainNavigationUpdateDocAccess {
+type NavUpdateDocAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -3970,15 +3970,15 @@ type MainNavigationUpdateDocAccess {
 type Access {
   canAccessAdmin: Boolean!
   users: usersAccess
+  topics: topicsAccess
   pages: pagesAccess
   media: mediaAccess
-  topics: topicsAccess
   board_members: board_membersAccess
   boards: boardsAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
-  landing_page: landing_pageAccess
-  main_navigation: main_navigationAccess
+  landing: landingAccess
+  nav: navAccess
 }
 
 type usersAccess {
@@ -4182,6 +4182,133 @@ type UsersDeleteAccess {
 }
 
 type UsersUnlockAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type topicsAccess {
+  fields: TopicsFields
+  create: TopicsCreateAccess
+  read: TopicsReadAccess
+  update: TopicsUpdateAccess
+  delete: TopicsDeleteAccess
+}
+
+type TopicsFields {
+  title: TopicsFields_title
+  slug: TopicsFields_slug
+  updatedAt: TopicsFields_updatedAt
+  createdAt: TopicsFields_createdAt
+}
+
+type TopicsFields_title {
+  create: TopicsFields_title_Create
+  read: TopicsFields_title_Read
+  update: TopicsFields_title_Update
+  delete: TopicsFields_title_Delete
+}
+
+type TopicsFields_title_Create {
+  permission: Boolean!
+}
+
+type TopicsFields_title_Read {
+  permission: Boolean!
+}
+
+type TopicsFields_title_Update {
+  permission: Boolean!
+}
+
+type TopicsFields_title_Delete {
+  permission: Boolean!
+}
+
+type TopicsFields_slug {
+  create: TopicsFields_slug_Create
+  read: TopicsFields_slug_Read
+  update: TopicsFields_slug_Update
+  delete: TopicsFields_slug_Delete
+}
+
+type TopicsFields_slug_Create {
+  permission: Boolean!
+}
+
+type TopicsFields_slug_Read {
+  permission: Boolean!
+}
+
+type TopicsFields_slug_Update {
+  permission: Boolean!
+}
+
+type TopicsFields_slug_Delete {
+  permission: Boolean!
+}
+
+type TopicsFields_updatedAt {
+  create: TopicsFields_updatedAt_Create
+  read: TopicsFields_updatedAt_Read
+  update: TopicsFields_updatedAt_Update
+  delete: TopicsFields_updatedAt_Delete
+}
+
+type TopicsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type TopicsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type TopicsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type TopicsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type TopicsFields_createdAt {
+  create: TopicsFields_createdAt_Create
+  read: TopicsFields_createdAt_Read
+  update: TopicsFields_createdAt_Update
+  delete: TopicsFields_createdAt_Delete
+}
+
+type TopicsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type TopicsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type TopicsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type TopicsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type TopicsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TopicsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TopicsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type TopicsDeleteAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -4706,133 +4833,6 @@ type MediaUpdateAccess {
 }
 
 type MediaDeleteAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type topicsAccess {
-  fields: TopicsFields
-  create: TopicsCreateAccess
-  read: TopicsReadAccess
-  update: TopicsUpdateAccess
-  delete: TopicsDeleteAccess
-}
-
-type TopicsFields {
-  title: TopicsFields_title
-  slug: TopicsFields_slug
-  updatedAt: TopicsFields_updatedAt
-  createdAt: TopicsFields_createdAt
-}
-
-type TopicsFields_title {
-  create: TopicsFields_title_Create
-  read: TopicsFields_title_Read
-  update: TopicsFields_title_Update
-  delete: TopicsFields_title_Delete
-}
-
-type TopicsFields_title_Create {
-  permission: Boolean!
-}
-
-type TopicsFields_title_Read {
-  permission: Boolean!
-}
-
-type TopicsFields_title_Update {
-  permission: Boolean!
-}
-
-type TopicsFields_title_Delete {
-  permission: Boolean!
-}
-
-type TopicsFields_slug {
-  create: TopicsFields_slug_Create
-  read: TopicsFields_slug_Read
-  update: TopicsFields_slug_Update
-  delete: TopicsFields_slug_Delete
-}
-
-type TopicsFields_slug_Create {
-  permission: Boolean!
-}
-
-type TopicsFields_slug_Read {
-  permission: Boolean!
-}
-
-type TopicsFields_slug_Update {
-  permission: Boolean!
-}
-
-type TopicsFields_slug_Delete {
-  permission: Boolean!
-}
-
-type TopicsFields_updatedAt {
-  create: TopicsFields_updatedAt_Create
-  read: TopicsFields_updatedAt_Read
-  update: TopicsFields_updatedAt_Update
-  delete: TopicsFields_updatedAt_Delete
-}
-
-type TopicsFields_updatedAt_Create {
-  permission: Boolean!
-}
-
-type TopicsFields_updatedAt_Read {
-  permission: Boolean!
-}
-
-type TopicsFields_updatedAt_Update {
-  permission: Boolean!
-}
-
-type TopicsFields_updatedAt_Delete {
-  permission: Boolean!
-}
-
-type TopicsFields_createdAt {
-  create: TopicsFields_createdAt_Create
-  read: TopicsFields_createdAt_Read
-  update: TopicsFields_createdAt_Update
-  delete: TopicsFields_createdAt_Delete
-}
-
-type TopicsFields_createdAt_Create {
-  permission: Boolean!
-}
-
-type TopicsFields_createdAt_Read {
-  permission: Boolean!
-}
-
-type TopicsFields_createdAt_Update {
-  permission: Boolean!
-}
-
-type TopicsFields_createdAt_Delete {
-  permission: Boolean!
-}
-
-type TopicsCreateAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type TopicsReadAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type TopicsUpdateAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type TopicsDeleteAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -5529,716 +5529,716 @@ type FooterUpdateAccess {
   where: JSONObject
 }
 
-type landing_pageAccess {
-  fields: LandingPageFields
-  read: LandingPageReadAccess
-  update: LandingPageUpdateAccess
+type landingAccess {
+  fields: LandingFields
+  read: LandingReadAccess
+  update: LandingUpdateAccess
 }
 
-type LandingPageFields {
-  heroText: LandingPageFields_heroText
-  heroImages: LandingPageFields_heroImages
-  body: LandingPageFields_body
-  updatedAt: LandingPageFields_updatedAt
-  createdAt: LandingPageFields_createdAt
+type LandingFields {
+  heroText: LandingFields_heroText
+  heroImages: LandingFields_heroImages
+  body: LandingFields_body
+  updatedAt: LandingFields_updatedAt
+  createdAt: LandingFields_createdAt
 }
 
-type LandingPageFields_heroText {
-  create: LandingPageFields_heroText_Create
-  read: LandingPageFields_heroText_Read
-  update: LandingPageFields_heroText_Update
-  delete: LandingPageFields_heroText_Delete
+type LandingFields_heroText {
+  create: LandingFields_heroText_Create
+  read: LandingFields_heroText_Read
+  update: LandingFields_heroText_Update
+  delete: LandingFields_heroText_Delete
 }
 
-type LandingPageFields_heroText_Create {
+type LandingFields_heroText_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_Read {
+type LandingFields_heroText_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_Update {
+type LandingFields_heroText_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_Delete {
+type LandingFields_heroText_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages {
-  create: LandingPageFields_heroImages_Create
-  read: LandingPageFields_heroImages_Read
-  update: LandingPageFields_heroImages_Update
-  delete: LandingPageFields_heroImages_Delete
-  fields: LandingPageFields_heroImages_Fields
+type LandingFields_heroImages {
+  create: LandingFields_heroImages_Create
+  read: LandingFields_heroImages_Read
+  update: LandingFields_heroImages_Update
+  delete: LandingFields_heroImages_Delete
+  fields: LandingFields_heroImages_Fields
 }
 
-type LandingPageFields_heroImages_Create {
+type LandingFields_heroImages_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_Read {
+type LandingFields_heroImages_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_Update {
+type LandingFields_heroImages_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_Delete {
+type LandingFields_heroImages_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_Fields {
-  image: LandingPageFields_heroImages_image
-  id: LandingPageFields_heroImages_id
+type LandingFields_heroImages_Fields {
+  image: LandingFields_heroImages_image
+  id: LandingFields_heroImages_id
 }
 
-type LandingPageFields_heroImages_image {
-  create: LandingPageFields_heroImages_image_Create
-  read: LandingPageFields_heroImages_image_Read
-  update: LandingPageFields_heroImages_image_Update
-  delete: LandingPageFields_heroImages_image_Delete
+type LandingFields_heroImages_image {
+  create: LandingFields_heroImages_image_Create
+  read: LandingFields_heroImages_image_Read
+  update: LandingFields_heroImages_image_Update
+  delete: LandingFields_heroImages_image_Delete
 }
 
-type LandingPageFields_heroImages_image_Create {
+type LandingFields_heroImages_image_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_image_Read {
+type LandingFields_heroImages_image_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_image_Update {
+type LandingFields_heroImages_image_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_image_Delete {
+type LandingFields_heroImages_image_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_id {
-  create: LandingPageFields_heroImages_id_Create
-  read: LandingPageFields_heroImages_id_Read
-  update: LandingPageFields_heroImages_id_Update
-  delete: LandingPageFields_heroImages_id_Delete
+type LandingFields_heroImages_id {
+  create: LandingFields_heroImages_id_Create
+  read: LandingFields_heroImages_id_Read
+  update: LandingFields_heroImages_id_Update
+  delete: LandingFields_heroImages_id_Delete
 }
 
-type LandingPageFields_heroImages_id_Create {
+type LandingFields_heroImages_id_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_id_Read {
+type LandingFields_heroImages_id_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_id_Update {
+type LandingFields_heroImages_id_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_heroImages_id_Delete {
+type LandingFields_heroImages_id_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_body {
-  create: LandingPageFields_body_Create
-  read: LandingPageFields_body_Read
-  update: LandingPageFields_body_Update
-  delete: LandingPageFields_body_Delete
+type LandingFields_body {
+  create: LandingFields_body_Create
+  read: LandingFields_body_Read
+  update: LandingFields_body_Update
+  delete: LandingFields_body_Delete
 }
 
-type LandingPageFields_body_Create {
+type LandingFields_body_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_body_Read {
+type LandingFields_body_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_body_Update {
+type LandingFields_body_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_body_Delete {
+type LandingFields_body_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_updatedAt {
-  create: LandingPageFields_updatedAt_Create
-  read: LandingPageFields_updatedAt_Read
-  update: LandingPageFields_updatedAt_Update
-  delete: LandingPageFields_updatedAt_Delete
+type LandingFields_updatedAt {
+  create: LandingFields_updatedAt_Create
+  read: LandingFields_updatedAt_Read
+  update: LandingFields_updatedAt_Update
+  delete: LandingFields_updatedAt_Delete
 }
 
-type LandingPageFields_updatedAt_Create {
+type LandingFields_updatedAt_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_updatedAt_Read {
+type LandingFields_updatedAt_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_updatedAt_Update {
+type LandingFields_updatedAt_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_updatedAt_Delete {
+type LandingFields_updatedAt_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_createdAt {
-  create: LandingPageFields_createdAt_Create
-  read: LandingPageFields_createdAt_Read
-  update: LandingPageFields_createdAt_Update
-  delete: LandingPageFields_createdAt_Delete
+type LandingFields_createdAt {
+  create: LandingFields_createdAt_Create
+  read: LandingFields_createdAt_Read
+  update: LandingFields_createdAt_Update
+  delete: LandingFields_createdAt_Delete
 }
 
-type LandingPageFields_createdAt_Create {
+type LandingFields_createdAt_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_createdAt_Read {
+type LandingFields_createdAt_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_createdAt_Update {
+type LandingFields_createdAt_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_createdAt_Delete {
+type LandingFields_createdAt_Delete {
   permission: Boolean!
 }
 
-type LandingPageReadAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LandingPageUpdateAccess {
+type LandingReadAccess {
   permission: Boolean!
   where: JSONObject
 }
 
-type main_navigationAccess {
-  fields: MainNavigationFields
-  read: MainNavigationReadAccess
-  update: MainNavigationUpdateAccess
-}
-
-type MainNavigationFields {
-  items: MainNavigationFields_items
-  updatedAt: MainNavigationFields_updatedAt
-  createdAt: MainNavigationFields_createdAt
-}
-
-type MainNavigationFields_items {
-  create: MainNavigationFields_items_Create
-  read: MainNavigationFields_items_Read
-  update: MainNavigationFields_items_Update
-  delete: MainNavigationFields_items_Delete
-  fields: MainNavigationFields_items_Fields
-}
-
-type MainNavigationFields_items_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_Fields {
-  type: MainNavigationFields_items_type
-  pageConfig: MainNavigationFields_items_pageConfig
-  topicConfig: MainNavigationFields_items_topicConfig
-  id: MainNavigationFields_items_id
-}
-
-type MainNavigationFields_items_type {
-  create: MainNavigationFields_items_type_Create
-  read: MainNavigationFields_items_type_Read
-  update: MainNavigationFields_items_type_Update
-  delete: MainNavigationFields_items_type_Delete
-}
-
-type MainNavigationFields_items_type_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_type_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_type_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_type_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig {
-  create: MainNavigationFields_items_pageConfig_Create
-  read: MainNavigationFields_items_pageConfig_Read
-  update: MainNavigationFields_items_pageConfig_Update
-  delete: MainNavigationFields_items_pageConfig_Delete
-  fields: MainNavigationFields_items_pageConfig_Fields
-}
-
-type MainNavigationFields_items_pageConfig_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig_Fields {
-  page: MainNavigationFields_items_pageConfig_page
-}
-
-type MainNavigationFields_items_pageConfig_page {
-  create: MainNavigationFields_items_pageConfig_page_Create
-  read: MainNavigationFields_items_pageConfig_page_Read
-  update: MainNavigationFields_items_pageConfig_page_Update
-  delete: MainNavigationFields_items_pageConfig_page_Delete
-}
-
-type MainNavigationFields_items_pageConfig_page_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig_page_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig_page_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_pageConfig_page_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig {
-  create: MainNavigationFields_items_topicConfig_Create
-  read: MainNavigationFields_items_topicConfig_Read
-  update: MainNavigationFields_items_topicConfig_Update
-  delete: MainNavigationFields_items_topicConfig_Delete
-  fields: MainNavigationFields_items_topicConfig_Fields
-}
-
-type MainNavigationFields_items_topicConfig_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_Fields {
-  topic: MainNavigationFields_items_topicConfig_topic
-  categories: MainNavigationFields_items_topicConfig_categories
-}
-
-type MainNavigationFields_items_topicConfig_topic {
-  create: MainNavigationFields_items_topicConfig_topic_Create
-  read: MainNavigationFields_items_topicConfig_topic_Read
-  update: MainNavigationFields_items_topicConfig_topic_Update
-  delete: MainNavigationFields_items_topicConfig_topic_Delete
-}
-
-type MainNavigationFields_items_topicConfig_topic_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_topic_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_topic_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_topic_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories {
-  create: MainNavigationFields_items_topicConfig_categories_Create
-  read: MainNavigationFields_items_topicConfig_categories_Read
-  update: MainNavigationFields_items_topicConfig_categories_Update
-  delete: MainNavigationFields_items_topicConfig_categories_Delete
-  fields: MainNavigationFields_items_topicConfig_categories_Fields
-}
-
-type MainNavigationFields_items_topicConfig_categories_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_Fields {
-  title: MainNavigationFields_items_topicConfig_categories_title
-  pages: MainNavigationFields_items_topicConfig_categories_pages
-  externalLinks: MainNavigationFields_items_topicConfig_categories_externalLinks
-  id: MainNavigationFields_items_topicConfig_categories_id
-}
-
-type MainNavigationFields_items_topicConfig_categories_title {
-  create: MainNavigationFields_items_topicConfig_categories_title_Create
-  read: MainNavigationFields_items_topicConfig_categories_title_Read
-  update: MainNavigationFields_items_topicConfig_categories_title_Update
-  delete: MainNavigationFields_items_topicConfig_categories_title_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_title_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_title_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_title_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_title_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages {
-  create: MainNavigationFields_items_topicConfig_categories_pages_Create
-  read: MainNavigationFields_items_topicConfig_categories_pages_Read
-  update: MainNavigationFields_items_topicConfig_categories_pages_Update
-  delete: MainNavigationFields_items_topicConfig_categories_pages_Delete
-  fields: MainNavigationFields_items_topicConfig_categories_pages_Fields
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_Fields {
-  page: MainNavigationFields_items_topicConfig_categories_pages_page
-  id: MainNavigationFields_items_topicConfig_categories_pages_id
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_page {
-  create: MainNavigationFields_items_topicConfig_categories_pages_page_Create
-  read: MainNavigationFields_items_topicConfig_categories_pages_page_Read
-  update: MainNavigationFields_items_topicConfig_categories_pages_page_Update
-  delete: MainNavigationFields_items_topicConfig_categories_pages_page_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_page_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_page_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_page_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_page_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_id {
-  create: MainNavigationFields_items_topicConfig_categories_pages_id_Create
-  read: MainNavigationFields_items_topicConfig_categories_pages_id_Read
-  update: MainNavigationFields_items_topicConfig_categories_pages_id_Update
-  delete: MainNavigationFields_items_topicConfig_categories_pages_id_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_id_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_id_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_id_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_pages_id_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks {
-  create: MainNavigationFields_items_topicConfig_categories_externalLinks_Create
-  read: MainNavigationFields_items_topicConfig_categories_externalLinks_Read
-  update: MainNavigationFields_items_topicConfig_categories_externalLinks_Update
-  delete: MainNavigationFields_items_topicConfig_categories_externalLinks_Delete
-  fields: MainNavigationFields_items_topicConfig_categories_externalLinks_Fields
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_Fields {
-  title: MainNavigationFields_items_topicConfig_categories_externalLinks_title
-  href: MainNavigationFields_items_topicConfig_categories_externalLinks_href
-  icon: MainNavigationFields_items_topicConfig_categories_externalLinks_icon
-  id: MainNavigationFields_items_topicConfig_categories_externalLinks_id
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_title {
-  create: MainNavigationFields_items_topicConfig_categories_externalLinks_title_Create
-  read: MainNavigationFields_items_topicConfig_categories_externalLinks_title_Read
-  update: MainNavigationFields_items_topicConfig_categories_externalLinks_title_Update
-  delete: MainNavigationFields_items_topicConfig_categories_externalLinks_title_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_title_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_title_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_title_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_title_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_href {
-  create: MainNavigationFields_items_topicConfig_categories_externalLinks_href_Create
-  read: MainNavigationFields_items_topicConfig_categories_externalLinks_href_Read
-  update: MainNavigationFields_items_topicConfig_categories_externalLinks_href_Update
-  delete: MainNavigationFields_items_topicConfig_categories_externalLinks_href_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_href_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_href_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_href_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_href_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_icon {
-  create: MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Create
-  read: MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Read
-  update: MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Update
-  delete: MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_icon_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_id {
-  create: MainNavigationFields_items_topicConfig_categories_externalLinks_id_Create
-  read: MainNavigationFields_items_topicConfig_categories_externalLinks_id_Read
-  update: MainNavigationFields_items_topicConfig_categories_externalLinks_id_Update
-  delete: MainNavigationFields_items_topicConfig_categories_externalLinks_id_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_id_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_id_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_id_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_externalLinks_id_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_id {
-  create: MainNavigationFields_items_topicConfig_categories_id_Create
-  read: MainNavigationFields_items_topicConfig_categories_id_Read
-  update: MainNavigationFields_items_topicConfig_categories_id_Update
-  delete: MainNavigationFields_items_topicConfig_categories_id_Delete
-}
-
-type MainNavigationFields_items_topicConfig_categories_id_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_id_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_id_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_topicConfig_categories_id_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_id {
-  create: MainNavigationFields_items_id_Create
-  read: MainNavigationFields_items_id_Read
-  update: MainNavigationFields_items_id_Update
-  delete: MainNavigationFields_items_id_Delete
-}
-
-type MainNavigationFields_items_id_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_id_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_id_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_items_id_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_updatedAt {
-  create: MainNavigationFields_updatedAt_Create
-  read: MainNavigationFields_updatedAt_Read
-  update: MainNavigationFields_updatedAt_Update
-  delete: MainNavigationFields_updatedAt_Delete
-}
-
-type MainNavigationFields_updatedAt_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_updatedAt_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_updatedAt_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_updatedAt_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationFields_createdAt {
-  create: MainNavigationFields_createdAt_Create
-  read: MainNavigationFields_createdAt_Read
-  update: MainNavigationFields_createdAt_Update
-  delete: MainNavigationFields_createdAt_Delete
-}
-
-type MainNavigationFields_createdAt_Create {
-  permission: Boolean!
-}
-
-type MainNavigationFields_createdAt_Read {
-  permission: Boolean!
-}
-
-type MainNavigationFields_createdAt_Update {
-  permission: Boolean!
-}
-
-type MainNavigationFields_createdAt_Delete {
-  permission: Boolean!
-}
-
-type MainNavigationReadAccess {
+type LandingUpdateAccess {
   permission: Boolean!
   where: JSONObject
 }
 
-type MainNavigationUpdateAccess {
+type navAccess {
+  fields: NavFields
+  read: NavReadAccess
+  update: NavUpdateAccess
+}
+
+type NavFields {
+  items: NavFields_items
+  updatedAt: NavFields_updatedAt
+  createdAt: NavFields_createdAt
+}
+
+type NavFields_items {
+  create: NavFields_items_Create
+  read: NavFields_items_Read
+  update: NavFields_items_Update
+  delete: NavFields_items_Delete
+  fields: NavFields_items_Fields
+}
+
+type NavFields_items_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_Fields {
+  type: NavFields_items_type
+  pageConfig: NavFields_items_pageConfig
+  topicConfig: NavFields_items_topicConfig
+  id: NavFields_items_id
+}
+
+type NavFields_items_type {
+  create: NavFields_items_type_Create
+  read: NavFields_items_type_Read
+  update: NavFields_items_type_Update
+  delete: NavFields_items_type_Delete
+}
+
+type NavFields_items_type_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_type_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_type_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_type_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig {
+  create: NavFields_items_pageConfig_Create
+  read: NavFields_items_pageConfig_Read
+  update: NavFields_items_pageConfig_Update
+  delete: NavFields_items_pageConfig_Delete
+  fields: NavFields_items_pageConfig_Fields
+}
+
+type NavFields_items_pageConfig_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig_Fields {
+  page: NavFields_items_pageConfig_page
+}
+
+type NavFields_items_pageConfig_page {
+  create: NavFields_items_pageConfig_page_Create
+  read: NavFields_items_pageConfig_page_Read
+  update: NavFields_items_pageConfig_page_Update
+  delete: NavFields_items_pageConfig_page_Delete
+}
+
+type NavFields_items_pageConfig_page_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig_page_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig_page_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_pageConfig_page_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig {
+  create: NavFields_items_topicConfig_Create
+  read: NavFields_items_topicConfig_Read
+  update: NavFields_items_topicConfig_Update
+  delete: NavFields_items_topicConfig_Delete
+  fields: NavFields_items_topicConfig_Fields
+}
+
+type NavFields_items_topicConfig_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_Fields {
+  topic: NavFields_items_topicConfig_topic
+  ctgrs: NavFields_items_topicConfig_ctgrs
+}
+
+type NavFields_items_topicConfig_topic {
+  create: NavFields_items_topicConfig_topic_Create
+  read: NavFields_items_topicConfig_topic_Read
+  update: NavFields_items_topicConfig_topic_Update
+  delete: NavFields_items_topicConfig_topic_Delete
+}
+
+type NavFields_items_topicConfig_topic_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_topic_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_topic_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_topic_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs {
+  create: NavFields_items_topicConfig_ctgrs_Create
+  read: NavFields_items_topicConfig_ctgrs_Read
+  update: NavFields_items_topicConfig_ctgrs_Update
+  delete: NavFields_items_topicConfig_ctgrs_Delete
+  fields: NavFields_items_topicConfig_ctgrs_Fields
+}
+
+type NavFields_items_topicConfig_ctgrs_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_Fields {
+  title: NavFields_items_topicConfig_ctgrs_title
+  pages: NavFields_items_topicConfig_ctgrs_pages
+  extLinks: NavFields_items_topicConfig_ctgrs_extLinks
+  id: NavFields_items_topicConfig_ctgrs_id
+}
+
+type NavFields_items_topicConfig_ctgrs_title {
+  create: NavFields_items_topicConfig_ctgrs_title_Create
+  read: NavFields_items_topicConfig_ctgrs_title_Read
+  update: NavFields_items_topicConfig_ctgrs_title_Update
+  delete: NavFields_items_topicConfig_ctgrs_title_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_title_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_title_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_title_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_title_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages {
+  create: NavFields_items_topicConfig_ctgrs_pages_Create
+  read: NavFields_items_topicConfig_ctgrs_pages_Read
+  update: NavFields_items_topicConfig_ctgrs_pages_Update
+  delete: NavFields_items_topicConfig_ctgrs_pages_Delete
+  fields: NavFields_items_topicConfig_ctgrs_pages_Fields
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_Fields {
+  page: NavFields_items_topicConfig_ctgrs_pages_page
+  id: NavFields_items_topicConfig_ctgrs_pages_id
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_page {
+  create: NavFields_items_topicConfig_ctgrs_pages_page_Create
+  read: NavFields_items_topicConfig_ctgrs_pages_page_Read
+  update: NavFields_items_topicConfig_ctgrs_pages_page_Update
+  delete: NavFields_items_topicConfig_ctgrs_pages_page_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_page_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_page_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_page_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_page_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_id {
+  create: NavFields_items_topicConfig_ctgrs_pages_id_Create
+  read: NavFields_items_topicConfig_ctgrs_pages_id_Read
+  update: NavFields_items_topicConfig_ctgrs_pages_id_Update
+  delete: NavFields_items_topicConfig_ctgrs_pages_id_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_id_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_id_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_id_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_pages_id_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks {
+  create: NavFields_items_topicConfig_ctgrs_extLinks_Create
+  read: NavFields_items_topicConfig_ctgrs_extLinks_Read
+  update: NavFields_items_topicConfig_ctgrs_extLinks_Update
+  delete: NavFields_items_topicConfig_ctgrs_extLinks_Delete
+  fields: NavFields_items_topicConfig_ctgrs_extLinks_Fields
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_Fields {
+  title: NavFields_items_topicConfig_ctgrs_extLinks_title
+  href: NavFields_items_topicConfig_ctgrs_extLinks_href
+  icon: NavFields_items_topicConfig_ctgrs_extLinks_icon
+  id: NavFields_items_topicConfig_ctgrs_extLinks_id
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_title {
+  create: NavFields_items_topicConfig_ctgrs_extLinks_title_Create
+  read: NavFields_items_topicConfig_ctgrs_extLinks_title_Read
+  update: NavFields_items_topicConfig_ctgrs_extLinks_title_Update
+  delete: NavFields_items_topicConfig_ctgrs_extLinks_title_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_title_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_title_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_title_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_title_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_href {
+  create: NavFields_items_topicConfig_ctgrs_extLinks_href_Create
+  read: NavFields_items_topicConfig_ctgrs_extLinks_href_Read
+  update: NavFields_items_topicConfig_ctgrs_extLinks_href_Update
+  delete: NavFields_items_topicConfig_ctgrs_extLinks_href_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_href_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_href_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_href_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_href_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_icon {
+  create: NavFields_items_topicConfig_ctgrs_extLinks_icon_Create
+  read: NavFields_items_topicConfig_ctgrs_extLinks_icon_Read
+  update: NavFields_items_topicConfig_ctgrs_extLinks_icon_Update
+  delete: NavFields_items_topicConfig_ctgrs_extLinks_icon_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_icon_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_icon_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_icon_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_icon_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_id {
+  create: NavFields_items_topicConfig_ctgrs_extLinks_id_Create
+  read: NavFields_items_topicConfig_ctgrs_extLinks_id_Read
+  update: NavFields_items_topicConfig_ctgrs_extLinks_id_Update
+  delete: NavFields_items_topicConfig_ctgrs_extLinks_id_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_id_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_id_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_id_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_extLinks_id_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_id {
+  create: NavFields_items_topicConfig_ctgrs_id_Create
+  read: NavFields_items_topicConfig_ctgrs_id_Read
+  update: NavFields_items_topicConfig_ctgrs_id_Update
+  delete: NavFields_items_topicConfig_ctgrs_id_Delete
+}
+
+type NavFields_items_topicConfig_ctgrs_id_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_id_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_id_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_topicConfig_ctgrs_id_Delete {
+  permission: Boolean!
+}
+
+type NavFields_items_id {
+  create: NavFields_items_id_Create
+  read: NavFields_items_id_Read
+  update: NavFields_items_id_Update
+  delete: NavFields_items_id_Delete
+}
+
+type NavFields_items_id_Create {
+  permission: Boolean!
+}
+
+type NavFields_items_id_Read {
+  permission: Boolean!
+}
+
+type NavFields_items_id_Update {
+  permission: Boolean!
+}
+
+type NavFields_items_id_Delete {
+  permission: Boolean!
+}
+
+type NavFields_updatedAt {
+  create: NavFields_updatedAt_Create
+  read: NavFields_updatedAt_Read
+  update: NavFields_updatedAt_Update
+  delete: NavFields_updatedAt_Delete
+}
+
+type NavFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type NavFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type NavFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type NavFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type NavFields_createdAt {
+  create: NavFields_createdAt_Create
+  read: NavFields_createdAt_Read
+  update: NavFields_createdAt_Update
+  delete: NavFields_createdAt_Delete
+}
+
+type NavFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type NavFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type NavFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type NavFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type NavReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NavUpdateAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -6254,6 +6254,9 @@ type Mutation {
   forgotPasswordUser(disableEmail: Boolean, email: String!, expiration: Int): Boolean!
   resetPasswordUser(password: String, token: String): usersResetPassword
   verifyEmailUser(token: String): Boolean
+  createTopic(data: mutationTopicInput!, draft: Boolean, locale: LocaleInputType): Topic
+  updateTopic(id: Int!, autosave: Boolean, data: mutationTopicUpdateInput!, draft: Boolean, locale: LocaleInputType): Topic
+  deleteTopic(id: Int!): Topic
   createPage(data: mutationPageInput!, draft: Boolean, locale: LocaleInputType): Page
   updatePage(id: Int!, autosave: Boolean, data: mutationPageUpdateInput!, draft: Boolean, locale: LocaleInputType): Page
   deletePage(id: Int!): Page
@@ -6261,9 +6264,6 @@ type Mutation {
   createMedia(data: mutationMediaInput!, draft: Boolean, locale: LocaleInputType): Media
   updateMedia(id: Int!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean, locale: LocaleInputType): Media
   deleteMedia(id: Int!): Media
-  createTopic(data: mutationTopicInput!, draft: Boolean, locale: LocaleInputType): Topic
-  updateTopic(id: Int!, autosave: Boolean, data: mutationTopicUpdateInput!, draft: Boolean, locale: LocaleInputType): Topic
-  deleteTopic(id: Int!): Topic
   createBoardMember(data: mutationBoardMemberInput!, draft: Boolean, locale: LocaleInputType): BoardMember
   updateBoardMember(id: Int!, autosave: Boolean, data: mutationBoardMemberUpdateInput!, draft: Boolean, locale: LocaleInputType): BoardMember
   deleteBoardMember(id: Int!): BoardMember
@@ -6274,8 +6274,8 @@ type Mutation {
   updatePayloadPreference(id: Int!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: Int!): PayloadPreference
   updateFooter(data: mutationFooterInput!, draft: Boolean, locale: LocaleInputType): Footer
-  updateLandingPage(data: mutationLandingPageInput!, draft: Boolean, locale: LocaleInputType): LandingPage
-  updateMainNavigation(data: mutationMainNavigationInput!, draft: Boolean, locale: LocaleInputType): MainNavigation
+  updateLanding(data: mutationLandingInput!, draft: Boolean, locale: LocaleInputType): Landing
+  updateNav(data: mutationNavInput!, draft: Boolean, locale: LocaleInputType): Nav
 }
 
 input mutationUserInput {
@@ -6332,6 +6332,20 @@ type usersLoginResult {
 type usersResetPassword {
   token: String
   user: User
+}
+
+input mutationTopicInput {
+  title: String
+  slug: String
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationTopicUpdateInput {
+  title: String
+  slug: String
+  updatedAt: String
+  createdAt: String
 }
 
 input mutationPageInput {
@@ -6410,20 +6424,6 @@ input mutationMediaUpdateInput {
   filesize: Float
   width: Float
   height: Float
-}
-
-input mutationTopicInput {
-  title: String
-  slug: String
-  updatedAt: String
-  createdAt: String
-}
-
-input mutationTopicUpdateInput {
-  title: String
-  slug: String
-  updatedAt: String
-  createdAt: String
 }
 
 input mutationBoardMemberInput {
@@ -6684,61 +6684,61 @@ input mutationFooterInput {
   createdAt: String
 }
 
-input mutationLandingPageInput {
+input mutationLandingInput {
   heroText: String
-  heroImages: [mutationLandingPage_HeroImagesInput!]
+  heroImages: [mutationLanding_HeroImagesInput!]
   body: JSON
   updatedAt: String
   createdAt: String
 }
 
-input mutationLandingPage_HeroImagesInput {
+input mutationLanding_HeroImagesInput {
   image: Int
   id: String
 }
 
-input mutationMainNavigationInput {
-  items: [mutationMainNavigation_ItemsInput!]
+input mutationNavInput {
+  items: [mutationNav_ItemsInput!]
   updatedAt: String
   createdAt: String
 }
 
-input mutationMainNavigation_ItemsInput {
+input mutationNav_ItemsInput {
   type: String
-  pageConfig: mutationMainNavigation_Items_PageConfigInput!
-  topicConfig: mutationMainNavigation_Items_TopicConfigInput!
+  pageConfig: mutationNav_Items_PageConfigInput!
+  topicConfig: mutationNav_Items_TopicConfigInput!
   id: String
 }
 
-input mutationMainNavigation_Items_PageConfigInput {
+input mutationNav_Items_PageConfigInput {
   page: Int
 }
 
-input mutationMainNavigation_Items_TopicConfigInput {
+input mutationNav_Items_TopicConfigInput {
   topic: Int
-  categories: [mutationMainNavigation_Items_TopicConfig_CategoriesInput]
+  ctgrs: [mutationNav_Items_TopicConfig_CtgrsInput]
 }
 
-input mutationMainNavigation_Items_TopicConfig_CategoriesInput {
+input mutationNav_Items_TopicConfig_CtgrsInput {
   title: String
-  pages: [mutationMainNavigation_Items_TopicConfig_Categories_PagesInput]
-  externalLinks: [mutationMainNavigation_Items_TopicConfig_Categories_ExternalLinksInput]
+  pages: [mutationNav_Items_TopicConfig_Ctgrs_PagesInput]
+  extLinks: [mutationNav_Items_TopicConfig_Ctgrs_ExtLinksInput]
   id: String
 }
 
-input mutationMainNavigation_Items_TopicConfig_Categories_PagesInput {
+input mutationNav_Items_TopicConfig_Ctgrs_PagesInput {
   page: Int
   id: String
 }
 
-input mutationMainNavigation_Items_TopicConfig_Categories_ExternalLinksInput {
+input mutationNav_Items_TopicConfig_Ctgrs_ExtLinksInput {
   title: String
   href: String!
-  icon: MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInput!
+  icon: Nav_Items_TopicConfig_Ctgrs_ExtLinks_icon_MutationInput!
   id: String
 }
 
-enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInput {
+enum Nav_Items_TopicConfig_Ctgrs_ExtLinks_icon_MutationInput {
   AtSign
   Banknote
   BookMarked

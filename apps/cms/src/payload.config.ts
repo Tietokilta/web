@@ -32,8 +32,8 @@ import { Pages } from "./collections/pages";
 import { Topics } from "./collections/topics";
 import { Users } from "./collections/users";
 import { Footer } from "./globals/footer";
-import { LandingPage } from "./globals/landing-page";
-import { MainNavigation } from "./globals/main-navigation";
+import { LandingPage } from "./globals/landing";
+import { MainNavigation } from "./globals/nav";
 import { useCloudStorage } from "./util";
 import { revalidateGlobal } from "./hooks/revalidate-globals";
 
@@ -51,7 +51,6 @@ const {
   AZURE_STORAGE_CONTAINER_NAME,
   AZURE_STORAGE_ACCOUNT_BASEURL,
 } = process.env;
-
 export default buildConfig({
   // TODO: should probably enable this for production but it breaks auth in development
   // serverURL: process.env.PUBLIC_SERVER_URL,
@@ -74,7 +73,8 @@ export default buildConfig({
       fileSize: 10000000, // 10MB, written in bytes
     },
   },
-  collections: [Users, Pages, Media, Topics, BoardMembers, Boards],
+  // keep these in relation order, i.e. if A has a relationship to B, B should be before A
+  collections: [Users, Topics, Pages, Media, BoardMembers, Boards],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
     locales: ["fi", "en"],

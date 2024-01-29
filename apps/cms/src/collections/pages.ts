@@ -12,7 +12,7 @@ const formatPath: FieldHook<Page> = async ({ data, req }) => {
     if (data.topic && data.slug) {
       const topic = await req.payload.findByID({
         collection: "topics",
-        id: data.topic.value as string,
+        id: data.topic.value as number,
         locale: req.locale,
       });
       return `/${topic.slug}/${data.slug}`;
@@ -114,7 +114,7 @@ export const Pages: CollectionConfig = {
           doc.topic &&
           (await req.payload.findByID({
             collection: "topics",
-            id: doc.topic.value as string,
+            id: doc.topic.value as number,
             locale,
           }));
         return {
