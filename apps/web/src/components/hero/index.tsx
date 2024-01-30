@@ -25,13 +25,11 @@ export function Hero({ images, text }: { images: string[]; text: string }) {
         <Image
           alt=""
           className={cn(
-            "z-10 transition-opacity duration-1000",
+            "z-10 object-cover object-center transition-opacity duration-1000",
             imageIndex === currentImage ? "opacity-25" : "opacity-0",
           )}
+          fill
           key={image}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
           priority
           src={image}
         />
