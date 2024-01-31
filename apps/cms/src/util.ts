@@ -15,7 +15,8 @@ export const useGoogleAuth = (): boolean => {
 };
 export function getLocale(req: PayloadRequest): string | undefined {
   const res =
-    typeof req.query.locale === "string" ? req.query.locale : req.locale;
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- query may be undefined, payload types are scuffed
+    typeof req.query?.locale === "string" ? req.query.locale : req.locale;
   if (!res) {
     req.payload.logger.warn(`locale not set for ${req.path}, defaulting to fi`);
   }
