@@ -47,13 +47,14 @@ const getPage = async (path: string[], lang: Locale) => {
       return notFound();
     }
 
-    const localizedPath = otherPage.path as unknown as Record<Locale, string>;
+    const allLocalesPath = otherPage.path as unknown as Record<Locale, string>;
+    const localizedPath = allLocalesPath[lang];
 
-    if (!localizedPath[lang]) {
+    if (!localizedPath) {
       return notFound();
     }
 
-    return redirect(localizedPath[lang]);
+    return redirect(localizedPath);
   }
 
   return page;
