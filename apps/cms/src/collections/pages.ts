@@ -1,6 +1,10 @@
 import type { Page } from "@tietokilta/cms-types/payload";
 import { isNil, omitBy } from "lodash";
-import type { CollectionConfig, FieldHook } from "payload/types";
+import type {
+  CollectionConfig,
+  FieldHook,
+  PayloadRequest,
+} from "payload/types";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
 import { revalidatePage } from "../hooks/revalidate-page";
@@ -169,37 +173,47 @@ export const Pages: CollectionConfig = {
         };
       }),
       revalidatePage<Page>("pages", async (doc, req) => {
-        const locale = getLocale(req);
-        if (!locale) {
-          req.payload.logger.error(
-            "locale not set, cannot revalidate properly",
-          );
+        const localesData = await getAllLocalesData(doc, req);
+        if (!localesData) {
           return;
         }
+        const {
+          allLocalesPageSlug,
+          localizedTopicSlug,
+          localizedSlugKey,
+          localizedTopicKey,
+          locale,
+        } = localesData;
 
-        const page = await req.payload.findByID({
-          collection: "pages",
-          id: doc.id,
+        return {
+          where: omitBy(
+            {
+              [localizedSlugKey]: { equals: allLocalesPageSlug[locale] },
+              [localizedTopicKey]: localizedTopicSlug
+                ? {
+                    [localizedSlugKey]: {
+                      equals: localizedTopicSlug[locale],
+                    },
+                  }
+                : null,
+            },
+            isNil,
+          ),
           locale: "all",
-        });
-        const topic =
-          doc.topic &&
-          (await req.payload.findByID({
-            collection: "topics",
-            id: doc.topic.value as string,
-            locale: "all",
-          }));
-
-        const allLocalesPageSlug = page.slug as unknown as Record<
-          string,
-          string
-        >;
-        const localizedTopicSlug = topic?.slug as unknown as
-          | Record<string, string>
-          | undefined;
-
-        const localizedSlugKey = `slug.${locale}`;
-        const localizedTopicKey = `topic.${locale}`;
+        };
+      }),
+      revalidatePage<Page>("pages", async (doc, req) => {
+        const localesData = await getAllLocalesData(doc, req, true);
+        if (!localesData) {
+          return;
+        }
+        const {
+          allLocalesPageSlug,
+          localizedTopicSlug,
+          localizedSlugKey,
+          localizedTopicKey,
+          locale,
+        } = localesData;
 
         return {
           where: omitBy(
@@ -221,3 +235,58 @@ export const Pages: CollectionConfig = {
     ],
   },
 };
+
+async function getAllLocalesData(
+  doc: Page,
+  req: PayloadRequest,
+  reverseLocale?: boolean,
+): Promise<
+  | {
+      allLocalesPageSlug: Record<string, string>;
+      localizedTopicSlug?: Record<string, string>;
+      localizedSlugKey: string;
+      localizedTopicKey: string;
+      locale: string;
+    }
+  | undefined
+> {
+  const reqLocale = getLocale(req);
+  if (!reqLocale) {
+    req.payload.logger.error("locale not set, cannot revalidate properly");
+    return;
+  }
+
+  let locale = reqLocale;
+  if (reverseLocale) {
+    locale = reqLocale === "fi" ? "en" : "fi";
+  }
+
+  const page = await req.payload.findByID({
+    collection: "pages",
+    id: doc.id,
+    locale: "all",
+  });
+  const topic =
+    doc.topic &&
+    (await req.payload.findByID({
+      collection: "topics",
+      id: doc.topic.value as string,
+      locale: "all",
+    }));
+
+  const allLocalesPageSlug = page.slug as unknown as Record<string, string>;
+  const localizedTopicSlug = topic?.slug as unknown as
+    | Record<string, string>
+    | undefined;
+
+  const localizedSlugKey = `slug.${locale}`;
+  const localizedTopicKey = `topic.${locale}`;
+
+  return {
+    allLocalesPageSlug,
+    localizedTopicSlug,
+    localizedSlugKey,
+    localizedTopicKey,
+    locale,
+  };
+}
