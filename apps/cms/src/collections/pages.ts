@@ -168,6 +168,56 @@ export const Pages: CollectionConfig = {
           locale,
         };
       }),
+      revalidatePage<Page>("pages", async (doc, req) => {
+        const locale = getLocale(req);
+        if (!locale) {
+          req.payload.logger.error(
+            "locale not set, cannot revalidate properly",
+          );
+          return;
+        }
+
+        const page = await req.payload.findByID({
+          collection: "pages",
+          id: doc.id,
+          locale: "all",
+        });
+        const topic =
+          doc.topic &&
+          (await req.payload.findByID({
+            collection: "topics",
+            id: doc.topic.value as string,
+            locale: "all",
+          }));
+
+        const allLocalesPageSlug = page.slug as unknown as Record<
+          string,
+          string
+        >;
+        const localizedTopicSlug = topic?.slug as unknown as
+          | Record<string, string>
+          | undefined;
+
+        const localizedSlugKey = `slug.${locale}`;
+        const localizedTopicKey = `topic.${locale}`;
+
+        return {
+          where: omitBy(
+            {
+              [localizedSlugKey]: { equals: allLocalesPageSlug[locale] },
+              [localizedTopicKey]: localizedTopicSlug
+                ? {
+                    [localizedSlugKey]: {
+                      equals: localizedTopicSlug[locale],
+                    },
+                  }
+                : null,
+            },
+            isNil,
+          ),
+          locale: "all",
+        };
+      }),
     ],
   },
 };
