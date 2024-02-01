@@ -10,6 +10,7 @@ export const guildYearField = (
   hasMany: false,
   ...base,
   type: "select",
+  defaultValue: `${currentYear}`,
   options: Array.from(
     { length: currentYear - foundedYear + 1 },
     (_, i) => `${currentYear - i}`,
