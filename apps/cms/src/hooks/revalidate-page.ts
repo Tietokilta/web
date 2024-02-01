@@ -12,11 +12,8 @@ export function revalidatePage<T extends TypeWithID>(
   getFetchData: (doc: T, req: PayloadRequest) => Promise<unknown>,
 ): AfterChangeHook<T> {
   return ({ doc, req, operation }): T => {
-    if (
-      operation !== "update" ||
-      !("_status" in doc) ||
-      doc._status !== "published"
-    ) {
+    const isPublished = "_status" in doc && doc._status === "published";
+    if (operation !== "update" || !isPublished) {
       return doc;
     }
 
