@@ -58,6 +58,8 @@ export function getAll<
         `${process.env.PUBLIC_SERVER_URL}${path}?${qsStringify({
           ...req,
           ...(draft ? { draft: "true" } : {}),
+          depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+          // Needs to be bigger than 1 to get media / images
         }).toString()}`,
         {
           method: "GET",

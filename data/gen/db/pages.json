@@ -6008,5 +6008,339 @@
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
 	}
+},
+{
+	"_id": {
+		"$oid": "65be5086e56e440d594ddd26"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-02-03T14:41:10.684Z"
+	},
+	"updatedAt": {
+		"$date": "2024-02-03T15:28:27.54Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Nykyinen hallitus",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "boards",
+						"value": {
+							"id": "65a6b375848d0618d686b139"
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kaikki hallitukset",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "65be57f1e56e440d594de4c3"
+						}
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "65be5927e56e440d594de8c7"
+						}
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Current board",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "boards",
+						"value": {
+							"id": "65a6b375848d0618d686b139"
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "All boards",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "65be57f1e56e440d594de4c3"
+						}
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "65be5927e56e440d594de8c7"
+						}
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"description": {
+		"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille.",
+		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille."
+	},
+	"path": "/fi/kilta/hallitus",
+	"slug": {
+		"fi": "hallitus",
+		"en": "board"
+	},
+	"title": {
+		"fi": "Hallitus",
+		"en": "Board"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	},
+	"hideTableOfContents": true
+},
+{
+	"_id": {
+		"$oid": "65be57f1e56e440d594de4c3"
+	},
+	"title": {
+		"fi": "Hallitus 2024",
+		"en": "Board 2024"
+	},
+	"description": {
+		"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+	},
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "boards",
+						"value": {
+							"id": "65a6b375848d0618d686b139"
+						}
+					}
+				],
+				"direction": null
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "boards",
+						"value": {
+							"id": "65a6b375848d0618d686b139"
+						}
+					}
+				],
+				"direction": null
+			}
+		}
+	},
+	"path": "/fi/hallitus/2024",
+	"topic": {
+		"value": "65be50e5e56e440d594dddac",
+		"relationTo": "topics"
+	},
+	"slug": {
+		"fi": "2024",
+		"en": "2024"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-02-03T15:12:49.918Z"
+	},
+	"updatedAt": {
+		"$date": "2024-02-03T15:22:43.962Z"
+	},
+	"__v": 0,
+	"hideTableOfContents": true
+},
+{
+	"_id": {
+		"$oid": "65be5927e56e440d594de8c7"
+	},
+	"title": {
+		"fi": "Hallitus 2023",
+		"en": "Board 2023"
+	},
+	"description": {
+		"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+	},
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "boards",
+						"value": {
+							"id": "65bc0d6670b726420fa6497b"
+						}
+					}
+				],
+				"direction": null
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "boards",
+						"value": {
+							"id": "65bc0d6670b726420fa6497b"
+						}
+					}
+				],
+				"direction": null
+			}
+		}
+	},
+	"path": "/fi/hallitus/2023",
+	"topic": {
+		"value": "65be50e5e56e440d594dddac",
+		"relationTo": "topics"
+	},
+	"slug": {
+		"fi": "2023",
+		"en": "2023"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-02-03T15:17:59.935Z"
+	},
+	"updatedAt": {
+		"$date": "2024-02-03T15:38:54.048Z"
+	},
+	"__v": 0,
+	"hideTableOfContents": true
 }]
 
