@@ -2,6 +2,7 @@
 
 import { Button } from "@tietokilta/ui";
 import Link from "next/link";
+import { DinoGame } from "../../components/dino-game";
 
 export const metadata = {
   title: "404 - Sivua ei löytynyt",
@@ -26,6 +27,7 @@ function Page() {
         <Button asChild variant="link">
           <Link href="/">Etusivulle</Link>
         </Button>
+        <DinoGame />
       </div>
     </main>
   );
