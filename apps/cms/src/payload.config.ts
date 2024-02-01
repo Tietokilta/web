@@ -27,6 +27,8 @@ import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
 import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
+import { CommitteeMembers } from "./collections/committees/committee-members";
+import { Committees } from "./collections/committees/committees";
 import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
 import { Topics } from "./collections/topics";
@@ -74,7 +76,16 @@ export default buildConfig({
       fileSize: 10000000, // 10MB, written in bytes
     },
   },
-  collections: [Users, Pages, Media, Topics, BoardMembers, Boards],
+  collections: [
+    Users,
+    Pages,
+    Media,
+    Topics,
+    BoardMembers,
+    Boards,
+    CommitteeMembers,
+    Committees,
+  ],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
     locales: ["fi", "en"],
