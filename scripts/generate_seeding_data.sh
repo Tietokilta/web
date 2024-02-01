@@ -20,9 +20,13 @@ for COLLECTION_NAME in $COLLECTIONS; do
     echo "Skipping users collection import with more than 1 document"
     continue
   fi
+  if [ "$COLLECTION_NAME" == "payload-preferences" ]; then
+    echo "Skipping payload-preferences collection import"
+    continue
+  fi
   if [ "$COUNT" -gt "0" ]; then
     echo "Exporting $COLLECTION_NAME collection..."
-    mongoexport --uri="$PAYLOAD_MONGO_CONNECTION_STRING" --collection="$COLLECTION_NAME" --out="data/gen/db/$COLLECTION_NAME.json" --jsonArray --pretty
+    mongoexport --uri="$PAYLOAD_MONGO_CONNECTION_STRING" --collection="$COLLECTION_NAME" --out="data/gen/db/$COLLECTION_NAME.json" --jsonArray --pretty --sort="{_id:1}"
   else
     echo "Skipping empty collection $COLLECTION_NAME"
   fi
