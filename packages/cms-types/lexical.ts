@@ -1,4 +1,4 @@
-import type { Media, Page } from "./payload";
+import type { Board, Media, Page } from "./payload";
 
 type BaseNode = {
   version: number;
@@ -62,12 +62,6 @@ export type UploadNode = BaseNode & {
   } | null;
 };
 
-export type PageRelationshipNode = BaseNode & {
-  type: "relationship";
-  relationTo: "pages";
-  value: Page;
-};
-
 export type ListItemNode = BaseTextNode & {
   type: "listitem";
   value: number;
@@ -95,6 +89,20 @@ export type LinebreakNode = {
   version: number;
 };
 
+export type PageRelationshipNode = BaseNode & {
+  type: "relationship";
+  relationTo: "pages";
+  value: Page;
+};
+
+export type BoardRelationshipNode = BaseNode & {
+  type: "relationship";
+  relationTo: "boards";
+  value: Board;
+};
+
+export type RelationshipNode = PageRelationshipNode | BoardRelationshipNode;
+
 export type Node =
   | TextNode
   | ParagraphNode
@@ -102,7 +110,7 @@ export type Node =
   | ListNode
   | QuoteNode
   | UploadNode
-  | PageRelationshipNode
+  | RelationshipNode
   | ListItemNode
   | LinkNode
   | LinebreakNode;

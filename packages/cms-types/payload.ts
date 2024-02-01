@@ -21,6 +21,7 @@ export type LinkRowBlockLink =
         | 'File'
         | 'Facebook'
         | 'Github'
+        | 'Gmail'
         | 'HelpCircle'
         | 'Image'
         | 'Inbox'
@@ -89,6 +90,7 @@ export interface Page {
   id: string;
   title: string;
   description: string;
+  hideTableOfContents: boolean;
   content: {
     root: {
       children: {
@@ -226,7 +228,6 @@ export interface Board {
     | '1988'
     | '1987'
     | '1986';
-  description: string;
   groupPhoto?: (string | null) | Media;
   boardMembers: {
     boardMember?: (string | null) | BoardMember;
@@ -460,6 +461,7 @@ export interface MainNavigationTopicConfig {
                 | 'File'
                 | 'Facebook'
                 | 'Github'
+                | 'Gmail'
                 | 'HelpCircle'
                 | 'Image'
                 | 'Inbox'

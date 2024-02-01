@@ -94,7 +94,9 @@ const Page = async ({ params: { path, lang } }: Props) => {
         </header>
 
         <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
-          <TableOfContents content={content} />
+          {!page.hideTableOfContents ? (
+            <TableOfContents content={content} />
+          ) : null}
           <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}
           </p>
