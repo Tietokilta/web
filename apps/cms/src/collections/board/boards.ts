@@ -28,13 +28,6 @@ export const Boards: CollectionConfig = {
       required: true,
     }),
     {
-      name: "description",
-      maxLength: 360,
-      type: "textarea",
-      localized: true,
-      required: true,
-    },
-    {
       name: "groupPhoto",
       type: "relationship",
       relationTo: "media",

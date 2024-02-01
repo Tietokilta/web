@@ -1,10 +1,11 @@
 /* eslint-disable react/no-array-index-key -- okay here */
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise */
-import type { Node, PageRelationshipNode } from "@tietokilta/cms-types/lexical";
+import type { Node, RelationshipNode } from "@tietokilta/cms-types/lexical";
 import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
+import { BoardGrid } from "../board-grid";
 import {
   IS_BOLD,
   IS_CODE,
@@ -207,7 +208,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
   );
 }
 
-function Relationship({ node }: { node: PageRelationshipNode }) {
+function Relationship({ node }: { node: RelationshipNode }) {
   switch (node.relationTo) {
     // TODO: Implement these
     case "pages": {
@@ -227,7 +228,11 @@ function Relationship({ node }: { node: PageRelationshipNode }) {
         </Link>
       );
     }
+    case "boards": {
+      return <BoardGrid board={node.value} />;
+    }
     default: {
+      // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
       // eslint-disable-next-line no-console -- Nice to know if something is missing
       console.warn("Unknown relationTo:", node.relationTo);
       return null;

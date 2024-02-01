@@ -420,6 +420,7 @@ type Page {
   id: String
   title: String
   description: String
+  hideTableOfContents: Boolean
   content(depth: Int): JSON
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page_Topic_Relationship
@@ -476,6 +477,7 @@ type Pages {
 input Page_where {
   title: Page_title_operator
   description: Page_description_operator
+  hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -504,6 +506,11 @@ input Page_description_operator {
   not_equals: String
   like: String
   contains: String
+}
+
+input Page_hideTableOfContents_operator {
+  equals: Boolean
+  not_equals: Boolean
 }
 
 input Page_content_operator {
@@ -598,6 +605,7 @@ input Page_id_operator {
 input Page_where_and {
   title: Page_title_operator
   description: Page_description_operator
+  hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -614,6 +622,7 @@ input Page_where_and {
 input Page_where_or {
   title: Page_title_operator
   description: Page_description_operator
+  hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -639,6 +648,7 @@ type pagesDocAccess {
 type PagesDocAccessFields {
   title: PagesDocAccessFields_title
   description: PagesDocAccessFields_description
+  hideTableOfContents: PagesDocAccessFields_hideTableOfContents
   content: PagesDocAccessFields_content
   path: PagesDocAccessFields_path
   topic: PagesDocAccessFields_topic
@@ -692,6 +702,29 @@ type PagesDocAccessFields_description_Update {
 }
 
 type PagesDocAccessFields_description_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_hideTableOfContents {
+  create: PagesDocAccessFields_hideTableOfContents_Create
+  read: PagesDocAccessFields_hideTableOfContents_Read
+  update: PagesDocAccessFields_hideTableOfContents_Update
+  delete: PagesDocAccessFields_hideTableOfContents_Delete
+}
+
+type PagesDocAccessFields_hideTableOfContents_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_hideTableOfContents_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_hideTableOfContents_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_hideTableOfContents_Delete {
   permission: Boolean!
 }
 
@@ -917,6 +950,7 @@ type PageVersion {
 type PageVersion_Version {
   title: String
   description: String
+  hideTableOfContents: Boolean
   content(depth: Int): JSON
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PageVersion_Version_Topic_Relationship
@@ -961,6 +995,7 @@ input versionsPage_where {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
+  version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -1002,6 +1037,11 @@ input versionsPage_version__description_operator {
   not_equals: String
   like: String
   contains: String
+}
+
+input versionsPage_version__hideTableOfContents_operator {
+  equals: Boolean
+  not_equals: Boolean
 }
 
 input versionsPage_version__content_operator {
@@ -1131,6 +1171,7 @@ input versionsPage_where_and {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
+  version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -1152,6 +1193,7 @@ input versionsPage_where_or {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
+  version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -2286,7 +2328,6 @@ type BoardMembersDeleteDocAccess {
 type Board {
   id: String
   year: Board_year!
-  description: String
   groupPhoto(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
   boardMembers: [Board_BoardMembers!]!
   updatedAt: DateTime
@@ -2356,7 +2397,6 @@ type Boards {
 
 input Board_where {
   year: Board_year_operator
-  description: Board_description_operator
   groupPhoto: Board_groupPhoto_operator
   boardMembers__boardMember: Board_boardMembers__boardMember_operator
   boardMembers__id: Board_boardMembers__id_operator
@@ -2415,13 +2455,6 @@ enum Board_year_Input {
   _1988
   _1987
   _1986
-}
-
-input Board_description_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
 }
 
 input Board_groupPhoto_operator {
@@ -2488,7 +2521,6 @@ input Board_id_operator {
 
 input Board_where_and {
   year: Board_year_operator
-  description: Board_description_operator
   groupPhoto: Board_groupPhoto_operator
   boardMembers__boardMember: Board_boardMembers__boardMember_operator
   boardMembers__id: Board_boardMembers__id_operator
@@ -2501,7 +2533,6 @@ input Board_where_and {
 
 input Board_where_or {
   year: Board_year_operator
-  description: Board_description_operator
   groupPhoto: Board_groupPhoto_operator
   boardMembers__boardMember: Board_boardMembers__boardMember_operator
   boardMembers__id: Board_boardMembers__id_operator
@@ -2522,7 +2553,6 @@ type boardsDocAccess {
 
 type BoardsDocAccessFields {
   year: BoardsDocAccessFields_year
-  description: BoardsDocAccessFields_description
   groupPhoto: BoardsDocAccessFields_groupPhoto
   boardMembers: BoardsDocAccessFields_boardMembers
   updatedAt: BoardsDocAccessFields_updatedAt
@@ -2549,29 +2579,6 @@ type BoardsDocAccessFields_year_Update {
 }
 
 type BoardsDocAccessFields_year_Delete {
-  permission: Boolean!
-}
-
-type BoardsDocAccessFields_description {
-  create: BoardsDocAccessFields_description_Create
-  read: BoardsDocAccessFields_description_Read
-  update: BoardsDocAccessFields_description_Update
-  delete: BoardsDocAccessFields_description_Delete
-}
-
-type BoardsDocAccessFields_description_Create {
-  permission: Boolean!
-}
-
-type BoardsDocAccessFields_description_Read {
-  permission: Boolean!
-}
-
-type BoardsDocAccessFields_description_Update {
-  permission: Boolean!
-}
-
-type BoardsDocAccessFields_description_Delete {
   permission: Boolean!
 }
 
@@ -3977,6 +3984,7 @@ enum LinkRowBlockLink_icon {
   File
   Facebook
   Github
+  Gmail
   HelpCircle
   Image
   Inbox
@@ -4363,6 +4371,7 @@ enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
   File
   Facebook
   Github
+  Gmail
   HelpCircle
   Image
   Inbox
@@ -5133,6 +5142,7 @@ type pagesAccess {
 type PagesFields {
   title: PagesFields_title
   description: PagesFields_description
+  hideTableOfContents: PagesFields_hideTableOfContents
   content: PagesFields_content
   path: PagesFields_path
   topic: PagesFields_topic
@@ -5186,6 +5196,29 @@ type PagesFields_description_Update {
 }
 
 type PagesFields_description_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_hideTableOfContents {
+  create: PagesFields_hideTableOfContents_Create
+  read: PagesFields_hideTableOfContents_Read
+  update: PagesFields_hideTableOfContents_Update
+  delete: PagesFields_hideTableOfContents_Delete
+}
+
+type PagesFields_hideTableOfContents_Create {
+  permission: Boolean!
+}
+
+type PagesFields_hideTableOfContents_Read {
+  permission: Boolean!
+}
+
+type PagesFields_hideTableOfContents_Update {
+  permission: Boolean!
+}
+
+type PagesFields_hideTableOfContents_Delete {
   permission: Boolean!
 }
 
@@ -6005,7 +6038,6 @@ type boardsAccess {
 
 type BoardsFields {
   year: BoardsFields_year
-  description: BoardsFields_description
   groupPhoto: BoardsFields_groupPhoto
   boardMembers: BoardsFields_boardMembers
   updatedAt: BoardsFields_updatedAt
@@ -6032,29 +6064,6 @@ type BoardsFields_year_Update {
 }
 
 type BoardsFields_year_Delete {
-  permission: Boolean!
-}
-
-type BoardsFields_description {
-  create: BoardsFields_description_Create
-  read: BoardsFields_description_Read
-  update: BoardsFields_description_Update
-  delete: BoardsFields_description_Delete
-}
-
-type BoardsFields_description_Create {
-  permission: Boolean!
-}
-
-type BoardsFields_description_Read {
-  permission: Boolean!
-}
-
-type BoardsFields_description_Update {
-  permission: Boolean!
-}
-
-type BoardsFields_description_Delete {
   permission: Boolean!
 }
 
@@ -7728,6 +7737,7 @@ type usersResetPassword {
 input mutationPageInput {
   title: String
   description: String
+  hideTableOfContents: Boolean
   content: JSON
   path: String
   topic: Page_TopicRelationshipInput
@@ -7755,6 +7765,7 @@ enum Page__status_MutationInput {
 input mutationPageUpdateInput {
   title: String
   description: String
+  hideTableOfContents: Boolean
   content: JSON
   path: String
   topic: PageUpdate_TopicRelationshipInput
@@ -7925,7 +7936,6 @@ enum BoardMemberUpdate_guildYear_MutationInput {
 
 input mutationBoardInput {
   year: Board_year_MutationInput!
-  description: String
   groupPhoto: String
   boardMembers: [mutationBoard_BoardMembersInput!]
   updatedAt: String
@@ -7981,7 +7991,6 @@ input mutationBoard_BoardMembersInput {
 
 input mutationBoardUpdateInput {
   year: BoardUpdate_year_MutationInput
-  description: String
   groupPhoto: String
   boardMembers: [mutationBoardUpdate_BoardMembersInput]
   updatedAt: String
@@ -8360,6 +8369,7 @@ enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInpu
   File
   Facebook
   Github
+  Gmail
   HelpCircle
   Image
   Inbox
