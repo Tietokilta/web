@@ -21,6 +21,12 @@ type Query {
   Board(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Board
   Boards(draft: Boolean, where: Board_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Boards
   docAccessBoard(id: String!): boardsDocAccess
+  CommitteeMember(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): CommitteeMember
+  CommitteeMembers(draft: Boolean, where: CommitteeMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): CommitteeMembers
+  docAccessCommitteeMember(id: String!): committee_membersDocAccess
+  Committee(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Committee
+  Committees(draft: Boolean, where: Committee_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Committees
+  docAccessCommittee(id: String!): committeesDocAccess
   PayloadPreference(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
@@ -2733,6 +2739,925 @@ type BoardsDeleteDocAccess {
   where: JSONObject
 }
 
+type CommitteeMember {
+  id: String
+  guildYear: CommitteeMember_guildYear!
+  photo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
+  name: String!
+  title: String
+  chair: Boolean
+  telegramUsername: String
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum CommitteeMember_guildYear {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+type CommitteeMembers {
+  docs: [CommitteeMember]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input CommitteeMember_where {
+  guildYear: CommitteeMember_guildYear_operator
+  photo: CommitteeMember_photo_operator
+  name: CommitteeMember_name_operator
+  title: CommitteeMember_title_operator
+  chair: CommitteeMember_chair_operator
+  telegramUsername: CommitteeMember_telegramUsername_operator
+  updatedAt: CommitteeMember_updatedAt_operator
+  createdAt: CommitteeMember_createdAt_operator
+  id: CommitteeMember_id_operator
+  AND: [CommitteeMember_where_and]
+  OR: [CommitteeMember_where_or]
+}
+
+input CommitteeMember_guildYear_operator {
+  equals: CommitteeMember_guildYear_Input
+  not_equals: CommitteeMember_guildYear_Input
+  in: [CommitteeMember_guildYear_Input]
+  not_in: [CommitteeMember_guildYear_Input]
+  all: [CommitteeMember_guildYear_Input]
+}
+
+enum CommitteeMember_guildYear_Input {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input CommitteeMember_photo_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input CommitteeMember_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input CommitteeMember_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input CommitteeMember_chair_operator {
+  equals: Boolean
+  not_equals: Boolean
+  exists: Boolean
+}
+
+input CommitteeMember_telegramUsername_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input CommitteeMember_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input CommitteeMember_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input CommitteeMember_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input CommitteeMember_where_and {
+  guildYear: CommitteeMember_guildYear_operator
+  photo: CommitteeMember_photo_operator
+  name: CommitteeMember_name_operator
+  title: CommitteeMember_title_operator
+  chair: CommitteeMember_chair_operator
+  telegramUsername: CommitteeMember_telegramUsername_operator
+  updatedAt: CommitteeMember_updatedAt_operator
+  createdAt: CommitteeMember_createdAt_operator
+  id: CommitteeMember_id_operator
+  AND: [CommitteeMember_where_and]
+  OR: [CommitteeMember_where_or]
+}
+
+input CommitteeMember_where_or {
+  guildYear: CommitteeMember_guildYear_operator
+  photo: CommitteeMember_photo_operator
+  name: CommitteeMember_name_operator
+  title: CommitteeMember_title_operator
+  chair: CommitteeMember_chair_operator
+  telegramUsername: CommitteeMember_telegramUsername_operator
+  updatedAt: CommitteeMember_updatedAt_operator
+  createdAt: CommitteeMember_createdAt_operator
+  id: CommitteeMember_id_operator
+  AND: [CommitteeMember_where_and]
+  OR: [CommitteeMember_where_or]
+}
+
+type committee_membersDocAccess {
+  fields: CommitteeMembersDocAccessFields
+  create: CommitteeMembersCreateDocAccess
+  read: CommitteeMembersReadDocAccess
+  update: CommitteeMembersUpdateDocAccess
+  delete: CommitteeMembersDeleteDocAccess
+}
+
+type CommitteeMembersDocAccessFields {
+  guildYear: CommitteeMembersDocAccessFields_guildYear
+  photo: CommitteeMembersDocAccessFields_photo
+  name: CommitteeMembersDocAccessFields_name
+  title: CommitteeMembersDocAccessFields_title
+  chair: CommitteeMembersDocAccessFields_chair
+  telegramUsername: CommitteeMembersDocAccessFields_telegramUsername
+  updatedAt: CommitteeMembersDocAccessFields_updatedAt
+  createdAt: CommitteeMembersDocAccessFields_createdAt
+}
+
+type CommitteeMembersDocAccessFields_guildYear {
+  create: CommitteeMembersDocAccessFields_guildYear_Create
+  read: CommitteeMembersDocAccessFields_guildYear_Read
+  update: CommitteeMembersDocAccessFields_guildYear_Update
+  delete: CommitteeMembersDocAccessFields_guildYear_Delete
+}
+
+type CommitteeMembersDocAccessFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_photo {
+  create: CommitteeMembersDocAccessFields_photo_Create
+  read: CommitteeMembersDocAccessFields_photo_Read
+  update: CommitteeMembersDocAccessFields_photo_Update
+  delete: CommitteeMembersDocAccessFields_photo_Delete
+}
+
+type CommitteeMembersDocAccessFields_photo_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_photo_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_photo_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_photo_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_name {
+  create: CommitteeMembersDocAccessFields_name_Create
+  read: CommitteeMembersDocAccessFields_name_Read
+  update: CommitteeMembersDocAccessFields_name_Update
+  delete: CommitteeMembersDocAccessFields_name_Delete
+}
+
+type CommitteeMembersDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_title {
+  create: CommitteeMembersDocAccessFields_title_Create
+  read: CommitteeMembersDocAccessFields_title_Read
+  update: CommitteeMembersDocAccessFields_title_Update
+  delete: CommitteeMembersDocAccessFields_title_Delete
+}
+
+type CommitteeMembersDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_chair {
+  create: CommitteeMembersDocAccessFields_chair_Create
+  read: CommitteeMembersDocAccessFields_chair_Read
+  update: CommitteeMembersDocAccessFields_chair_Update
+  delete: CommitteeMembersDocAccessFields_chair_Delete
+}
+
+type CommitteeMembersDocAccessFields_chair_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_chair_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_chair_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_chair_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_telegramUsername {
+  create: CommitteeMembersDocAccessFields_telegramUsername_Create
+  read: CommitteeMembersDocAccessFields_telegramUsername_Read
+  update: CommitteeMembersDocAccessFields_telegramUsername_Update
+  delete: CommitteeMembersDocAccessFields_telegramUsername_Delete
+}
+
+type CommitteeMembersDocAccessFields_telegramUsername_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_telegramUsername_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_telegramUsername_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_telegramUsername_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_updatedAt {
+  create: CommitteeMembersDocAccessFields_updatedAt_Create
+  read: CommitteeMembersDocAccessFields_updatedAt_Read
+  update: CommitteeMembersDocAccessFields_updatedAt_Update
+  delete: CommitteeMembersDocAccessFields_updatedAt_Delete
+}
+
+type CommitteeMembersDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_createdAt {
+  create: CommitteeMembersDocAccessFields_createdAt_Create
+  read: CommitteeMembersDocAccessFields_createdAt_Read
+  update: CommitteeMembersDocAccessFields_createdAt_Update
+  delete: CommitteeMembersDocAccessFields_createdAt_Delete
+}
+
+type CommitteeMembersDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteeMembersReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteeMembersUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteeMembersDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Committee {
+  id: String
+  year: Committee_year!
+  name: String
+  description(depth: Int): JSON
+  committeeMembers: [Committee_CommitteeMembers!]!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum Committee_year {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+type Committee_CommitteeMembers {
+  committeeMember(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): CommitteeMember
+  id: String
+}
+
+type Committees {
+  docs: [Committee]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Committee_where {
+  year: Committee_year_operator
+  name: Committee_name_operator
+  description: Committee_description_operator
+  committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
+  committeeMembers__id: Committee_committeeMembers__id_operator
+  updatedAt: Committee_updatedAt_operator
+  createdAt: Committee_createdAt_operator
+  id: Committee_id_operator
+  AND: [Committee_where_and]
+  OR: [Committee_where_or]
+}
+
+input Committee_year_operator {
+  equals: Committee_year_Input
+  not_equals: Committee_year_Input
+  in: [Committee_year_Input]
+  not_in: [Committee_year_Input]
+  all: [Committee_year_Input]
+}
+
+enum Committee_year_Input {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input Committee_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Committee_description_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+}
+
+input Committee_committeeMembers__committeeMember_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Committee_committeeMembers__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Committee_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Committee_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Committee_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Committee_where_and {
+  year: Committee_year_operator
+  name: Committee_name_operator
+  description: Committee_description_operator
+  committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
+  committeeMembers__id: Committee_committeeMembers__id_operator
+  updatedAt: Committee_updatedAt_operator
+  createdAt: Committee_createdAt_operator
+  id: Committee_id_operator
+  AND: [Committee_where_and]
+  OR: [Committee_where_or]
+}
+
+input Committee_where_or {
+  year: Committee_year_operator
+  name: Committee_name_operator
+  description: Committee_description_operator
+  committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
+  committeeMembers__id: Committee_committeeMembers__id_operator
+  updatedAt: Committee_updatedAt_operator
+  createdAt: Committee_createdAt_operator
+  id: Committee_id_operator
+  AND: [Committee_where_and]
+  OR: [Committee_where_or]
+}
+
+type committeesDocAccess {
+  fields: CommitteesDocAccessFields
+  create: CommitteesCreateDocAccess
+  read: CommitteesReadDocAccess
+  update: CommitteesUpdateDocAccess
+  delete: CommitteesDeleteDocAccess
+}
+
+type CommitteesDocAccessFields {
+  year: CommitteesDocAccessFields_year
+  name: CommitteesDocAccessFields_name
+  description: CommitteesDocAccessFields_description
+  committeeMembers: CommitteesDocAccessFields_committeeMembers
+  updatedAt: CommitteesDocAccessFields_updatedAt
+  createdAt: CommitteesDocAccessFields_createdAt
+}
+
+type CommitteesDocAccessFields_year {
+  create: CommitteesDocAccessFields_year_Create
+  read: CommitteesDocAccessFields_year_Read
+  update: CommitteesDocAccessFields_year_Update
+  delete: CommitteesDocAccessFields_year_Delete
+}
+
+type CommitteesDocAccessFields_year_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_year_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_year_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_year_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_name {
+  create: CommitteesDocAccessFields_name_Create
+  read: CommitteesDocAccessFields_name_Read
+  update: CommitteesDocAccessFields_name_Update
+  delete: CommitteesDocAccessFields_name_Delete
+}
+
+type CommitteesDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_description {
+  create: CommitteesDocAccessFields_description_Create
+  read: CommitteesDocAccessFields_description_Read
+  update: CommitteesDocAccessFields_description_Update
+  delete: CommitteesDocAccessFields_description_Delete
+}
+
+type CommitteesDocAccessFields_description_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_description_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_description_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_description_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers {
+  create: CommitteesDocAccessFields_committeeMembers_Create
+  read: CommitteesDocAccessFields_committeeMembers_Read
+  update: CommitteesDocAccessFields_committeeMembers_Update
+  delete: CommitteesDocAccessFields_committeeMembers_Delete
+  fields: CommitteesDocAccessFields_committeeMembers_Fields
+}
+
+type CommitteesDocAccessFields_committeeMembers_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_Fields {
+  committeeMember: CommitteesDocAccessFields_committeeMembers_committeeMember
+  id: CommitteesDocAccessFields_committeeMembers_id
+}
+
+type CommitteesDocAccessFields_committeeMembers_committeeMember {
+  create: CommitteesDocAccessFields_committeeMembers_committeeMember_Create
+  read: CommitteesDocAccessFields_committeeMembers_committeeMember_Read
+  update: CommitteesDocAccessFields_committeeMembers_committeeMember_Update
+  delete: CommitteesDocAccessFields_committeeMembers_committeeMember_Delete
+}
+
+type CommitteesDocAccessFields_committeeMembers_committeeMember_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_committeeMember_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_committeeMember_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_committeeMember_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_id {
+  create: CommitteesDocAccessFields_committeeMembers_id_Create
+  read: CommitteesDocAccessFields_committeeMembers_id_Read
+  update: CommitteesDocAccessFields_committeeMembers_id_Update
+  delete: CommitteesDocAccessFields_committeeMembers_id_Delete
+}
+
+type CommitteesDocAccessFields_committeeMembers_id_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_id_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_id_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_committeeMembers_id_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_updatedAt {
+  create: CommitteesDocAccessFields_updatedAt_Create
+  read: CommitteesDocAccessFields_updatedAt_Read
+  update: CommitteesDocAccessFields_updatedAt_Update
+  delete: CommitteesDocAccessFields_updatedAt_Delete
+}
+
+type CommitteesDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_createdAt {
+  create: CommitteesDocAccessFields_createdAt_Create
+  read: CommitteesDocAccessFields_createdAt_Read
+  update: CommitteesDocAccessFields_createdAt_Update
+  delete: CommitteesDocAccessFields_createdAt_Delete
+}
+
+type CommitteesDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteesCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteesReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteesUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteesDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -3983,6 +4908,8 @@ type Access {
   topics: topicsAccess
   board_members: board_membersAccess
   boards: boardsAccess
+  committee_members: committee_membersAccess
+  committees: committeesAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -5295,6 +6222,456 @@ type BoardsDeleteAccess {
   where: JSONObject
 }
 
+type committee_membersAccess {
+  fields: CommitteeMembersFields
+  create: CommitteeMembersCreateAccess
+  read: CommitteeMembersReadAccess
+  update: CommitteeMembersUpdateAccess
+  delete: CommitteeMembersDeleteAccess
+}
+
+type CommitteeMembersFields {
+  guildYear: CommitteeMembersFields_guildYear
+  photo: CommitteeMembersFields_photo
+  name: CommitteeMembersFields_name
+  title: CommitteeMembersFields_title
+  chair: CommitteeMembersFields_chair
+  telegramUsername: CommitteeMembersFields_telegramUsername
+  updatedAt: CommitteeMembersFields_updatedAt
+  createdAt: CommitteeMembersFields_createdAt
+}
+
+type CommitteeMembersFields_guildYear {
+  create: CommitteeMembersFields_guildYear_Create
+  read: CommitteeMembersFields_guildYear_Read
+  update: CommitteeMembersFields_guildYear_Update
+  delete: CommitteeMembersFields_guildYear_Delete
+}
+
+type CommitteeMembersFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_photo {
+  create: CommitteeMembersFields_photo_Create
+  read: CommitteeMembersFields_photo_Read
+  update: CommitteeMembersFields_photo_Update
+  delete: CommitteeMembersFields_photo_Delete
+}
+
+type CommitteeMembersFields_photo_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_photo_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_photo_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_photo_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_name {
+  create: CommitteeMembersFields_name_Create
+  read: CommitteeMembersFields_name_Read
+  update: CommitteeMembersFields_name_Update
+  delete: CommitteeMembersFields_name_Delete
+}
+
+type CommitteeMembersFields_name_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_name_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_name_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_name_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_title {
+  create: CommitteeMembersFields_title_Create
+  read: CommitteeMembersFields_title_Read
+  update: CommitteeMembersFields_title_Update
+  delete: CommitteeMembersFields_title_Delete
+}
+
+type CommitteeMembersFields_title_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_title_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_title_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_title_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_chair {
+  create: CommitteeMembersFields_chair_Create
+  read: CommitteeMembersFields_chair_Read
+  update: CommitteeMembersFields_chair_Update
+  delete: CommitteeMembersFields_chair_Delete
+}
+
+type CommitteeMembersFields_chair_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_chair_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_chair_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_chair_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_telegramUsername {
+  create: CommitteeMembersFields_telegramUsername_Create
+  read: CommitteeMembersFields_telegramUsername_Read
+  update: CommitteeMembersFields_telegramUsername_Update
+  delete: CommitteeMembersFields_telegramUsername_Delete
+}
+
+type CommitteeMembersFields_telegramUsername_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_telegramUsername_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_telegramUsername_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_telegramUsername_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_updatedAt {
+  create: CommitteeMembersFields_updatedAt_Create
+  read: CommitteeMembersFields_updatedAt_Read
+  update: CommitteeMembersFields_updatedAt_Update
+  delete: CommitteeMembersFields_updatedAt_Delete
+}
+
+type CommitteeMembersFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_createdAt {
+  create: CommitteeMembersFields_createdAt_Create
+  read: CommitteeMembersFields_createdAt_Read
+  update: CommitteeMembersFields_createdAt_Update
+  delete: CommitteeMembersFields_createdAt_Delete
+}
+
+type CommitteeMembersFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteeMembersReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteeMembersUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteeMembersDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type committeesAccess {
+  fields: CommitteesFields
+  create: CommitteesCreateAccess
+  read: CommitteesReadAccess
+  update: CommitteesUpdateAccess
+  delete: CommitteesDeleteAccess
+}
+
+type CommitteesFields {
+  year: CommitteesFields_year
+  name: CommitteesFields_name
+  description: CommitteesFields_description
+  committeeMembers: CommitteesFields_committeeMembers
+  updatedAt: CommitteesFields_updatedAt
+  createdAt: CommitteesFields_createdAt
+}
+
+type CommitteesFields_year {
+  create: CommitteesFields_year_Create
+  read: CommitteesFields_year_Read
+  update: CommitteesFields_year_Update
+  delete: CommitteesFields_year_Delete
+}
+
+type CommitteesFields_year_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_year_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_year_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_year_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_name {
+  create: CommitteesFields_name_Create
+  read: CommitteesFields_name_Read
+  update: CommitteesFields_name_Update
+  delete: CommitteesFields_name_Delete
+}
+
+type CommitteesFields_name_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_name_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_name_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_name_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_description {
+  create: CommitteesFields_description_Create
+  read: CommitteesFields_description_Read
+  update: CommitteesFields_description_Update
+  delete: CommitteesFields_description_Delete
+}
+
+type CommitteesFields_description_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_description_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_description_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_description_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers {
+  create: CommitteesFields_committeeMembers_Create
+  read: CommitteesFields_committeeMembers_Read
+  update: CommitteesFields_committeeMembers_Update
+  delete: CommitteesFields_committeeMembers_Delete
+  fields: CommitteesFields_committeeMembers_Fields
+}
+
+type CommitteesFields_committeeMembers_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_Fields {
+  committeeMember: CommitteesFields_committeeMembers_committeeMember
+  id: CommitteesFields_committeeMembers_id
+}
+
+type CommitteesFields_committeeMembers_committeeMember {
+  create: CommitteesFields_committeeMembers_committeeMember_Create
+  read: CommitteesFields_committeeMembers_committeeMember_Read
+  update: CommitteesFields_committeeMembers_committeeMember_Update
+  delete: CommitteesFields_committeeMembers_committeeMember_Delete
+}
+
+type CommitteesFields_committeeMembers_committeeMember_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_committeeMember_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_committeeMember_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_committeeMember_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_id {
+  create: CommitteesFields_committeeMembers_id_Create
+  read: CommitteesFields_committeeMembers_id_Read
+  update: CommitteesFields_committeeMembers_id_Update
+  delete: CommitteesFields_committeeMembers_id_Delete
+}
+
+type CommitteesFields_committeeMembers_id_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_id_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_id_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_committeeMembers_id_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_updatedAt {
+  create: CommitteesFields_updatedAt_Create
+  read: CommitteesFields_updatedAt_Read
+  update: CommitteesFields_updatedAt_Update
+  delete: CommitteesFields_updatedAt_Delete
+}
+
+type CommitteesFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_createdAt {
+  create: CommitteesFields_createdAt_Create
+  read: CommitteesFields_createdAt_Read
+  update: CommitteesFields_createdAt_Update
+  delete: CommitteesFields_createdAt_Delete
+}
+
+type CommitteesFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type CommitteesCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteesReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteesUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type CommitteesDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -6278,6 +7655,12 @@ type Mutation {
   createBoard(data: mutationBoardInput!, draft: Boolean, locale: LocaleInputType): Board
   updateBoard(id: String!, autosave: Boolean, data: mutationBoardUpdateInput!, draft: Boolean, locale: LocaleInputType): Board
   deleteBoard(id: String!): Board
+  createCommitteeMember(data: mutationCommitteeMemberInput!, draft: Boolean, locale: LocaleInputType): CommitteeMember
+  updateCommitteeMember(id: String!, autosave: Boolean, data: mutationCommitteeMemberUpdateInput!, draft: Boolean, locale: LocaleInputType): CommitteeMember
+  deleteCommitteeMember(id: String!): CommitteeMember
+  createCommittee(data: mutationCommitteeInput!, draft: Boolean, locale: LocaleInputType): Committee
+  updateCommittee(id: String!, autosave: Boolean, data: mutationCommitteeUpdateInput!, draft: Boolean, locale: LocaleInputType): Committee
+  deleteCommittee(id: String!): Committee
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -6649,6 +8032,224 @@ enum BoardUpdate_year_MutationInput {
 
 input mutationBoardUpdate_BoardMembersInput {
   boardMember: String
+  id: String
+}
+
+input mutationCommitteeMemberInput {
+  guildYear: CommitteeMember_guildYear_MutationInput!
+  photo: String
+  name: String!
+  title: String
+  chair: Boolean
+  telegramUsername: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum CommitteeMember_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationCommitteeMemberUpdateInput {
+  guildYear: CommitteeMemberUpdate_guildYear_MutationInput
+  photo: String
+  name: String
+  title: String
+  chair: Boolean
+  telegramUsername: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum CommitteeMemberUpdate_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationCommitteeInput {
+  year: Committee_year_MutationInput!
+  name: String
+  description: JSON
+  committeeMembers: [mutationCommittee_CommitteeMembersInput!]
+  updatedAt: String
+  createdAt: String
+}
+
+enum Committee_year_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationCommittee_CommitteeMembersInput {
+  committeeMember: String
+  id: String
+}
+
+input mutationCommitteeUpdateInput {
+  year: CommitteeUpdate_year_MutationInput
+  name: String
+  description: JSON
+  committeeMembers: [mutationCommitteeUpdate_CommitteeMembersInput]
+  updatedAt: String
+  createdAt: String
+}
+
+enum CommitteeUpdate_year_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationCommitteeUpdate_CommitteeMembersInput {
+  committeeMember: String
   id: String
 }
 
