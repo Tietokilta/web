@@ -12,6 +12,9 @@ type Query {
   Media(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Media
   allMedia(draft: Boolean, where: Media_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allMedia
   docAccessMedia(id: String!): mediaDocAccess
+  Document(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Document
+  Documents(draft: Boolean, where: Document_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Documents
+  docAccessDocument(id: String!): documentsDocAccess
   Topic(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
   Topics(draft: Boolean, where: Topic_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Topics
   docAccessTopic(id: String!): topicsDocAccess
@@ -27,6 +30,12 @@ type Query {
   Committee(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Committee
   Committees(draft: Boolean, where: Committee_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Committees
   docAccessCommittee(id: String!): committeesDocAccess
+  MagazineIssue(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): MagazineIssue
+  MagazineIssues(draft: Boolean, where: MagazineIssue_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): MagazineIssues
+  docAccessMagazineIssue(id: String!): magazine_issuesDocAccess
+  Magazine(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Magazine
+  Magazines(draft: Boolean, where: Magazine_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Magazines
+  docAccessMagazine(id: String!): magazinesDocAccess
   News(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): News
   allNews(draft: Boolean, where: News_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allNews
   docAccessNews(id: String!): newsDocAccess
@@ -1641,6 +1650,393 @@ type MediaUpdateDocAccess {
 }
 
 type MediaDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Document {
+  id: String
+  updatedAt: DateTime
+  createdAt: DateTime
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
+}
+
+type Documents {
+  docs: [Document]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Document_where {
+  updatedAt: Document_updatedAt_operator
+  createdAt: Document_createdAt_operator
+  url: Document_url_operator
+  filename: Document_filename_operator
+  mimeType: Document_mimeType_operator
+  filesize: Document_filesize_operator
+  width: Document_width_operator
+  height: Document_height_operator
+  id: Document_id_operator
+  AND: [Document_where_and]
+  OR: [Document_where_or]
+}
+
+input Document_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Document_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Document_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_where_and {
+  updatedAt: Document_updatedAt_operator
+  createdAt: Document_createdAt_operator
+  url: Document_url_operator
+  filename: Document_filename_operator
+  mimeType: Document_mimeType_operator
+  filesize: Document_filesize_operator
+  width: Document_width_operator
+  height: Document_height_operator
+  id: Document_id_operator
+  AND: [Document_where_and]
+  OR: [Document_where_or]
+}
+
+input Document_where_or {
+  updatedAt: Document_updatedAt_operator
+  createdAt: Document_createdAt_operator
+  url: Document_url_operator
+  filename: Document_filename_operator
+  mimeType: Document_mimeType_operator
+  filesize: Document_filesize_operator
+  width: Document_width_operator
+  height: Document_height_operator
+  id: Document_id_operator
+  AND: [Document_where_and]
+  OR: [Document_where_or]
+}
+
+type documentsDocAccess {
+  fields: DocumentsDocAccessFields
+  create: DocumentsCreateDocAccess
+  read: DocumentsReadDocAccess
+  update: DocumentsUpdateDocAccess
+  delete: DocumentsDeleteDocAccess
+}
+
+type DocumentsDocAccessFields {
+  updatedAt: DocumentsDocAccessFields_updatedAt
+  createdAt: DocumentsDocAccessFields_createdAt
+  url: DocumentsDocAccessFields_url
+  filename: DocumentsDocAccessFields_filename
+  mimeType: DocumentsDocAccessFields_mimeType
+  filesize: DocumentsDocAccessFields_filesize
+  width: DocumentsDocAccessFields_width
+  height: DocumentsDocAccessFields_height
+}
+
+type DocumentsDocAccessFields_updatedAt {
+  create: DocumentsDocAccessFields_updatedAt_Create
+  read: DocumentsDocAccessFields_updatedAt_Read
+  update: DocumentsDocAccessFields_updatedAt_Update
+  delete: DocumentsDocAccessFields_updatedAt_Delete
+}
+
+type DocumentsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_createdAt {
+  create: DocumentsDocAccessFields_createdAt_Create
+  read: DocumentsDocAccessFields_createdAt_Read
+  update: DocumentsDocAccessFields_createdAt_Update
+  delete: DocumentsDocAccessFields_createdAt_Delete
+}
+
+type DocumentsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_url {
+  create: DocumentsDocAccessFields_url_Create
+  read: DocumentsDocAccessFields_url_Read
+  update: DocumentsDocAccessFields_url_Update
+  delete: DocumentsDocAccessFields_url_Delete
+}
+
+type DocumentsDocAccessFields_url_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_url_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_url_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_url_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filename {
+  create: DocumentsDocAccessFields_filename_Create
+  read: DocumentsDocAccessFields_filename_Read
+  update: DocumentsDocAccessFields_filename_Update
+  delete: DocumentsDocAccessFields_filename_Delete
+}
+
+type DocumentsDocAccessFields_filename_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filename_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filename_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filename_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_mimeType {
+  create: DocumentsDocAccessFields_mimeType_Create
+  read: DocumentsDocAccessFields_mimeType_Read
+  update: DocumentsDocAccessFields_mimeType_Update
+  delete: DocumentsDocAccessFields_mimeType_Delete
+}
+
+type DocumentsDocAccessFields_mimeType_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_mimeType_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_mimeType_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_mimeType_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filesize {
+  create: DocumentsDocAccessFields_filesize_Create
+  read: DocumentsDocAccessFields_filesize_Read
+  update: DocumentsDocAccessFields_filesize_Update
+  delete: DocumentsDocAccessFields_filesize_Delete
+}
+
+type DocumentsDocAccessFields_filesize_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filesize_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filesize_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_filesize_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_width {
+  create: DocumentsDocAccessFields_width_Create
+  read: DocumentsDocAccessFields_width_Read
+  update: DocumentsDocAccessFields_width_Update
+  delete: DocumentsDocAccessFields_width_Delete
+}
+
+type DocumentsDocAccessFields_width_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_width_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_width_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_width_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_height {
+  create: DocumentsDocAccessFields_height_Create
+  read: DocumentsDocAccessFields_height_Read
+  update: DocumentsDocAccessFields_height_Update
+  delete: DocumentsDocAccessFields_height_Delete
+}
+
+type DocumentsDocAccessFields_height_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_height_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_height_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_height_Delete {
+  permission: Boolean!
+}
+
+type DocumentsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type DocumentsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type DocumentsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type DocumentsDeleteDocAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -3635,6 +4031,779 @@ type CommitteesUpdateDocAccess {
 }
 
 type CommitteesDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazineIssue {
+  id: String
+  title: String
+  year: MagazineIssue_year!
+  issueNumber: Float!
+  file(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Document!
+  thumbnail(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media!
+  name: String
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum MagazineIssue_year {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+type MagazineIssues {
+  docs: [MagazineIssue]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input MagazineIssue_where {
+  title: MagazineIssue_title_operator
+  year: MagazineIssue_year_operator
+  issueNumber: MagazineIssue_issueNumber_operator
+  file: MagazineIssue_file_operator
+  thumbnail: MagazineIssue_thumbnail_operator
+  name: MagazineIssue_name_operator
+  updatedAt: MagazineIssue_updatedAt_operator
+  createdAt: MagazineIssue_createdAt_operator
+  id: MagazineIssue_id_operator
+  AND: [MagazineIssue_where_and]
+  OR: [MagazineIssue_where_or]
+}
+
+input MagazineIssue_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input MagazineIssue_year_operator {
+  equals: MagazineIssue_year_Input
+  not_equals: MagazineIssue_year_Input
+  in: [MagazineIssue_year_Input]
+  not_in: [MagazineIssue_year_Input]
+  all: [MagazineIssue_year_Input]
+}
+
+enum MagazineIssue_year_Input {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input MagazineIssue_issueNumber_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+}
+
+input MagazineIssue_file_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input MagazineIssue_thumbnail_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input MagazineIssue_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input MagazineIssue_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input MagazineIssue_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input MagazineIssue_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input MagazineIssue_where_and {
+  title: MagazineIssue_title_operator
+  year: MagazineIssue_year_operator
+  issueNumber: MagazineIssue_issueNumber_operator
+  file: MagazineIssue_file_operator
+  thumbnail: MagazineIssue_thumbnail_operator
+  name: MagazineIssue_name_operator
+  updatedAt: MagazineIssue_updatedAt_operator
+  createdAt: MagazineIssue_createdAt_operator
+  id: MagazineIssue_id_operator
+  AND: [MagazineIssue_where_and]
+  OR: [MagazineIssue_where_or]
+}
+
+input MagazineIssue_where_or {
+  title: MagazineIssue_title_operator
+  year: MagazineIssue_year_operator
+  issueNumber: MagazineIssue_issueNumber_operator
+  file: MagazineIssue_file_operator
+  thumbnail: MagazineIssue_thumbnail_operator
+  name: MagazineIssue_name_operator
+  updatedAt: MagazineIssue_updatedAt_operator
+  createdAt: MagazineIssue_createdAt_operator
+  id: MagazineIssue_id_operator
+  AND: [MagazineIssue_where_and]
+  OR: [MagazineIssue_where_or]
+}
+
+type magazine_issuesDocAccess {
+  fields: MagazineIssuesDocAccessFields
+  create: MagazineIssuesCreateDocAccess
+  read: MagazineIssuesReadDocAccess
+  update: MagazineIssuesUpdateDocAccess
+  delete: MagazineIssuesDeleteDocAccess
+}
+
+type MagazineIssuesDocAccessFields {
+  title: MagazineIssuesDocAccessFields_title
+  year: MagazineIssuesDocAccessFields_year
+  issueNumber: MagazineIssuesDocAccessFields_issueNumber
+  file: MagazineIssuesDocAccessFields_file
+  thumbnail: MagazineIssuesDocAccessFields_thumbnail
+  name: MagazineIssuesDocAccessFields_name
+  updatedAt: MagazineIssuesDocAccessFields_updatedAt
+  createdAt: MagazineIssuesDocAccessFields_createdAt
+}
+
+type MagazineIssuesDocAccessFields_title {
+  create: MagazineIssuesDocAccessFields_title_Create
+  read: MagazineIssuesDocAccessFields_title_Read
+  update: MagazineIssuesDocAccessFields_title_Update
+  delete: MagazineIssuesDocAccessFields_title_Delete
+}
+
+type MagazineIssuesDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_year {
+  create: MagazineIssuesDocAccessFields_year_Create
+  read: MagazineIssuesDocAccessFields_year_Read
+  update: MagazineIssuesDocAccessFields_year_Update
+  delete: MagazineIssuesDocAccessFields_year_Delete
+}
+
+type MagazineIssuesDocAccessFields_year_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_year_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_year_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_year_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_issueNumber {
+  create: MagazineIssuesDocAccessFields_issueNumber_Create
+  read: MagazineIssuesDocAccessFields_issueNumber_Read
+  update: MagazineIssuesDocAccessFields_issueNumber_Update
+  delete: MagazineIssuesDocAccessFields_issueNumber_Delete
+}
+
+type MagazineIssuesDocAccessFields_issueNumber_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_issueNumber_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_issueNumber_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_issueNumber_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_file {
+  create: MagazineIssuesDocAccessFields_file_Create
+  read: MagazineIssuesDocAccessFields_file_Read
+  update: MagazineIssuesDocAccessFields_file_Update
+  delete: MagazineIssuesDocAccessFields_file_Delete
+}
+
+type MagazineIssuesDocAccessFields_file_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_file_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_file_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_file_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_thumbnail {
+  create: MagazineIssuesDocAccessFields_thumbnail_Create
+  read: MagazineIssuesDocAccessFields_thumbnail_Read
+  update: MagazineIssuesDocAccessFields_thumbnail_Update
+  delete: MagazineIssuesDocAccessFields_thumbnail_Delete
+}
+
+type MagazineIssuesDocAccessFields_thumbnail_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_thumbnail_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_thumbnail_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_thumbnail_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_name {
+  create: MagazineIssuesDocAccessFields_name_Create
+  read: MagazineIssuesDocAccessFields_name_Read
+  update: MagazineIssuesDocAccessFields_name_Update
+  delete: MagazineIssuesDocAccessFields_name_Delete
+}
+
+type MagazineIssuesDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_updatedAt {
+  create: MagazineIssuesDocAccessFields_updatedAt_Create
+  read: MagazineIssuesDocAccessFields_updatedAt_Read
+  update: MagazineIssuesDocAccessFields_updatedAt_Update
+  delete: MagazineIssuesDocAccessFields_updatedAt_Delete
+}
+
+type MagazineIssuesDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_createdAt {
+  create: MagazineIssuesDocAccessFields_createdAt_Create
+  read: MagazineIssuesDocAccessFields_createdAt_Read
+  update: MagazineIssuesDocAccessFields_createdAt_Update
+  delete: MagazineIssuesDocAccessFields_createdAt_Delete
+}
+
+type MagazineIssuesDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazineIssuesReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazineIssuesUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazineIssuesDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Magazine {
+  id: String
+  type: Magazine_type!
+  issues: [Magazine_Issues!]
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum Magazine_type {
+  Alkorytmi
+  Rekrylehti
+}
+
+type Magazine_Issues {
+  issue(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): MagazineIssue
+  id: String
+}
+
+type Magazines {
+  docs: [Magazine]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Magazine_where {
+  type: Magazine_type_operator
+  issues__issue: Magazine_issues__issue_operator
+  issues__id: Magazine_issues__id_operator
+  updatedAt: Magazine_updatedAt_operator
+  createdAt: Magazine_createdAt_operator
+  id: Magazine_id_operator
+  AND: [Magazine_where_and]
+  OR: [Magazine_where_or]
+}
+
+input Magazine_type_operator {
+  equals: Magazine_type_Input
+  not_equals: Magazine_type_Input
+  in: [Magazine_type_Input]
+  not_in: [Magazine_type_Input]
+  all: [Magazine_type_Input]
+}
+
+enum Magazine_type_Input {
+  Alkorytmi
+  Rekrylehti
+}
+
+input Magazine_issues__issue_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Magazine_issues__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Magazine_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Magazine_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Magazine_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Magazine_where_and {
+  type: Magazine_type_operator
+  issues__issue: Magazine_issues__issue_operator
+  issues__id: Magazine_issues__id_operator
+  updatedAt: Magazine_updatedAt_operator
+  createdAt: Magazine_createdAt_operator
+  id: Magazine_id_operator
+  AND: [Magazine_where_and]
+  OR: [Magazine_where_or]
+}
+
+input Magazine_where_or {
+  type: Magazine_type_operator
+  issues__issue: Magazine_issues__issue_operator
+  issues__id: Magazine_issues__id_operator
+  updatedAt: Magazine_updatedAt_operator
+  createdAt: Magazine_createdAt_operator
+  id: Magazine_id_operator
+  AND: [Magazine_where_and]
+  OR: [Magazine_where_or]
+}
+
+type magazinesDocAccess {
+  fields: MagazinesDocAccessFields
+  create: MagazinesCreateDocAccess
+  read: MagazinesReadDocAccess
+  update: MagazinesUpdateDocAccess
+  delete: MagazinesDeleteDocAccess
+}
+
+type MagazinesDocAccessFields {
+  type: MagazinesDocAccessFields_type
+  issues: MagazinesDocAccessFields_issues
+  updatedAt: MagazinesDocAccessFields_updatedAt
+  createdAt: MagazinesDocAccessFields_createdAt
+}
+
+type MagazinesDocAccessFields_type {
+  create: MagazinesDocAccessFields_type_Create
+  read: MagazinesDocAccessFields_type_Read
+  update: MagazinesDocAccessFields_type_Update
+  delete: MagazinesDocAccessFields_type_Delete
+}
+
+type MagazinesDocAccessFields_type_Create {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_type_Read {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_type_Update {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_type_Delete {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues {
+  create: MagazinesDocAccessFields_issues_Create
+  read: MagazinesDocAccessFields_issues_Read
+  update: MagazinesDocAccessFields_issues_Update
+  delete: MagazinesDocAccessFields_issues_Delete
+  fields: MagazinesDocAccessFields_issues_Fields
+}
+
+type MagazinesDocAccessFields_issues_Create {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_Read {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_Update {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_Delete {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_Fields {
+  issue: MagazinesDocAccessFields_issues_issue
+  id: MagazinesDocAccessFields_issues_id
+}
+
+type MagazinesDocAccessFields_issues_issue {
+  create: MagazinesDocAccessFields_issues_issue_Create
+  read: MagazinesDocAccessFields_issues_issue_Read
+  update: MagazinesDocAccessFields_issues_issue_Update
+  delete: MagazinesDocAccessFields_issues_issue_Delete
+}
+
+type MagazinesDocAccessFields_issues_issue_Create {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_issue_Read {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_issue_Update {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_issue_Delete {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_id {
+  create: MagazinesDocAccessFields_issues_id_Create
+  read: MagazinesDocAccessFields_issues_id_Read
+  update: MagazinesDocAccessFields_issues_id_Update
+  delete: MagazinesDocAccessFields_issues_id_Delete
+}
+
+type MagazinesDocAccessFields_issues_id_Create {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_id_Read {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_id_Update {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_issues_id_Delete {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_updatedAt {
+  create: MagazinesDocAccessFields_updatedAt_Create
+  read: MagazinesDocAccessFields_updatedAt_Read
+  update: MagazinesDocAccessFields_updatedAt_Update
+  delete: MagazinesDocAccessFields_updatedAt_Delete
+}
+
+type MagazinesDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_createdAt {
+  create: MagazinesDocAccessFields_createdAt_Create
+  read: MagazinesDocAccessFields_createdAt_Read
+  update: MagazinesDocAccessFields_createdAt_Update
+  delete: MagazinesDocAccessFields_createdAt_Delete
+}
+
+type MagazinesDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type MagazinesDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type MagazinesCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazinesReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazinesUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazinesDeleteDocAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -6162,11 +7331,14 @@ type Access {
   users: usersAccess
   pages: pagesAccess
   media: mediaAccess
+  documents: documentsAccess
   topics: topicsAccess
   board_members: board_membersAccess
   boards: boardsAccess
   committee_members: committee_membersAccess
   committees: committeesAccess
+  magazine_issues: magazine_issuesAccess
+  magazines: magazinesAccess
   news: newsAccess
   weekly_newsletters: weekly_newslettersAccess
   news_items: news_itemsAccess
@@ -6925,6 +8097,229 @@ type MediaUpdateAccess {
 }
 
 type MediaDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type documentsAccess {
+  fields: DocumentsFields
+  create: DocumentsCreateAccess
+  read: DocumentsReadAccess
+  update: DocumentsUpdateAccess
+  delete: DocumentsDeleteAccess
+}
+
+type DocumentsFields {
+  updatedAt: DocumentsFields_updatedAt
+  createdAt: DocumentsFields_createdAt
+  url: DocumentsFields_url
+  filename: DocumentsFields_filename
+  mimeType: DocumentsFields_mimeType
+  filesize: DocumentsFields_filesize
+  width: DocumentsFields_width
+  height: DocumentsFields_height
+}
+
+type DocumentsFields_updatedAt {
+  create: DocumentsFields_updatedAt_Create
+  read: DocumentsFields_updatedAt_Read
+  update: DocumentsFields_updatedAt_Update
+  delete: DocumentsFields_updatedAt_Delete
+}
+
+type DocumentsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_createdAt {
+  create: DocumentsFields_createdAt_Create
+  read: DocumentsFields_createdAt_Read
+  update: DocumentsFields_createdAt_Update
+  delete: DocumentsFields_createdAt_Delete
+}
+
+type DocumentsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_url {
+  create: DocumentsFields_url_Create
+  read: DocumentsFields_url_Read
+  update: DocumentsFields_url_Update
+  delete: DocumentsFields_url_Delete
+}
+
+type DocumentsFields_url_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_url_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_url_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_url_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_filename {
+  create: DocumentsFields_filename_Create
+  read: DocumentsFields_filename_Read
+  update: DocumentsFields_filename_Update
+  delete: DocumentsFields_filename_Delete
+}
+
+type DocumentsFields_filename_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_filename_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_filename_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_filename_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_mimeType {
+  create: DocumentsFields_mimeType_Create
+  read: DocumentsFields_mimeType_Read
+  update: DocumentsFields_mimeType_Update
+  delete: DocumentsFields_mimeType_Delete
+}
+
+type DocumentsFields_mimeType_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_mimeType_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_mimeType_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_mimeType_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_filesize {
+  create: DocumentsFields_filesize_Create
+  read: DocumentsFields_filesize_Read
+  update: DocumentsFields_filesize_Update
+  delete: DocumentsFields_filesize_Delete
+}
+
+type DocumentsFields_filesize_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_filesize_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_filesize_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_filesize_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_width {
+  create: DocumentsFields_width_Create
+  read: DocumentsFields_width_Read
+  update: DocumentsFields_width_Update
+  delete: DocumentsFields_width_Delete
+}
+
+type DocumentsFields_width_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_width_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_width_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_width_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_height {
+  create: DocumentsFields_height_Create
+  read: DocumentsFields_height_Read
+  update: DocumentsFields_height_Update
+  delete: DocumentsFields_height_Delete
+}
+
+type DocumentsFields_height_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_height_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_height_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_height_Delete {
+  permission: Boolean!
+}
+
+type DocumentsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type DocumentsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type DocumentsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type DocumentsDeleteAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -7904,6 +9299,408 @@ type CommitteesUpdateAccess {
 }
 
 type CommitteesDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type magazine_issuesAccess {
+  fields: MagazineIssuesFields
+  create: MagazineIssuesCreateAccess
+  read: MagazineIssuesReadAccess
+  update: MagazineIssuesUpdateAccess
+  delete: MagazineIssuesDeleteAccess
+}
+
+type MagazineIssuesFields {
+  title: MagazineIssuesFields_title
+  year: MagazineIssuesFields_year
+  issueNumber: MagazineIssuesFields_issueNumber
+  file: MagazineIssuesFields_file
+  thumbnail: MagazineIssuesFields_thumbnail
+  name: MagazineIssuesFields_name
+  updatedAt: MagazineIssuesFields_updatedAt
+  createdAt: MagazineIssuesFields_createdAt
+}
+
+type MagazineIssuesFields_title {
+  create: MagazineIssuesFields_title_Create
+  read: MagazineIssuesFields_title_Read
+  update: MagazineIssuesFields_title_Update
+  delete: MagazineIssuesFields_title_Delete
+}
+
+type MagazineIssuesFields_title_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_title_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_title_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_title_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_year {
+  create: MagazineIssuesFields_year_Create
+  read: MagazineIssuesFields_year_Read
+  update: MagazineIssuesFields_year_Update
+  delete: MagazineIssuesFields_year_Delete
+}
+
+type MagazineIssuesFields_year_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_year_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_year_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_year_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_issueNumber {
+  create: MagazineIssuesFields_issueNumber_Create
+  read: MagazineIssuesFields_issueNumber_Read
+  update: MagazineIssuesFields_issueNumber_Update
+  delete: MagazineIssuesFields_issueNumber_Delete
+}
+
+type MagazineIssuesFields_issueNumber_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_issueNumber_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_issueNumber_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_issueNumber_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_file {
+  create: MagazineIssuesFields_file_Create
+  read: MagazineIssuesFields_file_Read
+  update: MagazineIssuesFields_file_Update
+  delete: MagazineIssuesFields_file_Delete
+}
+
+type MagazineIssuesFields_file_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_file_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_file_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_file_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_thumbnail {
+  create: MagazineIssuesFields_thumbnail_Create
+  read: MagazineIssuesFields_thumbnail_Read
+  update: MagazineIssuesFields_thumbnail_Update
+  delete: MagazineIssuesFields_thumbnail_Delete
+}
+
+type MagazineIssuesFields_thumbnail_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_thumbnail_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_thumbnail_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_thumbnail_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_name {
+  create: MagazineIssuesFields_name_Create
+  read: MagazineIssuesFields_name_Read
+  update: MagazineIssuesFields_name_Update
+  delete: MagazineIssuesFields_name_Delete
+}
+
+type MagazineIssuesFields_name_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_name_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_name_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_name_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_updatedAt {
+  create: MagazineIssuesFields_updatedAt_Create
+  read: MagazineIssuesFields_updatedAt_Read
+  update: MagazineIssuesFields_updatedAt_Update
+  delete: MagazineIssuesFields_updatedAt_Delete
+}
+
+type MagazineIssuesFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_createdAt {
+  create: MagazineIssuesFields_createdAt_Create
+  read: MagazineIssuesFields_createdAt_Read
+  update: MagazineIssuesFields_createdAt_Update
+  delete: MagazineIssuesFields_createdAt_Delete
+}
+
+type MagazineIssuesFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazineIssuesReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazineIssuesUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazineIssuesDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type magazinesAccess {
+  fields: MagazinesFields
+  create: MagazinesCreateAccess
+  read: MagazinesReadAccess
+  update: MagazinesUpdateAccess
+  delete: MagazinesDeleteAccess
+}
+
+type MagazinesFields {
+  type: MagazinesFields_type
+  issues: MagazinesFields_issues
+  updatedAt: MagazinesFields_updatedAt
+  createdAt: MagazinesFields_createdAt
+}
+
+type MagazinesFields_type {
+  create: MagazinesFields_type_Create
+  read: MagazinesFields_type_Read
+  update: MagazinesFields_type_Update
+  delete: MagazinesFields_type_Delete
+}
+
+type MagazinesFields_type_Create {
+  permission: Boolean!
+}
+
+type MagazinesFields_type_Read {
+  permission: Boolean!
+}
+
+type MagazinesFields_type_Update {
+  permission: Boolean!
+}
+
+type MagazinesFields_type_Delete {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues {
+  create: MagazinesFields_issues_Create
+  read: MagazinesFields_issues_Read
+  update: MagazinesFields_issues_Update
+  delete: MagazinesFields_issues_Delete
+  fields: MagazinesFields_issues_Fields
+}
+
+type MagazinesFields_issues_Create {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_Read {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_Update {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_Delete {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_Fields {
+  issue: MagazinesFields_issues_issue
+  id: MagazinesFields_issues_id
+}
+
+type MagazinesFields_issues_issue {
+  create: MagazinesFields_issues_issue_Create
+  read: MagazinesFields_issues_issue_Read
+  update: MagazinesFields_issues_issue_Update
+  delete: MagazinesFields_issues_issue_Delete
+}
+
+type MagazinesFields_issues_issue_Create {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_issue_Read {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_issue_Update {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_issue_Delete {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_id {
+  create: MagazinesFields_issues_id_Create
+  read: MagazinesFields_issues_id_Read
+  update: MagazinesFields_issues_id_Update
+  delete: MagazinesFields_issues_id_Delete
+}
+
+type MagazinesFields_issues_id_Create {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_id_Read {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_id_Update {
+  permission: Boolean!
+}
+
+type MagazinesFields_issues_id_Delete {
+  permission: Boolean!
+}
+
+type MagazinesFields_updatedAt {
+  create: MagazinesFields_updatedAt_Create
+  read: MagazinesFields_updatedAt_Read
+  update: MagazinesFields_updatedAt_Update
+  delete: MagazinesFields_updatedAt_Delete
+}
+
+type MagazinesFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type MagazinesFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type MagazinesFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type MagazinesFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type MagazinesFields_createdAt {
+  create: MagazinesFields_createdAt_Create
+  read: MagazinesFields_createdAt_Read
+  update: MagazinesFields_createdAt_Update
+  delete: MagazinesFields_createdAt_Delete
+}
+
+type MagazinesFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type MagazinesFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type MagazinesFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type MagazinesFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type MagazinesCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazinesReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazinesUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type MagazinesDeleteAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -9627,6 +11424,9 @@ type Mutation {
   createMedia(data: mutationMediaInput!, draft: Boolean, locale: LocaleInputType): Media
   updateMedia(id: String!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean, locale: LocaleInputType): Media
   deleteMedia(id: String!): Media
+  createDocument(data: mutationDocumentInput!, draft: Boolean, locale: LocaleInputType): Document
+  updateDocument(id: String!, autosave: Boolean, data: mutationDocumentUpdateInput!, draft: Boolean, locale: LocaleInputType): Document
+  deleteDocument(id: String!): Document
   createTopic(data: mutationTopicInput!, draft: Boolean, locale: LocaleInputType): Topic
   updateTopic(id: String!, autosave: Boolean, data: mutationTopicUpdateInput!, draft: Boolean, locale: LocaleInputType): Topic
   deleteTopic(id: String!): Topic
@@ -9642,6 +11442,12 @@ type Mutation {
   createCommittee(data: mutationCommitteeInput!, draft: Boolean, locale: LocaleInputType): Committee
   updateCommittee(id: String!, autosave: Boolean, data: mutationCommitteeUpdateInput!, draft: Boolean, locale: LocaleInputType): Committee
   deleteCommittee(id: String!): Committee
+  createMagazineIssue(data: mutationMagazineIssueInput!, draft: Boolean, locale: LocaleInputType): MagazineIssue
+  updateMagazineIssue(id: String!, autosave: Boolean, data: mutationMagazineIssueUpdateInput!, draft: Boolean, locale: LocaleInputType): MagazineIssue
+  deleteMagazineIssue(id: String!): MagazineIssue
+  createMagazine(data: mutationMagazineInput!, draft: Boolean, locale: LocaleInputType): Magazine
+  updateMagazine(id: String!, autosave: Boolean, data: mutationMagazineUpdateInput!, draft: Boolean, locale: LocaleInputType): Magazine
+  deleteMagazine(id: String!): Magazine
   createNews(data: mutationNewsInput!, draft: Boolean, locale: LocaleInputType): News
   updateNews(id: String!, autosave: Boolean, data: mutationNewsUpdateInput!, draft: Boolean, locale: LocaleInputType): News
   deleteNews(id: String!): News
@@ -9785,6 +11591,28 @@ input mutationMediaInput {
 
 input mutationMediaUpdateInput {
   alt: String
+  updatedAt: String
+  createdAt: String
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
+}
+
+input mutationDocumentInput {
+  updatedAt: String
+  createdAt: String
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
+}
+
+input mutationDocumentUpdateInput {
   updatedAt: String
   createdAt: String
   url: String
@@ -10238,6 +12066,146 @@ enum CommitteeUpdate_year_MutationInput {
 
 input mutationCommitteeUpdate_CommitteeMembersInput {
   committeeMember: String
+  id: String
+}
+
+input mutationMagazineIssueInput {
+  title: String
+  year: MagazineIssue_year_MutationInput!
+  issueNumber: Float!
+  file: String
+  thumbnail: String
+  name: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum MagazineIssue_year_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationMagazineIssueUpdateInput {
+  title: String
+  year: MagazineIssueUpdate_year_MutationInput
+  issueNumber: Float
+  file: String
+  thumbnail: String
+  name: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum MagazineIssueUpdate_year_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationMagazineInput {
+  type: Magazine_type_MutationInput!
+  issues: [mutationMagazine_IssuesInput]
+  updatedAt: String
+  createdAt: String
+}
+
+enum Magazine_type_MutationInput {
+  Alkorytmi
+  Rekrylehti
+}
+
+input mutationMagazine_IssuesInput {
+  issue: String
+  id: String
+}
+
+input mutationMagazineUpdateInput {
+  type: MagazineUpdate_type_MutationInput
+  issues: [mutationMagazineUpdate_IssuesInput]
+  updatedAt: String
+  createdAt: String
+}
+
+enum MagazineUpdate_type_MutationInput {
+  Alkorytmi
+  Rekrylehti
+}
+
+input mutationMagazineUpdate_IssuesInput {
+  issue: String
   id: String
 }
 
