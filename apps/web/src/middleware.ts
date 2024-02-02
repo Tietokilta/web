@@ -15,6 +15,7 @@ export function middleware(request: NextRequest): NextResponse {
   const pathnameHasCMSPath =
     pathname.startsWith("/admin") ||
     pathname.startsWith("/media") ||
+    pathname.startsWith("/documents") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/oauth2");
   if (pathnameHasCMSPath) {
