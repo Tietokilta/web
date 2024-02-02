@@ -30,6 +30,9 @@ import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
 import { CommitteeMembers } from "./collections/committees/committee-members";
 import { Committees } from "./collections/committees/committees";
+import { MagazineIssues } from "./collections/magazines/magazine-issues";
+import { Magazines } from "./collections/magazines/magazines";
+import { Documents } from "./collections/documents";
 import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
 import { Topics } from "./collections/topics";
@@ -78,18 +81,21 @@ export default buildConfig({
   },
   upload: {
     limits: {
-      fileSize: 10000000, // 10MB, written in bytes
+      fileSize: 64000000, // 64MB, written in bytes
     },
   },
   collections: [
     Users,
     Pages,
     Media,
+    Documents,
     Topics,
     BoardMembers,
     Boards,
     CommitteeMembers,
     Committees,
+    MagazineIssues,
+    Magazines,
     News,
     WeeklyNewsletters,
     NewsItems,
@@ -215,6 +221,16 @@ export default buildConfig({
       enabled: useCloudStorage(),
       collections: {
         [Media.slug]: {
+          disableLocalStorage: true,
+          adapter: azureBlobStorageAdapter({
+            connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
+            containerName: AZURE_STORAGE_CONTAINER_NAME ?? "",
+            allowContainerCreate:
+              process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
+            baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
+          }),
+        },
+        [Documents.slug]: {
           disableLocalStorage: true,
           adapter: azureBlobStorageAdapter({
             connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
