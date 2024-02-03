@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
+import { CommitteeCard } from "../committee-card";
 import {
   IS_BOLD,
   IS_CODE,
@@ -230,6 +231,9 @@ function Relationship({ node }: { node: RelationshipNode }) {
     }
     case "boards": {
       return <BoardGrid board={node.value} />;
+    }
+    case "committees": {
+      return <CommitteeCard committee={node.value} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
