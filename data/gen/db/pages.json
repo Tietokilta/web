@@ -6342,5 +6342,383 @@
 	},
 	"__v": 0,
 	"hideTableOfContents": true
+},
+{
+	"_id": {
+		"$oid": "65be65d4153050fbf6aaedee"
+	},
+	"hideTableOfContents": true,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-02-03T16:12:04.152Z"
+	},
+	"updatedAt": {
+		"$date": "2024-02-03T17:45:20.996Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Nykyiset toimarit",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "committees",
+						"value": {
+							"id": "65bbf301c081d0fba3620f4b"
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kaikki toimarit",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "65be7b1dcbc2d360ae464e6e"
+						}
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Current Officials",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "committees",
+						"value": {
+							"id": "65bbf301c081d0fba3620f4b"
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "All Officials",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "pages",
+						"value": {
+							"id": "65be7b1dcbc2d360ae464e6e"
+						}
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"description": {
+		"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. Sivulta löytyy lisäksi linkit aikaisempien vuosien sivuille.",
+		"en": "Committees, committee chairs, officials and others for year 2024."
+	},
+	"path": "/en/guild/officials",
+	"slug": {
+		"fi": "toimarit",
+		"en": "officials"
+	},
+	"title": {
+		"fi": "Toimarit",
+		"en": "Officials"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "65be7b1dcbc2d360ae464e6e"
+	},
+	"title": {
+		"fi": "Toimarit 2024",
+		"en": "Officials 2024"
+	},
+	"description": {
+		"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. ",
+		"en": "Committees, committee chairs, officials and others for year 2024."
+	},
+	"hideTableOfContents": true,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "committees",
+						"value": {
+							"id": "65bbf301c081d0fba3620f4b"
+						}
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": null
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "committees",
+						"value": {
+							"id": "65bbf301c081d0fba3620f4b"
+						}
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": null
+			}
+		}
+	},
+	"path": "/en/officials/2024",
+	"topic": {
+		"value": "65be7b27cbc2d360ae464edd",
+		"relationTo": "topics"
+	},
+	"slug": {
+		"fi": "2024",
+		"en": "2024"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-02-03T17:42:53.778Z"
+	},
+	"updatedAt": {
+		"$date": "2024-02-03T17:46:18.379Z"
+	},
+	"__v": 0
 }]
 
