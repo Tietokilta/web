@@ -1,13 +1,9 @@
-import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-  TikLogo,
-} from "@tietokilta/ui";
-import Link from "next/link";
+import { NavigationMenu, NavigationMenuList } from "@tietokilta/ui";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
+import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
+import { LogoLink } from "./logo-link";
 
 export async function MainNav({
   locale,
@@ -29,15 +25,9 @@ export async function MainNav({
     >
       <NavigationMenuList>
         <LinkList links={leftLinks} locale={locale} />
-        <NavigationMenuItem>
-          <Link
-            className="rounded-full hover:text-gray-400"
-            href={`/${locale}`}
-          >
-            <TikLogo className="h-20 w-20" />
-          </Link>
-        </NavigationMenuItem>
+        <LogoLink locale={locale} />
         <LinkList links={rightLinks} locale={locale} />
+        <LanguageSelector />
       </NavigationMenuList>
     </NavigationMenu>
   );

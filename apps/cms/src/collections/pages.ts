@@ -1,6 +1,10 @@
 import type { Page } from "@tietokilta/cms-types/payload";
 import { isNil, omitBy } from "lodash";
-import type { CollectionConfig, FieldHook } from "payload/types";
+import type {
+  CollectionConfig,
+  FieldHook,
+  PayloadRequest,
+} from "payload/types";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
 import { revalidatePage } from "../hooks/revalidate-page";
@@ -8,19 +12,56 @@ import { generatePreviewUrl } from "../preview";
 import { getLocale } from "../util";
 
 const formatPath: FieldHook<Page> = async ({ data, req }) => {
-  const locale = getLocale(req) ?? "fi";
-  if (data) {
-    if (data.topic && data.slug) {
-      const topic = await req.payload.findByID({
-        collection: "topics",
-        id: data.topic.value as string,
-        locale,
-      });
-      return `/${locale}/${topic.slug}/${data.slug}`;
-    } else if (data.slug) {
-      return `/${locale}/${data.slug}`;
-    }
+  if (!data?.slug || !req.payload.config.localization) {
+    req.payload.logger.warn(
+      "Could not format page path: missing slug or localization config",
+      data,
+    );
+    return;
   }
+
+  const availableLocales = req.payload.config.localization.localeCodes;
+  const reqLocale = getLocale(req) ?? "fi";
+  const requestedAllLocales = reqLocale === "all" || reqLocale === "*";
+
+  if (!data.topic) {
+    if (!requestedAllLocales) {
+      return `/${reqLocale}/${data.slug}`;
+    }
+
+    const slug = data.slug as unknown as Record<string, string>;
+    const localizedPaths = availableLocales.reduce<Record<string, string>>(
+      (allPaths, locale) => ({
+        ...allPaths,
+        [locale]: `/${locale}/${slug[locale]}`,
+      }),
+      {},
+    );
+
+    return localizedPaths;
+  }
+
+  const topic = await req.payload.findByID({
+    collection: "topics",
+    id: data.topic.value as string,
+    locale: req.locale,
+  });
+
+  if (!requestedAllLocales) {
+    return `/${reqLocale}/${topic.slug}/${data.slug}`;
+  }
+
+  const topicSlug = topic.slug as unknown as Record<string, string>;
+  const pageSlug = data.slug as unknown as Record<string, string>;
+  const localizedPaths = availableLocales.reduce<Record<string, string>>(
+    (allPaths, locale) => ({
+      ...allPaths,
+      [locale]: `/${locale}/${topicSlug[locale]}/${pageSlug[locale]}`,
+    }),
+    {},
+  );
+
+  return localizedPaths;
 };
 
 export const Pages: CollectionConfig = {
@@ -131,6 +172,121 @@ export const Pages: CollectionConfig = {
           locale,
         };
       }),
+      revalidatePage<Page>("pages", async (doc, req) => {
+        const localesData = await getAllLocalesData(doc, req);
+        if (!localesData) {
+          return;
+        }
+        const {
+          allLocalesPageSlug,
+          localizedTopicSlug,
+          localizedSlugKey,
+          localizedTopicKey,
+          locale,
+        } = localesData;
+
+        return {
+          where: omitBy(
+            {
+              [localizedSlugKey]: { equals: allLocalesPageSlug[locale] },
+              [localizedTopicKey]: localizedTopicSlug
+                ? {
+                    [localizedSlugKey]: {
+                      equals: localizedTopicSlug[locale],
+                    },
+                  }
+                : null,
+            },
+            isNil,
+          ),
+          locale: "all",
+        };
+      }),
+      revalidatePage<Page>("pages", async (doc, req) => {
+        const localesData = await getAllLocalesData(doc, req, true);
+        if (!localesData) {
+          return;
+        }
+        const {
+          allLocalesPageSlug,
+          localizedTopicSlug,
+          localizedSlugKey,
+          localizedTopicKey,
+          locale,
+        } = localesData;
+
+        return {
+          where: omitBy(
+            {
+              [localizedSlugKey]: { equals: allLocalesPageSlug[locale] },
+              [localizedTopicKey]: localizedTopicSlug
+                ? {
+                    [localizedSlugKey]: {
+                      equals: localizedTopicSlug[locale],
+                    },
+                  }
+                : null,
+            },
+            isNil,
+          ),
+          locale: "all",
+        };
+      }),
     ],
   },
 };
+
+async function getAllLocalesData(
+  doc: Page,
+  req: PayloadRequest,
+  reverseLocale?: boolean,
+): Promise<
+  | {
+      allLocalesPageSlug: Record<string, string>;
+      localizedTopicSlug?: Record<string, string>;
+      localizedSlugKey: string;
+      localizedTopicKey: string;
+      locale: string;
+    }
+  | undefined
+> {
+  const reqLocale = getLocale(req);
+  if (!reqLocale) {
+    req.payload.logger.error("locale not set, cannot revalidate properly");
+    return;
+  }
+
+  let locale = reqLocale;
+  if (reverseLocale) {
+    locale = reqLocale === "fi" ? "en" : "fi";
+  }
+
+  const page = await req.payload.findByID({
+    collection: "pages",
+    id: doc.id,
+    locale: "all",
+  });
+  const topic =
+    doc.topic &&
+    (await req.payload.findByID({
+      collection: "topics",
+      id: doc.topic.value as string,
+      locale: "all",
+    }));
+
+  const allLocalesPageSlug = page.slug as unknown as Record<string, string>;
+  const localizedTopicSlug = topic?.slug as unknown as
+    | Record<string, string>
+    | undefined;
+
+  const localizedSlugKey = `slug.${locale}`;
+  const localizedTopicKey = `topic.${locale}`;
+
+  return {
+    allLocalesPageSlug,
+    localizedTopicSlug,
+    localizedSlugKey,
+    localizedTopicKey,
+    locale,
+  };
+}
