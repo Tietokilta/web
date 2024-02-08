@@ -2,6 +2,7 @@ import type { IconType } from "@icons-pack/react-simple-icons";
 import {
   SiFacebook as FacebookIcon,
   SiGithub as GithubIcon,
+  SiGmail as GmailIcon,
   SiInstagram as InstagramIcon,
   SiLinkedin as LinkedinIcon,
   SiTelegram as TelegramIcon,
@@ -43,6 +44,7 @@ export const icons = {
   File: FileIcon,
   Facebook: FacebookIcon,
   Github: GithubIcon,
+  Gmail: GmailIcon,
   HelpCircle: HelpCircleIcon,
   Image: ImageIcon,
   Inbox: InboxIcon,
@@ -70,6 +72,7 @@ export {
   FacebookIcon,
   FileIcon,
   GithubIcon,
+  GmailIcon,
   HelpCircleIcon,
   ImageIcon,
   InboxIcon,

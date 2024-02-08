@@ -36,8 +36,8 @@ import { Users } from "./collections/users";
 import { Footer } from "./globals/footer";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
-import { useCloudStorage } from "./util";
 import { revalidateGlobal } from "./hooks/revalidate-globals";
+import { useCloudStorage } from "./util";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -131,10 +131,10 @@ export default buildConfig({
       UnorderedListFeature(),
       OrderedListFeature(),
       LinkFeature({
-        enabledCollections: ["pages"],
+        enabledCollections: [Pages.slug],
       }),
       RelationshipFeature({
-        enabledCollections: ["pages"],
+        enabledCollections: [Pages.slug, Boards.slug],
       }),
       BlockQuoteFeature(),
       UploadFeature({

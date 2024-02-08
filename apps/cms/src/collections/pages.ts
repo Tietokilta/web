@@ -95,6 +95,12 @@ export const Pages: CollectionConfig = {
       required: true,
     },
     {
+      name: "hideTableOfContents",
+      type: "checkbox",
+      required: true,
+      defaultValue: false,
+    },
+    {
       name: "content",
       type: "richText",
       localized: true,
