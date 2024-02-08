@@ -5,9 +5,9 @@
     "outDir": "dist",
     "plugins": [
       {
-        "name": "next",
-      },
-    ],
+        "name": "next"
+      }
+    ]
   },
-  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"],
+  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"]
 }
