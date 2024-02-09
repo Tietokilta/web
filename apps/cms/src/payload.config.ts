@@ -33,6 +33,7 @@ import { Media } from "./collections/media";
 import { Pages } from "./collections/pages";
 import { Topics } from "./collections/topics";
 import { Users } from "./collections/users";
+import { News } from "./collections/news";
 import { Footer } from "./globals/footer";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
@@ -85,6 +86,7 @@ export default buildConfig({
     Boards,
     CommitteeMembers,
     Committees,
+    News,
   ],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
