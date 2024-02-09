@@ -8,8 +8,10 @@ import {
   SiTelegram as TelegramIcon,
   SiTiktok as TiktokIcon,
 } from "@icons-pack/react-simple-icons";
-import type { LucideProps } from "lucide-react";
+import type { LucideProps, LucideIcon } from "lucide-react";
 import {
+  AlertTriangleIcon,
+  AlertOctagonIcon,
   AtSignIcon,
   BanknoteIcon,
   BookMarkedIcon,
@@ -26,12 +28,15 @@ import {
   LanguagesIcon,
   MapPinIcon,
   MenuIcon,
+  MegaphoneIcon,
   XIcon,
 } from "lucide-react";
 import React from "react";
 import { default as TikLogo } from "./tik-logo";
 
 export const icons = {
+  AlertTriangle: AlertTriangleIcon,
+  AlertOctagon: AlertOctagonIcon,
   AtSign: AtSignIcon,
   Banknote: BanknoteIcon,
   BookMarked: BookMarkedIcon,
@@ -52,6 +57,7 @@ export const icons = {
   Languages: LanguagesIcon,
   Linkedin: LinkedinIcon,
   MapPin: MapPinIcon,
+  Megaphone: MegaphoneIcon,
   Menu: MenuIcon,
   Telegram: TelegramIcon,
   TikLogo,
@@ -60,6 +66,8 @@ export const icons = {
 } as const;
 
 export {
+  AlertTriangleIcon,
+  AlertOctagonIcon,
   AtSignIcon,
   BanknoteIcon,
   BookMarkedIcon,
@@ -81,11 +89,14 @@ export {
   LinkedinIcon,
   MapPinIcon,
   MenuIcon,
+  MegaphoneIcon,
   TelegramIcon,
   TikLogo,
   TiktokIcon,
   XIcon,
 };
+
+export type { LucideIcon };
 
 export type IconName = keyof typeof icons;
 

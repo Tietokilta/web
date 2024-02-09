@@ -13,6 +13,8 @@
 export type LinkRowBlockLink =
   | {
       icon:
+        | 'AlertTriangle'
+        | 'AlertOctagon'
         | 'AtSign'
         | 'Banknote'
         | 'BookMarked'
@@ -33,6 +35,7 @@ export type LinkRowBlockLink =
         | 'Languages'
         | 'Linkedin'
         | 'MapPin'
+        | 'Megaphone'
         | 'Menu'
         | 'Telegram'
         | 'TikLogo'
@@ -68,6 +71,7 @@ export interface Config {
     boards: Board;
     'committee-members': CommitteeMember;
     committees: Committee;
+    news: News;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -393,6 +397,37 @@ export interface Committee {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  ctaType: 'none' | 'news' | 'page';
+  pageLink?: (string | null) | Page;
+  type?: ('announcement' | 'warning' | 'danger') | null;
+  author: string | User;
+  content: {
+    root: {
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      type: string;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
@@ -473,6 +508,7 @@ export interface LandingPage {
     image?: (string | null) | Media;
     id?: string | null;
   }[];
+  announcement?: (string | null) | News;
   body: {
     root: {
       children: {
@@ -521,6 +557,8 @@ export interface MainNavigationTopicConfig {
               title: string;
               href: string;
               icon:
+                | 'AlertTriangle'
+                | 'AlertOctagon'
                 | 'AtSign'
                 | 'Banknote'
                 | 'BookMarked'
@@ -541,6 +579,7 @@ export interface MainNavigationTopicConfig {
                 | 'Languages'
                 | 'Linkedin'
                 | 'MapPin'
+                | 'Megaphone'
                 | 'Menu'
                 | 'Telegram'
                 | 'TikLogo'
