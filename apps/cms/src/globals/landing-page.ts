@@ -26,6 +26,11 @@ export const LandingPage: GlobalConfig = {
       ],
     },
     {
+      name: "announcement",
+      type: "relationship",
+      relationTo: "news",
+    },
+    {
       name: "body",
       type: "richText",
       required: true,
