@@ -6,6 +6,10 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkRowBlockLink".
+ */
 export type LinkRowBlockLink =
   | {
       icon:
@@ -41,6 +45,10 @@ export type LinkRowBlockLink =
       id?: string | null;
     }[]
   | null;
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainNavigationItem".
+ */
 export type MainNavigationItem = {
   type?: ('page' | 'topic') | null;
   pageConfig?: {
@@ -69,6 +77,10 @@ export interface Config {
     'main-navigation': MainNavigation;
   };
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
 export interface User {
   id: string;
   sub?: string | null;
@@ -86,6 +98,10 @@ export interface User {
   lockUntil?: string | null;
   password: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
 export interface Page {
   id: string;
   title: string;
@@ -117,6 +133,10 @@ export interface Page {
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "topics".
+ */
 export interface Topic {
   id: string;
   title: string;
@@ -124,6 +144,10 @@ export interface Topic {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
 export interface Media {
   id: string;
   alt: string;
@@ -136,6 +160,10 @@ export interface Media {
   width?: number | null;
   height?: number | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "board-members".
+ */
 export interface BoardMember {
   id: string;
   guildYear:
@@ -186,6 +214,10 @@ export interface BoardMember {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "boards".
+ */
 export interface Board {
   id: string;
   year:
@@ -236,6 +268,10 @@ export interface Board {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "committee-members".
+ */
 export interface CommitteeMember {
   id: string;
   guildYear:
@@ -286,6 +322,10 @@ export interface CommitteeMember {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "committees".
+ */
 export interface Committee {
   id: string;
   year:
@@ -351,6 +391,10 @@ export interface Committee {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-preferences".
+ */
 export interface PayloadPreference {
   id: string;
   user: {
@@ -370,6 +414,10 @@ export interface PayloadPreference {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-migrations".
+ */
 export interface PayloadMigration {
   id: string;
   name?: string | null;
@@ -377,12 +425,20 @@ export interface PayloadMigration {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
 export interface Footer {
   id: string;
   layout: (LinkRowBlock | SponsorLogoRowBlock)[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkRowBlock".
+ */
 export interface LinkRowBlock {
   showLabel: boolean;
   links?: LinkRowBlockLink;
@@ -390,6 +446,10 @@ export interface LinkRowBlock {
   blockName?: string | null;
   blockType: 'link-row';
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SponsorLogoRowBlock".
+ */
 export interface SponsorLogoRowBlock {
   logos?:
     | {
@@ -402,6 +462,10 @@ export interface SponsorLogoRowBlock {
   blockName?: string | null;
   blockType: 'logo-row';
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-page".
+ */
 export interface LandingPage {
   id: string;
   heroText: string;
@@ -427,12 +491,20 @@ export interface LandingPage {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "main-navigation".
+ */
 export interface MainNavigation {
   id: string;
   items: MainNavigationItem;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainNavigationTopicConfig".
+ */
 export interface MainNavigationTopicConfig {
   topic: string | Topic;
   categories?:
