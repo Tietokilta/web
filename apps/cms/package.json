@@ -19,15 +19,15 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@azure/storage-blob": "^12.16.0",
+    "@azure/storage-blob": "^12.17.0",
     "@payloadcms/bundler-webpack": "^1.0.6",
-    "@payloadcms/db-mongodb": "^1.4.0",
+    "@payloadcms/db-mongodb": "^1.4.1",
     "@payloadcms/plugin-cloud-storage": "^1.1.2",
-    "@payloadcms/richtext-lexical": "^0.5.2",
+    "@payloadcms/richtext-lexical": "^0.6.1",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "lodash": "^4.17.21",
-    "payload": "^2.9.0",
+    "payload": "^2.10.1",
     "payload-plugin-oauth": "^2.1.1"
   },
   "devDependencies": {
@@ -41,7 +41,7 @@
     "copyfiles": "^2.4.1",
     "eslint": "^8.56.0",
     "nodemon": "^3.0.3",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }
