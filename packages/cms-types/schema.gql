@@ -27,6 +27,9 @@ type Query {
   Committee(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Committee
   Committees(draft: Boolean, where: Committee_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Committees
   docAccessCommittee(id: String!): committeesDocAccess
+  News(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): News
+  allNews(draft: Boolean, where: News_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allNews
+  docAccessNews(id: String!): newsDocAccess
   PayloadPreference(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
@@ -3665,6 +3668,476 @@ type CommitteesDeleteDocAccess {
   where: JSONObject
 }
 
+type News {
+  id: String
+  title: String
+  slug: String
+  excerpt: String
+  ctaType: News_ctaType!
+  pageLink(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  type: News_type
+  author(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): User!
+  content(depth: Int): JSON
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum News_ctaType {
+  none
+  news
+  page
+}
+
+enum News_type {
+  announcement
+  warning
+  danger
+}
+
+type allNews {
+  docs: [News]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input News_where {
+  title: News_title_operator
+  slug: News_slug_operator
+  excerpt: News_excerpt_operator
+  ctaType: News_ctaType_operator
+  pageLink: News_pageLink_operator
+  type: News_type_operator
+  author: News_author_operator
+  content: News_content_operator
+  updatedAt: News_updatedAt_operator
+  createdAt: News_createdAt_operator
+  id: News_id_operator
+  AND: [News_where_and]
+  OR: [News_where_or]
+}
+
+input News_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input News_slug_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input News_excerpt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+}
+
+input News_ctaType_operator {
+  equals: News_ctaType_Input
+  not_equals: News_ctaType_Input
+  like: News_ctaType_Input
+  contains: News_ctaType_Input
+}
+
+enum News_ctaType_Input {
+  none
+  news
+  page
+}
+
+input News_pageLink_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input News_type_operator {
+  equals: News_type_Input
+  not_equals: News_type_Input
+  in: [News_type_Input]
+  not_in: [News_type_Input]
+  all: [News_type_Input]
+  exists: Boolean
+}
+
+enum News_type_Input {
+  announcement
+  warning
+  danger
+}
+
+input News_author_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input News_content_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+}
+
+input News_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input News_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input News_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input News_where_and {
+  title: News_title_operator
+  slug: News_slug_operator
+  excerpt: News_excerpt_operator
+  ctaType: News_ctaType_operator
+  pageLink: News_pageLink_operator
+  type: News_type_operator
+  author: News_author_operator
+  content: News_content_operator
+  updatedAt: News_updatedAt_operator
+  createdAt: News_createdAt_operator
+  id: News_id_operator
+  AND: [News_where_and]
+  OR: [News_where_or]
+}
+
+input News_where_or {
+  title: News_title_operator
+  slug: News_slug_operator
+  excerpt: News_excerpt_operator
+  ctaType: News_ctaType_operator
+  pageLink: News_pageLink_operator
+  type: News_type_operator
+  author: News_author_operator
+  content: News_content_operator
+  updatedAt: News_updatedAt_operator
+  createdAt: News_createdAt_operator
+  id: News_id_operator
+  AND: [News_where_and]
+  OR: [News_where_or]
+}
+
+type newsDocAccess {
+  fields: NewsDocAccessFields
+  create: NewsCreateDocAccess
+  read: NewsReadDocAccess
+  update: NewsUpdateDocAccess
+  delete: NewsDeleteDocAccess
+}
+
+type NewsDocAccessFields {
+  title: NewsDocAccessFields_title
+  slug: NewsDocAccessFields_slug
+  excerpt: NewsDocAccessFields_excerpt
+  ctaType: NewsDocAccessFields_ctaType
+  pageLink: NewsDocAccessFields_pageLink
+  type: NewsDocAccessFields_type
+  author: NewsDocAccessFields_author
+  content: NewsDocAccessFields_content
+  updatedAt: NewsDocAccessFields_updatedAt
+  createdAt: NewsDocAccessFields_createdAt
+}
+
+type NewsDocAccessFields_title {
+  create: NewsDocAccessFields_title_Create
+  read: NewsDocAccessFields_title_Read
+  update: NewsDocAccessFields_title_Update
+  delete: NewsDocAccessFields_title_Delete
+}
+
+type NewsDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_slug {
+  create: NewsDocAccessFields_slug_Create
+  read: NewsDocAccessFields_slug_Read
+  update: NewsDocAccessFields_slug_Update
+  delete: NewsDocAccessFields_slug_Delete
+}
+
+type NewsDocAccessFields_slug_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_slug_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_slug_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_slug_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_excerpt {
+  create: NewsDocAccessFields_excerpt_Create
+  read: NewsDocAccessFields_excerpt_Read
+  update: NewsDocAccessFields_excerpt_Update
+  delete: NewsDocAccessFields_excerpt_Delete
+}
+
+type NewsDocAccessFields_excerpt_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_excerpt_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_excerpt_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_excerpt_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_ctaType {
+  create: NewsDocAccessFields_ctaType_Create
+  read: NewsDocAccessFields_ctaType_Read
+  update: NewsDocAccessFields_ctaType_Update
+  delete: NewsDocAccessFields_ctaType_Delete
+}
+
+type NewsDocAccessFields_ctaType_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_ctaType_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_ctaType_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_ctaType_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_pageLink {
+  create: NewsDocAccessFields_pageLink_Create
+  read: NewsDocAccessFields_pageLink_Read
+  update: NewsDocAccessFields_pageLink_Update
+  delete: NewsDocAccessFields_pageLink_Delete
+}
+
+type NewsDocAccessFields_pageLink_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_pageLink_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_pageLink_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_pageLink_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_type {
+  create: NewsDocAccessFields_type_Create
+  read: NewsDocAccessFields_type_Read
+  update: NewsDocAccessFields_type_Update
+  delete: NewsDocAccessFields_type_Delete
+}
+
+type NewsDocAccessFields_type_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_type_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_type_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_type_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_author {
+  create: NewsDocAccessFields_author_Create
+  read: NewsDocAccessFields_author_Read
+  update: NewsDocAccessFields_author_Update
+  delete: NewsDocAccessFields_author_Delete
+}
+
+type NewsDocAccessFields_author_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_author_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_author_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_author_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_content {
+  create: NewsDocAccessFields_content_Create
+  read: NewsDocAccessFields_content_Read
+  update: NewsDocAccessFields_content_Update
+  delete: NewsDocAccessFields_content_Delete
+}
+
+type NewsDocAccessFields_content_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_content_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_content_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_content_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_updatedAt {
+  create: NewsDocAccessFields_updatedAt_Create
+  read: NewsDocAccessFields_updatedAt_Read
+  update: NewsDocAccessFields_updatedAt_Update
+  delete: NewsDocAccessFields_updatedAt_Delete
+}
+
+type NewsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_createdAt {
+  create: NewsDocAccessFields_createdAt_Create
+  read: NewsDocAccessFields_createdAt_Read
+  update: NewsDocAccessFields_createdAt_Update
+  delete: NewsDocAccessFields_createdAt_Delete
+}
+
+type NewsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type NewsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -3972,6 +4445,8 @@ type LinkRowBlockLink {
 }
 
 enum LinkRowBlockLink_icon {
+  AlertTriangle
+  AlertOctagon
   AtSign
   Banknote
   BookMarked
@@ -3992,6 +4467,7 @@ enum LinkRowBlockLink_icon {
   Languages
   Linkedin
   MapPin
+  Megaphone
   Menu
   Telegram
   TikLogo
@@ -4111,6 +4587,7 @@ type FooterUpdateDocAccess {
 type LandingPage {
   heroText: String
   heroImages: [LandingPage_HeroImages!]!
+  announcement(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): News
   body(depth: Int): JSON
   updatedAt: DateTime
   createdAt: DateTime
@@ -4130,6 +4607,7 @@ type landing_pageDocAccess {
 type LandingPageDocAccessFields {
   heroText: LandingPageDocAccessFields_heroText
   heroImages: LandingPageDocAccessFields_heroImages
+  announcement: LandingPageDocAccessFields_announcement
   body: LandingPageDocAccessFields_body
   updatedAt: LandingPageDocAccessFields_updatedAt
   createdAt: LandingPageDocAccessFields_createdAt
@@ -4230,6 +4708,29 @@ type LandingPageDocAccessFields_heroImages_id_Update {
 }
 
 type LandingPageDocAccessFields_heroImages_id_Delete {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_announcement {
+  create: LandingPageDocAccessFields_announcement_Create
+  read: LandingPageDocAccessFields_announcement_Read
+  update: LandingPageDocAccessFields_announcement_Update
+  delete: LandingPageDocAccessFields_announcement_Delete
+}
+
+type LandingPageDocAccessFields_announcement_Create {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_announcement_Read {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_announcement_Update {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_announcement_Delete {
   permission: Boolean!
 }
 
@@ -4359,6 +4860,8 @@ type MainNavigationTopicConfig_Categories_ExternalLinks {
 }
 
 enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
+  AlertTriangle
+  AlertOctagon
   AtSign
   Banknote
   BookMarked
@@ -4379,6 +4882,7 @@ enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
   Languages
   Linkedin
   MapPin
+  Megaphone
   Menu
   Telegram
   TikLogo
@@ -4919,6 +5423,7 @@ type Access {
   boards: boardsAccess
   committee_members: committee_membersAccess
   committees: committeesAccess
+  news: newsAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -6681,6 +7186,277 @@ type CommitteesDeleteAccess {
   where: JSONObject
 }
 
+type newsAccess {
+  fields: NewsFields
+  create: NewsCreateAccess
+  read: NewsReadAccess
+  update: NewsUpdateAccess
+  delete: NewsDeleteAccess
+}
+
+type NewsFields {
+  title: NewsFields_title
+  slug: NewsFields_slug
+  excerpt: NewsFields_excerpt
+  ctaType: NewsFields_ctaType
+  pageLink: NewsFields_pageLink
+  type: NewsFields_type
+  author: NewsFields_author
+  content: NewsFields_content
+  updatedAt: NewsFields_updatedAt
+  createdAt: NewsFields_createdAt
+}
+
+type NewsFields_title {
+  create: NewsFields_title_Create
+  read: NewsFields_title_Read
+  update: NewsFields_title_Update
+  delete: NewsFields_title_Delete
+}
+
+type NewsFields_title_Create {
+  permission: Boolean!
+}
+
+type NewsFields_title_Read {
+  permission: Boolean!
+}
+
+type NewsFields_title_Update {
+  permission: Boolean!
+}
+
+type NewsFields_title_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_slug {
+  create: NewsFields_slug_Create
+  read: NewsFields_slug_Read
+  update: NewsFields_slug_Update
+  delete: NewsFields_slug_Delete
+}
+
+type NewsFields_slug_Create {
+  permission: Boolean!
+}
+
+type NewsFields_slug_Read {
+  permission: Boolean!
+}
+
+type NewsFields_slug_Update {
+  permission: Boolean!
+}
+
+type NewsFields_slug_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_excerpt {
+  create: NewsFields_excerpt_Create
+  read: NewsFields_excerpt_Read
+  update: NewsFields_excerpt_Update
+  delete: NewsFields_excerpt_Delete
+}
+
+type NewsFields_excerpt_Create {
+  permission: Boolean!
+}
+
+type NewsFields_excerpt_Read {
+  permission: Boolean!
+}
+
+type NewsFields_excerpt_Update {
+  permission: Boolean!
+}
+
+type NewsFields_excerpt_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_ctaType {
+  create: NewsFields_ctaType_Create
+  read: NewsFields_ctaType_Read
+  update: NewsFields_ctaType_Update
+  delete: NewsFields_ctaType_Delete
+}
+
+type NewsFields_ctaType_Create {
+  permission: Boolean!
+}
+
+type NewsFields_ctaType_Read {
+  permission: Boolean!
+}
+
+type NewsFields_ctaType_Update {
+  permission: Boolean!
+}
+
+type NewsFields_ctaType_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_pageLink {
+  create: NewsFields_pageLink_Create
+  read: NewsFields_pageLink_Read
+  update: NewsFields_pageLink_Update
+  delete: NewsFields_pageLink_Delete
+}
+
+type NewsFields_pageLink_Create {
+  permission: Boolean!
+}
+
+type NewsFields_pageLink_Read {
+  permission: Boolean!
+}
+
+type NewsFields_pageLink_Update {
+  permission: Boolean!
+}
+
+type NewsFields_pageLink_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_type {
+  create: NewsFields_type_Create
+  read: NewsFields_type_Read
+  update: NewsFields_type_Update
+  delete: NewsFields_type_Delete
+}
+
+type NewsFields_type_Create {
+  permission: Boolean!
+}
+
+type NewsFields_type_Read {
+  permission: Boolean!
+}
+
+type NewsFields_type_Update {
+  permission: Boolean!
+}
+
+type NewsFields_type_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_author {
+  create: NewsFields_author_Create
+  read: NewsFields_author_Read
+  update: NewsFields_author_Update
+  delete: NewsFields_author_Delete
+}
+
+type NewsFields_author_Create {
+  permission: Boolean!
+}
+
+type NewsFields_author_Read {
+  permission: Boolean!
+}
+
+type NewsFields_author_Update {
+  permission: Boolean!
+}
+
+type NewsFields_author_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_content {
+  create: NewsFields_content_Create
+  read: NewsFields_content_Read
+  update: NewsFields_content_Update
+  delete: NewsFields_content_Delete
+}
+
+type NewsFields_content_Create {
+  permission: Boolean!
+}
+
+type NewsFields_content_Read {
+  permission: Boolean!
+}
+
+type NewsFields_content_Update {
+  permission: Boolean!
+}
+
+type NewsFields_content_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_updatedAt {
+  create: NewsFields_updatedAt_Create
+  read: NewsFields_updatedAt_Read
+  update: NewsFields_updatedAt_Update
+  delete: NewsFields_updatedAt_Delete
+}
+
+type NewsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type NewsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type NewsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type NewsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_createdAt {
+  create: NewsFields_createdAt_Create
+  read: NewsFields_createdAt_Read
+  update: NewsFields_createdAt_Update
+  delete: NewsFields_createdAt_Delete
+}
+
+type NewsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type NewsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type NewsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type NewsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type NewsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -6932,6 +7708,7 @@ type landing_pageAccess {
 type LandingPageFields {
   heroText: LandingPageFields_heroText
   heroImages: LandingPageFields_heroImages
+  announcement: LandingPageFields_announcement
   body: LandingPageFields_body
   updatedAt: LandingPageFields_updatedAt
   createdAt: LandingPageFields_createdAt
@@ -7032,6 +7809,29 @@ type LandingPageFields_heroImages_id_Update {
 }
 
 type LandingPageFields_heroImages_id_Delete {
+  permission: Boolean!
+}
+
+type LandingPageFields_announcement {
+  create: LandingPageFields_announcement_Create
+  read: LandingPageFields_announcement_Read
+  update: LandingPageFields_announcement_Update
+  delete: LandingPageFields_announcement_Delete
+}
+
+type LandingPageFields_announcement_Create {
+  permission: Boolean!
+}
+
+type LandingPageFields_announcement_Read {
+  permission: Boolean!
+}
+
+type LandingPageFields_announcement_Update {
+  permission: Boolean!
+}
+
+type LandingPageFields_announcement_Delete {
   permission: Boolean!
 }
 
@@ -7670,6 +8470,9 @@ type Mutation {
   createCommittee(data: mutationCommitteeInput!, draft: Boolean, locale: LocaleInputType): Committee
   updateCommittee(id: String!, autosave: Boolean, data: mutationCommitteeUpdateInput!, draft: Boolean, locale: LocaleInputType): Committee
   deleteCommittee(id: String!): Committee
+  createNews(data: mutationNewsInput!, draft: Boolean, locale: LocaleInputType): News
+  updateNews(id: String!, autosave: Boolean, data: mutationNewsUpdateInput!, draft: Boolean, locale: LocaleInputType): News
+  deleteNews(id: String!): News
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -8262,6 +9065,44 @@ input mutationCommitteeUpdate_CommitteeMembersInput {
   id: String
 }
 
+input mutationNewsInput {
+  title: String
+  slug: String
+  excerpt: String
+  ctaType: String!
+  pageLink: String
+  type: News_type_MutationInput
+  author: String
+  content: JSON
+  updatedAt: String
+  createdAt: String
+}
+
+enum News_type_MutationInput {
+  announcement
+  warning
+  danger
+}
+
+input mutationNewsUpdateInput {
+  title: String
+  slug: String
+  excerpt: String
+  ctaType: String
+  pageLink: String
+  type: NewsUpdate_type_MutationInput
+  author: String
+  content: JSON
+  updatedAt: String
+  createdAt: String
+}
+
+enum NewsUpdate_type_MutationInput {
+  announcement
+  warning
+  danger
+}
+
 input mutationPayloadPreferenceInput {
   user: PayloadPreference_UserRelationshipInput
   key: String
@@ -8305,6 +9146,7 @@ input mutationFooterInput {
 input mutationLandingPageInput {
   heroText: String
   heroImages: [mutationLandingPage_HeroImagesInput!]
+  announcement: String
   body: JSON
   updatedAt: String
   createdAt: String
@@ -8357,6 +9199,8 @@ input mutationMainNavigation_Items_TopicConfig_Categories_ExternalLinksInput {
 }
 
 enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInput {
+  AlertTriangle
+  AlertOctagon
   AtSign
   Banknote
   BookMarked
@@ -8377,6 +9221,7 @@ enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInpu
   Languages
   Linkedin
   MapPin
+  Megaphone
   Menu
   Telegram
   TikLogo
