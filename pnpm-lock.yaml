@@ -40,10 +40,10 @@ importers:
         version: 1.1.2(@azure/storage-blob@12.17.0)(payload@2.10.1)
       '@payloadcms/richtext-lexical':
         specifier: ^0.6.1
-        version: 0.6.1(@lexical/clipboard@0.12.6)(payload@2.10.1)(typescript@5.3.3)(yjs@13.6.11)
+        version: 0.6.1(@lexical/clipboard@0.12.6)(payload@2.10.1)(typescript@5.3.3)(yjs@13.6.12)
       dotenv:
-        specifier: ^16.4.1
-        version: 16.4.1
+        specifier: ^16.4.2
+        version: 16.4.2
       express:
         specifier: ^4.18.2
         version: 4.18.2
@@ -280,8 +280,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       tsup:
-        specifier: ^8.0.1
-        version: 8.0.1(postcss@8.4.33)(typescript@5.3.3)
+        specifier: ^8.0.2
+        version: 8.0.2(postcss@8.4.33)(typescript@5.3.3)
       typescript:
         specifier: ^5.3.3
         version: 5.3.3
@@ -2479,7 +2479,7 @@ packages:
       lexical: 0.12.6
     dev: false
 
-  /@lexical/react@0.12.6(lexical@0.12.6)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.11):
+  /@lexical/react@0.12.6(lexical@0.12.6)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.12):
     resolution: {integrity: sha512-Pto4wsVwrnY94tzcCXP2kWukQejSRPDfwOPd+EFh8dUzj+L7fa9Pze2wVgCRZpEohwfbcgAdEsvmSbhz+yGkog==}
     peerDependencies:
       lexical: 0.12.6
@@ -2502,7 +2502,7 @@ packages:
       '@lexical/table': 0.12.6(lexical@0.12.6)
       '@lexical/text': 0.12.6(lexical@0.12.6)
       '@lexical/utils': 0.12.6(lexical@0.12.6)
-      '@lexical/yjs': 0.12.6(lexical@0.12.6)(yjs@13.6.11)
+      '@lexical/yjs': 0.12.6(lexical@0.12.6)(yjs@13.6.12)
       lexical: 0.12.6
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
@@ -2561,7 +2561,7 @@ packages:
       lexical: 0.12.6
     dev: false
 
-  /@lexical/yjs@0.12.6(lexical@0.12.6)(yjs@13.6.11):
+  /@lexical/yjs@0.12.6(lexical@0.12.6)(yjs@13.6.12):
     resolution: {integrity: sha512-I/Yf/Qm8/ydU983kWpFBlDFNFQXLYur5uaAimTSBcJuqHmy3cv1xM7Xrq4BtM+0orKgWJt8vR8cLVIU9sAmzfw==}
     peerDependencies:
       lexical: 0.12.6
@@ -2569,7 +2569,7 @@ packages:
     dependencies:
       '@lexical/offset': 0.12.6(lexical@0.12.6)
       lexical: 0.12.6
-      yjs: 13.6.11
+      yjs: 13.6.12
     dev: false
 
   /@microsoft/tsdoc-config@0.16.2:
@@ -2864,7 +2864,7 @@ packages:
       range-parser: 1.2.1
     dev: false
 
-  /@payloadcms/richtext-lexical@0.6.1(@lexical/clipboard@0.12.6)(payload@2.10.1)(typescript@5.3.3)(yjs@13.6.11):
+  /@payloadcms/richtext-lexical@0.6.1(@lexical/clipboard@0.12.6)(payload@2.10.1)(typescript@5.3.3)(yjs@13.6.12):
     resolution: {integrity: sha512-vEGMCyPHnClF8EQUXAw/LtSb17oPtWD/W9+/uPKQoXKthIO1QHznApYgDG0kSZlP3SLPAeBE8x9OxFxNYaGQ6Q==}
     peerDependencies:
       payload: ^2.4.0
@@ -2875,7 +2875,7 @@ packages:
       '@lexical/list': 0.12.6(lexical@0.12.6)
       '@lexical/mark': 0.12.6(lexical@0.12.6)
       '@lexical/markdown': 0.12.6(@lexical/clipboard@0.12.6)(@lexical/selection@0.12.6)(lexical@0.12.6)
-      '@lexical/react': 0.12.6(lexical@0.12.6)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.11)
+      '@lexical/react': 0.12.6(lexical@0.12.6)(react-dom@18.2.0)(react@18.2.0)(yjs@13.6.12)
       '@lexical/rich-text': 0.12.6(@lexical/clipboard@0.12.6)(@lexical/selection@0.12.6)(@lexical/utils@0.12.6)(lexical@0.12.6)
       '@lexical/selection': 0.12.6(lexical@0.12.6)
       '@lexical/utils': 0.12.6(lexical@0.12.6)
@@ -6558,7 +6558,7 @@ packages:
     hasBin: true
     dependencies:
       cross-spawn: 7.0.3
-      dotenv: 16.4.1
+      dotenv: 16.4.2
       dotenv-expand: 10.0.0
       minimist: 1.2.8
     dev: true
@@ -6573,8 +6573,8 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /dotenv@16.4.1:
-    resolution: {integrity: sha512-CjA3y+Dr3FyFDOAMnxZEGtnW9KBR2M0JvvUtXNW+dYJL5ROWxP9DUHCwgFqpMk0OXCc0ljhaNTr2w/kutYIcHQ==}
+  /dotenv@16.4.2:
+    resolution: {integrity: sha512-rZSSFxke7d9nYQ5NeMIwp5PP+f8wXgKNljpOb7KtH6SKW1cEqcXAz9VSJYVLKe7Jhup/gUYOkaeSVyK8GJ+nBg==}
     engines: {node: '>=12'}
 
   /dotenv@8.6.0:
@@ -8274,6 +8274,14 @@ packages:
       loose-envify: 1.4.0
     dev: false
 
+  /ip-address@9.0.5:
+    resolution: {integrity: sha512-zHtQzGojZXTwZTHQqra+ETKd4Sn3vgi7uBmlPoXVWZqYvuKmtI0l/VZTjqGmJY9x88GGOaZ9+G9ES8hC4T4X8g==}
+    engines: {node: '>= 12'}
+    dependencies:
+      jsbn: 1.1.0
+      sprintf-js: 1.1.3
+    dev: false
+
   /ip@2.0.0:
     resolution: {integrity: sha512-WKa+XuLG1A1R0UWhl2+1XQSi+fZWMsYKffMZTTYsiZaUD8k2yDAj5atimTUD2TZkyCkNEeYE5NhFZmupOGtjYQ==}
     dev: false
@@ -8647,6 +8655,10 @@ packages:
     hasBin: true
     dependencies:
       argparse: 2.0.1
+
+  /jsbn@1.1.0:
+    resolution: {integrity: sha512-4bYVV3aAMtDTTu4+xsDYa6sy9GyJ69/amsu9sYF2zqjiEoZA5xJi3BrfX3uY+/IekIu7MwdObdbDWpoZdBv3/A==}
+    dev: false
 
   /jsesc@0.5.0:
     resolution: {integrity: sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==}
@@ -9606,7 +9618,7 @@ packages:
     dependencies:
       bson: 4.7.2
       mongodb-connection-string-url: 2.6.0
-      socks: 2.7.1
+      socks: 2.7.3
     optionalDependencies:
       '@aws-sdk/credential-providers': 3.511.0
       '@mongodb-js/saslprep': 1.1.4
@@ -12409,6 +12421,14 @@ packages:
       smart-buffer: 4.2.0
     dev: false
 
+  /socks@2.7.3:
+    resolution: {integrity: sha512-vfuYK48HXCTFD03G/1/zkIls3Ebr2YNa4qU9gHDZdblHLiqhJrJGkY3+0Nx0JpN9qBhJbVObc1CNciT1bIZJxw==}
+    engines: {node: '>= 10.0.0', npm: '>= 3.0.0'}
+    dependencies:
+      ip-address: 9.0.5
+      smart-buffer: 4.2.0
+    dev: false
+
   /sonic-boom@3.8.0:
     resolution: {integrity: sha512-ybz6OYOUjoQQCQ/i4LU8kaToD8ACtYP+Cj5qd2AO36bwbdewxWJ3ArmJ2cr6AvxlL2o0PqnCcPGUgkILbfkaCA==}
     dependencies:
@@ -12497,6 +12517,10 @@ packages:
   /split2@4.2.0:
     resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
     engines: {node: '>= 10.x'}
+    dev: false
+
+  /sprintf-js@1.1.3:
+    resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
     dev: false
 
   /state-local@1.0.7:
@@ -13144,8 +13168,8 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup@8.0.1(postcss@8.4.33)(typescript@5.3.3):
-    resolution: {integrity: sha512-hvW7gUSG96j53ZTSlT4j/KL0q1Q2l6TqGBFc6/mu/L46IoNWqLLUzLRLP1R8Q7xrJTmkDxxDoojV5uCVs1sVOg==}
+  /tsup@8.0.2(postcss@8.4.33)(typescript@5.3.3):
+    resolution: {integrity: sha512-NY8xtQXdH7hDUAZwcQdY/Vzlw9johQsaqf7iwZ6g1DOUlFYQ5/AtVAjTvihhEyeRlGo4dLRVHtrRaL35M1daqQ==}
     engines: {node: '>=18'}
     hasBin: true
     peerDependencies:
@@ -14065,8 +14089,8 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /yjs@13.6.11:
-    resolution: {integrity: sha512-FvRRJKX9u270dOLkllGF/UDCWwmIv2Z+ucM4v1QO1TuxdmoiMnSUXH1HAcOKOrkBEhQtPTkxep7tD2DrQB+l0g==}
+  /yjs@13.6.12:
+    resolution: {integrity: sha512-KOT8ILoyVH2f/PxPadeu5kVVS055D1r3x1iFfJVJzFdnN98pVGM8H07NcKsO+fG3F7/0tf30Vnokf5YIqhU/iw==}
     engines: {node: '>=16.0.0', npm: '>=8.0.0'}
     dependencies:
       lib0: 0.2.88
