@@ -52,10 +52,10 @@ importers:
         version: 4.17.21
       payload:
         specifier: ^2.11.2
-        version: 2.11.2(typescript@5.4.2)(webpack@5.90.3)
+        version: 2.11.2(@types/react@18.2.65)(typescript@5.4.2)(webpack@5.90.3)
       payload-plugin-oauth:
         specifier: ^2.1.1
-        version: 2.1.1(mongodb@4.17.1)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.11.2)(react@18.2.0)
+        version: 2.1.1(mongodb@4.17.2)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.11.2)(react@18.2.0)
     devDependencies:
       '@tietokilta/cms-types':
         specifier: workspace:*
@@ -78,12 +78,21 @@ importers:
       '@types/passport-oauth2':
         specifier: ^1.4.15
         version: 1.4.15
+      '@types/react':
+        specifier: ^18.2.65
+        version: 18.2.65
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
+      csvtojson:
+        specifier: ^2.0.10
+        version: 2.0.10
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
       tsx:
         specifier: ^4.7.1
         version: 4.7.1
@@ -278,7 +287,7 @@ importers:
         version: 18.2.0(react@18.2.0)
       tsup:
         specifier: ^8.0.2
-        version: 8.0.2(postcss@8.4.33)(typescript@5.4.2)
+        version: 8.0.2(typescript@5.4.2)
       typescript:
         specifier: ^5.4.2
         version: 5.4.2
@@ -1694,7 +1703,7 @@ packages:
     resolution: {integrity: sha512-W2P2c/VRW1/1tLox0mVUalvnWXxavmv/Oum2aPsRcoDJuob75FC3Y8FbpfLwUegRcxINtGUMPq0tFCvYNTBXNA==}
     dev: false
 
-  /@emotion/react@11.11.4(react@18.2.0):
+  /@emotion/react@11.11.4(@types/react@18.2.65)(react@18.2.0):
     resolution: {integrity: sha512-t8AjMlF0gHpvvxk5mAtCqR4vmxiGHCeJBaQO6gncUSdklELOgtwjerNY2yuJNfwnc6vi16U/+uMF+afIawJ9iw==}
     peerDependencies:
       '@types/react': '*'
@@ -1710,6 +1719,7 @@ packages:
       '@emotion/use-insertion-effect-with-fallbacks': 1.0.1(react@18.2.0)
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
+      '@types/react': 18.2.65
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
     dev: false
@@ -2775,7 +2785,7 @@ packages:
       md5: 2.3.0
       mini-css-extract-plugin: 1.6.2(webpack@5.90.3)
       path-browserify: 1.0.1
-      payload: 2.11.2(typescript@5.4.2)(webpack@5.90.3)
+      payload: 2.11.2(@types/react@18.2.65)(typescript@5.4.2)(webpack@5.90.3)
       postcss: 8.4.31
       postcss-loader: 6.2.1(postcss@8.4.31)(webpack@5.90.3)
       postcss-preset-env: 9.0.0(postcss@8.4.31)
@@ -2825,7 +2835,7 @@ packages:
       mongoose: 6.12.3
       mongoose-aggregate-paginate-v2: 1.0.6
       mongoose-paginate-v2: 1.7.22
-      payload: 2.11.2(typescript@5.4.2)(webpack@5.90.3)
+      payload: 2.11.2(@types/react@18.2.65)(typescript@5.4.2)(webpack@5.90.3)
       prompts: 2.4.2
       uuid: 9.0.0
     transitivePeerDependencies:
@@ -2856,7 +2866,7 @@ packages:
     dependencies:
       '@azure/storage-blob': 12.17.0
       find-node-modules: 2.1.3
-      payload: 2.11.2(typescript@5.4.2)(webpack@5.90.3)
+      payload: 2.11.2(@types/react@18.2.65)(typescript@5.4.2)(webpack@5.90.3)
       range-parser: 1.2.1
     dev: false
 
@@ -2882,7 +2892,7 @@ packages:
       json-schema: 0.4.0
       lexical: 0.13.1
       lodash: 4.17.21
-      payload: 2.11.2(typescript@5.4.2)(webpack@5.90.3)
+      payload: 2.11.2(@types/react@18.2.65)(typescript@5.4.2)(webpack@5.90.3)
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-error-boundary: 4.0.12(react@18.2.0)
@@ -4519,23 +4529,16 @@ packages:
   /@types/react-dom@18.2.22:
     resolution: {integrity: sha512-fHkBXPeNtfvri6gdsMYyW+dW7RXFo6Ad09nLFK0VQWR7yGLai/Cyvyj696gbwYvBnhGtevUG9cET0pmUbMtoPQ==}
     dependencies:
-      '@types/react': 18.2.66
+      '@types/react': 18.2.65
 
   /@types/react-transition-group@4.4.10:
     resolution: {integrity: sha512-hT/+s0VQs2ojCX823m60m5f0sL5idt9SO6Tj6Dg+rdphGPIeJbJ6CxvBYkgkGKrYeDjvIpKTR38UzmtHJOGW3Q==}
     dependencies:
-      '@types/react': 18.2.66
+      '@types/react': 18.2.65
     dev: false
 
   /@types/react@18.2.65:
     resolution: {integrity: sha512-98TsY0aW4jqx/3RqsUXwMDZSWR1Z4CUlJNue8ueS2/wcxZOsz4xmW1X8ieaWVRHcmmQM3R8xVA4XWB3dJnWwDQ==}
-    dependencies:
-      '@types/prop-types': 15.7.11
-      '@types/scheduler': 0.16.8
-      csstype: 3.1.3
-
-  /@types/react@18.2.66:
-    resolution: {integrity: sha512-OYTmMI4UigXeFMF/j4uv0lBBEbongSgptPrHBxqME44h9+yNov+oL6Z3ocJKo0WyXR84sQUNeyIp9MRfckvZpg==}
     dependencies:
       '@types/prop-types': 15.7.11
       '@types/scheduler': 0.16.8
@@ -5431,6 +5434,10 @@ packages:
       readable-stream: 3.6.2
     dev: false
 
+  /bluebird@3.7.2:
+    resolution: {integrity: sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg==}
+    dev: true
+
   /bn.js@4.12.0:
     resolution: {integrity: sha512-c98Bf3tPniI+scsdk237ku1Dc3ujXQTSgyiPUDEOe7tRkhrqridvh8klBv0HCEso1OLOYcHuCv/cS6DNxKH+ZA==}
     dev: false
@@ -5515,7 +5522,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001589
+      caniuse-lite: 1.0.30001585
       electron-to-chromium: 1.4.661
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.22.2)
@@ -5642,8 +5649,8 @@ packages:
     resolution: {integrity: sha512-BtYEK4r/iHt/txm81KBudCUcTy7t+s9emrIaHqjYurQ10x71zJ5VQ9x1dYPcz/b+pKSp4y/v1xSI67A+LzpNyg==}
     dev: false
 
-  /caniuse-lite@1.0.30001589:
-    resolution: {integrity: sha512-vNQWS6kI+q6sBlHbh71IIeC+sRwK2N3EDySc/updIGhIee2x5z00J4c1242/5/d6EpEMdOnk/m+6tuk4/tcsqg==}
+  /caniuse-lite@1.0.30001585:
+    resolution: {integrity: sha512-yr2BWR1yLXQ8fMpdS/4ZZXpseBgE7o4g41x3a6AJOqZuOi+iE/WdJYAuZ6Y95i4Ohd2Y+9MzIWRR+uGABH4s3Q==}
     dev: false
 
   /caniuse-lite@1.0.30001597:
@@ -5925,7 +5932,7 @@ packages:
     engines: {node: '>=0.8'}
     dev: false
 
-  /connect-mongo@4.6.0(express-session@1.18.0)(mongodb@4.17.1):
+  /connect-mongo@4.6.0(express-session@1.18.0)(mongodb@4.17.2):
     resolution: {integrity: sha512-8new4Z7NLP3CGP65Aw6ls3xDBeKVvHRSh39CXuDZTQsvpeeU9oNMzfFgvqmHqZ6gWpxIl663RyoVEmCAGf1yOg==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -5935,7 +5942,7 @@ packages:
       debug: 4.3.4
       express-session: 1.18.0
       kruptein: 3.0.6
-      mongodb: 4.17.1
+      mongodb: 4.17.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -6245,6 +6252,16 @@ packages:
 
   /csstype@3.1.3:
     resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
+
+  /csvtojson@2.0.10:
+    resolution: {integrity: sha512-lUWFxGKyhraKCW8Qghz6Z0f2l/PqB1W3AO0HKJzGIQ5JRSlR651ekJDiGJbBT4sRNNv5ddnSGVEnsxP9XRCVpQ==}
+    engines: {node: '>=4.0.0'}
+    hasBin: true
+    dependencies:
+      bluebird: 3.7.2
+      lodash: 4.17.21
+      strip-bom: 2.0.0
+    dev: true
 
   /d@1.0.2:
     resolution: {integrity: sha512-MOqHvMWF9/9MX6nza0KgvFH4HpMU0EF5uUDXqX/BtxtU8NfB0QzRtJ8Oe/6SuS4kbhyzVJwjd97EA4PKrzJ8bw==}
@@ -6880,11 +6897,11 @@ packages:
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
-    dev: false
 
   /escalade@3.1.2:
     resolution: {integrity: sha512-ErCHMCae19vR8vQGe50xIsVomy19rg6gFu3+r3jkEO46suLMWBksvVyoGgQV+jOfl84ZSOSlmv6Gxa89PmTGmA==}
     engines: {node: '>=6'}
+    dev: true
 
   /escape-html@1.0.3:
     resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
@@ -8631,6 +8648,10 @@ packages:
       which-typed-array: 1.1.15
     dev: true
 
+  /is-utf8@0.2.1:
+    resolution: {integrity: sha512-rMYPYvCzsXywIsldgLaSoPlw5PfoB/ssr7hY4pLfcodrA5M/eArza1a9VmTiNIBNMjOGr1Ow9mTyU2o69U6U9Q==}
+    dev: true
+
   /is-weakmap@2.0.2:
     resolution: {integrity: sha512-K5pXYOm9wqY1RgjpL3YTkF39tni1XajUIkawTLUo9EZEVUFga5gSQJF8nNS7ZwJQ02y+1YCNYcMh+HIf1ZqE+w==}
     engines: {node: '>= 0.4'}
@@ -9712,6 +9733,20 @@ packages:
       - aws-crt
     dev: false
 
+  /mongodb@4.17.2:
+    resolution: {integrity: sha512-mLV7SEiov2LHleRJPMPrK2PMyhXFZt2UQLC4VD4pnth3jMjYKHhtqfwwkkvS/NXuo/Fp3vbhaNcXrIDaLRb9Tg==}
+    engines: {node: '>=12.9.0'}
+    dependencies:
+      bson: 4.7.2
+      mongodb-connection-string-url: 2.6.0
+      socks: 2.8.1
+    optionalDependencies:
+      '@aws-sdk/credential-providers': 3.533.0
+      '@mongodb-js/saslprep': 1.1.5
+    transitivePeerDependencies:
+      - aws-crt
+    dev: false
+
   /mongoose-aggregate-paginate-v2@1.0.6:
     resolution: {integrity: sha512-UuALu+mjhQa1K9lMQvjLL3vm3iALvNw8PQNIh2gp1b+tO5hUa0NC0Wf6/8QrT9PSJVTihXaD8hQVy3J4e0jO0Q==}
     engines: {node: '>=4.0.0'}
@@ -10297,7 +10332,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /payload-plugin-oauth@2.1.1(mongodb@4.17.1)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.11.2)(react@18.2.0):
+  /payload-plugin-oauth@2.1.1(mongodb@4.17.2)(node-fetch@2.7.0)(passport@0.6.0)(payload@2.11.2)(react@18.2.0):
     resolution: {integrity: sha512-SQCcjXj9geh+H1QQRVlEIuHH0FAc9N3U3y2xuw3AViPqUHB0awLSmMCDCUBhUr8csVPGg4CVyroVq4eEcRpa+w==}
     peerDependencies:
       passport: ^0.6
@@ -10305,12 +10340,12 @@ packages:
       react: ^18
     dependencies:
       '@bothrs/util': 3.1.3(node-fetch@2.7.0)
-      connect-mongo: 4.6.0(express-session@1.18.0)(mongodb@4.17.1)
+      connect-mongo: 4.6.0(express-session@1.18.0)(mongodb@4.17.2)
       debug: 4.3.4
       express-session: 1.18.0
       passport: 0.6.0
       passport-oauth2: 1.8.0
-      payload: 2.11.2(typescript@5.4.2)(webpack@5.90.3)
+      payload: 2.11.2(@types/react@18.2.65)(typescript@5.4.2)(webpack@5.90.3)
       react: 18.2.0
     transitivePeerDependencies:
       - mongodb
@@ -10318,7 +10353,7 @@ packages:
       - supports-color
     dev: false
 
-  /payload@2.11.2(typescript@5.4.2)(webpack@5.90.3):
+  /payload@2.11.2(@types/react@18.2.65)(typescript@5.4.2)(webpack@5.90.3):
     resolution: {integrity: sha512-UaruSsw7nFOzLurBjPWIHiDzGuTIGEK5UrEEfHagJnYe6xUP3/cg44qD+RQNb5D1FkV7x/B+ha8Ci7YVdz9eAA==}
     engines: {node: '>=14'}
     hasBin: true
@@ -10399,7 +10434,7 @@ packages:
       react-image-crop: 10.1.8(react@18.2.0)
       react-router-dom: 5.3.4(react@18.2.0)
       react-router-navigation-prompt: 1.9.6(react-router-dom@5.3.4)(react@18.2.0)
-      react-select: 5.7.4(react-dom@18.2.0)(react@18.2.0)
+      react-select: 5.7.4(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0)
       react-toastify: 8.2.0(react-dom@18.2.0)(react@18.2.0)
       sanitize-filename: 1.6.3
       sass: 1.69.4
@@ -10798,23 +10833,6 @@ packages:
       '@csstools/utilities': 1.0.0(postcss@8.4.31)
       postcss: 8.4.31
     dev: false
-
-  /postcss-load-config@4.0.2(postcss@8.4.33):
-    resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
-    engines: {node: '>= 14'}
-    peerDependencies:
-      postcss: '>=8.0.9'
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      postcss:
-        optional: true
-      ts-node:
-        optional: true
-    dependencies:
-      lilconfig: 3.1.1
-      postcss: 8.4.33
-      yaml: 2.4.1
-    dev: true
 
   /postcss-load-config@4.0.2(postcss@8.4.35):
     resolution: {integrity: sha512-bSVhyJGL00wMVoPUzAVAnbEoWyqRxkjv64tUl427SKnPrENtq6hJwUojroMz2VB+Q1edmi4IfrAPpami5VVgMQ==}
@@ -11292,6 +11310,7 @@ packages:
       nanoid: 3.3.7
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
 
   /postcss@8.4.35:
     resolution: {integrity: sha512-u5U8qYpBCpN13BsiEB0CbR1Hhh4Gc0zLFuedrHJKMctHCHAGrMdG0PRM/KErzAL3CU6/eckEtmHNB3x6e3c0vA==}
@@ -11791,7 +11810,7 @@ packages:
       tiny-warning: 1.0.3
     dev: false
 
-  /react-select@5.7.4(react-dom@18.2.0)(react@18.2.0):
+  /react-select@5.7.4(@types/react@18.2.65)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-NhuE56X+p9QDFh4BgeygHFIvJJszO1i1KSkg/JPcIJrbovyRtI+GuOEa4XzFCEpZRAEoEI8u/cAHK+jG/PgUzQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -11799,7 +11818,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.24.0
       '@emotion/cache': 11.11.0
-      '@emotion/react': 11.11.4(react@18.2.0)
+      '@emotion/react': 11.11.4(@types/react@18.2.65)(react@18.2.0)
       '@floating-ui/dom': 1.6.3
       '@types/react-transition-group': 4.4.10
       memoize-one: 6.0.0
@@ -11807,7 +11826,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-transition-group: 4.4.5(react-dom@18.2.0)(react@18.2.0)
-      use-isomorphic-layout-effect: 1.1.2(react@18.2.0)
+      use-isomorphic-layout-effect: 1.1.2(@types/react@18.2.65)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
     dev: false
@@ -12725,6 +12744,13 @@ packages:
     dependencies:
       ansi-regex: 6.0.1
 
+  /strip-bom@2.0.0:
+    resolution: {integrity: sha512-kwrX1y7czp1E69n2ajbG65mIo9dqvJ+8aBQXOGVxqwvNbsXdFM6Lq37dLAY3mknUwru8CfcCbfOLL/gMo+fi3g==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      is-utf8: 0.2.1
+    dev: true
+
   /strip-bom@3.0.0:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
@@ -13191,11 +13217,12 @@ packages:
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
+    requiresBuild: true
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup@8.0.2(postcss@8.4.33)(typescript@5.4.2):
+  /tsup@8.0.2(typescript@5.4.2):
     resolution: {integrity: sha512-NY8xtQXdH7hDUAZwcQdY/Vzlw9johQsaqf7iwZ6g1DOUlFYQ5/AtVAjTvihhEyeRlGo4dLRVHtrRaL35M1daqQ==}
     engines: {node: '>=18'}
     hasBin: true
@@ -13222,8 +13249,7 @@ packages:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss: 8.4.33
-      postcss-load-config: 4.0.2(postcss@8.4.33)
+      postcss-load-config: 4.0.2(postcss@8.4.35)
       resolve-from: 5.0.0
       rollup: 4.13.0
       source-map: 0.8.0-beta.0
@@ -13567,7 +13593,7 @@ packages:
       browserslist: '>= 4.21.0'
     dependencies:
       browserslist: 4.23.0
-      escalade: 3.1.2
+      escalade: 3.1.1
       picocolors: 1.0.0
 
   /uri-js@4.4.1:
@@ -13625,7 +13651,7 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-  /use-isomorphic-layout-effect@1.1.2(react@18.2.0):
+  /use-isomorphic-layout-effect@1.1.2(@types/react@18.2.65)(react@18.2.0):
     resolution: {integrity: sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==}
     peerDependencies:
       '@types/react': '*'
@@ -13634,6 +13660,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
+      '@types/react': 18.2.65
       react: 18.2.0
     dev: false
 
