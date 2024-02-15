@@ -6355,7 +6355,7 @@
 		"$date": "2024-02-03T16:12:04.152Z"
 	},
 	"updatedAt": {
-		"$date": "2024-02-03T17:45:20.996Z"
+		"$date": "2024-02-15T20:32:25.305Z"
 	},
 	"__v": 0,
 	"content": {
@@ -6387,11 +6387,13 @@
 					},
 					{
 						"format": "",
-						"type": "relationship",
-						"version": 1,
-						"relationTo": "committees",
-						"value": {
-							"id": "65bbf301c081d0fba3620f4b"
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "65ce74ca70070b9b93e19461",
+							"blockName": "",
+							"blockType": "committees-in-year",
+							"year": "2024"
 						}
 					},
 					{
@@ -6424,7 +6426,7 @@
 					},
 					{
 						"children": [],
-						"direction": null,
+						"direction": "ltr",
 						"format": "",
 						"indent": 0,
 						"type": "paragraph",
@@ -6440,7 +6442,7 @@
 					},
 					{
 						"children": [],
-						"direction": null,
+						"direction": "ltr",
 						"format": "",
 						"indent": 0,
 						"type": "paragraph",
@@ -6448,7 +6450,7 @@
 					},
 					{
 						"children": [],
-						"direction": null,
+						"direction": "ltr",
 						"format": "",
 						"indent": 0,
 						"type": "paragraph",
@@ -6486,11 +6488,13 @@
 					},
 					{
 						"format": "",
-						"type": "relationship",
-						"version": 1,
-						"relationTo": "committees",
-						"value": {
-							"id": "65bbf301c081d0fba3620f4b"
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "65ce74d670070b9b93e19462",
+							"blockName": "",
+							"blockType": "committees-in-year",
+							"year": "2024"
 						}
 					},
 					{
@@ -6523,7 +6527,7 @@
 					},
 					{
 						"children": [],
-						"direction": null,
+						"direction": "ltr",
 						"format": "",
 						"indent": 0,
 						"type": "paragraph",
@@ -6539,7 +6543,7 @@
 					},
 					{
 						"children": [],
-						"direction": null,
+						"direction": "ltr",
 						"format": "",
 						"indent": 0,
 						"type": "paragraph",
@@ -6547,7 +6551,7 @@
 					},
 					{
 						"children": [],
-						"direction": null,
+						"direction": "ltr",
 						"format": "",
 						"indent": 0,
 						"type": "paragraph",
@@ -6599,20 +6603,14 @@
 				"children": [
 					{
 						"format": "",
-						"type": "relationship",
-						"version": 1,
-						"relationTo": "committees",
-						"value": {
-							"id": "65bbf301c081d0fba3620f4b"
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "65ce724e70070b9b93e1945d",
+							"blockName": "",
+							"blockType": "committees-in-year",
+							"year": "2024"
 						}
-					},
-					{
-						"children": [],
-						"direction": null,
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
 					},
 					{
 						"children": [],
@@ -6650,20 +6648,14 @@
 				"version": 1,
 				"children": [
 					{
-						"children": [],
-						"direction": null,
 						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"format": "",
-						"type": "relationship",
-						"version": 1,
-						"relationTo": "committees",
-						"value": {
-							"id": "65bbf301c081d0fba3620f4b"
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "65ce725a70070b9b93e1945e",
+							"blockName": "",
+							"blockType": "committees-in-year",
+							"year": "2024"
 						}
 					},
 					{
@@ -6718,7 +6710,7 @@
 		"$date": "2024-02-03T17:42:53.778Z"
 	},
 	"updatedAt": {
-		"$date": "2024-02-03T17:46:18.379Z"
+		"$date": "2024-02-15T20:21:49.919Z"
 	},
 	"__v": 0
 }]

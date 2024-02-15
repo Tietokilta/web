@@ -51,7 +51,7 @@ export function getAll<
   TRequest extends Record<string, unknown>,
   TResponse extends unknown[],
 >(path: string) {
-  return fetcher<TRequest, TResponse>(
+  return fetcher<TRequest & { locale: string }, TResponse>(
     (req) => `get_${path}_${stringify(req)}`,
     async (req, draft, fetchOptions): Promise<TResponse | undefined> => {
       const result = await fetch(
