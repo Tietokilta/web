@@ -71,7 +71,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             return <br key={index} />;
           }
           case "paragraph": {
-            const allowedPTypes = ["text", "link", "linebreak"];
+            const allowedPTypes = ["text", "link", "autolink", "linebreak"];
             const hasAllowedChildren = (n: Node): boolean => {
               if (!("children" in n)) return true;
               const children = n.children as Node[];
@@ -136,33 +136,11 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             return <blockquote key={index}>{serializedChildren}</blockquote>;
           }
           case "link": {
-            const fields = node.fields as {
-              doc?: { value: { path?: string } };
-              linkType?: "custom" | "internal";
-              newTab?: boolean;
-              nofollow?: boolean;
-              rel?: string;
-              sponsored?: boolean;
-              url?: string;
-            };
-
-            if (fields.linkType === "custom") {
-              const newTabProps = fields.newTab
-                ? {
-                    target: "_blank",
-                    rel: "noopener",
-                  }
-                : {};
-
-              return (
-                <a href={fields.url} key={index} {...newTabProps}>
-                  {serializedChildren}
-                </a>
-              );
-            } else if (fields.linkType === "internal") {
+            const fields = node.fields;
+            if (fields.linkType === "internal") {
               return (
                 <Link
-                  href={fields.doc?.value.path ?? "#no-path"}
+                  href={fields.doc.value.path ?? "#no-path"}
                   key={index}
                   target={fields.newTab ? "_blank" : undefined}
                 >
@@ -170,7 +148,31 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                 </Link>
               );
             }
-            break;
+
+            const newTabProps = fields.newTab
+              ? {
+                  target: "_blank",
+                  rel: "noopener",
+                }
+              : {};
+
+            return (
+              <a href={fields.url} key={index} {...newTabProps}>
+                {serializedChildren}
+              </a>
+            );
+          }
+          case "autolink": {
+            return (
+              <a
+                href={node.fields.url}
+                key={index}
+                rel="noopener"
+                target="_blank"
+              >
+                {serializedChildren}
+              </a>
+            );
           }
           case "upload": {
             const img = (
