@@ -76,12 +76,22 @@ export type LinkNode = BaseTextNode & {
   } & (
     | {
         linkType: "internal";
-        doc: Page;
+        doc: {
+          value: Page;
+        };
       }
     | {
         linkType: "custom";
       }
   );
+};
+
+export type AutoLinkNode = BaseTextNode & {
+  type: "autolink";
+  fields: {
+    linkType: "custom";
+    url: string;
+  };
 };
 
 export type LinebreakNode = {
@@ -122,6 +132,7 @@ export type Node =
   | RelationshipNode
   | ListItemNode
   | LinkNode
+  | AutoLinkNode
   | LinebreakNode;
 
 export type RootNode = {
