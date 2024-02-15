@@ -4,15 +4,16 @@ import { EventsDisplay } from "../../components/events-display";
 import { Hero } from "../../components/hero";
 import { LexicalSerializer } from "../../components/lexical/lexical-serializer";
 import { fetchLandingPage } from "../../lib/api/landing-page";
+import type { Locale } from "../../lib/dictionaries";
 import { getDictionary } from "../../lib/dictionaries";
 import { AnnouncementCard } from "../../components/announcement-card";
 
-function Content({ content }: { content?: EditorState }) {
+function Content({ content, lang }: { content?: EditorState; lang: Locale }) {
   if (!content) return null;
 
   return (
     <article className="prose prose-headings:scroll-mt-24 max-w-prose">
-      <LexicalSerializer nodes={content.root.children} />
+      <LexicalSerializer lang={lang} nodes={content.root.children} />
     </article>
   );
 }
@@ -20,7 +21,7 @@ function Content({ content }: { content?: EditorState }) {
 export default async function Home({
   params: { lang },
 }: {
-  params: { lang: string };
+  params: { lang: Locale };
 }) {
   const dictionary = await getDictionary(lang);
 
@@ -45,7 +46,7 @@ export default async function Home({
           <h1 className="font-mono text-4xl font-bold text-gray-900">
             Tietokilta
           </h1>
-          <Content content={body} />
+          <Content content={body} lang={lang} />
         </section>
         <div className="space-y-8">
           {announcement ? (
