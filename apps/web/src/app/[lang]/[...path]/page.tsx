@@ -71,12 +71,12 @@ export const generateMetadata = async ({
   };
 };
 
-function Content({ content }: { content?: EditorState }) {
+function Content({ content, lang }: { content?: EditorState; lang: Locale }) {
   if (!content) return null;
 
   return (
     <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
-      <LexicalSerializer nodes={content.root.children} />
+      <LexicalSerializer lang={lang} nodes={content.root.children} />
     </article>
   );
 }
@@ -100,7 +100,7 @@ const Page = async ({ params: { path, lang } }: Props) => {
           <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}
           </p>
-          <Content content={content} />
+          <Content content={content} lang={lang} />
         </div>
       </main>
     </>

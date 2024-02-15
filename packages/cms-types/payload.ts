@@ -373,21 +373,6 @@ export interface Committee {
     | '1987'
     | '1986';
   name: string;
-  description: {
-    root: {
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      type: string;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
   committeeMembers: {
     committeeMember?: (string | null) | CommitteeMember;
     id?: string | null;

@@ -6,6 +6,7 @@ import { azureBlobStorageAdapter } from "@payloadcms/plugin-cloud-storage/azure"
 import {
   AlignFeature,
   BlockQuoteFeature,
+  BlocksFeature,
   BoldTextFeature,
   HeadingFeature,
   IndentFeature,
@@ -39,6 +40,7 @@ import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
 import { revalidateGlobal } from "./hooks/revalidate-globals";
 import { useCloudStorage } from "./util";
+import { CommitteesInYear } from "./blocks/committees-in-year";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -139,6 +141,9 @@ export default buildConfig({
         enabledCollections: [Pages.slug, Boards.slug, Committees.slug],
       }),
       BlockQuoteFeature(),
+      BlocksFeature({
+        blocks: [CommitteesInYear],
+      }),
       UploadFeature({
         collections: {
           media: {

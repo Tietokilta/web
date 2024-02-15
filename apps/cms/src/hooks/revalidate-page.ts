@@ -12,8 +12,12 @@ export function revalidatePage<T extends TypeWithID>(
   getFetchData: (doc: T, req: PayloadRequest) => Promise<unknown>,
 ): AfterChangeHook<T> {
   return ({ doc, req, operation }): T => {
+    const isPage = collectionSlug === "pages";
     const isPublished = "_status" in doc && doc._status === "published";
-    if (operation !== "update" || !isPublished) {
+    if (isPage && (operation !== "update" || !isPublished)) {
+      req.payload.logger.info(
+        `Not revalidating collection page because it's not published or not an update`,
+      );
       return doc;
     }
 

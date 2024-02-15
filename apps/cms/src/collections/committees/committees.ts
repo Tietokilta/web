@@ -2,6 +2,8 @@ import type { Committee } from "@tietokilta/cms-types/payload";
 import type { CollectionConfig, FilterOptions } from "payload/types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
+import { revalidatePage } from "../../hooks/revalidate-page";
+import { getLocale } from "../../util";
 
 const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({
   guildYear: {
@@ -34,12 +36,6 @@ export const Committees: CollectionConfig = {
       localized: true,
     },
     {
-      name: "description",
-      type: "richText",
-      localized: true,
-      required: true,
-    },
-    {
       name: "committeeMembers",
       type: "array",
       required: true,
@@ -54,4 +50,24 @@ export const Committees: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [
+      // eslint-disable-next-line @typescript-eslint/require-await -- revalidate page wants promise
+      revalidatePage<Committee>("committees", async (doc, req) => {
+        const locale = getLocale(req);
+        if (!locale) {
+          req.payload.logger.error(
+            "locale not set, cannot revalidate properly",
+          );
+          return;
+        }
+        return {
+          where: {
+            year: { equals: doc.year },
+          },
+          locale,
+        };
+      }),
+    ],
+  },
 };
