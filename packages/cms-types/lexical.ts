@@ -122,6 +122,25 @@ export type RelationshipNode =
   | BoardRelationshipNode
   | CommitteeRelationshipNode;
 
+export type BaseBlockFields = {
+  id: string;
+  blockName: string;
+};
+
+export type BaseBlockNode = {
+  format: Page["content"]["root"]["format"];
+  type: "block";
+};
+
+export type CommitteesYearBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "committees-in-year";
+    year: string;
+  };
+};
+
+export type BlockNode = CommitteesYearBlockNode;
+
 export type Node =
   | TextNode
   | ParagraphNode
@@ -133,7 +152,8 @@ export type Node =
   | ListItemNode
   | LinkNode
   | AutoLinkNode
-  | LinebreakNode;
+  | LinebreakNode
+  | BlockNode;
 
 export type RootNode = {
   type: "root";

@@ -3215,7 +3215,6 @@ type Committee {
   id: String
   year: Committee_year!
   name: String
-  description(depth: Int): JSON
   committeeMembers: [Committee_CommitteeMembers!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -3285,7 +3284,6 @@ type Committees {
 input Committee_where {
   year: Committee_year_operator
   name: Committee_name_operator
-  description: Committee_description_operator
   committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
   committeeMembers__id: Committee_committeeMembers__id_operator
   updatedAt: Committee_updatedAt_operator
@@ -3355,13 +3353,6 @@ input Committee_name_operator {
   all: [String]
 }
 
-input Committee_description_operator {
-  equals: JSON
-  not_equals: JSON
-  like: JSON
-  contains: JSON
-}
-
 input Committee_committeeMembers__committeeMember_operator {
   equals: JSON
   not_equals: JSON
@@ -3418,7 +3409,6 @@ input Committee_id_operator {
 input Committee_where_and {
   year: Committee_year_operator
   name: Committee_name_operator
-  description: Committee_description_operator
   committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
   committeeMembers__id: Committee_committeeMembers__id_operator
   updatedAt: Committee_updatedAt_operator
@@ -3431,7 +3421,6 @@ input Committee_where_and {
 input Committee_where_or {
   year: Committee_year_operator
   name: Committee_name_operator
-  description: Committee_description_operator
   committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
   committeeMembers__id: Committee_committeeMembers__id_operator
   updatedAt: Committee_updatedAt_operator
@@ -3452,7 +3441,6 @@ type committeesDocAccess {
 type CommitteesDocAccessFields {
   year: CommitteesDocAccessFields_year
   name: CommitteesDocAccessFields_name
-  description: CommitteesDocAccessFields_description
   committeeMembers: CommitteesDocAccessFields_committeeMembers
   updatedAt: CommitteesDocAccessFields_updatedAt
   createdAt: CommitteesDocAccessFields_createdAt
@@ -3501,29 +3489,6 @@ type CommitteesDocAccessFields_name_Update {
 }
 
 type CommitteesDocAccessFields_name_Delete {
-  permission: Boolean!
-}
-
-type CommitteesDocAccessFields_description {
-  create: CommitteesDocAccessFields_description_Create
-  read: CommitteesDocAccessFields_description_Read
-  update: CommitteesDocAccessFields_description_Update
-  delete: CommitteesDocAccessFields_description_Delete
-}
-
-type CommitteesDocAccessFields_description_Create {
-  permission: Boolean!
-}
-
-type CommitteesDocAccessFields_description_Read {
-  permission: Boolean!
-}
-
-type CommitteesDocAccessFields_description_Update {
-  permission: Boolean!
-}
-
-type CommitteesDocAccessFields_description_Delete {
   permission: Boolean!
 }
 
@@ -6970,7 +6935,6 @@ type committeesAccess {
 type CommitteesFields {
   year: CommitteesFields_year
   name: CommitteesFields_name
-  description: CommitteesFields_description
   committeeMembers: CommitteesFields_committeeMembers
   updatedAt: CommitteesFields_updatedAt
   createdAt: CommitteesFields_createdAt
@@ -7019,29 +6983,6 @@ type CommitteesFields_name_Update {
 }
 
 type CommitteesFields_name_Delete {
-  permission: Boolean!
-}
-
-type CommitteesFields_description {
-  create: CommitteesFields_description_Create
-  read: CommitteesFields_description_Read
-  update: CommitteesFields_description_Update
-  delete: CommitteesFields_description_Delete
-}
-
-type CommitteesFields_description_Create {
-  permission: Boolean!
-}
-
-type CommitteesFields_description_Read {
-  permission: Boolean!
-}
-
-type CommitteesFields_description_Update {
-  permission: Boolean!
-}
-
-type CommitteesFields_description_Delete {
   permission: Boolean!
 }
 
@@ -8956,7 +8897,6 @@ enum CommitteeMemberUpdate_guildYear_MutationInput {
 input mutationCommitteeInput {
   year: Committee_year_MutationInput!
   name: String
-  description: JSON
   committeeMembers: [mutationCommittee_CommitteeMembersInput!]
   updatedAt: String
   createdAt: String
@@ -9012,7 +8952,6 @@ input mutationCommittee_CommitteeMembersInput {
 input mutationCommitteeUpdateInput {
   year: CommitteeUpdate_year_MutationInput
   name: String
-  description: JSON
   committeeMembers: [mutationCommitteeUpdate_CommitteeMembersInput]
   updatedAt: String
   createdAt: String

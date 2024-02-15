@@ -1,12 +1,18 @@
 /* eslint-disable react/no-array-index-key -- okay here */
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise */
-import type { Node, RelationshipNode } from "@tietokilta/cms-types/lexical";
+import type {
+  BlockNode,
+  Node,
+  RelationshipNode,
+} from "@tietokilta/cms-types/lexical";
 import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
+import { CommitteeList } from "../committee-list";
+import type { Locale } from "../../lib/dictionaries";
 import {
   IS_BOLD,
   IS_CODE,
@@ -17,7 +23,13 @@ import {
   IS_UNDERLINE,
 } from "./rich-text-node-format";
 
-export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
+export function LexicalSerializer({
+  nodes,
+  lang,
+}: {
+  nodes: Node[];
+  lang: Locale;
+}): JSX.Element {
   return (
     <>
       {nodes.map((node, index): JSX.Element | null => {
@@ -63,7 +75,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
 
         const serializedChildren =
           "children" in node && node.children ? (
-            <LexicalSerializer nodes={node.children} />
+            <LexicalSerializer lang={lang} nodes={node.children} />
           ) : null;
 
         switch (node.type) {
@@ -199,13 +211,14 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
           case "relationship": {
             return <Relationship key={index} node={node} />;
           }
+          case "block": {
+            return <Block key={index} lang={lang} node={node} />;
+          }
           default:
             // eslint-disable-next-line no-console -- Nice to know if something is missing
             console.warn("Unknown node:", node);
             return null;
         }
-
-        return null;
       })}
     </>
   );
@@ -213,7 +226,6 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
 
 function Relationship({ node }: { node: RelationshipNode }) {
   switch (node.relationTo) {
-    // TODO: Implement these
     case "pages": {
       return (
         <Link
@@ -241,6 +253,19 @@ function Relationship({ node }: { node: RelationshipNode }) {
       // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
       // eslint-disable-next-line no-console -- Nice to know if something is missing
       console.warn("Unknown relationTo:", node.relationTo);
+      return null;
+    }
+  }
+}
+
+function Block({ node, lang }: { node: BlockNode; lang: Locale }) {
+  switch (node.fields.blockType) {
+    case "committees-in-year": {
+      return <CommitteeList lang={lang} year={node.fields.year} />;
+    }
+    default: {
+      // eslint-disable-next-line no-console -- Nice to know if something is missing
+      console.warn("Unknown blockType:", node.fields.blockType);
       return null;
     }
   }
