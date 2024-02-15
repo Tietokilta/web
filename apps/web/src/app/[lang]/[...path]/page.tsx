@@ -75,7 +75,7 @@ function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose">
+    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <LexicalSerializer nodes={content.root.children} />
     </article>
   );
@@ -93,7 +93,7 @@ const Page = async ({ params: { path, lang } }: Props) => {
           <h1 className="font-mono text-4xl md:text-5xl">{page.title}</h1>
         </header>
 
-        <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
+        <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
           {!page.hideTableOfContents ? (
             <TableOfContents content={content} />
           ) : null}
