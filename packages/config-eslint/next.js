@@ -39,5 +39,6 @@ module.exports = {
   rules: {
     "import/no-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "no-implicit-coercion": ["error", { allow: ["!!"] }],
   },
 };

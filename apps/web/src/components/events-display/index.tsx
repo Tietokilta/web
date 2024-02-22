@@ -3,7 +3,12 @@ import Link from "next/link";
 import { Suspense } from "react";
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../../lib/api/external/ilmomasiina";
-import { getCurrentLocale, getScopedI18n } from "../../locales/server";
+import {
+  getCurrentLocale,
+  getScopedI18n,
+  type Locale,
+} from "../../locales/server";
+import { formatDatetime } from "../../lib/utils";
 
 function EventListSkeleton() {
   return (
@@ -22,22 +27,12 @@ const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
 async function EventItem({ event }: { event: IlmomasiinaEvent }) {
   const locale = getCurrentLocale();
   const t = await getScopedI18n("action");
-  const date = new Date(event.date);
 
-  // get date in format "su 12.2. klo 18"
-  const formattedDate = new Intl.DateTimeFormat(`${locale}-FI`, {
-    weekday: "short",
-    day: "numeric",
-    month: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  }).format(date);
-
-  const eventUrl = `${baseUrl}/events/${event.slug}`;
+  const eventUrl = `/${locale}/events/${event.slug}`;
 
   return (
     <li className="shadow-solid flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
-      <div className="flex-grow-[2/3]">
+      <div className="flex-1">
         <span className="block text-pretty text-lg font-bold">
           {event.title}
         </span>
@@ -45,11 +40,17 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           <Link href={eventUrl}>{t("Sign up")}</Link>
         </Button>
       </div>
-      <div className="shrink-0 flex-grow-[1/3] truncate font-medium">
-        <span className="block truncate" title={formattedDate}>
-          <ClockIcon className="mr-1 inline-block h-4 w-4" />
-          {formattedDate}
-        </span>
+      <div className="shrink-0 truncate font-medium">
+        {event.date ? (
+          <time
+            className="block truncate"
+            dateTime={event.date}
+            title={formatDatetime(event.date, locale)}
+          >
+            <ClockIcon className="mr-1 inline-block h-4 w-4" />
+            {formatDatetime(event.date, locale)}
+          </time>
+        ) : null}
         {event.location ? (
           <span className="block truncate" title={event.location}>
             <MapPinIcon className="mr-1 inline-block h-4 w-4" />
@@ -82,12 +83,19 @@ async function EventList() {
 }
 
 export async function EventsDisplay() {
+  const locale = getCurrentLocale();
   const t = await getScopedI18n("headings");
   return (
     <section className="space-y-4">
-      <h3 className="font-mono text-2xl font-bold text-gray-900">
-        {t("Upcoming events")}
-      </h3>
+      <Link
+        className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
+        href={`/${locale}/events`}
+      >
+        <h3 className="font-mono text-2xl font-bold text-gray-900">
+          {t("Upcoming events")}
+        </h3>
+      </Link>
+
       <Suspense fallback={<EventListSkeleton />}>
         <EventList />
       </Suspense>
