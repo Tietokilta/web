@@ -50,7 +50,7 @@ function EventItem({
           <Link href={eventUrl}>{ilmolinkText}</Link>
         </Button>
       </div>
-      <div className="flex-grow-[1/3] truncate font-medium">
+      <div className="shrink-0 flex-grow-[1/3] truncate font-medium">
         <span className="block truncate" title={formattedDate}>
           <ClockIcon className="mr-1 inline-block h-4 w-4" />
           {formattedDate}
