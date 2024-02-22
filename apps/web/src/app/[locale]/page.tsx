@@ -17,7 +17,11 @@ function Content({ content }: { content?: EditorState }) {
   );
 }
 
-export default async function Home() {
+export default async function Home({
+  searchParams: { page },
+}: {
+  searchParams: { page?: string | string[] };
+}) {
   const locale = getCurrentLocale();
 
   const landingPageData = await fetchLandingPage(locale)({});
@@ -27,6 +31,7 @@ export default async function Home() {
 
   const body = landingPageData.body as unknown as EditorState | undefined;
   const announcement = landingPageData.announcement as News | undefined;
+  const pageInt = parseInt(String(page), 10);
 
   return (
     <main className="flex min-h-screen flex-col">
@@ -45,7 +50,7 @@ export default async function Home() {
         </section>
         <div className="space-y-8">
           {announcement ? <AnnouncementCard news={announcement} /> : null}
-          <EventsDisplay />
+          <EventsDisplay currentPage={!isNaN(pageInt) ? pageInt : undefined} />
         </div>
       </div>
     </main>
