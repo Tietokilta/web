@@ -34,7 +34,7 @@ export function Hero({ images, text }: { images: string[]; text: string }) {
           src={image}
         />
       ))}
-      <div className="container z-20 mx-auto px-6 font-mono text-6xl text-gray-100">
+      <div className="container z-20 mx-auto px-6 font-mono text-4xl text-gray-100 md:text-6xl">
         <p className="w-1/2">{text}</p>
       </div>
     </section>
