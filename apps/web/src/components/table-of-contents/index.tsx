@@ -46,8 +46,8 @@ function HeadingList({
         <li
           className={cn(
             "before:me-[2ch] before:text-gray-600",
-            item.level === 2 && "mb-2 text-lg before:content-['#'] last:mb-0",
-            item.level === 3 && "mb-1 before:content-['##'] last:mb-0",
+            item.level === 2 && "mb-2 text-base before:content-['#'] last:mb-0",
+            item.level === 3 && "mb-1 text-sm before:content-['##'] last:mb-0",
           )}
           key={`${item.level}-${item.text}`}
         >
@@ -84,7 +84,7 @@ function Desktop({
         className,
       )}
     >
-      <nav className="shadow-solid sticky top-32 w-72 rounded-md border-2 border-gray-900 p-6">
+      <nav className="scroll-shadows shadow-solid sticky top-32 max-h-[70dvh] w-64 overflow-y-scroll rounded-md border-2 border-gray-900 p-6 2xl:w-72">
         <HeadingList activeHeadingId={activeHeadingId} toc={toc} />
       </nav>
     </div>
