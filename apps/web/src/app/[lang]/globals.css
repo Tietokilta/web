@@ -1,3 +1,53 @@
 @tailwind base;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    scrollbar-color: theme("colors.gray.900") theme("colors.gray.100");
+    scrollbar-gutter: stable;
+  }
+}
+
 @tailwind components;
+
+@layer components {
+  .scroll-shadows {
+    background:
+    /* Shadow Cover TOP */
+      linear-gradient(
+          theme("colors.gray.100") 30%,
+          theme("colors.gray.100 / 0%")
+        )
+        center top,
+      /* Shadow Cover BOTTOM */
+        linear-gradient(
+          theme("colors.gray.100 / 0%"),
+          theme("colors.gray.100") 70%
+        )
+        center bottom,
+      /* Shadow TOP */
+        radial-gradient(
+          farthest-side at 50% 0,
+          theme("colors.gray.900 / 30%"),
+          theme("colors.gray.900 / 0%")
+        )
+        center top,
+      /* Shadow BOTTOM */
+        radial-gradient(
+          farthest-side at 50% 100%,
+          theme("colors.gray.900 / 30%"),
+          theme("colors.gray.900 / 0%")
+        )
+        center bottom;
+
+    background-repeat: no-repeat;
+    background-size:
+      100% theme(space.12),
+      100% theme(space.12),
+      100% theme(space.4),
+      100% theme(space.4);
+    background-attachment: local, local, scroll, scroll;
+  }
+}
 @tailwind utilities;
