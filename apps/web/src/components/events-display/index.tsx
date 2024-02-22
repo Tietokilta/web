@@ -1,13 +1,20 @@
 import { Button, ClockIcon, MapPinIcon } from "@tietokilta/ui";
 import Link from "next/link";
 import { Suspense } from "react";
+import _ from "lodash";
+import { notFound } from "next/navigation";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "../pagination";
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../../lib/api/external/ilmomasiina";
-import {
-  getCurrentLocale,
-  getScopedI18n,
-  type Locale,
-} from "../../locales/server";
+import { getCurrentLocale, getScopedI18n } from "../../locales/server";
 import { formatDatetime } from "../../lib/utils";
 
 function EventListSkeleton() {
@@ -65,7 +72,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-async function EventList() {
+async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const events = await fetchEvents();
 
   if (!events.ok) {
@@ -73,16 +80,53 @@ async function EventList() {
     return null;
   }
 
+  const eventsList = events.data;
+  const paginatedEvents = _.chunk(eventsList, 5);
+  const pageCount = paginatedEvents.length;
+
+  if (currentPage < 1 || currentPage > pageCount) {
+    console.warn(`Invalid page number: ${currentPage.toFixed()}`);
+    return notFound();
+  }
+
   return (
-    <ul className="space-y-4">
-      {events.data.map((event) => (
-        <EventItem event={event} key={event.id} />
-      ))}
-    </ul>
+    <>
+      <ul className="space-y-4">
+        {paginatedEvents[currentPage - 1].map((event) => (
+          <EventItem event={event} key={event.id} />
+        ))}
+      </ul>
+      <Pagination>
+        <PaginationContent>
+          {currentPage > 1 ? (
+            <PaginationItem>
+              <PaginationPrevious
+                href={`/?page=${(currentPage - 1).toFixed()}`}
+              />
+            </PaginationItem>
+          ) : null}
+          {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
+            <PaginationItem key={page}>
+              <PaginationLink
+                isActive={page === currentPage}
+                href={`/?page=${page.toFixed()}`}
+              >
+                {page}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+          {currentPage < pageCount ? (
+            <PaginationItem>
+              <PaginationNext href={`/?page=${(currentPage + 1).toFixed()}`} />
+            </PaginationItem>
+          ) : null}
+        </PaginationContent>
+      </Pagination>
+    </>
   );
 }
 
-export async function EventsDisplay() {
+export async function EventsDisplay({ currentPage }: { currentPage?: number }) {
   const locale = getCurrentLocale();
   const t = await getScopedI18n("headings");
   return (
@@ -97,7 +141,7 @@ export async function EventsDisplay() {
       </Link>
 
       <Suspense fallback={<EventListSkeleton />}>
-        <EventList />
+        <EventList currentPage={currentPage} />
       </Suspense>
     </section>
   );
