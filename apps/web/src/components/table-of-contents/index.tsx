@@ -4,7 +4,12 @@ import type { EditorState } from "@tietokilta/cms-types/lexical";
 import { ChevronDownIcon } from "@tietokilta/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
-import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
+import {
+  cn,
+  insertSoftHyphens,
+  lexicalNodeToTextContent,
+  stringToId,
+} from "../../lib/utils";
 
 interface TocItem {
   text: string;
@@ -60,7 +65,7 @@ function HeadingList({
             href={`#${stringToId(item.text)}`}
             onClick={() => onHeadingClick?.(item)}
           >
-            {item.text}
+            {insertSoftHyphens(item.text)}
           </Link>
         </li>
       ))}

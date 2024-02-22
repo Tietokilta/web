@@ -2,7 +2,7 @@ import type { Board, BoardMember, Media } from "@tietokilta/cms-types/payload";
 import { GmailIcon, TelegramIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import TikLogo from "../../assets/TiK-logo.png";
-import { cn } from "../../lib/utils";
+import { cn, insertSoftHyphens } from "../../lib/utils";
 
 function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
   const photo = boardMember.photo as Media | undefined;
@@ -36,7 +36,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
           >
             <GmailIcon className="h-6 w-6 shrink-0" />
             <span className="underline">
-              {boardMember.email.replace("@", "\u200b@")}
+              {insertSoftHyphens(boardMember.email)}
             </span>
           </a>
           <a
