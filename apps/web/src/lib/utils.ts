@@ -32,3 +32,14 @@ export const lexicalNodeToTextContent = (node: Node): string => {
 
 export const stringToId = (string: string): string =>
   string.toLocaleLowerCase().replace(/\s/g, "-");
+
+/**
+ * Insert soft hyphens or breaks where lacking in the Finnish dictionary.
+ *
+ * **Finnish dictionary not supported in Chromium browsers.**
+ */
+export const insertSoftHyphens = (text: string): string => {
+  return text
+    .replaceAll(/(?<word>@)/g, "\u200b$<word>")
+    .replaceAll(/(?<word>toimikunta)/g, "\u00ad$<word>");
+};
