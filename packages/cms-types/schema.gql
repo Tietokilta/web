@@ -6356,20 +6356,22 @@ type LinkRowBlockLink {
 }
 
 enum LinkRowBlockLink_icon {
-  AlertTriangle
   AlertOctagon
+  AlertTriangle
   AtSign
   Banknote
   BookMarked
   BriefcaseBusiness
   ChevronDown
-  ChevronUp
+  Chevronleft
+  ChevronRight
   ChevronsUpDown
+  ChevronUp
   Circle
   Clock
   ExternalLink
-  File
   Facebook
+  File
   Github
   Gmail
   HelpCircle
@@ -6381,6 +6383,7 @@ enum LinkRowBlockLink_icon {
   MapPin
   Megaphone
   Menu
+  MoreHorizontal
   Telegram
   TikLogo
   Tiktok
@@ -6772,20 +6775,22 @@ type MainNavigationTopicConfig_Categories_ExternalLinks {
 }
 
 enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
-  AlertTriangle
   AlertOctagon
+  AlertTriangle
   AtSign
   Banknote
   BookMarked
   BriefcaseBusiness
   ChevronDown
-  ChevronUp
+  Chevronleft
+  ChevronRight
   ChevronsUpDown
+  ChevronUp
   Circle
   Clock
   ExternalLink
-  File
   Facebook
+  File
   Github
   Gmail
   HelpCircle
@@ -6797,6 +6802,7 @@ enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
   MapPin
   Megaphone
   Menu
+  MoreHorizontal
   Telegram
   TikLogo
   Tiktok
@@ -12407,20 +12413,22 @@ input mutationMainNavigation_Items_TopicConfig_Categories_ExternalLinksInput {
 }
 
 enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInput {
-  AlertTriangle
   AlertOctagon
+  AlertTriangle
   AtSign
   Banknote
   BookMarked
   BriefcaseBusiness
   ChevronDown
-  ChevronUp
+  Chevronleft
+  ChevronRight
   ChevronsUpDown
+  ChevronUp
   Circle
   Clock
   ExternalLink
-  File
   Facebook
+  File
   Github
   Gmail
   HelpCircle
@@ -12432,6 +12440,7 @@ enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInpu
   MapPin
   Megaphone
   Menu
+  MoreHorizontal
   Telegram
   TikLogo
   Tiktok
