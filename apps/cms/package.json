@@ -11,7 +11,7 @@
     "clean": "rm -rf dist",
     "codegen": "pnpm generate:types & pnpm generate:graphQLSchema",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
-    "dev": "nodemon",
+    "dev": "tsx watch src/server.ts",
     "generate:graphQLSchema": "PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:graphQLSchema",
     "generate:types": "PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
     "lint": "eslint  \"./src/**/*.{js,ts}\"",
@@ -40,8 +40,7 @@
     "@types/passport-oauth2": "^1.4.15",
     "copyfiles": "^2.4.1",
     "eslint": "^8.56.0",
-    "nodemon": "^3.1.0",
-    "ts-node": "^10.9.2",
+    "tsx": "^4.7.1",
     "typescript": "^5.3.3"
   }
 }
