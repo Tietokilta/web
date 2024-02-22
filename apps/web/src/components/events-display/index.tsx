@@ -55,10 +55,12 @@ function EventItem({
           <ClockIcon className="mr-1 inline-block h-4 w-4" />
           {formattedDate}
         </span>
-        <span className="block truncate" title={event.location}>
-          <MapPinIcon className="mr-1 inline-block h-4 w-4" />
-          {event.location}
-        </span>
+        {event.location ? (
+          <span className="block truncate" title={event.location}>
+            <MapPinIcon className="mr-1 inline-block h-4 w-4" />
+            {event.location}
+          </span>
+        ) : null}
       </div>
       <Button asChild className="md:hidden" variant="link">
         <Link href={eventUrl}>{ilmolinkText}</Link>
