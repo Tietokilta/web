@@ -89,7 +89,7 @@ function Desktop({
         className,
       )}
     >
-      <nav className="scroll-shadows shadow-solid sticky top-32 max-h-[70dvh] w-64 overflow-y-scroll rounded-md border-2 border-gray-900 p-6 2xl:w-72">
+      <nav className="scroll-shadows shadow-solid sticky top-32 max-h-[70dvh] w-64 overflow-y-auto rounded-md border-2 border-gray-900 p-6 2xl:w-72">
         <HeadingList activeHeadingId={activeHeadingId} toc={toc} />
       </nav>
     </div>
