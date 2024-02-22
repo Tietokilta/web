@@ -65,9 +65,7 @@ module.exports = {
             },
             "a:not([data-relation])": {
               textDecoration: "none",
-              "& span": {
-                boxShadow: `inset 0 -0.2em 0 0.0 ${theme("colors.gray[600]")}`,
-              },
+              boxShadow: `inset 0 -0.2em 0 0.0 ${theme("colors.gray[600]")}`,
               "&[target='_blank']": {
                 "&::after": {
                   content: "''",
