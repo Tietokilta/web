@@ -1,9 +1,25 @@
 /* eslint-disable no-alert -- TODO: Implement proper alerting system */
 import * as React from "react";
-import { importCommittees } from "../util/import";
 
 export const ActionsView = (): React.JSX.Element => {
   const [success, setSuccess] = React.useState<boolean>(false);
+
+  const importCommittees = async (
+    csv: string,
+    year: number,
+  ): Promise<boolean> => {
+    const response = await fetch("/api/committees/import", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ csv, year }),
+    });
+
+    console.log(response);
+
+    return response.ok;
+  };
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
