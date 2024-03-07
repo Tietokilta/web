@@ -4,6 +4,7 @@ import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidatePage } from "../../hooks/revalidate-page";
 import { getLocale } from "../../util";
+import { importController } from "../../controllers/import-controller";
 
 const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({
   guildYear: {
@@ -70,4 +71,11 @@ export const Committees: CollectionConfig = {
       }),
     ],
   },
+  endpoints: [
+    {
+      path: "/import",
+      method: "post",
+      handler: importController,
+    },
+  ],
 };
