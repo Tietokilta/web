@@ -10,3 +10,5 @@ const dictionaries = {
 
 export const getDictionary = (locale: string) =>
   locale in dictionaries ? dictionaries[locale as Locale]() : dictionaries.fi();
+
+export const locales = ["fi", "en"] as const satisfies Locale[];
