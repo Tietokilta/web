@@ -30,6 +30,12 @@ type Query {
   News(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): News
   allNews(draft: Boolean, where: News_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allNews
   docAccessNews(id: String!): newsDocAccess
+  WeeklyNewsletter(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletter
+  WeeklyNewsletters(draft: Boolean, where: WeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): WeeklyNewsletters
+  docAccessWeeklyNewsletter(id: String!): weekly_newslettersDocAccess
+  NewsItem(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): NewsItem
+  NewsItems(draft: Boolean, where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
+  docAccessNewsItem(id: String!): news_itemsDocAccess
   PayloadPreference(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(draft: Boolean, where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
@@ -4103,6 +4109,777 @@ type NewsDeleteDocAccess {
   where: JSONObject
 }
 
+type WeeklyNewsletter {
+  id: String
+  title: String
+  greetings(depth: Int): JSON
+  newsItems: [WeeklyNewsletter_NewsItems!]
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type WeeklyNewsletter_NewsItems {
+  newsItem(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): NewsItem
+  id: String
+}
+
+type NewsItem {
+  id: String
+  displayTitle: String
+  title: String
+  newsItemCategory: NewsItem_newsItemCategory
+  date: DateTime
+  signupStartDate: DateTime
+  signupEndDate: DateTime
+  content(depth: Int): JSON
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum NewsItem_newsItemCategory {
+  guild
+  ayy_aalto
+  other
+  bottom_corner
+}
+
+type WeeklyNewsletters {
+  docs: [WeeklyNewsletter]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input WeeklyNewsletter_where {
+  title: WeeklyNewsletter_title_operator
+  greetings: WeeklyNewsletter_greetings_operator
+  newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
+  newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  updatedAt: WeeklyNewsletter_updatedAt_operator
+  createdAt: WeeklyNewsletter_createdAt_operator
+  id: WeeklyNewsletter_id_operator
+  AND: [WeeklyNewsletter_where_and]
+  OR: [WeeklyNewsletter_where_or]
+}
+
+input WeeklyNewsletter_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input WeeklyNewsletter_greetings_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+}
+
+input WeeklyNewsletter_newsItems__newsItem_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input WeeklyNewsletter_newsItems__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input WeeklyNewsletter_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input WeeklyNewsletter_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input WeeklyNewsletter_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input WeeklyNewsletter_where_and {
+  title: WeeklyNewsletter_title_operator
+  greetings: WeeklyNewsletter_greetings_operator
+  newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
+  newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  updatedAt: WeeklyNewsletter_updatedAt_operator
+  createdAt: WeeklyNewsletter_createdAt_operator
+  id: WeeklyNewsletter_id_operator
+  AND: [WeeklyNewsletter_where_and]
+  OR: [WeeklyNewsletter_where_or]
+}
+
+input WeeklyNewsletter_where_or {
+  title: WeeklyNewsletter_title_operator
+  greetings: WeeklyNewsletter_greetings_operator
+  newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
+  newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  updatedAt: WeeklyNewsletter_updatedAt_operator
+  createdAt: WeeklyNewsletter_createdAt_operator
+  id: WeeklyNewsletter_id_operator
+  AND: [WeeklyNewsletter_where_and]
+  OR: [WeeklyNewsletter_where_or]
+}
+
+type weekly_newslettersDocAccess {
+  fields: WeeklyNewslettersDocAccessFields
+  create: WeeklyNewslettersCreateDocAccess
+  read: WeeklyNewslettersReadDocAccess
+  update: WeeklyNewslettersUpdateDocAccess
+  delete: WeeklyNewslettersDeleteDocAccess
+}
+
+type WeeklyNewslettersDocAccessFields {
+  title: WeeklyNewslettersDocAccessFields_title
+  greetings: WeeklyNewslettersDocAccessFields_greetings
+  newsItems: WeeklyNewslettersDocAccessFields_newsItems
+  updatedAt: WeeklyNewslettersDocAccessFields_updatedAt
+  createdAt: WeeklyNewslettersDocAccessFields_createdAt
+}
+
+type WeeklyNewslettersDocAccessFields_title {
+  create: WeeklyNewslettersDocAccessFields_title_Create
+  read: WeeklyNewslettersDocAccessFields_title_Read
+  update: WeeklyNewslettersDocAccessFields_title_Update
+  delete: WeeklyNewslettersDocAccessFields_title_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_greetings {
+  create: WeeklyNewslettersDocAccessFields_greetings_Create
+  read: WeeklyNewslettersDocAccessFields_greetings_Read
+  update: WeeklyNewslettersDocAccessFields_greetings_Update
+  delete: WeeklyNewslettersDocAccessFields_greetings_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_greetings_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_greetings_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_greetings_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_greetings_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems {
+  create: WeeklyNewslettersDocAccessFields_newsItems_Create
+  read: WeeklyNewslettersDocAccessFields_newsItems_Read
+  update: WeeklyNewslettersDocAccessFields_newsItems_Update
+  delete: WeeklyNewslettersDocAccessFields_newsItems_Delete
+  fields: WeeklyNewslettersDocAccessFields_newsItems_Fields
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_Fields {
+  newsItem: WeeklyNewslettersDocAccessFields_newsItems_newsItem
+  id: WeeklyNewslettersDocAccessFields_newsItems_id
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_newsItem {
+  create: WeeklyNewslettersDocAccessFields_newsItems_newsItem_Create
+  read: WeeklyNewslettersDocAccessFields_newsItems_newsItem_Read
+  update: WeeklyNewslettersDocAccessFields_newsItems_newsItem_Update
+  delete: WeeklyNewslettersDocAccessFields_newsItems_newsItem_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_newsItem_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_newsItem_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_newsItem_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_newsItem_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_id {
+  create: WeeklyNewslettersDocAccessFields_newsItems_id_Create
+  read: WeeklyNewslettersDocAccessFields_newsItems_id_Read
+  update: WeeklyNewslettersDocAccessFields_newsItems_id_Update
+  delete: WeeklyNewslettersDocAccessFields_newsItems_id_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_id_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_id_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_id_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_newsItems_id_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_updatedAt {
+  create: WeeklyNewslettersDocAccessFields_updatedAt_Create
+  read: WeeklyNewslettersDocAccessFields_updatedAt_Read
+  update: WeeklyNewslettersDocAccessFields_updatedAt_Update
+  delete: WeeklyNewslettersDocAccessFields_updatedAt_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_createdAt {
+  create: WeeklyNewslettersDocAccessFields_createdAt_Create
+  read: WeeklyNewslettersDocAccessFields_createdAt_Read
+  update: WeeklyNewslettersDocAccessFields_createdAt_Update
+  delete: WeeklyNewslettersDocAccessFields_createdAt_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type WeeklyNewslettersReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type WeeklyNewslettersUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type WeeklyNewslettersDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsItems {
+  docs: [NewsItem]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input NewsItem_where {
+  displayTitle: NewsItem_displayTitle_operator
+  title: NewsItem_title_operator
+  newsItemCategory: NewsItem_newsItemCategory_operator
+  date: NewsItem_date_operator
+  signupStartDate: NewsItem_signupStartDate_operator
+  signupEndDate: NewsItem_signupEndDate_operator
+  content: NewsItem_content_operator
+  updatedAt: NewsItem_updatedAt_operator
+  createdAt: NewsItem_createdAt_operator
+  id: NewsItem_id_operator
+  AND: [NewsItem_where_and]
+  OR: [NewsItem_where_or]
+}
+
+input NewsItem_displayTitle_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input NewsItem_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input NewsItem_newsItemCategory_operator {
+  equals: NewsItem_newsItemCategory_Input
+  not_equals: NewsItem_newsItemCategory_Input
+  in: [NewsItem_newsItemCategory_Input]
+  not_in: [NewsItem_newsItemCategory_Input]
+  all: [NewsItem_newsItemCategory_Input]
+}
+
+enum NewsItem_newsItemCategory_Input {
+  guild
+  ayy_aalto
+  other
+  bottom_corner
+}
+
+input NewsItem_date_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input NewsItem_signupStartDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input NewsItem_signupEndDate_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input NewsItem_content_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+}
+
+input NewsItem_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input NewsItem_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input NewsItem_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input NewsItem_where_and {
+  displayTitle: NewsItem_displayTitle_operator
+  title: NewsItem_title_operator
+  newsItemCategory: NewsItem_newsItemCategory_operator
+  date: NewsItem_date_operator
+  signupStartDate: NewsItem_signupStartDate_operator
+  signupEndDate: NewsItem_signupEndDate_operator
+  content: NewsItem_content_operator
+  updatedAt: NewsItem_updatedAt_operator
+  createdAt: NewsItem_createdAt_operator
+  id: NewsItem_id_operator
+  AND: [NewsItem_where_and]
+  OR: [NewsItem_where_or]
+}
+
+input NewsItem_where_or {
+  displayTitle: NewsItem_displayTitle_operator
+  title: NewsItem_title_operator
+  newsItemCategory: NewsItem_newsItemCategory_operator
+  date: NewsItem_date_operator
+  signupStartDate: NewsItem_signupStartDate_operator
+  signupEndDate: NewsItem_signupEndDate_operator
+  content: NewsItem_content_operator
+  updatedAt: NewsItem_updatedAt_operator
+  createdAt: NewsItem_createdAt_operator
+  id: NewsItem_id_operator
+  AND: [NewsItem_where_and]
+  OR: [NewsItem_where_or]
+}
+
+type news_itemsDocAccess {
+  fields: NewsItemsDocAccessFields
+  create: NewsItemsCreateDocAccess
+  read: NewsItemsReadDocAccess
+  update: NewsItemsUpdateDocAccess
+  delete: NewsItemsDeleteDocAccess
+}
+
+type NewsItemsDocAccessFields {
+  displayTitle: NewsItemsDocAccessFields_displayTitle
+  title: NewsItemsDocAccessFields_title
+  newsItemCategory: NewsItemsDocAccessFields_newsItemCategory
+  date: NewsItemsDocAccessFields_date
+  signupStartDate: NewsItemsDocAccessFields_signupStartDate
+  signupEndDate: NewsItemsDocAccessFields_signupEndDate
+  content: NewsItemsDocAccessFields_content
+  updatedAt: NewsItemsDocAccessFields_updatedAt
+  createdAt: NewsItemsDocAccessFields_createdAt
+}
+
+type NewsItemsDocAccessFields_displayTitle {
+  create: NewsItemsDocAccessFields_displayTitle_Create
+  read: NewsItemsDocAccessFields_displayTitle_Read
+  update: NewsItemsDocAccessFields_displayTitle_Update
+  delete: NewsItemsDocAccessFields_displayTitle_Delete
+}
+
+type NewsItemsDocAccessFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_displayTitle_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_title {
+  create: NewsItemsDocAccessFields_title_Create
+  read: NewsItemsDocAccessFields_title_Read
+  update: NewsItemsDocAccessFields_title_Update
+  delete: NewsItemsDocAccessFields_title_Delete
+}
+
+type NewsItemsDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_newsItemCategory {
+  create: NewsItemsDocAccessFields_newsItemCategory_Create
+  read: NewsItemsDocAccessFields_newsItemCategory_Read
+  update: NewsItemsDocAccessFields_newsItemCategory_Update
+  delete: NewsItemsDocAccessFields_newsItemCategory_Delete
+}
+
+type NewsItemsDocAccessFields_newsItemCategory_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_newsItemCategory_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_newsItemCategory_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_newsItemCategory_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_date {
+  create: NewsItemsDocAccessFields_date_Create
+  read: NewsItemsDocAccessFields_date_Read
+  update: NewsItemsDocAccessFields_date_Update
+  delete: NewsItemsDocAccessFields_date_Delete
+}
+
+type NewsItemsDocAccessFields_date_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_date_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_date_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_date_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupStartDate {
+  create: NewsItemsDocAccessFields_signupStartDate_Create
+  read: NewsItemsDocAccessFields_signupStartDate_Read
+  update: NewsItemsDocAccessFields_signupStartDate_Update
+  delete: NewsItemsDocAccessFields_signupStartDate_Delete
+}
+
+type NewsItemsDocAccessFields_signupStartDate_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupStartDate_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupStartDate_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupStartDate_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupEndDate {
+  create: NewsItemsDocAccessFields_signupEndDate_Create
+  read: NewsItemsDocAccessFields_signupEndDate_Read
+  update: NewsItemsDocAccessFields_signupEndDate_Update
+  delete: NewsItemsDocAccessFields_signupEndDate_Delete
+}
+
+type NewsItemsDocAccessFields_signupEndDate_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupEndDate_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupEndDate_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_signupEndDate_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content {
+  create: NewsItemsDocAccessFields_content_Create
+  read: NewsItemsDocAccessFields_content_Read
+  update: NewsItemsDocAccessFields_content_Update
+  delete: NewsItemsDocAccessFields_content_Delete
+}
+
+type NewsItemsDocAccessFields_content_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_updatedAt {
+  create: NewsItemsDocAccessFields_updatedAt_Create
+  read: NewsItemsDocAccessFields_updatedAt_Read
+  update: NewsItemsDocAccessFields_updatedAt_Update
+  delete: NewsItemsDocAccessFields_updatedAt_Delete
+}
+
+type NewsItemsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_createdAt {
+  create: NewsItemsDocAccessFields_createdAt_Create
+  read: NewsItemsDocAccessFields_createdAt_Read
+  update: NewsItemsDocAccessFields_createdAt_Update
+  delete: NewsItemsDocAccessFields_createdAt_Delete
+}
+
+type NewsItemsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsItemsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsItemsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsItemsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -5389,6 +6166,8 @@ type Access {
   committee_members: committee_membersAccess
   committees: committeesAccess
   news: newsAccess
+  weekly_newsletters: weekly_newslettersAccess
+  news_items: news_itemsAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -7398,6 +8177,456 @@ type NewsDeleteAccess {
   where: JSONObject
 }
 
+type weekly_newslettersAccess {
+  fields: WeeklyNewslettersFields
+  create: WeeklyNewslettersCreateAccess
+  read: WeeklyNewslettersReadAccess
+  update: WeeklyNewslettersUpdateAccess
+  delete: WeeklyNewslettersDeleteAccess
+}
+
+type WeeklyNewslettersFields {
+  title: WeeklyNewslettersFields_title
+  greetings: WeeklyNewslettersFields_greetings
+  newsItems: WeeklyNewslettersFields_newsItems
+  updatedAt: WeeklyNewslettersFields_updatedAt
+  createdAt: WeeklyNewslettersFields_createdAt
+}
+
+type WeeklyNewslettersFields_title {
+  create: WeeklyNewslettersFields_title_Create
+  read: WeeklyNewslettersFields_title_Read
+  update: WeeklyNewslettersFields_title_Update
+  delete: WeeklyNewslettersFields_title_Delete
+}
+
+type WeeklyNewslettersFields_title_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_title_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_title_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_title_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_greetings {
+  create: WeeklyNewslettersFields_greetings_Create
+  read: WeeklyNewslettersFields_greetings_Read
+  update: WeeklyNewslettersFields_greetings_Update
+  delete: WeeklyNewslettersFields_greetings_Delete
+}
+
+type WeeklyNewslettersFields_greetings_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_greetings_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_greetings_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_greetings_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems {
+  create: WeeklyNewslettersFields_newsItems_Create
+  read: WeeklyNewslettersFields_newsItems_Read
+  update: WeeklyNewslettersFields_newsItems_Update
+  delete: WeeklyNewslettersFields_newsItems_Delete
+  fields: WeeklyNewslettersFields_newsItems_Fields
+}
+
+type WeeklyNewslettersFields_newsItems_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_Fields {
+  newsItem: WeeklyNewslettersFields_newsItems_newsItem
+  id: WeeklyNewslettersFields_newsItems_id
+}
+
+type WeeklyNewslettersFields_newsItems_newsItem {
+  create: WeeklyNewslettersFields_newsItems_newsItem_Create
+  read: WeeklyNewslettersFields_newsItems_newsItem_Read
+  update: WeeklyNewslettersFields_newsItems_newsItem_Update
+  delete: WeeklyNewslettersFields_newsItems_newsItem_Delete
+}
+
+type WeeklyNewslettersFields_newsItems_newsItem_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_newsItem_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_newsItem_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_newsItem_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_id {
+  create: WeeklyNewslettersFields_newsItems_id_Create
+  read: WeeklyNewslettersFields_newsItems_id_Read
+  update: WeeklyNewslettersFields_newsItems_id_Update
+  delete: WeeklyNewslettersFields_newsItems_id_Delete
+}
+
+type WeeklyNewslettersFields_newsItems_id_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_id_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_id_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_newsItems_id_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_updatedAt {
+  create: WeeklyNewslettersFields_updatedAt_Create
+  read: WeeklyNewslettersFields_updatedAt_Read
+  update: WeeklyNewslettersFields_updatedAt_Update
+  delete: WeeklyNewslettersFields_updatedAt_Delete
+}
+
+type WeeklyNewslettersFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_createdAt {
+  create: WeeklyNewslettersFields_createdAt_Create
+  read: WeeklyNewslettersFields_createdAt_Read
+  update: WeeklyNewslettersFields_createdAt_Update
+  delete: WeeklyNewslettersFields_createdAt_Delete
+}
+
+type WeeklyNewslettersFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type WeeklyNewslettersReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type WeeklyNewslettersUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type WeeklyNewslettersDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type news_itemsAccess {
+  fields: NewsItemsFields
+  create: NewsItemsCreateAccess
+  read: NewsItemsReadAccess
+  update: NewsItemsUpdateAccess
+  delete: NewsItemsDeleteAccess
+}
+
+type NewsItemsFields {
+  displayTitle: NewsItemsFields_displayTitle
+  title: NewsItemsFields_title
+  newsItemCategory: NewsItemsFields_newsItemCategory
+  date: NewsItemsFields_date
+  signupStartDate: NewsItemsFields_signupStartDate
+  signupEndDate: NewsItemsFields_signupEndDate
+  content: NewsItemsFields_content
+  updatedAt: NewsItemsFields_updatedAt
+  createdAt: NewsItemsFields_createdAt
+}
+
+type NewsItemsFields_displayTitle {
+  create: NewsItemsFields_displayTitle_Create
+  read: NewsItemsFields_displayTitle_Read
+  update: NewsItemsFields_displayTitle_Update
+  delete: NewsItemsFields_displayTitle_Delete
+}
+
+type NewsItemsFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_displayTitle_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_title {
+  create: NewsItemsFields_title_Create
+  read: NewsItemsFields_title_Read
+  update: NewsItemsFields_title_Update
+  delete: NewsItemsFields_title_Delete
+}
+
+type NewsItemsFields_title_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_title_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_title_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_title_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_newsItemCategory {
+  create: NewsItemsFields_newsItemCategory_Create
+  read: NewsItemsFields_newsItemCategory_Read
+  update: NewsItemsFields_newsItemCategory_Update
+  delete: NewsItemsFields_newsItemCategory_Delete
+}
+
+type NewsItemsFields_newsItemCategory_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_newsItemCategory_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_newsItemCategory_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_newsItemCategory_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_date {
+  create: NewsItemsFields_date_Create
+  read: NewsItemsFields_date_Read
+  update: NewsItemsFields_date_Update
+  delete: NewsItemsFields_date_Delete
+}
+
+type NewsItemsFields_date_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_date_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_date_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_date_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupStartDate {
+  create: NewsItemsFields_signupStartDate_Create
+  read: NewsItemsFields_signupStartDate_Read
+  update: NewsItemsFields_signupStartDate_Update
+  delete: NewsItemsFields_signupStartDate_Delete
+}
+
+type NewsItemsFields_signupStartDate_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupStartDate_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupStartDate_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupStartDate_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupEndDate {
+  create: NewsItemsFields_signupEndDate_Create
+  read: NewsItemsFields_signupEndDate_Read
+  update: NewsItemsFields_signupEndDate_Update
+  delete: NewsItemsFields_signupEndDate_Delete
+}
+
+type NewsItemsFields_signupEndDate_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupEndDate_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupEndDate_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_signupEndDate_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content {
+  create: NewsItemsFields_content_Create
+  read: NewsItemsFields_content_Read
+  update: NewsItemsFields_content_Update
+  delete: NewsItemsFields_content_Delete
+}
+
+type NewsItemsFields_content_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_updatedAt {
+  create: NewsItemsFields_updatedAt_Create
+  read: NewsItemsFields_updatedAt_Read
+  update: NewsItemsFields_updatedAt_Update
+  delete: NewsItemsFields_updatedAt_Delete
+}
+
+type NewsItemsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_createdAt {
+  create: NewsItemsFields_createdAt_Create
+  read: NewsItemsFields_createdAt_Read
+  update: NewsItemsFields_createdAt_Update
+  delete: NewsItemsFields_createdAt_Delete
+}
+
+type NewsItemsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsItemsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsItemsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type NewsItemsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -8414,6 +9643,12 @@ type Mutation {
   createNews(data: mutationNewsInput!, draft: Boolean, locale: LocaleInputType): News
   updateNews(id: String!, autosave: Boolean, data: mutationNewsUpdateInput!, draft: Boolean, locale: LocaleInputType): News
   deleteNews(id: String!): News
+  createWeeklyNewsletter(data: mutationWeeklyNewsletterInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
+  updateWeeklyNewsletter(id: String!, autosave: Boolean, data: mutationWeeklyNewsletterUpdateInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
+  deleteWeeklyNewsletter(id: String!): WeeklyNewsletter
+  createNewsItem(data: mutationNewsItemInput!, draft: Boolean, locale: LocaleInputType): NewsItem
+  updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, draft: Boolean, locale: LocaleInputType): NewsItem
+  deleteNewsItem(id: String!): NewsItem
   createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -9040,6 +10275,70 @@ enum NewsUpdate_type_MutationInput {
   announcement
   warning
   danger
+}
+
+input mutationWeeklyNewsletterInput {
+  title: String
+  greetings: JSON
+  newsItems: [mutationWeeklyNewsletter_NewsItemsInput]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationWeeklyNewsletter_NewsItemsInput {
+  newsItem: String
+  id: String
+}
+
+input mutationWeeklyNewsletterUpdateInput {
+  title: String
+  greetings: JSON
+  newsItems: [mutationWeeklyNewsletterUpdate_NewsItemsInput]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationWeeklyNewsletterUpdate_NewsItemsInput {
+  newsItem: String
+  id: String
+}
+
+input mutationNewsItemInput {
+  displayTitle: String
+  title: String
+  newsItemCategory: NewsItem_newsItemCategory_MutationInput
+  date: String
+  signupStartDate: String
+  signupEndDate: String
+  content: JSON
+  updatedAt: String
+  createdAt: String
+}
+
+enum NewsItem_newsItemCategory_MutationInput {
+  guild
+  ayy_aalto
+  other
+  bottom_corner
+}
+
+input mutationNewsItemUpdateInput {
+  displayTitle: String
+  title: String
+  newsItemCategory: NewsItemUpdate_newsItemCategory_MutationInput
+  date: String
+  signupStartDate: String
+  signupEndDate: String
+  content: JSON
+  updatedAt: String
+  createdAt: String
+}
+
+enum NewsItemUpdate_newsItemCategory_MutationInput {
+  guild
+  ayy_aalto
+  other
+  bottom_corner
 }
 
 input mutationPayloadPreferenceInput {

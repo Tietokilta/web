@@ -72,6 +72,8 @@ export interface Config {
     'committee-members': CommitteeMember;
     committees: Committee;
     news: News;
+    'weekly-newsletters': WeeklyNewsletter;
+    'news-items': NewsItem;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -393,6 +395,67 @@ export interface News {
   pageLink?: (string | null) | Page;
   type?: ('announcement' | 'warning' | 'danger') | null;
   author: string | User;
+  content: {
+    root: {
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      type: string;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weekly-newsletters".
+ */
+export interface WeeklyNewsletter {
+  id: string;
+  title: string;
+  greetings: {
+    root: {
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      type: string;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  newsItems?:
+    | {
+        newsItem: string | NewsItem;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news-items".
+ */
+export interface NewsItem {
+  id: string;
+  displayTitle?: string | null;
+  title: string;
+  newsItemCategory: 'guild' | 'ayy-aalto' | 'other' | 'bottom-corner';
+  date?: string | null;
+  signupStartDate?: string | null;
+  signupEndDate?: string | null;
   content: {
     root: {
       children: {
