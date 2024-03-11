@@ -41,6 +41,8 @@ import { MainNavigation } from "./globals/main-navigation";
 import { revalidateGlobal } from "./hooks/revalidate-globals";
 import { useCloudStorage } from "./util";
 import { CommitteesInYear } from "./blocks/committees-in-year";
+import { WeeklyNewsletters } from "./collections/weekly-newsletters/weekly-newsletters";
+import { NewsItems } from "./collections/weekly-newsletters/news-items";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -89,6 +91,8 @@ export default buildConfig({
     CommitteeMembers,
     Committees,
     News,
+    WeeklyNewsletters,
+    NewsItems,
   ],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
