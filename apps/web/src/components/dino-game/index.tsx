@@ -84,8 +84,8 @@ export function DinoGame() {
       img.addEventListener("load", () => {
         resolve(img);
       });
-      img.addEventListener("error", () => {
-        reject();
+      img.addEventListener("error", (e) => {
+        reject(new Error(e.message));
       });
     });
   };
@@ -207,7 +207,7 @@ export function DinoGame() {
 
     const createSpeck = (x?: number): Point => {
       return {
-        x: x || canvas.width,
+        x: x ?? canvas.width,
         y: Math.random() * groundHeight,
       };
     };
