@@ -81,7 +81,7 @@ function Content({ content, lang }: { content?: EditorState; lang: Locale }) {
   );
 }
 
-const Page = async ({ params: { path, lang } }: Props) => {
+async function Page({ params: { path, lang } }: Props) {
   const page = await getPage(path, lang);
   const content = page.content as unknown as EditorState | undefined;
 
@@ -105,6 +105,6 @@ const Page = async ({ params: { path, lang } }: Props) => {
       </main>
     </>
   );
-};
+}
 
 export default Page;
