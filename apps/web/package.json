@@ -12,14 +12,14 @@
   },
   "dependencies": {
     "@tietokilta/ui": "workspace:*",
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.18",
     "clsx": "^2.1.0",
     "json-stable-stringify": "^1.1.1",
     "lodash": "^4.17.21",
     "next": "^14.1.3",
     "payload-admin-bar": "^1.0.6",
     "postcss": "^8.4.35",
-    "qs": "^6.11.2",
+    "qs": "^6.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "server-only": "^0.0.1",
@@ -34,12 +34,12 @@
     "@tietokilta/config-typescript": "workspace:*",
     "@tietokilta/eslint-config": "workspace:*",
     "@types/json-stable-stringify": "^1.0.36",
-    "@types/lodash": "^4.14.202",
-    "@types/node": "^20.11.20",
-    "@types/qs": "^6.9.11",
-    "@types/react": "^18.2.64",
+    "@types/lodash": "^4.17.0",
+    "@types/node": "^20.11.26",
+    "@types/qs": "^6.9.12",
+    "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.21",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   }
 }

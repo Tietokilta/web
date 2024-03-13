@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^9.3.0",
+    "@icons-pack/react-simple-icons": "^9.4.0",
     "@radix-ui/react-collapsible": "^1.0.3",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-navigation-menu": "^1.1.4",
@@ -28,19 +28,19 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "lucide-react": "^0.354.0",
+    "lucide-react": "^0.356.0",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
     "@tietokilta/config-typescript": "workspace:*",
     "@tietokilta/eslint-config": "workspace:*",
-    "@types/node": "^20.11.20",
-    "@types/react": "^18.2.64",
+    "@types/node": "^20.11.26",
+    "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "peerDependencies": {
     "@tailwindcss/typography": "^0.5.10",

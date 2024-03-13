@@ -18,7 +18,7 @@ export function middleware(request: NextRequest): NextResponse {
     pathname.startsWith("/api") ||
     pathname.startsWith("/oauth2");
   if (pathnameHasCMSPath) {
-    const destination = new URL(process.env.PUBLIC_SERVER_URL || "");
+    const destination = new URL(process.env.PUBLIC_SERVER_URL ?? "");
     const url = request.nextUrl.clone();
     url.host = destination.host;
     url.port = destination.port;

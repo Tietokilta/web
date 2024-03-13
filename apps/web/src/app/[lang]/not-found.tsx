@@ -1,5 +1,3 @@
-"use client";
-
 import { Button } from "@tietokilta/ui";
 import Link from "next/link";
 import { DinoGame } from "../../components/dino-game";
