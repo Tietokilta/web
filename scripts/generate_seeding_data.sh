@@ -32,5 +32,5 @@ for COLLECTION_NAME in $COLLECTIONS; do
   fi
 done
 
-# Copy images from uploads to db_data/images
-cp -r apps/cms/uploads data/gen/uploads
+echo "Copying uploads from apps/cms/uploads to db_data/gen/uploads..."
+cp -r apps/cms/uploads data/gen
