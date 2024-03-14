@@ -58,7 +58,8 @@ const {
   MONGODB_URI,
   PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
-  AZURE_STORAGE_CONTAINER_NAME,
+  AZURE_MEDIA_STORAGE_CONTAINER_NAME,
+  AZURE_DOCUMENTS_STORAGE_CONTAINER_NAME,
   AZURE_STORAGE_ACCOUNT_BASEURL,
 } = process.env;
 
@@ -224,7 +225,7 @@ export default buildConfig({
           disableLocalStorage: true,
           adapter: azureBlobStorageAdapter({
             connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
-            containerName: AZURE_STORAGE_CONTAINER_NAME ?? "",
+            containerName: AZURE_MEDIA_STORAGE_CONTAINER_NAME ?? "",
             allowContainerCreate:
               process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
             baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
@@ -234,7 +235,7 @@ export default buildConfig({
           disableLocalStorage: true,
           adapter: azureBlobStorageAdapter({
             connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
-            containerName: AZURE_STORAGE_CONTAINER_NAME ?? "",
+            containerName: AZURE_DOCUMENTS_STORAGE_CONTAINER_NAME ?? "",
             allowContainerCreate:
               process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
             baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
