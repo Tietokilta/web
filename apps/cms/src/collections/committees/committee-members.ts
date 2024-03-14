@@ -2,7 +2,7 @@ import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 
-export const CommitteeMembers: CollectionConfig = {
+export const CommitteeMembers = {
   slug: "committee-members",
   defaultSort: "-guildYear",
   admin: {
@@ -44,4 +44,4 @@ export const CommitteeMembers: CollectionConfig = {
       type: "text",
     },
   ],
-};
+} as const satisfies CollectionConfig;

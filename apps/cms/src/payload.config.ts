@@ -46,6 +46,7 @@ import { useCloudStorage } from "./util";
 import { CommitteesInYear } from "./blocks/committees-in-year";
 import { WeeklyNewsletters } from "./collections/weekly-newsletters/weekly-newsletters";
 import { NewsItems } from "./collections/weekly-newsletters/news-items";
+import { ActionsLink, ActionsView } from "./views/actions-view";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -79,6 +80,15 @@ export default buildConfig({
             password: process.env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD,
           }
         : false,
+    components: {
+      views: {
+        CustomActions: {
+          Component: ActionsView,
+          path: "/actions",
+        },
+      },
+      actions: [ActionsLink],
+    },
   },
   upload: {
     limits: {
