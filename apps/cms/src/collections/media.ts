@@ -17,10 +17,9 @@ export const Media: CollectionConfig = {
     group: "Other",
   },
   upload: {
-    // TODO: this
     staticURL: "/media",
     staticDir: !useCloudStorage()
-      ? path.resolve(__dirname, "../../uploads")
+      ? path.resolve(__dirname, "../../uploads/media")
       : undefined,
   },
   fields: [
