@@ -146,6 +146,7 @@ export const Pages: CollectionConfig = {
     },
   ],
   versions: {
+    maxPerDoc: process.env.NODE_ENV === "production" ? 100 : 2,
     drafts: {
       autosave: true,
     },
