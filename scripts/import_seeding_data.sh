@@ -44,10 +44,9 @@ if [ "$UPSERT_FLAG" = true ] ; then
 else
   UPSERT_FLAG=""
 fi
-# Copy images from images to ../uploads folder
+# Copy data/gen/uploads to apps/cms/uploads
 # TODO: change this implementation when using cloud storage plugin
-mkdir -p apps/cms/uploads
-find data/gen/images -type f -exec cp {} apps/cms/uploads/ \;
+cp -r data/gen/uploads apps/cms/
 
 # if argument is passed, only import that collection
 if [ -n "$1" ]; then

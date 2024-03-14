@@ -18,7 +18,7 @@ export const Documents: CollectionConfig = {
   upload: {
     staticURL: "/documents",
     staticDir: !useCloudStorage()
-      ? path.resolve(__dirname, "../../uploads")
+      ? path.resolve(__dirname, "../../uploads/documents")
       : undefined,
   },
   fields: [],
