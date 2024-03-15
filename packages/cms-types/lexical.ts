@@ -1,4 +1,4 @@
-import type { Board, Committee, Media, Page } from "./payload";
+import type { Board, Committee, Magazine, Media, Page } from "./payload";
 
 type BaseNode = {
   version: number;
@@ -117,10 +117,17 @@ export type CommitteeRelationshipNode = BaseNode & {
   value: Committee;
 };
 
+export type MagazineRelationshipNode = BaseNode & {
+  type: "relationship";
+  relationTo: "magazines";
+  value: Magazine;
+};
+
 export type RelationshipNode =
   | PageRelationshipNode
   | BoardRelationshipNode
-  | CommitteeRelationshipNode;
+  | CommitteeRelationshipNode
+  | MagazineRelationshipNode;
 
 export type BaseBlockFields = {
   id: string;

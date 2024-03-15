@@ -12,6 +12,7 @@ import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
+import { MagazineList } from "../magazine-list";
 import type { Locale } from "../../lib/dictionaries";
 import {
   IS_BOLD,
@@ -248,6 +249,9 @@ function Relationship({ node }: { node: RelationshipNode }) {
     }
     case "committees": {
       return <CommitteeCard committee={node.value} />;
+    }
+    case "magazines": {
+      return <MagazineList magazine={node.value} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
