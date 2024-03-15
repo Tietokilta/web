@@ -78367,5 +78367,166 @@
 	"latest": true,
 	"autosave": false,
 	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6648f3fdf5c8bf14fb14e40b"
+	},
+	"parent": "6648f3dff5c8bf14fb14e377",
+	"version": {
+		"title": {
+			"fi": "Alkorytmi"
+		},
+		"description": {
+			"fi": "Lukija voi lukea."
+		},
+		"type": "standard",
+		"hideTableOfContents": false,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "magazines",
+							"value": {
+								"id": "65f2e257df1a1760cccfd349"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/kilta/alkorytmi"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "alkorytmi"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-18T18:31:25.226Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-18T18:30:55.677Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-05-18T18:30:55.677Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T18:31:25.226Z"
+	},
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6648f3fdf5c8bf14fb14e414"
+	},
+	"parent": "6648f3dff5c8bf14fb14e377",
+	"version": {
+		"title": {
+			"fi": "Alkorytmi"
+		},
+		"description": {
+			"fi": "Lukija voi lukea."
+		},
+		"type": "standard",
+		"hideTableOfContents": false,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "magazines",
+							"value": {
+								"id": "65f2e257df1a1760cccfd349"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/kilta/alkorytmi"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "alkorytmi"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-18T18:30:55.677Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-18T18:30:55.677Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-05-18T18:30:55.677Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T18:31:25.239Z"
+	},
+	"latest": true,
+	"autosave": true,
+	"__v": 0
 }]
 

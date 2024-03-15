@@ -18,6 +18,7 @@ import {
 import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
+import { MagazineList } from "../magazine-list";
 import {
   IS_BOLD,
   IS_CODE,
@@ -287,6 +288,9 @@ function Relationship({ node }: { node: RelationshipNode }) {
     }
     case "committees": {
       return <CommitteeCard isTightLayout committee={node.value} />;
+    }
+    case "magazines": {
+      return <MagazineList magazine={node.value} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
