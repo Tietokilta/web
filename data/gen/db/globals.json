@@ -1,483 +1,488 @@
-[{
-	"_id": {
-		"$oid": "6548f2bfd7febb86e2235faf"
-	},
-	"items": [
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "663cda58864517dbe569a395"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "663cdb79c60c820289dbf7b2"
-		},
-		{
-			"type": "topic",
-			"pageConfig": {},
-			"topicConfig": {
-				"topic": "6548f0f4d7febb86e2235b89",
-				"categories": [
-					{
-						"title": {
-							"fi": "Ajankohtaista",
-							"en": "Topical"
-						},
-						"pages": [
-							{
-								"page": "66488d4112729ad2cf17903d",
-								"id": "660ec54f07e0ae4b83d556e1"
-							},
-							{
-								"page": "6548f1fad7febb86e2235ec9",
-								"id": "6548f244611be65a813f889d"
-							},
-							{
-								"page": "65a2df8e3aa4329c52083af9",
-								"id": "65a2dfb1ac93bb5b462471b0"
-							}
-						],
-						"externalLinks": [],
-						"id": "6548f23d611be65a813f889c"
-					},
-					{
-						"title": {
-							"fi": "Aktiivit",
-							"en": "Actives"
-						},
-						"pages": [
-							{
-								"page": "65ce75f8bcb2cf9d6fb1ae08",
-								"id": "65ce76af70070b9b93e19463"
-							},
-							{
-								"page": "65be5086e56e440d594ddd26",
-								"id": "65be56dfd1a66bf6e3ebe4ab"
-							},
-							{
-								"page": "65be65d4153050fbf6aaedee",
-								"id": "65be6621852e316d00b3d3ad"
-							},
-							{
-								"page": "65a2d95d598aa16e52bc885a",
-								"id": "6548f252611be65a813f889f"
-							},
-							{
-								"page": "65a2d9c0598aa16e52bc895d",
-								"id": "6548f257611be65a813f88a0"
-							}
-						],
-						"externalLinks": [],
-						"id": "6548f24d611be65a813f889e"
-					},
-					{
-						"title": {
-							"fi": "Työkalut",
-							"en": "Tools"
-						},
-						"pages": [],
-						"externalLinks": [
-							{
-								"title": {
-									"fi": "Kuvagalleria",
-									"en": "Gallery"
-								},
-								"href": "http://tietokilta.kuvat.fi/",
-								"icon": "Image",
-								"id": "6548f263611be65a813f88a2"
-							},
-							{
-								"title": {
-									"fi": "Rekrytik",
-									"en": "Rekrytik"
-								},
-								"href": "https://rekry.tietokilta.fi/",
-								"icon": "BriefcaseBusiness",
-								"id": "65f1a7706d07927dab2bfc31"
-							},
-							{
-								"title": {
-									"fi": "Laskugeneraattori",
-									"en": "Invoice"
-								},
-								"href": "https://tietokilta.fi/kilta/laskugeneraattori/",
-								"icon": "Banknote",
-								"id": "6548f278611be65a813f88a3"
-							},
-							{
-								"title": {
-									"fi": "Histotik",
-									"en": "Histotik"
-								},
-								"href": "http://histotik.tietokilta.fi/",
-								"icon": "BookMarked",
-								"id": "6548f284611be65a813f88a4"
-							}
-						],
-						"id": "6548f25d611be65a813f88a1"
-					}
-				]
-			},
-			"id": "6548f22d611be65a813f889b"
-		},
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "6548f179d7febb86e2235cf2"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "6548f2aa611be65a813f88a6"
-		},
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "6548f141d7febb86e2235c4d"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "6548f2a4611be65a813f88a5"
-		},
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "6548f1a7d7febb86e2235d7c"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "6548f2b5611be65a813f88a7"
-		},
-		{
-			"type": "page",
-			"pageConfig": {
-				"page": "663cdabd864517dbe569a506"
-			},
-			"topicConfig": {
-				"categories": []
-			},
-			"id": "663cdbb0c60c820289dbf7b3"
-		}
-	],
-	"globalType": "main-navigation",
-	"createdAt": {
-		"$date": "2023-11-06T14:05:51.452Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-18T18:00:26.088Z"
-	},
-	"__v": 0,
-	"logo": "6648ecb1e184dafa12b58503"
-},
-{
-	"_id": {
-		"$oid": "6548f4ab88334626ab27fb53"
-	},
-	"layout": [
-		{
-			"showLabel": true,
-			"links": [
-				{
-					"icon": "AtSign",
-					"label": {
-						"fi": "Yhteystiedot",
-						"en": "Contact"
-					},
-					"linkType": "internal",
-					"page": "6548f21ed7febb86e2235f5f",
-					"id": "6548f51e854a99217b8fbd3f"
-				},
-				{
-					"icon": "Inbox",
-					"label": {
-						"fi": "Palautelomake",
-						"en": "Give feedback"
-					},
-					"linkType": "external",
-					"url": "https://tietokilta.fi/kilta/palautelomake",
-					"id": "6548f4e9854a99217b8fbd3e"
-				}
-			],
-			"id": "6548f4e6854a99217b8fbd3d",
-			"blockName": "Footer Links",
-			"blockType": "link-row"
-		},
-		{
-			"showLabel": false,
-			"links": [
-				{
-					"icon": "Instagram",
-					"label": {
-						"fi": "Instagram",
-						"en": "Instagram"
-					},
-					"linkType": "external",
-					"url": "https://www.instagram.com/tietokilta/",
-					"id": "6548f493854a99217b8fbd39"
-				},
-				{
-					"icon": "Tiktok",
-					"label": {
-						"fi": "TikTok",
-						"en": "TikTok"
-					},
-					"linkType": "external",
-					"url": "https://www.tiktok.com/@tietokilta",
-					"id": "6548f4b2854a99217b8fbd3a"
-				},
-				{
-					"icon": "Facebook",
-					"label": {
-						"fi": "Facebook",
-						"en": "Facebook"
-					},
-					"linkType": "external",
-					"url": "https://www.facebook.com/Tietokilta/",
-					"id": "6548f4ba854a99217b8fbd3b"
-				},
-				{
-					"icon": "Github",
-					"label": {
-						"fi": "GitHub",
-						"en": "GitHub"
-					},
-					"linkType": "external",
-					"url": "https://github.com/tietokilta",
-					"id": "6548f4d0854a99217b8fbd3c"
-				}
-			],
-			"id": "6548f48f854a99217b8fbd38",
-			"blockName": "Social Media",
-			"blockType": "link-row"
-		},
-		{
-			"logos": [
-				{
-					"image": "659afc6bfab28407b9c68069",
-					"link": "https://www.reaktor.fi/",
-					"id": "659afc3bf080efa8fb14e6a3"
-				},
-				{
-					"image": "659affde2252cfbb398aa590",
-					"link": "https://www.siili.com/",
-					"id": "659b006cca4e3224a4f5750c"
-				},
-				{
-					"image": "659b00362252cfbb398aa5a6",
-					"link": "https://www.smartly.io/",
-					"id": "659b007aca4e3224a4f5750d"
-				}
-			],
-			"id": "659afc2cf080efa8fb14e6a2",
-			"blockName": "Sponsor Logos",
-			"blockType": "logo-row"
-		}
-	],
-	"globalType": "footer",
-	"createdAt": {
-		"$date": "2023-11-06T14:14:03.116Z"
-	},
-	"updatedAt": {
-		"$date": "2024-01-07T19:50:31.844Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65a64c192b2f140ed06d71fa"
-	},
-	"heroTexts": {
-		"fi": [
-			{
-				"text": "TiKillä on kivaa, kantsii olla TiKkiläinen",
-				"id": "664894fe6ea43dec7c29bdc9"
-			},
-			{
-				"text": "As seen on TV!",
-				"id": "6648951fe9f34a501083cba9"
-			},
-			{
-				"text": "100% pure!",
-				"id": "66489699e9f34a501083cbad"
-			},
-			{
-				"text": "May contain nuts!",
-				"id": "664896a0e9f34a501083cbae"
-			}
-		],
-		"en": [
-			{
-				"text": "TiKillä on kivaa, kantsii olla TiKkiläinen",
-				"id": "66489507e9f34a501083cba8"
-			},
-			{
-				"text": "As seen on TV!",
-				"id": "66489525e9f34a501083cbaa"
-			},
-			{
-				"text": "100% pure!",
-				"id": "6648968ae9f34a501083cbab"
-			},
-			{
-				"text": "May contain nuts!",
-				"id": "6648968ee9f34a501083cbac"
-			}
-		]
-	},
-	"heroImages": [
-		{
-			"image": "65a64bb22b2f140ed06d71f0",
-			"id": "65a64b5471769f33eb3992e5"
-		},
-		{
-			"image": "65a64bf62b2f140ed06d71f5",
-			"id": "65a64bbb71769f33eb3992e6"
-		}
-	],
-	"body": {
-		"fi": {
-			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
-				"children": [
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tietokilta ry (TiK) on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan koulutusohjelman opiskelijoiden ainejärjestö eli kilta, joka on avoin muillekin killan toiminnasta kiinnostuneille. TiK toimii kaikkien Aalto-yliopiston opiskelijoiden etuja ajavan Aalto-yliopiston ylioppilaskunnan (AYY) piirissä.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tietokilta järjestää opiskelijoilleen erilaista vapaa-ajan toimintaa niin Otaniemessä kuin sen ulkopuolellakin, valvoo heidän etujaan korkeakoulun toimielimissä, huolehtii yhteyksistä muihin opiskelijajärjestöihin ja pyrkii muuten huolehtimaan heidän hyvinvoinnistaan. Kaikki killan toiminta perustuu hyvien teekkariperinteiden mukaiseen vapaaehtoistyöhön ja yhteiseen talkoohenkeen.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kampuksella tietokiltalaiset löytää parhaiten kiltahuoneelta eli kiltikseltä, joka sijaitsee Tietotekniikan Talolla osoitteessa Konemiehentie 2 rakennuksen koilliskulmassa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					}
-				],
-				"direction": "ltr"
-			}
-		},
-		"en": {
-			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
-				"children": [
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tietokilta ry (TiK) on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan koulutusohjelman opiskelijoiden ainejärjestö eli kilta, joka on avoin muillekin killan toiminnasta kiinnostuneille. TiK toimii kaikkien Aalto-yliopiston opiskelijoiden etuja ajavan Aalto-yliopiston ylioppilaskunnan (AYY) piirissä.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tietokilta järjestää opiskelijoilleen erilaista vapaa-ajan toimintaa niin Otaniemessä kuin sen ulkopuolellakin, valvoo heidän etujaan korkeakoulun toimielimissä, huolehtii yhteyksistä muihin opiskelijajärjestöihin ja pyrkii muuten huolehtimaan heidän hyvinvoinnistaan. Kaikki killan toiminta perustuu hyvien teekkariperinteiden mukaiseen vapaaehtoistyöhön ja yhteiseen talkoohenkeen.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kampuksella tietokiltalaiset löytää parhaiten kiltahuoneelta eli kiltikseltä, joka sijaitsee Tietotekniikan Talolla osoitteessa Konemiehentie 2 rakennuksen koilliskulmassa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					}
-				],
-				"direction": "ltr"
-			}
-		}
-	},
-	"globalType": "landing-page",
-	"createdAt": {
-		"$date": "2024-01-16T09:27:53.776Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-18T15:12:36.25Z"
-	},
-	"__v": 0,
-	"announcement": "664880df217a8925c3715f29",
-	"eventsListPage": "663cda58864517dbe569a395"
-}]
-
+[
+  {
+    "_id": {
+      "$oid": "6548f2bfd7febb86e2235faf"
+    },
+    "items": [
+      {
+        "type": "page",
+        "pageConfig": {
+          "page": "663cda58864517dbe569a395"
+        },
+        "topicConfig": {
+          "categories": []
+        },
+        "id": "663cdb79c60c820289dbf7b2"
+      },
+      {
+        "type": "topic",
+        "pageConfig": {},
+        "topicConfig": {
+          "topic": "6548f0f4d7febb86e2235b89",
+          "categories": [
+            {
+              "title": {
+                "fi": "Ajankohtaista",
+                "en": "Topical"
+              },
+              "pages": [
+                {
+                  "page": "66488d4112729ad2cf17903d",
+                  "id": "660ec54f07e0ae4b83d556e1"
+                },
+                {
+                  "page": "6548f1fad7febb86e2235ec9",
+                  "id": "6548f244611be65a813f889d"
+                },
+                {
+                  "page": "65a2df8e3aa4329c52083af9",
+                  "id": "65a2dfb1ac93bb5b462471b0"
+                },
+                {
+                  "page": "6648f3dff5c8bf14fb14e377",
+                  "id": "6648f40c7b806c13089cd151"
+                }
+              ],
+              "externalLinks": [],
+              "id": "6548f23d611be65a813f889c"
+            },
+            {
+              "title": {
+                "fi": "Aktiivit",
+                "en": "Actives"
+              },
+              "pages": [
+                {
+                  "page": "65ce75f8bcb2cf9d6fb1ae08",
+                  "id": "65ce76af70070b9b93e19463"
+                },
+                {
+                  "page": "65be5086e56e440d594ddd26",
+                  "id": "65be56dfd1a66bf6e3ebe4ab"
+                },
+                {
+                  "page": "65be65d4153050fbf6aaedee",
+                  "id": "65be6621852e316d00b3d3ad"
+                },
+                {
+                  "page": "65a2d95d598aa16e52bc885a",
+                  "id": "6548f252611be65a813f889f"
+                },
+                {
+                  "page": "65a2d9c0598aa16e52bc895d",
+                  "id": "6548f257611be65a813f88a0"
+                }
+              ],
+              "externalLinks": [],
+              "id": "6548f24d611be65a813f889e"
+            },
+            {
+              "title": {
+                "fi": "Työkalut",
+                "en": "Tools"
+              },
+              "pages": [],
+              "externalLinks": [
+                {
+                  "title": {
+                    "fi": "Kuvagalleria",
+                    "en": "Gallery"
+                  },
+                  "href": "http://tietokilta.kuvat.fi/",
+                  "icon": "Image",
+                  "id": "6548f263611be65a813f88a2"
+                },
+                {
+                  "title": {
+                    "fi": "Rekrytik",
+                    "en": "Rekrytik"
+                  },
+                  "href": "https://rekry.tietokilta.fi/",
+                  "icon": "BriefcaseBusiness",
+                  "id": "65f1a7706d07927dab2bfc31"
+                },
+                {
+                  "title": {
+                    "fi": "Laskugeneraattori",
+                    "en": "Invoice"
+                  },
+                  "href": "https://tietokilta.fi/kilta/laskugeneraattori/",
+                  "icon": "Banknote",
+                  "id": "6548f278611be65a813f88a3"
+                },
+                {
+                  "title": {
+                    "fi": "Histotik",
+                    "en": "Histotik"
+                  },
+                  "href": "http://histotik.tietokilta.fi/",
+                  "icon": "BookMarked",
+                  "id": "6548f284611be65a813f88a4"
+                }
+              ],
+              "id": "6548f25d611be65a813f88a1"
+            }
+          ]
+        },
+        "id": "6548f22d611be65a813f889b"
+      },
+      {
+        "type": "page",
+        "pageConfig": {
+          "page": "6548f179d7febb86e2235cf2"
+        },
+        "topicConfig": {
+          "categories": []
+        },
+        "id": "6548f2aa611be65a813f88a6"
+      },
+      {
+        "type": "page",
+        "pageConfig": {
+          "page": "6548f141d7febb86e2235c4d"
+        },
+        "topicConfig": {
+          "categories": []
+        },
+        "id": "6548f2a4611be65a813f88a5"
+      },
+      {
+        "type": "page",
+        "pageConfig": {
+          "page": "6548f1a7d7febb86e2235d7c"
+        },
+        "topicConfig": {
+          "categories": []
+        },
+        "id": "6548f2b5611be65a813f88a7"
+      },
+      {
+        "type": "page",
+        "pageConfig": {
+          "page": "663cdabd864517dbe569a506"
+        },
+        "topicConfig": {
+          "categories": []
+        },
+        "id": "663cdbb0c60c820289dbf7b3"
+      }
+    ],
+    "globalType": "main-navigation",
+    "createdAt": {
+      "$date": "2023-11-06T14:05:51.452Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-18T18:31:49.161Z"
+    },
+    "__v": 0,
+    "logo": "6648ecb1e184dafa12b58503"
+  },
+  {
+    "_id": {
+      "$oid": "6548f4ab88334626ab27fb53"
+    },
+    "layout": [
+      {
+        "showLabel": true,
+        "links": [
+          {
+            "icon": "AtSign",
+            "label": {
+              "fi": "Yhteystiedot",
+              "en": "Contact"
+            },
+            "linkType": "internal",
+            "page": "6548f21ed7febb86e2235f5f",
+            "id": "6548f51e854a99217b8fbd3f"
+          },
+          {
+            "icon": "Inbox",
+            "label": {
+              "fi": "Palautelomake",
+              "en": "Give feedback"
+            },
+            "linkType": "external",
+            "url": "https://tietokilta.fi/kilta/palautelomake",
+            "id": "6548f4e9854a99217b8fbd3e"
+          }
+        ],
+        "id": "6548f4e6854a99217b8fbd3d",
+        "blockName": "Footer Links",
+        "blockType": "link-row"
+      },
+      {
+        "showLabel": false,
+        "links": [
+          {
+            "icon": "Instagram",
+            "label": {
+              "fi": "Instagram",
+              "en": "Instagram"
+            },
+            "linkType": "external",
+            "url": "https://www.instagram.com/tietokilta/",
+            "id": "6548f493854a99217b8fbd39"
+          },
+          {
+            "icon": "Tiktok",
+            "label": {
+              "fi": "TikTok",
+              "en": "TikTok"
+            },
+            "linkType": "external",
+            "url": "https://www.tiktok.com/@tietokilta",
+            "id": "6548f4b2854a99217b8fbd3a"
+          },
+          {
+            "icon": "Facebook",
+            "label": {
+              "fi": "Facebook",
+              "en": "Facebook"
+            },
+            "linkType": "external",
+            "url": "https://www.facebook.com/Tietokilta/",
+            "id": "6548f4ba854a99217b8fbd3b"
+          },
+          {
+            "icon": "Github",
+            "label": {
+              "fi": "GitHub",
+              "en": "GitHub"
+            },
+            "linkType": "external",
+            "url": "https://github.com/tietokilta",
+            "id": "6548f4d0854a99217b8fbd3c"
+          }
+        ],
+        "id": "6548f48f854a99217b8fbd38",
+        "blockName": "Social Media",
+        "blockType": "link-row"
+      },
+      {
+        "logos": [
+          {
+            "image": "659afc6bfab28407b9c68069",
+            "link": "https://www.reaktor.fi/",
+            "id": "659afc3bf080efa8fb14e6a3"
+          },
+          {
+            "image": "659affde2252cfbb398aa590",
+            "link": "https://www.siili.com/",
+            "id": "659b006cca4e3224a4f5750c"
+          },
+          {
+            "image": "659b00362252cfbb398aa5a6",
+            "link": "https://www.smartly.io/",
+            "id": "659b007aca4e3224a4f5750d"
+          }
+        ],
+        "id": "659afc2cf080efa8fb14e6a2",
+        "blockName": "Sponsor Logos",
+        "blockType": "logo-row"
+      }
+    ],
+    "globalType": "footer",
+    "createdAt": {
+      "$date": "2023-11-06T14:14:03.116Z"
+    },
+    "updatedAt": {
+      "$date": "2024-01-07T19:50:31.844Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "65a64c192b2f140ed06d71fa"
+    },
+    "heroTexts": {
+      "fi": [
+        {
+          "text": "TiKillä on kivaa, kantsii olla TiKkiläinen",
+          "id": "664894fe6ea43dec7c29bdc9"
+        },
+        {
+          "text": "As seen on TV!",
+          "id": "6648951fe9f34a501083cba9"
+        },
+        {
+          "text": "100% pure!",
+          "id": "66489699e9f34a501083cbad"
+        },
+        {
+          "text": "May contain nuts!",
+          "id": "664896a0e9f34a501083cbae"
+        }
+      ],
+      "en": [
+        {
+          "text": "TiKillä on kivaa, kantsii olla TiKkiläinen",
+          "id": "66489507e9f34a501083cba8"
+        },
+        {
+          "text": "As seen on TV!",
+          "id": "66489525e9f34a501083cbaa"
+        },
+        {
+          "text": "100% pure!",
+          "id": "6648968ae9f34a501083cbab"
+        },
+        {
+          "text": "May contain nuts!",
+          "id": "6648968ee9f34a501083cbac"
+        }
+      ]
+    },
+    "heroImages": [
+      {
+        "image": "65a64bb22b2f140ed06d71f0",
+        "id": "65a64b5471769f33eb3992e5"
+      },
+      {
+        "image": "65a64bf62b2f140ed06d71f5",
+        "id": "65a64bbb71769f33eb3992e6"
+      }
+    ],
+    "body": {
+      "fi": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Tietokilta ry (TiK) on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan koulutusohjelman opiskelijoiden ainejärjestö eli kilta, joka on avoin muillekin killan toiminnasta kiinnostuneille. TiK toimii kaikkien Aalto-yliopiston opiskelijoiden etuja ajavan Aalto-yliopiston ylioppilaskunnan (AYY) piirissä.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Tietokilta järjestää opiskelijoilleen erilaista vapaa-ajan toimintaa niin Otaniemessä kuin sen ulkopuolellakin, valvoo heidän etujaan korkeakoulun toimielimissä, huolehtii yhteyksistä muihin opiskelijajärjestöihin ja pyrkii muuten huolehtimaan heidän hyvinvoinnistaan. Kaikki killan toiminta perustuu hyvien teekkariperinteiden mukaiseen vapaaehtoistyöhön ja yhteiseen talkoohenkeen.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Kampuksella tietokiltalaiset löytää parhaiten kiltahuoneelta eli kiltikseltä, joka sijaitsee Tietotekniikan Talolla osoitteessa Konemiehentie 2 rakennuksen koilliskulmassa.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        }
+      },
+      "en": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
+          "children": [
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Tietokilta ry (TiK) on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan koulutusohjelman opiskelijoiden ainejärjestö eli kilta, joka on avoin muillekin killan toiminnasta kiinnostuneille. TiK toimii kaikkien Aalto-yliopiston opiskelijoiden etuja ajavan Aalto-yliopiston ylioppilaskunnan (AYY) piirissä.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Tietokilta järjestää opiskelijoilleen erilaista vapaa-ajan toimintaa niin Otaniemessä kuin sen ulkopuolellakin, valvoo heidän etujaan korkeakoulun toimielimissä, huolehtii yhteyksistä muihin opiskelijajärjestöihin ja pyrkii muuten huolehtimaan heidän hyvinvoinnistaan. Kaikki killan toiminta perustuu hyvien teekkariperinteiden mukaiseen vapaaehtoistyöhön ja yhteiseen talkoohenkeen.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1
+            },
+            {
+              "children": [
+                {
+                  "detail": 0,
+                  "format": 0,
+                  "mode": "normal",
+                  "style": "",
+                  "text": "Kampuksella tietokiltalaiset löytää parhaiten kiltahuoneelta eli kiltikseltä, joka sijaitsee Tietotekniikan Talolla osoitteessa Konemiehentie 2 rakennuksen koilliskulmassa.",
+                  "type": "text",
+                  "version": 1
+                }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "paragraph",
+              "version": 1
+            }
+          ],
+          "direction": "ltr"
+        }
+      }
+    },
+    "globalType": "landing-page",
+    "createdAt": {
+      "$date": "2024-01-16T09:27:53.776Z"
+    },
+    "updatedAt": {
+      "$date": "2024-05-18T15:12:36.25Z"
+    },
+    "__v": 0,
+    "announcement": "664880df217a8925c3715f29",
+    "eventsListPage": "663cda58864517dbe569a395"
+  }
+]

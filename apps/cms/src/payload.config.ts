@@ -159,7 +159,12 @@ export default buildConfig({
         enabledCollections: [Pages.slug],
       }),
       RelationshipFeature({
-        enabledCollections: [Pages.slug, Boards.slug, Committees.slug],
+        enabledCollections: [
+          Pages.slug,
+          Boards.slug,
+          Committees.slug,
+          Magazines.slug,
+        ],
       }),
       BlockQuoteFeature(),
       BlocksFeature({

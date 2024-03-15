@@ -4,8 +4,8 @@ import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 
 const formatTitle: FieldHook<MagazineIssue> = ({ data }) => {
-  if (!data?.issueNumber || !data.year) return "";
-  const baseTitle = `${data.issueNumber.toFixed()}/${data.year}`;
+  if ((!data?.issueNumber && data?.issueNumber !== 0) || !data.year) return "";
+  const baseTitle = `${data.issueNumber.toString()}/${data.year}`;
   if (!data.name) {
     return baseTitle;
   }
