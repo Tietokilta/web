@@ -4,28 +4,23 @@ import { EventsDisplay } from "../../components/events-display";
 import { Hero } from "../../components/hero";
 import { LexicalSerializer } from "../../components/lexical/lexical-serializer";
 import { fetchLandingPage } from "../../lib/api/landing-page";
-import type { Locale } from "../../lib/dictionaries";
-import { getDictionary } from "../../lib/dictionaries";
 import { AnnouncementCard } from "../../components/announcement-card";
+import { getCurrentLocale } from "../../locales/server";
 
-function Content({ content, lang }: { content?: EditorState; lang: Locale }) {
+function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
     <article className="prose prose-headings:scroll-mt-24 max-w-prose">
-      <LexicalSerializer lang={lang} nodes={content.root.children} />
+      <LexicalSerializer nodes={content.root.children} />
     </article>
   );
 }
 
-export default async function Home({
-  params: { lang },
-}: {
-  params: { lang: Locale };
-}) {
-  const dictionary = await getDictionary(lang);
+export default async function Home() {
+  const locale = getCurrentLocale();
 
-  const landingPageData = await fetchLandingPage(lang)({});
+  const landingPageData = await fetchLandingPage(locale)({});
   if (!landingPageData) {
     throw new Error("Unable to fetch landing page data");
   }
@@ -46,20 +41,11 @@ export default async function Home({
           <h1 className="font-mono text-4xl font-bold text-gray-900">
             Tietokilta
           </h1>
-          <Content content={body} lang={lang} />
+          <Content content={body} />
         </section>
         <div className="space-y-8">
-          {announcement ? (
-            <AnnouncementCard
-              ctaText={dictionary.action["Read more"]}
-              news={announcement}
-            />
-          ) : null}
-          <EventsDisplay
-            ilmoheaderText={dictionary.heading["Upcoming events"]}
-            ilmolinkText={dictionary.action["Sign up"]}
-            locale={lang}
-          />
+          {announcement ? <AnnouncementCard news={announcement} /> : null}
+          <EventsDisplay />
         </div>
       </div>
     </main>

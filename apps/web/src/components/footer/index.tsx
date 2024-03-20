@@ -9,8 +9,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { fetchFooter } from "../../lib/api/footer";
 import { cn } from "../../lib/utils";
+import { getCurrentLocale } from "../../locales/server";
 
-export async function Footer({ locale }: { locale: string }) {
+export async function Footer() {
+  const locale = getCurrentLocale();
   const footer = await fetchFooter(locale)({});
   if (!footer) return null;
 

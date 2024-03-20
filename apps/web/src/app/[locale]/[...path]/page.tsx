@@ -5,16 +5,16 @@ import { AdminBar } from "../../../components/admin-bar";
 import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
 import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
-import type { Locale } from "../../../lib/dictionaries";
+import { getCurrentLocale, type Locale } from "../../../locales/server";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
   searchParams: Record<string, string | string[] | undefined>;
 }
 
-type Props = NextPage<{ path: string[]; lang: Locale }>;
+type Props = NextPage<{ path: string[] }>;
 
-const getPage = async (path: string[], lang: Locale) => {
+const getPage = async (path: string[], locale: Locale) => {
   if (path.length !== 1 && path.length !== 2) {
     return notFound();
   }
@@ -24,11 +24,11 @@ const getPage = async (path: string[], lang: Locale) => {
       path.length === 1
         ? { slug: { equals: path[0] } }
         : { slug: { equals: path[1] }, topic: { slug: { equals: path[0] } } },
-    locale: lang,
+    locale,
   });
 
   if (!page) {
-    const otherLang = lang === "fi" ? "en" : "fi";
+    const otherLang = locale === "fi" ? "en" : "fi";
     const localizedSlug = `slug.${otherLang}` as const;
     const localizedTopic = `topic.${otherLang}` as const;
     const otherPage = await fetchPage({
@@ -48,7 +48,7 @@ const getPage = async (path: string[], lang: Locale) => {
     }
 
     const allLocalesPath = otherPage.path as unknown as Record<Locale, string>;
-    const localizedPath = allLocalesPath[lang];
+    const localizedPath = allLocalesPath[locale];
 
     if (!localizedPath) {
       return notFound();
@@ -61,9 +61,10 @@ const getPage = async (path: string[], lang: Locale) => {
 };
 
 export const generateMetadata = async ({
-  params: { path, lang },
+  params: { path },
 }: Props): Promise<Metadata> => {
-  const page = await getPage(path, lang);
+  const locale = getCurrentLocale();
+  const page = await getPage(path, locale);
 
   return {
     title: page.title,
@@ -71,18 +72,19 @@ export const generateMetadata = async ({
   };
 };
 
-function Content({ content, lang }: { content?: EditorState; lang: Locale }) {
+function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
     <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
-      <LexicalSerializer lang={lang} nodes={content.root.children} />
+      <LexicalSerializer nodes={content.root.children} />
     </article>
   );
 }
 
-async function Page({ params: { path, lang } }: Props) {
-  const page = await getPage(path, lang);
+async function Page({ params: { path } }: Props) {
+  const locale = getCurrentLocale();
+  const page = await getPage(path, locale);
   const content = page.content as unknown as EditorState | undefined;
 
   return (
@@ -100,7 +102,7 @@ async function Page({ params: { path, lang } }: Props) {
           <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}
           </p>
-          <Content content={content} lang={lang} />
+          <Content content={content} />
         </div>
       </main>
     </>
