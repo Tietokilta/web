@@ -6,9 +6,9 @@ import type {
 import { fetchEvents } from "../../../lib/api/external/ilmomasiina";
 import { cn, formatDate, formatDatetimeYear } from "../../../lib/utils";
 import { BackButton } from "../../../components/back-button";
-import { getCurrentLocale } from "../../../locales/server";
+import { getCurrentLocale, getScopedI18n } from "../../../locales/server";
 
-function SignUpText({
+async function SignUpText({
   startDate,
   endDate,
   className,
@@ -18,46 +18,49 @@ function SignUpText({
   className?: string;
 }) {
   const locale = getCurrentLocale();
+  const t = await getScopedI18n("ilmomasiina.status");
   if (!startDate || !endDate) {
-    return <span className={className}>Tapahtumaan ei voi ilmoittautua</span>;
+    return (
+      <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
+    );
   }
 
   const hasStarted = new Date(startDate) < new Date();
   const hasEnded = new Date(endDate) < new Date();
 
   if (hasStarted && hasEnded) {
-    return <span className={className}>Ilmoittautuminen on päättynyt</span>;
+    return (
+      <span className={className}>{t("Ilmoittautuminen on päättynyt")}</span>
+    );
   }
 
   if (hasStarted && !hasEnded) {
     return (
       <span className={className}>
-        <span>Ilmoittautuminen on auki</span>{" "}
-        <span className="whitespace-nowrap">
-          {formatDatetimeYear(endDate, locale)}
-        </span>{" "}
-        <span>asti</span>
+        {t("Ilmoittautuminen auki", {
+          endDate: formatDatetimeYear(endDate, locale),
+        })}
       </span>
     );
   }
 
   return (
     <span className={className}>
-      <span>Ilmoittautuminen alkaa</span>{" "}
-      <span className="whitespace-nowrap">
-        {formatDatetimeYear(startDate, locale)}
-      </span>
+      {t("Ilmoittautuminen alkaa", {
+        startDate: formatDatetimeYear(startDate, locale),
+      })}
     </span>
   );
 }
 
-function SignupQuotas({
+async function SignupQuotas({
   quotas,
   className,
 }: {
   quotas: EventQuota[];
   className?: string;
 }) {
+  const t = await getScopedI18n("ilmomasiina");
   const totalSignupCount = quotas.reduce(
     (acc, quota) => acc + quota.signupCount,
     0,
@@ -70,7 +73,7 @@ function SignupQuotas({
     return (
       <div className={className}>
         <span className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
-          <span className="w-3/4">Ilmoittautuneita</span>{" "}
+          <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
           <span className="w-1/4 text-left">
             {totalSignupCount} / {totalSize}
           </span>
@@ -82,7 +85,7 @@ function SignupQuotas({
   return (
     <ul className={cn(className)}>
       <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
-        <span className="w-3/4">Ilmoittautuneita</span>{" "}
+        <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
         <span className="w-1/4 text-left">
           {totalSignupCount} / {totalSize}
         </span>
@@ -135,6 +138,7 @@ function EventCard({ event }: { event: IlmomasiinaEvent }) {
 }
 
 export default async function Page() {
+  const t = await getScopedI18n("ilmomasiina");
   const events = await fetchEvents();
 
   if (!events.ok) {
@@ -147,7 +151,7 @@ export default async function Page() {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton />
-          <h1 className="font-mono text-4xl">Tapahtumat</h1>
+          <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
           <ul className="space-y-8">
             {events.data.map((event) => (
               <EventCard event={event} key={event.id} />
