@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { revalidateTag } from "next/cache";
 import { err } from "../helpers";
 import { baseUrl, type IlmomasiinaSignupResponse } from ".";
 
@@ -30,5 +31,6 @@ export async function signUp(formData: FormData) {
     return err("ilmomasiina-unknown-error");
   }
 
+  revalidateTag("ilmomasiina-events");
   redirect(`${baseUrl}/signup/${data.id}/${data.editToken}`);
 }
