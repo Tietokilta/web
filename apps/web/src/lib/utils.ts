@@ -170,7 +170,7 @@ export const getQuotasWithOpenAndQueue = (
 
   const quotasWithOpenAndQueue = [
     ...quotas,
-    ...(includeOpen ? [openQuota] : []),
+    ...(includeOpen && openQuotaSize > 0 ? [openQuota] : []),
     ...(includeQueue && queuedQuota.signupCount > 0 ? [queuedQuota] : []),
   ];
 
