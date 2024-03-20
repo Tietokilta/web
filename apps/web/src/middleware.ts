@@ -1,17 +1,14 @@
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { locales } from "./lib/dictionaries";
+import { createI18nMiddleware } from "next-international/middleware";
 
-export function middleware(request: NextRequest): NextResponse {
+const i18nMiddleware = createI18nMiddleware({
+  locales: ["fi", "en"],
+  defaultLocale: "fi",
+});
+
+export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
-
-  const pathnameHasLocale = locales.some(
-    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
-  );
-  if (pathnameHasLocale) {
-    return NextResponse.next();
-  }
-
   const pathnameHasCMSPath =
     pathname.startsWith("/admin") ||
     pathname.startsWith("/media") ||
@@ -27,10 +24,9 @@ export function middleware(request: NextRequest): NextResponse {
     return NextResponse.rewrite(url);
   }
 
-  return NextResponse.redirect(
-    new URL(`/fi${pathname.length === 1 ? "" : pathname}`, request.url),
-  );
+  return i18nMiddleware(request);
 }
+
 export const config = {
-  matcher: ["/((?!_next|next_api).*)"],
+  matcher: ["/((?!_next|next_api|static|favicon.ico|robots.txt).*)"],
 };

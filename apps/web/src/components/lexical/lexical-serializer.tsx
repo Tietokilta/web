@@ -12,7 +12,6 @@ import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
-import type { Locale } from "../../lib/dictionaries";
 import {
   IS_BOLD,
   IS_CODE,
@@ -23,13 +22,7 @@ import {
   IS_UNDERLINE,
 } from "./rich-text-node-format";
 
-export function LexicalSerializer({
-  nodes,
-  lang,
-}: {
-  nodes: Node[];
-  lang: Locale;
-}): JSX.Element {
+export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
   return (
     <>
       {nodes.map((node, index): JSX.Element | null => {
@@ -75,7 +68,7 @@ export function LexicalSerializer({
 
         const serializedChildren =
           "children" in node && node.children ? (
-            <LexicalSerializer lang={lang} nodes={node.children} />
+            <LexicalSerializer nodes={node.children} />
           ) : null;
 
         switch (node.type) {
@@ -212,7 +205,7 @@ export function LexicalSerializer({
             return <Relationship key={index} node={node} />;
           }
           case "block": {
-            return <Block key={index} lang={lang} node={node} />;
+            return <Block key={index} node={node} />;
           }
           default:
             // eslint-disable-next-line no-console -- Nice to know if something is missing
@@ -258,10 +251,10 @@ function Relationship({ node }: { node: RelationshipNode }) {
   }
 }
 
-function Block({ node, lang }: { node: BlockNode; lang: Locale }) {
+function Block({ node }: { node: BlockNode }) {
   switch (node.fields.blockType) {
     case "committees-in-year": {
-      return <CommitteeList lang={lang} year={node.fields.year} />;
+      return <CommitteeList year={node.fields.year} />;
     }
     default: {
       // eslint-disable-next-line no-console -- Nice to know if something is missing

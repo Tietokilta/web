@@ -1,4 +1,4 @@
-import type { Dictionary } from "../../dictionaries";
+import { type Dictionary } from "../../../locales/server";
 
 export type ErrorType = keyof Dictionary["errors"];
 
