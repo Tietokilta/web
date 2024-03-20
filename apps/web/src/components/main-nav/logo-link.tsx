@@ -7,8 +7,10 @@ import {
 } from "@tietokilta/ui";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
+import { useCurrentLocale } from "../../locales/client";
 
-export function LogoLink({ locale }: { locale: string }) {
+export function LogoLink() {
+  const locale = useCurrentLocale();
   const href = `/${locale}`;
   const pathname = usePathname();
   const isActive = pathname === href;

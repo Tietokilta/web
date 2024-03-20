@@ -1,5 +1,3 @@
-"use client";
-
 import type {
   LinkRowBlock,
   MainNavigationItem,
@@ -7,6 +5,9 @@ import type {
   Topic,
 } from "@tietokilta/cms-types/payload";
 import {
+  RenderIcon,
+  ScrollArea,
+  Separator,
   Button,
   ChevronDownIcon,
   ChevronUpIcon,
@@ -14,45 +15,15 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
   ExternalLinkIcon,
-  RenderIcon,
-  ScrollArea,
-  Separator,
-  SheetClose,
-  cn,
 } from "@tietokilta/ui";
-import NextLink, { type LinkProps } from "next/link";
-import { usePathname } from "next/navigation";
-import type { HTMLProps } from "react";
-import type { Dictionary } from "../../lib/dictionaries";
+import { cn } from "../../lib/utils";
+import { getScopedI18n } from "../../locales/server";
+import { Link } from "./link";
 
-function Link({
-  href,
-  ...props
-}: Omit<LinkProps & HTMLProps<HTMLAnchorElement>, "ref">) {
-  const pathname = usePathname();
-  const isActive = pathname === href;
-
-  return (
-    <SheetClose asChild>
-      <NextLink
-        aria-current={isActive ? "page" : undefined}
-        href={href}
-        {...props}
-      />
-    </SheetClose>
-  );
-}
-
-function NavigationLink({
+async function NavigationLink({
   pageOrTopic,
-  dict,
 }: {
   pageOrTopic: MainNavigationItem[number];
-  locale: string;
-  dict: {
-    Open: string;
-    Close: string;
-  };
 }) {
   if (pageOrTopic.type === "page") {
     const path = (pageOrTopic.pageConfig?.page as Page).path ?? "#broken";
@@ -67,17 +38,19 @@ function NavigationLink({
     );
   }
 
+  const t = await getScopedI18n("action");
+
   return (
     <Collapsible>
       <CollapsibleTrigger className="group flex items-center gap-2">
         <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
         <ChevronDownIcon className="block h-6 w-6 group-data-[state=open]:hidden" />
         <span className="sr-only block group-data-[state=open]:hidden">
-          {dict.Open}
+          {t("Open")}
         </span>
         <ChevronUpIcon className="hidden h-6 w-6 group-data-[state=open]:block" />
         <span className="sr-only hidden group-data-[state=open]:block">
-          {dict.Close}
+          {t("Close")}
         </span>
       </CollapsibleTrigger>
       <CollapsibleContent className="space-y-3 p-3 text-base">
@@ -122,24 +95,16 @@ function NavigationLink({
 export function LinkList({
   links,
   footerLinks,
-  locale,
-  dictionary: dict,
 }: {
   links: MainNavigationItem;
   footerLinks: LinkRowBlock[];
-  locale: string;
-  dictionary: Dictionary["action"];
 }) {
   return (
     <ScrollArea className="h-[100lvh] font-mono text-xl font-semibold text-gray-900">
       <ul className="mt-6 flex flex-col gap-6 p-4">
         {links.map((pageOrTopic) => (
           <li key={pageOrTopic.id}>
-            <NavigationLink
-              dict={dict}
-              locale={locale}
-              pageOrTopic={pageOrTopic}
-            />
+            <NavigationLink pageOrTopic={pageOrTopic} />
           </li>
         ))}
       </ul>

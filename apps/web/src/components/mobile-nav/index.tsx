@@ -8,21 +8,18 @@ import {
 } from "@tietokilta/ui";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
-import type { Dictionary } from "../../lib/dictionaries";
 import { cn } from "../../lib/utils";
+import { getCurrentLocale, getScopedI18n } from "../../locales/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
 
 export async function MobileNav({
   className,
-  locale,
-  dictionary,
   ...rest
-}: React.ComponentPropsWithoutRef<"header"> & {
-  locale: string;
-  dictionary: Dictionary;
-}) {
+}: React.ComponentPropsWithoutRef<"header">) {
+  const t = await getScopedI18n("action");
+  const locale = getCurrentLocale();
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});
   if (
@@ -51,18 +48,13 @@ export async function MobileNav({
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">
             <MenuIcon className="h-6 w-6" />
-            <span className="sr-only">{dictionary.action["Toggle menu"]}</span>
+            <span className="sr-only">{t("Toggle menu")}</span>
           </Button>
         </SheetTrigger>
         <SheetContent>
           <nav>
             <LanguageSelector />
-            <LinkList
-              dictionary={dictionary.action}
-              footerLinks={footerLinks}
-              links={links}
-              locale={locale}
-            />
+            <LinkList footerLinks={footerLinks} links={links} />
           </nav>
         </SheetContent>
       </Sheet>

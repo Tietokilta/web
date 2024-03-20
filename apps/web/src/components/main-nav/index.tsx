@@ -1,15 +1,16 @@
 import { NavigationMenu, NavigationMenuList } from "@tietokilta/ui";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
+import { getCurrentLocale } from "../../locales/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
 
 export async function MainNav({
-  locale,
   className,
   ...props
-}: React.ComponentPropsWithoutRef<typeof NavigationMenu> & { locale: string }) {
+}: React.ComponentPropsWithoutRef<typeof NavigationMenu>) {
+  const locale = getCurrentLocale();
   const mainNav = await fetchMainNavigation(locale)({});
   if (!mainNav || mainNav.items.length === 0) return null;
 
@@ -24,9 +25,9 @@ export async function MainNav({
       {...props}
     >
       <NavigationMenuList>
-        <LinkList links={leftLinks} locale={locale} />
-        <LogoLink locale={locale} />
-        <LinkList links={rightLinks} locale={locale} />
+        <LinkList links={leftLinks} />
+        <LogoLink />
+        <LinkList links={rightLinks} />
         <LanguageSelector />
       </NavigationMenuList>
     </NavigationMenu>
