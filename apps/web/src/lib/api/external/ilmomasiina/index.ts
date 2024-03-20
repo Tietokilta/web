@@ -85,7 +85,12 @@ export const fetchEvents = async (): Promise<
   ApiResponse<IlmomasiinaEvent[]>
 > => {
   try {
-    const response = await fetch(`${baseUrl}/api/events`);
+    const response = await fetch(`${baseUrl}/api/events`, {
+      next: {
+        tags: ["ilmomasiina-events"],
+        revalidate: 120, // 2 minutes
+      },
+    });
     if (!response.ok) {
       return err("ilmomasiina-fetch-fail");
     }
@@ -101,7 +106,12 @@ export const fetchEvent = async (
   slug: string,
 ): Promise<ApiResponse<IlmomasiinaEvent>> => {
   try {
-    const response = await fetch(`${baseUrl}/api/events/${slug}`);
+    const response = await fetch(`${baseUrl}/api/events/${slug}`, {
+      next: {
+        tags: ["ilmomasiina-events"],
+        revalidate: 120, // 2 minutes
+      },
+    });
     if (!response.ok) {
       if (response.status === 404) {
         return err("ilmomasiina-event-not-found");
