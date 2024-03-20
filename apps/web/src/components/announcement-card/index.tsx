@@ -8,6 +8,7 @@ import {
 } from "@tietokilta/ui";
 import Link from "next/link";
 import { cn } from "../../lib/utils";
+import { getScopedI18n } from "../../locales/server";
 
 function AnnouncementIcon({
   type,
@@ -41,13 +42,9 @@ function AnnouncementIcon({
   return null;
 }
 
-export function AnnouncementCard({
-  news,
-  ctaText,
-}: {
-  news: News;
-  ctaText: string;
-}): JSX.Element {
+export async function AnnouncementCard({ news }: { news: News }) {
+  const t = await getScopedI18n("action");
+
   return (
     <section className="shadow-solid relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pb-6 pt-12 font-mono md:px-6 lg:-mt-48">
       <div
@@ -94,7 +91,7 @@ export function AnnouncementCard({
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild className="md:self-end" variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
-              {ctaText}
+              {t("Read more")}
             </Link>
           </Button>
         ) : null}
@@ -111,7 +108,7 @@ export function AnnouncementCard({
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
-              {ctaText}
+              {t("Read more")}
             </Link>
           </Button>
         ) : null}

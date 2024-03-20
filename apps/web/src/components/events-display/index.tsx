@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../../lib/api/external/ilmomasiina";
+import { getCurrentLocale, getScopedI18n } from "../../locales/server";
 
 function EventListSkeleton() {
   return (
@@ -18,15 +19,9 @@ function EventListSkeleton() {
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ideally would throw during build, but let's at least throw here if it's missing
 const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
 
-function EventItem({
-  event,
-  ilmolinkText,
-  locale,
-}: {
-  event: IlmomasiinaEvent;
-  ilmolinkText: string;
-  locale: string;
-}) {
+async function EventItem({ event }: { event: IlmomasiinaEvent }) {
+  const locale = getCurrentLocale();
+  const t = await getScopedI18n("action");
   const date = new Date(event.date);
 
   // get date in format "su 12.2. klo 18"
@@ -47,7 +42,7 @@ function EventItem({
           {event.title}
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
-          <Link href={eventUrl}>{ilmolinkText}</Link>
+          <Link href={eventUrl}>{t("Sign up")}</Link>
         </Button>
       </div>
       <div className="shrink-0 flex-grow-[1/3] truncate font-medium">
@@ -63,19 +58,13 @@ function EventItem({
         ) : null}
       </div>
       <Button asChild className="md:hidden" variant="link">
-        <Link href={eventUrl}>{ilmolinkText}</Link>
+        <Link href={eventUrl}>{t("Sign up")}</Link>
       </Button>
     </li>
   );
 }
 
-async function EventList({
-  ilmolinkText,
-  locale,
-}: {
-  ilmolinkText: string;
-  locale: string;
-}) {
+async function EventList() {
   const events = await fetchEvents();
 
   if (!events.ok) {
@@ -86,33 +75,21 @@ async function EventList({
   return (
     <ul className="space-y-4">
       {events.data.map((event) => (
-        <EventItem
-          event={event}
-          ilmolinkText={ilmolinkText}
-          key={event.id}
-          locale={locale}
-        />
+        <EventItem event={event} key={event.id} />
       ))}
     </ul>
   );
 }
 
-export function EventsDisplay({
-  ilmolinkText,
-  ilmoheaderText,
-  locale,
-}: {
-  ilmolinkText: string;
-  ilmoheaderText: string;
-  locale: string;
-}) {
+export async function EventsDisplay() {
+  const t = await getScopedI18n("headings");
   return (
     <section className="space-y-4">
       <h3 className="font-mono text-2xl font-bold text-gray-900">
-        {ilmoheaderText}
+        {t("Upcoming events")}
       </h3>
       <Suspense fallback={<EventListSkeleton />}>
-        <EventList ilmolinkText={ilmolinkText} locale={locale} />
+        <EventList />
       </Suspense>
     </section>
   );
