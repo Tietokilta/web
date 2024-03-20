@@ -103,12 +103,7 @@ function NavigationLink({
   );
 }
 
-export const LinkList = ({
-  links,
-}: {
-  links: MainNavigationItem;
-  locale: string;
-}) =>
+export const LinkList = ({ links }: { links: MainNavigationItem }) =>
   links.map((pageOrTopic) => (
     <NavigationMenuItem key={pageOrTopic.id}>
       <NavigationLink pageOrTopic={pageOrTopic} />
