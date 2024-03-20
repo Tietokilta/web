@@ -17,9 +17,9 @@ import {
   getQuotasWithOpenAndQueue,
 } from "../../../../lib/utils";
 import { BackButton } from "../../../../components/back-button";
-import { getCurrentLocale } from "../../../../locales/server";
+import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 
-function SignUpText({
+async function SignUpText({
   startDate,
   endDate,
   className,
@@ -29,43 +29,47 @@ function SignUpText({
   className?: string;
 }) {
   const locale = getCurrentLocale();
+  const t = await getScopedI18n("ilmomasiina.status");
   if (!startDate || !endDate) {
-    return <span className={className}>Tapahtumaan ei voi ilmoittautua</span>;
+    return (
+      <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
+    );
   }
 
   const hasStarted = new Date(startDate) < new Date();
   const hasEnded = new Date(endDate) < new Date();
 
   if (hasStarted && hasEnded) {
-    return <span className={className}>Ilmoittautuminen on päättynyt</span>;
+    return (
+      <span className={className}>{t("Ilmoittautuminen on päättynyt")}</span>
+    );
   }
 
   if (hasStarted && !hasEnded) {
     return (
       <span className={className}>
-        <span>Ilmoittautuminen on auki</span>{" "}
-        <span className="whitespace-nowrap">
-          {formatDatetimeYear(endDate, locale)}
-        </span>{" "}
-        <span>asti</span>
+        {t("Ilmoittautuminen auki", {
+          endDate: formatDatetimeYear(endDate, locale),
+        })}
       </span>
     );
   }
 
   return (
     <span className={className}>
-      <span>Ilmoittautuminen alkaa</span>{" "}
-      <span className="whitespace-nowrap">
-        {formatDatetimeYear(startDate, locale)}
-      </span>
+      {t("Ilmoittautuminen alkaa", {
+        startDate: formatDatetimeYear(startDate, locale),
+      })}
     </span>
   );
 }
 
-function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
+async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
   }
+
+  const t = await getScopedI18n("action");
 
   const hasStarted = new Date(event.registrationStartDate) < new Date();
   const hasEnded = new Date(event.registrationEndDate) < new Date();
@@ -82,7 +86,7 @@ function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
               disabled={!hasStarted || hasEnded}
               variant="secondary"
             >
-              Ilmoittaudu
+              {t("Sign up")}
               {event.quotas.length === 1 ? "" : `: ${quota.title}`}
             </Button>
           </form>
@@ -92,10 +96,15 @@ function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-function SignUpTable({ quota }: { quota: EventQuota | EventQuotaWithSignups }) {
+async function SignUpTable({
+  quota,
+}: {
+  quota: EventQuota | EventQuotaWithSignups;
+}) {
+  const t = await getScopedI18n("ilmomasiina");
   const signups = quota.signups ?? [];
   if (signups.length === 0) {
-    return <p>Ilmoittautuneita ei vielä ole.</p>;
+    return <p>{t("status.Ei ilmoittautuneita vielä")}</p>;
   }
 
   const isOpenQuota = quota.id === OPEN_QUOTA_ID;
@@ -106,13 +115,17 @@ function SignUpTable({ quota }: { quota: EventQuota | EventQuotaWithSignups }) {
     <table className="shadow-solid w-full table-auto border-separate border-spacing-0 rounded-md border-2 border-gray-900">
       <thead>
         <tr className="bg-gray-200">
-          <th className="rounded-tl-md border-b border-gray-900 p-2">Sija</th>
-          <th className="border-b border-gray-900 p-2">Nimi</th>
+          <th className="rounded-tl-md border-b border-gray-900 p-2">
+            {t("headers.Sija")}
+          </th>
+          <th className="border-b border-gray-900 p-2">{t("headers.Nimi")}</th>
           {isGeneratedQuota ? (
-            <th className="border-b border-gray-900 p-2">Kiintiö</th>
+            <th className="border-b border-gray-900 p-2">
+              {t("headers.Kiintiö")}
+            </th>
           ) : null}
           <th className="rounded-tr-md border-b border-gray-900 p-2">
-            Ilmoittautumisaika
+            {t("headers.Ilmoittautumisaika")}
           </th>
         </tr>
       </thead>
@@ -161,10 +174,12 @@ function SignUpTable({ quota }: { quota: EventQuota | EventQuotaWithSignups }) {
   );
 }
 
-function SignUpList({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
   }
+
+  const t = await getScopedI18n("ilmomasiina");
 
   const quotasWithOpenAndQueue = getQuotasWithOpenAndQueue(
     event.quotas,
@@ -174,7 +189,7 @@ function SignUpList({ event }: { event: IlmomasiinaEvent }) {
   return (
     <div className="space-y-4">
       <h2 className="font-mono text-xl font-semibold text-gray-900">
-        Ilmoittautuneet
+        {t("Ilmoittautuneet")}
       </h2>
       <ul className="space-y-16">
         {quotasWithOpenAndQueue.map((quota) => (
@@ -190,25 +205,26 @@ function SignUpList({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-function Tldr({ event }: { event: IlmomasiinaEvent }) {
+async function Tldr({ event }: { event: IlmomasiinaEvent }) {
+  const t = await getScopedI18n("ilmomasiina.headers");
   const locale = getCurrentLocale();
   return (
     <div className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
       {event.category ? (
         <span className="block">
-          <span className="font-medium">Kategoria:</span>{" "}
+          <span className="font-medium">{t("Kategoria")}:</span>{" "}
           <span>{event.category}</span>
         </span>
       ) : null}
       {event.location ? (
         <span className="block">
-          <span className="font-medium">Paikka:</span>{" "}
+          <span className="font-medium">{t("Paikka")}:</span>{" "}
           <span>{event.location}</span>
         </span>
       ) : null}
       {event.date ? (
         <span className="block">
-          <span className="font-medium">Alkaa:</span>{" "}
+          <span className="font-medium">{t("Alkaa")}:</span>{" "}
           <time dateTime={event.date}>
             {formatDatetimeYear(event.date, locale)}
           </time>
@@ -216,7 +232,7 @@ function Tldr({ event }: { event: IlmomasiinaEvent }) {
       ) : null}
       {event.endDate ? (
         <span className="block">
-          <span className="font-medium">Loppuu:</span>{" "}
+          <span className="font-medium">{t("Loppuu")}:</span>{" "}
           <time dateTime={event.endDate}>
             {formatDatetimeYear(event.endDate, locale)}
           </time>
@@ -226,23 +242,29 @@ function Tldr({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
   }
+
+  const t = await getScopedI18n("ilmomasiina");
 
   const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize);
 
   return (
     <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
-        Ilmoittautuneet
+        {t("Ilmoittautuneet")}
       </h2>
       <ul className="flex flex-col gap-2">
         {quotas.map((quota) => (
           <li key={quota.id} className="contents">
             {quota.id === QUEUE_QUOTA_ID ? (
-              <span>Jonossa {quota.signupCount}</span>
+              <span>
+                {t("status.Jonossa", {
+                  queueCount: quota.signupCount,
+                })}
+              </span>
             ) : (
               <>
                 <span>{quota.title}</span>
@@ -266,11 +288,12 @@ function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
+  const t = await getScopedI18n("ilmomasiina");
   return (
     <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
-        Ilmoittautuminen
+        {t("Ilmoittautuminen")}
       </h2>
       <SignUpText
         className="block"
