@@ -6,6 +6,11 @@ export default {
     "Sign up": "Ilmoittaudu",
     "Read more": "Lue lisää",
     Back: "Takaisin",
+    Previous: "Edellinen",
+    Next: "Seuraava",
+    "Go to previous page": "Siirry edelliselle sivulle",
+    "Go to next page": "Siirry seuraavalle sivulle",
+    "More pages": "Lisää sivuja",
   },
   headings: {
     "Upcoming events": "Tulevat tapahtumat",
