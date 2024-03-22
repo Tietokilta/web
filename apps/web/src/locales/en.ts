@@ -6,6 +6,11 @@ export default {
     "Sign up": "Sign up",
     "Read more": "Read more",
     Back: "Back",
+    Previous: "Previous",
+    Next: "Next",
+    "Go to previous page": "Go to previous page",
+    "Go to next page": "Go to next page",
+    "More pages": "More pages",
   },
   heading: {
     "Upcoming events": "Upcoming events",
