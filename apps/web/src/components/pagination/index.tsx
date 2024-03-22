@@ -10,6 +10,7 @@ import {
 import type { ButtonProps } from "@tietokilta/ui";
 import Link from "next/link";
 import { cn } from "../../lib/utils";
+import { useScopedI18n } from "../../locales/client";
 
 function Pagination({
   className,
@@ -78,15 +79,16 @@ function PaginationPrevious({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>): JSX.Element {
+  const t = useScopedI18n("action");
   return (
     <PaginationLink
-      aria-label="Go to previous page"
+      aria-label={t("Go to previous page")}
       className={cn("gap-1 pl-2.5", className)}
       size="default"
       {...props}
     >
       <ChevronLeftIcon className="h-4 w-4" />
-      <span>Previous</span>
+      <span>{t("Previous")}</span>
     </PaginationLink>
   );
 }
@@ -96,14 +98,15 @@ function PaginationNext({
   className,
   ...props
 }: React.ComponentProps<typeof PaginationLink>): JSX.Element {
+  const t = useScopedI18n("action");
   return (
     <PaginationLink
-      aria-label="Go to next page"
+      aria-label={t("Go to next page")}
       className={cn("gap-1 pr-2.5", className)}
       size="default"
       {...props}
     >
-      <span>Next</span>
+      <span>{t("Next")}</span>
       <ChevronRightIcon className="h-4 w-4" />
     </PaginationLink>
   );
@@ -114,6 +117,7 @@ function PaginationEllipsis({
   className,
   ...props
 }: React.ComponentProps<"span">): JSX.Element {
+  const t = useScopedI18n("action");
   return (
     <span
       aria-hidden
@@ -121,7 +125,7 @@ function PaginationEllipsis({
       {...props}
     >
       <MoreHorizontalIcon className="h-4 w-4" />
-      <span className="sr-only">More pages</span>
+      <span className="sr-only">{t("More pages")}</span>
     </span>
   );
 }
