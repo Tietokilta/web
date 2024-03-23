@@ -8,7 +8,7 @@
 		"$date": "2023-11-06T13:59:29.144Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:20:36.722Z"
+		"$date": "2024-03-23T11:26:43.299Z"
 	},
 	"__v": 0,
 	"content": {
@@ -2047,7 +2047,10 @@
 		"fi": "Hakijat",
 		"en": "Applicants"
 	},
-	"path": "/fi/hakijat",
+	"path": {
+		"fi": "/fi/hakijat",
+		"en": "/en/applicants"
+	},
 	"description": {
 		"fi": "Mahtavaa, että olet kiinnostunut tietotekniikan opiskelusta Aalto-yliopistossa! Tietotekniikan tutkinto Aallossa koostuu monista teoreettisista sekä käytännönläheisistä kursseista, ja opinnot tarjoavatkin koulutuksen joka vastaa Helsingin yliopiston tutkintoa lisätyllä insinöörinäkökulmalla sekä projektikursseilla.",
 		"en": "Mahtavaa, että olet kiinnostunut tietotekniikan opiskelusta Aalto-yliopistossa! Tietotekniikan tutkinto Aallossa koostuu monista teoreettisista sekä käytännönläheisistä kursseista, ja opinnot tarjoavatkin koulutuksen joka vastaa Helsingin yliopiston tutkintoa lisätyllä insinöörinäkökulmalla sekä projektikursseilla."
@@ -2064,7 +2067,7 @@
 		"$date": "2023-11-06T14:00:25.121Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:20:45.646Z"
+		"$date": "2024-03-23T11:29:28.478Z"
 	},
 	"__v": 0,
 	"content": {
@@ -2591,7 +2594,10 @@
 			}
 		}
 	},
-	"path": "/fi/fuksit",
+	"path": {
+		"fi": "/fi/fuksit",
+		"en": "/en/fuksis"
+	},
 	"slug": {
 		"fi": "fuksit",
 		"en": "fuksis"
@@ -2616,7 +2622,7 @@
 		"$date": "2023-11-06T14:01:11.528Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:20:54.598Z"
+		"$date": "2024-03-23T11:29:45.696Z"
 	},
 	"__v": 0,
 	"content": {
@@ -3119,7 +3125,10 @@
 			}
 		}
 	},
-	"path": "/fi/yritykset",
+	"path": {
+		"fi": "/fi/yritykset",
+		"en": "/en/companies"
+	},
 	"slug": {
 		"fi": "yritykset",
 		"en": "companies"
@@ -3144,7 +3153,7 @@
 		"$date": "2023-11-06T14:02:34.104Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:02.991Z"
+		"$date": "2024-03-23T11:30:00.346Z"
 	},
 	"__v": 0,
 	"content": {
@@ -3683,7 +3692,10 @@
 			}
 		}
 	},
-	"path": "/fi/kilta/tuotteet",
+	"path": {
+		"fi": "/fi/kilta/tuotteet",
+		"en": "/en/guild/merch"
+	},
 	"slug": {
 		"fi": "tuotteet",
 		"en": "merch"
@@ -3712,7 +3724,7 @@
 		"$date": "2023-11-06T14:03:10.838Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:10.152Z"
+		"$date": "2024-03-23T11:22:55.848Z"
 	},
 	"__v": 0,
 	"content": {
@@ -4621,7 +4633,10 @@
 			}
 		}
 	},
-	"path": "/fi/yhteystiedot",
+	"path": {
+		"fi": "/fi/yhteystiedot",
+		"en": "/en/contact"
+	},
 	"slug": {
 		"fi": "yhteystiedot",
 		"en": "contact"
@@ -4646,7 +4661,7 @@
 		"$date": "2024-01-13T18:41:33.99Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:17.263Z"
+		"$date": "2024-03-23T11:22:43.864Z"
 	},
 	"__v": 0,
 	"content": {
@@ -4801,7 +4816,10 @@
 		"fi": "Täältä löydät tietoa killan säännöistä ja ohjesäännöistä!",
 		"en": "Täältä löydät tietoa killan säännöistä ja ohjesäännöistä!"
 	},
-	"path": "/fi/kilta/saannot",
+	"path": {
+		"fi": "/fi/kilta/saannot",
+		"en": "/en/guild/rules"
+	},
 	"slug": {
 		"fi": "saannot",
 		"en": "rules"
@@ -4826,7 +4844,7 @@
 		"$date": "2024-01-13T18:43:12.391Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:23.73Z"
+		"$date": "2024-03-23T11:22:33.709Z"
 	},
 	"__v": 0,
 	"content": {
@@ -5091,7 +5109,10 @@
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
 	},
-	"path": "/fi/kilta/tunnukset",
+	"path": {
+		"fi": "/fi/kilta/tunnukset",
+		"en": "/en/guild/iconography"
+	},
 	"hideTableOfContents": false
 },
 {
@@ -5104,7 +5125,7 @@
 		"$date": "2024-01-13T19:07:58.501Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:28.984Z"
+		"$date": "2024-03-23T11:22:23.955Z"
 	},
 	"__v": 0,
 	"content": {
@@ -6002,7 +6023,10 @@
 		"fi": "Nettisivujen koodaus on kivaa",
 		"en": "Coding the website is fun!"
 	},
-	"path": "/fi/kilta/koodaus",
+	"path": {
+		"fi": "/fi/kilta/koodaus",
+		"en": "/en/guild/coding"
+	},
 	"slug": {
 		"fi": "koodaus",
 		"en": "coding"
@@ -6027,7 +6051,7 @@
 		"$date": "2024-02-03T14:41:10.684Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:35.16Z"
+		"$date": "2024-03-23T11:22:12.518Z"
 	},
 	"__v": 0,
 	"content": {
@@ -6188,7 +6212,10 @@
 		"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille.",
 		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille."
 	},
-	"path": "/fi/kilta/hallitus",
+	"path": {
+		"fi": "/fi/kilta/hallitus",
+		"en": "/en/guild/board"
+	},
 	"slug": {
 		"fi": "hallitus",
 		"en": "board"
@@ -6257,7 +6284,10 @@
 			}
 		}
 	},
-	"path": "/fi/hallitus/2024",
+	"path": {
+		"fi": "/fi/hallitus/2024",
+		"en": "/en/board/2024"
+	},
 	"topic": {
 		"value": "65be50e5e56e440d594dddac",
 		"relationTo": "topics"
@@ -6272,7 +6302,7 @@
 		"$date": "2024-02-03T15:12:49.918Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:46.331Z"
+		"$date": "2024-03-23T11:20:48.552Z"
 	},
 	"__v": 0,
 	"hideTableOfContents": true
@@ -6331,7 +6361,10 @@
 			}
 		}
 	},
-	"path": "/fi/hallitus/2023",
+	"path": {
+		"fi": "/fi/hallitus/2023",
+		"en": "/en/board/2023"
+	},
 	"topic": {
 		"value": "65be50e5e56e440d594dddac",
 		"relationTo": "topics"
@@ -6346,7 +6379,7 @@
 		"$date": "2024-02-03T15:17:59.935Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:21:40.841Z"
+		"$date": "2024-03-23T11:21:51.799Z"
 	},
 	"__v": 0,
 	"hideTableOfContents": true
@@ -6362,7 +6395,7 @@
 		"$date": "2024-02-03T16:12:04.152Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:20:26.358Z"
+		"$date": "2024-03-23T11:21:38.787Z"
 	},
 	"__v": 0,
 	"content": {
@@ -6573,7 +6606,10 @@
 		"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. Sivulta löytyy lisäksi linkit aikaisempien vuosien sivuille.",
 		"en": "Committees, committee chairs, officials and others for year 2024."
 	},
-	"path": "/fi/kilta/toimarit",
+	"path": {
+		"fi": "/fi/kilta/toimarit",
+		"en": "/en/guild/officials"
+	},
 	"slug": {
 		"fi": "toimarit",
 		"en": "officials"
@@ -6702,7 +6738,10 @@
 			}
 		}
 	},
-	"path": "/fi/toimarit/2024",
+	"path": {
+		"fi": "/fi/toimarit/2024",
+		"en": "/en/officials/2024"
+	},
 	"topic": {
 		"value": "65be7b27cbc2d360ae464edd",
 		"relationTo": "topics"
@@ -6717,7 +6756,7 @@
 		"$date": "2024-02-03T17:42:53.778Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:20:20.132Z"
+		"$date": "2024-03-23T11:21:25.642Z"
 	},
 	"__v": 0
 },
@@ -6732,7 +6771,7 @@
 		"$date": "2024-02-15T20:37:12.153Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-14T16:20:13.298Z"
+		"$date": "2024-03-23T11:21:15.004Z"
 	},
 	"__v": 0,
 	"content": {
@@ -11467,7 +11506,10 @@
 		"fi": "Täältä löydät listan kaikista toimikunnista, niiden kuvaukset sekä hakulomakkeet!",
 		"en": "Here you can see a list of all committees, their description and application froms."
 	},
-	"path": "/fi/kilta/toimikunnat",
+	"path": {
+		"fi": "/fi/kilta/toimikunnat",
+		"en": "/en/guild/committees"
+	},
 	"slug": {
 		"fi": "toimikunnat",
 		"en": "committees"

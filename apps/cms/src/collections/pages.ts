@@ -1,17 +1,22 @@
-import type { Page } from "@tietokilta/cms-types/payload";
-import { isNil, omitBy } from "lodash";
+import type { Page, Topic } from "@tietokilta/cms-types/payload";
 import type {
   CollectionConfig,
   FieldHook,
   PayloadRequest,
 } from "payload/types";
+import { type Locale } from "payload/config";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
 import { revalidatePage } from "../hooks/revalidate-page";
 import { generatePreviewUrl } from "../preview";
 import { getLocale } from "../util";
 
-const formatPath: FieldHook<Page> = async ({ data, req }) => {
+type Localized<TField> = Record<Locale["code"], TField>;
+
+const formatPath: FieldHook<
+  Page,
+  Page["path"] | Localized<Page["path"]>
+> = async ({ data, req }) => {
   if (!data?.slug || !req.payload.config.localization) {
     req.payload.logger.warn(
       "Could not format page path: missing slug or localization config",
@@ -29,8 +34,8 @@ const formatPath: FieldHook<Page> = async ({ data, req }) => {
       return `/${reqLocale}/${data.slug}`;
     }
 
-    const slug = data.slug as unknown as Record<string, string>;
-    const localizedPaths = availableLocales.reduce<Record<string, string>>(
+    const slug = data.slug as unknown as Localized<Page["slug"]>;
+    const localizedPaths = availableLocales.reduce<Localized<Page["path"]>>(
       (allPaths, locale) => ({
         ...allPaths,
         [locale]: `/${locale}/${slug[locale]}`,
@@ -51,9 +56,9 @@ const formatPath: FieldHook<Page> = async ({ data, req }) => {
     return `/${reqLocale}/${topic.slug}/${data.slug}`;
   }
 
-  const topicSlug = topic.slug as unknown as Record<string, string>;
-  const pageSlug = data.slug as unknown as Record<string, string>;
-  const localizedPaths = availableLocales.reduce<Record<string, string>>(
+  const topicSlug = topic.slug as unknown as Localized<Topic["slug"]>;
+  const pageSlug = data.slug as unknown as Localized<Page["slug"]>;
+  const localizedPaths = availableLocales.reduce<Localized<Page["path"]>>(
     (allPaths, locale) => ({
       ...allPaths,
       [locale]: `/${locale}/${topicSlug[locale]}/${pageSlug[locale]}`,
@@ -99,6 +104,9 @@ export const Pages: CollectionConfig = {
       type: "checkbox",
       required: true,
       defaultValue: false,
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "content",
@@ -109,8 +117,9 @@ export const Pages: CollectionConfig = {
     {
       name: "path",
       type: "text",
+      localized: true,
       hooks: {
-        afterRead: [formatPath],
+        beforeChange: [formatPath],
       },
       admin: {
         readOnly: true,
@@ -153,7 +162,7 @@ export const Pages: CollectionConfig = {
   },
   hooks: {
     afterChange: [
-      revalidatePage<Page>("pages", async (doc, req) => {
+      revalidatePage<Page>("pages", (doc, req) => {
         const locale = getLocale(req);
         if (!locale) {
           req.payload.logger.error(
@@ -161,21 +170,11 @@ export const Pages: CollectionConfig = {
           );
           return;
         }
-        const topic =
-          doc.topic &&
-          (await req.payload.findByID({
-            collection: "topics",
-            id: doc.topic.value as string,
-            locale,
-          }));
+
         return {
-          where: omitBy(
-            {
-              slug: { equals: doc.slug },
-              topic: topic ? { slug: { equals: topic.slug } } : null,
-            },
-            isNil,
-          ),
+          where: {
+            path: { equals: doc.path },
+          },
           locale,
         };
       }),
@@ -184,28 +183,12 @@ export const Pages: CollectionConfig = {
         if (!localesData) {
           return;
         }
-        const {
-          allLocalesPageSlug,
-          localizedTopicSlug,
-          localizedSlugKey,
-          localizedTopicKey,
-          locale,
-        } = localesData;
+        const { allLocalesPagePath, localizedPathKey, locale } = localesData;
 
         return {
-          where: omitBy(
-            {
-              [localizedSlugKey]: { equals: allLocalesPageSlug[locale] },
-              [localizedTopicKey]: localizedTopicSlug
-                ? {
-                    [localizedSlugKey]: {
-                      equals: localizedTopicSlug[locale],
-                    },
-                  }
-                : null,
-            },
-            isNil,
-          ),
+          where: {
+            [localizedPathKey]: { equals: allLocalesPagePath[locale] },
+          },
           locale: "all",
         };
       }),
@@ -214,28 +197,12 @@ export const Pages: CollectionConfig = {
         if (!localesData) {
           return;
         }
-        const {
-          allLocalesPageSlug,
-          localizedTopicSlug,
-          localizedSlugKey,
-          localizedTopicKey,
-          locale,
-        } = localesData;
+        const { allLocalesPagePath, localizedPathKey, locale } = localesData;
 
         return {
-          where: omitBy(
-            {
-              [localizedSlugKey]: { equals: allLocalesPageSlug[locale] },
-              [localizedTopicKey]: localizedTopicSlug
-                ? {
-                    [localizedSlugKey]: {
-                      equals: localizedTopicSlug[locale],
-                    },
-                  }
-                : null,
-            },
-            isNil,
-          ),
+          where: {
+            [localizedPathKey]: { equals: allLocalesPagePath[locale] },
+          },
           locale: "all",
         };
       }),
@@ -249,10 +216,8 @@ async function getAllLocalesData(
   reverseLocale?: boolean,
 ): Promise<
   | {
-      allLocalesPageSlug: Record<string, string>;
-      localizedTopicSlug?: Record<string, string>;
-      localizedSlugKey: string;
-      localizedTopicKey: string;
+      allLocalesPagePath: Localized<Page["path"]>;
+      localizedPathKey: string;
       locale: string;
     }
   | undefined
@@ -273,27 +238,12 @@ async function getAllLocalesData(
     id: doc.id,
     locale: "all",
   });
-  const topic =
-    doc.topic &&
-    (await req.payload.findByID({
-      collection: "topics",
-      id: doc.topic.value as string,
-      locale: "all",
-    }));
-
-  const allLocalesPageSlug = page.slug as unknown as Record<string, string>;
-  const localizedTopicSlug = topic?.slug as unknown as
-    | Record<string, string>
-    | undefined;
-
-  const localizedSlugKey = `slug.${locale}`;
-  const localizedTopicKey = `topic.${locale}`;
+  const allLocalesPagePath = page.path as unknown as Localized<Page["path"]>;
+  const localizedPathKey = `path.${locale}`;
 
   return {
-    allLocalesPageSlug,
-    localizedTopicSlug,
-    localizedSlugKey,
-    localizedTopicKey,
+    allLocalesPagePath,
+    localizedPathKey,
     locale,
   };
 }
