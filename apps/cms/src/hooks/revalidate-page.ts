@@ -9,7 +9,8 @@ import type { PayloadRequest } from "payload/types";
 // only revalidate existing docs that are published (not drafts)
 export function revalidatePage<T extends TypeWithID>(
   collectionSlug: string,
-  getFetchData: (doc: T, req: PayloadRequest) => Promise<unknown>,
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents -- is needed for promise
+  getFetchData: (doc: T, req: PayloadRequest) => Promise<unknown> | unknown,
 ): AfterChangeHook<T> {
   return ({ doc, req, operation }): T => {
     const isPage = collectionSlug === "pages";
@@ -32,7 +33,7 @@ export function revalidatePage<T extends TypeWithID>(
     const revalidate = async (): Promise<void> => {
       try {
         const fetchData = JSON.stringify(await getFetchData(doc, req));
-        const fetchUrl = `${process.env.PUBLIC_FRONTEND_URL}/next_api/revalidate-page?${new URLSearchParams(
+        const fetchUrl = `${process.env.PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-page?${new URLSearchParams(
           {
             secret: encodeURIComponent(revalidationKey),
             collection: encodeURIComponent(collectionSlug),
