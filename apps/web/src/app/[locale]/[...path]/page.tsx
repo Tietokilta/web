@@ -19,27 +19,30 @@ const getPage = async (path: string[], locale: Locale) => {
     return notFound();
   }
 
+  const pagePath = `/${path.join("/")}`;
+  const fullPath = `/${locale}${pagePath}`;
+
   const page = await fetchPage({
-    where:
-      path.length === 1
-        ? { slug: { equals: path[0] } }
-        : { slug: { equals: path[1] }, topic: { slug: { equals: path[0] } } },
+    where: {
+      path: {
+        equals: fullPath,
+      },
+    },
     locale,
   });
 
   if (!page) {
     const otherLang = locale === "fi" ? "en" : "fi";
-    const localizedSlug = `slug.${otherLang}` as const;
-    const localizedTopic = `topic.${otherLang}` as const;
+    const otherFullPath = `/${otherLang}${pagePath}`;
+    const localizedPathKey = `path.${otherLang}` as const;
+
     const otherPage = await fetchPage({
       // @ts-expect-error Typescript doesn't get as const keys in object assignments it seems
-      where:
-        path.length === 1
-          ? { [localizedSlug]: { equals: path[0] } }
-          : {
-              [localizedSlug]: { equals: path[1] },
-              [localizedTopic]: { [localizedSlug]: { equals: path[0] } },
-            },
+      where: {
+        [localizedPathKey]: {
+          equals: otherFullPath,
+        },
+      },
       locale: "all",
     });
 
