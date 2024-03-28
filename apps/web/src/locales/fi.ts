@@ -6,9 +6,13 @@ export default {
     "Sign up": "Ilmoittaudu",
     "Read more": "Lue lisää",
     Back: "Takaisin",
+    "Try again": "Yritä uudelleen",
+    "To the front page": "Etusivulle"
   },
   headings: {
     "Upcoming events": "Tulevat tapahtumat",
+    "404": "404 - Sivua ei löytynyt",
+    "general-error": "Jotain meni pieleen"
   },
   errors: {
     "ilmomasiina-fetch-fail":
@@ -18,6 +22,9 @@ export default {
       "Virheellinen pyyntö, yritä uudelleen.",
     "ilmomasiina-unknown-error":
       "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
+    "general-error": "Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään.",
+    "error-code": "Virheen tunniste on",
+    "page-not-found": "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle."
   },
   ilmomasiina: {
     Tapahtumat: "Tapahtumat",
