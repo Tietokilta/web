@@ -1,7 +1,13 @@
-import type { Page, Topic } from "@tietokilta/cms-types/payload";
+import type {
+  Page,
+  Topic,
+  Page as PageType,
+} from "@tietokilta/cms-types/payload";
 import type {
   CollectionConfig,
+  Field,
   FieldHook,
+  FilterOptions,
   PayloadRequest,
 } from "payload/types";
 import { type Locale } from "payload/config";
@@ -69,10 +75,58 @@ const formatPath: FieldHook<
   return localizedPaths;
 };
 
+const filterCyclicPages: FilterOptions<PageType> = ({ data }) => ({
+  id: {
+    not_equals: data.id,
+  },
+});
+
+const standardPageFields = [
+  {
+    name: "hideTableOfContents",
+    type: "checkbox",
+    required: true,
+    defaultValue: false,
+    admin: {
+      position: "sidebar",
+    },
+  },
+  {
+    name: "content",
+    type: "richText",
+    localized: true,
+    required: true,
+  },
+] satisfies Field[];
+
+const specialPageFields = [
+  {
+    name: "specialPageType",
+    type: "select",
+    required: true,
+    options: [
+      {
+        label: "Events List",
+        value: "events-list",
+      },
+    ],
+  },
+] satisfies Field[];
+
+const redirectFields = [
+  {
+    name: "redirectToPage",
+    type: "relationship",
+    relationTo: "pages",
+    required: true,
+    filterOptions: filterCyclicPages,
+  },
+] satisfies Field[];
+
 export const Pages: CollectionConfig = {
   slug: "pages",
   admin: {
-    useAsTitle: "title",
+    useAsTitle: "path",
     defaultColumns: ["path", "title"],
     listSearchableFields: ["path", "title"],
     preview: generatePreviewUrl<Page>((doc) => {
@@ -100,20 +154,45 @@ export const Pages: CollectionConfig = {
       required: true,
     },
     {
-      name: "hideTableOfContents",
-      type: "checkbox",
+      name: "type",
+      hasMany: false,
       required: true,
-      defaultValue: false,
+      type: "select",
+      defaultValue: "standard",
+      options: [
+        {
+          label: "Standard Page",
+          value: "standard",
+        },
+        {
+          label: "Special Page",
+          value: "special",
+        },
+        {
+          label: "Redirect to Page",
+          value: "redirect",
+        },
+      ],
+    },
+    ...standardPageFields.map((field) => ({
+      ...field,
       admin: {
-        position: "sidebar",
+        ...field.admin,
+        condition: (data: Partial<Page>) => data.type === "standard",
       },
-    },
-    {
-      name: "content",
-      type: "richText",
-      localized: true,
-      required: true,
-    },
+    })),
+    ...specialPageFields.map((field) => ({
+      ...field,
+      admin: {
+        condition: (data: Partial<Page>) => data.type === "special",
+      },
+    })),
+    ...redirectFields.map((field) => ({
+      ...field,
+      admin: {
+        condition: (data: Partial<Page>) => data.type === "redirect",
+      },
+    })),
     {
       name: "path",
       type: "text",

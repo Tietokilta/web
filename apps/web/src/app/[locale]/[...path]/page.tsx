@@ -1,11 +1,13 @@
 import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
+import type { Page as CMSPage } from "@tietokilta/cms-types/payload";
 import { AdminBar } from "../../../components/admin-bar";
 import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
 import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
 import { getCurrentLocale, type Locale } from "../../../locales/server";
+import EventsPage from "../../../custom-pages/events-page";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
@@ -88,6 +90,31 @@ function Content({ content }: { content?: EditorState }) {
 async function Page({ params: { path } }: Props) {
   const locale = getCurrentLocale();
   const page = await getPage(path, locale);
+
+  if (page.type === "special") {
+    if (page.specialPageType === "events-list") {
+      return <EventsPage />;
+    }
+
+    console.error("Unknown special page type", page.specialPageType);
+    return notFound();
+  }
+
+  if (page.type === "redirect") {
+    const redirectToPage = page.redirectToPage as CMSPage | undefined;
+    if (redirectToPage?.path) {
+      return redirect(redirectToPage.path);
+    }
+
+    console.error("Redirect page missing redirect target", page);
+    return notFound();
+  }
+
+  if (page.type !== "standard") {
+    console.error("Unknown page type", page.type);
+    return notFound();
+  }
+
   const content = page.content as unknown as EditorState | undefined;
 
   return (
