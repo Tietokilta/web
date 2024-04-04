@@ -21,11 +21,11 @@
   "dependencies": {
     "@azure/storage-blob": "^12.17.0",
     "@payloadcms/bundler-webpack": "^1.0.6",
-    "@payloadcms/db-mongodb": "^1.4.3",
+    "@payloadcms/db-mongodb": "^1.4.4",
     "@payloadcms/plugin-cloud-storage": "^1.1.2",
     "@payloadcms/richtext-lexical": "^0.7.0",
     "dotenv": "^16.4.5",
-    "express": "^4.19.0",
+    "express": "^4.19.2",
     "lodash": "^4.17.21",
     "payload": "^2.11.2",
     "payload-plugin-oauth": "^2.1.1"
@@ -40,7 +40,7 @@
     "@types/passport-oauth2": "^1.4.15",
     "copyfiles": "^2.4.1",
     "eslint": "^8.57.0",
-    "tsx": "^4.7.1",
+    "tsx": "^4.7.2",
     "typescript": "^5.4.3"
   }
 }
