@@ -4,6 +4,7 @@ import type {
   Media,
 } from "@tietokilta/cms-types/payload";
 import Image from "next/image";
+import { GavelIcon } from "@tietokilta/ui";
 import TikLogo from "../../assets/TiK-logo.png";
 
 function CommitteeMemberCard({
@@ -12,8 +13,10 @@ function CommitteeMemberCard({
   committeeMember: CommitteeMember;
 }) {
   const photo = committeeMember.photo as Media | undefined;
+  const isChair = !!committeeMember.chair;
+
   return (
-    <div className="w-full max-w-xs border-2 border-gray-900 sm:w-44">
+    <div className="relative flex w-full max-w-xs flex-col border-2 border-gray-900 sm:w-44">
       <Image
         alt={photo?.alt ?? ""}
         className="w-full border-b-2 border-gray-900 object-cover object-center"
@@ -21,7 +24,8 @@ function CommitteeMemberCard({
         src={photo?.url ?? TikLogo}
         width={photo?.width ?? undefined}
       />
-      <p className="flex flex-col bg-gray-100 text-center">
+      {isChair ? <GavelIcon className="absolute left-0 top-0 h-6 w-6" /> : null}
+      <p className="flex flex-1 flex-col bg-gray-100 text-center">
         <span className="text-lg font-medium">{committeeMember.name}</span>
         <span>{committeeMember.title}</span>
       </p>
