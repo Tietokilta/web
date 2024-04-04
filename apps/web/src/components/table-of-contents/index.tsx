@@ -54,7 +54,7 @@ function HeadingList({
             item.level === 2 && "mb-2 text-base before:content-['#'] last:mb-0",
             item.level === 3 && "mb-1 text-sm before:content-['##'] last:mb-0",
           )}
-          key={`${item.level}-${item.text}`}
+          key={`${item.level.toFixed()}-${item.text}`}
         >
           <Link
             className={cn(
