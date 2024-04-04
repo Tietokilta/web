@@ -25,11 +25,14 @@ export async function GET(
   }
 
   // validate the Payload token
-  const userReq = await fetch(`${process.env.PUBLIC_SERVER_URL}/api/users/me`, {
-    headers: {
-      Authorization: `JWT ${payloadToken}`,
+  const userReq = await fetch(
+    `${process.env.PUBLIC_SERVER_URL ?? ""}/api/users/me`,
+    {
+      headers: {
+        Authorization: `JWT ${payloadToken}`,
+      },
     },
-  });
+  );
 
   const userRes = (await userReq.json()) as { user?: unknown } | null;
 

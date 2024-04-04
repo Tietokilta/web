@@ -6,7 +6,6 @@ import { notFound } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -26,10 +25,6 @@ function EventListSkeleton() {
     </ul>
   );
 }
-
-// TODO: better env handling since next.js doesn't have that built-in
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ideally would throw during build, but let's at least throw here if it's missing
-const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
 
 async function EventItem({ event }: { event: IlmomasiinaEvent }) {
   const locale = getCurrentLocale();
@@ -105,7 +100,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               />
             </PaginationItem>
           ) : null}
-          {Array.from({ length: pageCount }, (_, i) => i + 1).map((page) => (
+          {Array.from({ length: pageCount }, (__, i) => i + 1).map((page) => (
             <PaginationItem key={page}>
               <PaginationLink
                 isActive={page === currentPage}
