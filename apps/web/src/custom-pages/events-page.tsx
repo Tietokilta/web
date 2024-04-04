@@ -2,11 +2,11 @@ import Link from "next/link";
 import type {
   EventQuota,
   IlmomasiinaEvent,
-} from "../../../lib/api/external/ilmomasiina";
-import { fetchEvents } from "../../../lib/api/external/ilmomasiina";
-import { cn, formatDate, formatDatetimeYear } from "../../../lib/utils";
-import { BackButton } from "../../../components/back-button";
-import { getCurrentLocale, getScopedI18n } from "../../../locales/server";
+} from "../lib/api/external/ilmomasiina";
+import { fetchEvents } from "../lib/api/external/ilmomasiina";
+import { cn, formatDate, formatDatetimeYear } from "../lib/utils";
+import { BackButton } from "../components/back-button";
+import { getCurrentLocale, getScopedI18n } from "../locales/server";
 
 async function SignUpText({
   startDate,

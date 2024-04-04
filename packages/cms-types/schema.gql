@@ -438,8 +438,11 @@ type Page {
   id: String
   title: String
   description: String
+  type: Page_type
   hideTableOfContents: Boolean
   content(depth: Int): JSON
+  specialPageType: Page_specialPageType
+  redirectToPage(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page_Topic_Relationship
   slug: String
@@ -449,10 +452,20 @@ type Page {
   _status: Page__status
 }
 
+enum Page_type {
+  standard
+  special
+  redirect
+}
+
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
+
+enum Page_specialPageType {
+  events_list
+}
 
 type Page_Topic_Relationship {
   relationTo: Page_Topic_RelationTo
@@ -495,8 +508,11 @@ type Pages {
 input Page_where {
   title: Page_title_operator
   description: Page_description_operator
+  type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
+  specialPageType: Page_specialPageType_operator
+  redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
   slug: Page_slug_operator
@@ -526,6 +542,20 @@ input Page_description_operator {
   contains: String
 }
 
+input Page_type_operator {
+  equals: Page_type_Input
+  not_equals: Page_type_Input
+  in: [Page_type_Input]
+  not_in: [Page_type_Input]
+  all: [Page_type_Input]
+}
+
+enum Page_type_Input {
+  standard
+  special
+  redirect
+}
+
 input Page_hideTableOfContents_operator {
   equals: Boolean
   not_equals: Boolean
@@ -536,6 +566,26 @@ input Page_content_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+}
+
+input Page_specialPageType_operator {
+  equals: Page_specialPageType_Input
+  not_equals: Page_specialPageType_Input
+  in: [Page_specialPageType_Input]
+  not_in: [Page_specialPageType_Input]
+  all: [Page_specialPageType_Input]
+}
+
+enum Page_specialPageType_Input {
+  events_list
+}
+
+input Page_redirectToPage_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
 }
 
 input Page_path_operator {
@@ -623,8 +673,11 @@ input Page_id_operator {
 input Page_where_and {
   title: Page_title_operator
   description: Page_description_operator
+  type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
+  specialPageType: Page_specialPageType_operator
+  redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
   slug: Page_slug_operator
@@ -640,8 +693,11 @@ input Page_where_and {
 input Page_where_or {
   title: Page_title_operator
   description: Page_description_operator
+  type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
+  specialPageType: Page_specialPageType_operator
+  redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
   slug: Page_slug_operator
@@ -666,8 +722,11 @@ type pagesDocAccess {
 type PagesDocAccessFields {
   title: PagesDocAccessFields_title
   description: PagesDocAccessFields_description
+  type: PagesDocAccessFields_type
   hideTableOfContents: PagesDocAccessFields_hideTableOfContents
   content: PagesDocAccessFields_content
+  specialPageType: PagesDocAccessFields_specialPageType
+  redirectToPage: PagesDocAccessFields_redirectToPage
   path: PagesDocAccessFields_path
   topic: PagesDocAccessFields_topic
   slug: PagesDocAccessFields_slug
@@ -723,6 +782,29 @@ type PagesDocAccessFields_description_Delete {
   permission: Boolean!
 }
 
+type PagesDocAccessFields_type {
+  create: PagesDocAccessFields_type_Create
+  read: PagesDocAccessFields_type_Read
+  update: PagesDocAccessFields_type_Update
+  delete: PagesDocAccessFields_type_Delete
+}
+
+type PagesDocAccessFields_type_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_type_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_type_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_type_Delete {
+  permission: Boolean!
+}
+
 type PagesDocAccessFields_hideTableOfContents {
   create: PagesDocAccessFields_hideTableOfContents_Create
   read: PagesDocAccessFields_hideTableOfContents_Read
@@ -766,6 +848,52 @@ type PagesDocAccessFields_content_Update {
 }
 
 type PagesDocAccessFields_content_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_specialPageType {
+  create: PagesDocAccessFields_specialPageType_Create
+  read: PagesDocAccessFields_specialPageType_Read
+  update: PagesDocAccessFields_specialPageType_Update
+  delete: PagesDocAccessFields_specialPageType_Delete
+}
+
+type PagesDocAccessFields_specialPageType_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_specialPageType_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_specialPageType_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_specialPageType_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_redirectToPage {
+  create: PagesDocAccessFields_redirectToPage_Create
+  read: PagesDocAccessFields_redirectToPage_Read
+  update: PagesDocAccessFields_redirectToPage_Update
+  delete: PagesDocAccessFields_redirectToPage_Delete
+}
+
+type PagesDocAccessFields_redirectToPage_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_redirectToPage_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_redirectToPage_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_redirectToPage_Delete {
   permission: Boolean!
 }
 
@@ -968,8 +1096,11 @@ type PageVersion {
 type PageVersion_Version {
   title: String
   description: String
+  type: PageVersion_Version_type
   hideTableOfContents: Boolean
   content(depth: Int): JSON
+  specialPageType: PageVersion_Version_specialPageType
+  redirectToPage(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PageVersion_Version_Topic_Relationship
   slug: String
@@ -977,6 +1108,16 @@ type PageVersion_Version {
   updatedAt: DateTime
   createdAt: DateTime
   _status: PageVersion_Version__status
+}
+
+enum PageVersion_Version_type {
+  standard
+  special
+  redirect
+}
+
+enum PageVersion_Version_specialPageType {
+  events_list
 }
 
 type PageVersion_Version_Topic_Relationship {
@@ -1013,8 +1154,11 @@ input versionsPage_where {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
+  version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
+  version__specialPageType: versionsPage_version__specialPageType_operator
+  version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
   version__slug: versionsPage_version__slug_operator
@@ -1057,6 +1201,20 @@ input versionsPage_version__description_operator {
   contains: String
 }
 
+input versionsPage_version__type_operator {
+  equals: versionsPage_version__type_Input
+  not_equals: versionsPage_version__type_Input
+  in: [versionsPage_version__type_Input]
+  not_in: [versionsPage_version__type_Input]
+  all: [versionsPage_version__type_Input]
+}
+
+enum versionsPage_version__type_Input {
+  standard
+  special
+  redirect
+}
+
 input versionsPage_version__hideTableOfContents_operator {
   equals: Boolean
   not_equals: Boolean
@@ -1067,6 +1225,26 @@ input versionsPage_version__content_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
+}
+
+input versionsPage_version__specialPageType_operator {
+  equals: versionsPage_version__specialPageType_Input
+  not_equals: versionsPage_version__specialPageType_Input
+  in: [versionsPage_version__specialPageType_Input]
+  not_in: [versionsPage_version__specialPageType_Input]
+  all: [versionsPage_version__specialPageType_Input]
+}
+
+enum versionsPage_version__specialPageType_Input {
+  events_list
+}
+
+input versionsPage_version__redirectToPage_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
 }
 
 input versionsPage_version__path_operator {
@@ -1189,8 +1367,11 @@ input versionsPage_where_and {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
+  version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
+  version__specialPageType: versionsPage_version__specialPageType_operator
+  version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
   version__slug: versionsPage_version__slug_operator
@@ -1211,8 +1392,11 @@ input versionsPage_where_or {
   parent: versionsPage_parent_operator
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
+  version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
+  version__specialPageType: versionsPage_version__specialPageType_operator
+  version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
   version__slug: versionsPage_version__slug_operator
@@ -6502,6 +6686,7 @@ type FooterUpdateDocAccess {
 type LandingPage {
   heroText: String
   heroImages: [LandingPage_HeroImages!]!
+  eventsListPage(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page!
   announcement(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): News
   body(depth: Int): JSON
   updatedAt: DateTime
@@ -6522,6 +6707,7 @@ type landing_pageDocAccess {
 type LandingPageDocAccessFields {
   heroText: LandingPageDocAccessFields_heroText
   heroImages: LandingPageDocAccessFields_heroImages
+  eventsListPage: LandingPageDocAccessFields_eventsListPage
   announcement: LandingPageDocAccessFields_announcement
   body: LandingPageDocAccessFields_body
   updatedAt: LandingPageDocAccessFields_updatedAt
@@ -6623,6 +6809,29 @@ type LandingPageDocAccessFields_heroImages_id_Update {
 }
 
 type LandingPageDocAccessFields_heroImages_id_Delete {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_eventsListPage {
+  create: LandingPageDocAccessFields_eventsListPage_Create
+  read: LandingPageDocAccessFields_eventsListPage_Read
+  update: LandingPageDocAccessFields_eventsListPage_Update
+  delete: LandingPageDocAccessFields_eventsListPage_Delete
+}
+
+type LandingPageDocAccessFields_eventsListPage_Create {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_eventsListPage_Read {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_eventsListPage_Update {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_eventsListPage_Delete {
   permission: Boolean!
 }
 
@@ -7571,8 +7780,11 @@ type pagesAccess {
 type PagesFields {
   title: PagesFields_title
   description: PagesFields_description
+  type: PagesFields_type
   hideTableOfContents: PagesFields_hideTableOfContents
   content: PagesFields_content
+  specialPageType: PagesFields_specialPageType
+  redirectToPage: PagesFields_redirectToPage
   path: PagesFields_path
   topic: PagesFields_topic
   slug: PagesFields_slug
@@ -7628,6 +7840,29 @@ type PagesFields_description_Delete {
   permission: Boolean!
 }
 
+type PagesFields_type {
+  create: PagesFields_type_Create
+  read: PagesFields_type_Read
+  update: PagesFields_type_Update
+  delete: PagesFields_type_Delete
+}
+
+type PagesFields_type_Create {
+  permission: Boolean!
+}
+
+type PagesFields_type_Read {
+  permission: Boolean!
+}
+
+type PagesFields_type_Update {
+  permission: Boolean!
+}
+
+type PagesFields_type_Delete {
+  permission: Boolean!
+}
+
 type PagesFields_hideTableOfContents {
   create: PagesFields_hideTableOfContents_Create
   read: PagesFields_hideTableOfContents_Read
@@ -7671,6 +7906,52 @@ type PagesFields_content_Update {
 }
 
 type PagesFields_content_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_specialPageType {
+  create: PagesFields_specialPageType_Create
+  read: PagesFields_specialPageType_Read
+  update: PagesFields_specialPageType_Update
+  delete: PagesFields_specialPageType_Delete
+}
+
+type PagesFields_specialPageType_Create {
+  permission: Boolean!
+}
+
+type PagesFields_specialPageType_Read {
+  permission: Boolean!
+}
+
+type PagesFields_specialPageType_Update {
+  permission: Boolean!
+}
+
+type PagesFields_specialPageType_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_redirectToPage {
+  create: PagesFields_redirectToPage_Create
+  read: PagesFields_redirectToPage_Read
+  update: PagesFields_redirectToPage_Update
+  delete: PagesFields_redirectToPage_Delete
+}
+
+type PagesFields_redirectToPage_Create {
+  permission: Boolean!
+}
+
+type PagesFields_redirectToPage_Read {
+  permission: Boolean!
+}
+
+type PagesFields_redirectToPage_Update {
+  permission: Boolean!
+}
+
+type PagesFields_redirectToPage_Delete {
   permission: Boolean!
 }
 
@@ -10683,6 +10964,7 @@ type landing_pageAccess {
 type LandingPageFields {
   heroText: LandingPageFields_heroText
   heroImages: LandingPageFields_heroImages
+  eventsListPage: LandingPageFields_eventsListPage
   announcement: LandingPageFields_announcement
   body: LandingPageFields_body
   updatedAt: LandingPageFields_updatedAt
@@ -10784,6 +11066,29 @@ type LandingPageFields_heroImages_id_Update {
 }
 
 type LandingPageFields_heroImages_id_Delete {
+  permission: Boolean!
+}
+
+type LandingPageFields_eventsListPage {
+  create: LandingPageFields_eventsListPage_Create
+  read: LandingPageFields_eventsListPage_Read
+  update: LandingPageFields_eventsListPage_Update
+  delete: LandingPageFields_eventsListPage_Delete
+}
+
+type LandingPageFields_eventsListPage_Create {
+  permission: Boolean!
+}
+
+type LandingPageFields_eventsListPage_Read {
+  permission: Boolean!
+}
+
+type LandingPageFields_eventsListPage_Update {
+  permission: Boolean!
+}
+
+type LandingPageFields_eventsListPage_Delete {
   permission: Boolean!
 }
 
@@ -11530,8 +11835,11 @@ type usersResetPassword {
 input mutationPageInput {
   title: String
   description: String
+  type: Page_type_MutationInput!
   hideTableOfContents: Boolean
   content: JSON
+  specialPageType: Page_specialPageType_MutationInput
+  redirectToPage: String
   path: String
   topic: Page_TopicRelationshipInput
   slug: String
@@ -11539,6 +11847,16 @@ input mutationPageInput {
   updatedAt: String
   createdAt: String
   _status: Page__status_MutationInput
+}
+
+enum Page_type_MutationInput {
+  standard
+  special
+  redirect
+}
+
+enum Page_specialPageType_MutationInput {
+  events_list
 }
 
 input Page_TopicRelationshipInput {
@@ -11558,8 +11876,11 @@ enum Page__status_MutationInput {
 input mutationPageUpdateInput {
   title: String
   description: String
+  type: PageUpdate_type_MutationInput
   hideTableOfContents: Boolean
   content: JSON
+  specialPageType: PageUpdate_specialPageType_MutationInput
+  redirectToPage: String
   path: String
   topic: PageUpdate_TopicRelationshipInput
   slug: String
@@ -11567,6 +11888,16 @@ input mutationPageUpdateInput {
   updatedAt: String
   createdAt: String
   _status: PageUpdate__status_MutationInput
+}
+
+enum PageUpdate_type_MutationInput {
+  standard
+  special
+  redirect
+}
+
+enum PageUpdate_specialPageType_MutationInput {
+  events_list
 }
 
 input PageUpdate_TopicRelationshipInput {
@@ -12360,6 +12691,7 @@ input mutationFooterInput {
 input mutationLandingPageInput {
   heroText: String
   heroImages: [mutationLandingPage_HeroImagesInput!]
+  eventsListPage: String
   announcement: String
   body: JSON
   updatedAt: String
