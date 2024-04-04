@@ -123,7 +123,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
           }
           case "list": {
             type List = Extract<keyof JSX.IntrinsicElements, "ul" | "ol">;
-            const Tag = node.tag as List;
+            const Tag: List = node.tag;
             return (
               <Tag className={node.listType as string} key={index}>
                 {serializedChildren}
