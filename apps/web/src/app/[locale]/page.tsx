@@ -1,5 +1,5 @@
 import type { EditorState } from "@tietokilta/cms-types/lexical";
-import type { News } from "@tietokilta/cms-types/payload";
+import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload";
 import { EventsDisplay } from "../../components/events-display";
 import { Hero } from "../../components/hero";
 import { LexicalSerializer } from "../../components/lexical/lexical-serializer";
@@ -31,6 +31,7 @@ export default async function Home({
 
   const body = landingPageData.body as unknown as EditorState | undefined;
   const announcement = landingPageData.announcement as News | undefined;
+  const eventsListPage = landingPageData.eventsListPage as CMSPage | undefined;
   const pageInt = parseInt(String(page), 10);
 
   return (
@@ -50,7 +51,10 @@ export default async function Home({
         </section>
         <div className="space-y-8">
           {announcement ? <AnnouncementCard news={announcement} /> : null}
-          <EventsDisplay currentPage={!isNaN(pageInt) ? pageInt : undefined} />
+          <EventsDisplay
+            eventsListPath={eventsListPage?.path ?? undefined}
+            currentPage={!isNaN(pageInt) ? pageInt : undefined}
+          />
         </div>
       </div>
     </main>

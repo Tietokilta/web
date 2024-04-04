@@ -57,6 +57,7 @@ export const MainNavigation: GlobalConfig = {
           name: "pageConfig",
           type: "group",
           admin: {
+            hideGutter: true,
             condition: (_, item: MainNavigationItem[number]) =>
               item.type === "page",
           },
@@ -73,6 +74,7 @@ export const MainNavigation: GlobalConfig = {
           name: "topicConfig",
           type: "group",
           admin: {
+            hideGutter: true,
             condition: (_, item: MainNavigationItem[number]) =>
               item.type === "topic",
           },
