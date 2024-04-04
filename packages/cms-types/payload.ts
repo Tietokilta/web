@@ -119,8 +119,9 @@ export interface Page {
   id: string;
   title: string;
   description: string;
-  hideTableOfContents: boolean;
-  content: {
+  type: 'standard' | 'special' | 'redirect';
+  hideTableOfContents?: boolean | null;
+  content?: {
     root: {
       type: string;
       children: {
@@ -134,7 +135,9 @@ export interface Page {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
+  specialPageType?: 'events-list' | null;
+  redirectToPage?: (string | null) | Page;
   path?: string | null;
   topic?: {
     relationTo: 'topics';
@@ -648,6 +651,7 @@ export interface LandingPage {
     image?: (string | null) | Media;
     id?: string | null;
   }[];
+  eventsListPage: string | Page;
   announcement?: (string | null) | News;
   body: {
     root: {

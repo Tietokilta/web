@@ -1,4 +1,21 @@
-import type { GlobalConfig } from "payload/types";
+import type { LandingPage as LandingPageType } from "@tietokilta/cms-types/payload";
+import type { FilterOptions, GlobalConfig } from "payload/types";
+
+const filterEventsListPages: FilterOptions<LandingPageType> = () =>
+  ({
+    and: [
+      {
+        type: {
+          equals: "special",
+        },
+      },
+      {
+        specialPageType: {
+          equals: "events-list",
+        },
+      },
+    ],
+  }) as const;
 
 export const LandingPage: GlobalConfig = {
   slug: "landing-page",
@@ -24,6 +41,13 @@ export const LandingPage: GlobalConfig = {
           relationTo: "media",
         },
       ],
+    },
+    {
+      name: "eventsListPage",
+      type: "relationship",
+      relationTo: "pages",
+      required: true,
+      filterOptions: filterEventsListPages,
     },
     {
       name: "announcement",

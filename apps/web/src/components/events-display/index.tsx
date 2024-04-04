@@ -121,14 +121,20 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   );
 }
 
-export async function EventsDisplay({ currentPage }: { currentPage?: number }) {
+export async function EventsDisplay({
+  eventsListPath,
+  currentPage,
+}: {
+  eventsListPath?: string;
+  currentPage?: number;
+}) {
   const locale = getCurrentLocale();
   const t = await getScopedI18n("headings");
   return (
     <section className="space-y-4">
       <Link
         className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
-        href={`/${locale}/events`}
+        href={eventsListPath ?? `/${locale}/events`}
       >
         <h3 className="font-mono text-2xl font-bold text-gray-900">
           {t("Upcoming events")}
