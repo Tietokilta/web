@@ -122,6 +122,7 @@ export interface Page {
   hideTableOfContents: boolean;
   content: {
     root: {
+      type: string;
       children: {
         type: string;
         version: number;
@@ -130,7 +131,6 @@ export interface Page {
       direction: ('ltr' | 'rtl') | null;
       format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
-      type: string;
       version: number;
     };
     [k: string]: unknown;
@@ -489,6 +489,7 @@ export interface News {
   author: string | User;
   content: {
     root: {
+      type: string;
       children: {
         type: string;
         version: number;
@@ -497,7 +498,6 @@ export interface News {
       direction: ('ltr' | 'rtl') | null;
       format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
-      type: string;
       version: number;
     };
     [k: string]: unknown;
@@ -514,6 +514,7 @@ export interface WeeklyNewsletter {
   title: string;
   greetings: {
     root: {
+      type: string;
       children: {
         type: string;
         version: number;
@@ -522,7 +523,6 @@ export interface WeeklyNewsletter {
       direction: ('ltr' | 'rtl') | null;
       format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
-      type: string;
       version: number;
     };
     [k: string]: unknown;
@@ -550,6 +550,7 @@ export interface NewsItem {
   signupEndDate?: string | null;
   content: {
     root: {
+      type: string;
       children: {
         type: string;
         version: number;
@@ -558,7 +559,6 @@ export interface NewsItem {
       direction: ('ltr' | 'rtl') | null;
       format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
-      type: string;
       version: number;
     };
     [k: string]: unknown;
@@ -651,6 +651,7 @@ export interface LandingPage {
   announcement?: (string | null) | News;
   body: {
     root: {
+      type: string;
       children: {
         type: string;
         version: number;
@@ -659,7 +660,6 @@ export interface LandingPage {
       direction: ('ltr' | 'rtl') | null;
       format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
-      type: string;
       version: number;
     };
     [k: string]: unknown;
