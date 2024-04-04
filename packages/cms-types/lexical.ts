@@ -9,8 +9,8 @@ type BaseNode = {
 
 type BaseTextNode = BaseNode & {
   indent: number;
-  direction: Page["content"]["root"]["direction"];
-  format: Page["content"]["root"]["format"];
+  direction: NonNullable<Page["content"]>["root"]["direction"];
+  format: NonNullable<Page["content"]>["root"]["format"];
 };
 
 export type TextNode = Omit<BaseTextNode, "format"> & {
@@ -128,7 +128,7 @@ export type BaseBlockFields = {
 };
 
 export type BaseBlockNode = {
-  format: Page["content"]["root"]["format"];
+  format: NonNullable<Page["content"]>["root"]["format"];
   type: "block";
 };
 
@@ -157,9 +157,9 @@ export type Node =
 
 export type RootNode = {
   type: "root";
-  format: Page["content"]["root"]["format"];
-  indent: Page["content"]["root"]["indent"];
-  version: Page["content"]["root"]["version"];
+  format: NonNullable<Page["content"]>["root"]["format"];
+  indent: NonNullable<Page["content"]>["root"]["indent"];
+  version: NonNullable<Page["content"]>["root"]["version"];
   children: Node[];
 };
 
