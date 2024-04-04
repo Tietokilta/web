@@ -23341,5 +23341,189 @@
 	"latest": true,
 	"autosave": false,
 	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660ec714f98b4bfd47c581a8"
+	},
+	"parent": "660ec537462dc275833c32a6",
+	"version": {
+		"title": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"description": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"type": "redirect",
+		"hideTableOfContents": false,
+		"specialPageType": "events-list",
+		"redirectToPage": "660ec51b462dc275833c3218",
+		"path": {
+			"fi": "/fi/kilta/tapahtumat",
+			"en": "/en/guild/events"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "tapahtumat",
+			"en": "events"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-04T15:20:35.656Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-04T15:20:23.183Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-04T15:20:23.183Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-04T15:28:20.632Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660ec715f98b4bfd47c581f6"
+	},
+	"parent": "660ec537462dc275833c32a6",
+	"version": {
+		"title": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"description": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"type": "redirect",
+		"hideTableOfContents": false,
+		"specialPageType": "events-list",
+		"redirectToPage": "660ec51b462dc275833c3218",
+		"path": {
+			"fi": "/fi/kilta/tapahtumat",
+			"en": "/en/guild/events"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "tapahtumat",
+			"en": "events"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-04T15:28:21.326Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-04T15:20:23.183Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-04T15:20:23.183Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-04T15:28:21.326Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660ec71bf98b4bfd47c58226"
+	},
+	"parent": "660ec51b462dc275833c3218",
+	"version": {
+		"title": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"description": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "events-list",
+		"path": {
+			"fi": "/fi/tapahtumat",
+			"en": "/en/events"
+		},
+		"slug": {
+			"fi": "tapahtumat",
+			"en": "events"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-04T15:20:13.442Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-04T15:19:55.202Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-04T15:19:55.202Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-04T15:28:27.038Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660ec71bf98b4bfd47c58238"
+	},
+	"parent": "660ec51b462dc275833c3218",
+	"version": {
+		"title": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"description": {
+			"fi": "Tapahtumat",
+			"en": "Events"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "events-list",
+		"path": {
+			"fi": "/fi/tapahtumat",
+			"en": "/en/events"
+		},
+		"slug": {
+			"fi": "tapahtumat",
+			"en": "events"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-04T15:28:27.546Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-04T15:19:55.202Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-04T15:19:55.202Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-04T15:28:27.546Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
 }]
 
