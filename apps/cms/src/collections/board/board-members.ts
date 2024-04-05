@@ -2,7 +2,7 @@ import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 
-export const BoardMembers: CollectionConfig = {
+export const BoardMembers = {
   slug: "board-members",
   defaultSort: "-guildYear",
   admin: {
@@ -39,12 +39,10 @@ export const BoardMembers: CollectionConfig = {
     {
       name: "email",
       type: "email",
-      required: true,
     },
     {
       name: "telegram",
       type: "text",
-      required: true,
     },
   ],
-};
+} as const satisfies CollectionConfig;

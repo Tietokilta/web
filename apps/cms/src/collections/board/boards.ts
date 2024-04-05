@@ -9,7 +9,7 @@ const filterCurrentYear: FilterOptions<Board> = ({ data }) => ({
   },
 });
 
-export const Boards: CollectionConfig = {
+export const Boards = {
   slug: "boards",
   defaultSort: "-year",
   admin: {
@@ -47,4 +47,4 @@ export const Boards: CollectionConfig = {
       ],
     },
   ],
-};
+} as const satisfies CollectionConfig;
