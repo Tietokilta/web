@@ -1,5 +1,6 @@
 import type { Committee } from "@tietokilta/cms-types/payload";
 import type { CollectionConfig, FilterOptions } from "payload/types";
+import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidatePage } from "../../hooks/revalidate-page";
@@ -75,7 +76,7 @@ export const Committees = {
     {
       path: "/import",
       method: "post",
-      handler: importController,
+      handler: importController as PayloadHandler,
     },
   ],
 } as const satisfies CollectionConfig;
