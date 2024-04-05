@@ -50,6 +50,9 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+      papaparse:
+        specifier: ^5.4.1
+        version: 5.4.1
       payload:
         specifier: ^2.12.1
         version: 2.12.1(@types/react@18.2.65)(typescript@5.4.3)(webpack@5.90.3)
@@ -75,6 +78,9 @@ importers:
       '@types/lodash':
         specifier: ^4.17.0
         version: 4.17.0
+      '@types/papaparse':
+        specifier: ^5.3.14
+        version: 5.3.14
       '@types/passport-oauth2':
         specifier: ^1.4.15
         version: 1.4.15
@@ -4528,6 +4534,12 @@ packages:
 
   /@types/oauth@0.9.4:
     resolution: {integrity: sha512-qk9orhti499fq5XxKCCEbd0OzdPZuancneyse3KtR+vgMiHRbh+mn8M4G6t64ob/Fg+GZGpa565MF/2dKWY32A==}
+    dependencies:
+      '@types/node': 20.12.4
+    dev: true
+
+  /@types/papaparse@5.3.14:
+    resolution: {integrity: sha512-LxJ4iEFcpqc6METwp9f6BV6VVc43m6MfH0VqFosHvrUgfXiFe6ww7R3itkOQ+TCK6Y+Iv/+RnnvtRZnkc5Kc9g==}
     dependencies:
       '@types/node': 20.12.4
     dev: true
@@ -10215,6 +10227,10 @@ packages:
   /p-try@2.2.0:
     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
     engines: {node: '>=6'}
+
+  /papaparse@5.4.1:
+    resolution: {integrity: sha512-HipMsgJkZu8br23pW15uvo6sib6wne/4woLZPlFf3rpDyMe9ywEXUsuD7+6K9PRkJlVT51j/sCOYDKGGS3ZJrw==}
+    dev: false
 
   /param-case@3.0.4:
     resolution: {integrity: sha512-RXlj7zCYokReqWpOPH9oYivUzLYZ5vAPIfEmCTNViosC78F8F0H9y7T7gG2M39ymgutxF5gcFEsyZQSph9Bp3A==}

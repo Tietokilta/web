@@ -12,7 +12,7 @@ const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({
   },
 });
 
-export const Committees: CollectionConfig = {
+export const Committees = {
   slug: "committees",
   defaultSort: "-year",
   admin: {
@@ -78,4 +78,6 @@ export const Committees: CollectionConfig = {
       handler: importController,
     },
   ],
-};
+} as const satisfies CollectionConfig;
+
+export type CommitteesSlug = (typeof Committees)["slug"];
