@@ -10017,505 +10017,6 @@
 },
 {
 	"_id": {
-		"$oid": "65febb429c13baf3ebe59385"
-	},
-	"parent": "65be65d4153050fbf6aaedee",
-	"version": {
-		"title": {
-			"fi": "Toimarit",
-			"en": "Officials"
-		},
-		"description": {
-			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. Sivulta löytyy lisäksi linkit aikaisempien vuosien sivuille.",
-			"en": "Committees, committee chairs, officials and others for year 2024."
-		},
-		"hideTableOfContents": true,
-		"content": {
-			"fi": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Nykyiset toimarit",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "block",
-							"version": 2,
-							"fields": {
-								"id": "65ce74ca70070b9b93e19461",
-								"blockName": "",
-								"blockType": "committees-in-year",
-								"year": "2024"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Kaikki toimarit",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be7b1dcbc2d360ae464e6e"
-							}
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						}
-					],
-					"direction": "ltr"
-				}
-			},
-			"en": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Current Officials",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "block",
-							"version": 2,
-							"fields": {
-								"id": "65ce74d670070b9b93e19462",
-								"blockName": "",
-								"blockType": "committees-in-year",
-								"year": "2024"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "All Officials",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be7b1dcbc2d360ae464e6e"
-							}
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						}
-					],
-					"direction": "ltr"
-				}
-			}
-		},
-		"path": {
-			"fi": "/fi/kilta/toimarit",
-			"en": "/en/guild/officials"
-		},
-		"topic": {
-			"value": "6548f0f4d7febb86e2235b89",
-			"relationTo": "topics"
-		},
-		"slug": {
-			"fi": "toimarit",
-			"en": "officials"
-		},
-		"hidden": false,
-		"updatedAt": {
-			"$date": "2024-03-23T11:21:32.611Z"
-		},
-		"createdAt": {
-			"$date": "2024-02-03T16:12:04.152Z"
-		},
-		"_status": "draft"
-	},
-	"createdAt": {
-		"$date": "2024-02-03T16:12:04.152Z"
-	},
-	"updatedAt": {
-		"$date": "2024-03-23T11:21:38.546Z"
-	},
-	"autosave": true,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65febb429c13baf3ebe5939b"
-	},
-	"parent": "65be65d4153050fbf6aaedee",
-	"version": {
-		"title": {
-			"fi": "Toimarit",
-			"en": "Officials"
-		},
-		"description": {
-			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. Sivulta löytyy lisäksi linkit aikaisempien vuosien sivuille.",
-			"en": "Committees, committee chairs, officials and others for year 2024."
-		},
-		"hideTableOfContents": true,
-		"content": {
-			"fi": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Nykyiset toimarit",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "block",
-							"version": 2,
-							"fields": {
-								"id": "65ce74ca70070b9b93e19461",
-								"blockName": "",
-								"blockType": "committees-in-year",
-								"year": "2024"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Kaikki toimarit",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be7b1dcbc2d360ae464e6e"
-							}
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						}
-					],
-					"direction": "ltr"
-				}
-			},
-			"en": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Current Officials",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "block",
-							"version": 2,
-							"fields": {
-								"id": "65ce74d670070b9b93e19462",
-								"blockName": "",
-								"blockType": "committees-in-year",
-								"year": "2024"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "All Officials",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be7b1dcbc2d360ae464e6e"
-							}
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						},
-						{
-							"children": [],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "paragraph",
-							"version": 1
-						}
-					],
-					"direction": "ltr"
-				}
-			}
-		},
-		"path": {
-			"fi": "/fi/kilta/toimarit",
-			"en": "/en/guild/officials"
-		},
-		"topic": {
-			"value": "6548f0f4d7febb86e2235b89",
-			"relationTo": "topics"
-		},
-		"slug": {
-			"fi": "toimarit",
-			"en": "officials"
-		},
-		"hidden": false,
-		"updatedAt": {
-			"$date": "2024-03-23T11:21:38.787Z"
-		},
-		"createdAt": {
-			"$date": "2024-02-03T16:12:04.152Z"
-		},
-		"_status": "published"
-	},
-	"createdAt": {
-		"$date": "2024-02-03T16:12:04.152Z"
-	},
-	"updatedAt": {
-		"$date": "2024-03-23T11:21:38.787Z"
-	},
-	"latest": true,
-	"autosave": false,
-	"__v": 0
-},
-{
-	"_id": {
 		"$oid": "65febb4f9c13baf3ebe59413"
 	},
 	"parent": "65be5927e56e440d594de8c7",
@@ -10684,405 +10185,6 @@
 	},
 	"updatedAt": {
 		"$date": "2024-03-23T11:21:51.799Z"
-	},
-	"latest": true,
-	"autosave": false,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65febb639c13baf3ebe594e4"
-	},
-	"parent": "65be5086e56e440d594ddd26",
-	"version": {
-		"title": {
-			"fi": "Hallitus",
-			"en": "Board"
-		},
-		"description": {
-			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille.",
-			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille."
-		},
-		"hideTableOfContents": true,
-		"content": {
-			"fi": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Nykyinen hallitus",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "boards",
-							"value": {
-								"id": "65a6b375848d0618d686b139"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Kaikki hallitukset",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be57f1e56e440d594de4c3"
-							}
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be5927e56e440d594de8c7"
-							}
-						}
-					],
-					"direction": "ltr"
-				}
-			},
-			"en": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Current board",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "boards",
-							"value": {
-								"id": "65a6b375848d0618d686b139"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "All boards",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be57f1e56e440d594de4c3"
-							}
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be5927e56e440d594de8c7"
-							}
-						}
-					],
-					"direction": "ltr"
-				}
-			}
-		},
-		"path": {
-			"fi": "/fi/kilta/hallitus",
-			"en": "/en/guild/board"
-		},
-		"topic": {
-			"value": "6548f0f4d7febb86e2235b89",
-			"relationTo": "topics"
-		},
-		"slug": {
-			"fi": "hallitus",
-			"en": "board"
-		},
-		"hidden": false,
-		"updatedAt": {
-			"$date": "2024-03-23T11:22:06.158Z"
-		},
-		"createdAt": {
-			"$date": "2024-02-03T14:41:10.684Z"
-		},
-		"_status": "draft"
-	},
-	"createdAt": {
-		"$date": "2024-02-03T14:41:10.684Z"
-	},
-	"updatedAt": {
-		"$date": "2024-03-23T11:22:11.387Z"
-	},
-	"autosave": true,
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "65febb649c13baf3ebe594fd"
-	},
-	"parent": "65be5086e56e440d594ddd26",
-	"version": {
-		"title": {
-			"fi": "Hallitus",
-			"en": "Board"
-		},
-		"description": {
-			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille.",
-			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille."
-		},
-		"hideTableOfContents": true,
-		"content": {
-			"fi": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Nykyinen hallitus",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "boards",
-							"value": {
-								"id": "65a6b375848d0618d686b139"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Kaikki hallitukset",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be57f1e56e440d594de4c3"
-							}
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be5927e56e440d594de8c7"
-							}
-						}
-					],
-					"direction": "ltr"
-				}
-			},
-			"en": {
-				"root": {
-					"type": "root",
-					"format": "",
-					"indent": 0,
-					"version": 1,
-					"children": [
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "Current board",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "boards",
-							"value": {
-								"id": "65a6b375848d0618d686b139"
-							}
-						},
-						{
-							"children": [
-								{
-									"detail": 0,
-									"format": 0,
-									"mode": "normal",
-									"style": "",
-									"text": "All boards",
-									"type": "text",
-									"version": 1
-								}
-							],
-							"direction": "ltr",
-							"format": "",
-							"indent": 0,
-							"type": "heading",
-							"version": 1,
-							"tag": "h2"
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be57f1e56e440d594de4c3"
-							}
-						},
-						{
-							"format": "",
-							"type": "relationship",
-							"version": 1,
-							"relationTo": "pages",
-							"value": {
-								"id": "65be5927e56e440d594de8c7"
-							}
-						}
-					],
-					"direction": "ltr"
-				}
-			}
-		},
-		"path": {
-			"fi": "/fi/kilta/hallitus",
-			"en": "/en/guild/board"
-		},
-		"topic": {
-			"value": "6548f0f4d7febb86e2235b89",
-			"relationTo": "topics"
-		},
-		"slug": {
-			"fi": "hallitus",
-			"en": "board"
-		},
-		"hidden": false,
-		"updatedAt": {
-			"$date": "2024-03-23T11:22:12.518Z"
-		},
-		"createdAt": {
-			"$date": "2024-02-03T14:41:10.684Z"
-		},
-		"_status": "published"
-	},
-	"createdAt": {
-		"$date": "2024-02-03T14:41:10.684Z"
-	},
-	"updatedAt": {
-		"$date": "2024-03-23T11:22:12.518Z"
 	},
 	"latest": true,
 	"autosave": false,
@@ -23521,6 +22623,3199 @@
 	},
 	"updatedAt": {
 		"$date": "2024-04-04T15:28:27.546Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faecae9b2f03b804130c9"
+	},
+	"parent": "660faec8e9b2f03b8041308f",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2022",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2022 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660fae8de9b2f03b80412b02"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2022",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2022",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:56:56.739Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:56:56.679Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:56:56.679Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:57:24.22Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faee6e9b2f03b8041315c"
+	},
+	"parent": "660faec8e9b2f03b8041308f",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2022",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2022 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660fae8de9b2f03b80412b02"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2022",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2022",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:57:26.365Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:56:56.679Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:56:56.679Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:57:26.365Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faf1ce9b2f03b80413291"
+	},
+	"parent": "660faf19e9b2f03b80413258",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2021",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2021 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660fae95e9b2f03b80412da7"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2021",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2021",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:58:17.982Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:58:17.931Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:58:17.931Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:58:32.686Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faf2ae9b2f03b80413307"
+	},
+	"parent": "660faf19e9b2f03b80413258",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2021",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2021 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660fae95e9b2f03b80412da7"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2021",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2021",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:58:34.986Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:58:17.931Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:58:17.931Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:58:34.986Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faf30e9b2f03b80413358"
+	},
+	"parent": "660faf2ee9b2f03b8041331f",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2020",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2020 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660fae9ae9b2f03b80412eed"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2021",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2021",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:58:38.628Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:58:38.58Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:58:38.58Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:59:07.3Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faf4de9b2f03b804133ce"
+	},
+	"parent": "660faf2ee9b2f03b8041331f",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2020",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2020 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660fae9ae9b2f03b80412eed"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2020",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2020",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:59:09.736Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:58:38.58Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:58:38.58Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:59:09.736Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faf54e9b2f03b8041341f"
+	},
+	"parent": "660faf51e9b2f03b804133e6",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2019",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2019 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660fae9ae9b2f03b80412eed"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2020",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2020",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:59:13.466Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:59:13.416Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:59:13.416Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:59:22.749Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faf61e9b2f03b8041347b"
+	},
+	"parent": "660faf51e9b2f03b804133e6",
+	"version": {
+		"title": {
+			"fi": "Hallitus 2019",
+			"en": "Board 2023"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2019 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "660faea2e9b2f03b80412ffd"
+							}
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65bc0d6670b726420fa6497b"
+							}
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/hallitus/2019",
+			"en": "/en/board/2023"
+		},
+		"topic": {
+			"value": "65be50e5e56e440d594dddac",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2019",
+			"en": "2023"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T07:59:29.594Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T07:59:13.416Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T07:59:13.416Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T07:59:29.594Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660faff3e9b2f03b804138ac"
+	},
+	"parent": "65be5086e56e440d594ddd26",
+	"version": {
+		"title": {
+			"fi": "Hallitus",
+			"en": "Board"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Nykyinen hallitus",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65a6b375848d0618d686b139"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Kaikki hallitukset",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be57f1e56e440d594de4c3"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be5927e56e440d594de8c7"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faec8e9b2f03b8041308f"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faf19e9b2f03b80413258"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faf2ee9b2f03b8041331f"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faf51e9b2f03b804133e6"
+							}
+						}
+					],
+					"direction": "ltr"
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Current board",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65a6b375848d0618d686b139"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "All boards",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be57f1e56e440d594de4c3"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be5927e56e440d594de8c7"
+							}
+						}
+					],
+					"direction": "ltr"
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/kilta/hallitus",
+			"en": "/en/guild/board"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "hallitus",
+			"en": "board"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:01:24.065Z"
+		},
+		"createdAt": {
+			"$date": "2024-02-03T14:41:10.684Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-02-03T14:41:10.684Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:02:05.187Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fafffe9b2f03b80413946"
+	},
+	"parent": "65be5086e56e440d594ddd26",
+	"version": {
+		"title": {
+			"fi": "Hallitus",
+			"en": "Board"
+		},
+		"description": {
+			"fi": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille.",
+			"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2024 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi.\nSivulta löytyy myös linkit aikaisempien vuosien hallituksille."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Nykyinen hallitus",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65a6b375848d0618d686b139"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Kaikki hallitukset",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be57f1e56e440d594de4c3"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be5927e56e440d594de8c7"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faec8e9b2f03b8041308f"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faf19e9b2f03b80413258"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faf2ee9b2f03b8041331f"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660faf51e9b2f03b804133e6"
+							}
+						}
+					],
+					"direction": "ltr"
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Current board",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "boards",
+							"value": {
+								"id": "65a6b375848d0618d686b139"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "All boards",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be57f1e56e440d594de4c3"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be5927e56e440d594de8c7"
+							}
+						}
+					],
+					"direction": "ltr"
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/kilta/hallitus",
+			"en": "/en/guild/board"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "hallitus",
+			"en": "board"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:02:07.673Z"
+		},
+		"createdAt": {
+			"$date": "2024-02-03T14:41:10.684Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-02-03T14:41:10.684Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:02:07.673Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb032e9b2f03b80413a27"
+	},
+	"parent": "660fb030e9b2f03b804139f5",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2023",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2023.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2023"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2024",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2024",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:02:56.925Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:02:56.878Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:02:56.878Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:03.686Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb03ae9b2f03b80413a4b"
+	},
+	"parent": "660fb030e9b2f03b804139f5",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2023",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2023.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2023"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2023",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2023",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:06.544Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:02:56.878Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:02:56.878Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:06.544Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb040e9b2f03b80413a93"
+	},
+	"parent": "660fb03de9b2f03b80413a61",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2022",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2022.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2022"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2023",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2023",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:09.076Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:09.027Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:09.027Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:15.938Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb046e9b2f03b80413ab7"
+	},
+	"parent": "660fb03de9b2f03b80413a61",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2022",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2022.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2022"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2022",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2022",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:18.862Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:09.027Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:09.027Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:18.862Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb04be9b2f03b80413aff"
+	},
+	"parent": "660fb049e9b2f03b80413acd",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2021",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2021.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2021"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2022",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2022",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:21.406Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:21.358Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:21.358Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:27.029Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb051e9b2f03b80413b23"
+	},
+	"parent": "660fb049e9b2f03b80413acd",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2021",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2021.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2021"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2021",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2021",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:29.022Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:21.358Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:21.358Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:29.022Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb056e9b2f03b80413b6b"
+	},
+	"parent": "660fb052e9b2f03b80413b39",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2020",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2020.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2020"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2021",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2021",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:30.879Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:30.837Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:30.837Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:39.63Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb05ee9b2f03b80413b9f"
+	},
+	"parent": "660fb052e9b2f03b80413b39",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2020",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2020.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2020"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2020",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2020",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:42.406Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:30.837Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:30.837Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:42.406Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb062e9b2f03b80413be7"
+	},
+	"parent": "660fb060e9b2f03b80413bb5",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2019",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2019.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2020"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2020",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2020",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:44.074Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:44.006Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:44.006Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:51.553Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb06be9b2f03b80413c1b"
+	},
+	"parent": "660fb060e9b2f03b80413bb5",
+	"version": {
+		"title": {
+			"fi": "Toimarit 2019",
+			"en": "Officials 2024"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2019.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce724e70070b9b93e1945d",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2019"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce725a70070b9b93e1945e",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": null,
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": null
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/toimarit/2019",
+			"en": "/en/officials/2024"
+		},
+		"topic": {
+			"value": "65be7b27cbc2d360ae464edd",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "2019",
+			"en": "2024"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:03:55.86Z"
+		},
+		"createdAt": {
+			"$date": "2024-04-05T08:03:44.006Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-04-05T08:03:44.006Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:03:55.86Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb07ce9b2f03b80413c63"
+	},
+	"parent": "65be65d4153050fbf6aaedee",
+	"version": {
+		"title": {
+			"fi": "Toimarit",
+			"en": "Officials"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. Sivulta löytyy lisäksi linkit aikaisempien vuosien sivuille.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Nykyiset toimarit",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce74ca70070b9b93e19461",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Kaikki toimarit",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be7b1dcbc2d360ae464e6e"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb030e9b2f03b804139f5"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb03de9b2f03b80413a61"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb049e9b2f03b80413acd"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb052e9b2f03b80413b39"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb060e9b2f03b80413bb5"
+							}
+						}
+					],
+					"direction": "ltr"
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Current Officials",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce74d670070b9b93e19462",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "All Officials",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be7b1dcbc2d360ae464e6e"
+							}
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": "ltr"
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/kilta/toimarit",
+			"en": "/en/guild/officials"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "toimarit",
+			"en": "officials"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-03-23T11:21:38.787Z"
+		},
+		"createdAt": {
+			"$date": "2024-02-03T16:12:04.152Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-02-03T16:12:04.152Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:04:39.024Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "660fb0a0e9b2f03b80413d13"
+	},
+	"parent": "65be65d4153050fbf6aaedee",
+	"version": {
+		"title": {
+			"fi": "Toimarit",
+			"en": "Officials"
+		},
+		"description": {
+			"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. Sivulta löytyy lisäksi linkit aikaisempien vuosien sivuille.",
+			"en": "Committees, committee chairs, officials and others for year 2024."
+		},
+		"type": "standard",
+		"hideTableOfContents": true,
+		"content": {
+			"fi": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Nykyiset toimarit",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce74ca70070b9b93e19461",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Kaikki toimarit",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be7b1dcbc2d360ae464e6e"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb030e9b2f03b804139f5"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb03de9b2f03b80413a61"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb049e9b2f03b80413acd"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb052e9b2f03b80413b39"
+							}
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "660fb060e9b2f03b80413bb5"
+							}
+						}
+					],
+					"direction": "ltr"
+				}
+			},
+			"en": {
+				"root": {
+					"type": "root",
+					"format": "",
+					"indent": 0,
+					"version": 1,
+					"children": [
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "Current Officials",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "block",
+							"version": 2,
+							"fields": {
+								"id": "65ce74d670070b9b93e19462",
+								"blockName": "",
+								"blockType": "committees-in-year",
+								"year": "2024"
+							}
+						},
+						{
+							"children": [
+								{
+									"detail": 0,
+									"format": 0,
+									"mode": "normal",
+									"style": "",
+									"text": "All Officials",
+									"type": "text",
+									"version": 1
+								}
+							],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "heading",
+							"version": 1,
+							"tag": "h2"
+						},
+						{
+							"format": "",
+							"type": "relationship",
+							"version": 1,
+							"relationTo": "pages",
+							"value": {
+								"id": "65be7b1dcbc2d360ae464e6e"
+							}
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						},
+						{
+							"children": [],
+							"direction": "ltr",
+							"format": "",
+							"indent": 0,
+							"type": "paragraph",
+							"version": 1
+						}
+					],
+					"direction": "ltr"
+				}
+			}
+		},
+		"path": {
+			"fi": "/fi/kilta/toimarit",
+			"en": "/en/guild/officials"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "toimarit",
+			"en": "officials"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-04-05T08:04:48.177Z"
+		},
+		"createdAt": {
+			"$date": "2024-02-03T16:12:04.152Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-02-03T16:12:04.152Z"
+	},
+	"updatedAt": {
+		"$date": "2024-04-05T08:04:48.177Z"
 	},
 	"latest": true,
 	"autosave": false,
