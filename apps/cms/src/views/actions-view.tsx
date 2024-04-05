@@ -2,24 +2,19 @@
 import * as React from "react";
 
 export const ActionsView = (): React.JSX.Element => {
-  const [success, setSuccess] = React.useState<boolean>(false);
+  const [resultMessage, setResultMessage] = React.useState<string>("");
 
   const importCommittees = async (
     csv: string,
     year: number,
-  ): Promise<boolean> => {
-    const response = await fetch("/api/committees/import", {
+  ): Promise<Response> =>
+    await fetch("/api/committees/import", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ csv, year }),
     });
-
-    console.log(response);
-
-    return response.ok;
-  };
 
   const handleSubmit = async (
     e: React.FormEvent<HTMLFormElement>,
@@ -43,8 +38,10 @@ export const ActionsView = (): React.JSX.Element => {
     const content = await file.text();
 
     const result = await importCommittees(content, committeeYear);
-    if (result) {
-      setSuccess(true);
+    if (result.ok) {
+      setResultMessage("Import successful!");
+    } else {
+      setResultMessage(`Import failed. ${await result.text()}`);
     }
   };
 
@@ -86,7 +83,7 @@ export const ActionsView = (): React.JSX.Element => {
         >
           ⚠️ DO NOT USE UNLESS YOU KNOW WHAT YOU'RE DOING! ⚠️
         </span>
-        {success && <p style={{ color: "success" }}>Import successful!</p>}
+        {resultMessage && <p style={{ color: "success" }}>{resultMessage}</p>}
       </form>
     </div>
   );

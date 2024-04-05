@@ -183,6 +183,10 @@ export default buildConfig({
       }),
     ],
   }),
+  rateLimit: {
+    max: 2000,
+    window: 300000,
+  },
   plugins: [
     oAuthPlugin({
       databaseUri: MONGODB_URI ?? "",

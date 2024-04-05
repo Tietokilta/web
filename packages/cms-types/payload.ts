@@ -241,8 +241,8 @@ export interface BoardMember {
   photo?: (string | null) | Media;
   name: string;
   title: string;
-  email: string;
-  telegram: string;
+  email?: string | null;
+  telegram?: string | null;
   updatedAt: string;
   createdAt: string;
 }
