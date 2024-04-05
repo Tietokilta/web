@@ -2455,8 +2455,8 @@ type BoardMember {
   photo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
   name: String!
   title: String
-  email: EmailAddress!
-  telegram: String!
+  email: EmailAddress
+  telegram: String
   updatedAt: DateTime
   createdAt: DateTime
 }
@@ -2618,6 +2618,7 @@ input BoardMember_email_operator {
   in: [EmailAddress]
   not_in: [EmailAddress]
   all: [EmailAddress]
+  exists: Boolean
 }
 
 input BoardMember_telegram_operator {
@@ -2628,6 +2629,7 @@ input BoardMember_telegram_operator {
   in: [String]
   not_in: [String]
   all: [String]
+  exists: Boolean
 }
 
 input BoardMember_updatedAt_operator {
@@ -11981,8 +11983,8 @@ input mutationBoardMemberInput {
   photo: String
   name: String!
   title: String
-  email: String!
-  telegram: String!
+  email: String
+  telegram: String
   updatedAt: String
   createdAt: String
 }

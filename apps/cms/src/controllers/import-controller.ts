@@ -17,14 +17,14 @@ export const importController = async (
   };
 
   if (!csv || !year) {
-    res.sendStatus(400);
+    res.status(400).send("Missing required fields");
   }
 
-  const success = await importCommittees(csv, year);
+  const error = await importCommittees(csv, year);
 
-  if (success) {
+  if (!error) {
     res.sendStatus(200);
   } else {
-    res.sendStatus(500);
+    res.status(500).send(error);
   }
 };

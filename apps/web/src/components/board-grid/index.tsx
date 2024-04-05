@@ -30,24 +30,28 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
           <span>{boardMember.title}</span>
         </p>
         <p className="flex flex-col gap-2 text-sm">
-          <a
-            className="flex items-center gap-1"
-            href={`mailto:${boardMember.email}`}
-          >
-            <GmailIcon className="h-6 w-6 shrink-0" />
-            <span className="underline">
-              {insertSoftHyphens(boardMember.email)}
-            </span>
-          </a>
-          <a
-            className="flex items-center gap-1"
-            href={`https://t.me/${boardMember.telegram}`}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <TelegramIcon className="h-6 w-6 shrink-0" />
-            <span className="underline">{boardMember.telegram}</span>
-          </a>
+          {boardMember.email ? (
+            <a
+              className="flex items-center gap-1"
+              href={`mailto:${boardMember.email}`}
+            >
+              <GmailIcon className="h-6 w-6 shrink-0" />
+              <span className="underline">
+                {insertSoftHyphens(boardMember.email)}
+              </span>
+            </a>
+          ) : null}
+          {boardMember.telegram ? (
+            <a
+              className="flex items-center gap-1"
+              href={`https://t.me/${boardMember.telegram}`}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <TelegramIcon className="h-6 w-6 shrink-0" />
+              <span className="underline">{boardMember.telegram}</span>
+            </a>
+          ) : null}
         </p>
       </div>
     </li>
