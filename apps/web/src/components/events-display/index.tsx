@@ -69,7 +69,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const events = await fetchEvents();
-
+  const locale = getCurrentLocale();
   if (!events.ok) {
     console.warn("Failed to fetch events from Ilmomasiina", events.error);
     return null;
@@ -96,7 +96,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
           {currentPage > 1 ? (
             <PaginationItem>
               <PaginationPrevious
-                href={`/?page=${(currentPage - 1).toFixed()}`}
+                href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
               />
             </PaginationItem>
           ) : null}
@@ -104,7 +104,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
             <PaginationItem key={page}>
               <PaginationLink
                 isActive={page === currentPage}
-                href={`/?page=${page.toFixed()}`}
+                href={`/${locale}/?page=${page.toFixed()}`}
               >
                 {page}
               </PaginationLink>
@@ -112,7 +112,9 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
           ))}
           {currentPage < pageCount ? (
             <PaginationItem>
-              <PaginationNext href={`/?page=${(currentPage + 1).toFixed()}`} />
+              <PaginationNext
+                href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
+              />
             </PaginationItem>
           ) : null}
         </PaginationContent>
