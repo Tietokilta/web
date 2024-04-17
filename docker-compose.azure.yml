@@ -1,8 +1,7 @@
-version: "3"
 # NOTE: This is only for testing azure cloud storage, use local files for development
 services:
   azure-storage:
-    image: mcr.microsoft.com/azure-storage/azurite:latest
+    image: mcr.microsoft.com/azure-storage/azurite:3
     restart: always
     command: "azurite --loose --blobHost 0.0.0.0 --tableHost 0.0.0.0 --queueHost 0.0.0.0 --skipApiVersionCheck"
     ports:
