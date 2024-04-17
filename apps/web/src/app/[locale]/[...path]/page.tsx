@@ -110,6 +110,7 @@ async function Page({ params: { path } }: Props) {
     return notFound();
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
   if (page.type !== "standard") {
     console.error("Unknown page type", page.type);
     return notFound();
