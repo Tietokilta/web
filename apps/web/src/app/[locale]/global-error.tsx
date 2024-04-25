@@ -15,8 +15,8 @@ function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const i18n = useI18n()
-  
+  const i18n = useI18n();
+
   return (
     <html lang="fi">
       <body className="font-sans">
@@ -31,7 +31,8 @@ function GlobalError({
             <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
               <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
                 {i18n("errors.general-error")}
-                {i18n("errors.error-code")} <code className="font-mono">{error.digest}</code>.
+                {i18n("errors.error-code")}{" "}
+                <code className="font-mono">{error.digest}</code>.
               </p>
               <Button onClick={reset} type="button">
                 {i18n("action.Try again")}
