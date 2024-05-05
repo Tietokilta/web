@@ -91,34 +91,36 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
           <EventItem event={event} key={event.id} />
         ))}
       </ul>
-      <Pagination>
-        <PaginationContent>
-          {currentPage > 1 ? (
-            <PaginationItem>
-              <PaginationPrevious
-                href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
-              />
-            </PaginationItem>
-          ) : null}
-          {Array.from({ length: pageCount }, (__, i) => i + 1).map((page) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                isActive={page === currentPage}
-                href={`/${locale}/?page=${page.toFixed()}`}
-              >
-                {page}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-          {currentPage < pageCount ? (
-            <PaginationItem>
-              <PaginationNext
-                href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
-              />
-            </PaginationItem>
-          ) : null}
-        </PaginationContent>
-      </Pagination>
+      {pageCount > 1 ? (
+        <Pagination>
+          <PaginationContent>
+            {currentPage > 1 ? (
+              <PaginationItem>
+                <PaginationPrevious
+                  href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
+                />
+              </PaginationItem>
+            ) : null}
+            {Array.from({ length: pageCount }, (__, i) => i + 1).map((page) => (
+              <PaginationItem key={page}>
+                <PaginationLink
+                  isActive={page === currentPage}
+                  href={`/${locale}/?page=${page.toFixed()}`}
+                >
+                  {page}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            {currentPage < pageCount ? (
+              <PaginationItem>
+                <PaginationNext
+                  href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
+                />
+              </PaginationItem>
+            ) : null}
+          </PaginationContent>
+        </Pagination>
+      ) : null}
     </>
   );
 }
