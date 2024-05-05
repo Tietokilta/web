@@ -1,5 +1,7 @@
 # Tietokilta Website
 
+[![CI](https://github.com/Tietokilta/web/actions/workflows/build.yml/badge.svg)](https://github.com/Tietokilta/web/actions/workflows/build.yml)
+
 Monorepo containing apps and packages used for the Tietokilta website.
 
 ## Getting started
