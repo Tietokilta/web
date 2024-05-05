@@ -1,16 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "build": "dotenv -- turbo run build",
-    "clean": "turbo run clean",
-    "codegen": "dotenv -- turbo run codegen",
+    "build": "dotenv -- turbo run build --cache-dir=.turbo",
+    "clean": "turbo run clean --cache-dir=.turbo",
+    "codegen": "dotenv -- turbo run codegen --cache-dir=.turbo",
     "db:clear": "docker compose down -v && rm -rf apps/cms/uploads",
     "db:export": "dotenv -- ./scripts/generate_seeding_data.sh",
     "db:populate": "dotenv -- ./scripts/import_seeding_data.sh --all",
     "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
-    "dev": "pnpm db:start && dotenv -- turbo run dev",
+    "dev": "pnpm db:start && dotenv -- turbo run dev --cache-dir=.turbo",
     "docker:build:cms": "docker build . --tag web-cms --build-arg PROJECT=cms",
     "docker:build:web": "docker build . --tag web-web --build-arg PROJECT=web",
     "docker:compose:build": "docker compose -f docker-compose.prod.yml up --build",
@@ -18,9 +18,9 @@
     "docker:start:cms": "docker run -p 3001:3001 cms",
     "docker:start:web": "docker run -p 3000:3000 web",
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
-    "lint": "turbo run lint",
-    "start": "dotenv -- turbo run start",
-    "typecheck": "turbo run typecheck"
+    "lint": "turbo run lint --cache-dir=.turbo",
+    "start": "dotenv -- turbo run start --cache-dir=.turbo",
+    "typecheck": "turbo run typecheck --cache-dir=.turbo"
   },
   "devDependencies": {
     "dotenv-cli": "^7.4.1",
