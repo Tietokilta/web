@@ -32,11 +32,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Format (to ensure that code has been formatted)
-        run: pnpm format && git diff --quiet
+        run: pnpm format && git --no-pager diff
       - name: Lint
         run: pnpm lint
       - name: Generate Payload types (to ensure that they are up to date)
-        run: pnpm codegen && git diff --quiet
+        run: pnpm codegen && git diff --exit-code
       - name: Build all
         run: pnpm build
   docker-build-and-push:
