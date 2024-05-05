@@ -1,11 +1,11 @@
-import type { Field, FieldBase } from "payload/dist/fields/config/types";
+import type { FieldBase, SelectField } from "payload/dist/fields/config/types";
 
 const currentYear = new Date().getFullYear();
 const foundedYear = 1986;
 
 export const guildYearField = (
   base: Omit<FieldBase, "name"> & { name?: string } = {},
-): Field => ({
+): SelectField => ({
   name: "guildYear",
   hasMany: false,
   ...base,

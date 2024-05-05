@@ -1,7 +1,7 @@
 import type { Block } from "payload/types";
 import { guildYearField } from "../fields/guild-year";
 
-export const CommitteesInYear: Block = {
+export const CommitteesInYear = {
   slug: "committees-in-year",
   fields: [
     guildYearField({
@@ -9,4 +9,4 @@ export const CommitteesInYear: Block = {
       required: true,
     }),
   ],
-};
+} satisfies Block;
