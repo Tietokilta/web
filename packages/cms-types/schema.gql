@@ -1,52 +1,67 @@
 type Query {
-  User(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): User
-  Users(draft: Boolean, where: User_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Users
+  User(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): User
+  Users(where: User_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Users
+  countUsers(where: User_where, locale: LocaleInputType): countUsers
   docAccessUser(id: String!): usersDocAccess
   meUser: usersMe
   initializedUser: Boolean
   Page(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Page
   Pages(draft: Boolean, where: Page_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Pages
+  countPages(draft: Boolean, where: Page_where, locale: LocaleInputType): countPages
   docAccessPage(id: String!): pagesDocAccess
   versionPage(id: String, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PageVersion
   versionsPages(where: versionsPage_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): versionsPages
-  Media(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Media
-  allMedia(draft: Boolean, where: Media_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allMedia
+  Media(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Media
+  allMedia(where: Media_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allMedia
+  countallMedia(where: Media_where, locale: LocaleInputType): countallMedia
   docAccessMedia(id: String!): mediaDocAccess
-  Document(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Document
-  Documents(draft: Boolean, where: Document_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Documents
+  Document(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Document
+  Documents(where: Document_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Documents
+  countDocuments(where: Document_where, locale: LocaleInputType): countDocuments
   docAccessDocument(id: String!): documentsDocAccess
-  Topic(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
-  Topics(draft: Boolean, where: Topic_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Topics
+  Topic(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Topic
+  Topics(where: Topic_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Topics
+  countTopics(where: Topic_where, locale: LocaleInputType): countTopics
   docAccessTopic(id: String!): topicsDocAccess
-  BoardMember(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): BoardMember
-  BoardMembers(draft: Boolean, where: BoardMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): BoardMembers
+  BoardMember(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): BoardMember
+  BoardMembers(where: BoardMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): BoardMembers
+  countBoardMembers(where: BoardMember_where, locale: LocaleInputType): countBoardMembers
   docAccessBoardMember(id: String!): board_membersDocAccess
-  Board(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Board
-  Boards(draft: Boolean, where: Board_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Boards
+  Board(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Board
+  Boards(where: Board_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Boards
+  countBoards(where: Board_where, locale: LocaleInputType): countBoards
   docAccessBoard(id: String!): boardsDocAccess
-  CommitteeMember(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): CommitteeMember
-  CommitteeMembers(draft: Boolean, where: CommitteeMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): CommitteeMembers
+  CommitteeMember(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): CommitteeMember
+  CommitteeMembers(where: CommitteeMember_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): CommitteeMembers
+  countCommitteeMembers(where: CommitteeMember_where, locale: LocaleInputType): countCommitteeMembers
   docAccessCommitteeMember(id: String!): committee_membersDocAccess
-  Committee(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Committee
-  Committees(draft: Boolean, where: Committee_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Committees
+  Committee(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Committee
+  Committees(where: Committee_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Committees
+  countCommittees(where: Committee_where, locale: LocaleInputType): countCommittees
   docAccessCommittee(id: String!): committeesDocAccess
-  MagazineIssue(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): MagazineIssue
-  MagazineIssues(draft: Boolean, where: MagazineIssue_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): MagazineIssues
+  MagazineIssue(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): MagazineIssue
+  MagazineIssues(where: MagazineIssue_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): MagazineIssues
+  countMagazineIssues(where: MagazineIssue_where, locale: LocaleInputType): countMagazineIssues
   docAccessMagazineIssue(id: String!): magazine_issuesDocAccess
-  Magazine(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Magazine
-  Magazines(draft: Boolean, where: Magazine_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Magazines
+  Magazine(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Magazine
+  Magazines(where: Magazine_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Magazines
+  countMagazines(where: Magazine_where, locale: LocaleInputType): countMagazines
   docAccessMagazine(id: String!): magazinesDocAccess
-  News(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): News
-  allNews(draft: Boolean, where: News_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allNews
+  News(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): News
+  allNews(where: News_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allNews
+  countallNews(where: News_where, locale: LocaleInputType): countallNews
   docAccessNews(id: String!): newsDocAccess
-  WeeklyNewsletter(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletter
-  WeeklyNewsletters(draft: Boolean, where: WeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): WeeklyNewsletters
+  WeeklyNewsletter(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletter
+  WeeklyNewsletters(where: WeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): WeeklyNewsletters
+  countWeeklyNewsletters(where: WeeklyNewsletter_where, locale: LocaleInputType): countWeeklyNewsletters
   docAccessWeeklyNewsletter(id: String!): weekly_newslettersDocAccess
-  NewsItem(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): NewsItem
-  NewsItems(draft: Boolean, where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
+  NewsItem(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): NewsItem
+  NewsItems(where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
+  countNewsItems(where: NewsItem_where, locale: LocaleInputType): countNewsItems
   docAccessNewsItem(id: String!): news_itemsDocAccess
-  PayloadPreference(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
-  PayloadPreferences(draft: Boolean, where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
+  PayloadPreference(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
+  PayloadPreferences(where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
+  countPayloadPreferences(where: PayloadPreference_where, locale: LocaleInputType): countPayloadPreferences
   docAccessPayloadPreference(id: String!): payload_preferencesDocAccess
   Footer(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Footer
   docAccessFooter: footerDocAccess
@@ -215,6 +230,10 @@ input User_where_or {
   id: User_id_operator
   AND: [User_where_and]
   OR: [User_where_or]
+}
+
+type countUsers {
+  totalDocs: Int
 }
 
 type usersDocAccess {
@@ -442,7 +461,7 @@ type Page {
   hideTableOfContents: Boolean
   content(depth: Int): JSON
   specialPageType: Page_specialPageType
-  redirectToPage(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page_Topic_Relationship
   slug: String
@@ -708,6 +727,10 @@ input Page_where_or {
   id: Page_id_operator
   AND: [Page_where_and]
   OR: [Page_where_or]
+}
+
+type countPages {
+  totalDocs: Int
 }
 
 type pagesDocAccess {
@@ -1084,7 +1107,7 @@ type PagesReadVersionsDocAccess {
 }
 
 type PageVersion {
-  parent(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  parent(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   version: PageVersion_Version
   createdAt: DateTime
   updatedAt: DateTime
@@ -1100,7 +1123,7 @@ type PageVersion_Version {
   hideTableOfContents: Boolean
   content(depth: Int): JSON
   specialPageType: PageVersion_Version_specialPageType
-  redirectToPage(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PageVersion_Version_Topic_Relationship
   slug: String
@@ -1591,6 +1614,10 @@ input Media_where_or {
   OR: [Media_where_or]
 }
 
+type countallMedia {
+  totalDocs: Int
+}
+
 type mediaDocAccess {
   fields: MediaDocAccessFields
   create: MediaCreateDocAccess
@@ -2002,6 +2029,10 @@ input Document_where_or {
   OR: [Document_where_or]
 }
 
+type countDocuments {
+  totalDocs: Int
+}
+
 type documentsDocAccess {
   fields: DocumentsDocAccessFields
   create: DocumentsCreateDocAccess
@@ -2320,6 +2351,10 @@ input Topic_where_or {
   id: Topic_id_operator
   AND: [Topic_where_and]
   OR: [Topic_where_or]
+}
+
+type countTopics {
+  totalDocs: Int
 }
 
 type topicsDocAccess {
@@ -2691,6 +2726,10 @@ input BoardMember_where_or {
   id: BoardMember_id_operator
   AND: [BoardMember_where_and]
   OR: [BoardMember_where_or]
+}
+
+type countBoardMembers {
+  totalDocs: Int
 }
 
 type board_membersDocAccess {
@@ -3132,6 +3171,10 @@ input Board_where_or {
   id: Board_id_operator
   AND: [Board_where_and]
   OR: [Board_where_or]
+}
+
+type countBoards {
+  totalDocs: Int
 }
 
 type boardsDocAccess {
@@ -3576,6 +3619,10 @@ input CommitteeMember_where_or {
   OR: [CommitteeMember_where_or]
 }
 
+type countCommitteeMembers {
+  totalDocs: Int
+}
+
 type committee_membersDocAccess {
   fields: CommitteeMembersDocAccessFields
   create: CommitteeMembersCreateDocAccess
@@ -4016,6 +4063,10 @@ input Committee_where_or {
   id: Committee_id_operator
   AND: [Committee_where_and]
   OR: [Committee_where_or]
+}
+
+type countCommittees {
+  totalDocs: Int
 }
 
 type committeesDocAccess {
@@ -4461,6 +4512,10 @@ input MagazineIssue_where_or {
   OR: [MagazineIssue_where_or]
 }
 
+type countMagazineIssues {
+  totalDocs: Int
+}
+
 type magazine_issuesDocAccess {
   fields: MagazineIssuesDocAccessFields
   create: MagazineIssuesCreateDocAccess
@@ -4815,6 +4870,10 @@ input Magazine_where_or {
   OR: [Magazine_where_or]
 }
 
+type countMagazines {
+  totalDocs: Int
+}
+
 type magazinesDocAccess {
   fields: MagazinesDocAccessFields
   create: MagazinesCreateDocAccess
@@ -5000,7 +5059,7 @@ type News {
   slug: String
   excerpt: String
   ctaType: News_ctaType!
-  pageLink(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  pageLink(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   type: News_type
   author(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): User!
   content(depth: Int): JSON
@@ -5191,6 +5250,10 @@ input News_where_or {
   id: News_id_operator
   AND: [News_where_and]
   OR: [News_where_or]
+}
+
+type countallNews {
+  totalDocs: Int
 }
 
 type newsDocAccess {
@@ -5617,6 +5680,10 @@ input WeeklyNewsletter_where_or {
   OR: [WeeklyNewsletter_where_or]
 }
 
+type countWeeklyNewsletters {
+  totalDocs: Int
+}
+
 type weekly_newslettersDocAccess {
   fields: WeeklyNewslettersDocAccessFields
   create: WeeklyNewslettersCreateDocAccess
@@ -5986,6 +6053,10 @@ input NewsItem_where_or {
   id: NewsItem_id_operator
   AND: [NewsItem_where_and]
   OR: [NewsItem_where_or]
+}
+
+type countNewsItems {
+  totalDocs: Int
 }
 
 type news_itemsDocAccess {
@@ -6365,6 +6436,10 @@ input PayloadPreference_where_or {
   OR: [PayloadPreference_where_or]
 }
 
+type countPayloadPreferences {
+  totalDocs: Int
+}
+
 type payload_preferencesDocAccess {
   fields: PayloadPreferencesDocAccessFields
   create: PayloadPreferencesCreateDocAccess
@@ -6537,7 +6612,7 @@ type LinkRowBlockLink {
   label: String
   linkType: LinkRowBlockLink_linkType
   url: String
-  page(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  page(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   id: String
 }
 
@@ -6689,7 +6764,7 @@ type FooterUpdateDocAccess {
 type LandingPage {
   heroText: String
   heroImages: [LandingPage_HeroImages!]!
-  eventsListPage(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page!
+  eventsListPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page!
   announcement(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): News
   body(depth: Int): JSON
   updatedAt: DateTime
@@ -6959,7 +7034,7 @@ enum MainNavigationItem_type {
 }
 
 type MainNavigationItem_PageConfig {
-  page(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  page(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
 }
 
 type MainNavigationTopicConfig {
@@ -6975,7 +7050,7 @@ type MainNavigationTopicConfig_Categories {
 }
 
 type MainNavigationTopicConfig_Categories_Pages {
-  page(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  page(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   id: String
 }
 
@@ -11722,8 +11797,8 @@ type MainNavigationUpdateAccess {
 }
 
 type Mutation {
-  createUser(data: mutationUserInput!, draft: Boolean, locale: LocaleInputType): User
-  updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, draft: Boolean, locale: LocaleInputType): User
+  createUser(data: mutationUserInput!, locale: LocaleInputType): User
+  updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, locale: LocaleInputType): User
   deleteUser(id: String!): User
   refreshTokenUser(token: String): usersRefreshedUser
   logoutUser: String
@@ -11736,44 +11811,44 @@ type Mutation {
   updatePage(id: String!, autosave: Boolean, data: mutationPageUpdateInput!, draft: Boolean, locale: LocaleInputType): Page
   deletePage(id: String!): Page
   restoreVersionPage(id: String): Page
-  createMedia(data: mutationMediaInput!, draft: Boolean, locale: LocaleInputType): Media
-  updateMedia(id: String!, autosave: Boolean, data: mutationMediaUpdateInput!, draft: Boolean, locale: LocaleInputType): Media
+  createMedia(data: mutationMediaInput!, locale: LocaleInputType): Media
+  updateMedia(id: String!, autosave: Boolean, data: mutationMediaUpdateInput!, locale: LocaleInputType): Media
   deleteMedia(id: String!): Media
-  createDocument(data: mutationDocumentInput!, draft: Boolean, locale: LocaleInputType): Document
-  updateDocument(id: String!, autosave: Boolean, data: mutationDocumentUpdateInput!, draft: Boolean, locale: LocaleInputType): Document
+  createDocument(data: mutationDocumentInput!, locale: LocaleInputType): Document
+  updateDocument(id: String!, autosave: Boolean, data: mutationDocumentUpdateInput!, locale: LocaleInputType): Document
   deleteDocument(id: String!): Document
-  createTopic(data: mutationTopicInput!, draft: Boolean, locale: LocaleInputType): Topic
-  updateTopic(id: String!, autosave: Boolean, data: mutationTopicUpdateInput!, draft: Boolean, locale: LocaleInputType): Topic
+  createTopic(data: mutationTopicInput!, locale: LocaleInputType): Topic
+  updateTopic(id: String!, autosave: Boolean, data: mutationTopicUpdateInput!, locale: LocaleInputType): Topic
   deleteTopic(id: String!): Topic
-  createBoardMember(data: mutationBoardMemberInput!, draft: Boolean, locale: LocaleInputType): BoardMember
-  updateBoardMember(id: String!, autosave: Boolean, data: mutationBoardMemberUpdateInput!, draft: Boolean, locale: LocaleInputType): BoardMember
+  createBoardMember(data: mutationBoardMemberInput!, locale: LocaleInputType): BoardMember
+  updateBoardMember(id: String!, autosave: Boolean, data: mutationBoardMemberUpdateInput!, locale: LocaleInputType): BoardMember
   deleteBoardMember(id: String!): BoardMember
-  createBoard(data: mutationBoardInput!, draft: Boolean, locale: LocaleInputType): Board
-  updateBoard(id: String!, autosave: Boolean, data: mutationBoardUpdateInput!, draft: Boolean, locale: LocaleInputType): Board
+  createBoard(data: mutationBoardInput!, locale: LocaleInputType): Board
+  updateBoard(id: String!, autosave: Boolean, data: mutationBoardUpdateInput!, locale: LocaleInputType): Board
   deleteBoard(id: String!): Board
-  createCommitteeMember(data: mutationCommitteeMemberInput!, draft: Boolean, locale: LocaleInputType): CommitteeMember
-  updateCommitteeMember(id: String!, autosave: Boolean, data: mutationCommitteeMemberUpdateInput!, draft: Boolean, locale: LocaleInputType): CommitteeMember
+  createCommitteeMember(data: mutationCommitteeMemberInput!, locale: LocaleInputType): CommitteeMember
+  updateCommitteeMember(id: String!, autosave: Boolean, data: mutationCommitteeMemberUpdateInput!, locale: LocaleInputType): CommitteeMember
   deleteCommitteeMember(id: String!): CommitteeMember
-  createCommittee(data: mutationCommitteeInput!, draft: Boolean, locale: LocaleInputType): Committee
-  updateCommittee(id: String!, autosave: Boolean, data: mutationCommitteeUpdateInput!, draft: Boolean, locale: LocaleInputType): Committee
+  createCommittee(data: mutationCommitteeInput!, locale: LocaleInputType): Committee
+  updateCommittee(id: String!, autosave: Boolean, data: mutationCommitteeUpdateInput!, locale: LocaleInputType): Committee
   deleteCommittee(id: String!): Committee
-  createMagazineIssue(data: mutationMagazineIssueInput!, draft: Boolean, locale: LocaleInputType): MagazineIssue
-  updateMagazineIssue(id: String!, autosave: Boolean, data: mutationMagazineIssueUpdateInput!, draft: Boolean, locale: LocaleInputType): MagazineIssue
+  createMagazineIssue(data: mutationMagazineIssueInput!, locale: LocaleInputType): MagazineIssue
+  updateMagazineIssue(id: String!, autosave: Boolean, data: mutationMagazineIssueUpdateInput!, locale: LocaleInputType): MagazineIssue
   deleteMagazineIssue(id: String!): MagazineIssue
-  createMagazine(data: mutationMagazineInput!, draft: Boolean, locale: LocaleInputType): Magazine
-  updateMagazine(id: String!, autosave: Boolean, data: mutationMagazineUpdateInput!, draft: Boolean, locale: LocaleInputType): Magazine
+  createMagazine(data: mutationMagazineInput!, locale: LocaleInputType): Magazine
+  updateMagazine(id: String!, autosave: Boolean, data: mutationMagazineUpdateInput!, locale: LocaleInputType): Magazine
   deleteMagazine(id: String!): Magazine
-  createNews(data: mutationNewsInput!, draft: Boolean, locale: LocaleInputType): News
-  updateNews(id: String!, autosave: Boolean, data: mutationNewsUpdateInput!, draft: Boolean, locale: LocaleInputType): News
+  createNews(data: mutationNewsInput!, locale: LocaleInputType): News
+  updateNews(id: String!, autosave: Boolean, data: mutationNewsUpdateInput!, locale: LocaleInputType): News
   deleteNews(id: String!): News
-  createWeeklyNewsletter(data: mutationWeeklyNewsletterInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
-  updateWeeklyNewsletter(id: String!, autosave: Boolean, data: mutationWeeklyNewsletterUpdateInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
+  createWeeklyNewsletter(data: mutationWeeklyNewsletterInput!, locale: LocaleInputType): WeeklyNewsletter
+  updateWeeklyNewsletter(id: String!, autosave: Boolean, data: mutationWeeklyNewsletterUpdateInput!, locale: LocaleInputType): WeeklyNewsletter
   deleteWeeklyNewsletter(id: String!): WeeklyNewsletter
-  createNewsItem(data: mutationNewsItemInput!, draft: Boolean, locale: LocaleInputType): NewsItem
-  updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, draft: Boolean, locale: LocaleInputType): NewsItem
+  createNewsItem(data: mutationNewsItemInput!, locale: LocaleInputType): NewsItem
+  updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, locale: LocaleInputType): NewsItem
   deleteNewsItem(id: String!): NewsItem
-  createPayloadPreference(data: mutationPayloadPreferenceInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
-  updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, draft: Boolean, locale: LocaleInputType): PayloadPreference
+  createPayloadPreference(data: mutationPayloadPreferenceInput!, locale: LocaleInputType): PayloadPreference
+  updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
   updateFooter(data: mutationFooterInput!, draft: Boolean, locale: LocaleInputType): Footer
   updateLandingPage(data: mutationLandingPageInput!, draft: Boolean, locale: LocaleInputType): LandingPage
