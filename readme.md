@@ -102,4 +102,4 @@ This repo includes the following packages and apps:
 - `@tietokilta/config-typescript`: tsconfigs used throughout the monorepo
 - `@tietokilta/eslint-config`: eslintconfigs used throughout the monorepo
 
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/)!
