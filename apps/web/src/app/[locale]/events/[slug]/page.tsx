@@ -329,7 +329,7 @@ export default async function Page({ params: { slug } }: PageProps) {
           <BackButton />
           <h1 className="font-mono text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
-            <div className="flex gap-16">
+            <div className="flex flex-col gap-4 md:flex-row md:gap-16">
               <div className="flex max-w-xl flex-grow-[2] flex-col gap-8">
                 <Tldr event={event.data} />
                 {event.data.description ? (
