@@ -45,7 +45,8 @@ export type LinkRowBlockLink =
         | 'Telegram'
         | 'TikLogo'
         | 'Tiktok'
-        | 'X';
+        | 'X'
+        | 'Phone';
       label: string;
       linkType?: ('external' | 'internal') | null;
       url?: string | null;
@@ -243,6 +244,7 @@ export interface BoardMember {
   title: string;
   email?: string | null;
   telegram?: string | null;
+  phonenumber?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -734,7 +736,8 @@ export interface MainNavigationTopicConfig {
                 | 'Telegram'
                 | 'TikLogo'
                 | 'Tiktok'
-                | 'X';
+                | 'X'
+                | 'Phone';
               id?: string | null;
             }[]
           | null;

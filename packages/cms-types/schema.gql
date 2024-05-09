@@ -2492,6 +2492,7 @@ type BoardMember {
   title: String
   email: EmailAddress
   telegram: String
+  phonenumber: String
   updatedAt: DateTime
   createdAt: DateTime
 }
@@ -2559,6 +2560,7 @@ input BoardMember_where {
   title: BoardMember_title_operator
   email: BoardMember_email_operator
   telegram: BoardMember_telegram_operator
+  phonenumber: BoardMember_phonenumber_operator
   updatedAt: BoardMember_updatedAt_operator
   createdAt: BoardMember_createdAt_operator
   id: BoardMember_id_operator
@@ -2667,6 +2669,17 @@ input BoardMember_telegram_operator {
   exists: Boolean
 }
 
+input BoardMember_phonenumber_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
 input BoardMember_updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -2707,6 +2720,7 @@ input BoardMember_where_and {
   title: BoardMember_title_operator
   email: BoardMember_email_operator
   telegram: BoardMember_telegram_operator
+  phonenumber: BoardMember_phonenumber_operator
   updatedAt: BoardMember_updatedAt_operator
   createdAt: BoardMember_createdAt_operator
   id: BoardMember_id_operator
@@ -2721,6 +2735,7 @@ input BoardMember_where_or {
   title: BoardMember_title_operator
   email: BoardMember_email_operator
   telegram: BoardMember_telegram_operator
+  phonenumber: BoardMember_phonenumber_operator
   updatedAt: BoardMember_updatedAt_operator
   createdAt: BoardMember_createdAt_operator
   id: BoardMember_id_operator
@@ -2747,6 +2762,7 @@ type BoardMembersDocAccessFields {
   title: BoardMembersDocAccessFields_title
   email: BoardMembersDocAccessFields_email
   telegram: BoardMembersDocAccessFields_telegram
+  phonenumber: BoardMembersDocAccessFields_phonenumber
   updatedAt: BoardMembersDocAccessFields_updatedAt
   createdAt: BoardMembersDocAccessFields_createdAt
 }
@@ -2886,6 +2902,29 @@ type BoardMembersDocAccessFields_telegram_Update {
 }
 
 type BoardMembersDocAccessFields_telegram_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_phonenumber {
+  create: BoardMembersDocAccessFields_phonenumber_Create
+  read: BoardMembersDocAccessFields_phonenumber_Read
+  update: BoardMembersDocAccessFields_phonenumber_Update
+  delete: BoardMembersDocAccessFields_phonenumber_Delete
+}
+
+type BoardMembersDocAccessFields_phonenumber_Create {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_phonenumber_Read {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_phonenumber_Update {
+  permission: Boolean!
+}
+
+type BoardMembersDocAccessFields_phonenumber_Delete {
   permission: Boolean!
 }
 
@@ -6650,6 +6689,7 @@ enum LinkRowBlockLink_icon {
   TikLogo
   Tiktok
   X
+  Phone
 }
 
 enum LinkRowBlockLink_linkType {
@@ -7095,6 +7135,7 @@ enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
   TikLogo
   Tiktok
   X
+  Phone
 }
 
 type main_navigationDocAccess {
@@ -8832,6 +8873,7 @@ type BoardMembersFields {
   title: BoardMembersFields_title
   email: BoardMembersFields_email
   telegram: BoardMembersFields_telegram
+  phonenumber: BoardMembersFields_phonenumber
   updatedAt: BoardMembersFields_updatedAt
   createdAt: BoardMembersFields_createdAt
 }
@@ -8971,6 +9013,29 @@ type BoardMembersFields_telegram_Update {
 }
 
 type BoardMembersFields_telegram_Delete {
+  permission: Boolean!
+}
+
+type BoardMembersFields_phonenumber {
+  create: BoardMembersFields_phonenumber_Create
+  read: BoardMembersFields_phonenumber_Read
+  update: BoardMembersFields_phonenumber_Update
+  delete: BoardMembersFields_phonenumber_Delete
+}
+
+type BoardMembersFields_phonenumber_Create {
+  permission: Boolean!
+}
+
+type BoardMembersFields_phonenumber_Read {
+  permission: Boolean!
+}
+
+type BoardMembersFields_phonenumber_Update {
+  permission: Boolean!
+}
+
+type BoardMembersFields_phonenumber_Delete {
   permission: Boolean!
 }
 
@@ -12060,6 +12125,7 @@ input mutationBoardMemberInput {
   title: String
   email: String
   telegram: String
+  phonenumber: String
   updatedAt: String
   createdAt: String
 }
@@ -12113,6 +12179,7 @@ input mutationBoardMemberUpdateInput {
   title: String
   email: String
   telegram: String
+  phonenumber: String
   updatedAt: String
   createdAt: String
 }
@@ -12857,4 +12924,5 @@ enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInpu
   TikLogo
   Tiktok
   X
+  Phone
 }
