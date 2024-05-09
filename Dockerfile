@@ -74,6 +74,7 @@ FROM base AS runner
 ARG PROJECT=web
 ARG GIT_COMMIT_SHA=development
 ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
+ENV NODE_ENV=production
 # Create a non-root user and group for better security.
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
