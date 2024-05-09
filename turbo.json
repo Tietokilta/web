@@ -16,7 +16,8 @@
     "PUBLIC_FRONTEND_URL",
     "PUBLIC_SERVER_URL",
     "PUBLIC_ILMOMASIINA_URL",
-    "GIT_COMMIT_SHA"
+    "GIT_COMMIT_SHA",
+    "NODE_ENV"
   ],
   "pipeline": {
     "build": {
