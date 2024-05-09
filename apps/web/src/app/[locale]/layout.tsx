@@ -5,7 +5,7 @@ import { Footer } from "../../components/footer";
 import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
 import { cn } from "../../lib/utils";
-import "./globals.css";
+import "../globals.css";
 import { I18nProviderClient } from "../../locales/client";
 import { type Locale } from "../../locales/server";
 
