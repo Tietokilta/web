@@ -39,7 +39,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           {event.title}
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
-          <Link href={eventUrl}>{t("Sign up")}</Link>
+          <Link href={eventUrl}>{t("Read more")}</Link>
         </Button>
       </div>
       <div className="shrink-0 truncate font-medium">
@@ -61,7 +61,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
         ) : null}
       </div>
       <Button asChild className="md:hidden" variant="link">
-        <Link href={eventUrl}>{t("Sign up")}</Link>
+        <Link href={eventUrl}>{t("Read more")}</Link>
       </Button>
     </li>
   );
