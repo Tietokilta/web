@@ -1,40 +1,14 @@
 "use client";
 
-import type { EditorState } from "@tietokilta/cms-types/lexical";
 import { ChevronDownIcon } from "@tietokilta/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
 import {
   cn,
   insertSoftHyphens,
-  lexicalNodeToTextContent,
   stringToId,
+  type TocItem,
 } from "../../lib/utils";
-
-interface TocItem {
-  text: string;
-  level: 2 | 3;
-}
-
-const generateToc = (content: EditorState): TocItem[] => {
-  const toc: TocItem[] = [];
-
-  for (const node of content.root.children) {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
-    if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
-      const tag = node.tag;
-      const level = parseInt(tag[1], 10) as 2 | 3;
-      const text = lexicalNodeToTextContent(node);
-
-      toc.push({
-        text,
-        level,
-      });
-    }
-  }
-
-  return toc;
-};
 
 function HeadingList({
   toc,
@@ -211,13 +185,10 @@ const useActiveHeading = () => {
   return activeId;
 };
 
-export function TableOfContents({ content }: { content?: EditorState }) {
+export function TableOfContents({ toc }: { toc?: TocItem[] }) {
   const activeHeadingId = useActiveHeading();
 
-  if (!content) return null;
-
-  const toc = generateToc(content);
-  if (toc.length === 0) return null;
+  if (!toc || toc.length === 0) return null;
 
   return (
     <>

@@ -72,6 +72,7 @@ export function getAll<
           depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
           limit: 100,
+          sort: "-createdAt",
         },
       ).toString()}`;
 

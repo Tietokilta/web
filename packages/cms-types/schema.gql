@@ -484,6 +484,8 @@ scalar JSON
 
 enum Page_specialPageType {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 type Page_Topic_Relationship {
@@ -597,6 +599,8 @@ input Page_specialPageType_operator {
 
 enum Page_specialPageType_Input {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input Page_redirectToPage_operator {
@@ -1141,6 +1145,8 @@ enum PageVersion_Version_type {
 
 enum PageVersion_Version_specialPageType {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 type PageVersion_Version_Topic_Relationship {
@@ -1260,6 +1266,8 @@ input versionsPage_version__specialPageType_operator {
 
 enum versionsPage_version__specialPageType_Input {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input versionsPage_version__redirectToPage_operator {
@@ -5795,6 +5803,7 @@ type WeeklyNewsletter {
   title: String
   greetings(depth: Int): JSON
   newsItems: [WeeklyNewsletter_NewsItems!]
+  slug: String
   updatedAt: DateTime
   createdAt: DateTime
 }
@@ -5843,6 +5852,7 @@ input WeeklyNewsletter_where {
   greetings: WeeklyNewsletter_greetings_operator
   newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
   newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
   id: WeeklyNewsletter_id_operator
@@ -5876,6 +5886,17 @@ input WeeklyNewsletter_newsItems__newsItem_operator {
 }
 
 input WeeklyNewsletter_newsItems__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input WeeklyNewsletter_slug_operator {
   equals: String
   not_equals: String
   like: String
@@ -5924,6 +5945,7 @@ input WeeklyNewsletter_where_and {
   greetings: WeeklyNewsletter_greetings_operator
   newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
   newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
   id: WeeklyNewsletter_id_operator
@@ -5936,6 +5958,7 @@ input WeeklyNewsletter_where_or {
   greetings: WeeklyNewsletter_greetings_operator
   newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
   newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
   id: WeeklyNewsletter_id_operator
@@ -5959,6 +5982,7 @@ type WeeklyNewslettersDocAccessFields {
   title: WeeklyNewslettersDocAccessFields_title
   greetings: WeeklyNewslettersDocAccessFields_greetings
   newsItems: WeeklyNewslettersDocAccessFields_newsItems
+  slug: WeeklyNewslettersDocAccessFields_slug
   updatedAt: WeeklyNewslettersDocAccessFields_updatedAt
   createdAt: WeeklyNewslettersDocAccessFields_createdAt
 }
@@ -6081,6 +6105,29 @@ type WeeklyNewslettersDocAccessFields_newsItems_id_Update {
 }
 
 type WeeklyNewslettersDocAccessFields_newsItems_id_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug {
+  create: WeeklyNewslettersDocAccessFields_slug_Create
+  read: WeeklyNewslettersDocAccessFields_slug_Read
+  update: WeeklyNewslettersDocAccessFields_slug_Update
+  delete: WeeklyNewslettersDocAccessFields_slug_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Delete {
   permission: Boolean!
 }
 
@@ -10691,6 +10738,7 @@ type WeeklyNewslettersFields {
   title: WeeklyNewslettersFields_title
   greetings: WeeklyNewslettersFields_greetings
   newsItems: WeeklyNewslettersFields_newsItems
+  slug: WeeklyNewslettersFields_slug
   updatedAt: WeeklyNewslettersFields_updatedAt
   createdAt: WeeklyNewslettersFields_createdAt
 }
@@ -10813,6 +10861,29 @@ type WeeklyNewslettersFields_newsItems_id_Update {
 }
 
 type WeeklyNewslettersFields_newsItems_id_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug {
+  create: WeeklyNewslettersFields_slug_Create
+  read: WeeklyNewslettersFields_slug_Read
+  update: WeeklyNewslettersFields_slug_Update
+  delete: WeeklyNewslettersFields_slug_Delete
+}
+
+type WeeklyNewslettersFields_slug_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug_Delete {
   permission: Boolean!
 }
 
@@ -12273,6 +12344,8 @@ enum Page_type_MutationInput {
 
 enum Page_specialPageType_MutationInput {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input Page_TopicRelationshipInput {
@@ -12314,6 +12387,8 @@ enum PageUpdate_type_MutationInput {
 
 enum PageUpdate_specialPageType_MutationInput {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input PageUpdate_TopicRelationshipInput {
@@ -13010,6 +13085,7 @@ input mutationWeeklyNewsletterInput {
   title: String
   greetings: JSON
   newsItems: [mutationWeeklyNewsletter_NewsItemsInput]
+  slug: String
   updatedAt: String
   createdAt: String
 }
@@ -13023,6 +13099,7 @@ input mutationWeeklyNewsletterUpdateInput {
   title: String
   greetings: JSON
   newsItems: [mutationWeeklyNewsletterUpdate_NewsItemsInput]
+  slug: String
   updatedAt: String
   createdAt: String
 }
