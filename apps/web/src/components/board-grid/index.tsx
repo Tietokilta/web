@@ -52,15 +52,15 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
               <span className="underline">{boardMember.telegram}</span>
             </a>
           ) : null}
-          {boardMember.phonenumber ? (
+          {boardMember.phoneNumber ? (
             <a
               className="flex items-center gap-1"
-              href={`tel:${boardMember.phonenumber}`}
+              href={`tel:${boardMember.phoneNumber}`}
               rel="noopener noreferrer"
               target="_blank"
             >
               <PhoneIcon className="h-6 w-6 shrink-0" />
-              <span className="underline">{boardMember.phonenumber}</span>
+              <span className="underline">{boardMember.phoneNumber}</span>
             </a>
           ) : null}
         </p>
