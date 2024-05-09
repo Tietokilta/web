@@ -99,7 +99,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   deploy:
-    # only run on published releases, enable this when we release
+    # only run.sh on published releases, enable this when we release
     #if: github.event_name == 'release' && github.event.action == 'published'
     name: Deploy to Azure
     runs-on: ubuntu-latest

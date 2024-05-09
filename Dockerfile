@@ -85,5 +85,5 @@ WORKDIR /app
 COPY --from=builder --chown=nodejs:nodejs /app .
 
 WORKDIR /app/apps/${PROJECT}
-# Specify the command to run the application. Adjust the path as needed for your project's start script.
+# Specify the command to run.sh the application. Adjust the path as needed for your project's start script.
 CMD ["npm", "run", "start"]

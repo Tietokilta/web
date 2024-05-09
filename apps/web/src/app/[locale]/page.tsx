@@ -1,5 +1,5 @@
-import type { EditorState } from "packages/cms-types/lexical.ts";
-import type { News, Page as CMSPage } from "packages/cms-types/payload.ts";
+import type { EditorState } from "@tietokilta/cms-types/lexical.ts";
+import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload.ts";
 import { EventsDisplay } from "../../components/events-display";
 import { Hero } from "../../components/hero";
 import { LexicalSerializer } from "../../components/lexical/lexical-serializer.tsx";

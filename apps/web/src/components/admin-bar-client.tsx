@@ -28,7 +28,7 @@ export function AdminBarClient({
         cmsURL={process.env.PUBLIC_SERVER_URL ?? window.location.origin}
         collection={collection}
         id={id}
-        onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:
+        onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run.sh for some reason :shrug:
         preview={isPreviewMode}
         style={{
           top: "auto",

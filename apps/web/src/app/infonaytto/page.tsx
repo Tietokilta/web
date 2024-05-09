@@ -3,7 +3,7 @@ export default function Screen() {
   return(
     <main>
       <div>
-        <h3>INFO NÄYTTÖ :D</h3>
+        <image href="../../assets/TiK-logo.png"/>
       </div>
     </main>
   )
