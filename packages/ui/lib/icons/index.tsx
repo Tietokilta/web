@@ -35,8 +35,8 @@ import {
   MegaphoneIcon,
   MenuIcon,
   MoreHorizontalIcon,
-  XIcon,
   PhoneIcon,
+  XIcon,
 } from "lucide-react";
 import React from "react";
 import { default as TikLogo } from "./tik-logo";
@@ -71,11 +71,11 @@ export const icons = {
   Megaphone: MegaphoneIcon,
   Menu: MenuIcon,
   MoreHorizontal: MoreHorizontalIcon,
+  Phone: PhoneIcon,
   Telegram: TelegramIcon,
   TikLogo,
   Tiktok: TiktokIcon,
   X: XIcon,
-  Phone: PhoneIcon,
 } as const;
 
 export {
@@ -108,11 +108,11 @@ export {
   MegaphoneIcon,
   MenuIcon,
   MoreHorizontalIcon,
+  PhoneIcon,
   TelegramIcon,
   TikLogo,
   TiktokIcon,
   XIcon,
-  PhoneIcon,
 };
 
 export type { LucideIcon };
