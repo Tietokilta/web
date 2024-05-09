@@ -42,11 +42,11 @@ export type LinkRowBlockLink =
         | 'Megaphone'
         | 'Menu'
         | 'MoreHorizontal'
+        | 'Phone'
         | 'Telegram'
         | 'TikLogo'
         | 'Tiktok'
-        | 'X'
-        | 'Phone';
+        | 'X';
       label: string;
       linkType?: ('external' | 'internal') | null;
       url?: string | null;
@@ -244,7 +244,7 @@ export interface BoardMember {
   title: string;
   email?: string | null;
   telegram?: string | null;
-  phonenumber?: string | null;
+  phoneNumber?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -733,11 +733,11 @@ export interface MainNavigationTopicConfig {
                 | 'Megaphone'
                 | 'Menu'
                 | 'MoreHorizontal'
+                | 'Phone'
                 | 'Telegram'
                 | 'TikLogo'
                 | 'Tiktok'
-                | 'X'
-                | 'Phone';
+                | 'X';
               id?: string | null;
             }[]
           | null;
