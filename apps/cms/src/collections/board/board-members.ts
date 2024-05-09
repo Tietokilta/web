@@ -47,6 +47,6 @@ export const BoardMembers = {
     {
       name: "phonenumber",
       type: "text",
-    }
+    },
   ],
 } as const satisfies CollectionConfig;
