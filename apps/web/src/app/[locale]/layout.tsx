@@ -57,8 +57,8 @@ export default function RootLayout({
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <I18nProviderClient locale={locale}>
           <div className="flex min-h-screen flex-col">
-            <MobileNav className="sticky top-0 z-50 md:hidden" />
-            <MainNav className="sticky top-0 z-50 hidden md:block" />
+            <MobileNav className="sticky top-0 z-50 lg:hidden" />
+            <MainNav className="sticky top-0 z-50 hidden lg:block" />
             <div className="min-h-screen flex-1">{children}</div>
             <Footer />
           </div>
