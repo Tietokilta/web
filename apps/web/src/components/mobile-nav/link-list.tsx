@@ -109,7 +109,7 @@ export function LinkList({
         ))}
       </ul>
       <Separator className="my-2" />
-      <ul className="space-y-6 p-4">
+      <ul className="mb-16 space-y-6 p-6">
         {footerLinks.map((linkRow) => (
           <li key={linkRow.id}>
             <ul
