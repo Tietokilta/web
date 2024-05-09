@@ -8,7 +8,9 @@ import {
   SiTelegram as TelegramIcon,
   SiTiktok as TiktokIcon,
 } from "@icons-pack/react-simple-icons";
-import { type LucideProps, type LucideIcon ,
+import {
+  type LucideProps,
+  type LucideIcon,
   AlertOctagonIcon,
   AlertTriangleIcon,
   AtSignIcon,
