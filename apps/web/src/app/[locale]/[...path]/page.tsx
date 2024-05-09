@@ -1,7 +1,7 @@
-import type { EditorState } from "packages/cms-types/lexical.ts";
+import type { EditorState } from "@tietokilta/cms-types/lexical.ts";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import type { Page as CMSPage } from "packages/cms-types/payload.ts";
+import type { Page as CMSPage } from "@tietokilta/cms-types/payload.ts";
 import { AdminBar } from "../../../components/admin-bar.tsx";
 import { LexicalSerializer } from "../../../components/lexical/lexical-serializer.tsx";
 import { TableOfContents } from "../../../components/table-of-contents";
