@@ -120,7 +120,7 @@ function Mobile({
       )}
       ref={detailsRef}
     >
-      <summary className="flex cursor-pointer items-center justify-between p-4">
+      <summary className="flex cursor-pointer items-center justify-between p-4 shadow-sm drop-shadow-sm group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto">
         <span
           className={cn(
             "truncate text-2xl font-bold before:me-[2ch] before:text-gray-600",
@@ -132,7 +132,7 @@ function Mobile({
         </span>
         <ChevronDownIcon className="h-6 w-6 transition-all group-open:rotate-180" />
       </summary>
-      <nav className="px-4 py-2">
+      <nav className="scroll-shadows-sm max-h-[50lvh] overflow-y-scroll px-4 py-2 shadow-sm drop-shadow-sm">
         <HeadingList
           activeHeadingId={activeHeadingId}
           onHeadingClick={() => detailsRef.current?.removeAttribute("open")}
