@@ -45,7 +45,7 @@ export const BoardMembers = {
       type: "text",
     },
     {
-      name: "phonenumber",
+      name: "phoneNumber",
       type: "text",
     },
   ],
