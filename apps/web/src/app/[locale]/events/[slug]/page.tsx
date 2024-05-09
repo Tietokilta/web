@@ -10,14 +10,14 @@ import {
   OPEN_QUOTA_ID,
   QUEUE_QUOTA_ID,
 } from "../../../../lib/api/external/ilmomasiina";
-import { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
+import { signUp } from "../../../../lib/api/external/ilmomasiina/actions.ts";
 import {
   formatDateTimeSeconds,
   formatDatetimeYear,
   getQuotasWithOpenAndQueue,
-} from "../../../../lib/utils";
-import { BackButton } from "../../../../components/back-button";
-import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
+} from "../../../../lib/utils.ts";
+import { BackButton } from "../../../../components/back-button.tsx";
+import { getCurrentLocale, getScopedI18n } from "../../../../locales/server.ts";
 
 async function SignUpText({
   startDate,

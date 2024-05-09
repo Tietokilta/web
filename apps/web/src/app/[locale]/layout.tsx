@@ -4,10 +4,10 @@ import { Inter, Roboto_Mono } from "next/font/google";
 import { Footer } from "../../components/footer";
 import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
-import { cn } from "../../lib/utils";
+import { cn } from "../../lib/utils.ts";
 import "../globals.css";
-import { I18nProviderClient } from "../../locales/client";
-import { type Locale } from "../../locales/server";
+import { I18nProviderClient } from "../../locales/client.ts";
+import { type Locale } from "../../locales/server.ts";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
@@ -46,7 +46,7 @@ export const generateMetadata = ({
   metadataBase: new URL("https://tietokilta.fi"),
 });
 
-export default function RootLayout({
+export default function LocaleLayout({
   children,
   params: { locale },
 }: {

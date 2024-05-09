@@ -1,13 +1,13 @@
-import type { EditorState } from "@tietokilta/cms-types/lexical";
+import type { EditorState } from "packages/cms-types/lexical.ts";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import type { Page as CMSPage } from "@tietokilta/cms-types/payload";
-import { AdminBar } from "../../../components/admin-bar";
-import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
+import type { Page as CMSPage } from "packages/cms-types/payload.ts";
+import { AdminBar } from "../../../components/admin-bar.tsx";
+import { LexicalSerializer } from "../../../components/lexical/lexical-serializer.tsx";
 import { TableOfContents } from "../../../components/table-of-contents";
-import { fetchPage } from "../../../lib/api/pages";
-import { getCurrentLocale, type Locale } from "../../../locales/server";
-import EventsPage from "../../../custom-pages/events-page";
+import { fetchPage } from "../../../lib/api/pages.ts";
+import { getCurrentLocale, type Locale } from "../../../locales/server.ts";
+import EventsPage from "../../../custom-pages/events-page.tsx";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;

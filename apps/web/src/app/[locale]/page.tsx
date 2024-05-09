@@ -1,11 +1,11 @@
-import type { EditorState } from "@tietokilta/cms-types/lexical";
-import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload";
+import type { EditorState } from "packages/cms-types/lexical.ts";
+import type { News, Page as CMSPage } from "packages/cms-types/payload.ts";
 import { EventsDisplay } from "../../components/events-display";
 import { Hero } from "../../components/hero";
-import { LexicalSerializer } from "../../components/lexical/lexical-serializer";
-import { fetchLandingPage } from "../../lib/api/landing-page";
+import { LexicalSerializer } from "../../components/lexical/lexical-serializer.tsx";
+import { fetchLandingPage } from "../../lib/api/landing-page.ts";
 import { AnnouncementCard } from "../../components/announcement-card";
-import { getCurrentLocale } from "../../locales/server";
+import { getCurrentLocale } from "../../locales/server.ts";
 
 function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
