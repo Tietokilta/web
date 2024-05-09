@@ -8,6 +8,9 @@ import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
 import { getCurrentLocale, type Locale } from "../../../locales/server";
 import EventsPage from "../../../custom-pages/events-page";
+import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
+import { generateTocFromRichText } from "../../../lib/utils";
+import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
@@ -96,6 +99,14 @@ async function Page({ params: { path } }: Props) {
       return <EventsPage />;
     }
 
+    if (page.specialPageType === "weekly-newsletter") {
+      return <WeeklyNewsletterPage />;
+    }
+
+    if (page.specialPageType === "weekly-newsletters-list") {
+      return <WeeklyNewslettersListPage />;
+    }
+
     console.error("Unknown special page type", page.specialPageType);
     return notFound();
   }
@@ -128,7 +139,7 @@ async function Page({ params: { path } }: Props) {
 
         <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
           {!page.hideTableOfContents ? (
-            <TableOfContents content={content} />
+            <TableOfContents toc={generateTocFromRichText(content)} />
           ) : null}
           <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}

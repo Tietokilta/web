@@ -1,4 +1,4 @@
-import type { Node } from "@tietokilta/cms-types/lexical";
+import type { EditorState, Node } from "@tietokilta/cms-types/lexical";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { type Locale } from "../locales/server";
@@ -39,6 +39,32 @@ export const lexicalNodeToTextContent = (node: Node): string => {
 
 export const stringToId = (string: string): string =>
   string.toLocaleLowerCase().replace(/\s/g, "-");
+
+export interface TocItem {
+  text: string;
+  level: 2 | 3;
+}
+
+export const generateTocFromRichText = (content?: EditorState): TocItem[] => {
+  if (!content) return [];
+  const toc: TocItem[] = [];
+
+  for (const node of content.root.children) {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
+    if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
+      const tag = node.tag;
+      const level = parseInt(tag[1], 10) as 2 | 3;
+      const text = lexicalNodeToTextContent(node);
+
+      toc.push({
+        text,
+        level,
+      });
+    }
+  }
+
+  return toc;
+};
 
 /**
  * Insert soft hyphens or breaks where lacking in the Finnish dictionary.
@@ -114,7 +140,7 @@ export const formatDatetimeYear = (date: string, locale?: Locale): string => {
 /**
  * Get date in format "12.2.2024"
  */
-export const formatDate = (date: string, locale?: Locale): string => {
+export const formatDateYear = (date: string, locale?: Locale): string => {
   const formatter = new Intl.DateTimeFormat(`${locale ?? "fi"}-FI`, {
     day: "numeric",
     month: "numeric",
@@ -122,6 +148,44 @@ export const formatDate = (date: string, locale?: Locale): string => {
   });
 
   return formatter.format(new Date(date));
+};
+
+/**
+ * Get date in format "12.2."
+ */
+export const formatDate = (date: string, locale?: Locale): string => {
+  const formatter = new Intl.DateTimeFormat(`${locale ?? "fi"}-FI`, {
+    day: "numeric",
+    month: "numeric",
+  });
+
+  return formatter.format(new Date(date));
+};
+
+export const getWeekNumber = (date: Date): number => {
+  const d = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
+  );
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
+};
+
+export const isThisWeek = (date: string): boolean => {
+  const now = new Date();
+  const currentWeek = getWeekNumber(now);
+  const eventWeek = getWeekNumber(new Date(date));
+
+  return currentWeek === eventWeek;
+};
+
+export const isNextWeek = (date: string): boolean => {
+  const now = new Date();
+  const currentWeek = getWeekNumber(now);
+  const eventWeek = getWeekNumber(new Date(date));
+
+  return currentWeek + 1 === eventWeek;
 };
 
 export const getQuotasWithOpenAndQueue = (
