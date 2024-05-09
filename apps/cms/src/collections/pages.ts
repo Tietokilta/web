@@ -109,6 +109,14 @@ const specialPageFields = [
         label: "Events List",
         value: "events-list",
       },
+      {
+        label: "Weekly Newsletter",
+        value: "weekly-newsletter",
+      },
+      {
+        label: "Weekly Newsletters List",
+        value: "weekly-newsletters-list",
+      },
     ],
   },
 ] satisfies Field[];

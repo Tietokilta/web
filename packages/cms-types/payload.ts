@@ -138,7 +138,7 @@ export interface Page {
     };
     [k: string]: unknown;
   } | null;
-  specialPageType?: 'events-list' | null;
+  specialPageType?: ('events-list' | 'weekly-newsletter' | 'weekly-newsletters-list') | null;
   redirectToPage?: (string | null) | Page;
   path?: string | null;
   topic?: {
@@ -541,6 +541,7 @@ export interface WeeklyNewsletter {
         id?: string | null;
       }[]
     | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
