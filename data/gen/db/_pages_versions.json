@@ -32930,5 +32930,269 @@
 	"latest": true,
 	"autosave": false,
 	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "663ce4661bd3afb8c326ecb3"
+	},
+	"parent": "663ce3f91bd3afb8c326ec47",
+	"version": {
+		"title": {
+			"fi": "Viikkotiedote",
+			"en": "Weekly Ne"
+		},
+		"description": {
+			"fi": "Viikkotiedote"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "weekly-newsletter",
+		"path": {
+			"fi": "/fi/viikkotiedote"
+		},
+		"slug": {
+			"fi": "viikkotiedote"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-09T14:57:38.708Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-09T14:55:53.157Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-05-09T14:55:53.157Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T14:57:42.996Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "663ce46d1bd3afb8c326ecc5"
+	},
+	"parent": "663ce3f91bd3afb8c326ec47",
+	"version": {
+		"title": {
+			"fi": "Viikkotiedote",
+			"en": "Weekly Newsletter"
+		},
+		"description": {
+			"fi": "Viikkotiedote",
+			"en": "Weekly Newsletter"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "weekly-newsletter",
+		"path": {
+			"fi": "/fi/viikkotiedote",
+			"en": "/en/weekly-newsletter"
+		},
+		"slug": {
+			"fi": "viikkotiedote",
+			"en": "weekly-newsletter"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-09T14:57:49.952Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-09T14:55:53.157Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-05-09T14:55:53.157Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T14:57:49.952Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "663ce4f21bd3afb8c326ee61"
+	},
+	"parent": "663ce4ea1bd3afb8c326edf4",
+	"version": {
+		"title": {
+			"fi": "Viikkotiedote",
+			"en": "Weekly Newsletter"
+		},
+		"description": {
+			"fi": "Viikkotiedote",
+			"en": "Weekly Newsletter"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "weekly-newsletter",
+		"path": {
+			"fi": "/fi/kilta/viikkotiedote",
+			"en": "/en/guild/weekly-newsletter"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "viikkotiedote",
+			"en": "weekly-newsletter"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-09T14:59:59.006Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-09T14:59:54.145Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-05-09T14:59:54.145Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T15:00:02.774Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "663ce4f31bd3afb8c326ee75"
+	},
+	"parent": "663ce4ea1bd3afb8c326edf4",
+	"version": {
+		"title": {
+			"fi": "Viikkotiedote",
+			"en": "Weekly Newsletter"
+		},
+		"description": {
+			"fi": "Viikkotiedote",
+			"en": "Weekly Newsletter"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "weekly-newsletter",
+		"path": {
+			"fi": "/fi/kilta/viikkotiedote",
+			"en": "/en/guild/weekly-newsletter"
+		},
+		"topic": {
+			"value": "6548f0f4d7febb86e2235b89",
+			"relationTo": "topics"
+		},
+		"slug": {
+			"fi": "viikkotiedote",
+			"en": "weekly-newsletter"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-09T15:00:03.182Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-09T14:59:54.145Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-05-09T14:59:54.145Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T15:00:03.182Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "663d0bc15e07ecdf9fe056ab"
+	},
+	"parent": "663d0ba65e07ecdf9fe0564d",
+	"version": {
+		"title": {
+			"fi": "Kaikki Viikkotiedotteet"
+		},
+		"description": {
+			"fi": "Täältä löydät kaikki viikkotiedotteet"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "weekly-newsletters-list",
+		"path": {
+			"fi": "/fi/viikkotiedotteet",
+			"en": "/en/Week"
+		},
+		"slug": {
+			"fi": "viikkotiedotteet",
+			"en": "Week"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-09T17:45:30.953Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-09T17:45:10.255Z"
+		},
+		"_status": "draft"
+	},
+	"createdAt": {
+		"$date": "2024-05-09T17:45:10.255Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T17:45:37.649Z"
+	},
+	"autosave": true,
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "663d0bd15e07ecdf9fe056bd"
+	},
+	"parent": "663d0ba65e07ecdf9fe0564d",
+	"version": {
+		"title": {
+			"fi": "Kaikki Viikkotiedotteet",
+			"en": "All Weekly Newsletters"
+		},
+		"description": {
+			"fi": "Täältä löydät kaikki viikkotiedotteet",
+			"en": "Here you can find all weekly newslettesr"
+		},
+		"type": "special",
+		"hideTableOfContents": false,
+		"specialPageType": "weekly-newsletters-list",
+		"path": {
+			"fi": "/fi/viikkotiedotteet",
+			"en": "/en/weekly-newsletters"
+		},
+		"slug": {
+			"fi": "viikkotiedotteet",
+			"en": "weekly-newsletters"
+		},
+		"hidden": false,
+		"updatedAt": {
+			"$date": "2024-05-09T17:45:53.45Z"
+		},
+		"createdAt": {
+			"$date": "2024-05-09T17:45:10.255Z"
+		},
+		"_status": "published"
+	},
+	"createdAt": {
+		"$date": "2024-05-09T17:45:10.255Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T17:45:53.45Z"
+	},
+	"latest": true,
+	"autosave": false,
+	"__v": 0
 }]
 
