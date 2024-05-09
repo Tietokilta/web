@@ -46,9 +46,15 @@ export const stringToId = (string: string): string =>
  * **Finnish dictionary not supported in Chromium browsers.**
  */
 export const insertSoftHyphens = (text: string): string => {
-  return text
-    .replaceAll(/(?<word>@)/g, "\u200b$<word>")
-    .replaceAll(/(?<word>toimikunta)/g, "\u00ad$<word>");
+  return (
+    text
+      // soft-break before @ sign
+      .replaceAll(/(?<word>@)/g, "\u200b$<word>")
+      // soft-break after /
+      .replaceAll(/(?<word>\/)/g, "$<word>\u200b")
+      // soft-hyphen after toimikunta
+      .replaceAll(/(?<word>toimikunta)/g, "\u00ad$<word>")
+  );
 };
 
 /**
