@@ -44,5 +44,9 @@ export const BoardMembers = {
       name: "telegram",
       type: "text",
     },
+    {
+      name: "phonenumber",
+      type: "text",
+    }
   ],
 } as const satisfies CollectionConfig;
