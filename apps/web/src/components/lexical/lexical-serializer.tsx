@@ -8,7 +8,12 @@ import type {
 import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
-import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
+import {
+  cn,
+  insertSoftHyphens,
+  lexicalNodeToTextContent,
+  stringToId,
+} from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
@@ -27,7 +32,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
     <>
       {nodes.map((node, index): JSX.Element | null => {
         if (node.type === "text") {
-          let text = <span key={index}>{node.text}</span>;
+          let text = <span key={index}>{insertSoftHyphens(node.text)}</span>;
           if (node.format & IS_BOLD) {
             text = <strong key={index}>{text}</strong>;
           }
