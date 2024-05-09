@@ -16160,5 +16160,108 @@
 		"value": "663cdb0b864517dbe569a648",
 		"relationTo": "topics"
 	}
+},
+{
+	"_id": {
+		"$oid": "663ce3f91bd3afb8c326ec47"
+	},
+	"type": "special",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-09T14:55:53.157Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T14:57:49.952Z"
+	},
+	"__v": 0,
+	"description": {
+		"fi": "Viikkotiedote",
+		"en": "Weekly Newsletter"
+	},
+	"path": {
+		"fi": "/fi/viikkotiedote",
+		"en": "/en/weekly-newsletter"
+	},
+	"slug": {
+		"fi": "viikkotiedote",
+		"en": "weekly-newsletter"
+	},
+	"specialPageType": "weekly-newsletter",
+	"title": {
+		"fi": "Viikkotiedote",
+		"en": "Weekly Newsletter"
+	}
+},
+{
+	"_id": {
+		"$oid": "663ce4ea1bd3afb8c326edf4"
+	},
+	"title": {
+		"fi": "Viikkotiedote",
+		"en": "Weekly Newsletter"
+	},
+	"description": {
+		"fi": "Viikkotiedote",
+		"en": "Weekly Newsletter"
+	},
+	"type": "special",
+	"hideTableOfContents": false,
+	"specialPageType": "weekly-newsletter",
+	"path": {
+		"fi": "/fi/kilta/viikkotiedote",
+		"en": "/en/guild/weekly-newsletter"
+	},
+	"slug": {
+		"fi": "viikkotiedote",
+		"en": "weekly-newsletter"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-09T14:59:54.145Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T15:00:03.182Z"
+	},
+	"__v": 0,
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "663d0ba65e07ecdf9fe0564d"
+	},
+	"type": "special",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-09T17:45:10.255Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T17:45:53.45Z"
+	},
+	"__v": 0,
+	"description": {
+		"fi": "Täältä löydät kaikki viikkotiedotteet",
+		"en": "Here you can find all weekly newslettesr"
+	},
+	"path": {
+		"fi": "/fi/viikkotiedotteet",
+		"en": "/en/weekly-newsletters"
+	},
+	"slug": {
+		"fi": "viikkotiedotteet",
+		"en": "weekly-newsletters"
+	},
+	"specialPageType": "weekly-newsletters-list",
+	"title": {
+		"fi": "Kaikki Viikkotiedotteet",
+		"en": "All Weekly Newsletters"
+	}
 }]
 
