@@ -10,6 +10,7 @@ import Link from "next/link";
 import { fetchFooter } from "../../lib/api/footer";
 import { cn } from "../../lib/utils";
 import { getCurrentLocale } from "../../locales/server";
+import { VersionSha } from "./version-sha";
 
 export async function Footer() {
   const locale = getCurrentLocale();
@@ -79,6 +80,7 @@ export async function Footer() {
           ))}
         </ul>
       ))}
+      <VersionSha />
     </footer>
   );
 }

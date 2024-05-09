@@ -15,7 +15,8 @@
     "NEXT_REVALIDATION_KEY",
     "PUBLIC_FRONTEND_URL",
     "PUBLIC_SERVER_URL",
-    "PUBLIC_ILMOMASIINA_URL"
+    "PUBLIC_ILMOMASIINA_URL",
+    "GIT_COMMIT_SHA"
   ],
   "pipeline": {
     "build": {
