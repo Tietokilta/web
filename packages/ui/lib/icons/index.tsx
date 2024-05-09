@@ -8,7 +8,7 @@ import {
   SiTelegram as TelegramIcon,
   SiTiktok as TiktokIcon,
 } from "@icons-pack/react-simple-icons";
-import type { LucideProps, LucideIcon } from "lucide-react";
+import { LucideProps, LucideIcon } from "lucide-react";
 import {
   AlertOctagonIcon,
   AlertTriangleIcon,
@@ -35,6 +35,7 @@ import {
   MenuIcon,
   MoreHorizontalIcon,
   XIcon,
+  PhoneIcon,
 } from "lucide-react";
 import React from "react";
 import { default as TikLogo } from "./tik-logo";
@@ -73,6 +74,7 @@ export const icons = {
   TikLogo,
   Tiktok: TiktokIcon,
   X: XIcon,
+  Phone: PhoneIcon,
 } as const;
 
 export {
@@ -109,6 +111,7 @@ export {
   TikLogo,
   TiktokIcon,
   XIcon,
+  PhoneIcon,
 };
 
 export type { LucideIcon };
