@@ -1,5 +1,5 @@
 import type { Board, BoardMember, Media } from "@tietokilta/cms-types/payload";
-import { GmailIcon, TelegramIcon } from "@tietokilta/ui";
+import { GmailIcon, TelegramIcon, PhoneIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
@@ -50,6 +50,17 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
             >
               <TelegramIcon className="h-6 w-6 shrink-0" />
               <span className="underline">{boardMember.telegram}</span>
+            </a>
+          ) : null}
+          {boardMember.phonenumber ? (
+            <a
+              className="flex items-center gap-1"
+              href={`tel:${boardMember.phonenumber}`}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <PhoneIcon className="h-6 w-6 shrink-0" />
+              <span className="underline">{boardMember.phonenumber}</span>
             </a>
           ) : null}
         </p>
