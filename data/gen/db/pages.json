@@ -12646,5 +12646,3519 @@
 		"$date": "2024-04-05T08:03:55.86Z"
 	},
 	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "663cda58864517dbe569a395"
+	},
+	"type": "special",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-09T14:14:48.279Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T14:19:18.662Z"
+	},
+	"__v": 0,
+	"description": {
+		"fi": "Tapahtumat",
+		"en": "Events"
+	},
+	"path": {
+		"fi": "/fi/tapahtumat",
+		"en": "/en/events"
+	},
+	"slug": {
+		"fi": "tapahtumat",
+		"en": "events"
+	},
+	"specialPageType": "events-list",
+	"title": {
+		"fi": "Tapahtumat",
+		"en": "Events"
+	}
+},
+{
+	"_id": {
+		"$oid": "663cda98864517dbe569a469"
+	},
+	"title": {
+		"fi": "Tapahtumat",
+		"en": "Events"
+	},
+	"description": {
+		"fi": "Tapahtumat",
+		"en": "Events"
+	},
+	"type": "special",
+	"hideTableOfContents": false,
+	"specialPageType": "events-list",
+	"path": {
+		"fi": "/fi/kilta/tapahtumat",
+		"en": "/en/guild/events"
+	},
+	"slug": {
+		"fi": "tapahtumat",
+		"en": "events"
+	},
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-09T14:15:52.35Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T14:19:33.87Z"
+	},
+	"__v": 0,
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "663cdabd864517dbe569a506"
+	},
+	"type": "standard",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-09T14:16:29.932Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T14:21:36.608Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tietokillan häirintäyhdyshenkilöt",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tässä ovat Tietokillan häirintäyhdyshenkilöt vuodelle 2024.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 2,
+										"mode": "normal",
+										"style": "",
+										"text": "...",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": null,
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							}
+						],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ayy:n häirintäyhdyshenkilöt tavoittaa osoitteesta:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "hairinta@ayy.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:hairinta@ayy.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n häirintäyhdyshenkilöt",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ohje toimintaan häirintätilanteessa",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Yleistä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tietokilta ei hyväksy häirintää missään muodossa. Kilta kehittyy jatkuvasti ja sen tärkein tehtävä on taata jäsenilleen turvallinen ja tervetullut olo kaikissa killan tapahtumissa sukupuoleen, seksuaaliseen suuntautumiseen, etniseen taustaan tai mihinkään muuhun ominaisuuteen katsomatta.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Häirintä tai epäasiallinen käytös voi ilmetä esimerkiksi sanallisena tai sanattomana loukkauksena, seksistisenä tai rasistisena vitsinä, ei-toivottuna fyysisenä kosketuksena, uhkailuna, ei-toivottuna yhteydenpitona, yhteisöstä ulossulkemisena tai muuten sen toimintaan osallistumisen asiattomana vaikeuttamisena. Häirinnän kokemus on subjektiivinen, eli mikä on loukkaavaa ja ahdistavaa ja koetaan häirinnäksi vaihtelee henkilökohtaisesti, joten ensisijaisesti tärkeintä on henkilön oma kokemus tilanteesta.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Inkubion hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Inkubion häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kaikki keskustelut häirintätapauksista kontaktoidun häirintäyhdyshenkilön kanssa ovat luottamuksellisia, ja kaikki keskustelut häirintäyhdyshenkilön, häirintää kokeneen henkilön tai muiden tapahtumaan liittyneiden henkilöiden välillä jäävät yksityisiksi. Lisäksi häirintäyhdyshenkilö ei jaa mitään tietoja tai ryhdy toimenpiteisiin ilman häirintää kokeneen suostumusta. Keskenään häirintäyhdyshenkilöt voivat keskustella vain ja ainoastaan häirintää kokeneiden suostumuksella. Häirintäyhdyshenkilöt voivat kuitenkin keskustella keskenään isommista haitallisista teemoista killan tai kiltalaisten toiminnassa, kunhan keskusteluissa ei jaeta yksilöiviä yksityiskohtia.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kaikissa killan tapahtumissa vastuu on tapahtuman järjestäjällä, mutta häirintään puuttuminen ja turvallinen ympäristö on jokaisen kiltalaisen ja tapahtumaan osallistuvan vastuulla. Tapauksien puitteissa tähdätään harkittuihin ja matalan profiilin toimenpiteisiin, jotta häirintätapausten käsittely pysyy luottamuksellisena ja lähtökohtaisesti vain osallisten välisenä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan jäsenelle häirintätilanteessa",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirintä ei ole sitä kokeneen vika ja sen kanssa ei tarvitse jäädä yksin. On tärkeää, että tapahtuneet häirintätapaukset tulevat häirintäyhdyshenkilöiden tietoisuuteen.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Jos joudut itse häirinnän kohteeksi tai havaitset häirintää, pyri ilmaisemaan häiritsijälle, että haluat hänen lopettavan.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "On aina parempi puuttua kuin katsoa sivusta, vaikkei olisikaan varma, mikä on juuri oikea tapa puuttua. Mikäli et halua puuttua yksin, voit hyvin tehdä sen yhdessä kaverin kanssa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Jos havaitset häirintää tapahtumassa, voit ottaa jo tapahtuman aikana yhteyttä tapahtuman järjestäjään. Järjestäjä voi auttaa tilanteen selvittämisessä.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Voit aina ottaa yhteyttä killan tai AYY:n häirintäyhdyshenkilöihin. Voit olla yhteydessä häirintäyhdyshenkilöihin, vaikka et olisi varma onko kohtaamasi tilanne häirintää. Jatkoselvitystä varten kannattaa säilyttää esimerkiksi tapahtuneeseen liittyvät sosiaalisen median keskustelut.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 5
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli häirintätapaus täyttää rikoksen tunnusmerkit, ota yhteyttä poliisiin.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 6
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Jos saat kritiikkiä omasta toiminnastasi, suhtaudu siihen rakentavasti.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 7
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Tapauksen käsittelyn toimintaohje ja sen kulku",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kelle tahansa killan häirintäyhdyshenkilölle voi ilmoittaa häirintätapauksista ja kaikki ilmoitetut tapaukset käsitellään.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirintätapauksista ei keskustella hallituksen kokouksissa, vaan ne hoitaa ilmoituksen saanut häirintäyhdyshenkilö. Asia on aina luottamuksellinen, eikä siitä keskustella kenenkään muun kanssa ilman häirintää kokeneen henkilön lupaa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirintäyhdyshenkilö jatkaa asian selvittämistä ja päättää tapauksen jatkokäsittelystä yhdessä häirintää kokeneen osapuolen kanssa ja vain hänen suostumuksellaan.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Voidaan harkita muun muassa seuraavia toimenpiteitä tilanteen vakavuuden asettamissa puitteissa:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirinnästä epäillylle kerrotaan, että hänen tekonsa on koettu häiritseviksi. Tilanteen kaikkia osapuolia pyritään kuulemaan tasapuolisesti, ja käydyt keskustelut jäävät häirintäyhdyshenkilön ja asianomaisten väliseksi.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kontaktoitu killan häirintäyhdyshenkilö voi myös suositella ja ohjata häirintää kokeneen muun muassa AYY:n häirintäyhdyshenkilöille, YTHS:n ammattilaisille tai tilanteen vaatiessa virkavallalle. Päätös lähestyä edellä mainittuja tahoja on kuitenkin häirintää kokeneen.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli häirintään liittyy yliopiston henkilökuntaa, tilanteen selvittämisestä vastaavat yliopiston häirinnästä vastaavat henkilöt. Killan häirintäyhdyshenkilöt voivat toimia tukena tässä prosessissa asianomaisen näin toivoessa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Ohje tapahtumajärjestäjille",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Inkubio on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "(",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": null,
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": true,
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+								}
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n turvallisemman tilan periaatteet",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+								}
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": ")",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": null,
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": true,
+									"url": "https://www.inkubio.fi/s/Tietosuojaseloste-tapahtumien-ilmoittautumisrekisteri.pdf"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Tavoitteena on, että tapahtumassa kaikki osallistujat kokevat järjestävän tahon luotettavaksi ja helposti lähestyttäväksi. Tapahtumissa vastuu häirintätilanteista on järjestäjillä ja kaikkiin yhteydenottoihin on aina syytä suhtautua vakavasti. ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Jos häirintätapauksia tulee ilmi tapahtuman aikana, tärkeintä on saada häiritsevä käytös loppumaan. Järjestävän tahon edustajalla on oikeus ja velvollisuus ilmoittaa häiritsijälle, ettei käytöstä suvaita tapahtumassa. Häirintätapauksen tullessa ilmi tapahtuman aikana kannattaa ensimmäisenä kertoa selkeästi ja rauhallisesti häiritsijälle, että hänen käytöksensä on häiritsevää. On tärkeää kuunnella kaikkia tilanteen osapuolia tasapuolisesti tapahtuman aikana ja sen jälkeen. ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Mikäli häirintätilanteessa joku/jotkut ovat olleet alkoholin vaikutuksen alaisina, asiaan kannattaa palata myös tapahtuman jälkeen. Tilanteen selvittelyssä voi aina käyttää apuna killan tai AYY:n häirintäyhdyshenkilöitä, mikäli asianomainen niin toivoo tai tilanne niin vaatii. Myös tapahtuman järjestäjällä on oikeus ottaa yhteyttä häirintäyhdyshenkilöön, jos tapahtunut jää painamaan omaa mieltä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tapahtuman järjestäjänä sinulla on oikeus:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Ilmoittaa henkilölle selkeästi ja rauhallisesti, että hänen käytöksensä on epäasiallista eikä sitä hyväksytä killan tapahtumissa",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Pyytää henkilöä lopettamaan häiritsevä käytös välittömästi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Pyytää häiritsevästi käyttäytyvää henkilöä poistumaan",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Hyödyllisiä linkkejä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n turvallisemman tilan periaatteet",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n häirintäyhdyshenkilöt",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Aallon toimintaohje opiskeluun liittyviin häirintätilanteisiin",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://into.aalto.fi/pages/viewpage.action?pageId=1183869"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tietokillan häirintäyhdyshenkilöt",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tässä ovat Tietokillan häirintäyhdyshenkilöt vuodelle 2024.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 2,
+										"mode": "normal",
+										"style": "",
+										"text": "...",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": null,
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							}
+						],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ayy:n häirintäyhdyshenkilöt tavoittaa osoitteesta:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "hairinta@ayy.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:hairinta@ayy.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n häirintäyhdyshenkilöt",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ohje toimintaan häirintätilanteessa",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Yleistä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tietokilta ei hyväksy häirintää missään muodossa. Kilta kehittyy jatkuvasti ja sen tärkein tehtävä on taata jäsenilleen turvallinen ja tervetullut olo kaikissa killan tapahtumissa sukupuoleen, seksuaaliseen suuntautumiseen, etniseen taustaan tai mihinkään muuhun ominaisuuteen katsomatta.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Häirintä tai epäasiallinen käytös voi ilmetä esimerkiksi sanallisena tai sanattomana loukkauksena, seksistisenä tai rasistisena vitsinä, ei-toivottuna fyysisenä kosketuksena, uhkailuna, ei-toivottuna yhteydenpitona, yhteisöstä ulossulkemisena tai muuten sen toimintaan osallistumisen asiattomana vaikeuttamisena. Häirinnän kokemus on subjektiivinen, eli mikä on loukkaavaa ja ahdistavaa ja koetaan häirinnäksi vaihtelee henkilökohtaisesti, joten ensisijaisesti tärkeintä on henkilön oma kokemus tilanteesta.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Inkubion hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Inkubion häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kaikki keskustelut häirintätapauksista kontaktoidun häirintäyhdyshenkilön kanssa ovat luottamuksellisia, ja kaikki keskustelut häirintäyhdyshenkilön, häirintää kokeneen henkilön tai muiden tapahtumaan liittyneiden henkilöiden välillä jäävät yksityisiksi. Lisäksi häirintäyhdyshenkilö ei jaa mitään tietoja tai ryhdy toimenpiteisiin ilman häirintää kokeneen suostumusta. Keskenään häirintäyhdyshenkilöt voivat keskustella vain ja ainoastaan häirintää kokeneiden suostumuksella. Häirintäyhdyshenkilöt voivat kuitenkin keskustella keskenään isommista haitallisista teemoista killan tai kiltalaisten toiminnassa, kunhan keskusteluissa ei jaeta yksilöiviä yksityiskohtia.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kaikissa killan tapahtumissa vastuu on tapahtuman järjestäjällä, mutta häirintään puuttuminen ja turvallinen ympäristö on jokaisen kiltalaisen ja tapahtumaan osallistuvan vastuulla. Tapauksien puitteissa tähdätään harkittuihin ja matalan profiilin toimenpiteisiin, jotta häirintätapausten käsittely pysyy luottamuksellisena ja lähtökohtaisesti vain osallisten välisenä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan jäsenelle häirintätilanteessa",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirintä ei ole sitä kokeneen vika ja sen kanssa ei tarvitse jäädä yksin. On tärkeää, että tapahtuneet häirintätapaukset tulevat häirintäyhdyshenkilöiden tietoisuuteen.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Jos joudut itse häirinnän kohteeksi tai havaitset häirintää, pyri ilmaisemaan häiritsijälle, että haluat hänen lopettavan.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "On aina parempi puuttua kuin katsoa sivusta, vaikkei olisikaan varma, mikä on juuri oikea tapa puuttua. Mikäli et halua puuttua yksin, voit hyvin tehdä sen yhdessä kaverin kanssa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Jos havaitset häirintää tapahtumassa, voit ottaa jo tapahtuman aikana yhteyttä tapahtuman järjestäjään. Järjestäjä voi auttaa tilanteen selvittämisessä.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Voit aina ottaa yhteyttä killan tai AYY:n häirintäyhdyshenkilöihin. Voit olla yhteydessä häirintäyhdyshenkilöihin, vaikka et olisi varma onko kohtaamasi tilanne häirintää. Jatkoselvitystä varten kannattaa säilyttää esimerkiksi tapahtuneeseen liittyvät sosiaalisen median keskustelut.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 5
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli häirintätapaus täyttää rikoksen tunnusmerkit, ota yhteyttä poliisiin.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 6
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Jos saat kritiikkiä omasta toiminnastasi, suhtaudu siihen rakentavasti.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 7
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Tapauksen käsittelyn toimintaohje ja sen kulku",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kelle tahansa killan häirintäyhdyshenkilölle voi ilmoittaa häirintätapauksista ja kaikki ilmoitetut tapaukset käsitellään.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirintätapauksista ei keskustella hallituksen kokouksissa, vaan ne hoitaa ilmoituksen saanut häirintäyhdyshenkilö. Asia on aina luottamuksellinen, eikä siitä keskustella kenenkään muun kanssa ilman häirintää kokeneen henkilön lupaa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirintäyhdyshenkilö jatkaa asian selvittämistä ja päättää tapauksen jatkokäsittelystä yhdessä häirintää kokeneen osapuolen kanssa ja vain hänen suostumuksellaan.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Voidaan harkita muun muassa seuraavia toimenpiteitä tilanteen vakavuuden asettamissa puitteissa:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirinnästä epäillylle kerrotaan, että hänen tekonsa on koettu häiritseviksi. Tilanteen kaikkia osapuolia pyritään kuulemaan tasapuolisesti, ja käydyt keskustelut jäävät häirintäyhdyshenkilön ja asianomaisten väliseksi.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kontaktoitu killan häirintäyhdyshenkilö voi myös suositella ja ohjata häirintää kokeneen muun muassa AYY:n häirintäyhdyshenkilöille, YTHS:n ammattilaisille tai tilanteen vaatiessa virkavallalle. Päätös lähestyä edellä mainittuja tahoja on kuitenkin häirintää kokeneen.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli häirintään liittyy yliopiston henkilökuntaa, tilanteen selvittämisestä vastaavat yliopiston häirinnästä vastaavat henkilöt. Killan häirintäyhdyshenkilöt voivat toimia tukena tässä prosessissa asianomaisen näin toivoessa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Ohje tapahtumajärjestäjille",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Inkubio on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "(",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": null,
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": true,
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+								}
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n turvallisemman tilan periaatteet",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+								}
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": ")",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": null,
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": true,
+									"url": "https://www.inkubio.fi/s/Tietosuojaseloste-tapahtumien-ilmoittautumisrekisteri.pdf"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Tavoitteena on, että tapahtumassa kaikki osallistujat kokevat järjestävän tahon luotettavaksi ja helposti lähestyttäväksi. Tapahtumissa vastuu häirintätilanteista on järjestäjillä ja kaikkiin yhteydenottoihin on aina syytä suhtautua vakavasti. ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Jos häirintätapauksia tulee ilmi tapahtuman aikana, tärkeintä on saada häiritsevä käytös loppumaan. Järjestävän tahon edustajalla on oikeus ja velvollisuus ilmoittaa häiritsijälle, ettei käytöstä suvaita tapahtumassa. Häirintätapauksen tullessa ilmi tapahtuman aikana kannattaa ensimmäisenä kertoa selkeästi ja rauhallisesti häiritsijälle, että hänen käytöksensä on häiritsevää. On tärkeää kuunnella kaikkia tilanteen osapuolia tasapuolisesti tapahtuman aikana ja sen jälkeen. ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Mikäli häirintätilanteessa joku/jotkut ovat olleet alkoholin vaikutuksen alaisina, asiaan kannattaa palata myös tapahtuman jälkeen. Tilanteen selvittelyssä voi aina käyttää apuna killan tai AYY:n häirintäyhdyshenkilöitä, mikäli asianomainen niin toivoo tai tilanne niin vaatii. Myös tapahtuman järjestäjällä on oikeus ottaa yhteyttä häirintäyhdyshenkilöön, jos tapahtunut jää painamaan omaa mieltä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tapahtuman järjestäjänä sinulla on oikeus:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Ilmoittaa henkilölle selkeästi ja rauhallisesti, että hänen käytöksensä on epäasiallista eikä sitä hyväksytä killan tapahtumissa",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Pyytää henkilöä lopettamaan häiritsevä käytös välittömästi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Pyytää häiritsevästi käyttäytyvää henkilöä poistumaan",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " ",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Hyödyllisiä linkkejä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n turvallisemman tilan periaatteet",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n häirintäyhdyshenkilöt",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Aallon toimintaohje opiskeluun liittyviin häirintätilanteisiin",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://into.aalto.fi/pages/viewpage.action?pageId=1183869"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"description": {
+		"fi": "Tältä sivulta löydät Tietokillan häirintäyhdyshenkilöt sekä yleisiä ohjeitä ja sääntöjä sekä miten toimia häirintätilanteissa",
+		"en": "Harassment"
+	},
+	"path": {
+		"fi": "/fi/hairinta",
+		"en": "/en/harassment"
+	},
+	"slug": {
+		"fi": "hairinta",
+		"en": "harassment"
+	},
+	"title": {
+		"fi": "Häirintä",
+		"en": "Harassment"
+	}
+},
+{
+	"_id": {
+		"$oid": "663cdaf1864517dbe569a5d4"
+	},
+	"type": "standard",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-09T14:17:21.408Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-09T14:18:13.086Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 2,
+								"mode": "normal",
+								"style": "",
+								"text": "Hyväksytty Tietokilta ry:n vaalikokouksessa 18.10.2023",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tämä dokumentti sisältää Tietokilta ry:n (jatkossa kilta) toimintaa ohjaavista eettisistä säännöistä (jatkossa ohjesääntö). Nämä eettiset säännöt koskevat jokaista killan yhteisössä toimivaa henkilöä. Kaikki killan tapahtumiin osallistuvat henkilöt luetaan osaksi killan yhteisöä. Dokumentti on jaettu kolmeen lukuun, joista ensimmäinen määrittelee killan eettisen ohjesäännön. Toinen määrittelee häirintäyhdyshenkilön tehtävän ja kolmas menettelyprosessin, jos killan eettistä ohjesääntöä rikotaan.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "1 Luku: Killan eettinen ohjesääntö",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "1 § Yksilöllisyys",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan toiminnassa kaikilla on oikeus olla oma itsensä ja saada tasa-arvoista kohtelua riippumatta mistään henkilöön liittyvästä ominaisuudesta, kuten sukupuolesta, sukupuoli-identiteetistä, alkuperästä, iästä, kielestä, varallisuudesta, vakaumuksesta tai seksuaalisesta suuntautumisesta.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "2 § Häirintä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Killassa ei sallita minkäänlaista rasistista, seksististä, loukkaavaa, väkivaltaista tai uhkaavaa käytöstä eikä häirintää, syrjimistä tai kiusaamista. Kilta pyytääkin tällaisen käytöksen havaitsijaa ilmoittamaan asiasta eteenpäin häirintäyhdyshenkilölle, jotta se saadaan käsittelyyn luvun kolme pykälien mukaan.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "3 § Käyttäytyminen ja edustus",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan toimintaan osallistuvat henkilöt sitoutuvat kunnioittamaan muita ihmisiä tasa-arvon periaatteiden mukaisesti, toimimaan rehellisesti ja eettisesti, edistämään vapaata ja avointa ajatustenvaihtoa sekä keskinäistä luottamusta ja pitämään aktiivisesti huolta omasta ja muiden turvallisuudesta ja hyvinvoinnista.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Jos käy ilmi, että henkilö toimii selkeästi killan eettisiä periaatteita vastaan killan toiminnassa tai sen ulkopuolella voidaan tilanteeseen soveltaa luvun kolme pykäliä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "4 § Killan omaisuus",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kilta kunnioittaa oikeutta omaisuuteen. Killan hallinnassa tai lainassa olevaa omaisuutta ei tule tahallaan tai huolimattomuuttaan vahingoittaa, hävittää tai varastaa. Kiltalaisen tulee pitää huolta Tietokillan kiltahuoneesta: korjata omat jälkensä, sekä huolehtia omista ja yhteisistä tavaroista.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "5 § Tietoturva ja yksityisyys",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kilta kunnioittaa oikeutta yksityisyyteen ja tietoturvaan. Henkilökohtaisen tai arkaluontoisen tiedon käyttäjinä tai käsittelijöinä tulee noudattaa tietoturvavaatimuksia riippumatta tietojen muodosta, säilytystavoista tai sijainnista.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "6 § Eturistiriidat",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Toiminta killassa saattaa altistaa henkilön eturistiriidoille. Mahdollisen eturistiriitatilanteen syntyessä asia tulee tuoda esille ensisijaisesti killan hallitukselle. Vaihtoehtoisesti asia voidaan selvittää killan toiminnantarkastajien kanssa.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "2 Luku: Häirintäyhdyshenkilöt",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "7 § Valinta",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan häirintäyhdyshenkilö(t) valitaan killan jäsenistöstä killan kokouksen määräämällä tavalla.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "8 § Häirintäyhdyshenkilön velvollisuudet ja vastuut",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Häirintäyhdyshenkilön tehtävänä on olla ensimmäinen kontakti killan toimintaan osallistuville mahdollisen häirintätapauksen selvittämiseksi. Hänen tulee olla valmis keskustelemaan tapauksen osallisten kanssa ja viemään asiaa eteenpäin sekä mahdollisuuksien mukaan tukea osallisia tapauksen käsittelyssä. Häirintäyhdyshenkilön tehtävänä on myös osallistua killan ohjesäännön rikkomistilanteen selvitysprosesseihin. Häirintäyhdyshenkilöllä on myös oikeus jättäytyä pois tilanteen selvittämisestä, jos hän näkee sen tarpeellisena. Häirintäyhdyshenkilön tehtävä on luottamuksellinen ja häirintätilanteen selvittäminen on aina luottamuksellinen prosessi. Häirintäyhdyshenkilöllä on vaitiolovelvollisuus häirintätapauksiin liittyen, eikä hän saa keskustella niistä kenenkään muun kanssa ilman häirintää kokeneen henkilön lupaa.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "9 § Eteenpäin siirtäminen",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Häirintätilanteen jälkeen tulee häirintäyhdyshenkilön viedä asiaa eteenpäin, kuitenkin asianomistajan suostumuksella. Asian eteenpäin vieminen voi tarkoittaa esimerkiksi:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Asian tuomista killan hallituksen tietoon ohjesäännön rikkomuksen käsittelyä varten.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Asian tuomista Aalto-yliopiston tai Aalto-yliopiston ylioppilaskunnan yhdenvertaisuudesta vastuussa oleville henkilöille tietoon.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Asianomistajan ohjaamista viranomais- tai hoitoresurssien luokse.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "3 Luku: Toimintaprosessi ohjesäännön rikkomustilanteessa",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "10 § Askelmalli",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kilta käyttää askelmallia, jos killan ohjesääntöä rikotaan. Askelmalli on viisiportainen, mutta käsittelyssä oleva rikkomus ja tilanne määrää, mille portaalle siirrytään. Toistuvissa rikkomuksissa voidaan samaan rikkomukseen käyttää korkeamman portaan toimenpiteitä. Jos rikkomus edellyttää hallituksen toimia, tulee päätöksestä ilmoittaa asianomistajalle. Lista askeleista:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Keskustelukeinot häirintäyhdyshenkilön johdolla",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kirjallinen varoitus",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Erottaminen killan tehtävistä",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kielto osallistua killan toimintaan",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Erottaminen killasta",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 5
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "number",
+						"start": 1,
+						"tag": "ol"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "11 § Häirintäyhdyshenkilön toimet",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Häirintäyhdyshenkilön ensisijainen vastuu on vastaanottaa ilmoituksia häirintätilanteista, olla tukena asianomistajalle ja toimia yhteyshenkilönä näissä tapauksissa. Askelmallin askeleista vain ensimmäinen askel on häirintäyhdyshenkilöiden vastuulla, minkä jälkeen asia siirtyy hallituksen käsiteltäväksi, mutta vain jos asianomistaja niin tahtoo.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kelle tahansa killan häirintäyhdyshenkilölle voi ilmoittaa häirintätapauksista ja kaikki ilmoitetut tapaukset käsitellään.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Häirintäyhdyshenkilö voi harkita esimerkiksi seuraavia toimenpiteitä tilanteen vakavuuden asettamissa puitteissa:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Häirinnästä epäillylle kerrotaan, että hänen tekonsa on koettu häiritseviksi. Tilanteen kaikkia osapuolia pyritään kuulemaan tasapuolisesti, ja käydyt keskustelut jäävät häirintäyhdyshenkilön ja asianosaisten välisiksi.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kontaktoitu killan häirintäyhdyshenkilö voi myös suositella ja ohjata häirintää kokeneen ottamaan yhteyttä esimerkiksi AYY:n yhdenvertaisuudesta vastuussa oleville henkilöille, terveydenhuollon ammattilaisiin tai tilanteen vaatiessa poliisiin. Päätös lähestyä edellä mainittuja tahoja on kuitenkin häirintää kokeneen.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli häirintään liittyy yliopiston henkilökuntaa, tilanteen selvittämisestä vastaavat yliopiston häirinnästä vastaavat henkilöt. Killan häirintäyhdyshenkilöt voivat toimia tukena tässä prosessissa asianosaisen näin toivoessa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Tilanteen niin vaatiessa ja häirintää kokeneen suostumuksella tapaus voidaan välittää hallituksen käsiteltäväksi.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "12 § Hallituksen toimet",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hallitukselle tiedotetaan häirintätapauksista vain, jos ne edellyttävät jatkotoimenpiteitä. Hallitus päättää jatkotoimenpiteistä tapauskohtaisesti. Hallituksen jäsenen ollessa osallisena, hänen tulee jäävätä itsensä jatkotoimenpiteiden käsittelystä. Jatkotoimenpiteitä ovat:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kirjallinen varoitus",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Erottaminen killan tehtävistä",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Kielto osallistua killan toimintaan",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Erottaminen killasta",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "number",
+						"start": 1,
+						"tag": "ol"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "13 § Kirjallinen varoitus",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hallitus voi antaa kirjallisen varoituksen häirinnästä epäillylle. Tämä varoitus tallennetaan myös erilliseen killan arkistoon, johon vain häirintäyhdyshenkilöillä ja hallituksella on pääsy. Varoituksessa ilmoitetaan kirjallisesti, että tieto varoituksesta jaetaan tarvittaessa tapahtumien järjestämisen yhteydessä tapahtumasta vastuussa oleville tahoille. Varoitus annetaan määräajaksi, kuitenkin enintään 5 vuodeksi. Varoitus hävitetään varoituksen rauettua.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "14 § Erottaminen killan tehtävistä",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hallitus voi tehdä killan kokoukselle ehdotuksen epäillyn erottamisesta vastuutehtävistään killassa, jos hän toimii parhaillaan killan kokouksen päätöksellä jossakin tehtävässä. Muista vastuutehtävistä epäilty voidaan erottaa hallituksen päätöksellä. Tehtävästä erotetulle henkilölle annetaan lisäksi kirjallinen varoitus eettisen ohjesäännön 13 § mukaisesti.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "15 § Kielto osallistua killan toimintaan",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hallitus voi antaa häirinnästä epäillylle enintään kuuden kuukauden pituisen osallistumiskiellon kaikkiin muihin killan tapahtumiin paitsi killan kokouksiin. Jos killan toimintaa toteutetaan yhteistyössä jonkin muun tahon kanssa, tulee tälle taholle ilmoittaa, että tämän rangaistuksen saanut henkilö ei saa osallistua toimintaan. Osallistumiskiellon saaneelle henkilölle annetaan lisäksi kirjallinen varoitus eettisen ohjesäännön 13 § mukaisesti. Osallistumiskiellon voi kumota killan hallitus ¾ enemmistöllä. Hallituksen jäsenen ollessa osallisena, hänen tulee jäävätä itsensä kumoamisen käsittelystä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "16 § Erottaminen killasta",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Killan hallitus voi erottaa erittäin vakavan rikkeen tehneen henkilön killasta killan sääntöjen 9 § mukaisesti. Rikkomuksen tekijälle on kuitenkin varattava mahdollisuus selityksen antamiseen. Mahdolliset häirintätilanteet pyritään hoitamaan aina ensin osallisten kesken, mutta jos häirintä on toistuvaa, eivät häirintää aiheuttaneet henkilöt ole tervetulleita kiltaan ja sen tapahtumiin. Killasta erottaminen on erittäin painavin perustein toimitettava toimenpide, josta hallitus päättää perustuen killan sääntöihin.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "17 § Sisäinen muutoksenhaku",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tämän ohjesäännön toimenpiteistä voi valittaa killan kokoukselle killan sääntöjen määräämällä tavalla. Killan kokous voi muuttaa hallituksen päätöstä. Jos erottamisesta, osallistumiskiellosta, erottamisesta killan tehtävistä tai varoituksesta äänestettäessä menevät annetut äänet tasan, päätökseksi tulee lievempi vaihtoehto.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "18 § Määräämättömien asioiden määrääminen",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Niistä asioista, joista ohjesäännössä ei ole erikseen määrätty, päättää killan hallitus.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "19 § Ohjesäännön muuttaminen",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ohjesäännön muuttamisesta päättää killan kokous.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Code of conduct",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"description": {
+		"fi": "Tämä dokumentti sisältää Tietokilta ry:n (jatkossa kilta) toimintaa ohjaavista eettisistä säännöistä (jatkossa ohjesääntö).",
+		"en": "Code of conduct"
+	},
+	"path": {
+		"fi": "/fi/virallinen/eettinen-ohjesaanto",
+		"en": "/en/virallinen/code-of-conduct"
+	},
+	"slug": {
+		"fi": "eettinen-ohjesaanto",
+		"en": "code-of-conduct"
+	},
+	"title": {
+		"fi": "Tietokilta ry:n eettinen ohjesääntö",
+		"en": "Code of conduct"
+	},
+	"topic": {
+		"value": "663cdb0b864517dbe569a648",
+		"relationTo": "topics"
+	}
 }]
 
