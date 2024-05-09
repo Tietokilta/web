@@ -6,7 +6,6 @@ import type {
 } from "@tietokilta/cms-types/payload";
 import {
   RenderIcon,
-  ScrollArea,
   Separator,
   Button,
   ChevronDownIcon,
@@ -100,7 +99,7 @@ export function LinkList({
   footerLinks: LinkRowBlock[];
 }) {
   return (
-    <ScrollArea className="h-[100lvh] font-mono text-xl font-semibold text-gray-900">
+    <div className="h-[100lvh] overflow-y-auto font-mono text-xl font-semibold text-gray-900">
       <ul className="mt-6 flex flex-col gap-6 p-4">
         {links.map((pageOrTopic) => (
           <li key={pageOrTopic.id}>
@@ -147,6 +146,6 @@ export function LinkList({
           </li>
         ))}
       </ul>
-    </ScrollArea>
+    </div>
   );
 }
