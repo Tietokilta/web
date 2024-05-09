@@ -123,7 +123,7 @@ function Mobile({
       <summary className="flex cursor-pointer items-center justify-between p-4">
         <span
           className={cn(
-            "text-2xl font-bold before:me-[2ch] before:text-gray-600",
+            "truncate text-2xl font-bold before:me-[2ch] before:text-gray-600",
             activeHeading.level === 2 && "before:content-['#']",
             activeHeading.level === 3 && "before:content-['##']",
           )}
