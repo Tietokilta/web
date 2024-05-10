@@ -223,12 +223,12 @@ export function TableOfContents({ content }: { content?: EditorState }) {
     <>
       <Desktop
         activeHeadingId={activeHeadingId}
-        className="z-50 hidden xl:block"
+        className="z-20 hidden xl:block"
         toc={toc}
       />
       <Mobile
         activeHeadingId={activeHeadingId}
-        className="z-50 xl:hidden"
+        className="z-20 xl:hidden"
         toc={toc}
       />
     </>
