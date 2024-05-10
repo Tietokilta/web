@@ -6,7 +6,6 @@ import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
 import { cn } from "../../lib/utils";
 import "./globals.css";
-import { I18nProviderClient } from "../../locales/client";
 import { type Locale } from "../../locales/server";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -15,7 +14,7 @@ const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
 });
 
-interface LayoutProps {
+export interface LayoutProps {
   params: {
     locale: Locale;
   };
@@ -55,14 +54,12 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
-        <I18nProviderClient locale={locale}>
-          <div className="flex min-h-screen flex-col">
-            <MobileNav className="sticky top-0 z-50 lg:hidden" />
-            <MainNav className="sticky top-0 z-50 hidden lg:block" />
-            <div className="min-h-screen flex-1">{children}</div>
-            <Footer />
-          </div>
-        </I18nProviderClient>
+        <div className="flex min-h-screen flex-col">
+          <MobileNav className="sticky top-0 z-50 lg:hidden" />
+          <MainNav className="sticky top-0 z-50 hidden lg:block" />
+          <div className="min-h-screen flex-1">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
