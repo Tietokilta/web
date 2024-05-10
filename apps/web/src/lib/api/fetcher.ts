@@ -37,6 +37,7 @@ export function fetcher<TRequest, TResponse>({
         // we do this by calling `revalidateTag()` using the same key
         // see `app/api/revalidate.ts` for more info
         next: {
+          revalidate: false,
           tags: [tagToCache],
         },
         ...(isDraftMode && payloadToken
