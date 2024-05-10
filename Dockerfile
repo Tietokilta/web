@@ -17,8 +17,6 @@ RUN pnpm install --global turbo
 # Build argument for specifying the project
 # Introduce a build argument 'PROJECT' to specify which project in the monorepo to build.
 ARG PROJECT=web
-ARG GIT_COMMIT_SHA=development
-ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 # Install all dependencies in the monorepo
 # Start a new stage for handling dependencies. This stage uses the previously setup image with pnpm and turbo installed.
 FROM setup AS dependencies
@@ -43,6 +41,9 @@ RUN rm -rf /app/out/full/*/*/node_modules
 # Start a new stage for building the project. This stage will compile and prepare the project for production.
 FROM setup AS builder
 WORKDIR /app
+
+ARG GIT_COMMIT_SHA=development
+ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 
 # Copy pruned lockfile and package.json files
 # This ensures that the builder stage has the exact dependencies needed for the project.
