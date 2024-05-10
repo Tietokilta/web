@@ -10,7 +10,6 @@ import {
 import type { ButtonProps } from "@tietokilta/ui";
 import Link from "next/link";
 import { cn } from "../../lib/utils";
-import { useScopedI18n } from "../../locales/client";
 
 function Pagination({
   className,
@@ -77,18 +76,21 @@ PaginationLink.displayName = "PaginationLink";
 
 function PaginationPrevious({
   className,
+  ariaLabel,
+  children,
   ...props
-}: React.ComponentProps<typeof PaginationLink>): JSX.Element {
-  const t = useScopedI18n("action");
+}: React.ComponentProps<typeof PaginationLink> & {
+  ariaLabel: string;
+}): JSX.Element {
   return (
     <PaginationLink
-      aria-label={t("Go to previous page")}
+      aria-label={ariaLabel}
       className={cn("gap-1 pl-2.5", className)}
       size="default"
       {...props}
     >
       <ChevronLeftIcon className="h-4 w-4" />
-      <span>{t("Previous")}</span>
+      <span>{children}</span>
     </PaginationLink>
   );
 }
@@ -96,17 +98,20 @@ PaginationPrevious.displayName = "PaginationPrevious";
 
 function PaginationNext({
   className,
+  ariaLabel,
+  children,
   ...props
-}: React.ComponentProps<typeof PaginationLink>): JSX.Element {
-  const t = useScopedI18n("action");
+}: React.ComponentProps<typeof PaginationLink> & {
+  ariaLabel: string;
+}): JSX.Element {
   return (
     <PaginationLink
-      aria-label={t("Go to next page")}
+      aria-label={ariaLabel}
       className={cn("gap-1 pr-2.5", className)}
       size="default"
       {...props}
     >
-      <span>{t("Next")}</span>
+      <span>{children}</span>
       <ChevronRightIcon className="h-4 w-4" />
     </PaginationLink>
   );
@@ -115,9 +120,9 @@ PaginationNext.displayName = "PaginationNext";
 
 function PaginationEllipsis({
   className,
+  children,
   ...props
 }: React.ComponentProps<"span">): JSX.Element {
-  const t = useScopedI18n("action");
   return (
     <span
       aria-hidden
@@ -125,7 +130,7 @@ function PaginationEllipsis({
       {...props}
     >
       <MoreHorizontalIcon className="h-4 w-4" />
-      <span className="sr-only">{t("More pages")}</span>
+      <span className="sr-only">{children}</span>
     </span>
   );
 }
