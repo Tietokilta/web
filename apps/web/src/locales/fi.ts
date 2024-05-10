@@ -48,4 +48,20 @@ export default {
       Loppuu: "Loppuu",
     },
   },
+  "not-found": {
+    "Sivua ei löytynyt": "Sivua ei löytynyt",
+    "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
+      "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.",
+    Etusivulle: "Etusivulle",
+  },
+
+  error: {
+    "Jotain meni pieleen": "Jotain meni pieleen",
+    "Hups, jotain meni pieleen.": "Hups, jotain meni pieleen.",
+    "Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
+      "Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
+    "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
+      "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
+    "Yritä uudelleen": "Yritä uudelleen",
+  },
 } as const;
