@@ -2,11 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { Button } from "@tietokilta/ui";
-import { useScopedI18n } from "../locales/client";
 
-export function BackButton() {
+export function BackButton({ buttonText }: { buttonText: string }) {
   const router = useRouter();
-  const t = useScopedI18n("action");
 
   return (
     <Button
@@ -15,7 +13,7 @@ export function BackButton() {
         router.back();
       }}
     >
-      {t("Back")}
+      {buttonText}
     </Button>
   );
 }

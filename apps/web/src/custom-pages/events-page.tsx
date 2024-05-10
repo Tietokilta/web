@@ -139,6 +139,7 @@ function EventCard({ event }: { event: IlmomasiinaEvent }) {
 
 export default async function Page() {
   const t = await getScopedI18n("ilmomasiina");
+  const ta = await getScopedI18n("action");
   const events = await fetchEvents();
 
   if (!events.ok) {
@@ -150,7 +151,7 @@ export default async function Page() {
     <main className="relative mb-8 flex flex-col items-center gap-2 md:gap-6">
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
-          <BackButton />
+          <BackButton buttonText={ta("Back")} />
           <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
           <ul className="space-y-8">
             {events.data.map((event) => (
