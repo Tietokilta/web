@@ -47,4 +47,19 @@ export default {
       Loppuu: "Ends",
     },
   },
+  "not-found": {
+    "Sivua ei löytynyt": "Page not found",
+    "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
+      "Page not found. Check the URL or return to the front page.",
+    Etusivulle: "To front page",
+  },
+  error: {
+    "Jotain meni pieleen": "Something went wrong",
+    "Hups, jotain meni pieleen.": "Oops, something went wrong.",
+    "Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
+      "Oops, something went wrong. Contact the site administrator. The error ID is",
+    "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
+      "Oops, something went terribly wrong. Contact the site administrator. The error ID is",
+    "Yritä uudelleen": "Try again",
+  },
 } as const;
