@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Button } from "@tietokilta/ui";
 
-export function BackButton({ buttonText }: { buttonText: string }) {
+export function BackButton({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   return (
@@ -13,7 +13,7 @@ export function BackButton({ buttonText }: { buttonText: string }) {
         router.back();
       }}
     >
-      {buttonText}
+      {children}
     </Button>
   );
 }
