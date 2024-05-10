@@ -70,6 +70,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const events = await fetchEvents();
   const locale = getCurrentLocale();
+  const t = await getScopedI18n("action");
   if (!events.ok) {
     console.warn("Failed to fetch events from Ilmomasiina", events.error);
     return null;
@@ -98,7 +99,10 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationPrevious
                   href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
-                />
+                  ariaLabel={t("Go to previous page")}
+                >
+                  {t("Back")}
+                </PaginationPrevious>
               </PaginationItem>
             ) : null}
             {Array.from({ length: pageCount }, (__, i) => i + 1).map((page) => (
@@ -115,7 +119,10 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationNext
                   href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
-                />
+                  ariaLabel={t("Go to next page")}
+                >
+                  {t("Next")}
+                </PaginationNext>
               </PaginationItem>
             ) : null}
           </PaginationContent>
