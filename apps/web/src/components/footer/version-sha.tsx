@@ -4,7 +4,7 @@ const showVersionSha =
   versionShaLong !== "development" || process.env.NODE_ENV === "development";
 const shaLinkUrl =
   versionShaLong !== "development"
-    ? `https://github.com/Tietokilta/web/commit/${versionShaLong}`
+    ? `https://github.com/Tietokilta/web/tree/${versionShaLong}`
     : "https://youtu.be/dQw4w9WgXcQ";
 
 export function VersionSha() {
