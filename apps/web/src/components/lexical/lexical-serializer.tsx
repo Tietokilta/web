@@ -245,7 +245,7 @@ function Relationship({ node }: { node: RelationshipNode }) {
       return <BoardGrid board={node.value} />;
     }
     case "committees": {
-      return <CommitteeCard committee={node.value} />;
+      return <CommitteeCard isTightLayout committee={node.value} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
