@@ -29,16 +29,16 @@ jobs:
 
       - uses: pnpm/action-setup@v3
         with:
-          version: 9.1.0
+          version: 9.1.1
 
-      - name: Use Node.js 20
+      - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Format (to ensure that code has been formatted)
         run: pnpm format && git diff --exit-code
