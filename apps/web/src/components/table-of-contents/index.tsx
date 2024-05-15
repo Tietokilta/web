@@ -120,7 +120,7 @@ function Mobile({
       )}
       ref={detailsRef}
     >
-      <summary className="flex cursor-pointer items-center justify-between p-4 shadow-sm drop-shadow-sm group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto">
+      <summary className="flex cursor-pointer items-center justify-between p-4 shadow-sm drop-shadow-sm group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto [&::-webkit-details-marker]:hidden [&::marker]:hidden">
         <span
           className={cn(
             "truncate text-2xl font-bold before:me-[2ch] before:text-gray-600",
