@@ -54,6 +54,8 @@ export const insertSoftHyphens = (text: string): string => {
       .replaceAll(/(?<word>\/)/g, "$<word>\u200b")
       // soft-hyphen after toimikunta
       .replaceAll(/(?<word>toimikunta)/g, "\u00ad$<word>")
+      // soft-hyphen after työryhmä
+      .replaceAll(/(?<word>työryhmä)/g, "\u00ad$<word>")
   );
 };
 
