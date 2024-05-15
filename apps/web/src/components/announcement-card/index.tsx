@@ -99,7 +99,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
 
       <div className="flex w-full flex-col gap-4 md:hidden">
         <details className="group flex w-full flex-col">
-          <summary className="w-full cursor-pointer list-none text-lg font-medium">
+          <summary className="w-full cursor-pointer list-none text-lg font-medium [&::-webkit-details-marker]:hidden [&::marker]:hidden">
             <ChevronDownIcon className="mr-2 inline-block h-4 w-4 transition-all group-open:rotate-180" />
             <span>{news.title}</span>
           </summary>
