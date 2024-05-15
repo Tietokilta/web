@@ -6,7 +6,7 @@ import type {
 import Image from "next/image";
 import { GavelIcon } from "@tietokilta/ui";
 import TikLogo from "../../assets/TiK-logo.png";
-import { cn } from "../../lib/utils";
+import { cn, insertSoftHyphens } from "../../lib/utils";
 
 function CommitteeMemberCard({
   committeeMember,
@@ -28,7 +28,7 @@ function CommitteeMemberCard({
       {isChair ? <GavelIcon className="absolute left-0 top-0 h-6 w-6" /> : null}
       <p className="flex flex-1 flex-col bg-gray-100 text-center">
         <span className="text-lg font-medium">{committeeMember.name}</span>
-        <span>{committeeMember.title}</span>
+        <span>{insertSoftHyphens(committeeMember.title)}</span>
       </p>
     </div>
   );
