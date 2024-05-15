@@ -43,6 +43,9 @@
       "payload-plugin-oauth@^2.1.1": {
         "dependencies": {
           "passport": "^0.6"
+        },
+        "peerDependencies": {
+          "@types/passport-oauth2": "^1.4.15"
         }
       }
     }
