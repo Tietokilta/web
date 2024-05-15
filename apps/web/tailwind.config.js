@@ -92,6 +92,9 @@ module.exports = {
             "code::after": {
               content: "' '",
             },
+            ":where(h1, h2, h3, h4, h5, h6) + blockquote": {
+              marginTop: "2.4em",
+            },
             blockquote: {
               position: "relative",
               paddingLeft: "calc(1ch + 0.15em)",
