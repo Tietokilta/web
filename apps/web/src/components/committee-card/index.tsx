@@ -6,6 +6,7 @@ import type {
 import Image from "next/image";
 import { GavelIcon } from "@tietokilta/ui";
 import TikLogo from "../../assets/TiK-logo.png";
+import { cn } from "../../lib/utils";
 
 function CommitteeMemberCard({
   committeeMember,
@@ -35,11 +36,18 @@ function CommitteeMemberCard({
 
 export function CommitteeCard({
   committee,
+  isTightLayout = false,
 }: {
   committee: Committee;
+  isTightLayout?: boolean;
 }): JSX.Element {
   return (
-    <ul className="not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:-mx-16 md:px-6 lg:-mx-32 xl:-mx-48 2xl:-mx-64">
+    <ul
+      className={cn(
+        "not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono  md:px-6 ",
+        !isTightLayout && "md:-mx-16 lg:-mx-32 xl:-mx-48 2xl:-mx-64",
+      )}
+    >
       <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
         <div className="flex w-5 gap-1">
           <span className="bg-secondary-600 h-2 w-2 rounded-full border border-gray-900" />
