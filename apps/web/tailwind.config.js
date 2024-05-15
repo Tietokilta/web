@@ -94,10 +94,8 @@ module.exports = {
             },
             blockquote: {
               position: "relative",
-              paddingTop: "0.6em",
-              paddingBottom: "0.6em",
-              paddingLeft: "0.8em",
-              marginLeft: "0.8em",
+              paddingLeft: "calc(1ch + 0.15em)",
+              marginLeft: "1ch",
               marginTop: "2.4em",
               marginBottom: "2.4em",
               borderLeftWidth: "0.15em",
@@ -122,6 +120,20 @@ module.exports = {
                 marginTop: "0",
                 marginBottom: "0",
               },
+            },
+            "blockquote:has(+ blockquote)": {
+              "&::after": {
+                content: "'*'",
+                left: "calc(-0.8em + 1ch)",
+                bottom: "calc(-1.4em)",
+              },
+              marginBottom: "1em",
+            },
+            "blockquote + blockquote": {
+              "&::before": {
+                content: "''",
+              },
+              marginTop: "1em",
             },
             "img:not(figure img)": {
               boxShadow: theme("boxShadow.solid"),
