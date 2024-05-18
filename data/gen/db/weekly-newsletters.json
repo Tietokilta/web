@@ -1,10 +1,10 @@
 [{
 	"_id": {
-		"$oid": "663ce60f1bd3afb8c326f40a"
+		"$oid": "66489c2fefa9384f07f5bf7c"
 	},
 	"title": {
-		"fi": "Testissä",
-		"en": "Testing"
+		"fi": "Tietokillan viikkotiedote 19/2024",
+		"en": "CSG Weekly mail 19/2024"
 	},
 	"greetings": {
 		"fi": {
@@ -21,7 +21,50 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Testi moi",
+								"text": "Tervetuloa kevään viimeisen viikkotiedotteen pariin! Viikkotiedote jää kesätauolle, mutta Telegram-tiedotus pysyy aktiivisena myös kesän läpi 🌞",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ystävällisin terveisin,",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Roosa Rauhala",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Viestintävastaava, Tietokilta ry",
 								"type": "text",
 								"version": 1
 							}
@@ -50,62 +93,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Testing",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					}
-				],
-				"direction": "ltr"
-			}
-		}
-	},
-	"newsItems": {
-		"fi": [],
-		"en": []
-	},
-	"createdAt": {
-		"$date": "2024-05-09T15:04:47.883Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-09T18:25:01.341Z"
-	},
-	"__v": 0,
-	"slug": {
-		"fi": "testiss",
-		"en": "testing"
-	}
-},
-{
-	"_id": {
-		"$oid": "663ce8fd1bd3afb8c3270ff0"
-	},
-	"title": {
-		"fi": "Testissä 2",
-		"en": "Testing 2"
-	},
-	"greetings": {
-		"fi": {
-			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
-				"children": [
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Testi moi kaikki mitä kuuluu! Tämä on uusilla nettisivuilla oleva viikkotiedote ja se on super hype!!!!!!!!!!!!",
+								"text": "Welcome to the last weekly mail of the spring! The weekly mail will go on a summer break, but the Telegram information channels remain active throughout the summer 🌞",
 								"type": "text",
 								"version": 1
 							},
@@ -122,36 +110,33 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Yt, digitoimikunta",
+								"text": "Best regards,",
 								"type": "text",
 								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					}
-				],
-				"direction": "ltr"
-			}
-		},
-		"en": {
-			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
-				"children": [
-					{
-						"children": [
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
 							{
 								"detail": 0,
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Testing 2",
+								"text": "Roosa Rauhala",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Head of Communications, Tietokilta ry",
 								"type": "text",
 								"version": 1
 							}
@@ -170,38 +155,119 @@
 	"newsItems": {
 		"fi": [
 			{
-				"newsItem": "663cebc71bd3afb8c3272507",
-				"id": "663cebb3dc26fa4204446c00"
+				"newsItem": "66489c47efa9384f07f5bf87",
+				"id": "66489c3334e72160a5fa2005"
 			},
 			{
-				"newsItem": "663d037c024c34d8bec70843",
-				"id": "663d036020588c61773f8b86"
+				"newsItem": "66489c82efa9384f07f5bf8f",
+				"id": "66489c5434e72160a5fa2006"
 			},
 			{
-				"newsItem": "663cf6e41bd3afb8c3279d5d",
-				"id": "663cf6d620588c61773f8b83"
+				"newsItem": "66489cd5efa9384f07f5bf99",
+				"id": "66489c8a34e72160a5fa2007"
 			},
 			{
-				"newsItem": "663cf6f31bd3afb8c3279d68",
-				"id": "663cf6e720588c61773f8b84"
+				"newsItem": "66489d0fefa9384f07f5bfa6",
+				"id": "66489cde34e72160a5fa2009"
 			},
 			{
-				"newsItem": "663cf7061bd3afb8c3279d73",
-				"id": "663cf6f820588c61773f8b85"
+				"newsItem": "66489d47efa9384f07f5bfb3",
+				"id": "66489d2534e72160a5fa200a"
+			},
+			{
+				"newsItem": "66489d8aefa9384f07f5bfbd",
+				"id": "66489d4c34e72160a5fa200b"
+			},
+			{
+				"newsItem": "66489dbaefa9384f07f5bfc7",
+				"id": "66489d9434e72160a5fa200c"
+			},
+			{
+				"newsItem": "66489ddcefa9384f07f5bfd1",
+				"id": "66489dc434e72160a5fa200d"
+			},
+			{
+				"newsItem": "66489ef4efa9384f07f5bfdb",
+				"id": "66489deb34e72160a5fa200e"
+			},
+			{
+				"newsItem": "66489fa5efa9384f07f5bfe5",
+				"id": "66489f8d34e72160a5fa200f"
+			},
+			{
+				"newsItem": "66489fc7efa9384f07f5bfef",
+				"id": "66489fad34e72160a5fa2010"
+			},
+			{
+				"newsItem": "6648a01fefa9384f07f5bffa",
+				"id": "66489fd334e72160a5fa2011"
+			},
+			{
+				"newsItem": "6648a036efa9384f07f5c000",
+				"id": "6648a02534e72160a5fa2012"
 			}
 		],
-		"en": []
+		"en": [
+			{
+				"newsItem": "66489c47efa9384f07f5bf87",
+				"id": "6648a3f734e72160a5fa2014"
+			},
+			{
+				"newsItem": "66489c82efa9384f07f5bf8f",
+				"id": "6648a49434e72160a5fa2015"
+			},
+			{
+				"newsItem": "66489cd5efa9384f07f5bf99",
+				"id": "6648a4ed34e72160a5fa2016"
+			},
+			{
+				"newsItem": "66489d0fefa9384f07f5bfa6",
+				"id": "6648a51d34e72160a5fa2017"
+			},
+			{
+				"newsItem": "66489d47efa9384f07f5bfb3",
+				"id": "6648a53f34e72160a5fa2018"
+			},
+			{
+				"newsItem": "66489d8aefa9384f07f5bfbd",
+				"id": "6648a55f34e72160a5fa2019"
+			},
+			{
+				"newsItem": "66489dbaefa9384f07f5bfc7",
+				"id": "6648a56434e72160a5fa201a"
+			},
+			{
+				"newsItem": "66489ef4efa9384f07f5bfdb",
+				"id": "6648a56d34e72160a5fa201b"
+			},
+			{
+				"newsItem": "66489fa5efa9384f07f5bfe5",
+				"id": "6648a63e34e72160a5fa201d"
+			},
+			{
+				"newsItem": "66489fc7efa9384f07f5bfef",
+				"id": "6648a67d34e72160a5fa201e"
+			},
+			{
+				"newsItem": "6648a01fefa9384f07f5bffa",
+				"id": "6648a88e34e72160a5fa2021"
+			},
+			{
+				"newsItem": "6648a036efa9384f07f5c000",
+				"id": "6648a89534e72160a5fa2022"
+			}
+		]
+	},
+	"slug": {
+		"fi": "tietokillan-viikkotiedote-192024",
+		"en": "csg-weekly-mail-192024"
 	},
 	"createdAt": {
-		"$date": "2024-05-09T15:17:17.459Z"
+		"$date": "2024-05-18T12:16:47.805Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T18:24:55.209Z"
+		"$date": "2024-05-18T13:38:31.671Z"
 	},
-	"__v": 0,
-	"slug": {
-		"fi": "testiss-2",
-		"en": "testing-2"
-	}
+	"__v": 0
 }]
 

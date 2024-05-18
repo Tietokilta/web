@@ -2067,7 +2067,7 @@
 		"$date": "2023-11-06T14:00:25.121Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-23T11:29:28.478Z"
+		"$date": "2024-05-18T13:25:50.919Z"
 	},
 	"__v": 0,
 	"content": {
@@ -2085,7 +2085,38 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kysymyksiä ilmetessä yhteyttä voi ottaa myös fuksikapteeneihin Emmaan ja Samiin sähköpostilla fuksikapteeni [at] tietokilta.fi tai telegramissa [at]TiKFuksikapteenit.",
+								"text": "Kysymyksiä ilmetessä yhteyttä voi ottaa myös fuksikapteeneihin Nooraan ja Filippiin sähköpostilla ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "fuksikapteeni@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:fuksikapteeni@tietokilta.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " tai telegramissa @TiKFuksikapteenit.",
 								"type": "text",
 								"version": 1
 							}
@@ -2103,7 +2134,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Johdanto",
+								"text": "Tervetuloa!",
 								"type": "text",
 								"version": 1
 							}
@@ -2122,7 +2153,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Fuksi on ensimmäisen vuoden yliopisto-opiskelija, joka totuttelee elämään yliopistomaailmassa ja opiskelijayhteisössä. Jokainen vanhemmista tieteenharjoittajista on joskus ollut fuksi ja joutunut omaksumaan valtavasti uutta tietoa ja taitoa liittyen niin opiskeluun kuin muuhun oheistoimintaan. Heistä osa on nyt auttamassa uusia opiskelijoita hyvään alkuun Tietokillan fukseina suuressa Aalto-yliopistossa.",
+								"text": "Fuksi on ensimmäisen vuoden yliopisto-opiskelija, joka totuttelee elämään yliopistomaailmassa ja opiskelijayhteisössä. Jokainen vanhemmista tieteenharjoittajista on joskus ollut fuksi ja joutunut omaksumaan valtavasti uutta tietoa ja taitoa liittyen niin opiskeluun kuin muuhun oheistoimintaan. He ovat auttamassa uusia opiskelijoita hyvään alkuun Tietokillan fukseina  Aalto-yliopistossa.",
 								"type": "text",
 								"version": 1
 							}
@@ -2158,13 +2189,44 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Fuksin vuosi huipentuu mahdollisena wappuna, jonka järjestämisestä Fuksimajuri päättää keväällä. Tällöin teekkarin arvonimen arvoisiksi itsensä osoittaneet fuksit saavat ensi kertaa painaa teekkarilakin päähänsä.",
+								"text": "Fuksin vuosi huipentuu mahdollisena Wappuna, jonka järjestämisestä Fuksimajuri päättää keväällä. Tällöin teekkarin arvonimen arvoisiksi itsensä osoittaneet fuksit saavat ensi kertaa painaa teekkarilakin päähänsä.",
 								"type": "text",
 								"version": 1
 							}
 						],
 						"direction": "ltr",
 						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 2,
+								"mode": "normal",
+								"style": "",
+								"text": "Noora Puhakka & Filip Eller",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 2,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksikapteenit '24",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -2195,7 +2257,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Teekkareista ja teekkariudesta liikkuu lukematon määrä erilaisia, joskus negatiivisiakin, stereotypioita ja ennakkoluuloja. Älä kuitenkaan anna niiden häiritä, vaan ota kaikki irti ensimmäisestä vuodestasi ja tutustu itse teekkarikulttuuriin ja sen moniin muotoihin.",
+								"text": "Teekkareista ja teekkariudesta liikkuu lukematon määrä erilaisia stereotypioita ja ennakkoluuloja. Ota kaikki irti ensimmäisestä vuodestasi ja tutustu itse teekkarikulttuuriin ja sen moniin muotoihin!",
 								"type": "text",
 								"version": 1
 							}
@@ -2213,7 +2275,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Teekkarius on muun muassa hauskanpitoa, yhdessä tekemistä ja rentoa elämänasennetta. Otaniemen kampusalue kuhisee jatkuvasti elämää ja tapahtumia, jotka ilmentävät tätä: on juhlimista, laulamista, urheilua, musiikkia ja tietenkin myös ihan vain rentoa hengailua kavereiden kanssa.",
+								"text": "Teekkarius on muun muassa hauskanpitoa, yhdessä tekemistä ja rentoa elämänasennetta. Otaniemen kampusalue kuhisee jatkuvasti elämää ja tapahtumia, jotka ilmentävät tätä: on juhlimista, laulamista, pelailua, urheilua, musiikkia ja tietenkin myös ihan vain rentoa hengailua kavereiden kanssa.",
 								"type": "text",
 								"version": 1
 							}
@@ -2249,6 +2311,98 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
+								"text": "Fuksivuosi",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksiopas",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksiopas on tietopaketti killasta, teekkarielämästä, opinnoista ja muista käytännön asioista kuten ensimmäisien opiskelupäivien sisällöstä ja opiskelija-asunnon hankkimisesta. Se lähetetään elokuun alussa kaikille tietotekniikan tutkinto-ohjelmaan päässeille uusille opiskelijoille eli Tietokillan fukseille.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Opasta ei tarvitse lukea kannesta kanteen saadakseen tarpeelliset tiedot ennen saapumistaan Otaniemeen. Kannattaa kuitenkin tutustua oppaaseen ja painaa mieleen erityisesti tarvike/tehtävälistat, jotka auttavat valtavasti asioiden hoitamisessa ennen opintojen aloittamista ja varsinkin ensimmäisinä päivinä Otaniemessä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Vuoden 2024 fuksiopas julkaistaan tälle sivulle piakkoin.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
 								"text": "Fuksipisteet",
 								"type": "text",
 								"version": 1
@@ -2268,7 +2422,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Fuksipisteet ovat kiltojen käyttämä mittari teekkarikulttuurin monimuotoisuuteen tutustumisesta, ja niillä fuksi osoittaa ansaitsevansa teekkarin arvonimen ja sen symbolin eli teekkarilakin. Pisteiden kerääminen ei ole itsetarkoitus vaan tavoitteena on motivoida fukseja tutustumaan laajasti erilaisiin teekkarikulttuurin ilmentymiin, pitämään hauskaa, tutustumaan toisiin opiskelijoihin sekä etenkin auttaa löytämään ne omasta mielestä kivoimmat tekemiset, jotka auttavat rentoutumaan vaativan opiskelun ohella.",
+								"text": "Fuksipisteet ovat kiltojen käyttämä mittari teekkarikulttuurin monimuotoisuuteen tutustumisesta, ja niillä fuksi osoittaa ansaitsevansa teekkarin arvonimen ja sen symbolin eli teekkarilakin. Pisteiden kerääminen ei ole itse tarkoitus vaan tavoitteena on motivoida fukseja tutustumaan laajasti erilaisiin teekkarikulttuurin ilmentymiin, pitämään hauskaa, tutustumaan toisiin opiskelijoihin sekä etenkin auttaa löytämään ne omasta mielestä kivoimmat tekemiset, jotka auttavat rentoutumaan vaativan opiskelun ohella.",
 								"type": "text",
 								"version": 1
 							}
@@ -2296,37 +2450,6 @@
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 2,
-								"mode": "normal",
-								"style": "",
-								"text": "Emma Astikainen & Sami Porio",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"type": "linebreak",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 2,
-								"mode": "normal",
-								"style": "",
-								"text": "Fuksikapteenit '23",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
 					}
 				],
 				"direction": "ltr"
@@ -2346,7 +2469,69 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kysymyksiä ilmetessä yhteyttä voi ottaa myös fuksikapteeneihin Emmaan ja Samiin sähköpostilla fuksikapteeni [at] tietokilta.fi tai telegramissa [at]TiKFuksikapteenit.",
+								"text": "If you have questions about studying here and can't find the answers on this page, contact the masters and international captain Kirill through mail:  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "international@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:international@tietokilta.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " or in Telegram: @kvtik or the Bachelors captains Noora and Filip  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "fuksikapteeni@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:fuksikapteeni@tietokilta.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " or in telegram @TiKFuksikapteenit",
 								"type": "text",
 								"version": 1
 							}
@@ -2604,13 +2789,14 @@
 	},
 	"title": {
 		"fi": "Fuksit",
-		"en": "Fuksis"
+		"en": "New Students"
 	},
 	"description": {
-		"fi": "Moi fuksi! Oletko napannut opiskelupaikan tietotekniikan koulutusohjelmasta? Mahtavaa, onnea! Käy liittymässä fuksien Telegram-ryhmään tästä. Tutustu myös fuksioppaaseen, sieltä löydät koottuna paljon hyödyllistä uusia opiskelijoita koskevaa tietoa.",
-		"en": "Moi fuksi! Oletko napannut opiskelupaikan tietotekniikan koulutusohjelmasta? Mahtavaa, onnea! Käy liittymässä fuksien Telegram-ryhmään tästä. Tutustu myös fuksioppaaseen, sieltä löydät koottuna paljon hyödyllistä uusia opiskelijoita koskevaa tietoa."
+		"fi": "Moi fuksi! Oletko napannut opiskelupaikan tietotekniikan koulutusohjelmasta? Mahtavaa, onnea! Käy liittymässä fuksien Telegram-ryhmään tästä (linkki tulossa). Tutustu myös fuksioppaaseen tästä, sieltä löydät koottuna paljon hyödyllistä uusia opiskelijoita koskevaa tietoa.",
+		"en": "Hello new student! Are you coming to study computer science to Aalto? Awesome, congratulations! Join the new international and masters student Telegram here! Read also the fuksi guide, it has a lot of relevant info for new students!"
 	},
-	"hideTableOfContents": false
+	"hideTableOfContents": false,
+	"type": "standard"
 },
 {
 	"_id": {
@@ -2622,7 +2808,7 @@
 		"$date": "2023-11-06T14:01:11.528Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-23T11:29:45.696Z"
+		"$date": "2024-05-13T16:10:21.727Z"
 	},
 	"__v": 0,
 	"content": {
@@ -2651,6 +2837,16 @@
 						"type": "heading",
 						"version": 1,
 						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "upload",
+						"version": 1,
+						"fields": null,
+						"relationTo": "media",
+						"value": {
+							"id": "659afc6bfab28407b9c68069"
+						}
 					},
 					{
 						"children": [
@@ -3141,7 +3337,8 @@
 		"fi": "Tietokilta on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan tutkinto-ohjelman opiskelijoiden aineyhdistys. Kilta tarjoaa noin 900-henkiselle jäsenistölleen sosiaalista toimintaa, ajaa heidän opintoihinsa liittyviä etuja ja aktivoi heitä ammatillisissa ja yhteiskunnallisissa asioissa. Lisätietoja killastamme löydät näiden sivujen muista osioista",
 		"en": "Tietokilta on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan tutkinto-ohjelman opiskelijoiden aineyhdistys. Kilta tarjoaa noin 900-henkiselle jäsenistölleen sosiaalista toimintaa, ajaa heidän opintoihinsa liittyviä etuja ja aktivoi heitä ammatillisissa ja yhteiskunnallisissa asioissa. Lisätietoja killastamme löydät näiden sivujen muista osioista"
 	},
-	"hideTableOfContents": false
+	"hideTableOfContents": false,
+	"type": "standard"
 },
 {
 	"_id": {
@@ -3724,7 +3921,7 @@
 		"$date": "2023-11-06T14:03:10.838Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-23T11:22:55.848Z"
+		"$date": "2024-05-15T07:55:52.278Z"
 	},
 	"__v": 0,
 	"content": {
@@ -3756,14 +3953,36 @@
 					{
 						"children": [
 							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "hallitus (at) tietokilta.fi ",
-								"type": "text",
-								"version": 1
-							},
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "hallitus@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:hallitus@tietokilta.fi"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
 							{
 								"children": [
 									{
@@ -3782,15 +4001,18 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
+									"url": "https://tietokilta.fi/kilta/hallitus/",
+									"doc": {
+										"value": "65be5086e56e440d594ddd26",
+										"relationTo": "pages"
+									},
 									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/hallitus/"
+									"linkType": "internal"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -3838,40 +4060,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella (kts. ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "kiltacam",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/kiltahuone/"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "). Yhteyttä voi ottaa myös henkilökohtaisesti.",
+								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella. Yhteyttä voi ottaa myös henkilökohtaisesti.",
 								"type": "text",
 								"version": 1
 							}
@@ -3890,78 +4079,6 @@
 								"mode": "normal",
 								"style": "",
 								"text": "Kiltahuonepäivystyksen aikaan kiltahuoneella on joku hallituksen jäsenistä paikalla. Tällöin voit ostaa esimerkiksi haalarimerkkejä.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "IRC:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "#tietokilta (@IRCnet)",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "News:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "tky.alayhd.tik (Otaxin newseissä)",
 								"type": "text",
 								"version": 1
 							}
@@ -4208,14 +4325,36 @@
 					{
 						"children": [
 							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "hallitus (at) tietokilta.fi ",
-								"type": "text",
-								"version": 1
-							},
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "hallitus@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:hallitus@tietokilta.fi"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
 							{
 								"children": [
 									{
@@ -4234,15 +4373,18 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
+									"url": "https://tietokilta.fi/kilta/hallitus/",
+									"doc": {
+										"value": "65be5086e56e440d594ddd26",
+										"relationTo": "pages"
+									},
 									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/hallitus/"
+									"linkType": "internal"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -4290,40 +4432,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella (kts. ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "kiltacam",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/kiltahuone/"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "). Yhteyttä voi ottaa myös henkilökohtaisesti.",
+								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella. Yhteyttä voi ottaa myös henkilökohtaisesti.",
 								"type": "text",
 								"version": 1
 							}
@@ -4342,78 +4451,6 @@
 								"mode": "normal",
 								"style": "",
 								"text": "Kiltahuonepäivystyksen aikaan kiltahuoneella on joku hallituksen jäsenistä paikalla. Tällöin voit ostaa esimerkiksi haalarimerkkejä.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "IRC:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "#tietokilta (@IRCnet)",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "News:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "tky.alayhd.tik (Otaxin newseissä)",
 								"type": "text",
 								"version": 1
 							}
@@ -4646,10 +4683,11 @@
 		"en": "Contact"
 	},
 	"description": {
-		"fi": "Killan yhteystiedot",
+		"fi": "Killan osoite, yhteystiedot, laskutustiedot ja muut",
 		"en": "Guild contact information"
 	},
-	"hideTableOfContents": false
+	"hideTableOfContents": false,
+	"type": "standard"
 },
 {
 	"_id": {
@@ -5125,7 +5163,7 @@
 		"$date": "2024-01-13T19:07:58.501Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-15T15:41:08.689Z"
+		"$date": "2024-03-23T11:22:23.955Z"
 	},
 	"__v": 0,
 	"content": {
@@ -5966,132 +6004,6 @@
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Pitkää tekstiä ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Välissä lainaus ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "quote",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Phasellus fermentum dui est, eget tincidunt sapien varius vel. Phasellus eleifend massa facilisis efficitur convallis. Duis ut eros eget metus ornare molestie. Etiam porttitor, nulla eget elementum faucibus, nulla velit maximus ante, at feugiat orci tortor at augue. Ut feugiat fermentum orci, sed commodo justo pellentesque nec. Curabitur et sapien nulla. Cras pharetra, tortor quis lobortis vulputate, sapien elit ultrices dui, et hendrerit ligula dui non tellus. Donec posuere purus sit amet dui cursus pulvinar. Pellentesque feugiat tortor purus, vel rhoncus nulla mattis id. Vivamus tincidunt fringilla sapien, eu egestas sem finibus vestibulum. Vivamus suscipit porta pulvinar. In est orci, fringilla non dui volutpat, tristique tincidunt neque. In tincidunt ipsum in purus sollicitudin, rhoncus lacinia urna fringilla. Aliquam laoreet faucibus libero eu gravida. Duis pellentesque orci in ante rhoncus mollis.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Monta lainausta ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "quote",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Peräkkäin ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "quote",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kivasti ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "quote",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Vielä tekstiä ipsum dolor sit amet, consectetur adipiscing elit. Nam a dui rutrum, viverra purus sed, aliquet sapien. Curabitur congue dui nec massa faucibus viverra. Morbi at urna nibh. Aliquam id viverra mauris. Morbi in quam at sem tempus tempus sit amet id ante. Donec volutpat turpis vel sagittis faucibus. Curabitur eget posuere massa. Pellentesque condimentum justo sed tellus volutpat sollicitudin. Maecenas vestibulum porttitor sollicitudin. Mauris tincidunt auctor justo, at commodo metus faucibus a. Integer dapibus vehicula purus et ornare. Suspendisse potenti. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
 					}
 				],
 				"direction": "ltr"
@@ -6165,8 +6077,7 @@
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
 	},
-	"hideTableOfContents": false,
-	"type": "standard"
+	"hideTableOfContents": false
 },
 {
 	"_id": {
@@ -6949,7 +6860,7 @@
 		"$date": "2024-02-15T20:37:12.153Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T20:04:30.126Z"
+		"$date": "2024-03-23T11:21:15.004Z"
 	},
 	"__v": 0,
 	"content": {
@@ -7142,7 +7053,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Yrityssuhdetoimikuntaan: ",
+								"text": "Hae Yrityssuhdetoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -7164,9 +7075,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/UUEwGTpA2GuEoCTH6",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/UUEwGTpA2GuEoCTH6"
 								}
 							}
 						],
@@ -7292,7 +7204,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Opintotoimikuntaan: ",
+								"text": "Hae Opintotoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -7314,9 +7226,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/dPk4ejCFhfQfyKqo9",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/dPk4ejCFhfQfyKqo9"
 								}
 							}
 						],
@@ -7388,7 +7301,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Sisätoimikuntaan: ",
+								"text": "Hae Sisätoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -7410,9 +7323,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/qgrDaVvvecFbaRaz7",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/qgrDaVvvecFbaRaz7"
 								}
 							}
 						],
@@ -7484,7 +7398,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Ulkosuhdetoimikuntaan: ",
+								"text": "Hae Ulkosuhdetoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -7506,9 +7420,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/kRbp5MdpRpyu2AgL8",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/kRbp5MdpRpyu2AgL8"
 								}
 							}
 						],
@@ -7580,7 +7495,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Abimarkkinointitoimikuntaan: ",
+								"text": "Hae Abimarkkinointitoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -7602,9 +7517,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/CZX9LiWAPEYp62XcA",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/CZX9LiWAPEYp62XcA"
 								}
 							}
 						],
@@ -7694,7 +7610,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae alumnitoimikuntaan: ",
+								"text": "Hae alumnitoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -7716,9 +7632,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/KapgyM7xTPsHV5tV6",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/KapgyM7xTPsHV5tV6"
 								}
 							}
 						],
@@ -7889,7 +7806,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Digitoimikuntaan: ",
+								"text": "Hae Digitoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -7911,9 +7828,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/71G1Ds7wrjzAUxie8",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/71G1Ds7wrjzAUxie8"
 								}
 							}
 						],
@@ -7985,7 +7903,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Herkkukurkkutoimikuntaan: ",
+								"text": "Hae Herkkukurkkutoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8007,9 +7925,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/rXBVFXXQ8kVYJMec6",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/rXBVFXXQ8kVYJMec6"
 								}
 							}
 						],
@@ -8117,7 +8036,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Kiltahuonetoimikuntaan: ",
+								"text": "Hae Kiltahuonetoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8139,9 +8058,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/D1GqXAjavpmcmnxJ7",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/D1GqXAjavpmcmnxJ7"
 								}
 							}
 						],
@@ -8231,7 +8151,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae kiltatuotetoimikuntaan: ",
+								"text": "Hae kiltatuotetoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8253,9 +8173,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/GK5d7NpqFvuxktDV6",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/GK5d7NpqFvuxktDV6"
 								}
 							}
 						],
@@ -8363,7 +8284,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Kulttuuritoimikuntaan: ",
+								"text": "Hae Kulttuuritoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8385,9 +8306,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/2urLaewctJ7VnSAS7",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/2urLaewctJ7VnSAS7"
 								}
 							}
 						],
@@ -8495,7 +8417,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Liikuntatoimikuntaan: ",
+								"text": "Hae Liikuntatoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8517,9 +8439,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/FAbXEAFFAaSqGix88",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/FAbXEAFFAaSqGix88"
 								}
 							}
 						],
@@ -8591,7 +8514,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Marttakerhoon: ",
+								"text": "Hae Marttakerhoon: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8613,9 +8536,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/QZ4HZKBZ9Y7hHJhw5",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/QZ4HZKBZ9Y7hHJhw5"
 								}
 							}
 						],
@@ -8705,7 +8629,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae N-toimikuntaan: ",
+								"text": "Hae N-toimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8727,9 +8651,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/ntL9P65Y7aLAD1sn8",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/ntL9P65Y7aLAD1sn8"
 								}
 							}
 						],
@@ -8819,7 +8744,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae pakutoimikuntaan: ",
+								"text": "Hae pakutoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8841,14 +8766,15 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/QUqsWYGdDWqq3W9b8",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/QUqsWYGdDWqq3W9b8"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "left",
+						"format": "right",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -8969,7 +8895,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Pelitoimikuntaan: ",
+								"text": "Hae Pelitoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -8991,9 +8917,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/rVXnapgzbLYUtqGC7",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/rVXnapgzbLYUtqGC7"
 								}
 							}
 						],
@@ -9101,7 +9028,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Rytmiryhmään: ",
+								"text": "Hae Rytmiryhmään: ",
 								"type": "text",
 								"version": 1
 							},
@@ -9123,9 +9050,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/V3jxiRu3PHHMCWvn7",
-									"newTab": true,
-									"linkType": "custom"
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/V3jxiRu3PHHMCWvn7"
 								}
 							}
 						],
@@ -9197,7 +9125,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Hae Tiedotustoimikuntaan: ",
+								"text": "Hae Tiedotustoimikuntaan: ",
 								"type": "text",
 								"version": 1
 							},
@@ -9219,4587 +9147,10 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://forms.gle/GHpDzJmhmUbACaDe7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Roosa Rauhala, @roosarauhala",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tälle sivulle on koottu toimikuntien kuvaukset ja hakulomakkeet. Jos linkki ei toimi tai jokin muu on rikki, ota yhteyttä varapuheenjohtajaan Telegramissa ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "@labbbis",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
 									"doc": null,
 									"linkType": "custom",
 									"newTab": false,
-									"url": "https://t.me/labbbis"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": " tai sähköpostilla ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "varapuheenjohtaja@tietokilta.fi",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "mailto:varapuheenjohtaja@tietokilta.fi"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimihenkilönä toimiminen on ISOilun jälkeen matalimman tason osallistumista killan toimintaan. Kaikkia vähänkään kiinnostuneita kannustetaan hakemaan toimikuntiin järjestämään tapahtumia sekä tuomaan oman kädenjälkensä killan toimintaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimihenkilönä voi antaa juuri niin paljon aikaa kuin itseltä löytyy. Jotkin toimikunnat kuitenkin vaativat aktiivisempaa osallistumista kuin toiset. Kannustetaan lähtökohtaisesti hakemaan useampaan toimikuntaan kunhan kiinnostusta riittää, mutta omat aikarajoitteet huomioiden. Useampaan toimikuntaan hakiessa varmistathan, että aika ja kiinnostus riittää osallistua aktiivisesti koko vuoden ajan.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Etenkin aloittelevana toimarina kaksi toimikuntaa (toimikunnan aktiivisuudesta riippuen) on melko sopiva määrä. Vuoden mittaan voi myös hakea muihin toimikuntiin jos aikaa riittää ja kaipaa lisää tekemistä!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Yrityssuhdetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Yrityssuhdetoimikunnan toimihenkilöiden tärkeimpänä tehtävänä on vastata yhteydenpidosta Tietokillan ja sen partner-yritysten välillä. Rooli toimikunnassa mahdollistaa verkostoitumisen alan johtavien yritysten kanssa, sekä tarjoaa arvokasta kokemusta yritysyhteistyöstä. Yhteydenpidon lisäksi toimikunnassa pääsee tekemään myös muita tehtäviä, esimerkiksi järjestämään ekskursioita, myymään sponsoripaketteja, valmistelemaan rekrylehteä ja ylläpitämään TiKin rekrytoinnin platformia, sekä rakentamaan killan suurinta rekryrointitapahtumaa UraTiKASta. Toimikunnasta ja tehtävistä voi kysellä lisää Yrityssuhdevastaavalta.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Yrityssuhdetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/UUEwGTpA2GuEoCTH6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/UUEwGTpA2GuEoCTH6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Mikko Juusti, @Mikmokki",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Opintotoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Opintotoimikunnan pääasiallinen vastuu on opiskelijoiden edunvalvonta yliopiston suuntaan sekä opintoaiheisen informaation välittäminen kiltalaisille. Toiminta voidaan karkeasti jakaa kolmeen osaan.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Ensimmäiseksi opintovastaavan johdolla opintotoimikunta vaikuttaa yliopiston päätöksentekoon yhdessä AYY:n ja muiden kiltojen opintotoimikuntien kanssa. Opintotoimikunnassa voi vaikuttaa hallopedinä sekä myös tavallisenä toimihenkilönä. Hallopedit edustavat opiskelijoita yliopiston hallinnollisten elimien kokouksissa. Muutkin jäsenet voivat osallistua joihinkin edunvalvontatapahtumiin, kuten kandikehitystyöryhmiin.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toisekseen opintotoimikunta järjestää yliopiston rahoituksella kandipullatarjoilua kandiksi valmistuville sekä yhtenä suurempana tapahtumana vaihtosaunan vaihdosta kiinnostuneille.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kolmantena roolina on jokapäiväinen edunvalvonta sekä opiskelijoille informaation jakaminen, joka näkyy esimerkiksi kursseilla ilmentyvien ongelmien ratkomisena sekä tenttiarkiston ja varjo-opinto-oppaan ylläpitona. Näiden lisäksi opintotoimikunta on vastuussa opintokyselyiden toteuttamisesta, jotta opiskelijoiden näkemyksistä saadaan laajempi kuva.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Opintotoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/dPk4ejCFhfQfyKqo9",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/dPk4ejCFhfQfyKqo9",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Elsa Schumacher, @elsaschu",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Sisätoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Sisätoimikunta, tuttavallisemmin sisis, järjestää Tietokillalle sitsejä, jatkoja, jajatkoja ja pitää huolen tapahtumien ruoka- ja juomapuolesta. Toimikuntaa johtavat Isäntä ja Emäntä, apunaan juomanahtaajat. Toimikunnassa pääset mukaan suunnittelemaan ja ideoimaan killan tapahtumia, olemaan mukana järjestelyissä, näkemään ja tutustumaan tapahtumiin ja teekkarikulttuuriin aivan toisenlaisesta näkökulmasta. Toimikunnassa pääsee konkreettisesti tekemään kaikenlaista ruoanlaitosta roudaamiseen, koristeluun, siivoukseen ja suunnitteluun. Aiempaa osaamista tai kokemusta ei vaadita, tekemällä oppii! Odotamme kuitenkin hakijoilta intoa ja hyvää asennetta! Muista: keittiössä on parhaat bileet!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Sisätoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/qgrDaVvvecFbaRaz7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/qgrDaVvvecFbaRaz7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Totti Luukkanen, @tottiluukkanen & Vili Virtanen, @vilivirtanen",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Ulkosuhdetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tietokillan ulkosuhdetoimikunta järjestää killalle hauskoja excursiota kotimaan sisällä kuten Aatu ja myös ulkomailla: Baltian Pitkä. Ulkosuhdetoimikunta myös huolehtii killan suhteista muihin ainejärjestöihin, esimerkiksi TiTeeneihin osallistumisen muodossa ja järjestämällä yhteisiä sitsejä. Tyyli on vapaa, tulkaa mukaan suunnittelemaan ja tekemään.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Ulkosuhdetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/kRbp5MdpRpyu2AgL8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/kRbp5MdpRpyu2AgL8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Lasse Kukkula, @lassekukkula",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Abimarkkinointitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Abitoimikunnan tehtävänä on markkinoida tietokiltaa ja tietotekniikan opintoja lukiolaisille. Toimikunnan jäsenenä voit esimerkiksi vierailla vanhassa lukiossasi, esitellä tietotekniikan opintoja Koe Aalto-kampus tai Shaking Up Tech kaltaisissa tapahtumissa, sekä tuottaa sisältöä tietokillan somekanaville. Lisäksi AbiTMK on järjestänyt myös muita abeille suunnattuja tapahtumia, kuten vuonna 2021 sitseihin päättynyt Abipäivä yhteistyössä Inkubion ja Fyysikkokillan kanssa. Ensi vuonna tavoitteena on lukiovierailujen lisäksi tavoittaa enemmän PK-seudun ulkopuolella asuvia lukiolaisia sosiaalisen median kanavien kautta ja mikäli intoa riittää, toteuttaa abipäivä. Tule rohkeasti mukaan, mikäli kiinnostuit yhdestä tai useammasta edellä mainitusta!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Abimarkkinointitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/CZX9LiWAPEYp62XcA",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/CZX9LiWAPEYp62XcA",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Otso Mikkilä, @otso_mikkila",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Alumnitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Alumnitoimikunnan tehtävänä on ylläpitää yhteyksiä killan alumneihin, tarjoten heille ja nykyjäsenille mahdollisuuden verkostoitua ja jakaa kokemuksia. Toimikunta on avoin sekä nykyisille opiskelijoille vuosikurssista huolimatta, että alumneille! Alumnitoimikunnalla on muutamia perinteeksi muodostuneita tapahtumia, kuten Alumniglögit, mutta iso fokus ensi vuonna on uusien konseptien kokeilussa ja testauksessa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos on kysyttävää, olkaa yhteydessä @misse tai @grilliburgeri Telegramissa tai vaikka savumerkein.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae alumnitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/KapgyM7xTPsHV5tV6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/KapgyM7xTPsHV5tV6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Minea Erviö, @misse & Henri Tunkkari, @grilliburgeri",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Digitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Digitoimikunta etsii joukkoonsa innokkaita kiltalaisia, jotka ovat kiinnostuneita Tietokillan IT-infrastruktuurista ja sen kehittämisestä. Toimikunta on myös loistava paikka kerätä käytännön kokemusta ohjelmistokehityksestä. Tulevan vuoden päätavoitteena on jatkokehittää killan uusia nettisivuja mutta myös muita killan digitaalisia palveluita pyritään kehittämään ja ylläpitämään.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikunnassa on tarvetta ainakin seuraavanlaiselle osaamiselle:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "Perus softakehitys",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": ": Suurin osa projekteista on jonkinasteista web-kehitystä. Tällä hetkellä pääasialliset työkalumme ovat TypeScript, Node.js sekä React mutta näitä lienee mahdollista vielä muuttaa. Tavoitteena on kuitenkin käyttää mahdollisimman laajassa käytössä olevia teknologioita, jotta osaavia tekijöitä löytyisi myös tulevaisuudessa. Tarvetta on sekä kokeneemmille että aloitteleville osaajille – kaikki apu on tervetullutta!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "Arkkitehtuurisuunnittelu, pilvipalvelut ja DevOps",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": ": Suurin osa Tietokillan IT-infrasta on tarkoitus siirtää tulevaisuudessa pilvipalveluihin, joten toimikunnassa on tarvetta pilviosaamiselle. Myös kokemus konteista (kuten Docker) ja IaC:stä (kuten Terraform) olisi tärkeää.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "Design (UI/UX)",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": ": Digitoimikunta tarvitsee myös visuaalista silmää ja kyvykkyyttä suunnitella toimivia ja hyvännäköisiä käyttöliittymiä. Käyttöliittymien suunnitteluun käytettäneen ensisijaisesti Figmaa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Digitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/71G1Ds7wrjzAUxie8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/71G1Ds7wrjzAUxie8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Joonatan Korpela, @joonatan_aatos",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Herkkukurkkutoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Herkkukurkkutoimikunta, eli tutummin lukkaristo, on paras mahdollisuutesi vaikuttaa killan laulukulttuuriin! Lukkarit ovat varmasti tuttuja tarinoistaan sitseillä, mutta sen lisäksi toimikuntalaiset mm. suunnittelevat sitsien lauluvalikoimaa ja osaltaan toteuttavat tapahtumia tiiviissä yhteistyössä muiden järjestäjien kanssa. Sitsilukkaroinnin lisäksi toimikunta järjestää erilaisia laulukultuuriaiheisia tapahtumia, kuten laulunsanoitusta, harjoitussitsit uusille lukkareille ja Kovalevyn läpilaulannan. Herkkukurkut ovat läsnä myös esimerkiksi Lalasaunoissa opettamassa nuoremmille lauluja ja innostamassa kiltalaisia laulamaan enemmän. Jos laulukulttuuri siis kiinnostaa, kannattaa ehdottomasti hakea herkkukurkkutoimikuntaan! Uusille toimikuntalaisille ainoa kriteeri on aito kiinnostus laulukulttuuria kohtaan – kaiken muun tarpeellisen oppii tekemällä!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Herkkukurkkutoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/rXBVFXXQ8kVYJMec6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/rXBVFXXQ8kVYJMec6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Petrus Asikainen, @purkka",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltahuonetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltahuonetoimikunnan tehtävänä on pitää huolta kiltahuoneen kunnosta ja siihen tehdyistä muutoksista. Kiltahuonetoimikunta tekee kiltahuoneesta killan näköisen ja sellaisen, jossa kaikki kiltalaiset viihtyvät. Toimikunta järjestää myös mm. suursiivouksia.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikuntaan hakeminen ei vaadi mitään taitoja tai kokemusta. Hakea voi kaikki, joita kiinnostaa vaikuttaa kiltahuoneen tulevaisuuteen. Kaikki ideat parantaa kiltahuonetta ovat varsin tervetulleita!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos jäi kysyttävää toimikunnasta, laita ihmeessä viestiä TG:ssä @zendih",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Kiltahuonetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/D1GqXAjavpmcmnxJ7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/D1GqXAjavpmcmnxJ7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Justus ”Zen” Hansen, @zendih",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltatuotetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltatuotetoimikunnan vastuuna on ideoida, suunnitella ja myydä kiltatuotteita, kuten vaatteita ja haalarimerkkejä. Osa toimintaa on myös kartoittaa, millaisia tuotteita kiltalaiset kaipaavat. Toimikunta voi suunnitella tuotteita itsenäisesti, mutta myös tuotesuunnittelukilpailujen avulla voidaan kehittää uusia tuotteita. Kilpailussa kiltalaiset pääsisivät esittämään ideansa tai luonnoksensa uusista tuotedesigneista.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikuntaan liittyminen ei vaadi erityistaitoja tai aiempaa kokemusta, vaan roolissa pääsee oppimaan ja kokeilemaan. Hulluja ideoita arvostetaan isosti! Jos toimikunnasta on kysyttävää niin laita ihmeessä viestiä TG:ssä @ellimattila",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae kiltatuotetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/GK5d7NpqFvuxktDV6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/GK5d7NpqFvuxktDV6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Elli Mattila, @ellimattila",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kulttuuritoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kulttuuritoimikunnassa pääset toimikunnan nimen mukaan tekemään kulttuuria, mahdollisesti pienellä teekkaritwistillä. Koska kulttuuri on käsitteenä laaja, toimikunnan alle mahtuu rutkasti erilaisia tapahtumakonsepteja.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikunnassa pääset ideoimaan ja toteuttamaan, ja perinteisiä tapahtumaformaatteja ovat olleet mm. yhteislähdöt Teekkarispeksiin ja RWBK:n konserttiin, erilaiset maisteluillat, kotikeittokilpailu sekä legendaariset UFO-sitsit. Tänä vuonna toimikunnan tavoitteena on järjestää runsaasti uusia tapahtumia, sekä pystyttää killalle säännöllisen epäsäännöllisesti kokoontuva elokuvakerho kiltikselle.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikuntaan liittyminen ei vaadi erityistaitoja tai aiempaa kokemusta, vaan kiinnostus kulttuuriin riittää! Kulttuurivastaava sekä muu toimikunta on tukena tapahtumien järjestämisessä. Mainitsethan kuitenkin hakulomakkeessa, mitä haluaisit vuoden aikana järjestää!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Kulttuuritoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/2urLaewctJ7VnSAS7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/2urLaewctJ7VnSAS7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Emilia Repo, @kulttuuri",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Liikuntatoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Onko liikunta lähellä sydäntäsi ja haluat vaikuttaa killan liikuntatapahtumiin? Hae liikuntatoimikuntaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Liikuntatoimikunnan tehtävä on huolehtia killan urheilutoiminnasta ja järjestää liikunta-aiheisia tapahtumia kiltalaisille. Toimikunnassa mukana oleminen ei vaadi paljoa aikaa, joten se on täydellinen mahdollisuus sinulle, joka nautit liikunnasta, mutta jolla ei ole paljon ylimääräistä aikaa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tapahtumat voivat olla mitä tahansa urheiluun liittyvää, kuten esimerkiksi erilaisia lajikokeiluja. Toimikunnan jäsenenä pääset tapahtumien ideoinnin ja järjestämisen kautta vaikuttamaan killan urheilutoimintaan ja jakamaan liikunnan iloa koko killalle. Kattavaa urheilutaustaa toimikuntaan hakemiseen et tarvitse, kiinnostus on tärkein!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Liikuntatoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/FAbXEAFFAaSqGix88",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/FAbXEAFFAaSqGix88",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Arttu Kauppinen, @arttukaup",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Marttakerho",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Marttakerhon tärkeimpänä tehtävänä on yhteisöllisten ja rentojen tapahtumien järjestäminen kiltamme jäsenille - ja siihen me tarvitsemme juuri sinua! Kerho on perustamisestaan asti kehittynyt koko ajan, ja nykyään se tunnetaan erityisesti leipomis- ja ompelutapahtumistaan, lisäksi toimikunta järjestää vuosittain Marttasitsit ja vierailun alpakkatilalle. Myös uusia konsepteja pyritään kokeilemaan mahdollisuuksien mukaan. Järkkämarttana pääset auttamaan mahtavien tapahtumien järjestämisessä ja niiden ideoimisessa, ja työn määrä riippuu pitkälti omasta innosta ja motivaatiosta, joten ei paineita! Et myöskään tarvitse erityisiä ruoanlaitto- tai muitakaan taitoja, vaan pelkkä kiinnostus ja halu auttaa riittää :) Tervetuloa mukaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Marttakerhoon: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/QZ4HZKBZ9Y7hHJhw5",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/QZ4HZKBZ9Y7hHJhw5",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Iiro Poutiainen, @poutiiro",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "N-toimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "N-toimikunta järjestää toimintaa N-henkisille kiltalaisille, vuosikurssiin katsomatta. N-toimikunnan tavoitteena on saada vanhemmatkin kiltalaiset innostumaan killan toiminnasta esimerkiksi N-pistekortin avulla. Käytännössä tämä sisältää konseptointia ja tapahtumien järjestämistä. N-toimikunnan tapahtumia ovat esimerkiksi NVSK-sitsit, varjolakkitapahtumat, N-varaslähtö ja kesän äfterikausi.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tänä vuonna toimikunnan tarkoituksena on myös kehittää N-toimintaa yli kiltarajojen, varsinkin SCIn muiden N-vastaavien ja toimikuntien kesken!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae N-toimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/ntL9P65Y7aLAD1sn8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/ntL9P65Y7aLAD1sn8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Milja Rantanen, @miljja & Juho Pellinen, @joeov",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Pakutoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Vuoden rankan työ seurauksena kilta on vihdoinkin saanut oman pakun. Niinpä myös killan nuorin toimikunta jatkaa olemassa oloaan. Kuten nimestä voi päätellen toimikunnan vastuulla on killan pakun ylläpito, vuokraus järjestelmän suunnittelu ja lopulta vuokraaminen killan jäsenille. Nuoren toimintakunnan erilaiset käytännöt ja perinteet ovat yhä paljon auki niinpä jokaisella toimikunnan jäsenellä on hyvin paljon kykyä vaikuttaa niihin. Eli jos sinulta löytyy kiinnostusta toimia pakun parissa tai haluat muuten auttaa tai kehittää killan toimintaa kannattaa hakea toimikuntaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kysymyksiä voi laitaa minulle telegramissa tai tulla vain suoraan kysymään minulta jossakin tapahtumassa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae pakutoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/QUqsWYGdDWqq3W9b8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/QUqsWYGdDWqq3W9b8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "left",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Atte Ikola, @Amikola15",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Pelitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Pelitoimikunta järkkää kaikenlaisia peleihin liittyviä tapahtumia. Nyt yleisimpinä ovat olleet todella hauskat lautapeli-illat, mutta muita tapahtumia ovat esimerkiksi LANit, Discord-tapahtumat, Smash turnaus, Magic the Gathering -tapahtumat ja Dungeons and Dragons -tapahtumat. Pelitoimikunta myös ylläpitää killan lauta- ja videopelikirjastoa ja tarvittaessa hommaa uusia pelejä. Liittymällä pelitoimikuntaan pääset suoraan vaikuttamaan killan pelikulttuurin ja pelitapahtumiin, sekä myös vaikuttamaan mitä pelejä kiltikseltä löytyy.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos sinulla on minkäänlainen pienikin idea pelitapahtumasta, tai jostain muusta pelitoimikuntaan liittyvästä, niin kannattaa ehdottomasti hakea pelitoimikuntaan! Myös jos sinulla on kiinnostusta peleihin, ja haluat jotenkin, vaikka pienestikin, auttaa tai vaikuttaa pelitoimikunnassa niin kannattaa hakea! Pellitoimikunnassa pääsee aikalailla vaikuttamaan niin paljon kuin itse haluaa, eikä sen tarvitse olla yhtään vaativaa. Voi vain tulla keskittymään niihin asioihin mitkä itseä kiinnostaa, vaikka se olisikin vain hyvin pieni osa pelitoimikunnan toimintaa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "TL;DR Kannattaa hakea, jos kiinnostaa pelit yhtään!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos jäi jotain kysyttävää niin laita ihmeessä viestiä TG:ssä @nikk_ee!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Pelitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/rVXnapgzbLYUtqGC7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/rVXnapgzbLYUtqGC7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Niklas Järvinen, @nikk_ee",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Rytmiryhmä",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Rytmiryhmä vastaa kiltamme lehden eli Alkorytmin toimittamisesta. Toimituksessa pääset vahvasti vaikuttamaan lehden sisältöön ja voit kirjailla mitä erinäisempää painettua sisältöä killan iloksi. Tavoitteena onkin, että lehti on toimituksensa näköinen. Aiempaa kokemusta ei vaadita ja kaiken tarvittavan oppii tekemällä. Jokainen pääsee toteuttamaan itseään haluamallaan tavalla ja lehden toimituksesta löytyykin monenlaista puuhaa. Mikäli sinulta löytyy jutun juurta, vitsien veistely onnistuu tai olet graafinen nero, niin lähde kokeilemaan journalistisia siipiäsi kiltalehtemme toimitukseen. Mikäli mikään näistä kriteereistä ei napannut, olet varmasti oikea henkilö liittymään rytmiryhmään!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tule siis mukaan toimittamaan säännöllisen epäsäännöllisesti julkaistavaa kiltalehteämme. Voit vaikuttaa siihen, että julkaisutahti on lähempänä säännöllistä kuin sen vastakohtaa ja että lehti tunnetaan jatkossakin huikeasta laadustaan. Onhan kyseessä kuitenkin Otaniemen paras tietotekniikan opiskelijoiden toimittama lehti.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos jäi jotain kysyttävää, niin viestiä voi laittaa matalalla kynnyksellä @YliSamuli",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Rytmiryhmään: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/V3jxiRu3PHHMCWvn7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/V3jxiRu3PHHMCWvn7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Samuli Yli-Salomäki, @YliSamuli",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tiedotustoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tiedotustoimikunta vastaa Tietokillan tiedotuksesta ja viestinnästä muun muassa viikkomailien sekä Telegram-tiedotteiden avulla. Lisäksi toimikunta ylläpitää killan sosiaalisen median kanavia, kuten Instagramia ja TikTokkia. Mahdollisia rooleja Tiedotustoimikunnassa ovat esimerkiksi somettaja ja valokuvaaja. Somettajat tuottavat sisältöä killan sosiaalisen median tileille, kun taas valokuvaajat kuvaavat tapahtumia. Myös omaa roolia voi halutessaan ehdottaa. Jos siis killan tiedotus- ja viestintäasiat kiinnostavat, kannattaa hakea mukaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Tiedotustoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/GHpDzJmhmUbACaDe7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/GHpDzJmhmUbACaDe7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Roosa Rauhala, @roosarauhala",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tälle sivulle on koottu toimikuntien kuvaukset ja hakulomakkeet. Jos linkki ei toimi tai jokin muu on rikki, ota yhteyttä varapuheenjohtajaan Telegramissa ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "@labbbis",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://t.me/labbbis"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": " tai sähköpostilla ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "varapuheenjohtaja@tietokilta.fi",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "mailto:varapuheenjohtaja@tietokilta.fi"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimihenkilönä toimiminen on ISOilun jälkeen matalimman tason osallistumista killan toimintaan. Kaikkia vähänkään kiinnostuneita kannustetaan hakemaan toimikuntiin järjestämään tapahtumia sekä tuomaan oman kädenjälkensä killan toimintaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimihenkilönä voi antaa juuri niin paljon aikaa kuin itseltä löytyy. Jotkin toimikunnat kuitenkin vaativat aktiivisempaa osallistumista kuin toiset. Kannustetaan lähtökohtaisesti hakemaan useampaan toimikuntaan kunhan kiinnostusta riittää, mutta omat aikarajoitteet huomioiden. Useampaan toimikuntaan hakiessa varmistathan, että aika ja kiinnostus riittää osallistua aktiivisesti koko vuoden ajan.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Etenkin aloittelevana toimarina kaksi toimikuntaa (toimikunnan aktiivisuudesta riippuen) on melko sopiva määrä. Vuoden mittaan voi myös hakea muihin toimikuntiin jos aikaa riittää ja kaipaa lisää tekemistä!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Yrityssuhdetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Yrityssuhdetoimikunnan toimihenkilöiden tärkeimpänä tehtävänä on vastata yhteydenpidosta Tietokillan ja sen partner-yritysten välillä. Rooli toimikunnassa mahdollistaa verkostoitumisen alan johtavien yritysten kanssa, sekä tarjoaa arvokasta kokemusta yritysyhteistyöstä. Yhteydenpidon lisäksi toimikunnassa pääsee tekemään myös muita tehtäviä, esimerkiksi järjestämään ekskursioita, myymään sponsoripaketteja, valmistelemaan rekrylehteä ja ylläpitämään TiKin rekrytoinnin platformia, sekä rakentamaan killan suurinta rekryrointitapahtumaa UraTiKASta. Toimikunnasta ja tehtävistä voi kysellä lisää Yrityssuhdevastaavalta.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Yrityssuhdetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/UUEwGTpA2GuEoCTH6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/UUEwGTpA2GuEoCTH6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Mikko Juusti, @Mikmokki",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Opintotoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Opintotoimikunnan pääasiallinen vastuu on opiskelijoiden edunvalvonta yliopiston suuntaan sekä opintoaiheisen informaation välittäminen kiltalaisille. Toiminta voidaan karkeasti jakaa kolmeen osaan.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Ensimmäiseksi opintovastaavan johdolla opintotoimikunta vaikuttaa yliopiston päätöksentekoon yhdessä AYY:n ja muiden kiltojen opintotoimikuntien kanssa. Opintotoimikunnassa voi vaikuttaa hallopedinä sekä myös tavallisenä toimihenkilönä. Hallopedit edustavat opiskelijoita yliopiston hallinnollisten elimien kokouksissa. Muutkin jäsenet voivat osallistua joihinkin edunvalvontatapahtumiin, kuten kandikehitystyöryhmiin.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toisekseen opintotoimikunta järjestää yliopiston rahoituksella kandipullatarjoilua kandiksi valmistuville sekä yhtenä suurempana tapahtumana vaihtosaunan vaihdosta kiinnostuneille.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kolmantena roolina on jokapäiväinen edunvalvonta sekä opiskelijoille informaation jakaminen, joka näkyy esimerkiksi kursseilla ilmentyvien ongelmien ratkomisena sekä tenttiarkiston ja varjo-opinto-oppaan ylläpitona. Näiden lisäksi opintotoimikunta on vastuussa opintokyselyiden toteuttamisesta, jotta opiskelijoiden näkemyksistä saadaan laajempi kuva.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Opintotoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/dPk4ejCFhfQfyKqo9",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/dPk4ejCFhfQfyKqo9",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Elsa Schumacher, @elsaschu",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Sisätoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Sisätoimikunta, tuttavallisemmin sisis, järjestää Tietokillalle sitsejä, jatkoja, jajatkoja ja pitää huolen tapahtumien ruoka- ja juomapuolesta. Toimikuntaa johtavat Isäntä ja Emäntä, apunaan juomanahtaajat. Toimikunnassa pääset mukaan suunnittelemaan ja ideoimaan killan tapahtumia, olemaan mukana järjestelyissä, näkemään ja tutustumaan tapahtumiin ja teekkarikulttuuriin aivan toisenlaisesta näkökulmasta. Toimikunnassa pääsee konkreettisesti tekemään kaikenlaista ruoanlaitosta roudaamiseen, koristeluun, siivoukseen ja suunnitteluun. Aiempaa osaamista tai kokemusta ei vaadita, tekemällä oppii! Odotamme kuitenkin hakijoilta intoa ja hyvää asennetta! Muista: keittiössä on parhaat bileet!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Sisätoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/qgrDaVvvecFbaRaz7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/qgrDaVvvecFbaRaz7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Totti Luukkanen, @tottiluukkanen & Vili Virtanen, @vilivirtanen",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Ulkosuhdetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tietokillan ulkosuhdetoimikunta järjestää killalle hauskoja excursiota kotimaan sisällä kuten Aatu ja myös ulkomailla: Baltian Pitkä. Ulkosuhdetoimikunta myös huolehtii killan suhteista muihin ainejärjestöihin, esimerkiksi TiTeeneihin osallistumisen muodossa ja järjestämällä yhteisiä sitsejä. Tyyli on vapaa, tulkaa mukaan suunnittelemaan ja tekemään.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Ulkosuhdetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/kRbp5MdpRpyu2AgL8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/kRbp5MdpRpyu2AgL8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Lasse Kukkula, @lassekukkula",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Abimarkkinointitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Abitoimikunnan tehtävänä on markkinoida tietokiltaa ja tietotekniikan opintoja lukiolaisille. Toimikunnan jäsenenä voit esimerkiksi vierailla vanhassa lukiossasi, esitellä tietotekniikan opintoja Koe Aalto-kampus tai Shaking Up Tech kaltaisissa tapahtumissa, sekä tuottaa sisältöä tietokillan somekanaville. Lisäksi AbiTMK on järjestänyt myös muita abeille suunnattuja tapahtumia, kuten vuonna 2021 sitseihin päättynyt Abipäivä yhteistyössä Inkubion ja Fyysikkokillan kanssa. Ensi vuonna tavoitteena on lukiovierailujen lisäksi tavoittaa enemmän PK-seudun ulkopuolella asuvia lukiolaisia sosiaalisen median kanavien kautta ja mikäli intoa riittää, toteuttaa abipäivä. Tule rohkeasti mukaan, mikäli kiinnostuit yhdestä tai useammasta edellä mainitusta!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Abimarkkinointitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/CZX9LiWAPEYp62XcA",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/CZX9LiWAPEYp62XcA",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Otso Mikkilä, @otso_mikkila",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Alumnitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Alumnitoimikunnan tehtävänä on ylläpitää yhteyksiä killan alumneihin, tarjoten heille ja nykyjäsenille mahdollisuuden verkostoitua ja jakaa kokemuksia. Toimikunta on avoin sekä nykyisille opiskelijoille vuosikurssista huolimatta, että alumneille! Alumnitoimikunnalla on muutamia perinteeksi muodostuneita tapahtumia, kuten Alumniglögit, mutta iso fokus ensi vuonna on uusien konseptien kokeilussa ja testauksessa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos on kysyttävää, olkaa yhteydessä @misse tai @grilliburgeri Telegramissa tai vaikka savumerkein.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae alumnitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/KapgyM7xTPsHV5tV6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/KapgyM7xTPsHV5tV6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Minea Erviö, @misse & Henri Tunkkari, @grilliburgeri",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Digitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Digitoimikunta etsii joukkoonsa innokkaita kiltalaisia, jotka ovat kiinnostuneita Tietokillan IT-infrastruktuurista ja sen kehittämisestä. Toimikunta on myös loistava paikka kerätä käytännön kokemusta ohjelmistokehityksestä. Tulevan vuoden päätavoitteena on jatkokehittää killan uusia nettisivuja mutta myös muita killan digitaalisia palveluita pyritään kehittämään ja ylläpitämään.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikunnassa on tarvetta ainakin seuraavanlaiselle osaamiselle:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "Perus softakehitys",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": ": Suurin osa projekteista on jonkinasteista web-kehitystä. Tällä hetkellä pääasialliset työkalumme ovat TypeScript, Node.js sekä React mutta näitä lienee mahdollista vielä muuttaa. Tavoitteena on kuitenkin käyttää mahdollisimman laajassa käytössä olevia teknologioita, jotta osaavia tekijöitä löytyisi myös tulevaisuudessa. Tarvetta on sekä kokeneemmille että aloitteleville osaajille – kaikki apu on tervetullutta!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "Arkkitehtuurisuunnittelu, pilvipalvelut ja DevOps",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": ": Suurin osa Tietokillan IT-infrasta on tarkoitus siirtää tulevaisuudessa pilvipalveluihin, joten toimikunnassa on tarvetta pilviosaamiselle. Myös kokemus konteista (kuten Docker) ja IaC:stä (kuten Terraform) olisi tärkeää.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "Design (UI/UX)",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": ": Digitoimikunta tarvitsee myös visuaalista silmää ja kyvykkyyttä suunnitella toimivia ja hyvännäköisiä käyttöliittymiä. Käyttöliittymien suunnitteluun käytettäneen ensisijaisesti Figmaa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Digitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/71G1Ds7wrjzAUxie8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/71G1Ds7wrjzAUxie8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Joonatan Korpela, @joonatan_aatos",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Herkkukurkkutoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Herkkukurkkutoimikunta, eli tutummin lukkaristo, on paras mahdollisuutesi vaikuttaa killan laulukulttuuriin! Lukkarit ovat varmasti tuttuja tarinoistaan sitseillä, mutta sen lisäksi toimikuntalaiset mm. suunnittelevat sitsien lauluvalikoimaa ja osaltaan toteuttavat tapahtumia tiiviissä yhteistyössä muiden järjestäjien kanssa. Sitsilukkaroinnin lisäksi toimikunta järjestää erilaisia laulukultuuriaiheisia tapahtumia, kuten laulunsanoitusta, harjoitussitsit uusille lukkareille ja Kovalevyn läpilaulannan. Herkkukurkut ovat läsnä myös esimerkiksi Lalasaunoissa opettamassa nuoremmille lauluja ja innostamassa kiltalaisia laulamaan enemmän. Jos laulukulttuuri siis kiinnostaa, kannattaa ehdottomasti hakea herkkukurkkutoimikuntaan! Uusille toimikuntalaisille ainoa kriteeri on aito kiinnostus laulukulttuuria kohtaan – kaiken muun tarpeellisen oppii tekemällä!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Herkkukurkkutoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/rXBVFXXQ8kVYJMec6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/rXBVFXXQ8kVYJMec6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Petrus Asikainen, @purkka",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltahuonetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltahuonetoimikunnan tehtävänä on pitää huolta kiltahuoneen kunnosta ja siihen tehdyistä muutoksista. Kiltahuonetoimikunta tekee kiltahuoneesta killan näköisen ja sellaisen, jossa kaikki kiltalaiset viihtyvät. Toimikunta järjestää myös mm. suursiivouksia.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikuntaan hakeminen ei vaadi mitään taitoja tai kokemusta. Hakea voi kaikki, joita kiinnostaa vaikuttaa kiltahuoneen tulevaisuuteen. Kaikki ideat parantaa kiltahuonetta ovat varsin tervetulleita!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos jäi kysyttävää toimikunnasta, laita ihmeessä viestiä TG:ssä @zendih",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Kiltahuonetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/D1GqXAjavpmcmnxJ7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/D1GqXAjavpmcmnxJ7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Justus ”Zen” Hansen, @zendih",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltatuotetoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kiltatuotetoimikunnan vastuuna on ideoida, suunnitella ja myydä kiltatuotteita, kuten vaatteita ja haalarimerkkejä. Osa toimintaa on myös kartoittaa, millaisia tuotteita kiltalaiset kaipaavat. Toimikunta voi suunnitella tuotteita itsenäisesti, mutta myös tuotesuunnittelukilpailujen avulla voidaan kehittää uusia tuotteita. Kilpailussa kiltalaiset pääsisivät esittämään ideansa tai luonnoksensa uusista tuotedesigneista.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikuntaan liittyminen ei vaadi erityistaitoja tai aiempaa kokemusta, vaan roolissa pääsee oppimaan ja kokeilemaan. Hulluja ideoita arvostetaan isosti! Jos toimikunnasta on kysyttävää niin laita ihmeessä viestiä TG:ssä @ellimattila",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae kiltatuotetoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/GK5d7NpqFvuxktDV6",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/GK5d7NpqFvuxktDV6",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Elli Mattila, @ellimattila",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kulttuuritoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kulttuuritoimikunnassa pääset toimikunnan nimen mukaan tekemään kulttuuria, mahdollisesti pienellä teekkaritwistillä. Koska kulttuuri on käsitteenä laaja, toimikunnan alle mahtuu rutkasti erilaisia tapahtumakonsepteja.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikunnassa pääset ideoimaan ja toteuttamaan, ja perinteisiä tapahtumaformaatteja ovat olleet mm. yhteislähdöt Teekkarispeksiin ja RWBK:n konserttiin, erilaiset maisteluillat, kotikeittokilpailu sekä legendaariset UFO-sitsit. Tänä vuonna toimikunnan tavoitteena on järjestää runsaasti uusia tapahtumia, sekä pystyttää killalle säännöllisen epäsäännöllisesti kokoontuva elokuvakerho kiltikselle.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Toimikuntaan liittyminen ei vaadi erityistaitoja tai aiempaa kokemusta, vaan kiinnostus kulttuuriin riittää! Kulttuurivastaava sekä muu toimikunta on tukena tapahtumien järjestämisessä. Mainitsethan kuitenkin hakulomakkeessa, mitä haluaisit vuoden aikana järjestää!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Kulttuuritoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/2urLaewctJ7VnSAS7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/2urLaewctJ7VnSAS7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Emilia Repo, @kulttuuri",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Liikuntatoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Onko liikunta lähellä sydäntäsi ja haluat vaikuttaa killan liikuntatapahtumiin? Hae liikuntatoimikuntaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Liikuntatoimikunnan tehtävä on huolehtia killan urheilutoiminnasta ja järjestää liikunta-aiheisia tapahtumia kiltalaisille. Toimikunnassa mukana oleminen ei vaadi paljoa aikaa, joten se on täydellinen mahdollisuus sinulle, joka nautit liikunnasta, mutta jolla ei ole paljon ylimääräistä aikaa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tapahtumat voivat olla mitä tahansa urheiluun liittyvää, kuten esimerkiksi erilaisia lajikokeiluja. Toimikunnan jäsenenä pääset tapahtumien ideoinnin ja järjestämisen kautta vaikuttamaan killan urheilutoimintaan ja jakamaan liikunnan iloa koko killalle. Kattavaa urheilutaustaa toimikuntaan hakemiseen et tarvitse, kiinnostus on tärkein!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Liikuntatoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/FAbXEAFFAaSqGix88",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/FAbXEAFFAaSqGix88",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Arttu Kauppinen, @arttukaup",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Marttakerho",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Marttakerhon tärkeimpänä tehtävänä on yhteisöllisten ja rentojen tapahtumien järjestäminen kiltamme jäsenille - ja siihen me tarvitsemme juuri sinua! Kerho on perustamisestaan asti kehittynyt koko ajan, ja nykyään se tunnetaan erityisesti leipomis- ja ompelutapahtumistaan, lisäksi toimikunta järjestää vuosittain Marttasitsit ja vierailun alpakkatilalle. Myös uusia konsepteja pyritään kokeilemaan mahdollisuuksien mukaan. Järkkämarttana pääset auttamaan mahtavien tapahtumien järjestämisessä ja niiden ideoimisessa, ja työn määrä riippuu pitkälti omasta innosta ja motivaatiosta, joten ei paineita! Et myöskään tarvitse erityisiä ruoanlaitto- tai muitakaan taitoja, vaan pelkkä kiinnostus ja halu auttaa riittää :) Tervetuloa mukaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Marttakerhoon: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/QZ4HZKBZ9Y7hHJhw5",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/QZ4HZKBZ9Y7hHJhw5",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Iiro Poutiainen, @poutiiro",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "N-toimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "N-toimikunta järjestää toimintaa N-henkisille kiltalaisille, vuosikurssiin katsomatta. N-toimikunnan tavoitteena on saada vanhemmatkin kiltalaiset innostumaan killan toiminnasta esimerkiksi N-pistekortin avulla. Käytännössä tämä sisältää konseptointia ja tapahtumien järjestämistä. N-toimikunnan tapahtumia ovat esimerkiksi NVSK-sitsit, varjolakkitapahtumat, N-varaslähtö ja kesän äfterikausi.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tänä vuonna toimikunnan tarkoituksena on myös kehittää N-toimintaa yli kiltarajojen, varsinkin SCIn muiden N-vastaavien ja toimikuntien kesken!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae N-toimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/ntL9P65Y7aLAD1sn8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/ntL9P65Y7aLAD1sn8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Milja Rantanen, @miljja & Juho Pellinen, @joeov",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Pakutoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Vuoden rankan työ seurauksena kilta on vihdoinkin saanut oman pakun. Niinpä myös killan nuorin toimikunta jatkaa olemassa oloaan. Kuten nimestä voi päätellen toimikunnan vastuulla on killan pakun ylläpito, vuokraus järjestelmän suunnittelu ja lopulta vuokraaminen killan jäsenille. Nuoren toimintakunnan erilaiset käytännöt ja perinteet ovat yhä paljon auki niinpä jokaisella toimikunnan jäsenellä on hyvin paljon kykyä vaikuttaa niihin. Eli jos sinulta löytyy kiinnostusta toimia pakun parissa tai haluat muuten auttaa tai kehittää killan toimintaa kannattaa hakea toimikuntaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Kysymyksiä voi laitaa minulle telegramissa tai tulla vain suoraan kysymään minulta jossakin tapahtumassa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae pakutoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/QUqsWYGdDWqq3W9b8",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/QUqsWYGdDWqq3W9b8",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "left",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Atte Ikola, @Amikola15",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Pelitoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Pelitoimikunta järkkää kaikenlaisia peleihin liittyviä tapahtumia. Nyt yleisimpinä ovat olleet todella hauskat lautapeli-illat, mutta muita tapahtumia ovat esimerkiksi LANit, Discord-tapahtumat, Smash turnaus, Magic the Gathering -tapahtumat ja Dungeons and Dragons -tapahtumat. Pelitoimikunta myös ylläpitää killan lauta- ja videopelikirjastoa ja tarvittaessa hommaa uusia pelejä. Liittymällä pelitoimikuntaan pääset suoraan vaikuttamaan killan pelikulttuurin ja pelitapahtumiin, sekä myös vaikuttamaan mitä pelejä kiltikseltä löytyy.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos sinulla on minkäänlainen pienikin idea pelitapahtumasta, tai jostain muusta pelitoimikuntaan liittyvästä, niin kannattaa ehdottomasti hakea pelitoimikuntaan! Myös jos sinulla on kiinnostusta peleihin, ja haluat jotenkin, vaikka pienestikin, auttaa tai vaikuttaa pelitoimikunnassa niin kannattaa hakea! Pellitoimikunnassa pääsee aikalailla vaikuttamaan niin paljon kuin itse haluaa, eikä sen tarvitse olla yhtään vaativaa. Voi vain tulla keskittymään niihin asioihin mitkä itseä kiinnostaa, vaikka se olisikin vain hyvin pieni osa pelitoimikunnan toimintaa.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "TL;DR Kannattaa hakea, jos kiinnostaa pelit yhtään!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos jäi jotain kysyttävää niin laita ihmeessä viestiä TG:ssä @nikk_ee!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Pelitoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/rVXnapgzbLYUtqGC7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/rVXnapgzbLYUtqGC7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Niklas Järvinen, @nikk_ee",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Rytmiryhmä",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Rytmiryhmä vastaa kiltamme lehden eli Alkorytmin toimittamisesta. Toimituksessa pääset vahvasti vaikuttamaan lehden sisältöön ja voit kirjailla mitä erinäisempää painettua sisältöä killan iloksi. Tavoitteena onkin, että lehti on toimituksensa näköinen. Aiempaa kokemusta ei vaadita ja kaiken tarvittavan oppii tekemällä. Jokainen pääsee toteuttamaan itseään haluamallaan tavalla ja lehden toimituksesta löytyykin monenlaista puuhaa. Mikäli sinulta löytyy jutun juurta, vitsien veistely onnistuu tai olet graafinen nero, niin lähde kokeilemaan journalistisia siipiäsi kiltalehtemme toimitukseen. Mikäli mikään näistä kriteereistä ei napannut, olet varmasti oikea henkilö liittymään rytmiryhmään!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tule siis mukaan toimittamaan säännöllisen epäsäännöllisesti julkaistavaa kiltalehteämme. Voit vaikuttaa siihen, että julkaisutahti on lähempänä säännöllistä kuin sen vastakohtaa ja että lehti tunnetaan jatkossakin huikeasta laadustaan. Onhan kyseessä kuitenkin Otaniemen paras tietotekniikan opiskelijoiden toimittama lehti.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Jos jäi jotain kysyttävää, niin viestiä voi laittaa matalalla kynnyksellä @YliSamuli",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Rytmiryhmään: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/V3jxiRu3PHHMCWvn7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/V3jxiRu3PHHMCWvn7",
-									"newTab": true,
-									"linkType": "custom"
-								}
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "pj. Samuli Yli-Salomäki, @YliSamuli",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "right",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tiedotustoimikunta",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "heading",
-						"version": 1,
-						"tag": "h2"
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Tiedotustoimikunta vastaa Tietokillan tiedotuksesta ja viestinnästä muun muassa viikkomailien sekä Telegram-tiedotteiden avulla. Lisäksi toimikunta ylläpitää killan sosiaalisen median kanavia, kuten Instagramia ja TikTokkia. Mahdollisia rooleja Tiedotustoimikunnassa ovat esimerkiksi somettaja ja valokuvaaja. Somettajat tuottavat sisältöä killan sosiaalisen median tileille, kun taas valokuvaajat kuvaavat tapahtumia. Myös omaa roolia voi halutessaan ehdottaa. Jos siis killan tiedotus- ja viestintäasiat kiinnostavat, kannattaa hakea mukaan!",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "Hae Tiedotustoimikuntaan: ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "https://forms.gle/GHpDzJmhmUbACaDe7",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"url": "https://forms.gle/GHpDzJmhmUbACaDe7",
-									"newTab": true,
-									"linkType": "custom"
+									"url": "https://forms.gle/GHpDzJmhmUbACaDe7"
 								}
 							}
 						],
@@ -16259,78 +11610,6 @@
 	"topic": {
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
-	},
-	"type": "standard"
-},
-{
-	"_id": {
-		"$oid": "660ec51b462dc275833c3218"
-	},
-	"type": "special",
-	"hideTableOfContents": false,
-	"hidden": false,
-	"_status": "published",
-	"createdAt": {
-		"$date": "2024-04-04T15:19:55.202Z"
-	},
-	"updatedAt": {
-		"$date": "2024-04-04T15:28:27.546Z"
-	},
-	"__v": 0,
-	"description": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	},
-	"path": {
-		"fi": "/fi/tapahtumat",
-		"en": "/en/events"
-	},
-	"slug": {
-		"fi": "tapahtumat",
-		"en": "events"
-	},
-	"specialPageType": "events-list",
-	"title": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	}
-},
-{
-	"_id": {
-		"$oid": "660ec537462dc275833c32a6"
-	},
-	"title": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	},
-	"description": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	},
-	"type": "redirect",
-	"hideTableOfContents": false,
-	"specialPageType": "events-list",
-	"path": {
-		"fi": "/fi/kilta/tapahtumat",
-		"en": "/en/guild/events"
-	},
-	"slug": {
-		"fi": "tapahtumat",
-		"en": "events"
-	},
-	"hidden": false,
-	"_status": "published",
-	"createdAt": {
-		"$date": "2024-04-04T15:20:23.183Z"
-	},
-	"updatedAt": {
-		"$date": "2024-04-04T15:28:21.326Z"
-	},
-	"__v": 0,
-	"redirectToPage": "660ec51b462dc275833c3218",
-	"topic": {
-		"value": "6548f0f4d7febb86e2235b89",
-		"relationTo": "topics"
 	}
 },
 {
@@ -17347,7 +12626,7 @@
 		"$date": "2024-05-09T14:14:48.279Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-18T11:04:12.591Z"
+		"$date": "2024-05-18T13:16:38.62Z"
 	},
 	"__v": 0,
 	"description": {
@@ -17366,7 +12645,8 @@
 	"title": {
 		"fi": "Tapahtumat",
 		"en": "Events"
-	}
+	},
+	"redirectToPage": "663cda98864517dbe569a469"
 },
 {
 	"_id": {
@@ -17380,7 +12660,7 @@
 		"fi": "Tapahtumat",
 		"en": "Events"
 	},
-	"type": "events-list",
+	"type": "redirect",
 	"hideTableOfContents": false,
 	"specialPageType": "events-list",
 	"path": {
@@ -17397,13 +12677,14 @@
 		"$date": "2024-05-09T14:15:52.35Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-18T11:04:22.728Z"
+		"$date": "2024-05-18T13:16:52.701Z"
 	},
 	"__v": 0,
 	"topic": {
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
-	}
+	},
+	"redirectToPage": "663cda58864517dbe569a395"
 },
 {
 	"_id": {
@@ -17417,7 +12698,7 @@
 		"$date": "2024-05-09T14:16:29.932Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-15T07:03:02.179Z"
+		"$date": "2024-05-15T06:56:06.529Z"
 	},
 	"__v": 0,
 	"content": {
@@ -17466,43 +12747,12 @@
 						"version": 1
 					},
 					{
-						"children": [
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 2,
-										"mode": "normal",
-										"style": "",
-										"text": "...",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": null,
-								"format": "",
-								"indent": 0,
-								"type": "listitem",
-								"version": 1,
-								"value": 1
-							}
-						],
-						"direction": null,
-						"format": "",
-						"indent": 0,
-						"type": "list",
-						"version": 1,
-						"listType": "bullet",
-						"start": 1,
-						"tag": "ul"
-					},
-					{
 						"format": "",
 						"type": "relationship",
 						"version": 1,
 						"relationTo": "committees",
 						"value": {
-							"id": "660fadff1074d5f0e43277b1"
+							"id": "66445c6805b3ecb3f9db652e"
 						}
 					},
 					{
@@ -17510,11 +12760,8 @@
 						"direction": null,
 						"format": "",
 						"indent": 0,
-						"type": "list",
-						"version": 1,
-						"listType": "bullet",
-						"start": 1,
-						"tag": "ul"
+						"type": "paragraph",
+						"version": 1
 					},
 					{
 						"children": [
@@ -17706,7 +12953,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Inkubion hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Inkubion häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
+								"text": "Tietokillan hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Tietokillan häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
 								"type": "text",
 								"version": 1
 							}
@@ -18134,7 +13381,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Inkubio on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
+								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Tietokilta on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
 								"type": "text",
 								"version": 1
 							},
@@ -18412,6 +13659,42 @@
 										"format": 0,
 										"mode": "normal",
 										"style": "",
+										"text": "Tietokillan eettinen ohjesääntö (Code of Conduct)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://",
+									"doc": {
+										"value": "663cdaf1864517dbe569a5d4",
+										"relationTo": "pages"
+									},
+									"newTab": false,
+									"linkType": "internal"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
 										"text": "AYY:n turvallisemman tilan periaatteet",
 										"type": "text",
 										"version": 1
@@ -18423,15 +13706,14 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -18456,10 +13738,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -18489,10 +13770,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://into.aalto.fi/pages/viewpage.action?pageId=1183869"
+									"url": "https://www.aalto.fi/fi/opiskelijan-tukipalvelut/tukea-hairintatilanteisiin",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -18771,7 +14051,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Inkubion hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Inkubion häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
+								"text": "Tietokillan hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Tietokillan häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
 								"type": "text",
 								"version": 1
 							}
@@ -19199,7 +14479,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Inkubio on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
+								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Tietokilta on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
 								"type": "text",
 								"version": 1
 							},
@@ -19477,6 +14757,42 @@
 										"format": 0,
 										"mode": "normal",
 										"style": "",
+										"text": "Tietokillan eettinen ohjesääntö (Code of Conduct)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://",
+									"doc": {
+										"value": "663cdaf1864517dbe569a5d4",
+										"relationTo": "pages"
+									},
+									"newTab": false,
+									"linkType": "internal"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
 										"text": "AYY:n turvallisemman tilan periaatteet",
 										"type": "text",
 										"version": 1
@@ -19488,15 +14804,14 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -19521,10 +14836,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -19554,10 +14868,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://into.aalto.fi/pages/viewpage.action?pageId=1183869"
+									"url": "https://www.aalto.fi/fi/opiskelijan-tukipalvelut/tukea-hairintatilanteisiin",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -20871,52 +16184,23 @@
 },
 {
 	"_id": {
-		"$oid": "663ce3f91bd3afb8c326ec47"
+		"$oid": "66488d4112729ad2cf17903d"
 	},
-	"type": "special",
+	"type": "weekly-newsletter",
 	"hideTableOfContents": false,
 	"hidden": false,
 	"_status": "published",
 	"createdAt": {
-		"$date": "2024-05-09T14:55:53.157Z"
+		"$date": "2024-05-18T11:13:05.218Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T14:57:49.952Z"
+		"$date": "2024-05-18T12:47:01.047Z"
 	},
 	"__v": 0,
 	"description": {
-		"fi": "Viikkotiedote",
-		"en": "Weekly Newsletter"
+		"fi": "Täältä löydät killan uusimman viikkotiedotteen!",
+		"en": "Here you can find the most recent weekly newsletter!"
 	},
-	"path": {
-		"fi": "/fi/viikkotiedote",
-		"en": "/en/weekly-newsletter"
-	},
-	"slug": {
-		"fi": "viikkotiedote",
-		"en": "weekly-newsletter"
-	},
-	"specialPageType": "weekly-newsletter",
-	"title": {
-		"fi": "Viikkotiedote",
-		"en": "Weekly Newsletter"
-	}
-},
-{
-	"_id": {
-		"$oid": "663ce4ea1bd3afb8c326edf4"
-	},
-	"title": {
-		"fi": "Viikkotiedote",
-		"en": "Weekly Newsletter"
-	},
-	"description": {
-		"fi": "Viikkotiedote",
-		"en": "Weekly Newsletter"
-	},
-	"type": "weekly-newsletter",
-	"hideTableOfContents": false,
-	"specialPageType": "weekly-newsletter",
 	"path": {
 		"fi": "/fi/kilta/viikkotiedote",
 		"en": "/en/guild/weekly-newsletter"
@@ -20925,15 +16209,10 @@
 		"fi": "viikkotiedote",
 		"en": "weekly-newsletter"
 	},
-	"hidden": false,
-	"_status": "published",
-	"createdAt": {
-		"$date": "2024-05-09T14:59:54.145Z"
+	"title": {
+		"fi": "Viikkotiedote",
+		"en": "Weekly Newsletter"
 	},
-	"updatedAt": {
-		"$date": "2024-05-18T11:04:04.989Z"
-	},
-	"__v": 0,
 	"topic": {
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
@@ -20941,22 +16220,22 @@
 },
 {
 	"_id": {
-		"$oid": "663d0ba65e07ecdf9fe0564d"
+		"$oid": "6648a315efa9384f07f5c283"
 	},
 	"type": "weekly-newsletters-list",
 	"hideTableOfContents": false,
 	"hidden": false,
 	"_status": "published",
 	"createdAt": {
-		"$date": "2024-05-09T17:45:10.255Z"
+		"$date": "2024-05-18T12:46:13.911Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-18T11:03:59.145Z"
+		"$date": "2024-05-18T12:47:37.603Z"
 	},
 	"__v": 0,
 	"description": {
-		"fi": "Täältä löydät kaikki viikkotiedotteet",
-		"en": "Here you can find all weekly newslettesr"
+		"fi": "Täältä löydät kaikki aikaisemmat viikkotiedotteet!",
+		"en": "Here you can find all previous weekly newsletters!"
 	},
 	"path": {
 		"fi": "/fi/viikkotiedotteet",
@@ -20966,10 +16245,9 @@
 		"fi": "viikkotiedotteet",
 		"en": "weekly-newsletters"
 	},
-	"specialPageType": "weekly-newsletters-list",
 	"title": {
-		"fi": "Kaikki Viikkotiedotteet",
-		"en": "All Weekly Newsletters"
+		"fi": "Viikkotiedotteet",
+		"en": "Weekly Newsletter"
 	}
 }]
 
