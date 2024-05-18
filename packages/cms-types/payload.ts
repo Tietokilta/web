@@ -651,7 +651,10 @@ export interface SponsorLogoRowBlock {
  */
 export interface LandingPage {
   id: string;
-  heroText: string;
+  heroText: {
+    text?: string | null;
+    id?: string | null;
+  }[];
   heroImages: {
     image?: (string | null) | Media;
     id?: string | null;
