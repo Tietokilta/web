@@ -109,7 +109,10 @@ export function Hero({
         />
       ))}
       <div className="container z-20 mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-4xl lg:text-6xl">
-        <p className="w-full lg:w-1/2" ref={ref} />
+        <p
+          className="line-clamp-4 w-full max-w-lg break-words lg:w-1/2"
+          ref={ref}
+        />
       </div>
     </section>
   );
