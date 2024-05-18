@@ -24,11 +24,11 @@ function HeadingList({
       {toc.map((item) => (
         <li
           className={cn(
-            "before:me-[2ch] before:text-gray-600",
+            "before:text-gray-600",
             item.level === 2 &&
-              "mb-2 text-base before:content-['#'/''] last:mb-0",
+              "mb-2 ms-[2ch] text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'/''] last:mb-0",
             item.level === 3 &&
-              "mb-1 text-sm before:content-['##'/''] last:mb-0",
+              "mb-1 ms-[3ch] text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'/''] last:mb-0",
           )}
           key={`${item.level.toFixed()}-${item.text}`}
         >
