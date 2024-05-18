@@ -8,6 +8,7 @@ export async function CommitteeList({
 }: {
   year: CommitteesYearBlockNode["fields"]["year"];
 }): Promise<JSX.Element | null> {
+  const locale = getCurrentLocale();
   const committees = await fetchCommittees({
     where: { year: { equals: year } },
     locale: getCurrentLocale(),
@@ -21,9 +22,11 @@ export async function CommitteeList({
 
   return (
     <>
-      {committees.map((committee) => (
-        <CommitteeCard committee={committee} key={committee.id} />
-      ))}
+      {committees
+        .sort((a, b) => a.name.localeCompare(b.name, locale))
+        .map((committee) => (
+          <CommitteeCard committee={committee} key={committee.id} />
+        ))}
     </>
   );
 }
