@@ -121,9 +121,16 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             const Tag = node.tag as Heading;
 
             return (
-              <Tag id={stringToId(lexicalNodeToTextContent(node))} key={index}>
-                {serializedChildren}
-              </Tag>
+              <Link
+                href={`#${stringToId(lexicalNodeToTextContent(node)) as string}`}
+              >
+                <Tag
+                  id={stringToId(lexicalNodeToTextContent(node)) as string}
+                  key={index}
+                >
+                  {serializedChildren}
+                </Tag>
+              </Link>
             );
           }
           case "list": {
