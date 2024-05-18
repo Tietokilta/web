@@ -6,11 +6,6 @@ const filterEventsListPages: FilterOptions<LandingPageType> = () =>
     and: [
       {
         type: {
-          equals: "special",
-        },
-      },
-      {
-        specialPageType: {
           equals: "events-list",
         },
       },
