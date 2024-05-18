@@ -3,6 +3,7 @@ import type {
   EventQuota,
   IlmomasiinaEvent,
 } from "../lib/api/external/ilmomasiina";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import { fetchEvents } from "../lib/api/external/ilmomasiina";
 import {
   cn,
@@ -13,6 +14,7 @@ import {
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { DateTime } from "../components/datetime";
+import EventCalendar from "./event-calendar";
 
 async function SignUpText({
   startDate,
@@ -113,6 +115,7 @@ async function SignupQuotas({
 
 async function EventCard({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina.path");
+
   const locale = getCurrentLocale();
   return (
     <li className="shadow-solid group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6">
@@ -145,6 +148,17 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
+function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+  const locale = getCurrentLocale();
+  const eventsUrl = `/${locale}/events/`;
+
+  return (
+    <div style={{ height: "600px" }}>
+      <EventCalendar events={events} eventsUrl={eventsUrl} />
+    </div>
+  );
+}
+
 export default async function Page() {
   const t = await getScopedI18n("ilmomasiina");
   const ta = await getScopedI18n("action");
@@ -165,6 +179,7 @@ export default async function Page() {
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{ta("Back")}</BackButton>
           <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
+          <Calendar events={events.data} />
           <ul className="space-y-8">
             {events.data.map((event) => (
               <EventCard event={event} key={event.id} />
