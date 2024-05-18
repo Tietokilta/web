@@ -218,7 +218,10 @@ export default async function Page({ slug }: { slug?: string }) {
   ].filter((itemOrNull): itemOrNull is TocItem => Boolean(itemOrNull));
 
   return (
-    <main className="relative mb-8 flex flex-col items-center gap-2 md:gap-6">
+    <main
+      id="main"
+      className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
+    >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <TableOfContents toc={toc} />
 
