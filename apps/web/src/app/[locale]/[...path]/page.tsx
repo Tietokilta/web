@@ -8,6 +8,9 @@ import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
 import { getCurrentLocale, type Locale } from "../../../locales/server";
 import EventsPage from "../../../custom-pages/events-page";
+import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
+import { generateTocFromRichText } from "../../../lib/utils";
+import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
@@ -91,26 +94,28 @@ async function Page({ params: { path } }: Props) {
   const locale = getCurrentLocale();
   const page = await getPage(path, locale);
 
-  if (page.type === "special") {
-    if (page.specialPageType === "events-list") {
-      return <EventsPage />;
-    }
+  if (page.type === "events-list") {
+    return <EventsPage />;
+  }
 
-    console.error("Unknown special page type", page.specialPageType);
-    return notFound();
+  if (page.type === "weekly-newsletter") {
+    return <WeeklyNewsletterPage />;
+  }
+
+  if (page.type === "weekly-newsletters-list") {
+    return <WeeklyNewslettersListPage />;
   }
 
   if (page.type === "redirect") {
     const redirectToPage = page.redirectToPage as CMSPage | undefined;
-    if (redirectToPage?.path) {
-      return redirect(redirectToPage.path);
+    if (!redirectToPage?.path) {
+      console.error("Redirect page missing redirect target", page);
+      return notFound();
     }
 
-    console.error("Redirect page missing redirect target", page);
-    return notFound();
+    return redirect(redirectToPage.path);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
   if (page.type !== "standard") {
     console.error("Unknown page type", page.type);
     return notFound();
@@ -128,7 +133,7 @@ async function Page({ params: { path } }: Props) {
 
         <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
           {!page.hideTableOfContents ? (
-            <TableOfContents content={content} />
+            <TableOfContents toc={generateTocFromRichText(content)} />
           ) : null}
           <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}

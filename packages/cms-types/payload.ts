@@ -121,7 +121,7 @@ export interface Page {
   id: string;
   title: string;
   description: string;
-  type: 'standard' | 'special' | 'redirect';
+  type: 'standard' | 'redirect' | 'events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
   hideTableOfContents?: boolean | null;
   content?: {
     root: {
@@ -138,7 +138,6 @@ export interface Page {
     };
     [k: string]: unknown;
   } | null;
-  specialPageType?: 'events-list' | null;
   redirectToPage?: (string | null) | Page;
   path?: string | null;
   topic?: {
@@ -184,6 +183,8 @@ export interface Media {
  */
 export interface Document {
   id: string;
+  title?: string | null;
+  thumbnail?: string | Media | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -539,6 +540,7 @@ export interface WeeklyNewsletter {
         id?: string | null;
       }[]
     | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }

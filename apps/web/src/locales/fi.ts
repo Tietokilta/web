@@ -54,7 +54,6 @@ export default {
       "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.",
     Etusivulle: "Etusivulle",
   },
-
   error: {
     "Jotain meni pieleen": "Jotain meni pieleen",
     "Hups, jotain meni pieleen.": "Hups, jotain meni pieleen.",
@@ -63,5 +62,19 @@ export default {
     "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
       "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
     "Yritä uudelleen": "Yritä uudelleen",
+  },
+  weeklyNewsletter: {
+    title: "Viikkotiedotteet",
+    calendar: "Kalenteri",
+    guild: "Kilta",
+    "ayy-aalto": "AYY & Aalto",
+    other: "Muu",
+    "bottom-corner": "Pohjanurkkaus",
+    "this-week": "Tällä viikolla",
+    "next-week": "Ensi viikolla",
+    "this-week-signups": "Tällä viikolla avoinna olevat ilmoittautumiset",
+    read: "Lue",
+    "old-link": "vanhoja viikkotiedotteita",
+    "super-old-link": "erittäin vanhoja viikkotiedotteita",
   },
 } as const;

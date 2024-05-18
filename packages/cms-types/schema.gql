@@ -460,7 +460,6 @@ type Page {
   type: Page_type
   hideTableOfContents: Boolean
   content(depth: Int): JSON
-  specialPageType: Page_specialPageType
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page_Topic_Relationship
@@ -473,18 +472,16 @@ type Page {
 
 enum Page_type {
   standard
-  special
   redirect
+  events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
-
-enum Page_specialPageType {
-  events_list
-}
 
 type Page_Topic_Relationship {
   relationTo: Page_Topic_RelationTo
@@ -530,7 +527,6 @@ input Page_where {
   type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
-  specialPageType: Page_specialPageType_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -571,8 +567,10 @@ input Page_type_operator {
 
 enum Page_type_Input {
   standard
-  special
   redirect
+  events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input Page_hideTableOfContents_operator {
@@ -585,18 +583,6 @@ input Page_content_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
-}
-
-input Page_specialPageType_operator {
-  equals: Page_specialPageType_Input
-  not_equals: Page_specialPageType_Input
-  in: [Page_specialPageType_Input]
-  not_in: [Page_specialPageType_Input]
-  all: [Page_specialPageType_Input]
-}
-
-enum Page_specialPageType_Input {
-  events_list
 }
 
 input Page_redirectToPage_operator {
@@ -695,7 +681,6 @@ input Page_where_and {
   type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
-  specialPageType: Page_specialPageType_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -715,7 +700,6 @@ input Page_where_or {
   type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
-  specialPageType: Page_specialPageType_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -748,7 +732,6 @@ type PagesDocAccessFields {
   type: PagesDocAccessFields_type
   hideTableOfContents: PagesDocAccessFields_hideTableOfContents
   content: PagesDocAccessFields_content
-  specialPageType: PagesDocAccessFields_specialPageType
   redirectToPage: PagesDocAccessFields_redirectToPage
   path: PagesDocAccessFields_path
   topic: PagesDocAccessFields_topic
@@ -871,29 +854,6 @@ type PagesDocAccessFields_content_Update {
 }
 
 type PagesDocAccessFields_content_Delete {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType {
-  create: PagesDocAccessFields_specialPageType_Create
-  read: PagesDocAccessFields_specialPageType_Read
-  update: PagesDocAccessFields_specialPageType_Update
-  delete: PagesDocAccessFields_specialPageType_Delete
-}
-
-type PagesDocAccessFields_specialPageType_Create {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType_Read {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType_Update {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType_Delete {
   permission: Boolean!
 }
 
@@ -1122,7 +1082,6 @@ type PageVersion_Version {
   type: PageVersion_Version_type
   hideTableOfContents: Boolean
   content(depth: Int): JSON
-  specialPageType: PageVersion_Version_specialPageType
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PageVersion_Version_Topic_Relationship
@@ -1135,12 +1094,10 @@ type PageVersion_Version {
 
 enum PageVersion_Version_type {
   standard
-  special
   redirect
-}
-
-enum PageVersion_Version_specialPageType {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 type PageVersion_Version_Topic_Relationship {
@@ -1180,7 +1137,6 @@ input versionsPage_where {
   version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
-  version__specialPageType: versionsPage_version__specialPageType_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -1234,8 +1190,10 @@ input versionsPage_version__type_operator {
 
 enum versionsPage_version__type_Input {
   standard
-  special
   redirect
+  events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input versionsPage_version__hideTableOfContents_operator {
@@ -1248,18 +1206,6 @@ input versionsPage_version__content_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
-}
-
-input versionsPage_version__specialPageType_operator {
-  equals: versionsPage_version__specialPageType_Input
-  not_equals: versionsPage_version__specialPageType_Input
-  in: [versionsPage_version__specialPageType_Input]
-  not_in: [versionsPage_version__specialPageType_Input]
-  all: [versionsPage_version__specialPageType_Input]
-}
-
-enum versionsPage_version__specialPageType_Input {
-  events_list
 }
 
 input versionsPage_version__redirectToPage_operator {
@@ -1393,7 +1339,6 @@ input versionsPage_where_and {
   version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
-  version__specialPageType: versionsPage_version__specialPageType_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -1418,7 +1363,6 @@ input versionsPage_where_or {
   version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
-  version__specialPageType: versionsPage_version__specialPageType_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -1867,6 +1811,8 @@ type MediaDeleteDocAccess {
 
 type Document {
   id: String
+  title: String
+  thumbnail(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType, where: Document_Thumbnail_where): Media
   updatedAt: DateTime
   createdAt: DateTime
   url: String
@@ -1875,6 +1821,157 @@ type Document {
   filesize: Float
   width: Float
   height: Float
+}
+
+input Document_Thumbnail_where {
+  alt: Document_Thumbnail_alt_operator
+  updatedAt: Document_Thumbnail_updatedAt_operator
+  createdAt: Document_Thumbnail_createdAt_operator
+  url: Document_Thumbnail_url_operator
+  filename: Document_Thumbnail_filename_operator
+  mimeType: Document_Thumbnail_mimeType_operator
+  filesize: Document_Thumbnail_filesize_operator
+  width: Document_Thumbnail_width_operator
+  height: Document_Thumbnail_height_operator
+  id: Document_Thumbnail_id_operator
+  AND: [Document_Thumbnail_where_and]
+  OR: [Document_Thumbnail_where_or]
+}
+
+input Document_Thumbnail_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Document_Thumbnail_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Document_Thumbnail_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Document_Thumbnail_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_Thumbnail_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_Thumbnail_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_Thumbnail_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_Thumbnail_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_Thumbnail_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_Thumbnail_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_Thumbnail_where_and {
+  alt: Document_Thumbnail_alt_operator
+  updatedAt: Document_Thumbnail_updatedAt_operator
+  createdAt: Document_Thumbnail_createdAt_operator
+  url: Document_Thumbnail_url_operator
+  filename: Document_Thumbnail_filename_operator
+  mimeType: Document_Thumbnail_mimeType_operator
+  filesize: Document_Thumbnail_filesize_operator
+  width: Document_Thumbnail_width_operator
+  height: Document_Thumbnail_height_operator
+  id: Document_Thumbnail_id_operator
+  AND: [Document_Thumbnail_where_and]
+  OR: [Document_Thumbnail_where_or]
+}
+
+input Document_Thumbnail_where_or {
+  alt: Document_Thumbnail_alt_operator
+  updatedAt: Document_Thumbnail_updatedAt_operator
+  createdAt: Document_Thumbnail_createdAt_operator
+  url: Document_Thumbnail_url_operator
+  filename: Document_Thumbnail_filename_operator
+  mimeType: Document_Thumbnail_mimeType_operator
+  filesize: Document_Thumbnail_filesize_operator
+  width: Document_Thumbnail_width_operator
+  height: Document_Thumbnail_height_operator
+  id: Document_Thumbnail_id_operator
+  AND: [Document_Thumbnail_where_and]
+  OR: [Document_Thumbnail_where_or]
 }
 
 type Documents {
@@ -1892,6 +1989,8 @@ type Documents {
 }
 
 input Document_where {
+  title: Document_title_operator
+  thumbnail: Document_thumbnail_operator
   updatedAt: Document_updatedAt_operator
   createdAt: Document_createdAt_operator
   url: Document_url_operator
@@ -1903,6 +2002,23 @@ input Document_where {
   id: Document_id_operator
   AND: [Document_where_and]
   OR: [Document_where_or]
+}
+
+input Document_title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Document_thumbnail_operator {
+  equals: String
+  not_equals: String
+  exists: Boolean
 }
 
 input Document_updatedAt_operator {
@@ -2002,6 +2118,8 @@ input Document_id_operator {
 }
 
 input Document_where_and {
+  title: Document_title_operator
+  thumbnail: Document_thumbnail_operator
   updatedAt: Document_updatedAt_operator
   createdAt: Document_createdAt_operator
   url: Document_url_operator
@@ -2016,6 +2134,8 @@ input Document_where_and {
 }
 
 input Document_where_or {
+  title: Document_title_operator
+  thumbnail: Document_thumbnail_operator
   updatedAt: Document_updatedAt_operator
   createdAt: Document_createdAt_operator
   url: Document_url_operator
@@ -2042,6 +2162,8 @@ type documentsDocAccess {
 }
 
 type DocumentsDocAccessFields {
+  title: DocumentsDocAccessFields_title
+  thumbnail: DocumentsDocAccessFields_thumbnail
   updatedAt: DocumentsDocAccessFields_updatedAt
   createdAt: DocumentsDocAccessFields_createdAt
   url: DocumentsDocAccessFields_url
@@ -2050,6 +2172,52 @@ type DocumentsDocAccessFields {
   filesize: DocumentsDocAccessFields_filesize
   width: DocumentsDocAccessFields_width
   height: DocumentsDocAccessFields_height
+}
+
+type DocumentsDocAccessFields_title {
+  create: DocumentsDocAccessFields_title_Create
+  read: DocumentsDocAccessFields_title_Read
+  update: DocumentsDocAccessFields_title_Update
+  delete: DocumentsDocAccessFields_title_Delete
+}
+
+type DocumentsDocAccessFields_title_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_title_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_title_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_title_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_thumbnail {
+  create: DocumentsDocAccessFields_thumbnail_Create
+  read: DocumentsDocAccessFields_thumbnail_Read
+  update: DocumentsDocAccessFields_thumbnail_Update
+  delete: DocumentsDocAccessFields_thumbnail_Delete
+}
+
+type DocumentsDocAccessFields_thumbnail_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_thumbnail_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_thumbnail_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_thumbnail_Delete {
+  permission: Boolean!
 }
 
 type DocumentsDocAccessFields_updatedAt {
@@ -5571,6 +5739,7 @@ type WeeklyNewsletter {
   title: String
   greetings(depth: Int): JSON
   newsItems: [WeeklyNewsletter_NewsItems!]
+  slug: String
   updatedAt: DateTime
   createdAt: DateTime
 }
@@ -5619,6 +5788,7 @@ input WeeklyNewsletter_where {
   greetings: WeeklyNewsletter_greetings_operator
   newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
   newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
   id: WeeklyNewsletter_id_operator
@@ -5652,6 +5822,17 @@ input WeeklyNewsletter_newsItems__newsItem_operator {
 }
 
 input WeeklyNewsletter_newsItems__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input WeeklyNewsletter_slug_operator {
   equals: String
   not_equals: String
   like: String
@@ -5700,6 +5881,7 @@ input WeeklyNewsletter_where_and {
   greetings: WeeklyNewsletter_greetings_operator
   newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
   newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
   id: WeeklyNewsletter_id_operator
@@ -5712,6 +5894,7 @@ input WeeklyNewsletter_where_or {
   greetings: WeeklyNewsletter_greetings_operator
   newsItems__newsItem: WeeklyNewsletter_newsItems__newsItem_operator
   newsItems__id: WeeklyNewsletter_newsItems__id_operator
+  slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
   id: WeeklyNewsletter_id_operator
@@ -5735,6 +5918,7 @@ type WeeklyNewslettersDocAccessFields {
   title: WeeklyNewslettersDocAccessFields_title
   greetings: WeeklyNewslettersDocAccessFields_greetings
   newsItems: WeeklyNewslettersDocAccessFields_newsItems
+  slug: WeeklyNewslettersDocAccessFields_slug
   updatedAt: WeeklyNewslettersDocAccessFields_updatedAt
   createdAt: WeeklyNewslettersDocAccessFields_createdAt
 }
@@ -5857,6 +6041,29 @@ type WeeklyNewslettersDocAccessFields_newsItems_id_Update {
 }
 
 type WeeklyNewslettersDocAccessFields_newsItems_id_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug {
+  create: WeeklyNewslettersDocAccessFields_slug_Create
+  read: WeeklyNewslettersDocAccessFields_slug_Read
+  update: WeeklyNewslettersDocAccessFields_slug_Update
+  delete: WeeklyNewslettersDocAccessFields_slug_Delete
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields_slug_Delete {
   permission: Boolean!
 }
 
@@ -7960,7 +8167,6 @@ type PagesFields {
   type: PagesFields_type
   hideTableOfContents: PagesFields_hideTableOfContents
   content: PagesFields_content
-  specialPageType: PagesFields_specialPageType
   redirectToPage: PagesFields_redirectToPage
   path: PagesFields_path
   topic: PagesFields_topic
@@ -8083,29 +8289,6 @@ type PagesFields_content_Update {
 }
 
 type PagesFields_content_Delete {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType {
-  create: PagesFields_specialPageType_Create
-  read: PagesFields_specialPageType_Read
-  update: PagesFields_specialPageType_Update
-  delete: PagesFields_specialPageType_Delete
-}
-
-type PagesFields_specialPageType_Create {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType_Read {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType_Update {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType_Delete {
   permission: Boolean!
 }
 
@@ -8574,6 +8757,8 @@ type documentsAccess {
 }
 
 type DocumentsFields {
+  title: DocumentsFields_title
+  thumbnail: DocumentsFields_thumbnail
   updatedAt: DocumentsFields_updatedAt
   createdAt: DocumentsFields_createdAt
   url: DocumentsFields_url
@@ -8582,6 +8767,52 @@ type DocumentsFields {
   filesize: DocumentsFields_filesize
   width: DocumentsFields_width
   height: DocumentsFields_height
+}
+
+type DocumentsFields_title {
+  create: DocumentsFields_title_Create
+  read: DocumentsFields_title_Read
+  update: DocumentsFields_title_Update
+  delete: DocumentsFields_title_Delete
+}
+
+type DocumentsFields_title_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_title_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_title_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_title_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_thumbnail {
+  create: DocumentsFields_thumbnail_Create
+  read: DocumentsFields_thumbnail_Read
+  update: DocumentsFields_thumbnail_Update
+  delete: DocumentsFields_thumbnail_Delete
+}
+
+type DocumentsFields_thumbnail_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_thumbnail_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_thumbnail_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_thumbnail_Delete {
+  permission: Boolean!
 }
 
 type DocumentsFields_updatedAt {
@@ -10476,6 +10707,7 @@ type WeeklyNewslettersFields {
   title: WeeklyNewslettersFields_title
   greetings: WeeklyNewslettersFields_greetings
   newsItems: WeeklyNewslettersFields_newsItems
+  slug: WeeklyNewslettersFields_slug
   updatedAt: WeeklyNewslettersFields_updatedAt
   createdAt: WeeklyNewslettersFields_createdAt
 }
@@ -10598,6 +10830,29 @@ type WeeklyNewslettersFields_newsItems_id_Update {
 }
 
 type WeeklyNewslettersFields_newsItems_id_Delete {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug {
+  create: WeeklyNewslettersFields_slug_Create
+  read: WeeklyNewslettersFields_slug_Read
+  update: WeeklyNewslettersFields_slug_Update
+  delete: WeeklyNewslettersFields_slug_Delete
+}
+
+type WeeklyNewslettersFields_slug_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields_slug_Delete {
   permission: Boolean!
 }
 
@@ -12091,7 +12346,6 @@ input mutationPageInput {
   type: Page_type_MutationInput!
   hideTableOfContents: Boolean
   content: JSON
-  specialPageType: Page_specialPageType_MutationInput
   redirectToPage: String
   path: String
   topic: Page_TopicRelationshipInput
@@ -12104,12 +12358,10 @@ input mutationPageInput {
 
 enum Page_type_MutationInput {
   standard
-  special
   redirect
-}
-
-enum Page_specialPageType_MutationInput {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input Page_TopicRelationshipInput {
@@ -12132,7 +12384,6 @@ input mutationPageUpdateInput {
   type: PageUpdate_type_MutationInput
   hideTableOfContents: Boolean
   content: JSON
-  specialPageType: PageUpdate_specialPageType_MutationInput
   redirectToPage: String
   path: String
   topic: PageUpdate_TopicRelationshipInput
@@ -12145,12 +12396,10 @@ input mutationPageUpdateInput {
 
 enum PageUpdate_type_MutationInput {
   standard
-  special
   redirect
-}
-
-enum PageUpdate_specialPageType_MutationInput {
   events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input PageUpdate_TopicRelationshipInput {
@@ -12192,6 +12441,8 @@ input mutationMediaUpdateInput {
 }
 
 input mutationDocumentInput {
+  title: String
+  thumbnail: String
   updatedAt: String
   createdAt: String
   url: String
@@ -12203,6 +12454,8 @@ input mutationDocumentInput {
 }
 
 input mutationDocumentUpdateInput {
+  title: String
+  thumbnail: String
   updatedAt: String
   createdAt: String
   url: String
@@ -12843,6 +13096,7 @@ input mutationWeeklyNewsletterInput {
   title: String
   greetings: JSON
   newsItems: [mutationWeeklyNewsletter_NewsItemsInput]
+  slug: String
   updatedAt: String
   createdAt: String
 }
@@ -12856,6 +13110,7 @@ input mutationWeeklyNewsletterUpdateInput {
   title: String
   greetings: JSON
   newsItems: [mutationWeeklyNewsletterUpdate_NewsItemsInput]
+  slug: String
   updatedAt: String
   createdAt: String
 }

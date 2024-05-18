@@ -4,7 +4,7 @@ import type {
   IlmomasiinaEvent,
 } from "../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../lib/api/external/ilmomasiina";
-import { cn, formatDate, formatDatetimeYear } from "../lib/utils";
+import { cn, formatDateYear, formatDatetimeYear } from "../lib/utils";
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
 
@@ -119,7 +119,7 @@ function EventCard({ event }: { event: IlmomasiinaEvent }) {
 
         {event.date ? (
           <time className="md:w-1/6" dateTime={event.date}>
-            {formatDate(event.date, locale)}
+            {formatDateYear(event.date, locale)}
           </time>
         ) : (
           <div className="md:w-1/6" />

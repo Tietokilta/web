@@ -1,5 +1,23 @@
-import type { CollectionConfig } from "payload/types";
+import type { CollectionConfig, FieldHook } from "payload/types";
+import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../../access/signed-in";
+import { getLocale } from "../../util";
+import { revalidatePage } from "../../hooks/revalidate-page";
+
+const formatSlug: FieldHook<WeeklyNewsletter, WeeklyNewsletter["slug"]> = ({
+  data,
+  req,
+}) => {
+  if (!data?.title) {
+    req.payload.logger.warn("No title found for slug generation");
+    return;
+  }
+
+  return data.title
+    .toLocaleLowerCase("en-US")
+    .replace(/\s/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+};
 
 export const WeeklyNewsletters: CollectionConfig = {
   slug: "weekly-newsletters",
@@ -39,5 +57,34 @@ export const WeeklyNewsletters: CollectionConfig = {
         },
       ],
     },
+    {
+      name: "slug",
+      type: "text",
+      localized: true,
+      hooks: {
+        beforeChange: [formatSlug],
+      },
+      admin: {
+        readOnly: true,
+        position: "sidebar",
+      },
+    },
   ],
+  hooks: {
+    afterChange: [
+      revalidatePage<WeeklyNewsletter>("weekly-newsletters", (doc, req) => {
+        const locale = getLocale(req);
+        if (!locale) {
+          req.payload.logger.error(
+            "locale not set, cannot revalidate properly",
+          );
+          return;
+        }
+
+        return {
+          locale,
+        };
+      }),
+    ],
+  },
 };

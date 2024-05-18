@@ -62,4 +62,18 @@ export default {
       "Oops, something went terribly wrong. Contact the site administrator. The error ID is",
     "Yritä uudelleen": "Try again",
   },
+  weeklyNewsletter: {
+    title: "Weekly newsletters",
+    calendar: "Calendar",
+    guild: "Guild",
+    "ayy-aalto": "AYY & Aalto",
+    other: "Other",
+    "bottom-corner": "Bottom Corner",
+    "this-week": "This week",
+    "next-week": "Next week",
+    "this-week-signups": "Sign ups open this week",
+    read: "Read",
+    "old-link": "old weekly newsletters",
+    "super-old-link": "very old weekly newsletters",
+  },
 } as const;
