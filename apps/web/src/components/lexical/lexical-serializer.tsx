@@ -19,6 +19,7 @@ import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
 import { MagazineList } from "../magazine-list";
+import { ImageLinkGrid } from "../image-link-grid";
 import {
   IS_BOLD,
   IS_CODE,
@@ -306,7 +307,11 @@ function Block({ node }: { node: BlockNode }) {
     case "committees-in-year": {
       return <CommitteeList year={node.fields.year} />;
     }
+    case "image-link-grid": {
+      return <ImageLinkGrid images={node.fields.images} />;
+    }
     default: {
+      // @ts-expect-error -- Extra safety for unknown blockType since we're casting types and there may be some bogus blocks
       // eslint-disable-next-line no-console -- Nice to know if something is missing
       console.warn("Unknown blockType:", node.fields.blockType);
       return null;
