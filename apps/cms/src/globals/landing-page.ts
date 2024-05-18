@@ -19,7 +19,7 @@ export const LandingPage: GlobalConfig = {
   },
   fields: [
     {
-      name: "heroText",
+      name: "heroTexts",
       type: "array",
       localized: true,
       required: true,

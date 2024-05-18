@@ -40,7 +40,7 @@ export default async function Home({
         images={landingPageData.heroImages
           .map(({ image }) => (typeof image === "string" ? null : image?.url))
           .filter((url): url is string => Boolean(url))}
-        texts={landingPageData.heroText
+        texts={landingPageData.heroTexts
           .map(({ text }) => (typeof text === "string" ? text : null))
           .filter((url): url is string => Boolean(url))}
       />
