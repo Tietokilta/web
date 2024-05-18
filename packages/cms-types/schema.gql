@@ -7009,7 +7009,7 @@ type FooterUpdateDocAccess {
 }
 
 type LandingPage {
-  heroText: [LandingPage_HeroText!]
+  heroTexts: [LandingPage_HeroTexts!]
   heroImages: [LandingPage_HeroImages!]!
   eventsListPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page!
   announcement(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): News
@@ -7018,7 +7018,7 @@ type LandingPage {
   createdAt: DateTime
 }
 
-type LandingPage_HeroText {
+type LandingPage_HeroTexts {
   text: String
   id: String
 }
@@ -7035,7 +7035,7 @@ type landing_pageDocAccess {
 }
 
 type LandingPageDocAccessFields {
-  heroText: LandingPageDocAccessFields_heroText
+  heroTexts: LandingPageDocAccessFields_heroTexts
   heroImages: LandingPageDocAccessFields_heroImages
   eventsListPage: LandingPageDocAccessFields_eventsListPage
   announcement: LandingPageDocAccessFields_announcement
@@ -7044,78 +7044,78 @@ type LandingPageDocAccessFields {
   createdAt: LandingPageDocAccessFields_createdAt
 }
 
-type LandingPageDocAccessFields_heroText {
-  create: LandingPageDocAccessFields_heroText_Create
-  read: LandingPageDocAccessFields_heroText_Read
-  update: LandingPageDocAccessFields_heroText_Update
-  delete: LandingPageDocAccessFields_heroText_Delete
-  fields: LandingPageDocAccessFields_heroText_Fields
+type LandingPageDocAccessFields_heroTexts {
+  create: LandingPageDocAccessFields_heroTexts_Create
+  read: LandingPageDocAccessFields_heroTexts_Read
+  update: LandingPageDocAccessFields_heroTexts_Update
+  delete: LandingPageDocAccessFields_heroTexts_Delete
+  fields: LandingPageDocAccessFields_heroTexts_Fields
 }
 
-type LandingPageDocAccessFields_heroText_Create {
+type LandingPageDocAccessFields_heroTexts_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_Read {
+type LandingPageDocAccessFields_heroTexts_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_Update {
+type LandingPageDocAccessFields_heroTexts_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_Delete {
+type LandingPageDocAccessFields_heroTexts_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_Fields {
-  text: LandingPageDocAccessFields_heroText_text
-  id: LandingPageDocAccessFields_heroText_id
+type LandingPageDocAccessFields_heroTexts_Fields {
+  text: LandingPageDocAccessFields_heroTexts_text
+  id: LandingPageDocAccessFields_heroTexts_id
 }
 
-type LandingPageDocAccessFields_heroText_text {
-  create: LandingPageDocAccessFields_heroText_text_Create
-  read: LandingPageDocAccessFields_heroText_text_Read
-  update: LandingPageDocAccessFields_heroText_text_Update
-  delete: LandingPageDocAccessFields_heroText_text_Delete
+type LandingPageDocAccessFields_heroTexts_text {
+  create: LandingPageDocAccessFields_heroTexts_text_Create
+  read: LandingPageDocAccessFields_heroTexts_text_Read
+  update: LandingPageDocAccessFields_heroTexts_text_Update
+  delete: LandingPageDocAccessFields_heroTexts_text_Delete
 }
 
-type LandingPageDocAccessFields_heroText_text_Create {
+type LandingPageDocAccessFields_heroTexts_text_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_text_Read {
+type LandingPageDocAccessFields_heroTexts_text_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_text_Update {
+type LandingPageDocAccessFields_heroTexts_text_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_text_Delete {
+type LandingPageDocAccessFields_heroTexts_text_Delete {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_id {
-  create: LandingPageDocAccessFields_heroText_id_Create
-  read: LandingPageDocAccessFields_heroText_id_Read
-  update: LandingPageDocAccessFields_heroText_id_Update
-  delete: LandingPageDocAccessFields_heroText_id_Delete
+type LandingPageDocAccessFields_heroTexts_id {
+  create: LandingPageDocAccessFields_heroTexts_id_Create
+  read: LandingPageDocAccessFields_heroTexts_id_Read
+  update: LandingPageDocAccessFields_heroTexts_id_Update
+  delete: LandingPageDocAccessFields_heroTexts_id_Delete
 }
 
-type LandingPageDocAccessFields_heroText_id_Create {
+type LandingPageDocAccessFields_heroTexts_id_Create {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_id_Read {
+type LandingPageDocAccessFields_heroTexts_id_Read {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_id_Update {
+type LandingPageDocAccessFields_heroTexts_id_Update {
   permission: Boolean!
 }
 
-type LandingPageDocAccessFields_heroText_id_Delete {
+type LandingPageDocAccessFields_heroTexts_id_Delete {
   permission: Boolean!
 }
 
@@ -11418,7 +11418,7 @@ type landing_pageAccess {
 }
 
 type LandingPageFields {
-  heroText: LandingPageFields_heroText
+  heroTexts: LandingPageFields_heroTexts
   heroImages: LandingPageFields_heroImages
   eventsListPage: LandingPageFields_eventsListPage
   announcement: LandingPageFields_announcement
@@ -11427,78 +11427,78 @@ type LandingPageFields {
   createdAt: LandingPageFields_createdAt
 }
 
-type LandingPageFields_heroText {
-  create: LandingPageFields_heroText_Create
-  read: LandingPageFields_heroText_Read
-  update: LandingPageFields_heroText_Update
-  delete: LandingPageFields_heroText_Delete
-  fields: LandingPageFields_heroText_Fields
+type LandingPageFields_heroTexts {
+  create: LandingPageFields_heroTexts_Create
+  read: LandingPageFields_heroTexts_Read
+  update: LandingPageFields_heroTexts_Update
+  delete: LandingPageFields_heroTexts_Delete
+  fields: LandingPageFields_heroTexts_Fields
 }
 
-type LandingPageFields_heroText_Create {
+type LandingPageFields_heroTexts_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_Read {
+type LandingPageFields_heroTexts_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_Update {
+type LandingPageFields_heroTexts_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_Delete {
+type LandingPageFields_heroTexts_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_Fields {
-  text: LandingPageFields_heroText_text
-  id: LandingPageFields_heroText_id
+type LandingPageFields_heroTexts_Fields {
+  text: LandingPageFields_heroTexts_text
+  id: LandingPageFields_heroTexts_id
 }
 
-type LandingPageFields_heroText_text {
-  create: LandingPageFields_heroText_text_Create
-  read: LandingPageFields_heroText_text_Read
-  update: LandingPageFields_heroText_text_Update
-  delete: LandingPageFields_heroText_text_Delete
+type LandingPageFields_heroTexts_text {
+  create: LandingPageFields_heroTexts_text_Create
+  read: LandingPageFields_heroTexts_text_Read
+  update: LandingPageFields_heroTexts_text_Update
+  delete: LandingPageFields_heroTexts_text_Delete
 }
 
-type LandingPageFields_heroText_text_Create {
+type LandingPageFields_heroTexts_text_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_text_Read {
+type LandingPageFields_heroTexts_text_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_text_Update {
+type LandingPageFields_heroTexts_text_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_text_Delete {
+type LandingPageFields_heroTexts_text_Delete {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_id {
-  create: LandingPageFields_heroText_id_Create
-  read: LandingPageFields_heroText_id_Read
-  update: LandingPageFields_heroText_id_Update
-  delete: LandingPageFields_heroText_id_Delete
+type LandingPageFields_heroTexts_id {
+  create: LandingPageFields_heroTexts_id_Create
+  read: LandingPageFields_heroTexts_id_Read
+  update: LandingPageFields_heroTexts_id_Update
+  delete: LandingPageFields_heroTexts_id_Delete
 }
 
-type LandingPageFields_heroText_id_Create {
+type LandingPageFields_heroTexts_id_Create {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_id_Read {
+type LandingPageFields_heroTexts_id_Read {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_id_Update {
+type LandingPageFields_heroTexts_id_Update {
   permission: Boolean!
 }
 
-type LandingPageFields_heroText_id_Delete {
+type LandingPageFields_heroTexts_id_Delete {
   permission: Boolean!
 }
 
@@ -13199,7 +13199,7 @@ input mutationFooterInput {
 }
 
 input mutationLandingPageInput {
-  heroText: [mutationLandingPage_HeroTextInput]
+  heroTexts: [mutationLandingPage_HeroTextsInput]
   heroImages: [mutationLandingPage_HeroImagesInput!]
   eventsListPage: String
   announcement: String
@@ -13208,7 +13208,7 @@ input mutationLandingPageInput {
   createdAt: String
 }
 
-input mutationLandingPage_HeroTextInput {
+input mutationLandingPage_HeroTextsInput {
   text: String
   id: String
 }
