@@ -55,7 +55,7 @@ async function NavigationLink({
       <CollapsibleContent className="space-y-3 p-3 text-base">
         {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
           <ul key={linkCategorySublist.title}>
-            <li className="text-lg">{linkCategorySublist.title}</li>
+            <li className="pb-2 pt-4 text-xl">{linkCategorySublist.title}</li>
             {linkCategorySublist.pages?.map(({ page }) => (
               <li key={(page as Page).id}>
                 <Button
@@ -115,7 +115,7 @@ export function LinkList({
               className={cn(
                 "max-w-full overflow-x-clip",
                 !linkRow.showLabel &&
-                  "flex items-center justify-center gap-6 py-2",
+                  "flex items-center justify-start gap-6 py-2",
                 linkRow.showLabel && "space-y-6",
               )}
             >
