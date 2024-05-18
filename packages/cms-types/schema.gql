@@ -5753,7 +5753,7 @@ type NewsItem {
   id: String
   displayTitle: String
   title: String
-  newsItemCategory: NewsItem_newsItemCategory
+  newsItemCategory: NewsItem_newsItemCategory!
   date: DateTime
   signupStartDate: DateTime
   signupEndDate: DateTime
@@ -13123,7 +13123,7 @@ input mutationWeeklyNewsletterUpdate_NewsItemsInput {
 input mutationNewsItemInput {
   displayTitle: String
   title: String
-  newsItemCategory: NewsItem_newsItemCategory_MutationInput
+  newsItemCategory: NewsItem_newsItemCategory_MutationInput!
   date: String
   signupStartDate: String
   signupEndDate: String
