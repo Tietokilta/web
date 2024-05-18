@@ -31,5 +31,9 @@ export const Media: CollectionConfig = {
       required: true,
       minLength: 20,
     },
+    {
+      name: "photographer",
+      type: "text",
+    },
   ],
 };
