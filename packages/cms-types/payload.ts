@@ -636,6 +636,7 @@ export interface LinkRowBlock {
  * via the `definition` "SponsorLogoRowBlock".
  */
 export interface SponsorLogoRowBlock {
+  title: string;
   logos?:
     | {
         image: string | Media;

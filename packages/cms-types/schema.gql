@@ -7022,6 +7022,7 @@ enum LinkRowBlockLink_linkType {
 }
 
 type SponsorLogoRowBlock {
+  title: String
   logos: [SponsorLogoRowBlock_Logos!]
   id: String
   blockName: String

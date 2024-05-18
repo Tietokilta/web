@@ -1,4 +1,8 @@
-import type { LinkRowBlock, Media } from "@tietokilta/cms-types/payload";
+import type {
+  LinkRowBlock,
+  Media,
+  SponsorLogoRowBlock,
+} from "@tietokilta/cms-types/payload";
 import {
   Button,
   MenuIcon,
@@ -7,6 +11,7 @@ import {
   SheetTrigger,
 } from "@tietokilta/ui";
 import Link from "next/link";
+import Image from "next/image";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
@@ -36,8 +41,10 @@ export async function MobileNav({
   const footerLinks = footer.layout.filter(
     (block): block is LinkRowBlock => block.blockType === "link-row",
   );
-
-  const logo = mainNav.logo as Media;
+  const footerSponsors = footer.layout.filter(
+    (block): block is SponsorLogoRowBlock => block.blockType === "logo-row",
+  );
+  const navLogo = mainNav.logo as Media;
 
   return (
     <header
@@ -47,7 +54,7 @@ export async function MobileNav({
       )}
       {...rest}
     >
-      <LogoLink locale={locale} image={logo} />
+      <LogoLink locale={locale} image={navLogo} />
       <Link href={href} className="font-mono text-2xl">
         Tietokilta
       </Link>
@@ -61,7 +68,11 @@ export async function MobileNav({
         <SheetContent>
           <nav className="flex h-full flex-col">
             <LanguageSelector />
-            <LinkList footerLinks={footerLinks} links={links} />
+            <LinkList
+              footerLinks={footerLinks}
+              links={links}
+              footerSponsors={footerSponsors}
+            />
           </nav>
         </SheetContent>
       </Sheet>
