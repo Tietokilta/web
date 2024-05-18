@@ -21,9 +21,9 @@ function CommitteeMemberCard({
       <Image
         alt={photo?.alt ?? ""}
         className="w-full border-b-2 border-gray-900 object-cover object-center"
-        height={photo?.height ?? undefined}
+        height={photo?.height ? Math.trunc(photo.height) : undefined}
         src={photo?.url ?? TikLogo}
-        width={photo?.width ?? undefined}
+        width={photo?.width ? Math.trunc(photo.width) : undefined}
       />
       {isChair ? <GavelIcon className="absolute left-0 top-0 h-6 w-6" /> : null}
       <p className="flex flex-1 flex-col bg-gray-100 text-center">

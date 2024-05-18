@@ -22,8 +22,8 @@ export function LogoLink({ image }: { image: Media | undefined }) {
             alt="Tietokilta"
             className="h-20 w-20 p-2"
             priority
-            width={image?.width ?? undefined}
-            height={image?.height ?? undefined}
+            width={image?.width ? Math.trunc(image.width) : undefined}
+            height={image?.height ? Math.trunc(image.height) : undefined}
             src={image?.url ?? TiKLogo}
           />
         </NextLink>
