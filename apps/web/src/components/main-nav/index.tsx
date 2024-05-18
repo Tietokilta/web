@@ -1,3 +1,4 @@
+import type { Media } from "@tietokilta/cms-types/payload";
 import { NavigationMenu, NavigationMenuList } from "@tietokilta/ui";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
@@ -19,6 +20,8 @@ export async function MainNav({
   const leftLinks = links.slice(0, middleIndex);
   const rightLinks = links.slice(middleIndex);
 
+  const logo = mainNav.logo as Media;
+
   return (
     <NavigationMenu
       className={cn("h-20 w-full max-w-none", className)}
@@ -26,7 +29,7 @@ export async function MainNav({
     >
       <NavigationMenuList>
         <LinkList links={leftLinks} />
-        <LogoLink />
+        <LogoLink image={logo} />
         <LinkList links={rightLinks} />
         <LanguageSelector />
       </NavigationMenuList>

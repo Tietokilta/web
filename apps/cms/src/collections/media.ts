@@ -31,9 +31,22 @@ export const Media: CollectionConfig = {
       required: true,
       minLength: 20,
     },
+    { name: "photographer", type: "text" },
     {
-      name: "photographer",
-      type: "text",
+      name: "mediaType",
+      label: "Media Type",
+      type: "select",
+      options: [
+        {
+          label: "Image",
+          value: "image",
+        },
+        {
+          label: "Logo",
+          value: "logo",
+        },
+      ],
+      defaultValue: "image",
     },
   ],
 };

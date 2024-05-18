@@ -2,6 +2,7 @@ import type {
   MainNavigationItem,
   MainNavigationTopicConfig,
   MainNavigation as MainNavigationType,
+  Media,
 } from "@tietokilta/cms-types/payload";
 import type { FilterOptions } from "payload/dist/fields/config/types";
 import type { GlobalConfig } from "payload/types";
@@ -23,12 +24,29 @@ const filterPagesOfTopic: FilterOptions<MainNavigationType> = ({
   },
 });
 
+const filterLogos: FilterOptions<Media> = () => ({
+  and: [
+    {
+      mediaType: {
+        equals: "logo",
+      },
+    },
+  ],
+});
+
 export const MainNavigation: GlobalConfig = {
   slug: "main-navigation",
   access: {
     read: () => true,
   },
   fields: [
+    {
+      name: "logo",
+      type: "relationship",
+      relationTo: "media",
+      required: true,
+      filterOptions: filterLogos,
+    },
     {
       name: "items",
       type: "array",
