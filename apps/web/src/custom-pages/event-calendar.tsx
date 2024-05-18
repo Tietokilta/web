@@ -4,12 +4,13 @@ import {
   Calendar as ReactCalendar,
   momentLocalizer,
   type View,
+  type Event,
+  type EventProps,
   Views,
 } from "react-big-calendar";
-import type { Event, EventProps } from "react-big-calendar";
 import { useState, useCallback } from "react";
+import "./event-calendar.css";
 import moment from "moment";
-
 import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
 
 type IlmomasiinEventWithDate = IlmomasiinaEvent & { date: string };
@@ -17,10 +18,13 @@ type IlmomasiinEventWithDate = IlmomasiinaEvent & { date: string };
 function EventCalendar({
   events,
   eventsUrl,
+  locale,
 }: {
   events: IlmomasiinaEvent[];
   eventsUrl: string;
+  locale: string;
 }) {
+  // Filter events without a start date.
   const filtered = events.filter(
     (event): event is IlmomasiinEventWithDate => !!event.date,
   );
@@ -30,6 +34,7 @@ function EventCalendar({
 
     let endDate;
 
+    // If end date doesn't exist, set it to end of the day of startDate.
     if (event.endDate) endDate = new Date(event.endDate);
     else {
       const endOfDay = new Date(event.date);
@@ -37,7 +42,8 @@ function EventCalendar({
       endDate = endOfDay;
     }
 
-    const eventUrl = `${eventsUrl}${event.slug}`;
+    // Url of the event.
+    const eventUrl = eventsUrl + event.slug;
 
     return {
       id: event.id,
@@ -50,10 +56,7 @@ function EventCalendar({
     };
   });
 
-  // function onSelectEvent(event: Event) {
-  //   console.log(event);
-  // }
-
+  // Make calendar events into clickable links.
   const eventCard = (event: EventProps) => {
     return (
       <a className="block h-full" href={event.event.resource.url}>
@@ -62,7 +65,20 @@ function EventCalendar({
     );
   };
 
+  const messages = {
+    week: "Viikko",
+    work_week: "Työviikko",
+    day: "Päivä",
+    month: "Kuukausi",
+    previous: "Edellinen",
+    next: "Seuraava",
+    today: "Tänään",
+  };
+
   const localizer = momentLocalizer(moment);
+
+  // State hooks that fix React strict mode functionality
+  // See: https://github.com/vercel/next.js/issues/56206
 
   const [view, setView] = useState<View>(Views.MONTH);
 
@@ -77,6 +93,7 @@ function EventCalendar({
     },
     [setDate],
   );
+
   return (
     <ReactCalendar
       view={view}
@@ -97,6 +114,8 @@ function EventCalendar({
           event: eventCard,
         },
       }}
+      messages={messages}
+      culture={locale}
       popup
       events={parsedEvents}
       onView={handleOnChangeView}
