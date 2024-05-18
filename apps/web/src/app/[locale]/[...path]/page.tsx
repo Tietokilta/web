@@ -94,34 +94,28 @@ async function Page({ params: { path } }: Props) {
   const locale = getCurrentLocale();
   const page = await getPage(path, locale);
 
-  if (page.type === "special") {
-    if (page.specialPageType === "events-list") {
-      return <EventsPage />;
-    }
+  if (page.type === "events-list") {
+    return <EventsPage />;
+  }
 
-    if (page.specialPageType === "weekly-newsletter") {
-      return <WeeklyNewsletterPage />;
-    }
+  if (page.type === "weekly-newsletter") {
+    return <WeeklyNewsletterPage />;
+  }
 
-    if (page.specialPageType === "weekly-newsletters-list") {
-      return <WeeklyNewslettersListPage />;
-    }
-
-    console.error("Unknown special page type", page.specialPageType);
-    return notFound();
+  if (page.type === "weekly-newsletters-list") {
+    return <WeeklyNewslettersListPage />;
   }
 
   if (page.type === "redirect") {
     const redirectToPage = page.redirectToPage as CMSPage | undefined;
-    if (redirectToPage?.path) {
-      return redirect(redirectToPage.path);
+    if (!redirectToPage?.path) {
+      console.error("Redirect page missing redirect target", page);
+      return notFound();
     }
 
-    console.error("Redirect page missing redirect target", page);
-    return notFound();
+    return redirect(redirectToPage.path);
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
   if (page.type !== "standard") {
     console.error("Unknown page type", page.type);
     return notFound();

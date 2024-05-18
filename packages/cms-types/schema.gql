@@ -460,7 +460,6 @@ type Page {
   type: Page_type
   hideTableOfContents: Boolean
   content(depth: Int): JSON
-  specialPageType: Page_specialPageType
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page_Topic_Relationship
@@ -473,20 +472,16 @@ type Page {
 
 enum Page_type {
   standard
-  special
   redirect
+  events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 """
 The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 """
 scalar JSON
-
-enum Page_specialPageType {
-  events_list
-  weekly_newsletter
-  weekly_newsletters_list
-}
 
 type Page_Topic_Relationship {
   relationTo: Page_Topic_RelationTo
@@ -532,7 +527,6 @@ input Page_where {
   type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
-  specialPageType: Page_specialPageType_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -573,8 +567,10 @@ input Page_type_operator {
 
 enum Page_type_Input {
   standard
-  special
   redirect
+  events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input Page_hideTableOfContents_operator {
@@ -587,20 +583,6 @@ input Page_content_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
-}
-
-input Page_specialPageType_operator {
-  equals: Page_specialPageType_Input
-  not_equals: Page_specialPageType_Input
-  in: [Page_specialPageType_Input]
-  not_in: [Page_specialPageType_Input]
-  all: [Page_specialPageType_Input]
-}
-
-enum Page_specialPageType_Input {
-  events_list
-  weekly_newsletter
-  weekly_newsletters_list
 }
 
 input Page_redirectToPage_operator {
@@ -699,7 +681,6 @@ input Page_where_and {
   type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
-  specialPageType: Page_specialPageType_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -719,7 +700,6 @@ input Page_where_or {
   type: Page_type_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
-  specialPageType: Page_specialPageType_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
   topic: Page_topic_Relation
@@ -752,7 +732,6 @@ type PagesDocAccessFields {
   type: PagesDocAccessFields_type
   hideTableOfContents: PagesDocAccessFields_hideTableOfContents
   content: PagesDocAccessFields_content
-  specialPageType: PagesDocAccessFields_specialPageType
   redirectToPage: PagesDocAccessFields_redirectToPage
   path: PagesDocAccessFields_path
   topic: PagesDocAccessFields_topic
@@ -875,29 +854,6 @@ type PagesDocAccessFields_content_Update {
 }
 
 type PagesDocAccessFields_content_Delete {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType {
-  create: PagesDocAccessFields_specialPageType_Create
-  read: PagesDocAccessFields_specialPageType_Read
-  update: PagesDocAccessFields_specialPageType_Update
-  delete: PagesDocAccessFields_specialPageType_Delete
-}
-
-type PagesDocAccessFields_specialPageType_Create {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType_Read {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType_Update {
-  permission: Boolean!
-}
-
-type PagesDocAccessFields_specialPageType_Delete {
   permission: Boolean!
 }
 
@@ -1126,7 +1082,6 @@ type PageVersion_Version {
   type: PageVersion_Version_type
   hideTableOfContents: Boolean
   content(depth: Int): JSON
-  specialPageType: PageVersion_Version_specialPageType
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
   topic(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PageVersion_Version_Topic_Relationship
@@ -1139,11 +1094,7 @@ type PageVersion_Version {
 
 enum PageVersion_Version_type {
   standard
-  special
   redirect
-}
-
-enum PageVersion_Version_specialPageType {
   events_list
   weekly_newsletter
   weekly_newsletters_list
@@ -1186,7 +1137,6 @@ input versionsPage_where {
   version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
-  version__specialPageType: versionsPage_version__specialPageType_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -1240,8 +1190,10 @@ input versionsPage_version__type_operator {
 
 enum versionsPage_version__type_Input {
   standard
-  special
   redirect
+  events_list
+  weekly_newsletter
+  weekly_newsletters_list
 }
 
 input versionsPage_version__hideTableOfContents_operator {
@@ -1254,20 +1206,6 @@ input versionsPage_version__content_operator {
   not_equals: JSON
   like: JSON
   contains: JSON
-}
-
-input versionsPage_version__specialPageType_operator {
-  equals: versionsPage_version__specialPageType_Input
-  not_equals: versionsPage_version__specialPageType_Input
-  in: [versionsPage_version__specialPageType_Input]
-  not_in: [versionsPage_version__specialPageType_Input]
-  all: [versionsPage_version__specialPageType_Input]
-}
-
-enum versionsPage_version__specialPageType_Input {
-  events_list
-  weekly_newsletter
-  weekly_newsletters_list
 }
 
 input versionsPage_version__redirectToPage_operator {
@@ -1401,7 +1339,6 @@ input versionsPage_where_and {
   version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
-  version__specialPageType: versionsPage_version__specialPageType_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -1426,7 +1363,6 @@ input versionsPage_where_or {
   version__type: versionsPage_version__type_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
-  version__specialPageType: versionsPage_version__specialPageType_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
   version__topic: versionsPage_version__topic_Relation
@@ -8174,7 +8110,6 @@ type PagesFields {
   type: PagesFields_type
   hideTableOfContents: PagesFields_hideTableOfContents
   content: PagesFields_content
-  specialPageType: PagesFields_specialPageType
   redirectToPage: PagesFields_redirectToPage
   path: PagesFields_path
   topic: PagesFields_topic
@@ -8297,29 +8232,6 @@ type PagesFields_content_Update {
 }
 
 type PagesFields_content_Delete {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType {
-  create: PagesFields_specialPageType_Create
-  read: PagesFields_specialPageType_Read
-  update: PagesFields_specialPageType_Update
-  delete: PagesFields_specialPageType_Delete
-}
-
-type PagesFields_specialPageType_Create {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType_Read {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType_Update {
-  permission: Boolean!
-}
-
-type PagesFields_specialPageType_Delete {
   permission: Boolean!
 }
 
@@ -12325,7 +12237,6 @@ input mutationPageInput {
   type: Page_type_MutationInput!
   hideTableOfContents: Boolean
   content: JSON
-  specialPageType: Page_specialPageType_MutationInput
   redirectToPage: String
   path: String
   topic: Page_TopicRelationshipInput
@@ -12338,11 +12249,7 @@ input mutationPageInput {
 
 enum Page_type_MutationInput {
   standard
-  special
   redirect
-}
-
-enum Page_specialPageType_MutationInput {
   events_list
   weekly_newsletter
   weekly_newsletters_list
@@ -12368,7 +12275,6 @@ input mutationPageUpdateInput {
   type: PageUpdate_type_MutationInput
   hideTableOfContents: Boolean
   content: JSON
-  specialPageType: PageUpdate_specialPageType_MutationInput
   redirectToPage: String
   path: String
   topic: PageUpdate_TopicRelationshipInput
@@ -12381,11 +12287,7 @@ input mutationPageUpdateInput {
 
 enum PageUpdate_type_MutationInput {
   standard
-  special
   redirect
-}
-
-enum PageUpdate_specialPageType_MutationInput {
   events_list
   weekly_newsletter
   weekly_newsletters_list
