@@ -49,6 +49,9 @@ jobs:
       - name: Generate Payload types (to ensure that they are up to date)
         run: pnpm codegen && git diff --exit-code
 
+      - name: Typecheck
+        run: pnpm typecheck
+
       - name: Build all
         run: pnpm build
 
