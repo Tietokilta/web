@@ -19,7 +19,6 @@ function Pagination({
     <nav
       aria-label="pagination"
       className={cn("mx-auto flex w-full justify-center", className)}
-      role="navigation"
       {...props}
     />
   );
