@@ -1,4 +1,4 @@
-import type { LinkRowBlock } from "@tietokilta/cms-types/payload";
+import type { LinkRowBlock, Media } from "@tietokilta/cms-types/payload";
 import {
   Button,
   MenuIcon,
@@ -6,6 +6,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@tietokilta/ui";
+import Link from "next/link";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
@@ -13,8 +14,6 @@ import { getCurrentLocale, getScopedI18n } from "../../locales/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
-import Link from "next/link";
-import type { Logo } from "@tietokilta/cms-types/payload";
 
 export async function MobileNav({
   className,
@@ -30,7 +29,6 @@ export async function MobileNav({
     mainNav.items.length === 0 ||
     !footer ||
     footer.layout.length === 0
-    || !mainNav.logo
   )
     return null;
 
@@ -39,7 +37,7 @@ export async function MobileNav({
     (block): block is LinkRowBlock => block.blockType === "link-row",
   );
 
-  const logo = mainNav.logo;
+  const logo = mainNav.logo as Media;
 
   return (
     <header
@@ -50,7 +48,9 @@ export async function MobileNav({
       {...rest}
     >
       <LogoLink locale={locale} image={logo} />
-      <Link href={href} className="font-mono text-2xl">Tietokilta</Link>
+      <Link href={href} className="font-mono text-2xl">
+        Tietokilta
+      </Link>
       <Sheet>
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">

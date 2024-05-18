@@ -13,7 +13,6 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/admin") ||
     pathname.startsWith("/media") ||
     pathname.startsWith("/documents") ||
-    pathname.startsWith("/logos") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/oauth2");
   if (pathnameHasCMSPath) {

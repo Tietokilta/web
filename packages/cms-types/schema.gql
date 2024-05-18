@@ -59,10 +59,6 @@ type Query {
   NewsItems(where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
   countNewsItems(where: NewsItem_where, locale: LocaleInputType): countNewsItems
   docAccessNewsItem(id: String!): news_itemsDocAccess
-  Logo(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Logo
-  Logos(where: Logo_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Logos
-  countLogos(where: Logo_where, locale: LocaleInputType): countLogos
-  docAccessLogo(id: String!): logosDocAccess
   PayloadPreference(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   countPayloadPreferences(where: PayloadPreference_where, locale: LocaleInputType): countPayloadPreferences
@@ -1388,6 +1384,7 @@ type Media {
   id: String
   alt: String
   photographer: String
+  mediaType: Media_mediaType
   updatedAt: DateTime
   createdAt: DateTime
   url: String
@@ -1396,6 +1393,11 @@ type Media {
   filesize: Float
   width: Float
   height: Float
+}
+
+enum Media_mediaType {
+  image
+  logo
 }
 
 type allMedia {
@@ -1415,6 +1417,7 @@ type allMedia {
 input Media_where {
   alt: Media_alt_operator
   photographer: Media_photographer_operator
+  mediaType: Media_mediaType_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1447,6 +1450,20 @@ input Media_photographer_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
+}
+
+input Media_mediaType_operator {
+  equals: Media_mediaType_Input
+  not_equals: Media_mediaType_Input
+  in: [Media_mediaType_Input]
+  not_in: [Media_mediaType_Input]
+  all: [Media_mediaType_Input]
+  exists: Boolean
+}
+
+enum Media_mediaType_Input {
+  image
+  logo
 }
 
 input Media_updatedAt_operator {
@@ -1548,6 +1565,7 @@ input Media_id_operator {
 input Media_where_and {
   alt: Media_alt_operator
   photographer: Media_photographer_operator
+  mediaType: Media_mediaType_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1564,6 +1582,7 @@ input Media_where_and {
 input Media_where_or {
   alt: Media_alt_operator
   photographer: Media_photographer_operator
+  mediaType: Media_mediaType_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1592,6 +1611,7 @@ type mediaDocAccess {
 type MediaDocAccessFields {
   alt: MediaDocAccessFields_alt
   photographer: MediaDocAccessFields_photographer
+  mediaType: MediaDocAccessFields_mediaType
   updatedAt: MediaDocAccessFields_updatedAt
   createdAt: MediaDocAccessFields_createdAt
   url: MediaDocAccessFields_url
@@ -1645,6 +1665,29 @@ type MediaDocAccessFields_photographer_Update {
 }
 
 type MediaDocAccessFields_photographer_Delete {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType {
+  create: MediaDocAccessFields_mediaType_Create
+  read: MediaDocAccessFields_mediaType_Read
+  update: MediaDocAccessFields_mediaType_Update
+  delete: MediaDocAccessFields_mediaType_Delete
+}
+
+type MediaDocAccessFields_mediaType_Create {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType_Read {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType_Update {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType_Delete {
   permission: Boolean!
 }
 
@@ -1869,6 +1912,7 @@ type Document {
 input Document_Thumbnail_where {
   alt: Document_Thumbnail_alt_operator
   photographer: Document_Thumbnail_photographer_operator
+  mediaType: Document_Thumbnail_mediaType_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -1901,6 +1945,20 @@ input Document_Thumbnail_photographer_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
+}
+
+input Document_Thumbnail_mediaType_operator {
+  equals: Document_Thumbnail_mediaType_Input
+  not_equals: Document_Thumbnail_mediaType_Input
+  in: [Document_Thumbnail_mediaType_Input]
+  not_in: [Document_Thumbnail_mediaType_Input]
+  all: [Document_Thumbnail_mediaType_Input]
+  exists: Boolean
+}
+
+enum Document_Thumbnail_mediaType_Input {
+  image
+  logo
 }
 
 input Document_Thumbnail_updatedAt_operator {
@@ -2002,6 +2060,7 @@ input Document_Thumbnail_id_operator {
 input Document_Thumbnail_where_and {
   alt: Document_Thumbnail_alt_operator
   photographer: Document_Thumbnail_photographer_operator
+  mediaType: Document_Thumbnail_mediaType_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -2018,6 +2077,7 @@ input Document_Thumbnail_where_and {
 input Document_Thumbnail_where_or {
   alt: Document_Thumbnail_alt_operator
   photographer: Document_Thumbnail_photographer_operator
+  mediaType: Document_Thumbnail_mediaType_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -6609,435 +6669,6 @@ type NewsItemsDeleteDocAccess {
   where: JSONObject
 }
 
-type Logo {
-  id: String
-  alt: String
-  updatedAt: DateTime
-  createdAt: DateTime
-  url: String
-  filename: String
-  mimeType: String
-  filesize: Float
-  width: Float
-  height: Float
-}
-
-type Logos {
-  docs: [Logo]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
-  nextPage: Int
-  offset: Int
-  page: Int
-  pagingCounter: Int
-  prevPage: Int
-  totalDocs: Int
-  totalPages: Int
-}
-
-input Logo_where {
-  alt: Logo_alt_operator
-  updatedAt: Logo_updatedAt_operator
-  createdAt: Logo_createdAt_operator
-  url: Logo_url_operator
-  filename: Logo_filename_operator
-  mimeType: Logo_mimeType_operator
-  filesize: Logo_filesize_operator
-  width: Logo_width_operator
-  height: Logo_height_operator
-  id: Logo_id_operator
-  AND: [Logo_where_and]
-  OR: [Logo_where_or]
-}
-
-input Logo_alt_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input Logo_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Logo_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input Logo_url_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Logo_filename_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Logo_mimeType_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Logo_filesize_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Logo_width_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Logo_height_operator {
-  equals: Float
-  not_equals: Float
-  greater_than_equal: Float
-  greater_than: Float
-  less_than_equal: Float
-  less_than: Float
-  exists: Boolean
-}
-
-input Logo_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input Logo_where_and {
-  alt: Logo_alt_operator
-  updatedAt: Logo_updatedAt_operator
-  createdAt: Logo_createdAt_operator
-  url: Logo_url_operator
-  filename: Logo_filename_operator
-  mimeType: Logo_mimeType_operator
-  filesize: Logo_filesize_operator
-  width: Logo_width_operator
-  height: Logo_height_operator
-  id: Logo_id_operator
-  AND: [Logo_where_and]
-  OR: [Logo_where_or]
-}
-
-input Logo_where_or {
-  alt: Logo_alt_operator
-  updatedAt: Logo_updatedAt_operator
-  createdAt: Logo_createdAt_operator
-  url: Logo_url_operator
-  filename: Logo_filename_operator
-  mimeType: Logo_mimeType_operator
-  filesize: Logo_filesize_operator
-  width: Logo_width_operator
-  height: Logo_height_operator
-  id: Logo_id_operator
-  AND: [Logo_where_and]
-  OR: [Logo_where_or]
-}
-
-type countLogos {
-  totalDocs: Int
-}
-
-type logosDocAccess {
-  fields: LogosDocAccessFields
-  create: LogosCreateDocAccess
-  read: LogosReadDocAccess
-  update: LogosUpdateDocAccess
-  delete: LogosDeleteDocAccess
-}
-
-type LogosDocAccessFields {
-  alt: LogosDocAccessFields_alt
-  updatedAt: LogosDocAccessFields_updatedAt
-  createdAt: LogosDocAccessFields_createdAt
-  url: LogosDocAccessFields_url
-  filename: LogosDocAccessFields_filename
-  mimeType: LogosDocAccessFields_mimeType
-  filesize: LogosDocAccessFields_filesize
-  width: LogosDocAccessFields_width
-  height: LogosDocAccessFields_height
-}
-
-type LogosDocAccessFields_alt {
-  create: LogosDocAccessFields_alt_Create
-  read: LogosDocAccessFields_alt_Read
-  update: LogosDocAccessFields_alt_Update
-  delete: LogosDocAccessFields_alt_Delete
-}
-
-type LogosDocAccessFields_alt_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_alt_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_alt_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_alt_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_updatedAt {
-  create: LogosDocAccessFields_updatedAt_Create
-  read: LogosDocAccessFields_updatedAt_Read
-  update: LogosDocAccessFields_updatedAt_Update
-  delete: LogosDocAccessFields_updatedAt_Delete
-}
-
-type LogosDocAccessFields_updatedAt_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_updatedAt_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_updatedAt_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_updatedAt_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_createdAt {
-  create: LogosDocAccessFields_createdAt_Create
-  read: LogosDocAccessFields_createdAt_Read
-  update: LogosDocAccessFields_createdAt_Update
-  delete: LogosDocAccessFields_createdAt_Delete
-}
-
-type LogosDocAccessFields_createdAt_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_createdAt_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_createdAt_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_createdAt_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_url {
-  create: LogosDocAccessFields_url_Create
-  read: LogosDocAccessFields_url_Read
-  update: LogosDocAccessFields_url_Update
-  delete: LogosDocAccessFields_url_Delete
-}
-
-type LogosDocAccessFields_url_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_url_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_url_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_url_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filename {
-  create: LogosDocAccessFields_filename_Create
-  read: LogosDocAccessFields_filename_Read
-  update: LogosDocAccessFields_filename_Update
-  delete: LogosDocAccessFields_filename_Delete
-}
-
-type LogosDocAccessFields_filename_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filename_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filename_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filename_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_mimeType {
-  create: LogosDocAccessFields_mimeType_Create
-  read: LogosDocAccessFields_mimeType_Read
-  update: LogosDocAccessFields_mimeType_Update
-  delete: LogosDocAccessFields_mimeType_Delete
-}
-
-type LogosDocAccessFields_mimeType_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_mimeType_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_mimeType_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_mimeType_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filesize {
-  create: LogosDocAccessFields_filesize_Create
-  read: LogosDocAccessFields_filesize_Read
-  update: LogosDocAccessFields_filesize_Update
-  delete: LogosDocAccessFields_filesize_Delete
-}
-
-type LogosDocAccessFields_filesize_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filesize_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filesize_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_filesize_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_width {
-  create: LogosDocAccessFields_width_Create
-  read: LogosDocAccessFields_width_Read
-  update: LogosDocAccessFields_width_Update
-  delete: LogosDocAccessFields_width_Delete
-}
-
-type LogosDocAccessFields_width_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_width_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_width_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_width_Delete {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_height {
-  create: LogosDocAccessFields_height_Create
-  read: LogosDocAccessFields_height_Read
-  update: LogosDocAccessFields_height_Update
-  delete: LogosDocAccessFields_height_Delete
-}
-
-type LogosDocAccessFields_height_Create {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_height_Read {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_height_Update {
-  permission: Boolean!
-}
-
-type LogosDocAccessFields_height_Delete {
-  permission: Boolean!
-}
-
-type LogosCreateDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LogosReadDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LogosUpdateDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LogosDeleteDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -7806,7 +7437,7 @@ type LandingPageUpdateDocAccess {
 }
 
 type MainNavigation {
-  logo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Logo!
+  logo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media!
   items: [MainNavigationItem!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -8452,7 +8083,6 @@ type Access {
   news: newsAccess
   weekly_newsletters: weekly_newslettersAccess
   news_items: news_itemsAccess
-  logos: logosAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -9024,6 +8654,7 @@ type mediaAccess {
 type MediaFields {
   alt: MediaFields_alt
   photographer: MediaFields_photographer
+  mediaType: MediaFields_mediaType
   updatedAt: MediaFields_updatedAt
   createdAt: MediaFields_createdAt
   url: MediaFields_url
@@ -9077,6 +8708,29 @@ type MediaFields_photographer_Update {
 }
 
 type MediaFields_photographer_Delete {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType {
+  create: MediaFields_mediaType_Create
+  read: MediaFields_mediaType_Read
+  update: MediaFields_mediaType_Update
+  delete: MediaFields_mediaType_Delete
+}
+
+type MediaFields_mediaType_Create {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType_Read {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType_Update {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType_Delete {
   permission: Boolean!
 }
 
@@ -11705,253 +11359,6 @@ type NewsItemsDeleteAccess {
   where: JSONObject
 }
 
-type logosAccess {
-  fields: LogosFields
-  create: LogosCreateAccess
-  read: LogosReadAccess
-  update: LogosUpdateAccess
-  delete: LogosDeleteAccess
-}
-
-type LogosFields {
-  alt: LogosFields_alt
-  updatedAt: LogosFields_updatedAt
-  createdAt: LogosFields_createdAt
-  url: LogosFields_url
-  filename: LogosFields_filename
-  mimeType: LogosFields_mimeType
-  filesize: LogosFields_filesize
-  width: LogosFields_width
-  height: LogosFields_height
-}
-
-type LogosFields_alt {
-  create: LogosFields_alt_Create
-  read: LogosFields_alt_Read
-  update: LogosFields_alt_Update
-  delete: LogosFields_alt_Delete
-}
-
-type LogosFields_alt_Create {
-  permission: Boolean!
-}
-
-type LogosFields_alt_Read {
-  permission: Boolean!
-}
-
-type LogosFields_alt_Update {
-  permission: Boolean!
-}
-
-type LogosFields_alt_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_updatedAt {
-  create: LogosFields_updatedAt_Create
-  read: LogosFields_updatedAt_Read
-  update: LogosFields_updatedAt_Update
-  delete: LogosFields_updatedAt_Delete
-}
-
-type LogosFields_updatedAt_Create {
-  permission: Boolean!
-}
-
-type LogosFields_updatedAt_Read {
-  permission: Boolean!
-}
-
-type LogosFields_updatedAt_Update {
-  permission: Boolean!
-}
-
-type LogosFields_updatedAt_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_createdAt {
-  create: LogosFields_createdAt_Create
-  read: LogosFields_createdAt_Read
-  update: LogosFields_createdAt_Update
-  delete: LogosFields_createdAt_Delete
-}
-
-type LogosFields_createdAt_Create {
-  permission: Boolean!
-}
-
-type LogosFields_createdAt_Read {
-  permission: Boolean!
-}
-
-type LogosFields_createdAt_Update {
-  permission: Boolean!
-}
-
-type LogosFields_createdAt_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_url {
-  create: LogosFields_url_Create
-  read: LogosFields_url_Read
-  update: LogosFields_url_Update
-  delete: LogosFields_url_Delete
-}
-
-type LogosFields_url_Create {
-  permission: Boolean!
-}
-
-type LogosFields_url_Read {
-  permission: Boolean!
-}
-
-type LogosFields_url_Update {
-  permission: Boolean!
-}
-
-type LogosFields_url_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_filename {
-  create: LogosFields_filename_Create
-  read: LogosFields_filename_Read
-  update: LogosFields_filename_Update
-  delete: LogosFields_filename_Delete
-}
-
-type LogosFields_filename_Create {
-  permission: Boolean!
-}
-
-type LogosFields_filename_Read {
-  permission: Boolean!
-}
-
-type LogosFields_filename_Update {
-  permission: Boolean!
-}
-
-type LogosFields_filename_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_mimeType {
-  create: LogosFields_mimeType_Create
-  read: LogosFields_mimeType_Read
-  update: LogosFields_mimeType_Update
-  delete: LogosFields_mimeType_Delete
-}
-
-type LogosFields_mimeType_Create {
-  permission: Boolean!
-}
-
-type LogosFields_mimeType_Read {
-  permission: Boolean!
-}
-
-type LogosFields_mimeType_Update {
-  permission: Boolean!
-}
-
-type LogosFields_mimeType_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_filesize {
-  create: LogosFields_filesize_Create
-  read: LogosFields_filesize_Read
-  update: LogosFields_filesize_Update
-  delete: LogosFields_filesize_Delete
-}
-
-type LogosFields_filesize_Create {
-  permission: Boolean!
-}
-
-type LogosFields_filesize_Read {
-  permission: Boolean!
-}
-
-type LogosFields_filesize_Update {
-  permission: Boolean!
-}
-
-type LogosFields_filesize_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_width {
-  create: LogosFields_width_Create
-  read: LogosFields_width_Read
-  update: LogosFields_width_Update
-  delete: LogosFields_width_Delete
-}
-
-type LogosFields_width_Create {
-  permission: Boolean!
-}
-
-type LogosFields_width_Read {
-  permission: Boolean!
-}
-
-type LogosFields_width_Update {
-  permission: Boolean!
-}
-
-type LogosFields_width_Delete {
-  permission: Boolean!
-}
-
-type LogosFields_height {
-  create: LogosFields_height_Create
-  read: LogosFields_height_Read
-  update: LogosFields_height_Update
-  delete: LogosFields_height_Delete
-}
-
-type LogosFields_height_Create {
-  permission: Boolean!
-}
-
-type LogosFields_height_Read {
-  permission: Boolean!
-}
-
-type LogosFields_height_Update {
-  permission: Boolean!
-}
-
-type LogosFields_height_Delete {
-  permission: Boolean!
-}
-
-type LogosCreateAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LogosReadAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LogosUpdateAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type LogosDeleteAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -13083,9 +12490,6 @@ type Mutation {
   createNewsItem(data: mutationNewsItemInput!, locale: LocaleInputType): NewsItem
   updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, locale: LocaleInputType): NewsItem
   deleteNewsItem(id: String!): NewsItem
-  createLogo(data: mutationLogoInput!, locale: LocaleInputType): Logo
-  updateLogo(id: String!, autosave: Boolean, data: mutationLogoUpdateInput!, locale: LocaleInputType): Logo
-  deleteLogo(id: String!): Logo
   createPayloadPreference(data: mutationPayloadPreferenceInput!, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -13229,6 +12633,7 @@ enum PageUpdate__status_MutationInput {
 input mutationMediaInput {
   alt: String
   photographer: String
+  mediaType: Media_mediaType_MutationInput
   updatedAt: String
   createdAt: String
   url: String
@@ -13239,9 +12644,15 @@ input mutationMediaInput {
   height: Float
 }
 
+enum Media_mediaType_MutationInput {
+  image
+  logo
+}
+
 input mutationMediaUpdateInput {
   alt: String
   photographer: String
+  mediaType: MediaUpdate_mediaType_MutationInput
   updatedAt: String
   createdAt: String
   url: String
@@ -13250,6 +12661,11 @@ input mutationMediaUpdateInput {
   filesize: Float
   width: Float
   height: Float
+}
+
+enum MediaUpdate_mediaType_MutationInput {
+  image
+  logo
 }
 
 input mutationDocumentInput {
@@ -13968,30 +13384,6 @@ enum NewsItemUpdate_newsItemCategory_MutationInput {
   ayy_aalto
   other
   bottom_corner
-}
-
-input mutationLogoInput {
-  alt: String
-  updatedAt: String
-  createdAt: String
-  url: String
-  filename: String
-  mimeType: String
-  filesize: Float
-  width: Float
-  height: Float
-}
-
-input mutationLogoUpdateInput {
-  alt: String
-  updatedAt: String
-  createdAt: String
-  url: String
-  filename: String
-  mimeType: String
-  filesize: Float
-  width: Float
-  height: Float
 }
 
 input mutationPayloadPreferenceInput {

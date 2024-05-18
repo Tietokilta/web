@@ -1,16 +1,22 @@
 "use client";
 
-import TiKLogo from "../../assets/TiK-logo-white.png"
+import type { Media } from "@tietokilta/cms-types/payload";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-import type { Logo } from "@tietokilta/cms-types/payload";
+import TiKLogo from "../../assets/TiK-logo-white.png";
 
-export function LogoLink({ locale, image }: { locale: string, image: Logo | string}) {
+export function LogoLink({
+  locale,
+  image,
+}: {
+  locale: string;
+  image: Media | undefined;
+}) {
   const href = `/${locale}`;
   const pathname = usePathname();
   const isActive = pathname === href;
-  const logo = image as Logo;
+
   return (
     <Link
       aria-current={isActive ? "page" : undefined}
@@ -19,11 +25,11 @@ export function LogoLink({ locale, image }: { locale: string, image: Logo | stri
     >
       <Image
         alt="Tietokilta"
-        className="w-20 h-20 p-2"
+        className="h-16 w-16 p-2"
         priority
-        width={logo?.width ?? undefined}
-        height={logo?.height ?? undefined}
-        src={logo?.url ?? TiKLogo}
+        width={image?.width ?? undefined}
+        height={image?.height ?? undefined}
+        src={image?.url ?? TiKLogo}
       />
     </Link>
   );
