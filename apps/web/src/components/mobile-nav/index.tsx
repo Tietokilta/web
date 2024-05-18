@@ -59,7 +59,7 @@ export async function MobileNav({
           </Button>
         </SheetTrigger>
         <SheetContent>
-          <nav>
+          <nav className="flex h-full flex-col">
             <LanguageSelector />
             <LinkList footerLinks={footerLinks} links={links} />
           </nav>
