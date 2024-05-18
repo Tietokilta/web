@@ -6802,13 +6802,18 @@ type FooterUpdateDocAccess {
 }
 
 type LandingPage {
-  heroText: String
+  heroText: [LandingPage_HeroText!]
   heroImages: [LandingPage_HeroImages!]!
   eventsListPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page!
   announcement(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): News
   body(depth: Int): JSON
   updatedAt: DateTime
   createdAt: DateTime
+}
+
+type LandingPage_HeroText {
+  text: String
+  id: String
 }
 
 type LandingPage_HeroImages {
@@ -6837,6 +6842,7 @@ type LandingPageDocAccessFields_heroText {
   read: LandingPageDocAccessFields_heroText_Read
   update: LandingPageDocAccessFields_heroText_Update
   delete: LandingPageDocAccessFields_heroText_Delete
+  fields: LandingPageDocAccessFields_heroText_Fields
 }
 
 type LandingPageDocAccessFields_heroText_Create {
@@ -6852,6 +6858,57 @@ type LandingPageDocAccessFields_heroText_Update {
 }
 
 type LandingPageDocAccessFields_heroText_Delete {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_Fields {
+  text: LandingPageDocAccessFields_heroText_text
+  id: LandingPageDocAccessFields_heroText_id
+}
+
+type LandingPageDocAccessFields_heroText_text {
+  create: LandingPageDocAccessFields_heroText_text_Create
+  read: LandingPageDocAccessFields_heroText_text_Read
+  update: LandingPageDocAccessFields_heroText_text_Update
+  delete: LandingPageDocAccessFields_heroText_text_Delete
+}
+
+type LandingPageDocAccessFields_heroText_text_Create {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_text_Read {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_text_Update {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_text_Delete {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_id {
+  create: LandingPageDocAccessFields_heroText_id_Create
+  read: LandingPageDocAccessFields_heroText_id_Read
+  update: LandingPageDocAccessFields_heroText_id_Update
+  delete: LandingPageDocAccessFields_heroText_id_Delete
+}
+
+type LandingPageDocAccessFields_heroText_id_Create {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_id_Read {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_id_Update {
+  permission: Boolean!
+}
+
+type LandingPageDocAccessFields_heroText_id_Delete {
   permission: Boolean!
 }
 
@@ -11120,6 +11177,7 @@ type LandingPageFields_heroText {
   read: LandingPageFields_heroText_Read
   update: LandingPageFields_heroText_Update
   delete: LandingPageFields_heroText_Delete
+  fields: LandingPageFields_heroText_Fields
 }
 
 type LandingPageFields_heroText_Create {
@@ -11135,6 +11193,57 @@ type LandingPageFields_heroText_Update {
 }
 
 type LandingPageFields_heroText_Delete {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_Fields {
+  text: LandingPageFields_heroText_text
+  id: LandingPageFields_heroText_id
+}
+
+type LandingPageFields_heroText_text {
+  create: LandingPageFields_heroText_text_Create
+  read: LandingPageFields_heroText_text_Read
+  update: LandingPageFields_heroText_text_Update
+  delete: LandingPageFields_heroText_text_Delete
+}
+
+type LandingPageFields_heroText_text_Create {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_text_Read {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_text_Update {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_text_Delete {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_id {
+  create: LandingPageFields_heroText_id_Create
+  read: LandingPageFields_heroText_id_Read
+  update: LandingPageFields_heroText_id_Update
+  delete: LandingPageFields_heroText_id_Delete
+}
+
+type LandingPageFields_heroText_id_Create {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_id_Read {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_id_Update {
+  permission: Boolean!
+}
+
+type LandingPageFields_heroText_id_Delete {
   permission: Boolean!
 }
 
@@ -12835,13 +12944,18 @@ input mutationFooterInput {
 }
 
 input mutationLandingPageInput {
-  heroText: String
+  heroText: [mutationLandingPage_HeroTextInput]
   heroImages: [mutationLandingPage_HeroImagesInput!]
   eventsListPage: String
   announcement: String
   body: JSON
   updatedAt: String
   createdAt: String
+}
+
+input mutationLandingPage_HeroTextInput {
+  text: String
+  id: String
 }
 
 input mutationLandingPage_HeroImagesInput {
