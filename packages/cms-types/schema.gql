@@ -1384,6 +1384,7 @@ type Media {
   id: String
   alt: String
   photographer: String
+  mediaType: Media_mediaType
   updatedAt: DateTime
   createdAt: DateTime
   url: String
@@ -1392,6 +1393,11 @@ type Media {
   filesize: Float
   width: Float
   height: Float
+}
+
+enum Media_mediaType {
+  image
+  logo
 }
 
 type allMedia {
@@ -1411,6 +1417,7 @@ type allMedia {
 input Media_where {
   alt: Media_alt_operator
   photographer: Media_photographer_operator
+  mediaType: Media_mediaType_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1443,6 +1450,20 @@ input Media_photographer_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
+}
+
+input Media_mediaType_operator {
+  equals: Media_mediaType_Input
+  not_equals: Media_mediaType_Input
+  in: [Media_mediaType_Input]
+  not_in: [Media_mediaType_Input]
+  all: [Media_mediaType_Input]
+  exists: Boolean
+}
+
+enum Media_mediaType_Input {
+  image
+  logo
 }
 
 input Media_updatedAt_operator {
@@ -1544,6 +1565,7 @@ input Media_id_operator {
 input Media_where_and {
   alt: Media_alt_operator
   photographer: Media_photographer_operator
+  mediaType: Media_mediaType_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1560,6 +1582,7 @@ input Media_where_and {
 input Media_where_or {
   alt: Media_alt_operator
   photographer: Media_photographer_operator
+  mediaType: Media_mediaType_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1588,6 +1611,7 @@ type mediaDocAccess {
 type MediaDocAccessFields {
   alt: MediaDocAccessFields_alt
   photographer: MediaDocAccessFields_photographer
+  mediaType: MediaDocAccessFields_mediaType
   updatedAt: MediaDocAccessFields_updatedAt
   createdAt: MediaDocAccessFields_createdAt
   url: MediaDocAccessFields_url
@@ -1641,6 +1665,29 @@ type MediaDocAccessFields_photographer_Update {
 }
 
 type MediaDocAccessFields_photographer_Delete {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType {
+  create: MediaDocAccessFields_mediaType_Create
+  read: MediaDocAccessFields_mediaType_Read
+  update: MediaDocAccessFields_mediaType_Update
+  delete: MediaDocAccessFields_mediaType_Delete
+}
+
+type MediaDocAccessFields_mediaType_Create {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType_Read {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType_Update {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_mediaType_Delete {
   permission: Boolean!
 }
 
@@ -1865,6 +1912,7 @@ type Document {
 input Document_Thumbnail_where {
   alt: Document_Thumbnail_alt_operator
   photographer: Document_Thumbnail_photographer_operator
+  mediaType: Document_Thumbnail_mediaType_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -1897,6 +1945,20 @@ input Document_Thumbnail_photographer_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
+}
+
+input Document_Thumbnail_mediaType_operator {
+  equals: Document_Thumbnail_mediaType_Input
+  not_equals: Document_Thumbnail_mediaType_Input
+  in: [Document_Thumbnail_mediaType_Input]
+  not_in: [Document_Thumbnail_mediaType_Input]
+  all: [Document_Thumbnail_mediaType_Input]
+  exists: Boolean
+}
+
+enum Document_Thumbnail_mediaType_Input {
+  image
+  logo
 }
 
 input Document_Thumbnail_updatedAt_operator {
@@ -1998,6 +2060,7 @@ input Document_Thumbnail_id_operator {
 input Document_Thumbnail_where_and {
   alt: Document_Thumbnail_alt_operator
   photographer: Document_Thumbnail_photographer_operator
+  mediaType: Document_Thumbnail_mediaType_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -2014,6 +2077,7 @@ input Document_Thumbnail_where_and {
 input Document_Thumbnail_where_or {
   alt: Document_Thumbnail_alt_operator
   photographer: Document_Thumbnail_photographer_operator
+  mediaType: Document_Thumbnail_mediaType_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -7373,6 +7437,7 @@ type LandingPageUpdateDocAccess {
 }
 
 type MainNavigation {
+  logo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media!
   items: [MainNavigationItem!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -7462,9 +7527,33 @@ type main_navigationDocAccess {
 }
 
 type MainNavigationDocAccessFields {
+  logo: MainNavigationDocAccessFields_logo
   items: MainNavigationDocAccessFields_items
   updatedAt: MainNavigationDocAccessFields_updatedAt
   createdAt: MainNavigationDocAccessFields_createdAt
+}
+
+type MainNavigationDocAccessFields_logo {
+  create: MainNavigationDocAccessFields_logo_Create
+  read: MainNavigationDocAccessFields_logo_Read
+  update: MainNavigationDocAccessFields_logo_Update
+  delete: MainNavigationDocAccessFields_logo_Delete
+}
+
+type MainNavigationDocAccessFields_logo_Create {
+  permission: Boolean!
+}
+
+type MainNavigationDocAccessFields_logo_Read {
+  permission: Boolean!
+}
+
+type MainNavigationDocAccessFields_logo_Update {
+  permission: Boolean!
+}
+
+type MainNavigationDocAccessFields_logo_Delete {
+  permission: Boolean!
 }
 
 type MainNavigationDocAccessFields_items {
@@ -8565,6 +8654,7 @@ type mediaAccess {
 type MediaFields {
   alt: MediaFields_alt
   photographer: MediaFields_photographer
+  mediaType: MediaFields_mediaType
   updatedAt: MediaFields_updatedAt
   createdAt: MediaFields_createdAt
   url: MediaFields_url
@@ -8618,6 +8708,29 @@ type MediaFields_photographer_Update {
 }
 
 type MediaFields_photographer_Delete {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType {
+  create: MediaFields_mediaType_Create
+  read: MediaFields_mediaType_Read
+  update: MediaFields_mediaType_Update
+  delete: MediaFields_mediaType_Delete
+}
+
+type MediaFields_mediaType_Create {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType_Read {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType_Update {
+  permission: Boolean!
+}
+
+type MediaFields_mediaType_Delete {
   permission: Boolean!
 }
 
@@ -11786,9 +11899,33 @@ type main_navigationAccess {
 }
 
 type MainNavigationFields {
+  logo: MainNavigationFields_logo
   items: MainNavigationFields_items
   updatedAt: MainNavigationFields_updatedAt
   createdAt: MainNavigationFields_createdAt
+}
+
+type MainNavigationFields_logo {
+  create: MainNavigationFields_logo_Create
+  read: MainNavigationFields_logo_Read
+  update: MainNavigationFields_logo_Update
+  delete: MainNavigationFields_logo_Delete
+}
+
+type MainNavigationFields_logo_Create {
+  permission: Boolean!
+}
+
+type MainNavigationFields_logo_Read {
+  permission: Boolean!
+}
+
+type MainNavigationFields_logo_Update {
+  permission: Boolean!
+}
+
+type MainNavigationFields_logo_Delete {
+  permission: Boolean!
 }
 
 type MainNavigationFields_items {
@@ -12496,6 +12633,7 @@ enum PageUpdate__status_MutationInput {
 input mutationMediaInput {
   alt: String
   photographer: String
+  mediaType: Media_mediaType_MutationInput
   updatedAt: String
   createdAt: String
   url: String
@@ -12506,9 +12644,15 @@ input mutationMediaInput {
   height: Float
 }
 
+enum Media_mediaType_MutationInput {
+  image
+  logo
+}
+
 input mutationMediaUpdateInput {
   alt: String
   photographer: String
+  mediaType: MediaUpdate_mediaType_MutationInput
   updatedAt: String
   createdAt: String
   url: String
@@ -12517,6 +12661,11 @@ input mutationMediaUpdateInput {
   filesize: Float
   width: Float
   height: Float
+}
+
+enum MediaUpdate_mediaType_MutationInput {
+  image
+  logo
 }
 
 input mutationDocumentInput {
@@ -13298,6 +13447,7 @@ input mutationLandingPage_HeroImagesInput {
 }
 
 input mutationMainNavigationInput {
+  logo: String
   items: [mutationMainNavigation_ItemsInput!]
   updatedAt: String
   createdAt: String

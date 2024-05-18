@@ -1,4 +1,4 @@
-import type { LinkRowBlock } from "@tietokilta/cms-types/payload";
+import type { LinkRowBlock, Media } from "@tietokilta/cms-types/payload";
 import {
   Button,
   MenuIcon,
@@ -6,6 +6,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@tietokilta/ui";
+import Link from "next/link";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
@@ -20,6 +21,7 @@ export async function MobileNav({
 }: React.ComponentPropsWithoutRef<"header">) {
   const t = await getScopedI18n("action");
   const locale = getCurrentLocale();
+  const href = `/${locale}`;
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});
   if (
@@ -35,6 +37,8 @@ export async function MobileNav({
     (block): block is LinkRowBlock => block.blockType === "link-row",
   );
 
+  const logo = mainNav.logo as Media;
+
   return (
     <header
       className={cn(
@@ -43,7 +47,10 @@ export async function MobileNav({
       )}
       {...rest}
     >
-      <LogoLink locale={locale} />
+      <LogoLink locale={locale} image={logo} />
+      <Link href={href} className="font-mono text-2xl">
+        Tietokilta
+      </Link>
       <Sheet>
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">
