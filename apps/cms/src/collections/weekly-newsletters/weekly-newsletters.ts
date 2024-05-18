@@ -1,6 +1,8 @@
 import type { CollectionConfig, FieldHook } from "payload/types";
 import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../../access/signed-in";
+import { getLocale } from "../../util";
+import { revalidatePage } from "../../hooks/revalidate-page";
 
 const formatSlug: FieldHook<WeeklyNewsletter, WeeklyNewsletter["slug"]> = ({
   data,
@@ -68,4 +70,21 @@ export const WeeklyNewsletters: CollectionConfig = {
       },
     },
   ],
+  hooks: {
+    afterChange: [
+      revalidatePage<WeeklyNewsletter>("weekly-newsletters", (doc, req) => {
+        const locale = getLocale(req);
+        if (!locale) {
+          req.payload.logger.error(
+            "locale not set, cannot revalidate properly",
+          );
+          return;
+        }
+
+        return {
+          locale,
+        };
+      }),
+    ],
+  },
 };
