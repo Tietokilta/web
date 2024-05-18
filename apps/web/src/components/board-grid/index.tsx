@@ -20,9 +20,9 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
           "aspect-2/3 max-w-32 border-2 border-gray-900 object-center",
           photo?.url ? "object-cover" : "object-contain",
         )}
-        height={photo?.height ?? undefined}
+        height={photo?.height ? Math.trunc(photo.height) : undefined}
         src={photo?.url ?? TikLogo}
-        width={photo?.width ?? undefined}
+        width={photo?.width ? Math.trunc(photo.width) : undefined}
       />
       <div className="flex flex-col justify-between gap-4">
         <p className="flex flex-col">
