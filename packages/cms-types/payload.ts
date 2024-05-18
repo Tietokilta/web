@@ -184,6 +184,8 @@ export interface Media {
  */
 export interface Document {
   id: string;
+  title?: string | null;
+  thumbnail?: string | Media | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
