@@ -1383,6 +1383,7 @@ input versionsPage_where_or {
 type Media {
   id: String
   alt: String
+  photographer: String
   updatedAt: DateTime
   createdAt: DateTime
   url: String
@@ -1409,6 +1410,7 @@ type allMedia {
 
 input Media_where {
   alt: Media_alt_operator
+  photographer: Media_photographer_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1430,6 +1432,17 @@ input Media_alt_operator {
   in: [String]
   not_in: [String]
   all: [String]
+}
+
+input Media_photographer_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
 }
 
 input Media_updatedAt_operator {
@@ -1530,6 +1543,7 @@ input Media_id_operator {
 
 input Media_where_and {
   alt: Media_alt_operator
+  photographer: Media_photographer_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1545,6 +1559,7 @@ input Media_where_and {
 
 input Media_where_or {
   alt: Media_alt_operator
+  photographer: Media_photographer_operator
   updatedAt: Media_updatedAt_operator
   createdAt: Media_createdAt_operator
   url: Media_url_operator
@@ -1572,6 +1587,7 @@ type mediaDocAccess {
 
 type MediaDocAccessFields {
   alt: MediaDocAccessFields_alt
+  photographer: MediaDocAccessFields_photographer
   updatedAt: MediaDocAccessFields_updatedAt
   createdAt: MediaDocAccessFields_createdAt
   url: MediaDocAccessFields_url
@@ -1602,6 +1618,29 @@ type MediaDocAccessFields_alt_Update {
 }
 
 type MediaDocAccessFields_alt_Delete {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_photographer {
+  create: MediaDocAccessFields_photographer_Create
+  read: MediaDocAccessFields_photographer_Read
+  update: MediaDocAccessFields_photographer_Update
+  delete: MediaDocAccessFields_photographer_Delete
+}
+
+type MediaDocAccessFields_photographer_Create {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_photographer_Read {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_photographer_Update {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_photographer_Delete {
   permission: Boolean!
 }
 
@@ -1825,6 +1864,7 @@ type Document {
 
 input Document_Thumbnail_where {
   alt: Document_Thumbnail_alt_operator
+  photographer: Document_Thumbnail_photographer_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -1846,6 +1886,17 @@ input Document_Thumbnail_alt_operator {
   in: [String]
   not_in: [String]
   all: [String]
+}
+
+input Document_Thumbnail_photographer_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
 }
 
 input Document_Thumbnail_updatedAt_operator {
@@ -1946,6 +1997,7 @@ input Document_Thumbnail_id_operator {
 
 input Document_Thumbnail_where_and {
   alt: Document_Thumbnail_alt_operator
+  photographer: Document_Thumbnail_photographer_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -1961,6 +2013,7 @@ input Document_Thumbnail_where_and {
 
 input Document_Thumbnail_where_or {
   alt: Document_Thumbnail_alt_operator
+  photographer: Document_Thumbnail_photographer_operator
   updatedAt: Document_Thumbnail_updatedAt_operator
   createdAt: Document_Thumbnail_createdAt_operator
   url: Document_Thumbnail_url_operator
@@ -8511,6 +8564,7 @@ type mediaAccess {
 
 type MediaFields {
   alt: MediaFields_alt
+  photographer: MediaFields_photographer
   updatedAt: MediaFields_updatedAt
   createdAt: MediaFields_createdAt
   url: MediaFields_url
@@ -8541,6 +8595,29 @@ type MediaFields_alt_Update {
 }
 
 type MediaFields_alt_Delete {
+  permission: Boolean!
+}
+
+type MediaFields_photographer {
+  create: MediaFields_photographer_Create
+  read: MediaFields_photographer_Read
+  update: MediaFields_photographer_Update
+  delete: MediaFields_photographer_Delete
+}
+
+type MediaFields_photographer_Create {
+  permission: Boolean!
+}
+
+type MediaFields_photographer_Read {
+  permission: Boolean!
+}
+
+type MediaFields_photographer_Update {
+  permission: Boolean!
+}
+
+type MediaFields_photographer_Delete {
   permission: Boolean!
 }
 
@@ -12418,6 +12495,7 @@ enum PageUpdate__status_MutationInput {
 
 input mutationMediaInput {
   alt: String
+  photographer: String
   updatedAt: String
   createdAt: String
   url: String
@@ -12430,6 +12508,7 @@ input mutationMediaInput {
 
 input mutationMediaUpdateInput {
   alt: String
+  photographer: String
   updatedAt: String
   createdAt: String
   url: String
