@@ -48,8 +48,9 @@ export default async function Home({
           .map(({ text }) => (typeof text === "string" ? text : null))
           .filter((url): url is string => Boolean(url))}
       />
-      <div className="container mx-auto grid grid-cols-1 gap-12 px-6 py-12 lg:grid-cols-2">
-        <section className="order-last space-y-4 lg:order-first">
+      {/* Desktop view */}
+      <div className="container mx-auto hidden grid-cols-2 gap-12 px-6 py-12 lg:grid">
+        <section className="order-first space-y-4">
           <h1 className="font-mono text-4xl font-bold text-gray-900">
             Tietokilta
           </h1>
@@ -62,6 +63,22 @@ export default async function Home({
             currentPage={!isNaN(pageInt) ? pageInt : undefined}
           />
         </div>
+      </div>
+      {/* Mobile view */}
+      <div className="container mx-auto flex flex-col gap-12 px-6 py-12 lg:hidden">
+        <div className="space-y-8">
+          {announcement ? <AnnouncementCard news={announcement} /> : null}
+        </div>
+        <section className="space-y-4">
+          <h1 className="font-mono text-4xl font-bold text-gray-900">
+            Tietokilta
+          </h1>
+          <Content content={body} />
+        </section>
+        <EventsDisplay
+          eventsListPath={eventsListPage?.path ?? undefined}
+          currentPage={!isNaN(pageInt) ? pageInt : undefined}
+        />
       </div>
     </main>
   );

@@ -100,7 +100,7 @@ export function Hero({
   }, [images.length, texts]);
 
   return (
-    <section className="relative flex h-[85vh] items-end bg-gray-900 py-24">
+    <section className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
       {images.map((image, imageIndex) => (
         <ImageWithCitation
           key={image.url}
@@ -108,8 +108,8 @@ export function Hero({
           isCurrentImage={imageIndex === currentImageIndex}
         />
       ))}
-      <div className="container z-20 mx-auto px-6 font-mono text-4xl font-semibold text-gray-100 md:text-6xl">
-        <p className="w-1/2" ref={ref} />
+      <div className="container z-20 mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-4xl lg:text-6xl">
+        <p className="w-full lg:w-1/2" ref={ref} />
       </div>
     </section>
   );
