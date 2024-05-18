@@ -3,7 +3,6 @@ import type {
   EventQuota,
   IlmomasiinaEvent,
 } from "../lib/api/external/ilmomasiina";
-import "react-big-calendar/lib/css/react-big-calendar.css";
 import { fetchEvents } from "../lib/api/external/ilmomasiina";
 import { cn, formatDateYear, formatDatetimeYear } from "../lib/utils";
 import { BackButton } from "../components/back-button";
@@ -144,8 +143,8 @@ function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
   const eventsUrl = `/${locale}/events/`;
 
   return (
-    <div style={{ height: "600px" }}>
-      <EventCalendar events={events} eventsUrl={eventsUrl} />
+    <div style={{ height: "35rem" }}>
+      <EventCalendar events={events} eventsUrl={eventsUrl} locale={locale} />
     </div>
   );
 }
