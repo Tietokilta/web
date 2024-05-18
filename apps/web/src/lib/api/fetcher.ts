@@ -57,7 +57,7 @@ export function fetcher<TRequest, TResponse>({
 export function getAll<
   TRequest extends Record<string, unknown>,
   TResponse extends unknown[],
->(path: string) {
+>(path: string, globalOpts: { sort?: string } = {}) {
   return fetcher<TRequest & { locale: string }, TResponse>({
     tagFn: (req) => `get_${path}_${stringify(req)}`,
     dataFetcher: async (
@@ -69,10 +69,10 @@ export function getAll<
         {
           ...req,
           ...(draft ? { draft: "true" } : {}),
-          depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+          depth: req.depth ?? 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
-          limit: 100,
-          sort: "-createdAt",
+          limit: req.limit ?? 100,
+          sort: globalOpts.sort,
         },
       ).toString()}`;
 
@@ -93,14 +93,21 @@ export function getAll<
 
 export function getOne<TRequest extends Record<string, unknown>, TResponse>(
   path: string,
+  globalOpts: { sort?: string } = {},
 ) {
   return (req: TRequest & { locale: string }) =>
-    getAll<TRequest, TResponse[]>(path)(req).then((res) => res?.[0]);
+    getAll<TRequest, TResponse[]>(
+      path,
+      globalOpts,
+    )(req).then((res) => res?.[0]);
 }
 
-export function getGlobal<TResponse>(path: string, locale: string) {
+export function getGlobal<TResponse>(
+  path: string,
+  globalOpts: { locale: string; sort?: string },
+) {
   return fetcher<Record<string, never>, TResponse>({
-    tagFn: () => `getGlobal_${path}?locale=${locale}`,
+    tagFn: () => `getGlobal_${path}?locale=${globalOpts.locale}`,
     dataFetcher: async (
       _,
       draft,
@@ -108,7 +115,7 @@ export function getGlobal<TResponse>(path: string, locale: string) {
     ): Promise<TResponse | undefined> => {
       const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}${path}?${qsStringify(
         {
-          locale,
+          locale: globalOpts.locale,
           depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
           ...(draft ? { draft: "true" } : {}),
