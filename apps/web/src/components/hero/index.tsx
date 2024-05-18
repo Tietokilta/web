@@ -46,7 +46,12 @@ function ImageWithCitation({
         src={image.url}
       />
       <footer className="contents">
-        <cite className="absolute bottom-0 right-2 text-gray-100 opacity-50">
+        <cite
+          className={cn(
+            "absolute bottom-0 right-2 text-gray-100 opacity-50",
+            isCurrentImage ? "block" : "hidden",
+          )}
+        >
           © {image.photographer}
         </cite>
       </footer>
