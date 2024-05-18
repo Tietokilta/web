@@ -1,7 +1,9 @@
 import type {
   LinkRowBlock,
   MainNavigationItem,
+  Media,
   Page,
+  SponsorLogoRowBlock,
   Topic,
 } from "@tietokilta/cms-types/payload";
 import {
@@ -15,6 +17,7 @@ import {
   CollapsibleTrigger,
   ExternalLinkIcon,
 } from "@tietokilta/ui";
+import Image from "next/image";
 import { cn } from "../../lib/utils";
 import { getScopedI18n } from "../../locales/server";
 import { Link } from "./link";
@@ -94,9 +97,11 @@ async function NavigationLink({
 export function LinkList({
   links,
   footerLinks,
+  footerSponsors,
 }: {
   links: MainNavigationItem;
   footerLinks: LinkRowBlock[];
+  footerSponsors: SponsorLogoRowBlock[];
 }) {
   return (
     <div className="overflow-y-auto font-mono text-xl font-semibold text-gray-900">
@@ -108,7 +113,7 @@ export function LinkList({
         ))}
       </ul>
       <Separator className="my-2" />
-      <ul className="mb-8 space-y-6 p-6">
+      <ul className="space-y-6 p-6">
         {footerLinks.map((linkRow) => (
           <li key={linkRow.id}>
             <ul
@@ -150,6 +155,30 @@ export function LinkList({
           </li>
         ))}
       </ul>
+      <Separator className="my-2" />
+      <footer className="mb-8 pt-4">
+        {footerSponsors.map((sponsorRow) => (
+          <ul className="space-y-4" key={sponsorRow.id}>
+            <h2 className="text-center">{sponsorRow.title}</h2>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {sponsorRow.logos?.map((logo) => (
+                <li className="relative w-60" key={logo.id}>
+                  <Link href={logo.link}>
+                    {/* TODO: actually check image color and invert / modify according to contrast or something */}
+                    <Image
+                      alt={(logo.image as Media).alt}
+                      className="h-auto w-full object-contain"
+                      height={(logo.image as Media).height ?? 0}
+                      src={(logo.image as Media).url ?? ""}
+                      width={(logo.image as Media).width ?? 0}
+                    />
+                  </Link>
+                </li>
+              ))}
+            </div>
+          </ul>
+        ))}
+      </footer>
     </div>
   );
 }
