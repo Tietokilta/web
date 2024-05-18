@@ -4,13 +4,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 import { useScramble } from "use-scramble";
+import { shuffle } from "lodash";
 
 export function Hero({ images, texts }: { images: string[]; texts: string[] }) {
   const [currentImage, setCurrentImage] = useState(
     new Date().getUTCDate() % images.length,
   );
 
-  const [currentText, setCurrentText] = useState("");
+  const [currentText, setCurrentText] = useState(texts[0]);
   const [_, setTextIndex] = useState(0);
 
   const { ref } = useScramble({
@@ -21,10 +22,7 @@ export function Hero({ images, texts }: { images: string[]; texts: string[] }) {
   });
 
   useEffect(() => {
-    const shuffledTexts = texts
-      .map((value) => ({ value, sort: Math.random() }))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({ value }) => value);
+    const shuffledTexts = shuffle(texts);
     setCurrentText(shuffledTexts[0]);
 
     const interval = setInterval(() => {
