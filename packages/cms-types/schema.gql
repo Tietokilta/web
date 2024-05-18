@@ -59,6 +59,10 @@ type Query {
   NewsItems(where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
   countNewsItems(where: NewsItem_where, locale: LocaleInputType): countNewsItems
   docAccessNewsItem(id: String!): news_itemsDocAccess
+  Logo(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Logo
+  Logos(where: Logo_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Logos
+  countLogos(where: Logo_where, locale: LocaleInputType): countLogos
+  docAccessLogo(id: String!): logosDocAccess
   PayloadPreference(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   countPayloadPreferences(where: PayloadPreference_where, locale: LocaleInputType): countPayloadPreferences
@@ -6605,6 +6609,435 @@ type NewsItemsDeleteDocAccess {
   where: JSONObject
 }
 
+type Logo {
+  id: String
+  alt: String
+  updatedAt: DateTime
+  createdAt: DateTime
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
+}
+
+type Logos {
+  docs: [Logo]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Logo_where {
+  alt: Logo_alt_operator
+  updatedAt: Logo_updatedAt_operator
+  createdAt: Logo_createdAt_operator
+  url: Logo_url_operator
+  filename: Logo_filename_operator
+  mimeType: Logo_mimeType_operator
+  filesize: Logo_filesize_operator
+  width: Logo_width_operator
+  height: Logo_height_operator
+  id: Logo_id_operator
+  AND: [Logo_where_and]
+  OR: [Logo_where_or]
+}
+
+input Logo_alt_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Logo_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Logo_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Logo_url_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Logo_filename_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Logo_mimeType_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Logo_filesize_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Logo_width_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Logo_height_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Logo_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Logo_where_and {
+  alt: Logo_alt_operator
+  updatedAt: Logo_updatedAt_operator
+  createdAt: Logo_createdAt_operator
+  url: Logo_url_operator
+  filename: Logo_filename_operator
+  mimeType: Logo_mimeType_operator
+  filesize: Logo_filesize_operator
+  width: Logo_width_operator
+  height: Logo_height_operator
+  id: Logo_id_operator
+  AND: [Logo_where_and]
+  OR: [Logo_where_or]
+}
+
+input Logo_where_or {
+  alt: Logo_alt_operator
+  updatedAt: Logo_updatedAt_operator
+  createdAt: Logo_createdAt_operator
+  url: Logo_url_operator
+  filename: Logo_filename_operator
+  mimeType: Logo_mimeType_operator
+  filesize: Logo_filesize_operator
+  width: Logo_width_operator
+  height: Logo_height_operator
+  id: Logo_id_operator
+  AND: [Logo_where_and]
+  OR: [Logo_where_or]
+}
+
+type countLogos {
+  totalDocs: Int
+}
+
+type logosDocAccess {
+  fields: LogosDocAccessFields
+  create: LogosCreateDocAccess
+  read: LogosReadDocAccess
+  update: LogosUpdateDocAccess
+  delete: LogosDeleteDocAccess
+}
+
+type LogosDocAccessFields {
+  alt: LogosDocAccessFields_alt
+  updatedAt: LogosDocAccessFields_updatedAt
+  createdAt: LogosDocAccessFields_createdAt
+  url: LogosDocAccessFields_url
+  filename: LogosDocAccessFields_filename
+  mimeType: LogosDocAccessFields_mimeType
+  filesize: LogosDocAccessFields_filesize
+  width: LogosDocAccessFields_width
+  height: LogosDocAccessFields_height
+}
+
+type LogosDocAccessFields_alt {
+  create: LogosDocAccessFields_alt_Create
+  read: LogosDocAccessFields_alt_Read
+  update: LogosDocAccessFields_alt_Update
+  delete: LogosDocAccessFields_alt_Delete
+}
+
+type LogosDocAccessFields_alt_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_alt_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_alt_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_alt_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_updatedAt {
+  create: LogosDocAccessFields_updatedAt_Create
+  read: LogosDocAccessFields_updatedAt_Read
+  update: LogosDocAccessFields_updatedAt_Update
+  delete: LogosDocAccessFields_updatedAt_Delete
+}
+
+type LogosDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_createdAt {
+  create: LogosDocAccessFields_createdAt_Create
+  read: LogosDocAccessFields_createdAt_Read
+  update: LogosDocAccessFields_createdAt_Update
+  delete: LogosDocAccessFields_createdAt_Delete
+}
+
+type LogosDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_url {
+  create: LogosDocAccessFields_url_Create
+  read: LogosDocAccessFields_url_Read
+  update: LogosDocAccessFields_url_Update
+  delete: LogosDocAccessFields_url_Delete
+}
+
+type LogosDocAccessFields_url_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_url_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_url_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_url_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filename {
+  create: LogosDocAccessFields_filename_Create
+  read: LogosDocAccessFields_filename_Read
+  update: LogosDocAccessFields_filename_Update
+  delete: LogosDocAccessFields_filename_Delete
+}
+
+type LogosDocAccessFields_filename_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filename_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filename_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filename_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_mimeType {
+  create: LogosDocAccessFields_mimeType_Create
+  read: LogosDocAccessFields_mimeType_Read
+  update: LogosDocAccessFields_mimeType_Update
+  delete: LogosDocAccessFields_mimeType_Delete
+}
+
+type LogosDocAccessFields_mimeType_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_mimeType_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_mimeType_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_mimeType_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filesize {
+  create: LogosDocAccessFields_filesize_Create
+  read: LogosDocAccessFields_filesize_Read
+  update: LogosDocAccessFields_filesize_Update
+  delete: LogosDocAccessFields_filesize_Delete
+}
+
+type LogosDocAccessFields_filesize_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filesize_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filesize_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_filesize_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_width {
+  create: LogosDocAccessFields_width_Create
+  read: LogosDocAccessFields_width_Read
+  update: LogosDocAccessFields_width_Update
+  delete: LogosDocAccessFields_width_Delete
+}
+
+type LogosDocAccessFields_width_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_width_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_width_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_width_Delete {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_height {
+  create: LogosDocAccessFields_height_Create
+  read: LogosDocAccessFields_height_Read
+  update: LogosDocAccessFields_height_Update
+  delete: LogosDocAccessFields_height_Delete
+}
+
+type LogosDocAccessFields_height_Create {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_height_Read {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_height_Update {
+  permission: Boolean!
+}
+
+type LogosDocAccessFields_height_Delete {
+  permission: Boolean!
+}
+
+type LogosCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type LogosReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type LogosUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type LogosDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -7373,6 +7806,7 @@ type LandingPageUpdateDocAccess {
 }
 
 type MainNavigation {
+  logo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Logo!
   items: [MainNavigationItem!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -7462,9 +7896,33 @@ type main_navigationDocAccess {
 }
 
 type MainNavigationDocAccessFields {
+  logo: MainNavigationDocAccessFields_logo
   items: MainNavigationDocAccessFields_items
   updatedAt: MainNavigationDocAccessFields_updatedAt
   createdAt: MainNavigationDocAccessFields_createdAt
+}
+
+type MainNavigationDocAccessFields_logo {
+  create: MainNavigationDocAccessFields_logo_Create
+  read: MainNavigationDocAccessFields_logo_Read
+  update: MainNavigationDocAccessFields_logo_Update
+  delete: MainNavigationDocAccessFields_logo_Delete
+}
+
+type MainNavigationDocAccessFields_logo_Create {
+  permission: Boolean!
+}
+
+type MainNavigationDocAccessFields_logo_Read {
+  permission: Boolean!
+}
+
+type MainNavigationDocAccessFields_logo_Update {
+  permission: Boolean!
+}
+
+type MainNavigationDocAccessFields_logo_Delete {
+  permission: Boolean!
 }
 
 type MainNavigationDocAccessFields_items {
@@ -7994,6 +8452,7 @@ type Access {
   news: newsAccess
   weekly_newsletters: weekly_newslettersAccess
   news_items: news_itemsAccess
+  logos: logosAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -11246,6 +11705,253 @@ type NewsItemsDeleteAccess {
   where: JSONObject
 }
 
+type logosAccess {
+  fields: LogosFields
+  create: LogosCreateAccess
+  read: LogosReadAccess
+  update: LogosUpdateAccess
+  delete: LogosDeleteAccess
+}
+
+type LogosFields {
+  alt: LogosFields_alt
+  updatedAt: LogosFields_updatedAt
+  createdAt: LogosFields_createdAt
+  url: LogosFields_url
+  filename: LogosFields_filename
+  mimeType: LogosFields_mimeType
+  filesize: LogosFields_filesize
+  width: LogosFields_width
+  height: LogosFields_height
+}
+
+type LogosFields_alt {
+  create: LogosFields_alt_Create
+  read: LogosFields_alt_Read
+  update: LogosFields_alt_Update
+  delete: LogosFields_alt_Delete
+}
+
+type LogosFields_alt_Create {
+  permission: Boolean!
+}
+
+type LogosFields_alt_Read {
+  permission: Boolean!
+}
+
+type LogosFields_alt_Update {
+  permission: Boolean!
+}
+
+type LogosFields_alt_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_updatedAt {
+  create: LogosFields_updatedAt_Create
+  read: LogosFields_updatedAt_Read
+  update: LogosFields_updatedAt_Update
+  delete: LogosFields_updatedAt_Delete
+}
+
+type LogosFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type LogosFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type LogosFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type LogosFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_createdAt {
+  create: LogosFields_createdAt_Create
+  read: LogosFields_createdAt_Read
+  update: LogosFields_createdAt_Update
+  delete: LogosFields_createdAt_Delete
+}
+
+type LogosFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type LogosFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type LogosFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type LogosFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_url {
+  create: LogosFields_url_Create
+  read: LogosFields_url_Read
+  update: LogosFields_url_Update
+  delete: LogosFields_url_Delete
+}
+
+type LogosFields_url_Create {
+  permission: Boolean!
+}
+
+type LogosFields_url_Read {
+  permission: Boolean!
+}
+
+type LogosFields_url_Update {
+  permission: Boolean!
+}
+
+type LogosFields_url_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_filename {
+  create: LogosFields_filename_Create
+  read: LogosFields_filename_Read
+  update: LogosFields_filename_Update
+  delete: LogosFields_filename_Delete
+}
+
+type LogosFields_filename_Create {
+  permission: Boolean!
+}
+
+type LogosFields_filename_Read {
+  permission: Boolean!
+}
+
+type LogosFields_filename_Update {
+  permission: Boolean!
+}
+
+type LogosFields_filename_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_mimeType {
+  create: LogosFields_mimeType_Create
+  read: LogosFields_mimeType_Read
+  update: LogosFields_mimeType_Update
+  delete: LogosFields_mimeType_Delete
+}
+
+type LogosFields_mimeType_Create {
+  permission: Boolean!
+}
+
+type LogosFields_mimeType_Read {
+  permission: Boolean!
+}
+
+type LogosFields_mimeType_Update {
+  permission: Boolean!
+}
+
+type LogosFields_mimeType_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_filesize {
+  create: LogosFields_filesize_Create
+  read: LogosFields_filesize_Read
+  update: LogosFields_filesize_Update
+  delete: LogosFields_filesize_Delete
+}
+
+type LogosFields_filesize_Create {
+  permission: Boolean!
+}
+
+type LogosFields_filesize_Read {
+  permission: Boolean!
+}
+
+type LogosFields_filesize_Update {
+  permission: Boolean!
+}
+
+type LogosFields_filesize_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_width {
+  create: LogosFields_width_Create
+  read: LogosFields_width_Read
+  update: LogosFields_width_Update
+  delete: LogosFields_width_Delete
+}
+
+type LogosFields_width_Create {
+  permission: Boolean!
+}
+
+type LogosFields_width_Read {
+  permission: Boolean!
+}
+
+type LogosFields_width_Update {
+  permission: Boolean!
+}
+
+type LogosFields_width_Delete {
+  permission: Boolean!
+}
+
+type LogosFields_height {
+  create: LogosFields_height_Create
+  read: LogosFields_height_Read
+  update: LogosFields_height_Update
+  delete: LogosFields_height_Delete
+}
+
+type LogosFields_height_Create {
+  permission: Boolean!
+}
+
+type LogosFields_height_Read {
+  permission: Boolean!
+}
+
+type LogosFields_height_Update {
+  permission: Boolean!
+}
+
+type LogosFields_height_Delete {
+  permission: Boolean!
+}
+
+type LogosCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type LogosReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type LogosUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type LogosDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -11786,9 +12492,33 @@ type main_navigationAccess {
 }
 
 type MainNavigationFields {
+  logo: MainNavigationFields_logo
   items: MainNavigationFields_items
   updatedAt: MainNavigationFields_updatedAt
   createdAt: MainNavigationFields_createdAt
+}
+
+type MainNavigationFields_logo {
+  create: MainNavigationFields_logo_Create
+  read: MainNavigationFields_logo_Read
+  update: MainNavigationFields_logo_Update
+  delete: MainNavigationFields_logo_Delete
+}
+
+type MainNavigationFields_logo_Create {
+  permission: Boolean!
+}
+
+type MainNavigationFields_logo_Read {
+  permission: Boolean!
+}
+
+type MainNavigationFields_logo_Update {
+  permission: Boolean!
+}
+
+type MainNavigationFields_logo_Delete {
+  permission: Boolean!
 }
 
 type MainNavigationFields_items {
@@ -12353,6 +13083,9 @@ type Mutation {
   createNewsItem(data: mutationNewsItemInput!, locale: LocaleInputType): NewsItem
   updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, locale: LocaleInputType): NewsItem
   deleteNewsItem(id: String!): NewsItem
+  createLogo(data: mutationLogoInput!, locale: LocaleInputType): Logo
+  updateLogo(id: String!, autosave: Boolean, data: mutationLogoUpdateInput!, locale: LocaleInputType): Logo
+  deleteLogo(id: String!): Logo
   createPayloadPreference(data: mutationPayloadPreferenceInput!, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -13237,6 +13970,30 @@ enum NewsItemUpdate_newsItemCategory_MutationInput {
   bottom_corner
 }
 
+input mutationLogoInput {
+  alt: String
+  updatedAt: String
+  createdAt: String
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
+}
+
+input mutationLogoUpdateInput {
+  alt: String
+  updatedAt: String
+  createdAt: String
+  url: String
+  filename: String
+  mimeType: String
+  filesize: Float
+  width: Float
+  height: Float
+}
+
 input mutationPayloadPreferenceInput {
   user: PayloadPreference_UserRelationshipInput
   key: String
@@ -13298,6 +14055,7 @@ input mutationLandingPage_HeroImagesInput {
 }
 
 input mutationMainNavigationInput {
+  logo: String
   items: [mutationMainNavigation_ItemsInput!]
   updatedAt: String
   createdAt: String

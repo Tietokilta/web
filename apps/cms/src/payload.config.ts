@@ -39,6 +39,7 @@ import { Topics } from "./collections/topics";
 import { Users } from "./collections/users";
 import { News } from "./collections/news";
 import { Footer } from "./globals/footer";
+import { Logos } from "./collections/logos";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
 import { revalidateGlobal } from "./hooks/revalidate-globals";
@@ -110,6 +111,7 @@ export default buildConfig({
     News,
     WeeklyNewsletters,
     NewsItems,
+    Logos,
   ],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
@@ -253,6 +255,16 @@ export default buildConfig({
           adapter: azureBlobStorageAdapter({
             connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
             containerName: AZURE_DOCUMENTS_STORAGE_CONTAINER_NAME ?? "",
+            allowContainerCreate:
+              process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
+            baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
+          }),
+        },
+        [Logos.slug]: {
+          disableLocalStorage: true,
+          adapter: azureBlobStorageAdapter({
+            connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
+            containerName: AZURE_MEDIA_STORAGE_CONTAINER_NAME ?? "",
             allowContainerCreate:
               process.env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
             baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",

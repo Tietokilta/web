@@ -13,6 +13,8 @@ import { getCurrentLocale, getScopedI18n } from "../../locales/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
+import Link from "next/link";
+import type { Logo } from "@tietokilta/cms-types/payload";
 
 export async function MobileNav({
   className,
@@ -20,6 +22,7 @@ export async function MobileNav({
 }: React.ComponentPropsWithoutRef<"header">) {
   const t = await getScopedI18n("action");
   const locale = getCurrentLocale();
+  const href = `/${locale}`;
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});
   if (
@@ -27,6 +30,7 @@ export async function MobileNav({
     mainNav.items.length === 0 ||
     !footer ||
     footer.layout.length === 0
+    || !mainNav.logo
   )
     return null;
 
@@ -34,6 +38,8 @@ export async function MobileNav({
   const footerLinks = footer.layout.filter(
     (block): block is LinkRowBlock => block.blockType === "link-row",
   );
+
+  const logo = mainNav.logo;
 
   return (
     <header
@@ -43,7 +49,8 @@ export async function MobileNav({
       )}
       {...rest}
     >
-      <LogoLink locale={locale} />
+      <LogoLink locale={locale} image={logo} />
+      <Link href={href} className="font-mono text-2xl">Tietokilta</Link>
       <Sheet>
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">

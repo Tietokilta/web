@@ -83,6 +83,7 @@ export interface Config {
     news: News;
     'weekly-newsletters': WeeklyNewsletter;
     'news-items': NewsItem;
+    logos: Logo;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -577,6 +578,22 @@ export interface NewsItem {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "logos".
+ */
+export interface Logo {
+  id: string;
+  alt: string;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
@@ -686,6 +703,7 @@ export interface LandingPage {
  */
 export interface MainNavigation {
   id: string;
+  logo: string | Logo;
   items: MainNavigationItem;
   updatedAt?: string | null;
   createdAt?: string | null;

@@ -30,6 +30,12 @@ export const MainNavigation: GlobalConfig = {
   },
   fields: [
     {
+      name: "logo",
+      type: "relationship",
+      relationTo: "logos",
+      required: true,
+    },
+    {
       name: "items",
       type: "array",
       required: true,
