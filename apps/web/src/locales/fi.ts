@@ -11,6 +11,7 @@ export default {
     "Go to previous page": "Siirry edelliselle sivulle",
     "Go to next page": "Siirry seuraavalle sivulle",
     "More pages": "Lisää sivuja",
+    "Skip to main content": "Siirry pääsisältöön",
   },
   headings: {
     "Upcoming events": "Tulevat tapahtumat",
