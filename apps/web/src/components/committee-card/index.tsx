@@ -17,7 +17,7 @@ function CommitteeMemberCard({
   const isChair = !!committeeMember.chair;
 
   return (
-    <div className="relative flex w-full max-w-xs flex-col border-2 border-gray-900 sm:w-44">
+    <li className="relative flex w-full max-w-xs flex-col border-2 border-gray-900 sm:w-44">
       <Image
         alt={photo?.alt ?? ""}
         className="w-full border-b-2 border-gray-900 object-cover object-center"
@@ -27,10 +27,12 @@ function CommitteeMemberCard({
       />
       {isChair ? <GavelIcon className="absolute left-0 top-0 h-6 w-6" /> : null}
       <p className="flex flex-1 flex-col bg-gray-100 text-center">
-        <span className="text-lg font-medium">{committeeMember.name}</span>
-        <span>{insertSoftHyphens(committeeMember.title)}</span>
+        <span className="font-medium">{committeeMember.name}</span>
+        <span className="text-sm">
+          {insertSoftHyphens(committeeMember.title)}
+        </span>
       </p>
-    </div>
+    </li>
   );
 }
 
@@ -42,30 +44,28 @@ export function CommitteeCard({
   isTightLayout?: boolean;
 }): JSX.Element {
   return (
-    <ul
+    <section
       className={cn(
-        "not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6",
+        "not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-16 font-mono md:px-6",
         !isTightLayout && "md:-mx-8 lg:-mx-32 xl:-mx-48 2xl:-mx-64",
       )}
     >
       <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
-        <div className="flex w-5 gap-1">
-          <span className="bg-secondary-600 h-2 w-2 rounded-full border border-gray-900" />
-          <span className="bg-primary-600 h-2 w-2 rounded-full border border-gray-900" />
+        <div className="flex w-8 gap-1">
+          <div className="bg-secondary-600 h-3 w-3 rounded-full border border-gray-900" />
+          <div className="bg-primary-600 h-3 w-3 rounded-full border border-gray-900" />
         </div>
-        <span className="self-center text-sm font-medium">
-          {committee.name}
-        </span>
+        <h2 className="self-center font-medium">{committee.name}</h2>
         <div className="w-5" />
       </div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <ul className="flex flex-wrap justify-center gap-4 md:gap-8">
         {committee.committeeMembers.map(({ committeeMember }) => (
           <CommitteeMemberCard
             committeeMember={committeeMember as CommitteeMember}
             key={(committeeMember as CommitteeMember).id}
           />
         ))}
-      </div>
-    </ul>
+      </ul>
+    </section>
   );
 }

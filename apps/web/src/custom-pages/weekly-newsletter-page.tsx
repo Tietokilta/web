@@ -20,24 +20,24 @@ function NewsItemContent({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <LexicalSerializer nodes={content.root.children} />
-    </article>
-  );
-}
-
-function NewsItemItem({ newsItem }: { newsItem: NewsItem }) {
-  const content = newsItem.content as unknown as EditorState;
-
-  return (
-    <div>
-      <h3 id={stringToId(newsItem.title)}>{newsItem.title}</h3>
-      <NewsItemContent content={content} />
     </div>
   );
 }
 
-function CategoryCollapsible({
+function NewsSection({ newsItem }: { newsItem: NewsItem }) {
+  const content = newsItem.content as unknown as EditorState;
+
+  return (
+    <article>
+      <h3 id={stringToId(newsItem.title)}>{newsItem.title}</h3>
+      <NewsItemContent content={content} />
+    </article>
+  );
+}
+
+function NewsletterCategory({
   title,
   newsItems,
 }: {
@@ -47,14 +47,14 @@ function CategoryCollapsible({
   if (newsItems.length === 0) return null;
 
   return (
-    <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <section className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <h2 className="font-mono text-2xl" id={stringToId(title)}>
         {title}
       </h2>
       {newsItems.map((newsItem) => (
-        <NewsItemItem key={newsItem.id} newsItem={newsItem} />
+        <NewsSection key={newsItem.id} newsItem={newsItem} />
       ))}
-    </div>
+    </section>
   );
 }
 
@@ -136,9 +136,9 @@ function Greetings({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <section className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <LexicalSerializer nodes={content.root.children} />
-    </section>
+    </div>
   );
 }
 
@@ -241,13 +241,13 @@ export default async function Page({ slug }: { slug?: string }) {
             eventsNextWeek={eventsNextWeek}
             signupsThisWeek={signupsThisWeek}
           />
-          <CategoryCollapsible title={t("guild")} newsItems={guildNewsItems} />
-          <CategoryCollapsible
+          <NewsletterCategory title={t("guild")} newsItems={guildNewsItems} />
+          <NewsletterCategory
             title={t("ayy-aalto")}
             newsItems={ayyAaltoNewsItems}
           />
-          <CategoryCollapsible title={t("other")} newsItems={otherNewsItems} />
-          <CategoryCollapsible
+          <NewsletterCategory title={t("other")} newsItems={otherNewsItems} />
+          <NewsletterCategory
             title={t("bottom-corner")}
             newsItems={bottomCornerNewsItems}
           />
