@@ -169,6 +169,7 @@ export interface Media {
   id: string;
   alt: string;
   photographer?: string | null;
+  mediaType?: ('image' | 'logo') | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -686,6 +687,7 @@ export interface LandingPage {
  */
 export interface MainNavigation {
   id: string;
+  logo: string | Media;
   items: MainNavigationItem;
   updatedAt?: string | null;
   createdAt?: string | null;
