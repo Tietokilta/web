@@ -27,24 +27,24 @@ export async function Footer() {
   return (
     <footer className="flex flex-col items-center gap-12 bg-gray-900 px-8 py-16 font-mono text-gray-100">
       {footerSponsors.map((sponsorRow) => (
-        <ul
-          className="flex flex-wrap items-center justify-center gap-4"
-          key={sponsorRow.id}
-        >
-          {sponsorRow.logos?.map((logo) => (
-            <li className="relative max-w-[240px]" key={logo.id}>
-              <Link href={logo.link}>
-                {/* TODO: actually check image color and invert / modify according to contrast or something */}
-                <Image
-                  alt={(logo.image as Media).alt}
-                  className="h-auto w-full object-contain invert"
-                  height={(logo.image as Media).height ?? 0}
-                  src={(logo.image as Media).url ?? ""}
-                  width={(logo.image as Media).width ?? 0}
-                />
-              </Link>
-            </li>
-          ))}
+        <ul className="space-y-4" key={sponsorRow.id}>
+          <h2 className="text-center">{sponsorRow.title}</h2>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            {sponsorRow.logos?.map((logo) => (
+              <li className="relative w-60" key={logo.id}>
+                <Link href={logo.link}>
+                  {/* TODO: actually check image color and invert / modify according to contrast or something */}
+                  <Image
+                    alt={(logo.image as Media).alt}
+                    className="h-auto w-full object-contain invert"
+                    height={(logo.image as Media).height ?? 0}
+                    src={(logo.image as Media).url ?? ""}
+                    width={(logo.image as Media).width ?? 0}
+                  />
+                </Link>
+              </li>
+            ))}
+          </div>
         </ul>
       ))}
       {footerLinks.map((linkRow) => (

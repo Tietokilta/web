@@ -71,6 +71,12 @@ const LogoRowBlock: Block = {
   interfaceName: "SponsorLogoRowBlock",
   fields: [
     {
+      name: "title",
+      type: "text",
+      required: true,
+      localized: true,
+    },
+    {
       name: "logos",
       type: "array",
       fields: [
