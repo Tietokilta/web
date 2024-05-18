@@ -11,6 +11,7 @@ export default {
     "Go to previous page": "Go to previous page",
     "Go to next page": "Go to next page",
     "More pages": "More pages",
+    "Skip to main content": "Skip to main content",
   },
   heading: {
     "Upcoming events": "Upcoming events",

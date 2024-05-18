@@ -35,7 +35,7 @@ export default async function Home({
   const pageInt = parseInt(String(page), 10);
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main id="main" className="flex min-h-screen flex-col">
       <Hero
         images={landingPageData.heroImages
           .map(({ image }) =>
