@@ -63,7 +63,7 @@ async function NavigationLink({
               <li key={(page as Page).id}>
                 <Button
                   asChild
-                  className="w-full border-b-0 pl-0"
+                  className="mb-2 mr-2 w-full border-b-0 pb-0 pl-0 pr-0"
                   variant="link"
                 >
                   <Link href={(page as Page).path ?? "#broken"}>
