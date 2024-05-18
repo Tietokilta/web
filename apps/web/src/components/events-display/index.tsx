@@ -158,9 +158,9 @@ export async function EventsDisplay({
         className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
         href={eventsListPath ?? `/${locale}/events`}
       >
-        <h3 className="font-mono text-2xl font-bold text-gray-900">
+        <h2 className="font-mono text-2xl font-bold text-gray-900">
           {t("Upcoming events")}
-        </h3>
+        </h2>
       </Link>
 
       <Suspense fallback={<EventListSkeleton />}>
