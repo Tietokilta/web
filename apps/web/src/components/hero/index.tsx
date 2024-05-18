@@ -104,7 +104,7 @@ export function Hero({
   }, [images.length, texts]);
 
   return (
-    <section className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
+    <div className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
       {images.map((image, imageIndex) => (
         <ImageWithCitation
           key={image.url}
@@ -118,6 +118,6 @@ export function Hero({
           ref={ref}
         />
       </div>
-    </section>
+    </div>
   );
 }
