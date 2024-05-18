@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
 import { useScramble } from "use-scramble";
-import TikLogo from "../../assets/TiK-logo.png";
 
 export function Hero({ images, texts }: { images: string[]; texts: string[] }) {
   const [currentImage, setCurrentImage] = useState(
