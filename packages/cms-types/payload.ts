@@ -168,6 +168,7 @@ export interface Topic {
 export interface Media {
   id: string;
   alt: string;
+  photographer?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;

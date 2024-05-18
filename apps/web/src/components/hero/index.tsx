@@ -2,17 +2,72 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { cn } from "../../lib/utils";
 import { useScramble } from "use-scramble";
-import { shuffle } from "lodash";
+import _ from "lodash";
+import { cn } from "../../lib/utils";
 
-export function Hero({ images, texts }: { images: string[]; texts: string[] }) {
-  const [currentImage, setCurrentImage] = useState(
+export interface ImageWithPhotographer {
+  url: string;
+  photographer: string | null | undefined;
+}
+
+function ImageWithCitation({
+  image,
+  isCurrentImage,
+}: {
+  image: ImageWithPhotographer;
+  isCurrentImage: boolean;
+}) {
+  if (!image.photographer) {
+    return (
+      <Image
+        alt=""
+        className={cn(
+          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000",
+          isCurrentImage ? "opacity-25" : "opacity-0",
+        )}
+        fill
+        priority
+        src={image.url}
+      />
+    );
+  }
+
+  return (
+    <blockquote key={image.url} className="absolute contents">
+      <Image
+        alt=""
+        className={cn(
+          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000",
+          isCurrentImage ? "opacity-25" : "opacity-0",
+        )}
+        fill
+        priority
+        src={image.url}
+      />
+      <footer className="contents">
+        <cite className="absolute bottom-0 right-2 text-gray-100 opacity-50">
+          © {image.photographer}
+        </cite>
+      </footer>
+    </blockquote>
+  );
+}
+
+export function Hero({
+  images,
+  texts,
+}: {
+  images: ImageWithPhotographer[];
+  texts: string[];
+}) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(
     new Date().getUTCDate() % images.length,
   );
 
   const [currentText, setCurrentText] = useState(texts[0]);
-  const [_, setTextIndex] = useState(0);
+  // eslint-disable-next-line react/hook-use-state -- prev index used directly in the setter
+  const [, setTextIndex] = useState(0);
 
   const { ref } = useScramble({
     text: currentText,
@@ -22,11 +77,11 @@ export function Hero({ images, texts }: { images: string[]; texts: string[] }) {
   });
 
   useEffect(() => {
-    const shuffledTexts = shuffle(texts);
+    const shuffledTexts = _.shuffle(texts);
     setCurrentText(shuffledTexts[0]);
 
     const interval = setInterval(() => {
-      setCurrentImage((_current) => (_current + 1) % images.length);
+      setCurrentImageIndex((_current) => (_current + 1) % images.length);
       setTextIndex((_textIndex) => {
         const newIndex = (_textIndex + 1) % texts.length;
         setCurrentText(shuffledTexts[newIndex]);
@@ -37,21 +92,15 @@ export function Hero({ images, texts }: { images: string[]; texts: string[] }) {
     return () => {
       clearInterval(interval);
     };
-  }, [images.length]);
+  }, [images.length, texts]);
 
   return (
     <section className="relative flex h-[85vh] items-end bg-gray-900 py-24">
       {images.map((image, imageIndex) => (
-        <Image
-          alt=""
-          className={cn(
-            "z-10 object-cover object-center transition-opacity duration-1000",
-            imageIndex === currentImage ? "opacity-25" : "opacity-0",
-          )}
-          fill
-          key={image}
-          priority
-          src={image}
+        <ImageWithCitation
+          key={image.url}
+          image={image}
+          isCurrentImage={imageIndex === currentImageIndex}
         />
       ))}
       <div className="container z-20 mx-auto px-6 font-mono text-4xl font-semibold text-gray-100 md:text-6xl">
