@@ -82,7 +82,7 @@ export function BoardGrid({ board }: { board: Board }): JSX.Element {
           width={groupPhoto.width ?? 0}
         />
       ) : null}
-      <ul className="not-prose grid grid-cols-1 items-center justify-center gap-4 md:-mx-16 md:grid-flow-row-dense md:grid-cols-2 md:gap-6 lg:-mx-32 xl:-mx-48 2xl:-mx-64">
+      <ul className="not-prose grid grid-cols-1 items-center justify-center gap-4 md:-mx-8 md:grid-flow-row-dense md:grid-cols-2 md:gap-6 lg:-mx-32 xl:-mx-48 2xl:-mx-64">
         {board.boardMembers.map(({ boardMember }) => (
           <BoardMemberCard
             boardMember={boardMember as BoardMember}

@@ -44,8 +44,8 @@ export function CommitteeCard({
   return (
     <ul
       className={cn(
-        "not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono  md:px-6 ",
-        !isTightLayout && "md:-mx-16 lg:-mx-32 xl:-mx-48 2xl:-mx-64",
+        "not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6",
+        !isTightLayout && "md:-mx-8 lg:-mx-32 xl:-mx-48 2xl:-mx-64",
       )}
     >
       <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
