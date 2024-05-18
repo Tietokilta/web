@@ -27,7 +27,9 @@ function ImageWithCitation({
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
-        priority
+        priority={isCurrentImage}
+        loading="eager"
+        quality={50}
         src={image.url}
       />
     );
@@ -42,7 +44,9 @@ function ImageWithCitation({
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
-        priority
+        priority={isCurrentImage}
+        loading="eager"
+        quality={50}
         src={image.url}
       />
       <footer className="contents">
