@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import { Button, Progress } from "@tietokilta/ui";
+import { type Metadata } from "next";
 import {
   type IlmomasiinaEvent,
   fetchEvent,
@@ -310,6 +311,21 @@ interface PageProps {
     slug: string;
   };
 }
+
+export const generateMetadata = async ({
+  params: { slug },
+}: PageProps): Promise<Metadata> => {
+  const event = await fetchEvent(slug);
+  if (!event.ok) {
+    console.warn("Failed to fetch event from Ilmomasiina", event.error);
+    return {};
+  }
+
+  return {
+    title: event.data.title,
+    description: event.data.description,
+  };
+};
 
 export default async function Page({ params: { slug } }: PageProps) {
   const event = await fetchEvent(slug);

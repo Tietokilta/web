@@ -58,10 +58,10 @@ module.exports = {
               },
             },
             "h2::before": {
-              content: "'#'",
+              content: "'#'/''",
             },
             "h3::before": {
-              content: "'##'",
+              content: "'##'/''",
             },
             "a:not([data-relation])": {
               textDecoration: "none",
@@ -104,7 +104,7 @@ module.exports = {
               borderLeftWidth: "0.15em",
               "&::before": {
                 // zero width space because open comment breaks something internally
-                content: "'/\u200b*'",
+                content: "'/\u200b*'/''",
                 fontFamily: theme("fontFamily.mono").join(", "),
                 fontStyle: "normal",
                 position: "absolute",
@@ -112,7 +112,7 @@ module.exports = {
                 left: "-0.8em",
               },
               "&::after": {
-                content: "'*/'",
+                content: "'*/'/''",
                 fontFamily: theme("fontFamily.mono").join(", "),
                 fontStyle: "normal",
                 position: "absolute",
@@ -126,7 +126,7 @@ module.exports = {
             },
             "blockquote:has(+ blockquote)": {
               "&::after": {
-                content: "'*'",
+                content: "'*'/''",
                 left: "calc(-0.8em + 1ch)",
                 bottom: "calc(-1.4em)",
               },
