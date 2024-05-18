@@ -25,9 +25,15 @@ export const LandingPage: GlobalConfig = {
   fields: [
     {
       name: "heroText",
-      type: "text",
+      type: "array",
       localized: true,
       required: true,
+      fields: [
+        {
+          name: "text",
+          type: "text",
+        },
+      ],
     },
     {
       name: "heroImages",

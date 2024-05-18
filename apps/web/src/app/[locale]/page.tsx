@@ -40,7 +40,9 @@ export default async function Home({
         images={landingPageData.heroImages
           .map(({ image }) => (typeof image === "string" ? null : image?.url))
           .filter((url): url is string => Boolean(url))}
-        text={landingPageData.heroText}
+        texts={landingPageData.heroText
+          .map(({ text }) => (typeof text === "string" ? text : null))
+          .filter((url): url is string => Boolean(url))}
       />
       <div className="container mx-auto grid grid-cols-1 gap-12 px-6 py-12 lg:grid-cols-2">
         <section className="order-last space-y-4 lg:order-first">

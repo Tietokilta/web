@@ -3,16 +3,36 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "../../lib/utils";
+import { useScramble } from "use-scramble";
+import { shuffle } from "lodash";
 
-export function Hero({ images, text }: { images: string[]; text: string }) {
+export function Hero({ images, texts }: { images: string[]; texts: string[] }) {
   const [currentImage, setCurrentImage] = useState(
     new Date().getUTCDate() % images.length,
   );
 
+  const [currentText, setCurrentText] = useState(texts[0]);
+  const [_, setTextIndex] = useState(0);
+
+  const { ref } = useScramble({
+    text: currentText,
+    seed: 1,
+    tick: 2,
+    speed: 0.7,
+  });
+
   useEffect(() => {
+    const shuffledTexts = shuffle(texts);
+    setCurrentText(shuffledTexts[0]);
+
     const interval = setInterval(() => {
       setCurrentImage((_current) => (_current + 1) % images.length);
-    }, 5000);
+      setTextIndex((_textIndex) => {
+        const newIndex = (_textIndex + 1) % texts.length;
+        setCurrentText(shuffledTexts[newIndex]);
+        return newIndex;
+      });
+    }, 15000);
 
     return () => {
       clearInterval(interval);
@@ -34,8 +54,8 @@ export function Hero({ images, text }: { images: string[]; text: string }) {
           src={image}
         />
       ))}
-      <div className="container z-20 mx-auto px-6 font-mono text-4xl text-gray-100 md:text-6xl">
-        <p className="w-1/2">{text}</p>
+      <div className="container z-20 mx-auto px-6 font-mono text-4xl font-semibold text-gray-100 md:text-6xl">
+        <p className="w-1/2" ref={ref} />
       </div>
     </section>
   );
