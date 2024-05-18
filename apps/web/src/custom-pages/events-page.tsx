@@ -108,31 +108,29 @@ async function SignupQuotas({
 function EventCard({ event }: { event: IlmomasiinaEvent }) {
   const locale = getCurrentLocale();
   return (
-    <li>
+    <li className="shadow-solid group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6">
       <Link
-        className="shadow-solid group flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6"
         href={`/${locale}/events/${event.slug}`}
+        className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:h-full before:w-full before:cursor-[inherit] group-hover:underline md:w-1/3"
       >
-        <h2 className="text-pretty text-lg font-bold underline-offset-2 group-hover:underline md:w-1/3">
-          {event.title}
-        </h2>
-
-        {event.date ? (
-          <time className="md:w-1/6" dateTime={event.date}>
-            {formatDateYear(event.date, locale)}
-          </time>
-        ) : (
-          <div className="md:w-1/6" />
-        )}
-        <SignUpText
-          className="md:w-1/4"
-          endDate={event.registrationEndDate}
-          startDate={event.registrationStartDate}
-        />
-        {event.quotas.length > 0 ? (
-          <SignupQuotas className="md:w-1/4" quotas={event.quotas} />
-        ) : null}
+        <h2>{event.title}</h2>
       </Link>
+
+      {event.date ? (
+        <time className="md:w-1/6" dateTime={event.date}>
+          {formatDateYear(event.date, locale)}
+        </time>
+      ) : (
+        <div className="md:w-1/6" />
+      )}
+      <SignUpText
+        className="md:w-1/4"
+        endDate={event.registrationEndDate}
+        startDate={event.registrationStartDate}
+      />
+      {event.quotas.length > 0 ? (
+        <SignupQuotas className="md:w-1/4" quotas={event.quotas} />
+      ) : null}
     </li>
   );
 }

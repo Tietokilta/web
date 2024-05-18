@@ -1,3 +1,5 @@
+import { getScopedI18n } from "../../locales/server";
+
 const versionShaLong = process.env.GIT_COMMIT_SHA ?? "development";
 const year = new Date().getFullYear();
 const showVersionSha =
@@ -7,7 +9,8 @@ const shaLinkUrl =
     ? `https://github.com/Tietokilta/web/tree/${versionShaLong}`
     : "https://youtu.be/dQw4w9WgXcQ";
 
-export function VersionSha() {
+export async function VersionSha() {
+  const t = await getScopedI18n("generic");
   return (
     <span className="text-sm">
       <span>© {year} Tietokilta ry</span>
@@ -20,7 +23,8 @@ export function VersionSha() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {versionShaLong.slice(0, 7)}
+            <span className="sr-only">{t("Version")}</span>
+            <span>{versionShaLong.slice(0, 7)}</span>
           </a>
         </>
       ) : null}

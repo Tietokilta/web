@@ -13,7 +13,7 @@ import {
 } from "../pagination";
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../../lib/api/external/ilmomasiina";
-import { getCurrentLocale, getScopedI18n } from "../../locales/server";
+import { getCurrentLocale, getI18n, getScopedI18n } from "../../locales/server";
 import { formatDatetime } from "../../lib/utils";
 
 function EventListSkeleton() {
@@ -39,7 +39,12 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           {event.title}
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
-          <Link href={eventUrl}>{t("Read more")}</Link>
+          <Link href={eventUrl}>
+            <span aria-hidden="true">{t("Read more")}</span>
+            <span className="sr-only">
+              {t("Read more about {something}", { something: event.title })}
+            </span>
+          </Link>
         </Button>
       </div>
       <div className="shrink-0 truncate font-medium">
@@ -61,7 +66,12 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
         ) : null}
       </div>
       <Button asChild className="md:hidden" variant="link">
-        <Link href={eventUrl}>{t("Read more")}</Link>
+        <Link href={eventUrl}>
+          <span aria-hidden="true">{t("Read more")}</span>
+          <span className="sr-only">
+            {t("Read more about {something}", { something: event.title })}
+          </span>
+        </Link>
       </Button>
     </li>
   );
@@ -70,7 +80,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const events = await fetchEvents();
   const locale = getCurrentLocale();
-  const t = await getScopedI18n("action");
+  const t = await getI18n();
   if (!events.ok) {
     console.warn("Failed to fetch events from Ilmomasiina", events.error);
     return null;
@@ -99,9 +109,9 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationPrevious
                   href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
-                  ariaLabel={t("Go to previous page")}
+                  ariaLabel={t("action.Go to previous page")}
                 >
-                  {t("Back")}
+                  {t("action.Back")}
                 </PaginationPrevious>
               </PaginationItem>
             ) : null}
@@ -111,7 +121,8 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
                   isActive={page === currentPage}
                   href={`/${locale}/?page=${page.toFixed()}`}
                 >
-                  {page}
+                  <span className="sr-only">{t("generic.Page")}</span>
+                  <span>{page}</span>
                 </PaginationLink>
               </PaginationItem>
             ))}
@@ -119,9 +130,9 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationNext
                   href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
-                  ariaLabel={t("Go to next page")}
+                  ariaLabel={t("action.Go to next page")}
                 >
-                  {t("Next")}
+                  {t("action.Next")}
                 </PaginationNext>
               </PaginationItem>
             ) : null}
