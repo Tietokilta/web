@@ -162,7 +162,18 @@ export type CommitteesYearBlockNode = BaseBlockNode & {
   };
 };
 
-export type BlockNode = CommitteesYearBlockNode;
+export type ImageLinkGridBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "image-link-grid";
+    images: {
+      image: Media;
+      caption?: string | null | undefined;
+      externalLink?: string | null | undefined;
+    }[];
+  };
+};
+
+export type BlockNode = CommitteesYearBlockNode | ImageLinkGridBlockNode;
 
 export type Node =
   | TextNode
