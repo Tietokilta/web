@@ -47,6 +47,7 @@ import { CommitteesInYear } from "./blocks/committees-in-year";
 import { WeeklyNewsletters } from "./collections/weekly-newsletters/weekly-newsletters";
 import { NewsItems } from "./collections/weekly-newsletters/news-items";
 import { ActionsLink, ActionsView } from "./views/actions-view";
+import { ImageLinkGrid } from "./blocks/image-link-grid";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -168,7 +169,7 @@ export default buildConfig({
       }),
       BlockQuoteFeature(),
       BlocksFeature({
-        blocks: [CommitteesInYear],
+        blocks: [CommitteesInYear, ImageLinkGrid],
       }),
       UploadFeature({
         collections: {
