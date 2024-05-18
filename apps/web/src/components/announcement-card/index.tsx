@@ -91,7 +91,10 @@ export async function AnnouncementCard({ news }: { news: News }) {
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild className="md:self-end" variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
-              {t("Read more")}
+              <span aria-hidden="true">{t("Read more")}</span>
+              <span className="sr-only">
+                {t("Read more about {something}", { something: news.title })}
+              </span>
             </Link>
           </Button>
         ) : null}
@@ -108,7 +111,10 @@ export async function AnnouncementCard({ news }: { news: News }) {
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
-              {t("Read more")}
+              <span aria-hidden="true">{t("Read more")}</span>
+              <span className="sr-only">
+                {t("Read more about {something}", { something: news.title })}
+              </span>
             </Link>
           </Button>
         ) : null}

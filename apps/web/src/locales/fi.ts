@@ -5,6 +5,7 @@ export default {
     "Toggle menu": "Avaa valikko",
     "Sign up": "Ilmoittaudu",
     "Read more": "Lue lisää",
+    "Read more about {something}": "Lue lisää tapahtumasta {something}",
     Back: "Takaisin",
     Previous: "Edellinen",
     Next: "Seuraava",
@@ -12,6 +13,10 @@ export default {
     "Go to next page": "Siirry seuraavalle sivulle",
     "More pages": "Lisää sivuja",
     "Skip to main content": "Siirry pääsisältöön",
+  },
+  generic: {
+    Page: "Sivu",
+    Version: "Versio",
   },
   headings: {
     "Upcoming events": "Tulevat tapahtumat",

@@ -71,7 +71,11 @@ export async function Footer() {
                     : (link.page as Page).path ?? "#broken"
                 }
               >
-                <RenderIcon className="h-6 w-6" name={link.icon} />
+                <RenderIcon
+                  aria-hidden="true"
+                  className="h-6 w-6"
+                  name={link.icon}
+                />
                 <span className={cn(!linkRow.showLabel && "sr-only")}>
                   {link.label}
                 </span>
