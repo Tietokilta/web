@@ -1,7 +1,7 @@
 import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload";
 import { EventsDisplay } from "../../components/events-display";
-import { Hero } from "../../components/hero";
+import { Hero, type ImageWithPhotographer } from "../../components/hero";
 import { LexicalSerializer } from "../../components/lexical/lexical-serializer";
 import { fetchLandingPage } from "../../lib/api/landing-page";
 import { AnnouncementCard } from "../../components/announcement-card";
@@ -38,8 +38,12 @@ export default async function Home({
     <main className="flex min-h-screen flex-col">
       <Hero
         images={landingPageData.heroImages
-          .map(({ image }) => (typeof image === "string" ? null : image?.url))
-          .filter((url): url is string => Boolean(url))}
+          .map(({ image }) =>
+            typeof image === "string"
+              ? null
+              : { url: image?.url, photographer: image?.photographer },
+          )
+          .filter((url): url is ImageWithPhotographer => Boolean(url))}
         texts={landingPageData.heroTexts
           .map(({ text }) => (typeof text === "string" ? text : null))
           .filter((url): url is string => Boolean(url))}
