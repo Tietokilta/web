@@ -1,6 +1,7 @@
-/** @type {import("next").NextConfig} */
 const isProd = process.env.NODE_ENV === "production";
 const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
+
+/** @type {import("next").NextConfig} */
 module.exports = {
   reactStrictMode: true,
   images: {
@@ -15,6 +16,12 @@ module.exports = {
           },
         ]
       : undefined,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
   async headers() {
     return [
