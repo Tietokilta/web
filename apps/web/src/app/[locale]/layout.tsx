@@ -4,6 +4,7 @@ import { Inter, Roboto_Mono } from "next/font/google";
 import { Footer } from "../../components/footer";
 import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
+import { SkipLink } from "../../components/skip-link";
 import { cn } from "../../lib/utils";
 import "./globals.css";
 import { type Locale } from "../../locales/server";
@@ -54,6 +55,7 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
+        <SkipLink />
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
           <MainNav className="sticky top-0 z-50 hidden lg:block" />
