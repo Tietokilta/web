@@ -99,28 +99,6 @@ const standardPageFields = [
   },
 ] satisfies Field[];
 
-const specialPageFields = [
-  {
-    name: "specialPageType",
-    type: "select",
-    required: true,
-    options: [
-      {
-        label: "Events List",
-        value: "events-list",
-      },
-      {
-        label: "Weekly Newsletter",
-        value: "weekly-newsletter",
-      },
-      {
-        label: "Weekly Newsletters List",
-        value: "weekly-newsletters-list",
-      },
-    ],
-  },
-] satisfies Field[];
-
 const redirectFields = [
   {
     name: "redirectToPage",
@@ -173,12 +151,20 @@ export const Pages: CollectionConfig = {
           value: "standard",
         },
         {
-          label: "Special Page",
-          value: "special",
-        },
-        {
           label: "Redirect to Page",
           value: "redirect",
+        },
+        {
+          label: "Special: Events List",
+          value: "events-list",
+        },
+        {
+          label: "Special: Weekly Newsletter",
+          value: "weekly-newsletter",
+        },
+        {
+          label: "Special: Weekly Newsletters List",
+          value: "weekly-newsletters-list",
         },
       ],
     },
@@ -187,12 +173,6 @@ export const Pages: CollectionConfig = {
       admin: {
         ...field.admin,
         condition: (data: Partial<Page>) => data.type === "standard",
-      },
-    })),
-    ...specialPageFields.map((field) => ({
-      ...field,
-      admin: {
-        condition: (data: Partial<Page>) => data.type === "special",
       },
     })),
     ...redirectFields.map((field) => ({
