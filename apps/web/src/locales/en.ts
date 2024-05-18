@@ -5,6 +5,7 @@ export default {
     "Toggle menu": "Toggle menu",
     "Sign up": "Sign up",
     "Read more": "Read more",
+    "Read more about {eventTitle}": "Read more about {eventTitle}",
     Back: "Back",
     Previous: "Previous",
     Next: "Next",
@@ -12,6 +13,10 @@ export default {
     "Go to next page": "Go to next page",
     "More pages": "More pages",
     "Skip to main content": "Skip to main content",
+  },
+  generic: {
+    Page: "Page",
+    Version: "Version",
   },
   heading: {
     "Upcoming events": "Upcoming events",

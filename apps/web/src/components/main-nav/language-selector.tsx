@@ -17,7 +17,8 @@ export function LanguageSelector() {
             className="underline-offset-2 hover:text-gray-400 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline"
             href={pathname.replace(/^\/(?:en|fi)/, "/fi")}
           >
-            FI
+            <span aria-hidden="true">FI</span>
+            <span className="sr-only">Suomeksi</span>
           </NextLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
@@ -27,7 +28,8 @@ export function LanguageSelector() {
             className="underline-offset-2 hover:text-gray-400 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline"
             href={pathname.replace(/^\/(?:en|fi)/, "/en")}
           >
-            EN
+            <span aria-hidden="true">EN</span>
+            <span className="sr-only">In English</span>
           </NextLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
