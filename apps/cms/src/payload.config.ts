@@ -167,7 +167,7 @@ export default buildConfig({
       }),
       UploadFeature({
         collections: {
-          media: {
+          [Media.slug]: {
             fields: [
               {
                 name: "caption",
@@ -178,6 +178,9 @@ export default buildConfig({
                 maxLength: 100,
               },
             ],
+          },
+          [Documents.slug]: {
+            fields: [],
           },
         },
       }),
