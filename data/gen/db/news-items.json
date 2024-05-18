@@ -1,15 +1,14 @@
 [{
 	"_id": {
-		"$oid": "663cebc71bd3afb8c3272507"
+		"$oid": "66489c47efa9384f07f5bf87"
 	},
 	"title": {
-		"fi": "Uus tapahtuma 2"
+		"fi": "Kiltasukat",
+		"en": "Guild socks"
 	},
-	"newsItemCategory": {
-		"fi": "guild"
-	},
+	"newsItemCategory": "guild",
 	"date": {
-		"$date": "2024-05-17T12:00:00Z"
+		"$date": "2024-05-15T12:00:00Z"
 	},
 	"content": {
 		"fi": {
@@ -23,10 +22,70 @@
 						"children": [
 							{
 								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Kiltasukat ovat saapuneet!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Moi lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat vehicula dui sit amet consequat. Nullam et ultricies elit. Morbi pellentesque pulvinar neque, ac elementum nibh porta malesuada. Donec egestas placerat orci non consequat. Sed aliquam odio a erat consequat vulputate. Curabitur egestas bibendum dolor, eget laoreet augue auctor ut. Nulla egestas ligula vel magna mattis, eget ornare turpis dignissim. Maecenas iaculis in massa eu rutrum. Pellentesque accumsan venenatis ante, in tristique tellus scelerisque non. Integer sed faucibus felis. Vivamus auctor ante vel eros egestas placerat. Vivamus pharetra convallis lacus at faucibus. Aliquam fringilla congue nisi, eu rutrum neque imperdiet eget. Pellentesque ut faucibus augue, eget varius lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc luctus, odio nec dignissim interdum, est augue elementum arcu, eget cursus nibh purus eu neque.",
+								"text": " 🎉",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Voit noutaa kiltasukkasi seuraavaan aikaan:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "🌸 Ke 15.5. klo 12-15 @ kiltis",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Jos ennakkotilaus meni sinulta ohi on sukkia myynnissä vielä rajoitettu määrä 7€/pari! 💥",
 								"type": "text",
 								"version": 1
 							}
@@ -40,28 +99,8 @@
 				],
 				"direction": "ltr"
 			}
-		}
-	},
-	"createdAt": {
-		"$date": "2024-05-09T15:29:11.297Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-09T18:22:13.407Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "663cf6e41bd3afb8c3279d5d"
-	},
-	"title": {
-		"fi": "Ayy pelle"
-	},
-	"newsItemCategory": {
-		"fi": "ayy-aalto"
-	},
-	"content": {
-		"fi": {
+		},
+		"en": {
 			"root": {
 				"type": "root",
 				"format": "",
@@ -72,114 +111,76 @@
 						"children": [
 							{
 								"detail": 0,
-								"format": 0,
+								"format": 1,
 								"mode": "normal",
 								"style": "",
-								"text": "Ayy pelle",
+								"text": "The guild socks have arrived!",
 								"type": "text",
 								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					}
-				],
-				"direction": "ltr"
-			}
-		}
-	},
-	"createdAt": {
-		"$date": "2024-05-09T16:16:36.115Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-09T16:16:36.115Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "663cf6f31bd3afb8c3279d68"
-	},
-	"title": {
-		"fi": "Sponssipostaus"
-	},
-	"newsItemCategory": {
-		"fi": "other"
-	},
-	"content": {
-		"fi": {
-			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
-				"children": [
-					{
-						"children": [
+							},
 							{
 								"detail": 0,
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Antakaa rahaa",
+								"text": " 🎉",
 								"type": "text",
 								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					}
-				],
-				"direction": "ltr"
-			}
-		}
-	},
-	"createdAt": {
-		"$date": "2024-05-09T16:16:51.805Z"
-	},
-	"updatedAt": {
-		"$date": "2024-05-09T16:16:51.805Z"
-	},
-	"__v": 0
-},
-{
-	"_id": {
-		"$oid": "663cf7061bd3afb8c3279d73"
-	},
-	"title": {
-		"fi": "Hyödyllisiä linkkejä"
-	},
-	"newsItemCategory": {
-		"fi": "bottom-corner"
-	},
-	"content": {
-		"fi": {
-			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
-				"children": [
-					{
-						"children": [
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
 							{
 								"detail": 0,
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Linkit on tääl",
+								"text": "You can pick up your guild socks at the following time:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "🌸 Wed 15.5. at 12-15 @ guild room",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "If you missed the pre-order, there are still a limited number of socks for sale for 7€/pair! 💥",
 								"type": "text",
 								"version": 1
 							}
 						],
 						"direction": "ltr",
-						"format": "",
+						"format": "start",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -190,25 +191,30 @@
 		}
 	},
 	"createdAt": {
-		"$date": "2024-05-09T16:17:10.47Z"
+		"$date": "2024-05-18T12:17:11.791Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T16:17:10.47Z"
+		"$date": "2024-05-18T12:52:17.387Z"
 	},
 	"__v": 0
 },
 {
 	"_id": {
-		"$oid": "663d037c024c34d8bec70843"
+		"$oid": "66489c82efa9384f07f5bf8f"
 	},
 	"title": {
-		"fi": "Uus tapahtuma 1"
+		"fi": "Discmania x AthleTiKs frisbeegolfturnaus",
+		"en": "Discmania x AthleTiKs Disc Golf Tournament"
 	},
-	"newsItemCategory": {
-		"fi": "guild"
-	},
+	"newsItemCategory": "guild",
 	"date": {
-		"$date": "2024-05-12T12:00:00Z"
+		"$date": "2024-05-21T12:00:00Z"
+	},
+	"signupStartDate": {
+		"$date": "2024-05-13T12:00:00Z"
+	},
+	"signupEndDate": {
+		"$date": "2024-05-19T12:00:00Z"
 	},
 	"content": {
 		"fi": {
@@ -225,9 +231,250 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Moi lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat vehicula dui sit amet consequat. Nullam et ultricies elit. Morbi pellentesque pulvinar neque, ac elementum nibh porta malesuada. Donec egestas placerat orci non consequat. Sed aliquam odio a erat consequat vulputate. Curabitur egestas bibendum dolor, eget laoreet augue auctor ut. Nulla egestas ligula vel magna mattis, eget ornare turpis dignissim. Maecenas iaculis in massa eu rutrum. Pellentesque accumsan venenatis ante, in tristique tellus scelerisque non. Integer sed faucibus felis. Vivamus auctor ante vel eros egestas placerat. Vivamus pharetra convallis lacus at faucibus. Aliquam fringilla congue nisi, eu rutrum neque imperdiet eget. Pellentesque ut faucibus augue, eget varius lorem. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc luctus, odio nec dignissim interdum, est augue elementum arcu, eget cursus nibh purus eu neque.",
+								"text": "AthleTiKsin frisbeeturnaus palaa parin vuoden tauon jälkeen isompana kuin koskaan 🔥 sen lisäksi että turnaukseen voi tulla vain tutustumaan ja kokeilemaan lajia, parhaimmat palkitaan upeilla discmanian tuotteilla! Kierroksen jälkeen pelataan minipelejä joissa kaikilla on myös mahdollisuus voittaa discmanian palkintoja 😏",
 								"type": "text",
 								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Turnaus järjestetään 20 väyläisellä ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Puolarmaarin frisbeegolfradalla",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://frisbeegolfradat.fi/rata/puolarmaari_frisbeegolf/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " tiistaina 21.5 klo 18 alkaen. Rata on aloittelijaystävällinen ja soveltuu leppoisaan illan viettämiseen ja kevyeen heittämiseen",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ilmoittautuminen on auki!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tarkemmat tiedot tapahtumasta ja ilmo löytyy ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "tästä linkistä",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://tietokilta.fi/tapahtumat/2032",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "The AthleTiKs Disc Golf Tournament is back after a couple of years, bigger than ever 🔥 Besides just a chance to try out the sport, the best players will be rewarded with fantastic Discmania products! After the main event, there will be mini-games where everyone has a chance to win more Discmania prizes 😏",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "The tournament will be held on the 20-hole ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Puolarmaari disc golf course",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://frisbeegolfradat.fi/rata/puolarmaari_frisbeegolf/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " on Tuesday, May 21st starting at 18:00. The course is beginner-friendly and perfect for a relaxed evening of light play",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "The sign-up is open!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "For more information and signup, visit ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "visit this link",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://tietokilta.fi/tapahtumat/2032",
+									"newTab": true,
+									"linkType": "custom"
+								}
 							}
 						],
 						"direction": "ltr",
@@ -242,17 +489,4695 @@
 		}
 	},
 	"createdAt": {
-		"$date": "2024-05-09T17:10:20.071Z"
+		"$date": "2024-05-18T12:18:10.642Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T18:21:31.568Z"
+		"$date": "2024-05-18T12:53:56.715Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489cd5efa9384f07f5bf99"
+	},
+	"title": {
+		"fi": "TiKxFK Grilli- / peli-ilta",
+		"en": "TiKxFK BBQ / Game Night"
+	},
+	"newsItemCategory": "guild",
+	"date": {
+		"$date": "2024-05-23T12:00:00Z"
+	},
+	"signupStartDate": {
+		"$date": "2024-05-14T12:00:00Z"
+	},
+	"signupEndDate": {
+		"$date": "2024-05-23T12:00:00Z"
+	},
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "TiKxFK Grilli- / peli-ilta🌭",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tervetuloa torstaina 23.5 Kylän olohuoneelle grillailemaan🔥, pelailemaan🎲 ja ehkä jopa tutustumaan uusiin ihmisiin toisesta killasta🗣!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Meiltä löytyy paikalta vähän grillattavaa, ehkä jotain pientä purtavaa, lautapelejä ja ulkopelejäkin kuten mölkkyä sekä krokettia🎳.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Aloitellaan klo 16 ja lopetellaan klo 22 aikoihin, mutta paikalle voi saapua ja lähteä omalla ajallaan. Halutessaan voi tuoda myös omia grillattavia!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "TL;DR:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "MITÄ? TiKxFK Grilli- / peli-ilta🌭",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "MISSÄ? Kylän olohuone, Jämeräntaival 5 A🏡",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "MILLOIN? Torstaina 23.5 klo 16:00🕓 eteenpäin➡️",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "PALJON MAKSAA? Ei mitään (0€)🤯",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "MIKSI? Pelit, grilli ja poikkitieteellisyys♟",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Ilmoittautuminen on auki!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://tietokilta.fi/tapahtumat/ilmot/TiKxFK-Grilli-peli-ilta",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "TiKxFK BBQ / Game Night🌭",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Welcome to the Village living room on Thursday 23.5 to grill🔥, play some games🎲, and maybe even meet some new people from another guild🗣!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "We'll have some food to grill, maybe some snacks, board games and outdoors games like Mölkky and croquet 🎳.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "We'll start at around 16 o'clock and end around 22, but you can come and go as you wish. You can also bring your own food to barbecue if you wish!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "TL;DR:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "WHAT? TiKxFK BBQ / Game Night🌭",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "WHERE? Village living room, Jämeräntaival 5 A🏡",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "WHEN? Thursday 23.5 from 16:00🕓 onwards➡️",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "HOW MUCH? Nothing (0€)🤯",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "WHY? Games, BBQ, and interdisciplinarity♟",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "The signup is open!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://tietokilta.fi/tapahtumat/ilmot/TiKxFK-Grilli-peli-ilta",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:19:33.436Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:54:43.167Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489d0fefa9384f07f5bfa6"
+	},
+	"title": {
+		"fi": "HKO: Tuhannen sinfonia",
+		"en": "HKO: Symphony of a Thousand"
+	},
+	"newsItemCategory": "guild",
+	"date": {
+		"$date": "2024-05-29T12:00:00Z"
+	},
+	"signupStartDate": {
+		"$date": "2024-05-14T12:00:00Z"
+	},
+	"signupEndDate": {
+		"$date": "2024-05-29T12:00:00Z"
+	},
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tietokilta järjestää yhteislähdön Helsingin Kaupunginorkesterin kauden viimeiseen esitykseen, ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Mahlerin 8. sinfoniaan eli tuttavallisemmin Tuhannen sinfoniaan",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "! Sinfonian julkiset liput on jo myyty loppuun kauan aikaa sitten, mutta Tietokilta onnistui hankkimaan jäsenilleen kymmenen lippua! ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tuhannen sinfonia vaatii suuremmat resurssit kuin mikään muu taidemusiikin teos, siis ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "vähintään 300 esittäjää",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "! Konsertissa Musiikkitalon suureen konserttisaliin kokoontuu kahdeksan solistia, kuusi kuoroa sekä sinfoniaorkesteri mahtavimmassa muodossaan urkuja unohtamatta. Orkesterin riveihin liittyy myös joukko nuoria muusikoita LEAD!-hankkeesta.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "MITÄ?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " HKO:n Tuhannen sinfonia",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "MISSÄ?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Helsingin Musiikkitalo, Mannerheimintie 13A",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "MILLOIN?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " ke 29.5.2024, konsertti klo 19-21",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "MIKSI?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Kerrankin sitä niin hyvää kulttuuria!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "HINTA?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " 10€ opiskelijoille",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "MUUTA?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Yhteislähtö klo 18:15 A Blocilta, liput jaetaan sähköpostitse etukäteen.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Ilmoittautuminen aukeaa tänään klo 12.00!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://tietokilta.fi/tapahtumat/2042",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tietokilta organizes a group departure to the Helsinki Philharmonic Orchestra's season finale performance of ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Mahler's 8th Symphony, affectionately known as the Symphony of a Thousand",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "! Tickets for the symphony have long been sold out, but the Guild managed to secure ten tickets for its members! ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "The Symphony of a Thousand requires greater resources than any other piece of classical music, with ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "at least 300 performers",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "! Eight soloists, six choirs and a symphony orchestra gather in the large concert hall at Musiikkitalo in their most magnificent form, not forgetting the organ. The orchestra will be joined by young musicians from the LEAD! project.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "WHAT?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " HKO's Symphony of a Thousand",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "WHERE?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Musiikkitalo, Mannerheimintie 13A, Helsinki",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "WHEN?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Wed, May 29, 2024, concert from 19:00 to 21:00",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "WHY?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Because it's top-notch culture!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "PRICE?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " €10 for students",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "OTHER?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Group departure at 18:15 from A Bloc, tickets will be distributed via email in advance.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "The sign-up opens today at 12:00!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://tietokilta.fi/tapahtumat/2042",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:20:31.41Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:55:16.954Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489d47efa9384f07f5bfb3"
+	},
+	"title": {
+		"fi": "Huawei Europe Enterprise Roadshow 2024"
+	},
+	"newsItemCategory": "other",
+	"date": {
+		"$date": "2024-05-20T12:00:00Z"
+	},
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Welcome to visit the Huawei Europe Enterprise Roadshow 2024",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Time: May 20th, 2024 9.00-17.00",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Location: Dipoli, Otakaari 24, Espoo, Finland",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Cost: Free",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Agenda:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Time          Topics",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "9:00-12:00    Truck open visit",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "12:00-13:00   Buffet lunch ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "13:30-14:00   Welcome speech & Huawei in Europe update  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "14:00-14:40   Finnish Partner Experience Sharing ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "15:00-17:00   Truck open visit",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "17:30-19:00   Pizza of your choice in Fat Lizard",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "REGISTER HERE",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://events03.huawei.com/UniversalForm/register/852070882/register.html?site=MY&formId=5954",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://events03.huawei.com/UniversalForm/register/852070882/register.html?site=MY&formId=5954",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:21:27.137Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:21:27.137Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489d8aefa9384f07f5bfbd"
+	},
+	"title": {
+		"fi": "Participate in Robot Uprising: Micro Invaders 2024 – Team Registration Now Open!"
+	},
+	"newsItemCategory": "other",
+	"date": {
+		"$date": "2024-05-21T12:00:00Z"
+	},
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "We are excited to invite you to participate in the Robot Uprising: Micro Invaders 2024 competition!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Challenge:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "In Micro Invaders, your task is to develop an AI (or bot) that autonomously controls two 3D printed robots on the game field. The objective is for these robots to interact with their environment and execute game strategies without human intervention. It’s a great way to put your coding and robotic skills to the test in a fun physical challenge.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Timeline and Support:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Your team will have three months time over the summer to build your solutions at a relaxed pace. Our organizing team will support you through regular checkpoints, providing guidance to help you refine your robots and AI systems. This schedule is designed to accommodate learning and experimentation, making it ideal for those looking to enhance their capabilities in robotics, AI, computer vision, and more. Get started and join our community at ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://robotuprising.fi/discord",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://robotuprising.fi/discord",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ".",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Registration Details:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Who: Teams of 2 to 5 people, everyone registers individually.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "When: Initial application period closes ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Sunday May 26th",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ". It may be possible to join afterwards depending on team count so far.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Where: Visit our ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "event page",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://robotuprising.fi/hackathon/hackathon-microinvaders/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " for more information and fill the ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Registration Form",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://forms.gle/XWs9AxofUw2FXJWBA",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ".",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "We encourage anyone interested in technology and robotics to register. This is a perfect opportunity to challenge yourself, learn valuable skills, and collaborate with peers in a supportive environment. For a look at past competitions and what to expect, check out a replay of the 2020 finals on YouTube (",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://www.youtube.com/watch?v=H8YMrJo9J9I&t=587s",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.youtube.com/watch?v=H8YMrJo9J9I&t=587s",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ").",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "We hope to see your team at the competition!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Best regards,",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Robot Uprising Crew",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://robotuprising.fi/",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://robotuprising.fi/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:22:34.496Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:34:37.482Z"
 	},
 	"__v": 0,
 	"signupEndDate": {
-		"$date": "2024-05-10T12:00:00Z"
+		"$date": "2024-05-26T12:00:00Z"
 	},
 	"signupStartDate": {
-		"$date": "2024-05-09T12:00:00Z"
+		"$date": "2024-05-14T12:00:00Z"
 	}
+},
+{
+	"_id": {
+		"$oid": "66489dbaefa9384f07f5bfc7"
+	},
+	"title": {
+		"fi": "Sustainability Research + Innovation Congress 2024 / Sustainability Science Days",
+		"en": "Sustainability Research + Innovation Congress 2024 / Sustainability Science Days"
+	},
+	"newsItemCategory": "other",
+	"date": {
+		"$date": "2024-06-13T12:00:00Z"
+	},
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "TERVETULOA ILMASTONKORJAUSKESKUSTELUN YTIMEEN!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Maailman suurin kestävyystieteen tapahtuma ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Sustainability Research + Innovation Congress 2024 / Sustainability Science Days (SRI/SSD)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://sricongress.org/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " järjestetään kesäkuussa 2024 pääkaupunkiseudulla. Torstaina 13.6. ohjelmassa on Operaatio Arktiksen ja kumppaneiden järjestämä kolmen keskustelun tapahtumasarja eri näkökulmista ilmastointerventioihin. Tapahtuma on englanniksi.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "Toivotamme kaikki kiinnostuneet tervetulleeksi mukaan!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " Lisätietoa osallistumisesta ja kongressin lipuista löydät SRI:n nettisivuilta. Liput ovat reippaasti edullisemmat etenkin HY:n ja AY:n opiskelijoille, eli kannattaa hyödyntää mahdollisuus osallistua tähän ainutlaatuiseen kongressiin (HY/AY-opiskelijat 10$ / muut opiskelijat 120$ / normaalisti 400$).",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "WELCOME TO THE HEART OF THE CLIMATE REPAIR DEBATE!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "The world’s biggest sustainability science event ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Sustainability Research + Innovation Congress 2024 / Sustainability Science Days (SRI/SSD)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://sricongress.org/",
+									"newTab": false,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " is coming to Helsinki & Espoo in June 2024. On Thursday 13 June, Operaatio Arktis and partners will host a series of three events on different perspectives on climate interventions. The events will be in English.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "We welcome all those interested to participate!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " For more information on how to attend and get tickets for the Congress, please visit the SRI website. Tickets are considerably cheaper for HY and AY students especially, so it’s a good opportunity to attend this unique international congress (HY/AY students 10$ / other students 120$ / normal 400$ for on-site tickets).",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:23:22.61Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:58:58.662Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489ddcefa9384f07f5bfd1"
+	},
+	"title": {
+		"fi": "MEG tutkimus Otaniemessä - osallistujia tarvitaan!"
+	},
+	"newsItemCategory": "other",
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hei ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Etsimme osallistujia Aalto-yliopistossa suoritettavaan yhteiskunnalliseen tutkimukseen. Tutkimus koostuu magnetoenkefalografian (MEG) avulla tehtävistä mittauksista (1 tunti) sekä kokeeseen liittyvistä kysymyksistä (yhteensä 30 minuuttia). Mittausten aikana suoritat erittäin helppoja tehtäviä. Mittaukset tapahtuvat Otaniemen kampuksella, kysymyksille voit vastata tietokoneella. Kokeen lopuksi saat 30 € Espresso House lahjakortin.  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Olet etsimämme henkilö, mikäli ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "olet ainakin 18-vuotias",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "puhut sujuvaa suomea",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "sinulla ei ole akuutteja neurologisia tai psykiatrisia sairauksia",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "kehossasi ei ole metallia (esimerkiksi hammasrautoja)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Jos olet kiinnostunut tutkimukseen osallistumisesta, ole hyvä ja täytä seuraava lomake: ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://forms.office.com/e/6pQgmHCJLy",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://forms.office.com/e/6pQgmHCJLy",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Parhain terveisin",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Niko Somila",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Neurotieteen ja lääketieteellisen tekniikan laitos ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Aalto-yliopisto ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "niko.somila@aalto.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "mailto:niko.somila@aalto.fi",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:23:56.249Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:45:50.197Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489ef4efa9384f07f5bfdb"
+	},
+	"title": {
+		"fi": "Lääkisvaihtarille majoittajaksi",
+		"en": "Host an exchange student for a month"
+	},
+	"newsItemCategory": "other",
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Oletko suuntaamassa kesätöihin pois pk-seudulta ja kämppäsi on jäämässä tyhjilleen? ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tai olisitko kiinnostunut kämppäkaverista kuukaudeksi?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Jos vastasit kyllä johonkin kysymykseen niin ryhdy majoittajaksi Helsinkiin vaihtoharjoitteluun tulevalle FiMSIC-lääkisvaihtarille ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "elokuussa!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "<3",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Vaihtarit saapuvat suorittamaan kuukauden vaihtoharjoittelua suomalaisessa sairaalassa. Majoittajana tarjoat vaihtarille majoituksen hänen kuukauden vaihtoharjoittelun ajaksi. Diili tarjoaa majoittajalle maksettavan majoitusmaksun verran korvausta (sekä lisäksi parhaimmillaan vaihtarikämppiksestä uuden ystävän). ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kiinnostuitko?🌞",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Lue lisää linkin kautta ja täytä tietosi kyselyyn! Huomaa, että ilmottautuminen ei sido vielä mukaan toimintaan. ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Linkki ilmoon",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://docs.google.com/forms/d/1Ht0ekrV93qVVtkxsEYwB2nvRhen2TXr_5BeHfMiBFno/viewform?edit_requested=true",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Are you interested in sharing your apartment with a flatmate for one summer month?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Or are you heading away from Helsinki Metropolitan area this summer leaving your apartment empty and would be interested to host an exhange student in your flat for a month?",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Consider being a host for a FiMSIC exchange student! <3",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Exchange students are foreign medical students who come to Finland for a month to complete a hospital internship. The host provides accommodation for the exchange student for the exchange month and earns 200€ as compensation for accommodation.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Interested?🌞",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Fill in your information using the provided link to a form! Note that filling out the form does not commit you to anything; FiMSIC will contact you based on it and the accommodation specifics will be agreed before making a rental contraction. ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "The form link",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://docs.google.com/forms/d/1B4IrQX2F4ReIfegWYM25k4-pr3vw2cQCm_FEVnF5Uqg/edit?usp=drive_web",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:28:36.446Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:56:50.18Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489fa5efa9384f07f5bfe5"
+	},
+	"title": {
+		"fi": "International Experience Canada",
+		"en": "International Experience Canada"
+	},
+	"newsItemCategory": "other",
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kiinnostaako kansainvälisen työkokemuksen kerryttäminen ja englannin ja/tai ranskan kielitaidon petraaminen? Kanadan ja Suomen välillä on astunut voimaan uusi sopimus, joka mahdollistaa 18-35-vuotiaille nuorille helpon matkustamisen ja työskentelyn toistensa maissa. Suomen kansalaiset voivat nyt hakea kolmeen ohjelmaan: Working Holiday, International co-op (harjoittelu) ja Young Professionals. ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Lisätietoa asiasta löytyy seuraavista linkeistä:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ohjelmien esite (ENG): ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://www.canada.ca/content/dam/ircc/documents/pdf/english/pub/iec-inbound-brochure-bil.pdf",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.canada.ca/content/dam/ircc/documents/pdf/english/pub/iec-inbound-brochure-bil.pdf",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "International Experience Canada -verkkosivut (ENG): ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Video-opastus hakemuksen täyttämiseen (ENG): ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://www.youtube.com/watch?v=HFasfNBpD7U",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.youtube.com/watch?v=HFasfNBpD7U",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Interested in gaining international work experience and improve your language skills in English and/or French? A new agreement has recently came into force between Canada and Finland that enables easy travel and work for youth between 18 and 35. Finnish citizens can now apply to the three programmes: Working Holiday, International co-op and Young Professionals. ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Read more from the following links:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Brochure: ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://www.canada.ca/content/dam/ircc/documents/pdf/english/pub/iec-inbound-brochure-bil.pdf",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.canada.ca/content/dam/ircc/documents/pdf/english/pub/iec-inbound-brochure-bil.pdf",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "International Experience Canada website: ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Video guide for filling out the application: ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://www.youtube.com/watch?v=HFasfNBpD7U",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.youtube.com/watch?v=HFasfNBpD7U",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:31:33.649Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T13:00:26.916Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "66489fc7efa9384f07f5bfef"
+	},
+	"title": {
+		"fi": "Osallistu kyselyyn ja käyttäjätestaukseen opiskelumotivaatioon ja pelillistämiseen liittyen",
+		"en": "Participate in a survey and user testing related to study motivation and gamification"
+	},
+	"newsItemCategory": "other",
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hei opiskelija!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Onko sinulla joskus ollut vaikeuksia opiskelumotivaation kanssa tai etsitkö keinoja hallita ja seurata opintojasi? Osallistumalla tähän tutkimukseen autat kehittämään mobiilisovellusta, jonka tarkoituksena on lisätä opiskelumotivaatiota erityisesti itsenäiseen opiskeluun. Pyydän osallistumaan riippumatta taustoistasi tai opintojesi tilanteesta. Riittää, että opiskelet korkeakoulussa.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tutkimus toteutetaan osana pro gradu -tutkielmaani Oulun yliopiston tietojenkäsittelytieteiden maisteriohjelmassa ja siihen voi osallistua kokonaan etänä. Osallistuminen on täysin vapaaehtoista ja sen saa keskeyttää missä vaiheensa tahansa ilman, että tarvitsee kertoa syytä. Kaikki vastaukset käsitellään luottamuksellisesti ja nimettömästi siten, että ketään ei voi tunnistaa vastausten perusteella. Aineistoa käytetään vain pro gradu -tutkielmassa ja tieteellisissä julkaisuissa.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kysely on täysin englanniksi, mutta voit vastata myös suomeksi. Siihen sisältyy pelillistetyn ja suostuttelevan sovelluksen varhaisen version testaus ja väittämiä, joihin vastaat asteikolla 1-5 (1 = täysin eri mieltä, 5 = täysin samaa mieltä). Lisäksi vastaat taustakysymyksiin ja halutessasi yhteen vapaaehtoiseen avoimeen kysymykseen. Kysymyksiin ei ole vääriä tai oikeita vastauksia, vaan on tärkeää, että vastaat itse oman näkemyksesi mukaan. Osallistuminen onnistuu parhaiten tietokoneella, mutta on mahdollista myös puhelimella. Vastaaminen vie vain noin ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "15 minuuttia",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " aikaasi, mutta tulokset ovat ratkaisevia tälle tutkimukselle.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Tästä pääset täyttämään kyselyn: ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://forms.gle/VaZThCgoy93i6AWr7t",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"doc": null,
+									"linkType": "custom",
+									"newTab": false,
+									"url": "https://forms.gle/VaZThCgoy93i6AWr7"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kyselyä saa jakaa eteenpäin muille korkeakouluopiskelijoille. Kysely sulkeutuu jo ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "tänään klo 23:59",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ", joten vastaathan pian.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Suuret kiitokset ja hyvää päivänjatkoa!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ystävällisin terveisin,",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Renata Moilanen",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "renata.moilanen@gmail.com",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:renata.moilanen@gmail.com"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Oulun yliopisto",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Hi student!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Have you ever had trouble with study motivation or are you looking for ways to manage and keep track of your studies? By participating in this study, you help in developing a mobile application aimed at increasing study motivation, especially for independent study. I ask you to participate regardless of your background and the state of your studies. All that is needed is that you study in higher education.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "This study will be conducted as a part of my master’s thesis in the Information Processing Science degree program at the University of Oulu, and you can participate entirely remotely. Participation is completely voluntary and can be withdrawn at any point without having to tell why. All responses are kept confidential and anonymous so that no one can be identified from the responses. The data is used solely for the master’s thesis and scientific publications.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "The survey is completely in English. It includes testing an early version of a gamified and persuasive application, as well as statements, to which you answer on a scale of 1-5 (1 = strongly disagree, 5 = strongly agree). In addition, you will respond to background questions and one voluntary open question. There are no right or wrong answers, instead, it is important that you answer according to your own view. Participation is best done on the computer, but it is also possible on the phone. Responding only takes about ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "15 minutes",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " of your time, but the results are pivotal for this study.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "You can fill out the survey here: ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "https://forms.gle/VaZThCgoy93i6AWr7t",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://forms.gle/VaZThCgoy93i6AWr7",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Feel free to distribute the survey to other higher education students. The survey closes ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 1,
+								"mode": "normal",
+								"style": "",
+								"text": "today at 23:59",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " (Finnish time), so please submit it soon.",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "A huge thank you and have a great day!",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Kind regards,",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Renata Moilanen",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Renata.moilanen@gmail.com",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "mailto:Renata.moilanen@gmail.com",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "University of Oulu",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:32:07.571Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T13:02:55.719Z"
+	},
+	"__v": 0,
+	"signupEndDate": {
+		"$date": "2024-05-14T12:00:00Z"
+	},
+	"signupStartDate": {
+		"$date": "2024-05-14T12:00:00Z"
+	}
+},
+{
+	"_id": {
+		"$oid": "6648a01fefa9384f07f5bffa"
+	},
+	"title": {
+		"fi": "Hyödyllisiä linkkejä",
+		"en": "Useful links"
+	},
+	"newsItemCategory": "bottom-corner",
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Telegram:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Tiedotuskanava",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/tiktiedotus",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "TiK-rekry",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/joinchat/AAAAAFBPrClQ3y6gbDY8kg",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Tietokilta",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/tietokilta",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AthleTiKs",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/joinchat/GcH7RhkYc1rHUPd39M1X2A",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Marttakerho",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/joinchat/P8zTgHMmzlKkD1bN",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Computer Science Guild",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/tikenglish",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "TiKGamers",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/joinchat/A5WBKEs08EnBRUrKz9FKQw",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "N-klubi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/nklubi",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Tietokirja",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://t.me/+EEQYpviSua04MWU0",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "SubTiKles",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://t.me/+rADgIkBVUVRlMjY0",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Muut:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "RekryTiK (Tietokillan rekrysivut)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://rekry.tietokilta.fi/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Facebook",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.facebook.com/Tietokilta/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Instagram",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.instagram.com/tietokilta/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "TikTok",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.tiktok.com/@tietokilta",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY:n tapahtumakalenteri",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.ayy.fi/fi/tapahtumat",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Killan palautelomake",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://tietokilta.fi/kilta/palautelomake",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Telegram:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "CSG International Info",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://t.me/TiKinternationalinfo",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Finnish Info",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/tiktiedotus",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "TiK-Recruitment",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://t.me/joinchat/AAAAAFBPrClQ3y6gbDY8kg",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "English Telegram-group",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://t.me/tikenglish",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Finnish Telegram-group",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/tietokilta",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AthleTiKs",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/joinchat/GcH7RhkYc1rHUPd39M1X2A",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "TiKGamers",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/joinchat/A5WBKEs08EnBRUrKz9FKQw",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Grandma Club",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/joinchat/P8zTgHMmzlKkD1bN",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "N-Club",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://telegram.me/nklubi",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Tietokirja",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://t.me/+EEQYpviSua04MWU0",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "SubTiKles",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://t.me/+rADgIkBVUVRlMjY0",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Others:",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Facebook",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.facebook.com/Tietokilta/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Instagram",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.instagram.com/tietokilta/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "TikTok",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.tiktok.com/@tietokilta",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "AYY event calendar",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://www.ayy.fi/en/events",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:33:35.887Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T13:08:02.444Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6648a036efa9384f07f5c000"
+	},
+	"title": {
+		"fi": "Viikon kissavideo",
+		"en": "Cat video of the week"
+	},
+	"newsItemCategory": "bottom-corner",
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Viikon kissavideon löydät ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "täältä",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://vm.tiktok.com/ZGeQh6yo9/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "! 🐱",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		},
+		"en": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "You can find the cat video of the week ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "here",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://vm.tiktok.com/ZGeQh6yo9/",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "! 🐱",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": "ltr"
+			}
+		}
+	},
+	"createdAt": {
+		"$date": "2024-05-18T12:33:58.1Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T13:10:20.231Z"
+	},
+	"__v": 0
 }]
 
