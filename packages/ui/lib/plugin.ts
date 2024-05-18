@@ -81,6 +81,7 @@ export const config: Partial<Config> = {
         solid: "2px 2px 0px 0px #0a0d10",
         "solid-lg": "4px 4px 0px 0px #0a0d10",
         "solid-xl": "6px 6px 0px 0px #0a0d10",
+        underline: "inset 0 -2px 0 0 #0a0d10",
       },
     },
   },
