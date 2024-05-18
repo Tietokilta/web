@@ -11,9 +11,9 @@ function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-24 max-w-prose">
+    <div className="prose prose-headings:scroll-mt-24 max-w-prose">
       <LexicalSerializer nodes={content.root.children} />
-    </article>
+    </div>
   );
 }
 

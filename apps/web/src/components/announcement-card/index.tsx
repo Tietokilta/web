@@ -84,10 +84,10 @@ export async function AnnouncementCard({ news }: { news: News }) {
       <AnnouncementIcon className="hidden md:block" type={news.type} />
 
       <div className="hidden flex-col md:flex">
-        <p className="flex flex-col">
-          <span className="text-lg font-medium">{news.title}</span>
-          <span>{news.excerpt}</span>
-        </p>
+        <div className="flex flex-col">
+          <h2 className="text-lg font-medium">{news.title}</h2>
+          <p>{news.excerpt}</p>
+        </div>
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild className="md:self-end" variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
@@ -103,7 +103,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
       <div className="flex w-full flex-col gap-4 md:hidden">
         <details className="group flex w-full flex-col">
           <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-2 text-lg font-medium [&::-webkit-details-marker]:hidden [&::marker]:hidden">
-            <p>{news.title}</p>
+            <h2>{news.title}</h2>
             <ChevronDownIcon className="inline-block h-6 w-6 shrink-0 transition-all group-open:rotate-180" />
           </summary>
           <p className="pt-2">{news.excerpt}</p>
