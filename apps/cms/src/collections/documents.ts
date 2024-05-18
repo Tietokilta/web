@@ -24,8 +24,11 @@ export const Documents: CollectionConfig = {
   },
   fields: [
     {
+      name: "title",
+      type: "text",
+    },
+    {
       name: "thumbnail",
-      label: "Thumbnail",
       type: "upload",
       relationTo: Media.slug,
     },

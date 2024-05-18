@@ -8,6 +8,7 @@ import type {
 import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
+import { type Media } from "@tietokilta/cms-types/payload";
 import {
   cn,
   insertSoftHyphens,
@@ -121,11 +122,9 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             const Tag = node.tag as Heading;
 
             return (
-              <Link
-                href={`#${stringToId(lexicalNodeToTextContent(node)) as string}`}
-              >
+              <Link href={`#${stringToId(lexicalNodeToTextContent(node))}`}>
                 <Tag
-                  id={stringToId(lexicalNodeToTextContent(node)) as string}
+                  id={stringToId(lexicalNodeToTextContent(node))}
                   key={index}
                 >
                   {serializedChildren}
@@ -192,25 +191,60 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             );
           }
           case "upload": {
-            const img = (
-              <Image
-                alt={node.value.alt}
-                height={node.value.height ?? 0}
-                key={index}
-                src={node.value.url ?? "#broken-url"}
-                width={node.value.width ?? 0}
-              />
-            );
+            const uploadIsMedia = node.relationTo === "media";
 
-            if (!node.fields?.caption) return img;
+            if (uploadIsMedia) {
+              const img = (
+                <Image
+                  alt={node.value.alt}
+                  height={node.value.height ?? 0}
+                  key={index}
+                  src={node.value.url ?? "#broken-url"}
+                  width={node.value.width ?? 0}
+                />
+              );
+
+              if (!node.fields?.caption) return img;
+
+              return (
+                <figure key={index}>
+                  {img}
+                  <figcaption>
+                    <span>{node.fields.caption}</span>
+                  </figcaption>
+                </figure>
+              );
+            }
+
+            const thumbnail = node.value.thumbnail as Media | undefined;
 
             return (
-              <figure key={index}>
-                {img}
-                <figcaption>
-                  <span>{node.fields.caption}</span>
-                </figcaption>
-              </figure>
+              <Link
+                href={node.value.url ?? "#broken-url"}
+                key={index}
+                target="_blank"
+                className="not-prose shadow-solid my-4 flex w-fit items-center gap-4 overflow-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
+              >
+                <div className="flex items-center gap-2">
+                  {thumbnail ? (
+                    <div className="relative h-40 w-32">
+                      <Image
+                        alt={thumbnail.alt}
+                        src={thumbnail.url ?? "#broken-url"}
+                        fill
+                        className="object-contain object-center"
+                      />
+                    </div>
+                  ) : (
+                    <FileIcon className="h-6 w-6" />
+                  )}
+                  {node.value.title ? (
+                    <p className="truncate font-mono font-semibold">
+                      {node.value.title}
+                    </p>
+                  ) : null}
+                </div>
+              </Link>
             );
           }
           case "relationship": {

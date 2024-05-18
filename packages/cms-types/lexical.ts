@@ -1,4 +1,4 @@
-import type { Board, Committee, Media, Page } from "./payload";
+import type { Board, Committee, Document, Media, Page } from "./payload";
 
 type BaseNode = {
   version: number;
@@ -53,7 +53,7 @@ export type QuoteNode = BaseTextNode & {
   children: Node[];
 };
 
-export type UploadNode = BaseNode & {
+export type MediaUploadNode = BaseNode & {
   type: "upload";
   relationTo: "media";
   value: Media;
@@ -61,6 +61,15 @@ export type UploadNode = BaseNode & {
     caption?: string;
   } | null;
 };
+
+export type DocumentUploadNode = BaseNode & {
+  type: "upload";
+  relationTo: "documents";
+  value: Document;
+  fields?: Record<string, never> | null;
+};
+
+export type UploadNode = MediaUploadNode | DocumentUploadNode;
 
 export type ListItemNode = BaseTextNode & {
   type: "listitem";
