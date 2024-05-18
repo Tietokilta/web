@@ -99,11 +99,11 @@ export async function AnnouncementCard({ news }: { news: News }) {
 
       <div className="flex w-full flex-col gap-4 md:hidden">
         <details className="group flex w-full flex-col">
-          <summary className="w-full cursor-pointer list-none text-lg font-medium [&::-webkit-details-marker]:hidden [&::marker]:hidden">
-            <ChevronDownIcon className="mr-2 inline-block h-4 w-4 transition-all group-open:rotate-180" />
-            <span>{news.title}</span>
+          <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-2 text-lg font-medium [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+            <p>{news.title}</p>
+            <ChevronDownIcon className="inline-block h-6 w-6 shrink-0 transition-all group-open:rotate-180" />
           </summary>
-          <p>{news.excerpt}</p>
+          <p className="pt-2">{news.excerpt}</p>
         </details>
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild variant="link">
