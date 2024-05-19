@@ -23,3 +23,21 @@ export function getLocale(req: PayloadRequest): string | undefined {
   }
   return res;
 }
+
+export function appendToStringOrLocalizedString(
+  str: string | null | undefined | Record<string, string | null | undefined>,
+  append: string,
+): string | Record<string, string> {
+  if (!str) {
+    return "";
+  }
+
+  if (typeof str === "string") {
+    return `${str}${append}`;
+  }
+  const res: Record<string, string> = {};
+  for (const locale in str) {
+    res[locale] = `${str[locale] ?? ""}${append}`;
+  }
+  return res;
+}
