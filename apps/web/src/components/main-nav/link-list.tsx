@@ -42,19 +42,49 @@ function NavigationLink({
   if (pageOrTopic.type === "page") {
     const localisedPath =
       (pageOrTopic.pageConfig?.page as Page | undefined)?.path ?? "#broken";
-
     return (
-      <Link className={navigationMenuTriggerStyle()} href={localisedPath}>
-        {(pageOrTopic.pageConfig?.page as Page).title}
-      </Link>
+      <div className="group/link relative flex h-20 items-center justify-center">
+        <Link
+          className={`relative z-10 hover:underline ${navigationMenuTriggerStyle()}`}
+          href={localisedPath}
+        >
+          {(pageOrTopic.pageConfig?.page as Page).title}
+        </Link>
+        {!!(pageOrTopic.pageConfig?.page as Page).icon && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <RenderIcon
+              width={80}
+              height={80}
+              aria-hidden="true"
+              className="z-0 opacity-0 transition-opacity duration-300 group-hover/link:opacity-30"
+              name={(pageOrTopic.pageConfig?.page as Page).icon!!}
+            />
+          </div>
+        )}
+      </div>
     );
   }
 
   return (
     <>
-      <NavigationMenuTrigger>
-        {(pageOrTopic.topicConfig?.topic as Topic).title}
-      </NavigationMenuTrigger>
+      <div className="group/link relative flex h-20 items-center justify-center">
+        <NavigationMenuTrigger>
+          <span className="hover:underline">
+            {(pageOrTopic.topicConfig?.topic as Topic).title}
+          </span>
+          {(pageOrTopic.topicConfig?.topic as Topic).icon && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <RenderIcon
+                width={100}
+                height={100}
+                aria-hidden="true"
+                className="z-0 opacity-0 transition-opacity duration-300 group-hover/link:opacity-30"
+                name={(pageOrTopic.topicConfig?.topic as Topic).icon!!}
+              />
+            </div>
+          )}
+        </NavigationMenuTrigger>
+      </div>
       <NavigationMenuContent>
         <ul className="flex gap-16 p-8">
           {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
@@ -80,10 +110,14 @@ function NavigationLink({
                   <li key={externalLink.title}>
                     <Button
                       asChild
-                      className="my-3 flex w-full items-center justify-start gap-2"
+                      className="relative z-10 my-2 w-full border-b-0 px-2"
                       variant="outlineLink"
                     >
-                      <Link href={externalLink.href} target="_blank">
+                      <Link
+                        href={externalLink.href}
+                        target="_blank"
+                        className="flex justify-between gap-1"
+                      >
                         <RenderIcon
                           className="h-6 w-6"
                           name={externalLink.icon}

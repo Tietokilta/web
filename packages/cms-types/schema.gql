@@ -458,6 +458,7 @@ type Page {
   title: String
   description: String
   type: Page_type
+  icon: Page_icon
   hideTableOfContents: Boolean
   content(depth: Int): JSON
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
@@ -476,6 +477,48 @@ enum Page_type {
   events_list
   weekly_newsletter
   weekly_newsletters_list
+}
+
+enum Page_icon {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 """
@@ -498,8 +541,51 @@ type Topic {
   id: String
   title: String
   slug: String
+  icon: Topic_icon
   updatedAt: DateTime
   createdAt: DateTime
+}
+
+enum Topic_icon {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 enum Page__status {
@@ -525,6 +611,7 @@ input Page_where {
   title: Page_title_operator
   description: Page_description_operator
   type: Page_type_operator
+  icon: Page_icon_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
   redirectToPage: Page_redirectToPage_operator
@@ -571,6 +658,57 @@ enum Page_type_Input {
   events_list
   weekly_newsletter
   weekly_newsletters_list
+}
+
+input Page_icon_operator {
+  equals: Page_icon_Input
+  not_equals: Page_icon_Input
+  in: [Page_icon_Input]
+  not_in: [Page_icon_Input]
+  all: [Page_icon_Input]
+  exists: Boolean
+}
+
+enum Page_icon_Input {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 input Page_hideTableOfContents_operator {
@@ -679,6 +817,7 @@ input Page_where_and {
   title: Page_title_operator
   description: Page_description_operator
   type: Page_type_operator
+  icon: Page_icon_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
   redirectToPage: Page_redirectToPage_operator
@@ -698,6 +837,7 @@ input Page_where_or {
   title: Page_title_operator
   description: Page_description_operator
   type: Page_type_operator
+  icon: Page_icon_operator
   hideTableOfContents: Page_hideTableOfContents_operator
   content: Page_content_operator
   redirectToPage: Page_redirectToPage_operator
@@ -730,6 +870,7 @@ type PagesDocAccessFields {
   title: PagesDocAccessFields_title
   description: PagesDocAccessFields_description
   type: PagesDocAccessFields_type
+  icon: PagesDocAccessFields_icon
   hideTableOfContents: PagesDocAccessFields_hideTableOfContents
   content: PagesDocAccessFields_content
   redirectToPage: PagesDocAccessFields_redirectToPage
@@ -808,6 +949,29 @@ type PagesDocAccessFields_type_Update {
 }
 
 type PagesDocAccessFields_type_Delete {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_icon {
+  create: PagesDocAccessFields_icon_Create
+  read: PagesDocAccessFields_icon_Read
+  update: PagesDocAccessFields_icon_Update
+  delete: PagesDocAccessFields_icon_Delete
+}
+
+type PagesDocAccessFields_icon_Create {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_icon_Read {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_icon_Update {
+  permission: Boolean!
+}
+
+type PagesDocAccessFields_icon_Delete {
   permission: Boolean!
 }
 
@@ -1080,6 +1244,7 @@ type PageVersion_Version {
   title: String
   description: String
   type: PageVersion_Version_type
+  icon: PageVersion_Version_icon
   hideTableOfContents: Boolean
   content(depth: Int): JSON
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
@@ -1098,6 +1263,48 @@ enum PageVersion_Version_type {
   events_list
   weekly_newsletter
   weekly_newsletters_list
+}
+
+enum PageVersion_Version_icon {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 type PageVersion_Version_Topic_Relationship {
@@ -1135,6 +1342,7 @@ input versionsPage_where {
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
   version__type: versionsPage_version__type_operator
+  version__icon: versionsPage_version__icon_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
@@ -1194,6 +1402,57 @@ enum versionsPage_version__type_Input {
   events_list
   weekly_newsletter
   weekly_newsletters_list
+}
+
+input versionsPage_version__icon_operator {
+  equals: versionsPage_version__icon_Input
+  not_equals: versionsPage_version__icon_Input
+  in: [versionsPage_version__icon_Input]
+  not_in: [versionsPage_version__icon_Input]
+  all: [versionsPage_version__icon_Input]
+  exists: Boolean
+}
+
+enum versionsPage_version__icon_Input {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 input versionsPage_version__hideTableOfContents_operator {
@@ -1337,6 +1596,7 @@ input versionsPage_where_and {
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
   version__type: versionsPage_version__type_operator
+  version__icon: versionsPage_version__icon_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
@@ -1361,6 +1621,7 @@ input versionsPage_where_or {
   version__title: versionsPage_version__title_operator
   version__description: versionsPage_version__description_operator
   version__type: versionsPage_version__type_operator
+  version__icon: versionsPage_version__icon_operator
   version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
@@ -2558,6 +2819,7 @@ type Topics {
 input Topic_where {
   title: Topic_title_operator
   slug: Topic_slug_operator
+  icon: Topic_icon_operator
   updatedAt: Topic_updatedAt_operator
   createdAt: Topic_createdAt_operator
   id: Topic_id_operator
@@ -2583,6 +2845,57 @@ input Topic_slug_operator {
   in: [String]
   not_in: [String]
   all: [String]
+}
+
+input Topic_icon_operator {
+  equals: Topic_icon_Input
+  not_equals: Topic_icon_Input
+  in: [Topic_icon_Input]
+  not_in: [Topic_icon_Input]
+  all: [Topic_icon_Input]
+  exists: Boolean
+}
+
+enum Topic_icon_Input {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 input Topic_updatedAt_operator {
@@ -2621,6 +2934,7 @@ input Topic_id_operator {
 input Topic_where_and {
   title: Topic_title_operator
   slug: Topic_slug_operator
+  icon: Topic_icon_operator
   updatedAt: Topic_updatedAt_operator
   createdAt: Topic_createdAt_operator
   id: Topic_id_operator
@@ -2631,6 +2945,7 @@ input Topic_where_and {
 input Topic_where_or {
   title: Topic_title_operator
   slug: Topic_slug_operator
+  icon: Topic_icon_operator
   updatedAt: Topic_updatedAt_operator
   createdAt: Topic_createdAt_operator
   id: Topic_id_operator
@@ -2653,6 +2968,7 @@ type topicsDocAccess {
 type TopicsDocAccessFields {
   title: TopicsDocAccessFields_title
   slug: TopicsDocAccessFields_slug
+  icon: TopicsDocAccessFields_icon
   updatedAt: TopicsDocAccessFields_updatedAt
   createdAt: TopicsDocAccessFields_createdAt
 }
@@ -2700,6 +3016,29 @@ type TopicsDocAccessFields_slug_Update {
 }
 
 type TopicsDocAccessFields_slug_Delete {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_icon {
+  create: TopicsDocAccessFields_icon_Create
+  read: TopicsDocAccessFields_icon_Read
+  update: TopicsDocAccessFields_icon_Update
+  delete: TopicsDocAccessFields_icon_Delete
+}
+
+type TopicsDocAccessFields_icon_Create {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_icon_Read {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_icon_Update {
+  permission: Boolean!
+}
+
+type TopicsDocAccessFields_icon_Delete {
   permission: Boolean!
 }
 
@@ -7014,6 +7353,11 @@ enum LinkRowBlockLink_icon {
   TikLogo
   Tiktok
   X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 enum LinkRowBlockLink_linkType {
@@ -7519,6 +7863,11 @@ enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
   TikLogo
   Tiktok
   X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 type main_navigationDocAccess {
@@ -8308,6 +8657,7 @@ type PagesFields {
   title: PagesFields_title
   description: PagesFields_description
   type: PagesFields_type
+  icon: PagesFields_icon
   hideTableOfContents: PagesFields_hideTableOfContents
   content: PagesFields_content
   redirectToPage: PagesFields_redirectToPage
@@ -8386,6 +8736,29 @@ type PagesFields_type_Update {
 }
 
 type PagesFields_type_Delete {
+  permission: Boolean!
+}
+
+type PagesFields_icon {
+  create: PagesFields_icon_Create
+  read: PagesFields_icon_Read
+  update: PagesFields_icon_Update
+  delete: PagesFields_icon_Delete
+}
+
+type PagesFields_icon_Create {
+  permission: Boolean!
+}
+
+type PagesFields_icon_Read {
+  permission: Boolean!
+}
+
+type PagesFields_icon_Update {
+  permission: Boolean!
+}
+
+type PagesFields_icon_Delete {
   permission: Boolean!
 }
 
@@ -9221,6 +9594,7 @@ type topicsAccess {
 type TopicsFields {
   title: TopicsFields_title
   slug: TopicsFields_slug
+  icon: TopicsFields_icon
   updatedAt: TopicsFields_updatedAt
   createdAt: TopicsFields_createdAt
 }
@@ -9268,6 +9642,29 @@ type TopicsFields_slug_Update {
 }
 
 type TopicsFields_slug_Delete {
+  permission: Boolean!
+}
+
+type TopicsFields_icon {
+  create: TopicsFields_icon_Create
+  read: TopicsFields_icon_Read
+  update: TopicsFields_icon_Update
+  delete: TopicsFields_icon_Delete
+}
+
+type TopicsFields_icon_Create {
+  permission: Boolean!
+}
+
+type TopicsFields_icon_Read {
+  permission: Boolean!
+}
+
+type TopicsFields_icon_Update {
+  permission: Boolean!
+}
+
+type TopicsFields_icon_Delete {
   permission: Boolean!
 }
 
@@ -12559,6 +12956,7 @@ input mutationPageInput {
   title: String
   description: String
   type: Page_type_MutationInput!
+  icon: Page_icon_MutationInput
   hideTableOfContents: Boolean
   content: JSON
   redirectToPage: String
@@ -12579,6 +12977,48 @@ enum Page_type_MutationInput {
   weekly_newsletters_list
 }
 
+enum Page_icon_MutationInput {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
+}
+
 input Page_TopicRelationshipInput {
   relationTo: Page_TopicRelationshipInputRelationTo
   value: JSON
@@ -12597,6 +13037,7 @@ input mutationPageUpdateInput {
   title: String
   description: String
   type: PageUpdate_type_MutationInput
+  icon: PageUpdate_icon_MutationInput
   hideTableOfContents: Boolean
   content: JSON
   redirectToPage: String
@@ -12615,6 +13056,48 @@ enum PageUpdate_type_MutationInput {
   events_list
   weekly_newsletter
   weekly_newsletters_list
+}
+
+enum PageUpdate_icon_MutationInput {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 input PageUpdate_TopicRelationshipInput {
@@ -12698,15 +13181,101 @@ input mutationDocumentUpdateInput {
 input mutationTopicInput {
   title: String
   slug: String
+  icon: Topic_icon_MutationInput
   updatedAt: String
   createdAt: String
+}
+
+enum Topic_icon_MutationInput {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 input mutationTopicUpdateInput {
   title: String
   slug: String
+  icon: TopicUpdate_icon_MutationInput
   updatedAt: String
   createdAt: String
+}
+
+enum TopicUpdate_icon_MutationInput {
+  AlertOctagon
+  AlertTriangle
+  AtSign
+  Banknote
+  BookMarked
+  BriefcaseBusiness
+  ChevronDown
+  Chevronleft
+  ChevronRight
+  ChevronsUpDown
+  ChevronUp
+  Circle
+  Clock
+  ExternalLink
+  Facebook
+  File
+  Gavel
+  Github
+  Gmail
+  HelpCircle
+  Image
+  Inbox
+  Instagram
+  Languages
+  Linkedin
+  MapPin
+  Megaphone
+  Menu
+  MoreHorizontal
+  Phone
+  Telegram
+  TikLogo
+  Tiktok
+  X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
 
 input mutationBoardMemberInput {
@@ -13524,4 +14093,9 @@ enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInpu
   TikLogo
   Tiktok
   X
+  NavGuild
+  NavFuksis
+  NavCompanies
+  NavEvents
+  NavApplicants
 }
