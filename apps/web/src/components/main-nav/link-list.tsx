@@ -50,7 +50,7 @@ function NavigationLink({
         >
           {(pageOrTopic.pageConfig?.page as Page).title}
         </Link>
-        {(pageOrTopic.pageConfig?.page as Page).icon && (
+        {!!(pageOrTopic.pageConfig?.page as Page).icon && (
           <div className="absolute inset-0 flex items-center justify-center">
             <RenderIcon
               width={80}

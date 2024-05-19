@@ -15,6 +15,7 @@ function CommitteeMemberCard({
 }) {
   const photo = committeeMember.photo as Media | undefined;
   const isChair = !!committeeMember.chair;
+  const name = committeeMember.name.replace(/-/g, "\u2011"); // use non-breaking hyphens
 
   return (
     <li className="dark:border-dark-fg relative flex w-full max-w-xs flex-col border-2 border-gray-900 sm:w-44">
@@ -26,8 +27,8 @@ function CommitteeMemberCard({
         width={photo?.width ? Math.trunc(photo.width) : undefined}
       />
       {isChair ? <GavelIcon className="absolute left-0 top-0 h-6 w-6" /> : null}
-      <p className="dark:bg-dark-bg flex flex-1 flex-col bg-gray-100 text-center">
-        <span className="font-medium">{committeeMember.name}</span>
+      <p className="dark:bg-dark-bg flex flex-1 flex-row flex-wrap justify-center text-balance bg-gray-100 text-center">
+        <span className="font-medium">{name}</span>
         <span className="text-sm">
           {insertSoftHyphens(committeeMember.title)}
         </span>

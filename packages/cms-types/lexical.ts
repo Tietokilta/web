@@ -173,7 +173,17 @@ export type ImageLinkGridBlockNode = BaseBlockNode & {
   };
 };
 
-export type BlockNode = CommitteesYearBlockNode | ImageLinkGridBlockNode;
+export type GoogleFormBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "google-form";
+    link: string;
+  };
+};
+
+export type BlockNode =
+  | CommitteesYearBlockNode
+  | ImageLinkGridBlockNode
+  | GoogleFormBlockNode;
 
 export type Node =
   | TextNode

@@ -20,9 +20,9 @@ const buttonVariants = cva(
         secondary:
           "border-2 border-gray-900 bg-gray-200 text-gray-800 hover:bg-gray-300/80 shadow-solid",
         ghost: "hover:bg-gray-100",
-        link: "justify-between border-b-2 border-gray-900 rounded-none text-gray-900 after:content-['>>'/''] after:ml-2 hover:after:translate-x-1 aria-[current='page']:after:content-['xx'/''] aria-[current='page']:hover:after:translate-x-0 aria-[current='page']:shadow-underline",
+        link: "justify-between border-b-2 border-gray-900 rounded-none text-gray-900 after:content-['>>'] after:content-alt-empty after:ml-2 hover:after:translate-x-1 aria-[current='page']:after:content-['xx'] aria-[current='page']:after:content-alt-empty aria-[current='page']:hover:after:translate-x-0 aria-[current='page']:shadow-underline",
         backLink:
-          "justify-between rounded-none text-gray-900 before:content-['<<'/''] before:mr-2 hover:before:-translate-x-1 aria-[current='page']:before:content-['xx'/''] aria-[current='page'] :hover:before:translate-x-0 aria-[current='page']:shadow-underline",
+          "justify-between rounded-none text-gray-900 before:content-['<<'] before:content-alt-empty before:mr-2 hover:before:-translate-x-1 aria-[current='page']:before:content-['xx'] aria-[current='page']:before:content-alt-empty aria-[current='page'] :hover:before:translate-x-0 aria-[current='page']:shadow-underline",
         outlineLink:
           "border-2 border-gray-900 hover:border-gray-800 hover:bg-gray-300/90 shadow-solid",
       },

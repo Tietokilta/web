@@ -87,8 +87,19 @@ export const config: Partial<Config> = {
   },
 };
 
-export const plugin = twPlugin(() => {
-  // ...
+export const plugin = twPlugin(({ matchUtilities }) => {
+  matchUtilities({
+    "content-alt": (value) => ({
+      '@supports (content: "x" / "y")': {
+        content: `var(--tw-content) / ${value}`,
+      },
+    }),
+    "content-alt-empty": () => ({
+      '@supports (content: "x" / "y")': {
+        content: `var(--tw-content) / ''`,
+      },
+    }),
+  });
 }, config);
 
 export default plugin;
