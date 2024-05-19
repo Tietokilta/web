@@ -83,7 +83,7 @@ const getFormattedPath = async (
 const formatPath: FieldHook<
   Page,
   Page["path"] | Localized<Page["path"]>
-> = async ({ data, req }) => {
+> = async ({ originalDoc, data, req }) => {
   const reqLocale = getLocale(req);
   if (!reqLocale) {
     req.payload.logger.warn("Could not format page path: missing locale", data);
@@ -95,10 +95,10 @@ const formatPath: FieldHook<
     return data?.path;
   }
 
-  const existingPage = (
+  const existingPages = (
     await req.payload.find({
       collection: "pages",
-      limit: 1,
+      limit: 5,
       pagination: false,
       where: {
         ...(typeof formattedPath === "string"
@@ -113,8 +113,10 @@ const formatPath: FieldHook<
       },
       locale: req.locale,
     })
-  ).docs.at(0);
-  const existsPageWithSamePath = existingPage?.id !== data?.id;
+  ).docs;
+  const existsPageWithSamePath = existingPages.some(
+    (page) => page.id !== originalDoc?.id,
+  );
 
   if (existsPageWithSamePath) {
     const randomSlug = nanoid();
