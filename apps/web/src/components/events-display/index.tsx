@@ -92,10 +92,14 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   }
 
   const eventsList = events.data;
+  if (!eventsList.length) {
+    return null;
+  }
+
   const paginatedEvents = _.chunk(eventsList, 5);
   const pageCount = paginatedEvents.length;
 
-  if (currentPage < 1 || currentPage > pageCount) {
+  if (pageCount !== 0 && (currentPage < 1 || currentPage > pageCount)) {
     return notFound();
   }
 
