@@ -48,7 +48,7 @@ export function MagazineList({
       {years.map((year) => (
         <ul
           key={year}
-          className="not-prose shadow-solid dark:shadow-dark-fg dark:border-dark-fg relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-16 font-mono md:-mx-8 md:px-6 lg:-mx-32 xl:-mx-48 2xl:-mx-64"
+          className="not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-16 font-mono md:-mx-8 md:px-6 lg:-mx-32 xl:-mx-48 2xl:-mx-64"
         >
           <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
             <div className="flex w-5 gap-1">

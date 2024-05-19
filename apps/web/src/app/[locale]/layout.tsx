@@ -74,13 +74,7 @@ export default function RootLayout({
 } & LayoutProps) {
   return (
     <html lang={locale}>
-      <body
-        className={cn(
-          inter.variable,
-          robotoMono.variable,
-          "dark:bg-dark-bg font-sans",
-        )}
-      >
+      <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <SkipLink />
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />

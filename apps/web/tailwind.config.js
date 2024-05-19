@@ -1,10 +1,8 @@
 const path = require("path");
 const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
 
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-  darkMode: "media",
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     path.join(path.dirname(require.resolve("@tietokilta/ui")), "**/*.js"),
@@ -14,12 +12,6 @@ module.exports = {
       fontFamily: {
         sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
         mono: ["var(--font-roboto-mono)", ...defaultTheme.fontFamily.mono],
-      },
-      colors: {
-        "dark-bg": colors.stone[900],
-        "dark-fg": colors.stone[50],
-        "dark-heading": colors.stone[100],
-        "dark-text": colors.stone[300],
       },
       typography: ({ theme }) => ({
         DEFAULT: {

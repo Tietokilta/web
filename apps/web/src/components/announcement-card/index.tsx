@@ -46,10 +46,10 @@ export async function AnnouncementCard({ news }: { news: News }) {
   const t = await getScopedI18n("action");
 
   return (
-    <section className="dark:bg-dark-bg shadow-solid dark:text-dark-text dark:border-dark-fg dark:shadow-dark-fg relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pb-6 pt-12 font-mono md:px-6 lg:-mt-48">
+    <section className="shadow-solid relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pb-6 pt-12 font-mono md:px-6 lg:-mt-48">
       <div
         className={cn(
-          "dark:border-dark-fg absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2 dark:text-stone-950",
+          "absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2",
           news.type === "announcement" && "bg-success-500",
           news.type === "warning" && "bg-warning-500",
           news.type === "danger" && "bg-danger-500",
@@ -89,11 +89,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
           <p>{news.excerpt}</p>
         </div>
         {news.ctaType === "page" && news.pageLink ? (
-          <Button
-            asChild
-            className="dark:text-dark-text dark:border-dark-fg md:self-end"
-            variant="link"
-          >
+          <Button asChild className="md:self-end" variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
               <span aria-hidden="true">{t("Read more")}</span>
               <span className="sr-only">
