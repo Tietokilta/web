@@ -38,12 +38,14 @@ const localizedMetadata = {
   },
 } as const;
 
+const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
+
 export const generateMetadata = ({
   params: { locale },
 }: LayoutProps): Metadata => ({
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
   ...(localizedMetadata[locale] || localizedMetadata.fi),
-  metadataBase: new URL("https://tietokilta.fi"),
+  metadataBase: new URL(mainUrl),
 });
 
 export default function RootLayout({
