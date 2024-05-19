@@ -12,13 +12,16 @@ const project = resolve(process.cwd(), "tsconfig.json");
 
 module.exports = {
   extends: [
-    "@vercel/style-guide/eslint/node",
-    "@vercel/style-guide/eslint/typescript",
-    "@vercel/style-guide/eslint/browser",
-    "@vercel/style-guide/eslint/react",
-    "@vercel/style-guide/eslint/next",
-    "eslint-config-turbo",
-  ].map(require.resolve),
+    ...[
+      "@vercel/style-guide/eslint/node",
+      "@vercel/style-guide/eslint/typescript",
+      "@vercel/style-guide/eslint/browser",
+      "@vercel/style-guide/eslint/react",
+      "@vercel/style-guide/eslint/next",
+      "eslint-config-turbo",
+    ].map(require.resolve),
+    "plugin:tailwindcss/recommended",
+  ],
   parserOptions: {
     project,
   },
@@ -40,5 +43,6 @@ module.exports = {
     "import/no-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "no-implicit-coercion": ["error", { allow: ["!!"] }],
+    "tailwindcss/classnames-order": "off", // handled by prettier
   },
 };

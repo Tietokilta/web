@@ -26,7 +26,7 @@ function CommitteeMemberCard({
         src={photo?.url ?? TikLogo}
         width={photo?.width ? Math.trunc(photo.width) : undefined}
       />
-      {isChair ? <GavelIcon className="absolute left-0 top-0 h-6 w-6" /> : null}
+      {isChair ? <GavelIcon className="absolute left-0 top-0 size-6" /> : null}
       <p className="flex flex-1 flex-col flex-wrap justify-center text-balance bg-gray-100 text-center">
         <span className="font-medium">{name}</span>
         <span className="text-sm">
@@ -53,8 +53,8 @@ export function CommitteeCard({
     >
       <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
         <div className="flex w-8 gap-1">
-          <div className="bg-secondary-600 h-3 w-3 rounded-full border border-gray-900" />
-          <div className="bg-primary-600 h-3 w-3 rounded-full border border-gray-900" />
+          <div className="bg-secondary-600 size-3 rounded-full border border-gray-900" />
+          <div className="bg-primary-600 size-3 rounded-full border border-gray-900" />
         </div>
         <h2 className="self-center font-medium">{committee.name}</h2>
         <div className="w-5" />

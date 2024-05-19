@@ -73,7 +73,7 @@ export async function Footer() {
               >
                 <RenderIcon
                   aria-hidden="true"
-                  className="h-6 w-6"
+                  className="size-6"
                   name={link.icon}
                 />
                 <span className={cn(!linkRow.showLabel && "sr-only")}>
