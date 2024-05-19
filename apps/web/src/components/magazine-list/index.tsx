@@ -21,7 +21,7 @@ function IssueCard({ issue }: { issue: MagazineIssue }) {
           src={thumbnail.url ?? TikLogo}
           width={thumbnail.width ?? undefined}
         />
-        {issue.title}
+        <p className="text-balance">{issue.title}</p>
       </a>
     </div>
   );
