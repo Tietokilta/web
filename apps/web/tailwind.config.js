@@ -16,8 +16,8 @@ module.exports = {
         mono: ["var(--font-roboto-mono)", ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        "dark-bg": colors.stone[900],
-        "dark-fg": colors.stone[50],
+        "dark-bg": "#080808",
+        "dark-fg": colors.stone[300],
         "dark-heading": colors.stone[100],
         "dark-text": colors.stone[300],
       },

@@ -38,6 +38,8 @@ import {
   PhoneIcon,
   XIcon,
   HandshakeIcon,
+  MoonIcon,
+  SunIcon,
 } from "lucide-react";
 import React from "react";
 import { default as TikLogo } from "./tik-logo";
@@ -77,6 +79,8 @@ export const icons = {
   Megaphone: MegaphoneIcon,
   Menu: MenuIcon,
   MoreHorizontal: MoreHorizontalIcon,
+  Moon: MoonIcon,
+  Sun: SunIcon,
   Phone: PhoneIcon,
   Telegram: TelegramIcon,
   TikLogo,
@@ -120,6 +124,8 @@ export {
   MegaphoneIcon,
   MenuIcon,
   MoreHorizontalIcon,
+  MoonIcon,
+  SunIcon,
   PhoneIcon,
   TelegramIcon,
   TikLogo,

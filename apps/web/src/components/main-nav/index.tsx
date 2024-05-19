@@ -28,12 +28,22 @@ export async function MainNav({
       className={cn("h-20 w-full max-w-none", className)}
       {...props}
     >
-      <NavigationMenuList>
+      <NavigationMenuList
+        className={cn(
+          "grid grid-cols-[1fr_3fr_auto_3fr_1fr] justify-items-center",
+        )}
+      >
         <DarkModeToggle />
-        <LinkList links={leftLinks} />
+        <span className={cn("flex flex-row justify-self-end")}>
+          <LinkList links={leftLinks} />
+        </span>
         <LogoLink image={logo} />
-        <LinkList links={rightLinks} />
-        <LanguageSelector />
+        <span className={cn("flex flex-row justify-self-start")}>
+          <LinkList links={rightLinks} />
+        </span>
+        <span className={cn("flex flex-row gap-4")}>
+          <LanguageSelector />
+        </span>
       </NavigationMenuList>
     </NavigationMenu>
   );

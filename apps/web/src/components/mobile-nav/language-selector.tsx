@@ -10,7 +10,7 @@ export function LanguageSelector() {
   const isEnglish = pathname.startsWith("/en");
 
   return (
-    <div className="flex items-center gap-6 px-4 pt-4 text-lg font-medium">
+    <div className="flex items-center gap-6 px-4 text-lg font-medium">
       <SheetClose asChild>
         <Link
           aria-current={isFinnish ? "page" : undefined}

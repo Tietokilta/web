@@ -208,13 +208,17 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                   key={index}
                   src={node.value.url ?? "#broken-url"}
                   width={node.value.width ?? 0}
+                  className="dark:shadow-dark-fg dark:border-dark-fg dark:shadow-solid"
                 />
               );
 
               if (!node.fields?.caption) return img;
 
               return (
-                <figure key={index}>
+                <figure
+                  key={index}
+                  className="dark:shadow-dark-fg dark:border-dark-fg dark:shadow-solid"
+                >
                   {img}
                   <figcaption>
                     <span className="dark:text-dark-text">

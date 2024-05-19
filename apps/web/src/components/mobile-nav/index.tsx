@@ -67,8 +67,10 @@ export async function MobileNav({
         </SheetTrigger>
         <SheetContent>
           <nav className="flex h-full flex-col">
-            <LanguageSelector />
-            <DarkModeToggle />
+            <div className="flex flex-row items-center pt-4">
+              <LanguageSelector />
+              <DarkModeToggle />
+            </div>
             <LinkList
               footerLinks={footerLinks}
               links={links}

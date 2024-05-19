@@ -1,21 +1,31 @@
 "use client";
 
-import { Button, NavigationMenuItem, NavigationMenuLink } from "@tietokilta/ui";
-import NextLink from "next/link";
-import { usePathname } from "next/navigation";
+import * as React from "react";
+import { Button, RenderIcon } from "@tietokilta/ui";
 import { useTheme } from "next-themes";
 
 export function DarkModeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <div />;
+  }
 
   return (
     <Button
-      variant={"secondary"}
+      variant={"ghost"}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="dark:text-dark-text dark:border-dark-fg dark:shadow-dark-fg dark:bg-dark-bg ml-4 mt-4 w-fit"
-      suppressHydrationWarning
+      className="dark:text-dark-text dark:border-dark-fg w-fit cursor-pointer select-none"
     >
-      {theme === "dark" ? "Light" : "Dark"}
+      <RenderIcon
+        name={theme === "dark" ? "Sun" : "Moon"}
+        className="dark:text-dark-fg h-6 w-6"
+      />
     </Button>
   );
 }

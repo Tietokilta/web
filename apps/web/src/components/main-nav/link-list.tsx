@@ -87,7 +87,7 @@ function NavigationLink({
           )}
         </NavigationMenuTrigger>
       </div>
-      <NavigationMenuContent className="dark:text-dark-heading dark:bg-stone-800">
+      <NavigationMenuContent className="dark:text-dark-heading dark:bg-stone-950">
         <ul className="flex gap-16 p-8">
           {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
             <li key={linkCategorySublist.title}>
@@ -99,10 +99,13 @@ function NavigationLink({
                   <li key={(page as Page).id}>
                     <Button
                       asChild
-                      className="dark:text-dark-text dark:border-dark-text m-0 mr-2 w-full border-b-0 p-0"
+                      className="dark:text-dark-text m-0 mr-2 w-full border-b-0 p-0"
                       variant="link"
                     >
-                      <Link href={(page as Page).path ?? "#broken"}>
+                      <Link
+                        href={(page as Page).path ?? "#broken"}
+                        className="dark:shadow-dark-fg"
+                      >
                         {(page as Page).title}
                       </Link>
                     </Button>
