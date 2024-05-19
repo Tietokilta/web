@@ -46,11 +46,11 @@ async function NavigationLink({
     <Collapsible>
       <CollapsibleTrigger className="group flex items-center gap-2">
         <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
-        <ChevronDownIcon className="block h-6 w-6 group-data-[state=open]:hidden" />
+        <ChevronDownIcon className="block size-6 group-data-[state=open]:hidden" />
         <span className="sr-only block group-data-[state=open]:hidden">
           {t("Open")}
         </span>
-        <ChevronUpIcon className="hidden h-6 w-6 group-data-[state=open]:block" />
+        <ChevronUpIcon className="hidden size-6 group-data-[state=open]:block" />
         <span className="sr-only hidden group-data-[state=open]:block">
           {t("Close")}
         </span>
@@ -63,7 +63,7 @@ async function NavigationLink({
               <li key={(page as Page).id}>
                 <Button
                   asChild
-                  className="mb-2 mr-2 w-full border-b-0 pb-0 pl-0 pr-0"
+                  className="mb-2 mr-2 w-full border-b-0 px-0 pb-0"
                   variant="link"
                 >
                   <Link href={(page as Page).path ?? "#broken"}>
@@ -80,9 +80,9 @@ async function NavigationLink({
                   variant="outlineLink"
                 >
                   <Link href={externalLink.href} target="_blank">
-                    <RenderIcon className="h-6 w-6" name={externalLink.icon} />
+                    <RenderIcon className="size-6" name={externalLink.icon} />
                     <span>{externalLink.title}</span>
-                    <ExternalLinkIcon className="h-4 w-4" />
+                    <ExternalLinkIcon className="size-4" />
                   </Link>
                 </Button>
               </li>
@@ -142,7 +142,7 @@ export function LinkList({
                   >
                     <RenderIcon
                       aria-hidden="true"
-                      className="h-6 w-6"
+                      className="size-6"
                       name={link.icon}
                     />
                     <span className={cn(!linkRow.showLabel && "sr-only")}>

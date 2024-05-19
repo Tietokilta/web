@@ -21,7 +21,7 @@ function IssueCard({ issue }: { issue: MagazineIssue }) {
           src={thumbnail.url ?? TikLogo}
           width={thumbnail.width ?? undefined}
         />
-        {issue.title}
+        <p className="text-balance">{issue.title}</p>
       </a>
     </div>
   );
@@ -52,13 +52,13 @@ export function MagazineList({
         >
           <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
             <div className="flex w-5 gap-1">
-              <span className="bg-secondary-600 h-2 w-2 rounded-full border border-gray-900" />
-              <span className="bg-primary-600 h-2 w-2 rounded-full border border-gray-900" />
+              <span className="bg-secondary-600 size-2 rounded-full border border-gray-900" />
+              <span className="bg-primary-600 size-2 rounded-full border border-gray-900" />
             </div>
             <span className="self-center text-sm font-medium">{year}</span>
             <div className="w-5" />
           </div>
-          <div className="justify-left flex max-w-[800px] flex-wrap gap-8">
+          <div className="flex max-w-[800px] flex-wrap justify-start gap-8">
             {issuesByYear[year]
               .sort(
                 (a, b) =>

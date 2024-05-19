@@ -232,7 +232,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                 href={node.value.url ?? "#broken-url"}
                 key={index}
                 target="_blank"
-                className="not-prose shadow-solid dark:shadow-dark-fg dark:border-dark-fg my-4 flex w-fit max-w-full items-center gap-4 overflow-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
+                className="not-prose shadow-solid dark:shadow-dark-fg dark:border-dark-fg my-4 flex w-fit max-w-full items-center gap-4 text-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
               >
                 <div className="flex max-w-full flex-col items-center gap-2">
                   {thumbnail ? (
@@ -245,7 +245,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                       />
                     </div>
                   ) : (
-                    <FileIcon className="h-6 w-6" />
+                    <FileIcon className="size-6" />
                   )}
                   {node.value.title ? (
                     <p className="w-full font-mono font-semibold">
@@ -281,7 +281,7 @@ function Relationship({ node }: { node: RelationshipNode }) {
           data-relation
           href={node.value.path ?? "#no-path"}
         >
-          <FileIcon className="h-6 w-6" />
+          <FileIcon className="size-6" />
           <p className="flex flex-col">
             <span className="font-mono font-semibold">{node.value.title}</span>
             <span className="dark:text-dark-text line-clamp-2 max-w-80 text-sm text-gray-700">

@@ -1,3 +1,4 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-packagejson"]
+  "plugins": ["prettier-plugin-tailwindcss", "prettier-plugin-packagejson"],
+  "tailwindAttributes": ["cva", "cn", "clsx"]
 }

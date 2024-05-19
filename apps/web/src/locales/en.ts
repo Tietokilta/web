@@ -52,6 +52,9 @@ export default {
       Alkaa: "Starts",
       Loppuu: "Ends",
     },
+    path: {
+      events: "events",
+    },
   },
   "not-found": {
     "Sivua ei löytynyt": "Page not found",

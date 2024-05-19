@@ -25,7 +25,7 @@ export function LogoLink({
     >
       <Image
         alt="Tietokilta"
-        className="h-16 w-16 p-2"
+        className="size-16 p-2"
         priority
         width={image?.width ? Math.trunc(image.width) : undefined}
         height={image?.height ? Math.trunc(image.height) : undefined}
