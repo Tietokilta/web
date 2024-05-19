@@ -149,7 +149,7 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
 
 function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
   return (
-    <li style={{ height: "38rem" }}>
+    <li className="h-[40rem]">
       <EventCalendar events={events} />
     </li>
   );
