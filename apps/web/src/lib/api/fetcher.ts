@@ -53,7 +53,7 @@ export function fetcher<TRequest, TResponse>({
   };
 }
 
-export function getAll<
+export function getAllCollectionItems<
   TRequest extends Record<string, unknown>,
   TResponse extends unknown[],
 >(collectionSlug: CollectionSlug, globalOpts: { sort?: string } = {}) {
@@ -90,12 +90,12 @@ export function getAll<
   });
 }
 
-export function getOne<TRequest extends Record<string, unknown>, TResponse>(
-  collectionSlug: CollectionSlug,
-  globalOpts: { sort?: string } = {},
-) {
+export function getOneCollectionItem<
+  TRequest extends Record<string, unknown>,
+  TResponse,
+>(collectionSlug: CollectionSlug, globalOpts: { sort?: string } = {}) {
   return (req: TRequest & { locale: string }) =>
-    getAll<TRequest, TResponse[]>(
+    getAllCollectionItems<TRequest, TResponse[]>(
       collectionSlug,
       globalOpts,
     )(req).then((res) => res?.[0]);
