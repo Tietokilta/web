@@ -65,7 +65,7 @@ function Desktop({
         className,
       )}
     >
-      <nav className="scroll-shadows shadow-solid dark:border-dark-fg dark:scroll-sh dark:shadow-dark-fg sticky top-32 max-h-[70dvh] w-64 overflow-y-auto rounded-md border-2 border-gray-900 p-6 2xl:w-72">
+      <nav className="scroll-shadows shadow-solid dark:border-dark-fg dark:shadow-dark-fg sticky top-32 max-h-[70dvh] w-64 overflow-y-auto rounded-md border-2 border-gray-900 p-6 2xl:w-72">
         <HeadingList activeHeadingId={activeHeadingId} toc={toc} />
       </nav>
     </div>
@@ -110,7 +110,7 @@ function Mobile({
         </span>
         <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
       </summary>
-      <nav className="scroll-shadows-sm dark:shadow-dark-fg dark:border-dark-fg dark:scroll-sh-sm max-h-[50lvh] overflow-y-scroll px-4 py-2 shadow-sm drop-shadow-sm ">
+      <nav className="scroll-shadows-sm dark:shadow-dark-fg dark:border-dark-fg max-h-[50lvh] overflow-y-scroll px-4 py-2 shadow-sm drop-shadow-sm ">
         <HeadingList
           activeHeadingId={activeHeadingId}
           onHeadingClick={() => detailsRef.current?.removeAttribute("open")}

@@ -18,13 +18,15 @@ export function DarkModeToggle() {
 
   return (
     <Button
-      variant={"ghost"}
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      variant="ghost"
+      onClick={() => {
+        setTheme(theme === "dark" ? "light" : "dark");
+      }}
       className="dark:text-dark-text dark:border-dark-fg w-fit cursor-pointer select-none"
     >
       <RenderIcon
         name={theme === "dark" ? "Sun" : "Moon"}
-        className="dark:text-dark-fg h-6 w-6"
+        className="dark:text-dark-fg size-6"
       />
     </Button>
   );

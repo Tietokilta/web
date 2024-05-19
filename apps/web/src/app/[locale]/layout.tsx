@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 // eslint-disable-next-line camelcase -- next/font/google
 import { Inter, Roboto_Mono } from "next/font/google";
+import { ThemeProvider } from "next-themes";
 import { Footer } from "../../components/footer";
 import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
@@ -8,7 +9,6 @@ import { SkipLink } from "../../components/skip-link";
 import { cn } from "../../lib/utils";
 import "./globals.css";
 import { type Locale } from "../../locales/server";
-import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
