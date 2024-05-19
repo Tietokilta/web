@@ -58,10 +58,16 @@ module.exports = {
               },
             },
             "h2::before": {
-              content: "'#'/''",
+              content: "'#'",
+              "@supports (content: 'x' / 'y')": {
+                content: "'#'/''",
+              },
             },
             "h3::before": {
-              content: "'##'/''",
+              content: "'##'",
+              "@supports (content: 'x' / 'y')": {
+                content: "'##'/''",
+              },
             },
             "a:not([data-relation])": {
               textDecoration: "none",
