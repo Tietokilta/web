@@ -51,7 +51,8 @@ export type LinkRowBlockLink =
         | 'NavFuksis'
         | 'NavCompanies'
         | 'NavEvents'
-        | 'NavApplicants';
+        | 'NavApplicants'
+        | 'Handshake';
       label: string;
       linkType?: ('external' | 'internal') | null;
       url?: string | null;
@@ -168,6 +169,7 @@ export interface Page {
         | 'NavCompanies'
         | 'NavEvents'
         | 'NavApplicants'
+        | 'Handshake'
       )
     | null;
   hideTableOfContents?: boolean | null;
@@ -247,6 +249,7 @@ export interface Topic {
         | 'NavCompanies'
         | 'NavEvents'
         | 'NavApplicants'
+        | 'Handshake'
       )
     | null;
   updatedAt: string;
@@ -842,7 +845,8 @@ export interface MainNavigationTopicConfig {
                 | 'NavFuksis'
                 | 'NavCompanies'
                 | 'NavEvents'
-                | 'NavApplicants';
+                | 'NavApplicants'
+                | 'Handshake';
               id?: string | null;
             }[]
           | null;
