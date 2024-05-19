@@ -4,4 +4,4 @@ import { getAll } from "./fetcher";
 export const fetchCommittees = getAll<
   { where: { year: { equals: string } } },
   Committee[]
->("/api/committees");
+>("committees");

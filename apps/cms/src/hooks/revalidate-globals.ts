@@ -2,15 +2,9 @@
 // notice that the hook itself is not async and we are not awaiting `revalidate`
 
 import type { AfterChangeHook } from "payload/dist/globals/config/types";
-import { getLocale } from "../util";
 
 // only revalidate existing docs that are published (not drafts)
 export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
-  const locale = getLocale(req);
-  if (!locale) {
-    req.payload.logger.error("locale not set, cannot revalidate properly");
-    return;
-  }
   const revalidate = async (): Promise<void> => {
     const revalidationKey = process.env.PAYLOAD_REVALIDATION_KEY;
     if (!revalidationKey) {
@@ -24,8 +18,7 @@ export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
         process.env.PUBLIC_FRONTEND_URL ?? ""
       }/next_api/revalidate-global?${new URLSearchParams({
         secret: encodeURIComponent(revalidationKey),
-        global: encodeURIComponent(global.slug),
-        locale: encodeURIComponent(locale),
+        globalSlug: encodeURIComponent(global.slug),
       }).toString()}`;
       req.payload.logger.info(
         `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
