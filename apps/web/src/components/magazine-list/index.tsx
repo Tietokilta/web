@@ -13,14 +13,16 @@ function IssueCard({ issue }: { issue: MagazineIssue }) {
   const file = issue.file as Document;
   return (
     <div className="w-full max-w-xs sm:w-44">
-      <Image
-        alt={thumbnail.alt}
-        className="aspect-[1/1.41] w-full object-contain object-bottom"
-        height={thumbnail.height ?? undefined}
-        src={thumbnail.url ?? TikLogo}
-        width={thumbnail.width ?? undefined}
-      />
-      <a href={file.url ?? ""}>{issue.title}</a>
+      <a href={file.url ?? ""}>
+        <Image
+          alt={thumbnail.alt}
+          className="aspect-[1/1.41] w-full object-contain object-bottom"
+          height={thumbnail.height ?? undefined}
+          src={thumbnail.url ?? TikLogo}
+          width={thumbnail.width ?? undefined}
+        />
+        {issue.title}
+      </a>
     </div>
   );
 }
