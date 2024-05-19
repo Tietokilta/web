@@ -49,7 +49,7 @@ export default async function Home({
           .filter((url): url is string => Boolean(url))}
       />
       {/* Desktop view */}
-      <div className="container mx-0 hidden min-w-full grid-cols-2 gap-12 bg-gradient-to-b from-stone-50 to-stone-400 px-24 py-12 lg:grid dark:from-stone-900 dark:to-gray-900">
+      <div className="container mx-0 hidden min-w-full grid-cols-2 gap-12 px-24 py-12 lg:grid dark:bg-gradient-to-b dark:from-stone-900 dark:to-gray-900">
         <section className="order-first space-y-4">
           <h1 className="dark:text-dark-heading font-mono text-4xl font-bold text-gray-900">
             Tietokilta

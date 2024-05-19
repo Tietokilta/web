@@ -13,6 +13,7 @@ export function DarkModeToggle() {
       variant={"secondary"}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
       className="dark:text-dark-text dark:border-dark-fg dark:shadow-dark-fg dark:bg-dark-bg ml-4 mt-4 w-fit"
+      suppressHydrationWarning
     >
       {theme === "dark" ? "Light" : "Dark"}
     </Button>

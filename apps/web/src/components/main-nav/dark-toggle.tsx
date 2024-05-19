@@ -13,6 +13,7 @@ export function DarkModeToggle() {
       <NavigationMenuLink
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         className="dark:text-dark-text dark:border-dark-fg cursor-pointer select-none"
+        suppressHydrationWarning
       >
         {theme === "dark" ? "Light" : "Dark"}
       </NavigationMenuLink>
