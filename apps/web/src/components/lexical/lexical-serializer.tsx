@@ -21,6 +21,7 @@ import { CommitteeList } from "../committee-list";
 import { MagazineList } from "../magazine-list";
 import { ImageLinkGrid } from "../image-link-grid";
 import { GoogleForm } from "../google-form";
+import { EditorInChief } from "../editor-in-chief";
 import {
   IS_BOLD,
   IS_CODE,
@@ -58,11 +59,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             );
           }
           if (node.format & IS_CODE) {
-            text = (
-              <code key={index} className="dark:bg-stone-950">
-                {text}
-              </code>
-            );
+            text = <code key={index}>{text}</code>;
           }
           if (node.format & IS_SUBSCRIPT) {
             text = <sub key={index}>{text}</sub>;
@@ -217,9 +214,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                 <figure key={index}>
                   {img}
                   <figcaption>
-                    <span className="dark:text-dark-text">
-                      {node.fields.caption}
-                    </span>
+                    <span>{node.fields.caption}</span>
                   </figcaption>
                 </figure>
               );
@@ -232,7 +227,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                 href={node.value.url ?? "#broken-url"}
                 key={index}
                 target="_blank"
-                className="not-prose shadow-solid dark:shadow-dark-fg dark:border-dark-fg my-4 flex w-fit max-w-full items-center gap-4 text-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
+                className="not-prose shadow-solid my-4 flex w-fit max-w-full items-center gap-4 text-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
               >
                 <div className="flex max-w-full flex-col items-center gap-2">
                   {thumbnail ? (
@@ -277,14 +272,14 @@ function Relationship({ node }: { node: RelationshipNode }) {
     case "pages": {
       return (
         <Link
-          className="not-prose shadow-solid dark:shadow-dark-fg dark:border-dark-fg hover:dark:border-dark-fg my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90 hover:dark:bg-stone-950 hover:dark:opacity-80"
+          className="not-prose shadow-solid my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
           data-relation
           href={node.value.path ?? "#no-path"}
         >
           <FileIcon className="size-6" />
           <p className="flex flex-col">
             <span className="font-mono font-semibold">{node.value.title}</span>
-            <span className="dark:text-dark-text line-clamp-2 max-w-80 text-sm text-gray-700">
+            <span className="line-clamp-2 max-w-80 text-sm text-gray-700">
               {node.value.description}
             </span>
           </p>
@@ -319,6 +314,9 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "google-form": {
       return <GoogleForm link={node.fields.link} />;
+    }
+    case "editor-in-chief": {
+      return <EditorInChief name={node.fields.name} type={node.fields.type} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown blockType since we're casting types and there may be some bogus blocks
