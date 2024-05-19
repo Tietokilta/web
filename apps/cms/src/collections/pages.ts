@@ -4,25 +4,31 @@ import type {
   Page as PageType,
 } from "@tietokilta/cms-types/payload";
 import type {
+  BeforeDuplicate,
   CollectionConfig,
   Field,
   FieldHook,
   FilterOptions,
+  PayloadRequest,
+  Where,
 } from "payload/types";
 import { type Locale } from "payload/config";
+import { customAlphabet } from "nanoid";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
 import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../preview";
-import { getLocale } from "../util";
 import { iconField } from "../fields/icon-field";
+import { appendToStringOrLocalizedString, getLocale } from "../util";
+
+const nanoid = customAlphabet("abcdefghjklmnpqrstuvwxyz23456789", 6);
 
 type Localized<TField> = Record<Locale["code"], TField>;
 
-const formatPath: FieldHook<
-  Page,
-  Page["path"] | Localized<Page["path"]>
-> = async ({ data, req }) => {
+const getFormattedPath = async (
+  data: Partial<Page> | undefined,
+  req: PayloadRequest,
+): Promise<Page["path"] | Localized<Page["path"]>> => {
   if (!data?.slug || !req.payload.config.localization) {
     req.payload.logger.warn(
       "Could not format page path: missing slug or localization config",
@@ -75,6 +81,59 @@ const formatPath: FieldHook<
   return localizedPaths;
 };
 
+const formatPath: FieldHook<
+  Page,
+  Page["path"] | Localized<Page["path"]>
+> = async ({ data, req }) => {
+  const reqLocale = getLocale(req);
+  if (!reqLocale) {
+    req.payload.logger.warn("Could not format page path: missing locale", data);
+    return data?.path;
+  }
+  const formattedPath = await getFormattedPath(data, req);
+
+  if (!formattedPath || !Object.values(formattedPath).every(Boolean)) {
+    return data?.path;
+  }
+
+  const existingPage = (
+    await req.payload.find({
+      collection: "pages",
+      limit: 1,
+      pagination: false,
+      where: {
+        ...(typeof formattedPath === "string"
+          ? {
+              [`path.${reqLocale}`]: { equals: formattedPath },
+            }
+          : {
+              or: Object.entries(formattedPath).map(([locale, path]) => ({
+                [`path.${locale}`]: { equals: path },
+              })),
+            }),
+      },
+      locale: req.locale,
+    })
+  ).docs.at(0);
+  const existsPageWithSamePath = existingPage?.id !== data?.id;
+
+  if (existsPageWithSamePath) {
+    const randomSlug = nanoid();
+    return appendToStringOrLocalizedString(formattedPath, `-${randomSlug}`);
+  }
+
+  return formattedPath;
+};
+
+const updateUniquesOnDuplicate: BeforeDuplicate<Page> = ({ data }) => {
+  return {
+    ...data,
+    title: data.title ? `${data.title} (Copy)` : "",
+    slug: data.slug ? `${data.slug}-copy` : "",
+    path: data.path ? `${data.path}-copy` : "",
+  };
+};
+
 const filterCyclicPages: FilterOptions<PageType> = ({ data }) => ({
   id: {
     not_equals: data.id,
@@ -118,6 +177,9 @@ export const Pages: CollectionConfig = {
     preview: generatePreviewUrl<Page>((doc) => {
       return doc.path ?? "/";
     }),
+    hooks: {
+      beforeDuplicate: updateUniquesOnDuplicate,
+    },
   },
   access: {
     read: publishedAndVisibleOrSignedIn,
@@ -185,7 +247,9 @@ export const Pages: CollectionConfig = {
     {
       name: "path",
       type: "text",
+      index: true,
       localized: true,
+      unique: true,
       hooks: {
         beforeChange: [formatPath],
       },
