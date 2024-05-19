@@ -19,7 +19,7 @@ export function AdminBarClient({
   return (
     <>
       {isPreviewMode ? (
-        <div className="top-30 fixed z-20 w-full bg-red-500 p-2 text-center text-white">
+        <div className="fixed top-20 z-20 w-full bg-red-500 p-2 text-center text-white">
           This is a draft preview
         </div>
       ) : null}

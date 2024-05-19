@@ -10,8 +10,8 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
     <li className="shadow-solid relative flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6">
       <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
         <div className="flex gap-1">
-          <span className="bg-secondary-600 h-2 w-2 rounded-full border border-gray-900" />
-          <span className="bg-primary-600 h-2 w-2 rounded-full border border-gray-900" />
+          <span className="bg-secondary-600 size-2 rounded-full border border-gray-900" />
+          <span className="bg-primary-600 size-2 rounded-full border border-gray-900" />
         </div>
       </div>
       <Image
@@ -35,7 +35,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
               className="flex items-center gap-1"
               href={`mailto:${boardMember.email}`}
             >
-              <GmailIcon className="h-6 w-6 shrink-0" />
+              <GmailIcon className="size-6 shrink-0" />
               <span className="underline">
                 {insertSoftHyphens(boardMember.email)}
               </span>
@@ -48,7 +48,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <TelegramIcon className="h-6 w-6 shrink-0" />
+              <TelegramIcon className="size-6 shrink-0" />
               <span className="underline">{boardMember.telegram}</span>
             </a>
           ) : null}
@@ -59,7 +59,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <PhoneIcon className="h-6 w-6 shrink-0" />
+              <PhoneIcon className="size-6 shrink-0" />
               <span className="underline">{boardMember.phoneNumber}</span>
             </a>
           ) : null}

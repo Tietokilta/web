@@ -112,7 +112,7 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
     <li className="shadow-solid group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6">
       <Link
         href={`/${locale}/${t("events")}/${event.slug}`}
-        className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:h-full before:w-full before:cursor-[inherit] group-hover:underline md:w-1/3"
+        className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline md:w-1/3"
       >
         <h2>{event.title}</h2>
       </Link>

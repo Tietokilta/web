@@ -56,13 +56,13 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
             dateTime={event.date}
             title={formatDatetime(event.date, locale)}
           >
-            <ClockIcon className="mr-1 inline-block h-4 w-4" />
+            <ClockIcon className="mr-1 inline-block size-4" />
             {formatDatetime(event.date, locale)}
           </time>
         ) : null}
         {event.location ? (
           <span className="block truncate" title={event.location}>
-            <MapPinIcon className="mr-1 inline-block h-4 w-4" />
+            <MapPinIcon className="mr-1 inline-block size-4" />
             {event.location}
           </span>
         ) : null}

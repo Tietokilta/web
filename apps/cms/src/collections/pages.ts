@@ -10,7 +10,6 @@ import type {
   FieldHook,
   FilterOptions,
   PayloadRequest,
-  Where,
 } from "payload/types";
 import { type Locale } from "payload/config";
 import { customAlphabet } from "nanoid";

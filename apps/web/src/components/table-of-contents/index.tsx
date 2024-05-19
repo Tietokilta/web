@@ -108,7 +108,7 @@ function Mobile({
         >
           {activeHeading.text}
         </span>
-        <ChevronDownIcon className="h-6 w-6 transition-all group-open:rotate-180" />
+        <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
       </summary>
       <nav className="scroll-shadows-sm max-h-[50lvh] overflow-y-scroll px-4 py-2 shadow-sm drop-shadow-sm">
         <HeadingList
