@@ -1,5 +1,6 @@
 import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../../access/signed-in";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 
 export const Magazines: CollectionConfig = {
   slug: "magazines",
@@ -42,4 +43,7 @@ export const Magazines: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [revalidateCollection("magazines")],
+  },
 };
