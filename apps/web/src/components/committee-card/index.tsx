@@ -18,16 +18,16 @@ function CommitteeMemberCard({
   const name = committeeMember.name.replace(/-/g, "\u2011"); // use non-breaking hyphens
 
   return (
-    <li className="relative flex w-full max-w-xs flex-col border-2 border-gray-900 sm:w-44">
+    <li className="dark:border-dark-fg relative flex w-full max-w-xs flex-col border-2 border-gray-900 sm:w-44">
       <Image
         alt={photo?.alt ?? ""}
-        className="w-full border-b-2 border-gray-900 object-cover object-center"
+        className="dark:border-dark-fg w-full border-b-2 border-gray-900 object-cover object-center"
         height={photo?.height ? Math.trunc(photo.height) : undefined}
         src={photo?.url ?? TikLogo}
         width={photo?.width ? Math.trunc(photo.width) : undefined}
       />
       {isChair ? <GavelIcon className="absolute left-0 top-0 size-6" /> : null}
-      <p className="flex flex-1 flex-col flex-wrap justify-center text-balance bg-gray-100 text-center">
+      <p className="dark:bg-dark-bg flex flex-1 flex-col flex-wrap justify-center text-balance bg-gray-100 text-center">
         <span className="font-medium">{name}</span>
         <span className="text-sm">
           {insertSoftHyphens(committeeMember.title)}
@@ -47,11 +47,11 @@ export function CommitteeCard({
   return (
     <section
       className={cn(
-        "not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-16 font-mono md:px-6",
+        "not-prose shadow-solid dark:shadow-dark-fg dark:border-dark-fg relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-16 font-mono md:px-6",
         !isTightLayout && "md:-mx-8 lg:-mx-32 xl:-mx-48 2xl:-mx-64",
       )}
     >
-      <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
+      <div className="dark:bg-dark-bg dark:border-dark-fg absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
         <div className="flex w-8 gap-1">
           <div className="bg-secondary-600 size-3 rounded-full border border-gray-900" />
           <div className="bg-primary-600 size-3 rounded-full border border-gray-900" />

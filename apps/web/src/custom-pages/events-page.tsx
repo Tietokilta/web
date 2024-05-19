@@ -109,10 +109,10 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina.path");
   const locale = getCurrentLocale();
   return (
-    <li className="shadow-solid group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6">
+    <li className="shadow-solid dark:border-dark-fg dark:shadow-dark-fg dark:bg-dark-bg dark:text-dark-text group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6">
       <Link
         href={`/${locale}/${t("events")}/${event.slug}`}
-        className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline md:w-1/3"
+        className="dark:text-dark-heading text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline md:w-1/3"
       >
         <h2>{event.title}</h2>
       </Link>
@@ -155,7 +155,9 @@ export default async function Page() {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{ta("Back")}</BackButton>
-          <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
+          <h1 className="dark:text-dark-heading font-mono text-4xl">
+            {t("Tapahtumat")}
+          </h1>
           <ul className="space-y-8">
             {events.data.map((event) => (
               <EventCard event={event} key={event.id} />
