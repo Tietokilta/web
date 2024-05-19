@@ -12,7 +12,7 @@ import type {
 import { type Locale } from "payload/config";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
-import { revalidatePage } from "../hooks/revalidate-page";
+import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../preview";
 import { getLocale } from "../util";
 
@@ -227,6 +227,6 @@ export const Pages: CollectionConfig = {
     },
   },
   hooks: {
-    afterChange: [revalidatePage<Page>("pages")],
+    afterChange: [revalidateCollection<Page>("pages")],
   },
 };

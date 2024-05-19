@@ -3,7 +3,7 @@ import type { CollectionConfig, FilterOptions } from "payload/types";
 import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
-import { revalidatePage } from "../../hooks/revalidate-page";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 import { getLocale } from "../../util";
 import { importController } from "../../controllers/import-controller";
 
@@ -53,7 +53,7 @@ export const Committees = {
     },
   ],
   hooks: {
-    afterChange: [revalidatePage<Committee>("committees")],
+    afterChange: [revalidateCollection<Committee>("committees")],
   },
   endpoints: [
     {
