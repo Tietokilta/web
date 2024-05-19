@@ -177,9 +177,21 @@ export default async function Page() {
           <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
           <ul className="space-y-8">
             <Calendar events={events.data} />
-            {events.data.map((event) => (
-              <EventCard event={event} key={event.id} />
-            ))}
+            {events.data
+              .filter((event) => {
+                const currentDate = new Date();
+                if (event.endDate) {
+                  const eventEndDate = new Date(event.endDate);
+                  return eventEndDate >= currentDate;
+                } else if (event.date) {
+                  const eventStartDate = new Date(event.date);
+                  return eventStartDate >= currentDate;
+                }
+                return false;
+              })
+              .map((event) => (
+                <EventCard event={event} key={event.id} />
+              ))}
           </ul>
         </div>
       </div>
