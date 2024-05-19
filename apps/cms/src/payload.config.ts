@@ -49,6 +49,7 @@ import { NewsItems } from "./collections/weekly-newsletters/news-items";
 import { ActionsLink, ActionsView } from "./views/actions-view";
 import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { GoogleForm } from "./blocks/google-form";
+import { EditorInChief } from "./blocks/editor-in-chief";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -170,7 +171,7 @@ export default buildConfig({
       }),
       BlockQuoteFeature(),
       BlocksFeature({
-        blocks: [CommitteesInYear, ImageLinkGrid, GoogleForm],
+        blocks: [CommitteesInYear, ImageLinkGrid, GoogleForm, EditorInChief],
       }),
       UploadFeature({
         collections: {
