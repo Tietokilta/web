@@ -40,6 +40,11 @@ import {
 } from "lucide-react";
 import React from "react";
 import { default as TikLogo } from "./tik-logo";
+import NavGuildIcon from "./nav/guild";
+import NavFuksisIcon from "./nav/fuksis";
+import NavCompaniesIcon from "./nav/companies";
+import NavEventsIcon from "./nav/events";
+import NavApplicantsIcon from "./nav/applicants";
 
 export const icons = {
   AlertOctagon: AlertOctagonIcon,
@@ -76,6 +81,11 @@ export const icons = {
   TikLogo,
   Tiktok: TiktokIcon,
   X: XIcon,
+  NavGuild: NavGuildIcon,
+  NavFuksis: NavFuksisIcon,
+  NavCompanies: NavCompaniesIcon,
+  NavEvents: NavEventsIcon,
+  NavApplicants: NavApplicantsIcon,
 } as const;
 
 export {
@@ -113,6 +123,11 @@ export {
   TikLogo,
   TiktokIcon,
   XIcon,
+  NavGuildIcon,
+  NavFuksisIcon,
+  NavCompaniesIcon,
+  NavEventsIcon,
+  NavApplicantsIcon,
 };
 
 export type { LucideIcon };
