@@ -27,6 +27,7 @@ export const LandingPage: GlobalConfig = {
         {
           name: "text",
           type: "text",
+          maxLength: 120,
         },
       ],
     },
