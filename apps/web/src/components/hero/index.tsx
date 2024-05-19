@@ -82,7 +82,7 @@ export function Hero({
     text: currentText,
     seed: 1,
     tick: 2,
-    speed: 0.7,
+    speed: 1,
   });
 
   useEffect(() => {
@@ -112,9 +112,9 @@ export function Hero({
           isCurrentImage={imageIndex === currentImageIndex}
         />
       ))}
-      <div className="container z-20 mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-4xl lg:text-6xl">
+      <div className="container z-20 mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-3xl lg:text-4xl">
         <p
-          className="line-clamp-4 w-full max-w-lg break-words pb-2 lg:w-1/2"
+          className="line-clamp-4 w-full max-w-2xl break-words pb-2 lg:w-1/2"
           ref={ref}
         />
       </div>
