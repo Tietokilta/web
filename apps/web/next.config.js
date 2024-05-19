@@ -16,6 +16,7 @@ module.exports = {
           },
         ]
       : undefined,
+    minimumCacheTTL: 3600,
   },
   eslint: {
     ignoreDuringBuilds: true,
