@@ -519,6 +519,7 @@ enum Page_icon {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 """
@@ -586,6 +587,7 @@ enum Topic_icon {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 enum Page__status {
@@ -709,6 +711,7 @@ enum Page_icon_Input {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 input Page_hideTableOfContents_operator {
@@ -1305,6 +1308,7 @@ enum PageVersion_Version_icon {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 type PageVersion_Version_Topic_Relationship {
@@ -1453,6 +1457,7 @@ enum versionsPage_version__icon_Input {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 input versionsPage_version__hideTableOfContents_operator {
@@ -2896,6 +2901,7 @@ enum Topic_icon_Input {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 input Topic_updatedAt_operator {
@@ -7358,6 +7364,7 @@ enum LinkRowBlockLink_icon {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 enum LinkRowBlockLink_linkType {
@@ -7868,6 +7875,7 @@ enum MainNavigationTopicConfig_Categories_ExternalLinks_icon {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 type main_navigationDocAccess {
@@ -13017,6 +13025,7 @@ enum Page_icon_MutationInput {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 input Page_TopicRelationshipInput {
@@ -13098,6 +13107,7 @@ enum PageUpdate_icon_MutationInput {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 input PageUpdate_TopicRelationshipInput {
@@ -13226,6 +13236,7 @@ enum Topic_icon_MutationInput {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 input mutationTopicUpdateInput {
@@ -13276,6 +13287,7 @@ enum TopicUpdate_icon_MutationInput {
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }
 
 input mutationBoardMemberInput {
@@ -14098,4 +14110,5 @@ enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInpu
   NavCompanies
   NavEvents
   NavApplicants
+  Handshake
 }

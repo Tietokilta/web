@@ -37,6 +37,7 @@ import {
   MoreHorizontalIcon,
   PhoneIcon,
   XIcon,
+  HandshakeIcon,
 } from "lucide-react";
 import React from "react";
 import { default as TikLogo } from "./tik-logo";
@@ -86,6 +87,7 @@ export const icons = {
   NavCompanies: NavCompaniesIcon,
   NavEvents: NavEventsIcon,
   NavApplicants: NavApplicantsIcon,
+  Handshake: HandshakeIcon,
 } as const;
 
 export {
@@ -128,6 +130,7 @@ export {
   NavCompaniesIcon,
   NavEventsIcon,
   NavApplicantsIcon,
+  HandshakeIcon,
 };
 
 export type { LucideIcon };
