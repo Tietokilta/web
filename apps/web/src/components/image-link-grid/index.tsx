@@ -10,7 +10,7 @@ function ImageLink({
 }) {
   const img = (
     <Image
-      className="w-44 object-cover object-center dark:hue-rotate-180 dark:invert"
+      className="w-44 object-cover object-center"
       src={image.image.url ?? TikLogo}
       alt={image.image.alt}
       width={image.image.width ?? undefined}
@@ -31,7 +31,7 @@ export function ImageLinkGrid({
   images: ImageLinkGridBlockNode["fields"]["images"];
 }) {
   return (
-    <div className="not-prose shadow-solid dark:shadow-dark-fg dark:border-dark-fg relative my-8 flex flex-wrap items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6">
+    <div className="not-prose shadow-solid relative my-8 flex flex-wrap items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6 ">
       {images.map((image) => (
         <ImageLink key={image.image.id} image={image} />
       ))}
