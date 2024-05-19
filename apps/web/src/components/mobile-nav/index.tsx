@@ -60,7 +60,7 @@ export async function MobileNav({
       <Sheet>
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">
-            <MenuIcon className="h-6 w-6" />
+            <MenuIcon className="size-6" />
             <span className="sr-only">{t("Toggle menu")}</span>
           </Button>
         </SheetTrigger>

@@ -104,7 +104,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
         <details className="group flex w-full flex-col">
           <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-2 text-lg font-medium [&::-webkit-details-marker]:hidden [&::marker]:hidden">
             <h2>{news.title}</h2>
-            <ChevronDownIcon className="inline-block h-6 w-6 shrink-0 transition-all group-open:rotate-180" />
+            <ChevronDownIcon className="inline-block size-6 shrink-0 transition-all group-open:rotate-180" />
           </summary>
           <p className="pt-2">{news.excerpt}</p>
         </details>
