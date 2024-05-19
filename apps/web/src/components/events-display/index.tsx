@@ -13,7 +13,7 @@ import {
 } from "../pagination";
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../../lib/api/external/ilmomasiina";
-import { getCurrentLocale, getI18n, getScopedI18n } from "../../locales/server";
+import { getCurrentLocale, getI18n } from "../../locales/server";
 import { formatDatetime } from "../../lib/utils";
 
 function EventListSkeleton() {
@@ -28,9 +28,9 @@ function EventListSkeleton() {
 
 async function EventItem({ event }: { event: IlmomasiinaEvent }) {
   const locale = getCurrentLocale();
-  const t = await getScopedI18n("action");
+  const t = await getI18n();
 
-  const eventUrl = `/${locale}/events/${event.slug}`;
+  const eventUrl = `/${locale}/${t("ilmomasiina.path.events")}/${event.slug}`;
 
   return (
     <li className="shadow-solid flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
@@ -40,9 +40,11 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
           <Link href={eventUrl}>
-            <span aria-hidden="true">{t("Read more")}</span>
+            <span aria-hidden="true">{t("action.Read more")}</span>
             <span className="sr-only">
-              {t("Read more about {something}", { something: event.title })}
+              {t("action.Read more about {something}", {
+                something: event.title,
+              })}
             </span>
           </Link>
         </Button>
@@ -67,9 +69,11 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
       </div>
       <Button asChild className="md:hidden" variant="link">
         <Link href={eventUrl}>
-          <span aria-hidden="true">{t("Read more")}</span>
+          <span aria-hidden="true">{t("action.Read more")}</span>
           <span className="sr-only">
-            {t("Read more about {something}", { something: event.title })}
+            {t("action.Read more about {something}", {
+              something: event.title,
+            })}
           </span>
         </Link>
       </Button>
@@ -151,15 +155,15 @@ export async function EventsDisplay({
   currentPage?: number;
 }) {
   const locale = getCurrentLocale();
-  const t = await getScopedI18n("headings");
+  const t = await getI18n();
   return (
     <section className="space-y-4">
       <Link
         className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
-        href={eventsListPath ?? `/${locale}/events`}
+        href={eventsListPath ?? `/${locale}/${t("ilmomasiina.path.events")}`}
       >
         <h2 className="font-mono text-2xl font-bold text-gray-900">
-          {t("Upcoming events")}
+          {t("headings.Upcoming events")}
         </h2>
       </Link>
 
