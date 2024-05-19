@@ -6,6 +6,12 @@
   *::after {
     scrollbar-color: theme("colors.gray.900") theme("colors.gray.100");
   }
+
+  .dark *,
+  .dark *::before,
+  .dark *::after {
+    scrollbar-color: theme("colors.stone.700") theme("colors.stone.950");
+  }
 }
 
 @tailwind components;
@@ -61,31 +67,36 @@
   .dark .scroll-shadows {
     background:
       /* Shadow Cover TOP */
-      linear-gradient(
-          theme("colors.stone.900") 30%,
-          theme("colors.stone.900 / 0%")
-        )
+      linear-gradient(theme("colors.dark-bg") 30%, theme("colors.dark-bg / 0%"))
         center top,
       /* Shadow Cover BOTTOM */
         linear-gradient(
-          theme("colors.stone.900 / 0%"),
-          theme("colors.stone.900") 70%
+          theme("colors.dark-bg / 0%"),
+          theme("colors.dark-bg") 70%
         )
         center bottom,
       /* Shadow TOP */
         radial-gradient(
           farthest-side at 50% 0,
-          theme("colors.stone.100 / 30%"),
-          theme("colors.stone.100 / 0%")
+          theme("colors.stone.400 / 30%"),
+          theme("colors.stone.400/ 0%")
         )
         center top,
       /* Shadow BOTTOM */
         radial-gradient(
           farthest-side at 50% 100%,
-          theme("colors.stone.100 / 30%"),
-          theme("colors.stone.100 / 0%")
+          theme("colors.stone.400 / 30%"),
+          theme("colors.stone.400 / 0%")
         )
         center bottom;
+
+    background-repeat: no-repeat;
+    background-size:
+      100% theme(space.12),
+      100% theme(space.12),
+      100% theme(space.4),
+      100% theme(space.4);
+    background-attachment: local, local, scroll, scroll;
   }
 
   .scroll-shadows-sm {
@@ -129,31 +140,40 @@
   .dark .scroll-shadows-sm {
     background:
       /* Shadow Cover TOP */
+            /* Shadow Cover TOP */
       linear-gradient(
-          theme("colors.stone.950") 10%,
-          theme("colors.stone.900 / 0%")
+          theme("colors.dark-bg") 0%,
+          theme("colors.dark-bg / 0%") 30%
         )
         center top,
       /* Shadow Cover BOTTOM */
         linear-gradient(
-          theme("colors.stone.900 / 0%"),
-          theme("colors.stone.950") 90%
+          theme("colors.dark-bg / 0%") 70%,
+          theme("colors.dark-bg") 100%
         )
         center bottom,
       /* Shadow TOP */
         radial-gradient(
           farthest-side at 50% 0,
-          theme("colors.stone.100 / 10%"),
-          theme("colors.stone.100 / 0%")
+          theme("colors.stone.400 / 10%"),
+          theme("colors.stone.400 / 0%")
         )
         center top,
       /* Shadow BOTTOM */
         radial-gradient(
           farthest-side at 50% 100%,
-          theme("colors.stone.100 / 10%"),
-          theme("colors.stone.100 / 0%")
+          theme("colors.stone.400 / 10%"),
+          theme("colors.stone.400 / 0%")
         )
         center bottom;
+
+    background-repeat: no-repeat;
+    background-size:
+      100% theme(space.12),
+      100% theme(space.12),
+      100% theme(space.4),
+      100% theme(space.4);
+    background-attachment: local, local, scroll, scroll;
   }
 }
 @tailwind utilities;
