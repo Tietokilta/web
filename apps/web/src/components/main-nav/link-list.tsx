@@ -112,7 +112,7 @@ function NavigationLink({
                   <li key={externalLink.title}>
                     <Button
                       asChild
-                      className="dark:shadow-dark-fg dark:border-dark-fg hover:dark:border-dark-fg relative z-10 my-2 w-full border-b-0 px-2 hover:dark:bg-stone-900"
+                      className="dark:shadow-dark-fg dark:border-dark-fg relative z-10 my-2 w-full border-b-0 px-2"
                       variant="outlineLink"
                     >
                       <Link
