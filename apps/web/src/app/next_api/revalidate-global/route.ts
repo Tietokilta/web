@@ -2,9 +2,9 @@ import { revalidatePath, revalidateTag } from "next/cache";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-// this endpoint will revalidate a page by tag or path
-// this is to achieve on-demand revalidation of pages that use this data
-// send either `collection` and `slug` or `revalidatePath` as query params
+/**
+ * Revalidate a global and root layout.
+ */
 export function POST(request: NextRequest): NextResponse {
   const globalSlug = decodeURIComponent(
     request.nextUrl.searchParams.get("globalSlug") ?? "",

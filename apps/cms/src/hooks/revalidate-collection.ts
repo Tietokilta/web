@@ -13,7 +13,7 @@ type CollectionSlug = keyof Config["collections"];
  *
  * Only revalidate existing docs that are published (not drafts).
  */
-export function revalidatePage<T extends TypeWithID>(
+export function revalidateCollection<T extends TypeWithID>(
   collectionSlug: CollectionSlug,
 ): AfterChangeHook<T> {
   return ({ doc, req }): T => {
@@ -36,7 +36,7 @@ export function revalidatePage<T extends TypeWithID>(
 
     const revalidate = async (): Promise<void> => {
       try {
-        const fetchUrl = `${process.env.PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-page?${new URLSearchParams(
+        const fetchUrl = `${process.env.PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-collection?${new URLSearchParams(
           {
             secret: encodeURIComponent(revalidationKey),
             collectionSlug: encodeURIComponent(collectionSlug),
