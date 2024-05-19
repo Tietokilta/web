@@ -70,7 +70,7 @@ export default async function Home({
           {announcement ? <AnnouncementCard news={announcement} /> : null}
         </div>
         <section className="space-y-4">
-          <h1 className="font-mono text-4xl font-bold text-gray-900">
+          <h1 className="dark:text-dark-heading font-mono text-4xl font-bold text-gray-900">
             Tietokilta
           </h1>
           <Content content={body} />
