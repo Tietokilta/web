@@ -26,9 +26,9 @@ function HeadingList({
           className={cn(
             "before:text-gray-600",
             item.level === 2 &&
-              "mb-2 ms-[2ch] text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'/''] last:mb-0",
+              "before:content-alt-empty mb-2 ms-[2ch] text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'] last:mb-0",
             item.level === 3 &&
-              "mb-1 ms-[3ch] text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'/''] last:mb-0",
+              "before:content-alt-empty mb-1 ms-[3ch] text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'] last:mb-0",
           )}
           key={`${item.level.toFixed()}-${item.text}`}
         >
@@ -100,8 +100,10 @@ function Mobile({
         <span
           className={cn(
             "truncate text-2xl font-bold before:me-[2ch] before:text-gray-600",
-            activeHeading.level === 2 && "before:content-['#'/'']",
-            activeHeading.level === 3 && "before:content-['##'/'']",
+            activeHeading.level === 2 &&
+              "before:content-alt-empty before:content-['#']",
+            activeHeading.level === 3 &&
+              "before:content-alt-empty before:content-['##']",
           )}
         >
           {activeHeading.text}
