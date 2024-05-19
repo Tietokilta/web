@@ -1,4 +1,4 @@
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
@@ -6,11 +6,8 @@ import { NextResponse } from "next/server";
 // this is to achieve on-demand revalidation of pages that use this data
 // send either `collection` and `slug` or `revalidatePath` as query params
 export function POST(request: NextRequest): NextResponse {
-  const global = decodeURIComponent(
-    request.nextUrl.searchParams.get("global") ?? "",
-  );
-  const locale = decodeURIComponent(
-    request.nextUrl.searchParams.get("locale") ?? "",
+  const globalSlug = decodeURIComponent(
+    request.nextUrl.searchParams.get("globalSlug") ?? "",
   );
   const secret = decodeURIComponent(
     request.nextUrl.searchParams.get("secret") ?? "",
@@ -25,17 +22,22 @@ export function POST(request: NextRequest): NextResponse {
     );
   }
 
-  if (typeof global === "string" && typeof locale === "string") {
-    const tagToRevalidate = `getGlobal_/api/globals/${global}?locale=${locale}`;
+  if (typeof globalSlug !== "string") {
     // eslint-disable-next-line no-console -- for debugging purposes
-    console.log("revalidating tag: ", tagToRevalidate);
-    revalidateTag(tagToRevalidate);
-    return NextResponse.json({ revalidated: true, now: Date.now() });
+    console.log(
+      "invalid collection or fetchData from revalidate request: ",
+      global,
+    );
+    return NextResponse.json(
+      { revalidated: false, now: Date.now() },
+      {
+        status: 400,
+      },
+    );
   }
-  // eslint-disable-next-line no-console -- for debugging purposes
-  console.log(
-    "invalid collection or fetchData from revalidate request: ",
-    global,
-  );
-  return NextResponse.json({ revalidated: false, now: Date.now() });
+
+  revalidateTag(`global-${globalSlug}`);
+  revalidatePath("/[locale]", "layout");
+
+  return NextResponse.json({ revalidated: true, now: Date.now() });
 }

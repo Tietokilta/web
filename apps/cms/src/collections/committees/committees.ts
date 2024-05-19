@@ -53,24 +53,7 @@ export const Committees = {
     },
   ],
   hooks: {
-    afterChange: [
-      // eslint-disable-next-line @typescript-eslint/require-await -- revalidate page wants promise
-      revalidatePage<Committee>("committees", async (doc, req) => {
-        const locale = getLocale(req);
-        if (!locale) {
-          req.payload.logger.error(
-            "locale not set, cannot revalidate properly",
-          );
-          return;
-        }
-        return {
-          where: {
-            year: { equals: doc.year },
-          },
-          locale,
-        };
-      }),
-    ],
+    afterChange: [revalidatePage<Committee>("committees")],
   },
   endpoints: [
     {
