@@ -1,7 +1,7 @@
 import type { Committee } from "@tietokilta/cms-types/payload";
-import { getAll } from "./fetcher";
+import { getAllCollectionItems } from "./fetcher";
 
-export const fetchCommittees = getAll<
+export const fetchCommittees = getAllCollectionItems<
   { where: { year: { equals: string } } },
   Committee[]
 >("committees");
