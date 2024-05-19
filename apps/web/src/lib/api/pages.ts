@@ -8,4 +8,4 @@ export const fetchPage = getOne<
       | { "path.fi": { equals: string } | { "path.en": { equals: string } } };
   },
   Page
->("/api/pages");
+>("pages");
