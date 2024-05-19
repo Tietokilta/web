@@ -27,7 +27,7 @@ function CommitteeMemberCard({
         width={photo?.width ? Math.trunc(photo.width) : undefined}
       />
       {isChair ? <GavelIcon className="absolute left-0 top-0 h-6 w-6" /> : null}
-      <p className="flex flex-1 flex-row flex-wrap justify-center text-balance bg-gray-100 text-center">
+      <p className="flex flex-1 flex-col flex-wrap justify-center text-balance bg-gray-100 text-center">
         <span className="font-medium">{name}</span>
         <span className="text-sm">
           {insertSoftHyphens(committeeMember.title)}
