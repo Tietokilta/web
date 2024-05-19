@@ -88,7 +88,7 @@ function PaginationPrevious({
       size="default"
       {...props}
     >
-      <ChevronLeftIcon className="h-4 w-4" />
+      <ChevronLeftIcon className="size-4" />
       <span>{children}</span>
     </PaginationLink>
   );
@@ -111,7 +111,7 @@ function PaginationNext({
       {...props}
     >
       <span>{children}</span>
-      <ChevronRightIcon className="h-4 w-4" />
+      <ChevronRightIcon className="size-4" />
     </PaginationLink>
   );
 }
@@ -128,7 +128,7 @@ function PaginationEllipsis({
       className={cn("flex h-9 w-9 items-center justify-center", className)}
       {...props}
     >
-      <MoreHorizontalIcon className="h-4 w-4" />
+      <MoreHorizontalIcon className="size-4" />
       <span className="sr-only">{children}</span>
     </span>
   );

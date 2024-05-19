@@ -121,11 +121,11 @@ function NavigationLink({
                         className="flex justify-between gap-1"
                       >
                         <RenderIcon
-                          className="h-6 w-6"
+                          className="size-6"
                           name={externalLink.icon}
                         />
                         <span>{externalLink.title}</span>
-                        <ExternalLinkIcon className="h-4 w-4" />
+                        <ExternalLinkIcon className="size-4" />
                       </Link>
                     </Button>
                   </li>

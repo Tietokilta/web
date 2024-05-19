@@ -30,7 +30,7 @@ export default async function Page() {
               href={`/${locale}/weekly-newsletters/${newsletter.slug ?? "#no-path"}`}
               key={newsletter.id}
             >
-              <FileIcon className="h-6 w-6" />
+              <FileIcon className="size-6" />
               <p className="flex flex-col">
                 <span className="font-mono font-semibold">
                   {newsletter.title}
