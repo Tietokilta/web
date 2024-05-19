@@ -46,7 +46,12 @@ export type LinkRowBlockLink =
         | 'Telegram'
         | 'TikLogo'
         | 'Tiktok'
-        | 'X';
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants';
       label: string;
       linkType?: ('external' | 'internal') | null;
       url?: string | null;
@@ -122,6 +127,49 @@ export interface Page {
   title: string;
   description: string;
   type: 'standard' | 'redirect' | 'events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
+  icon?:
+    | (
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+      )
+    | null;
   hideTableOfContents?: boolean | null;
   content?: {
     root: {
@@ -158,6 +206,49 @@ export interface Topic {
   id: string;
   title: string;
   slug: string;
+  icon?:
+    | (
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+      )
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -746,7 +837,12 @@ export interface MainNavigationTopicConfig {
                 | 'Telegram'
                 | 'TikLogo'
                 | 'Tiktok'
-                | 'X';
+                | 'X'
+                | 'NavGuild'
+                | 'NavFuksis'
+                | 'NavCompanies'
+                | 'NavEvents'
+                | 'NavApplicants';
               id?: string | null;
             }[]
           | null;
