@@ -1,6 +1,7 @@
 import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 
 export const CommitteeMembers = {
   slug: "committee-members",
@@ -44,4 +45,10 @@ export const CommitteeMembers = {
       type: "text",
     },
   ],
+  hooks: {
+    afterChange: [
+      revalidateCollection("committee-members"),
+      revalidateCollection("committees"),
+    ],
+  },
 } as const satisfies CollectionConfig;

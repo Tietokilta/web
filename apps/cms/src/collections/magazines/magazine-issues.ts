@@ -2,6 +2,7 @@ import type { MagazineIssue } from "@tietokilta/cms-types/payload";
 import type { CollectionConfig, FieldHook } from "payload/types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 
 const formatTitle: FieldHook<MagazineIssue> = ({ data }) => {
   if ((!data?.issueNumber && data?.issueNumber !== 0) || !data.year) return "";
@@ -60,4 +61,10 @@ export const MagazineIssues: CollectionConfig = {
       type: "text",
     },
   ],
+  hooks: {
+    afterChange: [
+      revalidateCollection("magazine-issues"),
+      revalidateCollection("magazines"),
+    ],
+  },
 };
