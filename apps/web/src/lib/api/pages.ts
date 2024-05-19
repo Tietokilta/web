@@ -1,7 +1,7 @@
 import type { Page } from "@tietokilta/cms-types/payload";
-import { getOne } from "./fetcher";
+import { getOneCollectionItem } from "./fetcher";
 
-export const fetchPage = getOne<
+export const fetchPage = getOneCollectionItem<
   {
     where:
       | { path: { equals: string } }
