@@ -180,10 +180,19 @@ export type GoogleFormBlockNode = BaseBlockNode & {
   };
 };
 
+export type EditorInChiefBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "editor-in-chief";
+    name: string;
+    type: string;
+  };
+};
+
 export type BlockNode =
   | CommitteesYearBlockNode
   | ImageLinkGridBlockNode
-  | GoogleFormBlockNode;
+  | GoogleFormBlockNode
+  | EditorInChiefBlockNode;
 
 export type Node =
   | TextNode

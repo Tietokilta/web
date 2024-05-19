@@ -21,6 +21,7 @@ import { CommitteeList } from "../committee-list";
 import { MagazineList } from "../magazine-list";
 import { ImageLinkGrid } from "../image-link-grid";
 import { GoogleForm } from "../google-form";
+import { EditorInChief } from "../editor-in-chief";
 import {
   IS_BOLD,
   IS_CODE,
@@ -313,6 +314,9 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "google-form": {
       return <GoogleForm link={node.fields.link} />;
+    }
+    case "editor-in-chief": {
+      return <EditorInChief name={node.fields.name} type={node.fields.type} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown blockType since we're casting types and there may be some bogus blocks
