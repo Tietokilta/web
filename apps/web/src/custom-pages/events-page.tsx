@@ -176,7 +176,8 @@ export default async function Page() {
                 if (event.endDate) {
                   const eventEndDate = new Date(event.endDate);
                   return eventEndDate >= currentDate;
-                } else if (event.date) {
+                }
+                if (event.date) {
                   const eventStartDate = new Date(event.date);
                   return eventStartDate >= currentDate;
                 }
