@@ -130,10 +130,10 @@ async function Page({ params: { path } }: Props) {
     <>
       <main
         id="main"
-        className="dark:bg-dark-bg dark-text relative mb-8 flex flex-col items-center gap-2 md:gap-6"
+        className="dark:bg-dark-bg relative mb-8 flex flex-col items-center gap-2 md:gap-6"
       >
-        <header className="dark:text-dark-heading flex h-[15svh] w-full items-center justify-center bg-gray-900 md:h-[25svh]">
-          <h1 className=" font-mono text-4xl md:text-5xl">{page.title}</h1>
+        <header className="dark:text-dark-heading flex h-[15svh] w-full items-center justify-center bg-gray-900 text-gray-100 md:h-[25svh]">
+          <h1 className="font-mono text-4xl md:text-5xl">{page.title}</h1>
         </header>
 
         <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">

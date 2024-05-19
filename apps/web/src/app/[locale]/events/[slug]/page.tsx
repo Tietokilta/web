@@ -115,7 +115,7 @@ async function SignUpTable({
   return (
     <table className="shadow-solid dark:shadow-dark-fg dark:border-dark-fg dark:text-dark-fg w-full table-auto border-separate border-spacing-0 rounded-md border-2 border-gray-900">
       <thead>
-        <tr className="dark:bg-stone-950s bg-gray-200">
+        <tr className="bg-gray-200 dark:bg-stone-950">
           <th className="dark:border-dark-fg rounded-tl-md border-b border-gray-900 p-2 ">
             {t("headers.Sija")}
           </th>
