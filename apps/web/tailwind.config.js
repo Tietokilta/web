@@ -4,7 +4,7 @@ const colors = require("tailwindcss/colors");
 
 /** @type {import("tailwindcss").Config} */
 module.exports = {
-  darkMode: "class",
+  darkMode: "media",
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     path.join(path.dirname(require.resolve("@tietokilta/ui")), "**/*.js"),
