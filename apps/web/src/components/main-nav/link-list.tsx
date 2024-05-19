@@ -57,7 +57,7 @@ function NavigationLink({
               height={80}
               aria-hidden="true"
               className="z-0 opacity-0 transition-opacity duration-300 group-hover/link:opacity-30"
-              name={(pageOrTopic.pageConfig?.page as Page).icon!!}
+              name={(pageOrTopic.pageConfig?.page as Page).icon ?? "HelpCircle"}
             />
           </div>
         )}
@@ -72,14 +72,16 @@ function NavigationLink({
           <span className="hover:underline">
             {(pageOrTopic.topicConfig?.topic as Topic).title}
           </span>
-          {(pageOrTopic.topicConfig?.topic as Topic).icon && (
+          {!!(pageOrTopic.topicConfig?.topic as Topic).icon && (
             <div className="absolute inset-0 flex items-center justify-center">
               <RenderIcon
                 width={100}
                 height={100}
                 aria-hidden="true"
                 className="z-0 opacity-0 transition-opacity duration-300 group-hover/link:opacity-30"
-                name={(pageOrTopic.topicConfig?.topic as Topic).icon!!}
+                name={
+                  (pageOrTopic.topicConfig?.topic as Topic).icon ?? "HelpCircle"
+                }
               />
             </div>
           )}
