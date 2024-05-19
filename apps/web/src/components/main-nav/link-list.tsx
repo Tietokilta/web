@@ -56,7 +56,7 @@ function NavigationLink({
               width={80}
               height={80}
               aria-hidden="true"
-              className="z-0 opacity-0 transition-opacity duration-300 group-hover/link:opacity-30"
+              className="z-0 opacity-0 transition-opacity duration-300 group-hover/link:opacity-15"
               name={(pageOrTopic.pageConfig?.page as Page).icon ?? "HelpCircle"}
             />
           </div>
