@@ -11,7 +11,7 @@ function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <div className="prose prose-headings:scroll-mt-24 max-w-prose">
+    <div className="prose prose-headings:scroll-mt-24 dark:prose-invert max-w-prose">
       <LexicalSerializer nodes={content.root.children} />
     </div>
   );
@@ -35,7 +35,7 @@ export default async function Home({
   const pageInt = parseInt(String(page), 10);
 
   return (
-    <main id="main" className="flex min-h-screen flex-col">
+    <main id="main" className="dark:bg-dark-bg flex min-h-screen flex-col">
       <Hero
         images={landingPageData.heroImages
           .map(({ image }) =>
@@ -49,9 +49,9 @@ export default async function Home({
           .filter((url): url is string => Boolean(url))}
       />
       {/* Desktop view */}
-      <div className="container mx-auto hidden grid-cols-2 gap-12 px-6 py-12 lg:grid">
+      <div className="container mx-0 hidden min-w-full grid-cols-2 gap-12 bg-gradient-to-b from-stone-50 to-stone-400 px-24 py-12 lg:grid dark:from-stone-900 dark:to-gray-900">
         <section className="order-first space-y-4">
-          <h1 className="font-mono text-4xl font-bold text-gray-900">
+          <h1 className="dark:text-dark-heading font-mono text-4xl font-bold text-gray-900">
             Tietokilta
           </h1>
           <Content content={body} />

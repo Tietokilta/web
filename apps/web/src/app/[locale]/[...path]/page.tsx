@@ -84,7 +84,7 @@ function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <article className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 dark:prose-invert max-w-prose hyphens-auto text-pretty">
       <LexicalSerializer nodes={content.root.children} />
     </article>
   );
@@ -130,9 +130,9 @@ async function Page({ params: { path } }: Props) {
     <>
       <main
         id="main"
-        className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
+        className="dark:bg-dark-bg relative mb-8 flex flex-col items-center gap-2 md:gap-6"
       >
-        <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 text-gray-100 md:h-[25svh]">
+        <header className="dark:text-dark-heading flex h-[15svh] w-full items-center justify-center bg-gray-900 text-gray-100 md:h-[25svh]">
           <h1 className="font-mono text-4xl md:text-5xl">{page.title}</h1>
         </header>
 
@@ -140,7 +140,7 @@ async function Page({ params: { path } }: Props) {
           {!page.hideTableOfContents ? (
             <TableOfContents toc={generateTocFromRichText(content)} />
           ) : null}
-          <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
+          <p className="shadow-solid dark:border-dark-fg dark:shadow-dark-fg dark:text-dark-text max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}
           </p>
           <Content content={content} />
