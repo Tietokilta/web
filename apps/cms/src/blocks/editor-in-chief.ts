@@ -17,7 +17,12 @@ export const EditorInChief = {
           label: "Boring",
           value: "boring",
         },
+        {
+          label: "DVD",
+          value: "dvd",
+        },
       ],
+      defaultValue: "boring",
     },
   ],
 } satisfies Block;
