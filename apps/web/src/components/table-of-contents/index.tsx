@@ -91,7 +91,7 @@ function Mobile({
   return (
     <details
       className={cn(
-        "group fixed left-0 top-24 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 font-mono backdrop-blur-sm",
+        "dark:text-dark-heading group fixed left-0 top-24 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 font-mono backdrop-blur-md dark:bg-stone-950/90",
         className,
       )}
       ref={detailsRef}
@@ -110,7 +110,7 @@ function Mobile({
         </span>
         <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
       </summary>
-      <nav className="scroll-shadows-sm max-h-[50lvh] overflow-y-scroll px-4 py-2 shadow-sm drop-shadow-sm">
+      <nav className="scroll-shadows-sm dark:shadow-dark-fg dark:border-dark-fg dark:scroll-sh-sm max-h-[50lvh] overflow-y-scroll px-4 py-2 shadow-sm drop-shadow-sm ">
         <HeadingList
           activeHeadingId={activeHeadingId}
           onHeadingClick={() => detailsRef.current?.removeAttribute("open")}
