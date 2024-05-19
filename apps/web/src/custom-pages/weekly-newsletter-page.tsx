@@ -20,7 +20,7 @@ function NewsItemContent({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <div className="prose dark:prose-invert prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <LexicalSerializer nodes={content.root.children} />
     </div>
   );
@@ -47,7 +47,7 @@ function NewsletterCategory({
   if (newsItems.length === 0) return null;
 
   return (
-    <section className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <section className="prose dark:prose-invert prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <h2 className="font-mono text-2xl" id={stringToId(title)}>
         {title}
       </h2>
@@ -78,7 +78,7 @@ async function Calendar({
   }
 
   return (
-    <section className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <section className="prose dark:prose-invert prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <h2 id={stringToId(t("calendar"))}>{t("calendar")}</h2>
       {eventsThisWeek.length > 0 ? (
         <div>
@@ -136,7 +136,7 @@ function Greetings({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <div className="prose dark:prose-invert prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
       <LexicalSerializer nodes={content.root.children} />
     </div>
   );
@@ -223,16 +223,18 @@ export default async function Page({ slug }: { slug?: string }) {
   return (
     <main
       id="main"
-      className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
+      className="dark:bg-dark-bg relative mb-8 flex flex-col items-center gap-2 md:gap-6"
     >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <TableOfContents toc={toc} />
 
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <header className="space-y-2">
-            <h1 className="font-mono text-4xl">{weeklyNewsletter.title}</h1>
+            <h1 className="dark:text-dark-heading font-mono text-4xl">
+              {weeklyNewsletter.title}
+            </h1>
             <time
-              className="block text-lg text-gray-800"
+              className="dark:text-dark-text block text-lg text-gray-800"
               dateTime={weeklyNewsletter.createdAt}
             >
               {formatDateYear(weeklyNewsletter.createdAt)}
@@ -256,7 +258,7 @@ export default async function Page({ slug }: { slug?: string }) {
           />
         </div>
 
-        <footer className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+        <footer className="prose dark:prose-invert prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
           <p>
             {t("read")}{" "}
             <a

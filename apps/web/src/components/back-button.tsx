@@ -9,6 +9,7 @@ export function BackButton({ children }: { children: React.ReactNode }) {
   return (
     <Button
       variant="backLink"
+      className="dark:text-dark-text"
       onClick={() => {
         router.back();
       }}
