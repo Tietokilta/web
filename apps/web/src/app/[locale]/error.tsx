@@ -24,8 +24,8 @@ function Error({
         </h1>
       </header>
 
-      <div className="dark:text-dark-text relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
-        <p className="shadow-solid dark:shadow-dark-fg dark:border-dark-fg max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
+      <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
+        <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
           {t(
             "Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
           )}{" "}

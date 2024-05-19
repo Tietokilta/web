@@ -113,21 +113,19 @@ async function SignUpTable({
   const isGeneratedQuota = !!isOpenQuota || !!isQueueQuota;
 
   return (
-    <table className="shadow-solid dark:shadow-dark-fg dark:border-dark-fg dark:text-dark-fg w-full table-auto border-separate border-spacing-0 rounded-md border-2 border-gray-900">
+    <table className="shadow-solid w-full table-auto border-separate border-spacing-0 rounded-md border-2 border-gray-900">
       <thead>
-        <tr className="bg-gray-200 dark:bg-stone-950">
-          <th className="dark:border-dark-fg rounded-tl-md border-b border-gray-900 p-2 ">
+        <tr className="bg-gray-200">
+          <th className="rounded-tl-md border-b border-gray-900 p-2">
             {t("headers.Sija")}
           </th>
-          <th className="dark:border-dark-fg border-b border-gray-900 p-2 ">
-            {t("headers.Nimi")}
-          </th>
+          <th className="border-b border-gray-900 p-2">{t("headers.Nimi")}</th>
           {isGeneratedQuota ? (
-            <th className="dark:border-dark-fg border-b border-gray-900 p-2 ">
+            <th className="border-b border-gray-900 p-2">
               {t("headers.Kiintiö")}
             </th>
           ) : null}
-          <th className="dark:border-dark-fg rounded-tr-md border-b border-gray-900 p-2 ">
+          <th className="rounded-tr-md border-b border-gray-900 p-2">
             {t("headers.Ilmoittautumisaika")}
           </th>
         </tr>
@@ -139,7 +137,7 @@ async function SignUpTable({
           .map((signup) => (
             <tr
               key={signup.position}
-              className="dark:text-dark-text odd:bg-gray-300 even:bg-gray-200 dark:odd:bg-stone-800 dark:even:bg-stone-700"
+              className="odd:bg-gray-300 even:bg-gray-200"
             >
               <td className="border-b border-gray-900 px-2 py-1">
                 <span>{signup.position}.</span>
@@ -191,13 +189,13 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
 
   return (
     <div className="space-y-4">
-      <h2 className="dark:text-dark-heading font-mono text-xl font-semibold text-gray-900">
+      <h2 className="font-mono text-xl font-semibold text-gray-900">
         {t("Ilmoittautuneet")}
       </h2>
       <ul className="space-y-16">
         {quotasWithOpenAndQueue.map((quota) => (
           <li key={quota.id} className="space-y-2">
-            <h3 className="dark:text-dark-heading font-mono text-lg font-semibold text-gray-900">
+            <h3 className="font-mono text-lg font-semibold text-gray-900">
               {quota.title}
             </h3>
             <SignUpTable quota={quota} />
@@ -212,7 +210,7 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina.headers");
   const locale = getCurrentLocale();
   return (
-    <div className="shadow-solid dark:shadow-dark-fg dark:border-dark-fg dark:text-dark-fg rounded-md border-2 border-gray-900 p-4 md:p-6">
+    <div className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
       {event.category ? (
         <span className="block">
           <span className="font-medium">{t("Kategoria")}:</span>{" "}
@@ -255,8 +253,8 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize);
 
   return (
-    <div className="shadow-solid dark:shadow-dark-fg dark:border-dark-fg dark:text-dark-fg max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
-      <h2 className="dark:text-dark-heading font-mono text-lg font-semibold text-gray-900">
+    <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
+      <h2 className="font-mono text-lg font-semibold text-gray-900">
         {t("Ilmoittautuneet")}
       </h2>
       <ul className="flex flex-col gap-2">
@@ -294,8 +292,8 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
 async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina");
   return (
-    <div className="shadow-solid dark:shadow-dark-fg dark:border-dark-fg dark:text-dark-fg max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
-      <h2 className="dark:text-dark-heading font-mono text-lg font-semibold text-gray-900">
+    <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
+      <h2 className="font-mono text-lg font-semibold text-gray-900">
         {t("Ilmoittautuminen")}
       </h2>
       <SignUpText
@@ -350,15 +348,13 @@ export default async function Page({ params: { slug } }: PageProps) {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{t("Back")}</BackButton>
-          <h1 className="dark:text-dark-heading font-mono text-4xl">
-            {event.data.title}
-          </h1>
+          <h1 className="font-mono text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
               <div className="flex max-w-xl grow-[2] flex-col gap-8">
                 <Tldr event={event.data} />
                 {event.data.description ? (
-                  <div className="prose dark:prose-invert">
+                  <div className="prose">
                     <Markdown>{event.data.description}</Markdown>
                   </div>
                 ) : null}

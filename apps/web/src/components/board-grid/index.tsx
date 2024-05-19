@@ -7,8 +7,8 @@ import { cn, insertSoftHyphens } from "../../lib/utils";
 function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
   const photo = boardMember.photo as Media | undefined;
   return (
-    <li className="shadow-solid dark:shadow-dark-fg dark:border-dark-fg relative flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6">
-      <div className="dark:border-dark-fg absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
+    <li className="shadow-solid relative flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6">
+      <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
         <div className="flex gap-1">
           <span className="bg-secondary-600 size-2 rounded-full border border-gray-900" />
           <span className="bg-primary-600 size-2 rounded-full border border-gray-900" />
@@ -17,7 +17,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
       <Image
         alt={photo?.alt ?? ""}
         className={cn(
-          "aspect-2/3 dark:border-dark-fg max-w-32 border-2 border-gray-900 object-center",
+          "aspect-2/3 max-w-32 border-2 border-gray-900 object-center",
           photo?.url ? "object-cover" : "object-contain",
         )}
         height={photo?.height ? Math.trunc(photo.height) : undefined}
