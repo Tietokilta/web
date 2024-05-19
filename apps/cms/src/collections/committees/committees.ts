@@ -4,7 +4,6 @@ import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
-import { getLocale } from "../../util";
 import { importController } from "../../controllers/import-controller";
 
 const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({

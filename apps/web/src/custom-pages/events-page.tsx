@@ -141,6 +141,7 @@ export default async function Page() {
   const events = await fetchEvents();
 
   if (!events.ok) {
+    // eslint-disable-next-line no-console -- nice to know
     console.warn("Failed to fetch events from Ilmomasiina", events.error);
     throw new Error("Failed to fetch events from Ilmomasiina");
   }

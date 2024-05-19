@@ -82,6 +82,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const locale = getCurrentLocale();
   const t = await getI18n();
   if (!events.ok) {
+    // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn("Failed to fetch events from Ilmomasiina", events.error);
     return null;
   }
@@ -91,7 +92,6 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const pageCount = paginatedEvents.length;
 
   if (currentPage < 1 || currentPage > pageCount) {
-    console.warn(`Invalid page number: ${currentPage.toFixed()}`);
     return notFound();
   }
 
