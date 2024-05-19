@@ -38,6 +38,23 @@ const localizedMetadata = {
   },
 } as const;
 
+const icons = {
+  icon: [
+    {
+      rel: "icon",
+      type: "image/png",
+      media: "(prefers-color-scheme: light)",
+      url: "/icon_dark.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      media: "(prefers-color-scheme: dark)",
+      url: "/icon_light.png",
+    },
+  ],
+};
+
 const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
 
 export const generateMetadata = ({
@@ -46,6 +63,7 @@ export const generateMetadata = ({
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
   ...(localizedMetadata[locale] || localizedMetadata.fi),
   metadataBase: new URL(mainUrl),
+  icons,
 });
 
 export default function RootLayout({
