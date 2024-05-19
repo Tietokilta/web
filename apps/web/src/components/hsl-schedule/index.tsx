@@ -1,62 +1,64 @@
-import { getData } from "../../assets/api_hooks/hsl_api_hooks.ts";
-import type { Stop, StopOutData, StopTime } from "../../assets/api_hooks/hsl_api_types.ts";
+'use-client'
+import { checkIfPast } from "../../assets/api_hooks/hsl_api_hooks.ts";
+import type { RenderableStop, StopType } from "../../assets/api_hooks/hsl_api_types.ts";
+import { useState, useEffect } from "react";
 
-function pad(number: number, size: number) {
-  var s = String(number);
-  while (s.length < (size || 2)) {s = "0" + s;}
-  return s;
-}
+export function HSLSchedule(props: any) {
+  const [result, setResult] = useState<RenderableStop>(props.result);
+  useEffect(() => {
+    setResult(props.result);
+  }, [props.result]);
 
-function toOutData(stop: any): StopOutData | null {
-  if (!stop.stoptimesWithoutPatterns) return null
+  console.log("Here", result)
 
-  return {
-    name: stop.name,
-    arrival: stop.stoptimesWithoutPatterns.map(
-      (arr: StopTime) => ({
-        route: arr.trip.routeShortName,
-        headSign: arr.headsign,
-        realTimeArrival: arr.realtimeArrival,
-        serviceDay: arr.serviceDay,
-      })
-    )
-  }
-}
+  const colorMetro = "#ca4000";
+  const colorTram = "#007e79";
+  const colorBus = "#007ac9";
+  const colorNull = "gray-900";
+  console.log("Hello There")
 
-export async function HSLSchedule(props: any) {
-  var data: Stop | null = null
-  var data2: Stop | null = null
-  await getData(props.stops[0]).then(
-    (result: Stop | null) =>(
-      data = result)
-  )
-  await getData(props.stops[1]).then(
-    (result: Stop | null) =>(
-      data2 = result)
-  )
-  if (!data || !data2) return null;
+  const getColor = (): string => {
+    if (result.type === "metro") {
+      return colorMetro;
+    } else if (result.type === "tram") {
+      return colorTram;
+    } else if (result.type === "bus") {
+      return colorBus;
+    } else {
+      return colorNull;
+    }
+  };
 
-  console.log("data", data)
+  const className = `shadow-solid shadow-[var(--infonayttoHSLcolor)] text-l flex flex-col justify-between rounded-md border-2 border-[var(--infonayttoHSLcolor)] p-3 font-mono text-gray-900 md:flex-row md:items-center`;
 
-  const result1: StopOutData | null = toOutData(data)
-  const result2: StopOutData | null = toOutData(data2)
+  const stopName = (type: StopType) => {
+    if (type === "metro") {
+      return "Metro";
+    } else if (type === "tram") {
+      return "Raidejokeri";
+    } else if (type === "bus") {
+      return "Bussit";
+    } else {
+      return "Unknown";
+    }
+  };
+  console.log(result);
+  return (
+    <div className="h-full items-center w-full gap-4" style={{ "--infonayttoHSLcolor": getColor() } as React.CSSProperties}>
+      <h1 className='font-mono flex text-2xl p-2 h-[3rem] text-[var(--infonayttoHSLcolor)] font-bold justify-center w-full'>{stopName(result.type)}</h1>
+      <ul className="space-y-2 font-bold justify-between">
+        {
+          result.arrivals.filter( (arr) => checkIfPast(arr)).map((arr) => (
+            <li key={arr.route + arr.fullTime} className={className}>
+              <div className='text-2xl text-[var(--infonayttoHSLcolor)]'>{arr.route}</div>
+              <div className='text-xl'>{arr.headSign}</div>
+              <div className='text-2xl'>{arr.fullTime}</div>
 
-  if (!result1 || !result2) return null
+            </li>
+          ))
+        }
+      </ul>
 
-  const result: StopOutData = {
-    name: result1.name,
-    arrival: result1.arrival.map(
-      (arr) => ( arr )
-    ).concat(result2.arrival.map(
-      (arr) => ( arr ))
-    ).sort( (arr1, arr2) => arr1.realTimeArrival - arr2.realTimeArrival
-    ),
-  }
-
-return (
-      <div>
-        <h2 className="font-bold">{result1.name}</h2>
-        {result.arrival.map( arr => (<p>{arr.route + " " + arr.headSign + " " + pad(Math.floor(arr.realTimeArrival / 60 / 60) % 24, 2) + ":" + pad(Math.floor(arr.realTimeArrival / 60 % 60), 2) }</p>))}
-      </div>
-    );
+    </div>
+  );
 }

@@ -22,7 +22,7 @@ export default function ScreenLayout({
 
   return (
     <html lang="fi">
-      <body className={cn(inter.variable, robotoMono.variable, "font-sans min-h-screen flex flex-col")}>
+      <body className={cn(inter.variable, robotoMono.variable, "font-mono min-h-screen flex flex-col")}>
         <InfoScreenHeader />
         {children}
       </body>

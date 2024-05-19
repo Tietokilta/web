@@ -1,9 +1,28 @@
-import 'server-only'
 import { ApolloClient, DocumentNode, gql, InMemoryCache } from "@apollo/client";
-import API_KEY from "../../../../../secrets.json";
+import nextResponse from "next";
+import API_KEY from "../../../../../../secrets.json";
 
-import { Arrival, ArrivalAttribute, RenderableStop, Stop, StopOutData, StopTime, StopType } from "./hsl_api_types";
-import { print } from "graphql/language";
+import { Arrival, ArrivalAttribute, RenderableStop, Stop, StopOutData, StopTime, StopType } from "../../../assets/api_hooks/hsl_api_types.ts";
+
+const STOPS = [["HSL:2222406", "HSL:2222405"], ["HSL:2222603", "HSL:2222604"], ["HSL:2222234", "HSL:2222212"]] // [["HSL:2222234", "HSL:E22259"], ["HSL:2000102"], ["HSL:E0773", "HSL:E0772"]];
+
+
+export async function GET() {
+  console.log("wadafak")
+
+  var dataFromHsl: any[] = []
+  for (let stop of STOPS) {
+    dataFromHsl.push(await getStop(stop))
+  }
+  console.log(dataFromHsl)
+
+  const retData = {
+    type: "Data",
+    data: dataFromHsl
+  }
+
+  return Response.json({ retData })
+}
 
 export const revalidate = 5;
 
