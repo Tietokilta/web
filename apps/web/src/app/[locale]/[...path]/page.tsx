@@ -109,6 +109,7 @@ async function Page({ params: { path } }: Props) {
   if (page.type === "redirect") {
     const redirectToPage = page.redirectToPage as CMSPage | undefined;
     if (!redirectToPage?.path) {
+      // eslint-disable-next-line no-console -- nice to know
       console.error("Redirect page missing redirect target", page);
       return notFound();
     }
@@ -116,7 +117,9 @@ async function Page({ params: { path } }: Props) {
     return redirect(redirectToPage.path);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety just in case
   if (page.type !== "standard") {
+    // eslint-disable-next-line no-console -- nice to know
     console.error("Unknown page type", page.type);
     return notFound();
   }

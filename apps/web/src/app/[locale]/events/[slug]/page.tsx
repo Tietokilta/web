@@ -317,6 +317,7 @@ export const generateMetadata = async ({
 }: PageProps): Promise<Metadata> => {
   const event = await fetchEvent(slug);
   if (!event.ok) {
+    // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn("Failed to fetch event from Ilmomasiina", event.error);
     return {};
   }
@@ -335,6 +336,7 @@ export default async function Page({ params: { slug } }: PageProps) {
   }
 
   if (!event.ok) {
+    // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn("Failed to fetch event from Ilmomasiina", event.error);
     throw new Error("Failed to fetch event from Ilmomasiina");
   }
