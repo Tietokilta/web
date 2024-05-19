@@ -142,6 +142,9 @@ function Greetings({ content }: { content?: EditorState }) {
   );
 }
 
+export const legacyUrl =
+  process.env.PUBLIC_LEGACY_URL ?? "https://tietokilta.fi";
+
 export default async function Page({ slug }: { slug?: string }) {
   const locale = getCurrentLocale();
   const t = await getScopedI18n("weeklyNewsletter");
@@ -272,8 +275,8 @@ export default async function Page({ slug }: { slug?: string }) {
               target="_blank"
               href={
                 locale === "fi"
-                  ? "https://tietokilta.fi/arkisto/viikkomailit/"
-                  : "https://tietokilta.fi/arkisto/weekly_mails/"
+                  ? `${legacyUrl}/arkisto/viikkomailit/`
+                  : `${legacyUrl}/arkisto/weekly_mails/`
               }
               rel="noopener"
             >
