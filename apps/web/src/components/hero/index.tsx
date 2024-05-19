@@ -48,6 +48,15 @@ function ImageWithCitation({
         loading="eager"
         quality={50}
         src={image.url}
+        style={
+          isCurrentImage
+            ? {
+                animationName: "hero-animation",
+                animationDuration: "17s",
+                animationFillMode: "forwards",
+              }
+            : { transform: "scale(1.1)" }
+        }
       />
       <footer className="contents">
         <cite
@@ -104,7 +113,7 @@ export function Hero({
   }, [images.length, texts]);
 
   return (
-    <div className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
+    <div className="relative flex h-[55vh] items-end overflow-hidden bg-gray-900 py-24 md:h-[75vh]">
       {images.map((image, imageIndex) => (
         <ImageWithCitation
           key={image.url}
