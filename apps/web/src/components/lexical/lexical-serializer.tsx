@@ -225,9 +225,9 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                 href={node.value.url ?? "#broken-url"}
                 key={index}
                 target="_blank"
-                className="not-prose shadow-solid my-4 flex w-fit  items-center gap-4 overflow-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
+                className="not-prose shadow-solid my-4 flex w-fit max-w-full items-center gap-4 overflow-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
               >
-                <div className="flex flex-col items-end gap-2 sm:flex-row">
+                <div className="flex max-w-full flex-col items-center gap-2">
                   {thumbnail ? (
                     <div className="relative h-40 w-32">
                       <Image
@@ -241,7 +241,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
                     <FileIcon className="h-6 w-6" />
                   )}
                   {node.value.title ? (
-                    <p className="truncate font-mono font-semibold">
+                    <p className="w-full font-mono font-semibold">
                       {node.value.title}
                     </p>
                   ) : null}
