@@ -15,6 +15,7 @@ import { signedIn } from "../access/signed-in";
 import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../preview";
 import { getLocale } from "../util";
+import { iconField } from "../fields/icon-field";
 
 type Localized<TField> = Record<Locale["code"], TField>;
 
@@ -167,6 +168,7 @@ export const Pages: CollectionConfig = {
         },
       ],
     },
+    iconField({ required: false }),
     ...standardPageFields.map((field) => ({
       ...field,
       admin: {
