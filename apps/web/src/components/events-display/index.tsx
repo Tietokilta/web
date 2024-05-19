@@ -33,12 +33,16 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
   const eventUrl = `/${locale}/events/${event.slug}`;
 
   return (
-    <li className="shadow-solid flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
+    <li className="shadow-solid dark:border-dark-fg dark:text-dark-fg dark:shadow-dark-fg flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
       <div className="flex-1">
         <span className="block text-pretty text-lg font-bold">
           {event.title}
         </span>
-        <Button asChild className="hidden md:inline-flex" variant="link">
+        <Button
+          asChild
+          className="dark:text-dark-text dark:border-dark-text hidden md:inline-flex"
+          variant="link"
+        >
           <Link href={eventUrl}>
             <span aria-hidden="true">{t("Read more")}</span>
             <span className="sr-only">
@@ -65,7 +69,11 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           </span>
         ) : null}
       </div>
-      <Button asChild className="md:hidden" variant="link">
+      <Button
+        asChild
+        className="dark:text-dark-text dark:border-dark-text md:hidden"
+        variant="link"
+      >
         <Link href={eventUrl}>
           <span aria-hidden="true">{t("Read more")}</span>
           <span className="sr-only">
@@ -103,11 +111,12 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
         ))}
       </ul>
       {pageCount > 1 ? (
-        <Pagination>
+        <Pagination className="dark:text-dark-text dark:border-dark-text">
           <PaginationContent>
             {currentPage > 1 ? (
               <PaginationItem>
                 <PaginationPrevious
+                  className="hover:dark:text-dark-bg"
                   href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
                   ariaLabel={t("action.Go to previous page")}
                 >
@@ -118,6 +127,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
             {Array.from({ length: pageCount }, (__, i) => i + 1).map((page) => (
               <PaginationItem key={page}>
                 <PaginationLink
+                  className="hover:dark:text-dark-bg dark:border-dark-text"
                   isActive={page === currentPage}
                   href={`/${locale}/?page=${page.toFixed()}`}
                 >
@@ -129,6 +139,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
             {currentPage < pageCount ? (
               <PaginationItem>
                 <PaginationNext
+                  className="hover:dark:text-dark-bg"
                   href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
                   ariaLabel={t("action.Go to next page")}
                 >
@@ -155,10 +166,10 @@ export async function EventsDisplay({
   return (
     <section className="space-y-4">
       <Link
-        className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
+        className="dark:text-dark-heading font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
         href={eventsListPath ?? `/${locale}/events`}
       >
-        <h2 className="font-mono text-2xl font-bold text-gray-900">
+        <h2 className="dark:text-dark-heading font-mono text-2xl font-bold text-gray-900">
           {t("Upcoming events")}
         </h2>
       </Link>

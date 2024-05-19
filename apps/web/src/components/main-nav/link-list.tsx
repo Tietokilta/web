@@ -85,7 +85,7 @@ function NavigationLink({
           )}
         </NavigationMenuTrigger>
       </div>
-      <NavigationMenuContent>
+      <NavigationMenuContent className="dark:text-dark-heading dark:bg-stone-800">
         <ul className="flex gap-16 p-8">
           {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
             <li key={linkCategorySublist.title}>
@@ -97,7 +97,7 @@ function NavigationLink({
                   <li key={(page as Page).id}>
                     <Button
                       asChild
-                      className="m-0 mr-2 w-full border-b-0 p-0"
+                      className="dark:text-dark-text dark:border-dark-text m-0 mr-2 w-full border-b-0 p-0"
                       variant="link"
                     >
                       <Link href={(page as Page).path ?? "#broken"}>
@@ -110,7 +110,7 @@ function NavigationLink({
                   <li key={externalLink.title}>
                     <Button
                       asChild
-                      className="relative z-10 my-2 w-full border-b-0 px-2"
+                      className="dark:shadow-dark-fg dark:border-dark-fg relative z-10 my-2 w-full border-b-0 px-2"
                       variant="outlineLink"
                     >
                       <Link

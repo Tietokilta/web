@@ -24,7 +24,7 @@ function HeadingList({
       {toc.map((item) => (
         <li
           className={cn(
-            "before:text-gray-600",
+            "dark:text-dark-text before:text-gray-600",
             item.level === 2 &&
               "mb-2 ms-[2ch] text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'/''] last:mb-0",
             item.level === 3 &&
@@ -65,7 +65,7 @@ function Desktop({
         className,
       )}
     >
-      <nav className="scroll-shadows shadow-solid sticky top-32 max-h-[70dvh] w-64 overflow-y-auto rounded-md border-2 border-gray-900 p-6 2xl:w-72">
+      <nav className="scroll-shadows shadow-solid dark:border-dark-fg dark:scroll-sh dark:shadow-dark-fg sticky top-32 max-h-[70dvh] w-64 overflow-y-auto rounded-md border-2 border-gray-900 p-6 2xl:w-72">
         <HeadingList activeHeadingId={activeHeadingId} toc={toc} />
       </nav>
     </div>

@@ -419,7 +419,7 @@ export function DinoGame() {
   return (
     <div className="relative hidden md:flex">
       <canvas
-        className="w-full p-4"
+        className="w-full p-4 dark:bg-blue-900"
         height="310"
         onClick={handleClick}
         onKeyDown={handleKeyPress}
