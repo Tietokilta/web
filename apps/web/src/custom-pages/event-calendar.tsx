@@ -1,17 +1,22 @@
 "use client";
-
 import {
   Calendar as ReactCalendar,
-  momentLocalizer,
   type View,
   type Event,
   type EventProps,
   Views,
+  momentLocalizer,
 } from "react-big-calendar";
 import { useState, useCallback } from "react";
 import "./event-calendar.css";
 import moment from "moment";
+import { updateLocale } from "moment";
 import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
+import {
+  useScopedI18n,
+  useCurrentLocale,
+  I18nProviderClient,
+} from "../locales/client";
 
 type IlmomasiinEventWithDate = IlmomasiinaEvent & { date: string };
 
@@ -24,12 +29,14 @@ function EventCalendar({
   eventsUrl: string;
   locale: string;
 }) {
+  const t = useScopedI18n("calendar");
+
   // Filter events without a start date.
-  const filtered = events.filter(
+  const filteredEvents = events.filter(
     (event): event is IlmomasiinEventWithDate => !!event.date,
   );
 
-  const parsedEvents: Event[] = filtered.map((event) => {
+  const parsedEvents: Event[] = filteredEvents.map((event) => {
     const startDate = new Date(event.date);
 
     let endDate;
@@ -42,11 +49,10 @@ function EventCalendar({
       endDate = endOfDay;
     }
 
-    // Url of the event.
+    // Url of the event page.
     const eventUrl = eventsUrl + event.slug;
 
     return {
-      id: event.id,
       start: startDate,
       end: endDate,
       title: event.title,
@@ -57,7 +63,7 @@ function EventCalendar({
   });
 
   // Make calendar events into clickable links.
-  const eventCard = (event: EventProps) => {
+  const eventElement = (event: EventProps) => {
     return (
       <a className="block h-full" href={event.event.resource.url}>
         {event.title}
@@ -65,23 +71,29 @@ function EventCalendar({
     );
   };
 
+  // Translations for control buttons
   const messages = {
-    week: "Viikko",
-    work_week: "Työviikko",
-    day: "Päivä",
-    month: "Kuukausi",
-    previous: "Edellinen",
-    next: "Seuraava",
-    today: "Tänään",
+    week: t("Viikko"),
+    work_week: t("Työviikko"),
+    day: t("Päivä"),
+    month: t("Kuukausi"),
+    previous: t("Edellinen"),
+    next: t("Seuraava"),
+    today: t("Tänään"),
   };
+
+  // Set Monday as the first day of the week
+  updateLocale(locale, {
+    week: {
+      dow: 1,
+    },
+  });
 
   const localizer = momentLocalizer(moment);
 
   // State hooks that fix React strict mode functionality
   // See: https://github.com/vercel/next.js/issues/56206
-
   const [view, setView] = useState<View>(Views.MONTH);
-
   const handleOnChangeView = (selectedView: View) => {
     setView(selectedView);
   };
@@ -105,13 +117,13 @@ function EventCalendar({
       date={date}
       components={{
         day: {
-          event: eventCard,
+          event: eventElement,
         },
         week: {
-          event: eventCard,
+          event: eventElement,
         },
         month: {
-          event: eventCard,
+          event: eventElement,
         },
       }}
       messages={messages}
@@ -123,4 +135,13 @@ function EventCalendar({
   );
 }
 
-export default EventCalendar;
+function CalendarWrapper({ events }: { events: IlmomasiinaEvent[] }) {
+  const locale = useCurrentLocale();
+  const eventsUrl = `/${locale}/events/`;
+  return (
+    <I18nProviderClient locale={locale}>
+      <EventCalendar events={events} eventsUrl={eventsUrl} locale={locale} />
+    </I18nProviderClient>
+  );
+}
+export default CalendarWrapper;

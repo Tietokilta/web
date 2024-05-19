@@ -139,13 +139,10 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
 }
 
 function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
-  const locale = getCurrentLocale();
-  const eventsUrl = `/${locale}/events/`;
-
   return (
-    <div style={{ height: "35rem" }}>
-      <EventCalendar events={events} eventsUrl={eventsUrl} locale={locale} />
-    </div>
+    <li style={{ height: "38rem" }}>
+      <EventCalendar events={events} />
+    </li>
   );
 }
 
@@ -171,8 +168,8 @@ export default async function Page() {
           <h1 className="dark:text-dark-heading font-mono text-4xl">
             {t("Tapahtumat")}
           </h1>
-          <Calendar events={events.data} />
           <ul className="space-y-8">
+            <Calendar events={events.data} />
             {events.data.map((event) => (
               <EventCard event={event} key={event.id} />
             ))}

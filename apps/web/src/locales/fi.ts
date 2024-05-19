@@ -63,6 +63,15 @@ export default {
       "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.",
     Etusivulle: "Etusivulle",
   },
+  calendar: {
+    Viikko: "Viikko",
+    Työviikko: "Työviikko",
+    Päivä: "Päivä",
+    Kuukausi: "Kuukausi",
+    Edellinen: "Edellinen",
+    Seuraava: "Seuraava",
+    Tänään: "Tänään",
+  },
   error: {
     "Jotain meni pieleen": "Jotain meni pieleen",
     "Hups, jotain meni pieleen.": "Hups, jotain meni pieleen.",

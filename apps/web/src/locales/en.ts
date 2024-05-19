@@ -85,4 +85,13 @@ export default {
     "old-link": "old weekly newsletters",
     "super-old-link": "very old weekly newsletters",
   },
+  calendar: {
+    Viikko: "Week",
+    Työviikko: "Work Week",
+    Päivä: "Day",
+    Kuukausi: "Month",
+    Edellinen: "Previous",
+    Seuraava: "Next",
+    Tänään: "Today",
+  },
 } as const;
