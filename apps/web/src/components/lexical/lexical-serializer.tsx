@@ -20,6 +20,7 @@ import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
 import { MagazineList } from "../magazine-list";
 import { ImageLinkGrid } from "../image-link-grid";
+import { GoogleForm } from "../google-form";
 import {
   IS_BOLD,
   IS_CODE,
@@ -309,6 +310,9 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "image-link-grid": {
       return <ImageLinkGrid images={node.fields.images} />;
+    }
+    case "google-form": {
+      return <GoogleForm link={node.fields.link} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown blockType since we're casting types and there may be some bogus blocks
