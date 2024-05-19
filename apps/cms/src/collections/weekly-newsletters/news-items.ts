@@ -3,6 +3,7 @@ import type { NewsItem } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../../access/signed-in";
 import { newsItemCategoryField } from "../../fields/news-item-category";
 import { getLocale } from "../../util";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 
 const formatDisplayTitle: FieldHook<NewsItem> = ({ data: newsItem, req }) => {
   if (!newsItem?.title) {
@@ -86,4 +87,10 @@ export const NewsItems: CollectionConfig = {
       localized: true,
     },
   ],
+  hooks: {
+    afterChange: [
+      revalidateCollection("news-items"),
+      revalidateCollection("weekly-newsletters"),
+    ],
+  },
 };
