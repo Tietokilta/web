@@ -148,13 +148,10 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
 }
 
 function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
-  const locale = getCurrentLocale();
-  const eventsUrl = `/${locale}/events/`;
-
   return (
-    <div style={{ height: "35rem" }}>
-      <EventCalendar events={events} eventsUrl={eventsUrl} locale={locale} />
-    </div>
+    <li style={{ height: "38rem" }}>
+      <EventCalendar events={events} />
+    </li>
   );
 }
 
@@ -178,8 +175,8 @@ export default async function Page() {
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{ta("Back")}</BackButton>
           <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
-          <Calendar events={events.data} />
           <ul className="space-y-8">
+            <Calendar events={events.data} />
             {events.data.map((event) => (
               <EventCard event={event} key={event.id} />
             ))}

@@ -76,6 +76,15 @@ const fi = {
   "weeklyNewsletter.this-week-signups":
     "Tällä viikolla avoinna olevat ilmoittautumiset",
   "weeklyNewsletter.title": "Viikkotiedotteet",
+  calendar: {
+    Viikko: "Viikko",
+    Työviikko: "Työviikko",
+    Päivä: "Päivä",
+    Kuukausi: "Kuukausi",
+    Edellinen: "Edellinen",
+    Seuraava: "Seuraava",
+    Tänään: "Tänään",
+  },
 } as const;
 
 type EnKey = keyof typeof en;
