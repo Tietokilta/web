@@ -59,15 +59,15 @@ function NavigationLink({
         <ul className="flex gap-16 p-8">
           {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
             <li key={linkCategorySublist.title}>
-              <span className="text-lg font-bold">
+              <header className="mb-4 text-xl font-bold">
                 {linkCategorySublist.title}
-              </span>
+              </header>
               <ul>
                 {linkCategorySublist.pages?.map(({ page }) => (
                   <li key={(page as Page).id}>
                     <Button
                       asChild
-                      className="mb-2 mr-2 w-full border-b-0 pb-0 pl-0 pr-0"
+                      className="m-0 mr-2 w-full border-b-0 p-0"
                       variant="link"
                     >
                       <Link href={(page as Page).path ?? "#broken"}>
