@@ -8,6 +8,7 @@ import { SkipLink } from "../../components/skip-link";
 import { cn } from "../../lib/utils";
 import "./globals.css";
 import { type Locale } from "../../locales/server";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
@@ -73,7 +74,7 @@ export default function RootLayout({
   children: React.ReactNode;
 } & LayoutProps) {
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
           inter.variable,
@@ -81,13 +82,15 @@ export default function RootLayout({
           "dark:bg-dark-bg font-sans",
         )}
       >
-        <SkipLink />
-        <div className="flex min-h-screen flex-col">
-          <MobileNav className="sticky top-0 z-50 lg:hidden" />
-          <MainNav className="sticky top-0 z-50 hidden lg:block" />
-          <div className="min-h-screen flex-1">{children}</div>
-          <Footer />
-        </div>
+        <ThemeProvider attribute="class">
+          <SkipLink />
+          <div className="flex min-h-screen flex-col">
+            <MobileNav className="sticky top-0 z-50 lg:hidden" />
+            <MainNav className="sticky top-0 z-50 hidden lg:block" />
+            <div className="min-h-screen flex-1">{children}</div>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

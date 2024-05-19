@@ -104,7 +104,7 @@ export function LinkList({
   footerSponsors: SponsorLogoRowBlock[];
 }) {
   return (
-    <div className="overflow-y-auto font-mono text-xl font-semibold text-gray-900">
+    <div className="dark:text-dark-text overflow-y-auto font-mono text-xl font-semibold text-gray-900">
       <ul className="mt-6 flex flex-col gap-6 p-4">
         {links.map((pageOrTopic) => (
           <li key={pageOrTopic.id}>
@@ -167,7 +167,7 @@ export function LinkList({
                     {/* TODO: actually check image color and invert / modify according to contrast or something */}
                     <Image
                       alt={(logo.image as Media).alt}
-                      className="h-auto w-full object-contain"
+                      className="h-auto w-full object-contain dark:hue-rotate-180 dark:invert"
                       height={(logo.image as Media).height ?? 0}
                       src={(logo.image as Media).url ?? ""}
                       width={(logo.image as Media).width ?? 0}

@@ -6,6 +6,7 @@ import { getCurrentLocale } from "../../locales/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
+import { DarkModeToggle } from "./dark-toggle";
 
 export async function MainNav({
   className,
@@ -28,6 +29,7 @@ export async function MainNav({
       {...props}
     >
       <NavigationMenuList>
+        <DarkModeToggle />
         <LinkList links={leftLinks} />
         <LogoLink image={logo} />
         <LinkList links={rightLinks} />

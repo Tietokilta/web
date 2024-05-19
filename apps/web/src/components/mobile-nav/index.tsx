@@ -18,6 +18,7 @@ import { getCurrentLocale, getScopedI18n } from "../../locales/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
+import { DarkModeToggle } from "./dark-toggle";
 
 export async function MobileNav({
   className,
@@ -67,6 +68,7 @@ export async function MobileNav({
         <SheetContent>
           <nav className="flex h-full flex-col">
             <LanguageSelector />
+            <DarkModeToggle />
             <LinkList
               footerLinks={footerLinks}
               links={links}
