@@ -17,7 +17,7 @@ export function LogoLink({ image }: { image: Media | undefined }) {
   return (
     <NavigationMenuItem>
       <NavigationMenuLink active={isActive} asChild>
-        <NextLink className="rounded-full hover:text-gray-400" href={href}>
+        <NextLink className="h-6 rounded-full hover:text-gray-400" href={href}>
           <Image
             alt="Tietokilta"
             className="h-20 w-20 p-2"
