@@ -8,7 +8,6 @@ import type {
   Field,
   FieldHook,
   FilterOptions,
-  PayloadRequest,
 } from "payload/types";
 import { type Locale } from "payload/config";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
@@ -228,89 +227,6 @@ export const Pages: CollectionConfig = {
     },
   },
   hooks: {
-    afterChange: [
-      revalidatePage<Page>("pages", (doc, req) => {
-        const locale = getLocale(req);
-        if (!locale) {
-          req.payload.logger.error(
-            "locale not set, cannot revalidate properly",
-          );
-          return;
-        }
-
-        return {
-          where: {
-            path: { equals: doc.path },
-          },
-          locale,
-        };
-      }),
-      revalidatePage<Page>("pages", async (doc, req) => {
-        const localesData = await getAllLocalesData(doc, req);
-        if (!localesData) {
-          return;
-        }
-        const { allLocalesPagePath, localizedPathKey, locale } = localesData;
-
-        return {
-          where: {
-            [localizedPathKey]: { equals: allLocalesPagePath[locale] },
-          },
-          locale: "all",
-        };
-      }),
-      revalidatePage<Page>("pages", async (doc, req) => {
-        const localesData = await getAllLocalesData(doc, req, true);
-        if (!localesData) {
-          return;
-        }
-        const { allLocalesPagePath, localizedPathKey, locale } = localesData;
-
-        return {
-          where: {
-            [localizedPathKey]: { equals: allLocalesPagePath[locale] },
-          },
-          locale: "all",
-        };
-      }),
-    ],
+    afterChange: [revalidatePage<Page>("pages")],
   },
 };
-
-async function getAllLocalesData(
-  doc: Page,
-  req: PayloadRequest,
-  reverseLocale?: boolean,
-): Promise<
-  | {
-      allLocalesPagePath: Localized<Page["path"]>;
-      localizedPathKey: string;
-      locale: string;
-    }
-  | undefined
-> {
-  const reqLocale = getLocale(req);
-  if (!reqLocale) {
-    req.payload.logger.error("locale not set, cannot revalidate properly");
-    return;
-  }
-
-  let locale = reqLocale;
-  if (reverseLocale) {
-    locale = reqLocale === "fi" ? "en" : "fi";
-  }
-
-  const page = await req.payload.findByID({
-    collection: "pages",
-    id: doc.id,
-    locale: "all",
-  });
-  const allLocalesPagePath = page.path as unknown as Localized<Page["path"]>;
-  const localizedPathKey = `path.${locale}`;
-
-  return {
-    allLocalesPagePath,
-    localizedPathKey,
-    locale,
-  };
-}
