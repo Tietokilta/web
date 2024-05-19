@@ -115,9 +115,6 @@ importers:
       '@tietokilta/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@types/react-big-calendar':
-        specifier: ^1.8.9
-        version: 1.8.9
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
@@ -200,6 +197,9 @@ importers:
       '@types/react':
         specifier: ^18.3.2
         version: 18.3.2
+      '@types/react-big-calendar':
+        specifier: ^1.8.9
+        version: 1.8.9
       '@types/react-dom':
         specifier: ^18.3.0
         version: 18.3.0
