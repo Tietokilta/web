@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 /**
- * Revalidate pages when a collection is updated.
+ * Revalidate a collection and pages.
  */
 export function POST(request: NextRequest): NextResponse {
   const collectionSlug = decodeURIComponent(

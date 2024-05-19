@@ -1,7 +1,7 @@
 import type { CollectionConfig, FieldHook } from "payload/types";
 import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../../access/signed-in";
-import { revalidatePage } from "../../hooks/revalidate-page";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 
 const formatSlug: FieldHook<WeeklyNewsletter, WeeklyNewsletter["slug"]> = ({
   data,
@@ -70,6 +70,6 @@ export const WeeklyNewsletters: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [revalidatePage<WeeklyNewsletter>("weekly-newsletters")],
+    afterChange: [revalidateCollection<WeeklyNewsletter>("weekly-newsletters")],
   },
 };
