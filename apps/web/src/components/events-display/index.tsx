@@ -167,7 +167,7 @@ export async function EventsDisplay({
         href={eventsListPath ?? `/${locale}/${t("ilmomasiina.path.events")}`}
       >
         <h2 className="font-mono text-2xl font-bold text-gray-900">
-          {t("headings.Upcoming events")}
+          {t("heading.Upcoming events")}
         </h2>
       </Link>
 
