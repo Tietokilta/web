@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 // eslint-disable-next-line camelcase -- next/font/google
 import { Inter, Roboto_Mono } from "next/font/google";
 import { Footer } from "../../components/footer";
@@ -63,8 +63,14 @@ export const generateMetadata = ({
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
   ...(localizedMetadata[locale] || localizedMetadata.fi),
   metadataBase: new URL(mainUrl),
+  generator: "Next.js",
+  creator: "Tietokilta ry",
   icons,
 });
+
+export const viewport: Viewport = {
+  themeColor: "black",
+};
 
 export default function RootLayout({
   children,

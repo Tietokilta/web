@@ -77,6 +77,11 @@ export const generateMetadata = async ({
   return {
     title: page.title,
     description: page.description,
+    openGraph: {
+      type: "article",
+      publishedTime: page.createdAt,
+      modifiedTime: page.updatedAt,
+    },
   };
 };
 
