@@ -34,7 +34,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 
   return (
     <li className="shadow-solid flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
-      <div className="flex-1">
+      <div className="flex-1 shrink-0">
         <span className="block text-pretty text-lg font-bold">
           {event.title}
         </span>
@@ -49,21 +49,24 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           </Link>
         </Button>
       </div>
-      <div className="shrink-0 truncate font-medium">
+      <div className="flex shrink-0 flex-col font-medium md:w-2/5">
         {event.date ? (
           <time
-            className="block truncate"
+            className="line-clamp-2 text-pretty pl-5"
             dateTime={event.date}
             title={formatDatetime(event.date, locale)}
           >
-            <ClockIcon className="mr-1 inline-block size-4" />
-            {formatDatetime(event.date, locale)}
+            <ClockIcon className="-ml-5 mr-1 inline-block size-4" />
+            <span>{formatDatetime(event.date, locale)}</span>
           </time>
         ) : null}
         {event.location ? (
-          <span className="block truncate" title={event.location}>
-            <MapPinIcon className="mr-1 inline-block size-4" />
-            {event.location}
+          <span
+            className="line-clamp-3 text-pretty pl-5"
+            title={event.location}
+          >
+            <MapPinIcon className="-ml-5 mr-1 inline-block size-4" />
+            <span>{event.location}</span>
           </span>
         ) : null}
       </div>
