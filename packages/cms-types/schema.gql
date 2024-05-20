@@ -1659,6 +1659,8 @@ type Media {
   filesize: Float
   width: Float
   height: Float
+  focalX: Float
+  focalY: Float
 }
 
 enum Media_mediaType {
@@ -1692,6 +1694,8 @@ input Media_where {
   filesize: Media_filesize_operator
   width: Media_width_operator
   height: Media_height_operator
+  focalX: Media_focalX_operator
+  focalY: Media_focalY_operator
   id: Media_id_operator
   AND: [Media_where_and]
   OR: [Media_where_or]
@@ -1817,6 +1821,26 @@ input Media_height_operator {
   exists: Boolean
 }
 
+input Media_focalX_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Media_focalY_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
 input Media_id_operator {
   equals: String
   not_equals: String
@@ -1840,6 +1864,8 @@ input Media_where_and {
   filesize: Media_filesize_operator
   width: Media_width_operator
   height: Media_height_operator
+  focalX: Media_focalX_operator
+  focalY: Media_focalY_operator
   id: Media_id_operator
   AND: [Media_where_and]
   OR: [Media_where_or]
@@ -1857,6 +1883,8 @@ input Media_where_or {
   filesize: Media_filesize_operator
   width: Media_width_operator
   height: Media_height_operator
+  focalX: Media_focalX_operator
+  focalY: Media_focalY_operator
   id: Media_id_operator
   AND: [Media_where_and]
   OR: [Media_where_or]
@@ -1886,6 +1914,8 @@ type MediaDocAccessFields {
   filesize: MediaDocAccessFields_filesize
   width: MediaDocAccessFields_width
   height: MediaDocAccessFields_height
+  focalX: MediaDocAccessFields_focalX
+  focalY: MediaDocAccessFields_focalY
 }
 
 type MediaDocAccessFields_alt {
@@ -2141,6 +2171,52 @@ type MediaDocAccessFields_height_Delete {
   permission: Boolean!
 }
 
+type MediaDocAccessFields_focalX {
+  create: MediaDocAccessFields_focalX_Create
+  read: MediaDocAccessFields_focalX_Read
+  update: MediaDocAccessFields_focalX_Update
+  delete: MediaDocAccessFields_focalX_Delete
+}
+
+type MediaDocAccessFields_focalX_Create {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_focalX_Read {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_focalX_Update {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_focalX_Delete {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_focalY {
+  create: MediaDocAccessFields_focalY_Create
+  read: MediaDocAccessFields_focalY_Read
+  update: MediaDocAccessFields_focalY_Update
+  delete: MediaDocAccessFields_focalY_Delete
+}
+
+type MediaDocAccessFields_focalY_Create {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_focalY_Read {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_focalY_Update {
+  permission: Boolean!
+}
+
+type MediaDocAccessFields_focalY_Delete {
+  permission: Boolean!
+}
+
 type MediaCreateDocAccess {
   permission: Boolean!
   where: JSONObject
@@ -2173,6 +2249,8 @@ type Document {
   filesize: Float
   width: Float
   height: Float
+  focalX: Float
+  focalY: Float
 }
 
 input Document_Thumbnail_where {
@@ -2187,6 +2265,8 @@ input Document_Thumbnail_where {
   filesize: Document_Thumbnail_filesize_operator
   width: Document_Thumbnail_width_operator
   height: Document_Thumbnail_height_operator
+  focalX: Document_Thumbnail_focalX_operator
+  focalY: Document_Thumbnail_focalY_operator
   id: Document_Thumbnail_id_operator
   AND: [Document_Thumbnail_where_and]
   OR: [Document_Thumbnail_where_or]
@@ -2312,6 +2392,26 @@ input Document_Thumbnail_height_operator {
   exists: Boolean
 }
 
+input Document_Thumbnail_focalX_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_Thumbnail_focalY_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
 input Document_Thumbnail_id_operator {
   equals: String
   not_equals: String
@@ -2335,6 +2435,8 @@ input Document_Thumbnail_where_and {
   filesize: Document_Thumbnail_filesize_operator
   width: Document_Thumbnail_width_operator
   height: Document_Thumbnail_height_operator
+  focalX: Document_Thumbnail_focalX_operator
+  focalY: Document_Thumbnail_focalY_operator
   id: Document_Thumbnail_id_operator
   AND: [Document_Thumbnail_where_and]
   OR: [Document_Thumbnail_where_or]
@@ -2352,6 +2454,8 @@ input Document_Thumbnail_where_or {
   filesize: Document_Thumbnail_filesize_operator
   width: Document_Thumbnail_width_operator
   height: Document_Thumbnail_height_operator
+  focalX: Document_Thumbnail_focalX_operator
+  focalY: Document_Thumbnail_focalY_operator
   id: Document_Thumbnail_id_operator
   AND: [Document_Thumbnail_where_and]
   OR: [Document_Thumbnail_where_or]
@@ -2382,6 +2486,8 @@ input Document_where {
   filesize: Document_filesize_operator
   width: Document_width_operator
   height: Document_height_operator
+  focalX: Document_focalX_operator
+  focalY: Document_focalY_operator
   id: Document_id_operator
   AND: [Document_where_and]
   OR: [Document_where_or]
@@ -2489,6 +2595,26 @@ input Document_height_operator {
   exists: Boolean
 }
 
+input Document_focalX_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
+input Document_focalY_operator {
+  equals: Float
+  not_equals: Float
+  greater_than_equal: Float
+  greater_than: Float
+  less_than_equal: Float
+  less_than: Float
+  exists: Boolean
+}
+
 input Document_id_operator {
   equals: String
   not_equals: String
@@ -2511,6 +2637,8 @@ input Document_where_and {
   filesize: Document_filesize_operator
   width: Document_width_operator
   height: Document_height_operator
+  focalX: Document_focalX_operator
+  focalY: Document_focalY_operator
   id: Document_id_operator
   AND: [Document_where_and]
   OR: [Document_where_or]
@@ -2527,6 +2655,8 @@ input Document_where_or {
   filesize: Document_filesize_operator
   width: Document_width_operator
   height: Document_height_operator
+  focalX: Document_focalX_operator
+  focalY: Document_focalY_operator
   id: Document_id_operator
   AND: [Document_where_and]
   OR: [Document_where_or]
@@ -2555,6 +2685,8 @@ type DocumentsDocAccessFields {
   filesize: DocumentsDocAccessFields_filesize
   width: DocumentsDocAccessFields_width
   height: DocumentsDocAccessFields_height
+  focalX: DocumentsDocAccessFields_focalX
+  focalY: DocumentsDocAccessFields_focalY
 }
 
 type DocumentsDocAccessFields_title {
@@ -2784,6 +2916,52 @@ type DocumentsDocAccessFields_height_Update {
 }
 
 type DocumentsDocAccessFields_height_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalX {
+  create: DocumentsDocAccessFields_focalX_Create
+  read: DocumentsDocAccessFields_focalX_Read
+  update: DocumentsDocAccessFields_focalX_Update
+  delete: DocumentsDocAccessFields_focalX_Delete
+}
+
+type DocumentsDocAccessFields_focalX_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalX_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalX_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalX_Delete {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalY {
+  create: DocumentsDocAccessFields_focalY_Create
+  read: DocumentsDocAccessFields_focalY_Read
+  update: DocumentsDocAccessFields_focalY_Update
+  delete: DocumentsDocAccessFields_focalY_Delete
+}
+
+type DocumentsDocAccessFields_focalY_Create {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalY_Read {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalY_Update {
+  permission: Boolean!
+}
+
+type DocumentsDocAccessFields_focalY_Delete {
   permission: Boolean!
 }
 
@@ -9045,6 +9223,8 @@ type MediaFields {
   filesize: MediaFields_filesize
   width: MediaFields_width
   height: MediaFields_height
+  focalX: MediaFields_focalX
+  focalY: MediaFields_focalY
 }
 
 type MediaFields_alt {
@@ -9300,6 +9480,52 @@ type MediaFields_height_Delete {
   permission: Boolean!
 }
 
+type MediaFields_focalX {
+  create: MediaFields_focalX_Create
+  read: MediaFields_focalX_Read
+  update: MediaFields_focalX_Update
+  delete: MediaFields_focalX_Delete
+}
+
+type MediaFields_focalX_Create {
+  permission: Boolean!
+}
+
+type MediaFields_focalX_Read {
+  permission: Boolean!
+}
+
+type MediaFields_focalX_Update {
+  permission: Boolean!
+}
+
+type MediaFields_focalX_Delete {
+  permission: Boolean!
+}
+
+type MediaFields_focalY {
+  create: MediaFields_focalY_Create
+  read: MediaFields_focalY_Read
+  update: MediaFields_focalY_Update
+  delete: MediaFields_focalY_Delete
+}
+
+type MediaFields_focalY_Create {
+  permission: Boolean!
+}
+
+type MediaFields_focalY_Read {
+  permission: Boolean!
+}
+
+type MediaFields_focalY_Update {
+  permission: Boolean!
+}
+
+type MediaFields_focalY_Delete {
+  permission: Boolean!
+}
+
 type MediaCreateAccess {
   permission: Boolean!
   where: JSONObject
@@ -9339,6 +9565,8 @@ type DocumentsFields {
   filesize: DocumentsFields_filesize
   width: DocumentsFields_width
   height: DocumentsFields_height
+  focalX: DocumentsFields_focalX
+  focalY: DocumentsFields_focalY
 }
 
 type DocumentsFields_title {
@@ -9568,6 +9796,52 @@ type DocumentsFields_height_Update {
 }
 
 type DocumentsFields_height_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalX {
+  create: DocumentsFields_focalX_Create
+  read: DocumentsFields_focalX_Read
+  update: DocumentsFields_focalX_Update
+  delete: DocumentsFields_focalX_Delete
+}
+
+type DocumentsFields_focalX_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalX_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalX_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalX_Delete {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalY {
+  create: DocumentsFields_focalY_Create
+  read: DocumentsFields_focalY_Read
+  update: DocumentsFields_focalY_Update
+  delete: DocumentsFields_focalY_Delete
+}
+
+type DocumentsFields_focalY_Create {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalY_Read {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalY_Update {
+  permission: Boolean!
+}
+
+type DocumentsFields_focalY_Delete {
   permission: Boolean!
 }
 
@@ -13136,6 +13410,8 @@ input mutationMediaInput {
   filesize: Float
   width: Float
   height: Float
+  focalX: Float
+  focalY: Float
 }
 
 enum Media_mediaType_MutationInput {
@@ -13155,6 +13431,8 @@ input mutationMediaUpdateInput {
   filesize: Float
   width: Float
   height: Float
+  focalX: Float
+  focalY: Float
 }
 
 enum MediaUpdate_mediaType_MutationInput {
@@ -13173,6 +13451,8 @@ input mutationDocumentInput {
   filesize: Float
   width: Float
   height: Float
+  focalX: Float
+  focalY: Float
 }
 
 input mutationDocumentUpdateInput {
@@ -13186,6 +13466,8 @@ input mutationDocumentUpdateInput {
   filesize: Float
   width: Float
   height: Float
+  focalX: Float
+  focalY: Float
 }
 
 input mutationTopicInput {
