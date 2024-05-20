@@ -252,3 +252,14 @@ export const getQuotasWithOpenAndQueue = (
 
   return quotasWithOpenAndQueue;
 };
+
+/**
+ * Typescript gymnastics
+ */
+export type Equals<X, Y> =
+  (<T>() => T extends X ? 1 : 2) extends <T>() => T extends Y ? 1 : 2
+    ? true
+    : false;
+
+// eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/naming-convention -- used for type assertion
+export function assertType<_T extends true>() {}

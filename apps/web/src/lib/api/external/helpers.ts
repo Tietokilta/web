@@ -1,6 +1,10 @@
 import { type Dictionary } from "../../../locales/server";
 
-export type ErrorType = keyof Dictionary["errors"];
+export type ErrorType = keyof {
+  [Property in keyof Dictionary as Property extends `errors.${infer S}`
+    ? S
+    : never]?: string;
+};
 
 export interface OkResponse<T> {
   ok: true;
