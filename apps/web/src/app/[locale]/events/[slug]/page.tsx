@@ -14,11 +14,14 @@ import {
 import { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
 import {
   formatDateTimeSeconds,
+  formatDateTimeSecondsOptions,
   formatDatetimeYear,
+  formatDatetimeYearOptions,
   getQuotasWithOpenAndQueue,
 } from "../../../../lib/utils";
 import { BackButton } from "../../../../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
+import { DateTime } from "../../../../components/datetime";
 
 async function SignUpText({
   startDate,
@@ -162,7 +165,14 @@ async function SignUpTable({
               ) : null}
               <td className="border-b border-gray-900 px-2 py-1">
                 <time dateTime={signup.createdAt} className="group">
-                  <span>{formatDateTimeSeconds(signup.createdAt)}</span>
+                  <DateTime
+                    as="span"
+                    defaultFormattedDate={formatDateTimeSeconds(
+                      signup.createdAt,
+                    )}
+                    rawDate={signup.createdAt}
+                    formatOptions={formatDateTimeSecondsOptions}
+                  />
                   <span className="invisible group-hover:visible">
                     .{new Date(signup.createdAt).getMilliseconds()}
                   </span>
@@ -226,17 +236,21 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
       {event.date ? (
         <span className="block">
           <span className="font-medium">{t("Alkaa")}:</span>{" "}
-          <time dateTime={event.date}>
-            {formatDatetimeYear(event.date, locale)}
-          </time>
+          <DateTime
+            rawDate={event.date}
+            defaultFormattedDate={formatDatetimeYear(event.date, locale)}
+            formatOptions={formatDatetimeYearOptions}
+          />
         </span>
       ) : null}
       {event.endDate ? (
         <span className="block">
           <span className="font-medium">{t("Loppuu")}:</span>{" "}
-          <time dateTime={event.endDate}>
-            {formatDatetimeYear(event.endDate, locale)}
-          </time>
+          <DateTime
+            rawDate={event.endDate}
+            defaultFormattedDate={formatDatetimeYear(event.endDate, locale)}
+            formatOptions={formatDatetimeYearOptions}
+          />
         </span>
       ) : null}
     </div>

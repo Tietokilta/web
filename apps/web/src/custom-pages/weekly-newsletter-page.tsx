@@ -9,12 +9,14 @@ import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import {
   formatDate,
   formatDateYear,
+  formatDateYearOptions,
   isThisWeek,
   stringToId,
   type TocItem,
 } from "../lib/utils";
 import { LexicalSerializer } from "../components/lexical/lexical-serializer";
 import { TableOfContents } from "../components/table-of-contents";
+import { DateTime } from "../components/datetime";
 
 function NewsItemContent({ content }: { content?: EditorState }) {
   if (!content) return null;
@@ -231,12 +233,12 @@ export default async function Page({ slug }: { slug?: string }) {
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <header className="space-y-2">
             <h1 className="font-mono text-4xl">{weeklyNewsletter.title}</h1>
-            <time
+            <DateTime
               className="block text-lg text-gray-800"
-              dateTime={weeklyNewsletter.createdAt}
-            >
-              {formatDateYear(weeklyNewsletter.createdAt)}
-            </time>
+              rawDate={weeklyNewsletter.createdAt}
+              formatOptions={formatDateYearOptions}
+              defaultFormattedDate={formatDateYear(weeklyNewsletter.createdAt)}
+            />
           </header>
           <Greetings content={greetings} />
           <Calendar
