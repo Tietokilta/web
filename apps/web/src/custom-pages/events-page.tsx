@@ -4,9 +4,15 @@ import type {
   IlmomasiinaEvent,
 } from "../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../lib/api/external/ilmomasiina";
-import { cn, formatDateYear, formatDatetimeYear } from "../lib/utils";
+import {
+  cn,
+  formatDateYear,
+  formatDateYearOptions,
+  formatDatetimeYear,
+} from "../lib/utils";
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
+import { DateTime } from "../components/datetime";
 
 async function SignUpText({
   startDate,
@@ -118,9 +124,12 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
       </Link>
 
       {event.date ? (
-        <time className="md:w-1/6" dateTime={event.date}>
-          {formatDateYear(event.date, locale)}
-        </time>
+        <DateTime
+          className="md:w-1/6"
+          rawDate={event.date}
+          defaultFormattedDate={formatDateYear(event.date, locale)}
+          formatOptions={formatDateYearOptions}
+        />
       ) : (
         <div className="md:w-1/6" />
       )}

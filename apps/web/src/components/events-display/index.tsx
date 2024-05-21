@@ -14,7 +14,8 @@ import {
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchEvents } from "../../lib/api/external/ilmomasiina";
 import { getCurrentLocale, getI18n } from "../../locales/server";
-import { formatDatetime } from "../../lib/utils";
+import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
+import { DateTime } from "../datetime";
 
 function EventListSkeleton() {
   return (
@@ -54,10 +55,15 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           <time
             className="line-clamp-2 text-pretty pl-5"
             dateTime={event.date}
-            title={formatDatetime(event.date, locale)}
+            // title={formatDateTime(event.date, locale)}
           >
             <ClockIcon className="-ml-5 mr-1 inline-block size-4" />
-            <span>{formatDatetime(event.date, locale)}</span>
+            <DateTime
+              as="span"
+              rawDate={event.date}
+              defaultFormattedDate={formatDateTime(event.date, locale)}
+              formatOptions={formatDateTimeOptions}
+            />
           </time>
         ) : null}
         {event.location ? (
