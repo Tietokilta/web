@@ -1,5 +1,3 @@
-
-
 export function InfoScreenHeaderLogo() {
   return (
     <svg

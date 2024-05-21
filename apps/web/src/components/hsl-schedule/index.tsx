@@ -1,4 +1,3 @@
-'use-client'
 import { checkIfPast } from "../../assets/api_hooks/hsl_api_hooks.ts";
 import type { RenderableStop, StopType } from "../../assets/api_hooks/hsl_api_types.ts";
 import { useState, useEffect } from "react";
