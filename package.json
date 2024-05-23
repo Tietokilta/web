@@ -48,6 +48,9 @@
           "@types/passport-oauth2": "^1.4.15"
         }
       }
+    },
+    "patchedDependencies": {
+      "next-international@1.2.4": "patches/next-international@1.2.4.patch"
     }
   }
 }
