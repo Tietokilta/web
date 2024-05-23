@@ -34,6 +34,9 @@
     "node": "^20 || ^22"
   },
   "pnpm": {
+    "patchedDependencies": {
+      "next-international@1.2.4": "patches/next-international@1.2.4.patch"
+    },
     "packageExtensions": {
       "mongodb@4.17.1": {
         "dependencies": {
@@ -48,9 +51,6 @@
           "@types/passport-oauth2": "^1.4.15"
         }
       }
-    },
-    "patchedDependencies": {
-      "next-international@1.2.4": "patches/next-international@1.2.4.patch"
     }
   }
 }
