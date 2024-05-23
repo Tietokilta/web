@@ -149,9 +149,9 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
 
 function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
   return (
-    <li className="h-[40rem]">
+    <div className="h-[40rem]">
       <EventCalendar events={events} />
-    </li>
+    </div>
   );
 }
 
@@ -175,8 +175,8 @@ export default async function Page() {
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{ta("Back")}</BackButton>
           <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
+          <Calendar events={events.data} />
           <ul className="space-y-8">
-            <Calendar events={events.data} />
             {events.data
               .filter((event) => {
                 const currentDate = new Date();
