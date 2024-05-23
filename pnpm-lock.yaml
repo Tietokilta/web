@@ -6,6 +6,11 @@ settings:
 
 packageExtensionsChecksum: a70354f32b2e7ee5e9851f81f1e8ff2e
 
+patchedDependencies:
+  next-international@1.2.4:
+    hash: xeq66wimb7lsj4vnwftgigy5za
+    path: patches/next-international@1.2.4.patch
+
 importers:
 
   .:
@@ -124,7 +129,7 @@ importers:
         version: 14.2.3(@opentelemetry/api@1.8.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.2)
       next-international:
         specifier: ^1.2.4
-        version: 1.2.4
+        version: 1.2.4(patch_hash=xeq66wimb7lsj4vnwftgigy5za)
       payload-admin-bar:
         specifier: ^1.0.6
         version: 1.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -14528,7 +14533,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  next-international@1.2.4:
+  next-international@1.2.4(patch_hash=xeq66wimb7lsj4vnwftgigy5za):
     dependencies:
       client-only: 0.0.1
       international-types: 0.8.1
