@@ -9,8 +9,7 @@ import {
 } from "react-big-calendar";
 import { useState, useCallback } from "react";
 import "./event-calendar.css";
-import moment from "moment";
-import { updateLocale } from "moment";
+import moment, { updateLocale } from "moment";
 import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
 import {
   useScopedI18n,
@@ -30,6 +29,7 @@ function EventCalendar({
   locale: string;
 }) {
   const t = useScopedI18n("calendar");
+  const ta = useScopedI18n("action");
 
   // Filter events without a start date.
   const filteredEvents = events.filter(
@@ -73,13 +73,13 @@ function EventCalendar({
 
   // Translations for control buttons
   const messages = {
-    week: t("Viikko"),
-    work_week: t("Työviikko"),
-    day: t("Päivä"),
-    month: t("Kuukausi"),
-    previous: t("Edellinen"),
-    next: t("Seuraava"),
-    today: t("Tänään"),
+    week: t("Week"),
+    work_week: t("Work Week"),
+    day: t("Day"),
+    month: t("Month"),
+    previous: ta("Previous"),
+    next: ta("Next"),
+    today: t("Today"),
   };
 
   // Set Monday as the first day of the week
