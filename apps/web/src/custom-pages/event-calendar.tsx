@@ -18,6 +18,7 @@ import {
 } from "../locales/client";
 
 type IlmomasiinEventWithDate = IlmomasiinaEvent & { date: string };
+type CalendarEvent = Omit<Event, "resource"> & { resource: { url: string } };
 
 function EventCalendar({
   events,
@@ -36,7 +37,7 @@ function EventCalendar({
     (event): event is IlmomasiinEventWithDate => !!event.date,
   );
 
-  const parsedEvents: Event[] = filteredEvents.map((event) => {
+  const parsedEvents: CalendarEvent[] = filteredEvents.map((event) => {
     const startDate = new Date(event.date);
 
     let endDate;
@@ -63,7 +64,7 @@ function EventCalendar({
   });
 
   // Make calendar events into clickable links.
-  const eventElement = (event: EventProps) => {
+  const eventElement = (event: EventProps<CalendarEvent>) => {
     return (
       <a className="block h-full" href={event.event.resource.url}>
         {event.title}
