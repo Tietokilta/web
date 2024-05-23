@@ -130,6 +130,7 @@ function EventCalendar({
       messages={messages}
       culture={locale}
       popup
+      scrollToTime={date}
       events={parsedEvents}
       onView={handleOnChangeView}
     />
