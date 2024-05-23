@@ -22,6 +22,7 @@ ARG PROJECT=web
 FROM setup AS dependencies
 WORKDIR /app
 # Copy the essential configuration files and the specific project's files into the Docker image.
+COPY patches/ ./patches/
 COPY packages/ ./packages/
 COPY turbo.json ./
 COPY package.json turbo.json packages ./
