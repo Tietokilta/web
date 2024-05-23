@@ -5,7 +5,8 @@ export const fetchPage = getOneCollectionItem<
   {
     where:
       | { path: { equals: string } }
-      | { "path.fi": { equals: string } | { "path.en": { equals: string } } };
+      | { "path.fi": { equals: string } }
+      | { "path.en": { equals: string } };
   },
   Page
 >("pages");
