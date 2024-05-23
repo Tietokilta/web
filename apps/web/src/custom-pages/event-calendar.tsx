@@ -9,7 +9,8 @@ import {
 } from "react-big-calendar";
 import { useState, useCallback } from "react";
 import "./event-calendar.css";
-import moment, { updateLocale } from "moment";
+// eslint-disable-next-line import/named -- these are reimports from moment
+import moment, { tz, updateLocale } from "moment-timezone";
 import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
 import {
   useScopedI18n,
@@ -38,17 +39,11 @@ function EventCalendar({
   );
 
   const parsedEvents: CalendarEvent[] = filteredEvents.map((event) => {
-    const startDate = new Date(event.date);
+    const startDate = tz(event.date, "Europe/Helsinki").toDate();
 
-    let endDate;
-
-    // If end date doesn't exist, set it to end of the day of startDate.
-    if (event.endDate) endDate = new Date(event.endDate);
-    else {
-      const endOfDay = new Date(event.date);
-      endOfDay.setHours(23, 59, 59, 999);
-      endDate = endOfDay;
-    }
+    const endDate = event.endDate
+      ? tz(event.endDate, "Europe/Helsinki").toDate()
+      : tz(event.date, "Europe/Helsinki").endOf("day").toDate();
 
     // Url of the event page.
     const eventUrl = eventsUrl + event.slug;
