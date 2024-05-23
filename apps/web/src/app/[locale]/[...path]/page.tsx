@@ -126,6 +126,8 @@ async function Page({ params: { path } }: Props) {
   if (page.type !== "standard") {
     // eslint-disable-next-line no-console -- nice to know
     console.error("Unknown page type", page.type);
+    // eslint-disable-next-line no-console -- we really should start using logger
+    console.error(page);
     return notFound();
   }
 

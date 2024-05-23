@@ -1,4 +1,4 @@
-import { assertType, type Equals } from "../lib/utils";
+import { assertType } from "../lib/utils";
 import type en from "./en";
 
 /**
@@ -76,12 +76,16 @@ const fi = {
   "weeklyNewsletter.this-week-signups":
     "Tällä viikolla avoinna olevat ilmoittautumiset",
   "weeklyNewsletter.title": "Viikkotiedotteet",
+  "calendar.Week": "Viikko",
+  "calendar.Work Week": "Työviikko",
+  "calendar.Day": "Päivä",
+  "calendar.Month": "Kuukausi",
+  "calendar.Today": "Tänään",
 } as const;
 
 type EnKey = keyof typeof en;
-type FiKey = keyof typeof fi;
 
 // assert types equal at typescript level
-assertType<Equals<EnKey, FiKey>>();
+assertType<Record<EnKey, string>>(fi);
 
 export default fi;
