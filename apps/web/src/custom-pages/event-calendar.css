@@ -19,7 +19,7 @@
   --grid-line-color: #ddd;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --tw-shadow: 2px 2px 0px 0px white;
     --border-color: white;
@@ -32,7 +32,7 @@
     --selected-button-bg-color: rgb(65, 65, 65);
     --grid-line-color: rgb(98, 98, 98);
   }
-}
+} */
 
 .rbc-btn {
   color: inherit;
