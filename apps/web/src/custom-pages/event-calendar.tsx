@@ -5,12 +5,13 @@ import {
   type Event,
   type EventProps,
   Views,
-  momentLocalizer,
+  dateFnsLocalizer,
 } from "react-big-calendar";
 import { useState, useCallback } from "react";
 import "./event-calendar.css";
-import moment from "moment";
-import { updateLocale } from "moment";
+import { format, parse, startOfWeek, getDay } from "date-fns";
+import { enUS } from "date-fns/locale/en-US";
+import { fi as fin } from "date-fns/locale/fi";
 import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
 import {
   useScopedI18n,
@@ -82,14 +83,20 @@ function EventCalendar({
     today: t("Tänään"),
   };
 
-  // Set Monday as the first day of the week
-  updateLocale(locale, {
-    week: {
-      dow: 1,
-    },
-  });
+  const locales = {
+    en: enUS,
+    fi: fin,
+  };
 
-  const localizer = momentLocalizer(moment);
+  const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek: () => {
+      return startOfWeek(new Date(), { weekStartsOn: 1 });
+    },
+    getDay,
+    locales,
+  });
 
   // State hooks that fix React strict mode functionality
   // See: https://github.com/vercel/next.js/issues/56206

@@ -15,7 +15,7 @@
   --text-color: black;
   --event-text-color: black;
   --greyed-date-color: #e6e6e6;
-  --selected-button-bg-color: white;
+  --selected-button-bg-color: #d4d4d4;
   --grid-line-color: #ddd;
 }
 
@@ -236,7 +236,7 @@ button.rbc-input::-moz-focus-inner {
 .rbc-toolbar button.rbc-active:hover,
 .rbc-toolbar button.rbc-active:focus {
   color: #373a3c;
-  background-color: #d4d4d4;
+  background-color: var(--selected-button-bg-color);
 }
 .rbc-toolbar button:focus {
   color: #373a3c;
