@@ -15,11 +15,12 @@
   --text-color: black;
   --event-text-color: black;
   --greyed-date-color: #e6e6e6;
-  --selected-button-bg-color: white;
+  --selected-button-bg-color: #d4d4d4;
   --grid-line-color: #ddd;
 }
 
-/* @media (prefers-color-scheme: dark) {
+/*
+@media (prefers-color-scheme: dark) {
   :root {
     --tw-shadow: 2px 2px 0px 0px white;
     --border-color: white;
@@ -32,7 +33,8 @@
     --selected-button-bg-color: rgb(65, 65, 65);
     --grid-line-color: rgb(98, 98, 98);
   }
-} */
+}
+*/
 
 .rbc-btn {
   color: inherit;
@@ -236,7 +238,7 @@ button.rbc-input::-moz-focus-inner {
 .rbc-toolbar button.rbc-active:hover,
 .rbc-toolbar button.rbc-active:focus {
   color: #373a3c;
-  background-color: #d4d4d4;
+  background-color: var(--selected-button-bg-color);
 }
 .rbc-toolbar button:focus {
   color: #373a3c;
