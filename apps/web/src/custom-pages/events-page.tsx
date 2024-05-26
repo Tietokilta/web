@@ -3,7 +3,10 @@ import type {
   EventQuota,
   IlmomasiinaEvent,
 } from "../lib/api/external/ilmomasiina";
-import { fetchEvents } from "../lib/api/external/ilmomasiina";
+import {
+  fetchEvents,
+  fetchUpcomingEvents,
+} from "../lib/api/external/ilmomasiina";
 import {
   cn,
   formatDateYear,
@@ -159,8 +162,9 @@ export default async function Page() {
   const t = await getScopedI18n("ilmomasiina");
   const ta = await getScopedI18n("action");
   const events = await fetchEvents();
+  const upcomingEvents = await fetchUpcomingEvents();
 
-  if (!events.ok) {
+  if (!events.ok || !upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know
     console.warn("Failed to fetch events from Ilmomasiina", events.error);
     throw new Error("Failed to fetch events from Ilmomasiina");
@@ -177,22 +181,9 @@ export default async function Page() {
           <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
           <Calendar events={events.data} />
           <ul className="space-y-8">
-            {events.data
-              .filter((event) => {
-                const currentDate = new Date();
-                if (event.endDate) {
-                  const eventEndDate = new Date(event.endDate);
-                  return eventEndDate >= currentDate;
-                }
-                if (event.date) {
-                  const eventStartDate = new Date(event.date);
-                  return eventStartDate >= currentDate;
-                }
-                return false;
-              })
-              .map((event) => (
-                <EventCard event={event} key={event.id} />
-              ))}
+            {upcomingEvents.data.map((event) => (
+              <EventCard event={event} key={event.id} />
+            ))}
           </ul>
         </div>
       </div>

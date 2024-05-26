@@ -102,6 +102,30 @@ export const fetchEvents = async (): Promise<
   }
 };
 
+export const fetchUpcomingEvents = async (): Promise<
+  ApiResponse<IlmomasiinaEvent[]>
+> => {
+  const events = await fetchEvents();
+  if (!events.ok) {
+    return events;
+  }
+
+  const currentDate = new Date();
+  return ok(
+    events.data.filter((event) => {
+      if (event.endDate) {
+        const eventEndDate = new Date(event.endDate);
+        return eventEndDate >= currentDate;
+      }
+      if (event.date) {
+        const eventStartDate = new Date(event.date);
+        return eventStartDate >= currentDate;
+      }
+      return false;
+    }),
+  );
+};
+
 export const fetchEvent = async (
   slug: string,
 ): Promise<ApiResponse<IlmomasiinaEvent>> => {
