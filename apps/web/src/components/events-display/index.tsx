@@ -12,7 +12,7 @@ import {
   PaginationPrevious,
 } from "../pagination";
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
-import { fetchEvents } from "../../lib/api/external/ilmomasiina";
+import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
 import { getCurrentLocale, getI18n } from "../../locales/server";
 import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
 import { DateTime } from "../datetime";
@@ -91,16 +91,19 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 }
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
-  const events = await fetchEvents();
+  const upcomingEvents = await fetchUpcomingEvents();
   const locale = getCurrentLocale();
   const t = await getI18n();
-  if (!events.ok) {
+  if (!upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
-    console.warn("Failed to fetch events from Ilmomasiina", events.error);
+    console.warn(
+      "Failed to fetch events from Ilmomasiina",
+      upcomingEvents.error,
+    );
     return null;
   }
 
-  const eventsList = events.data;
+  const eventsList = upcomingEvents.data;
   if (!eventsList.length) {
     return null;
   }
