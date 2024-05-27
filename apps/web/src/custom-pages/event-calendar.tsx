@@ -5,12 +5,14 @@ import {
   type Event,
   type EventProps,
   Views,
-  momentLocalizer,
+  dateFnsLocalizer,
 } from "react-big-calendar";
 import { useState, useCallback } from "react";
 import "./event-calendar.css";
-// eslint-disable-next-line import/named -- these are reimports from moment
-import moment, { tz, updateLocale } from "moment-timezone";
+import { format, parse, startOfWeek, getDay, endOfDay } from "date-fns";
+import { toZonedTime } from "date-fns-tz";
+import { enUS } from "date-fns/locale/en-US";
+import { fi as fin } from "date-fns/locale/fi";
 import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
 import {
   useScopedI18n,
@@ -39,11 +41,11 @@ function EventCalendar({
   );
 
   const parsedEvents: CalendarEvent[] = filteredEvents.map((event) => {
-    const startDate = tz(event.date, "Europe/Helsinki").toDate();
+    const startDate = toZonedTime(event.date, "Europe/Helsinki");
 
     const endDate = event.endDate
-      ? tz(event.endDate, "Europe/Helsinki").toDate()
-      : tz(event.date, "Europe/Helsinki").endOf("day").toDate();
+      ? toZonedTime(event.endDate, "Europe/Helsinki")
+      : endOfDay(toZonedTime(event.date, "Europe/Helsinki"));
 
     // Url of the event page.
     const eventUrl = eventsUrl + event.slug;
@@ -78,14 +80,20 @@ function EventCalendar({
     today: t("Today"),
   };
 
-  // Set Monday as the first day of the week
-  updateLocale(locale, {
-    week: {
-      dow: 1,
-    },
-  });
+  const locales = {
+    en: enUS,
+    fi: fin,
+  };
 
-  const localizer = momentLocalizer(moment);
+  const localizer = dateFnsLocalizer({
+    format,
+    parse,
+    startOfWeek: () => {
+      return startOfWeek(new Date(), { weekStartsOn: 1 });
+    },
+    getDay,
+    locales,
+  });
 
   // State hooks that fix React strict mode functionality
   // See: https://github.com/vercel/next.js/issues/56206
