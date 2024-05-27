@@ -59,7 +59,7 @@ export function CommitteeCard({
         <h2 className="self-center font-medium">{committee.name}</h2>
         <div className="w-5" />
       </div>
-      <ul className="flex flex-wrap justify-center gap-4 md:gap-8">
+      <ul className="flex w-full flex-wrap justify-center gap-4 md:gap-8">
         {committee.committeeMembers.map(({ committeeMember }) => (
           <CommitteeMemberCard
             committeeMember={committeeMember as CommitteeMember}
