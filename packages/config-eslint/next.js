@@ -43,6 +43,13 @@ module.exports = {
     "import/no-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "no-implicit-coercion": ["error", { allow: ["!!"] }],
-    "tailwindcss/classnames-order": "off", // handled by prettier
+    "tailwindcss/classnames-order": "off", // handled by prettier,
+    "tailwindcss/no-custom-classname": [
+      "warn",
+      {
+        // react-dvd-screensaver uses custom classnames to detect parent container
+        whitelist: ["screensaver-container"],
+      },
+    ],
   },
 };

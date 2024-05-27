@@ -32,7 +32,7 @@ function DVD(name: string) {
 
   return (
     <div className="screensaver-container h-52 w-full md:h-80">
-      {isClient && (
+      {!!isClient && (
         <DvdScreensaver speed={2}>
           <p className="m-0 w-fit font-mono text-lg font-bold md:text-2xl">
             🔥 {name} 🔥
