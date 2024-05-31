@@ -13,6 +13,7 @@ import { format, parse, startOfWeek, getDay, endOfDay } from "date-fns";
 import { toZonedTime } from "date-fns-tz";
 import { enUS } from "date-fns/locale/en-US";
 import { fi as fin } from "date-fns/locale/fi";
+import Link from "next/link";
 import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
 import {
   useScopedI18n,
@@ -22,6 +23,15 @@ import {
 
 type IlmomasiinEventWithDate = IlmomasiinaEvent & { date: string };
 type CalendarEvent = Omit<Event, "resource"> & { resource: { url: string } };
+
+// Make calendar events into clickable links.
+function EventElement(event: EventProps<CalendarEvent>) {
+  return (
+    <Link className="block h-full" href={event.event.resource.url}>
+      {event.title}
+    </Link>
+  );
+}
 
 function EventCalendar({
   events,
@@ -59,15 +69,6 @@ function EventCalendar({
       },
     };
   });
-
-  // Make calendar events into clickable links.
-  const eventElement = (event: EventProps<CalendarEvent>) => {
-    return (
-      <a className="block h-full" href={event.event.resource.url}>
-        {event.title}
-      </a>
-    );
-  };
 
   // Translations for control buttons
   const messages = {
@@ -121,13 +122,13 @@ function EventCalendar({
       date={date}
       components={{
         day: {
-          event: eventElement,
+          event: EventElement,
         },
         week: {
-          event: eventElement,
+          event: EventElement,
         },
         month: {
-          event: eventElement,
+          event: EventElement,
         },
       }}
       messages={messages}
