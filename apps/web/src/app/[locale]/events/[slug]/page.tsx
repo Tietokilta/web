@@ -10,6 +10,9 @@ import {
   type QuotaSignupWithQuotaTitle,
   OPEN_QUOTA_ID,
   QUEUE_QUOTA_ID,
+  type EventQuestion,
+  type QuotaSignup,
+  type QuestionAnswer,
 } from "../../../../lib/api/external/ilmomasiina";
 import { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
 import {
@@ -100,10 +103,81 @@ async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
+function getFormattedAnswer(
+  question: EventQuestion,
+  answers: QuestionAnswer[],
+) {
+  const answer = answers.find((a) => a.questionId === question.id)?.answer;
+
+  if (!answer) {
+    return "";
+  }
+
+  if (Array.isArray(answer)) {
+    return answer.join(", ");
+  }
+
+  return answer;
+}
+
+function SignUpRow({
+  signup,
+  publicQuestions,
+  isGeneratedQuota,
+}: {
+  signup: QuotaSignup | QuotaSignupWithQuotaTitle;
+  publicQuestions: EventQuestion[];
+  isGeneratedQuota: boolean;
+}) {
+  return (
+    <tr className="odd:bg-gray-300 even:bg-gray-200">
+      <td className="border-b border-gray-900 px-2 py-1">
+        <span>{signup.position}.</span>
+      </td>
+      <td className="border-b border-gray-900 px-2 py-1">
+        {signup.namePublic ? (
+          <span>
+            {signup.firstName} {signup.lastName}
+          </span>
+        ) : (
+          <span className="italic">
+            {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
+          </span>
+        )}
+      </td>
+      {publicQuestions.map((question) => (
+        <td key={question.id} className="border-b border-gray-900 px-2 py-1">
+          {getFormattedAnswer(question, signup.answers)}
+        </td>
+      ))}
+      {isGeneratedQuota ? (
+        <td className="border-b border-gray-900 px-2 py-1">
+          {"quotaTitle" in signup ? signup.quotaTitle : ""}
+        </td>
+      ) : null}
+      <td className="border-b border-gray-900 px-2 py-1">
+        <time dateTime={signup.createdAt} className="group">
+          <DateTime
+            as="span"
+            defaultFormattedDate={formatDateTimeSeconds(signup.createdAt)}
+            rawDate={signup.createdAt}
+            formatOptions={formatDateTimeSecondsOptions}
+          />
+          <span className="invisible group-hover:visible">
+            .{new Date(signup.createdAt).getMilliseconds()}
+          </span>
+        </time>
+      </td>
+    </tr>
+  );
+}
+
 async function SignUpTable({
   quota,
+  publicQuestions,
 }: {
   quota: EventQuota | EventQuotaWithSignups;
+  publicQuestions: EventQuestion[];
 }) {
   const t = await getScopedI18n("ilmomasiina");
   const signups = quota.signups ?? [];
@@ -126,6 +200,11 @@ async function SignUpTable({
             <th className="border-b border-gray-900 p-2">
               {t("headers.Nimi")}
             </th>
+            {publicQuestions.map((question) => (
+              <th key={question.id} className="border-b border-gray-900 p-2">
+                {question.question}
+              </th>
+            ))}
             {isGeneratedQuota ? (
               <th className="border-b border-gray-900 p-2">
                 {t("headers.Kiintiö")}
@@ -143,47 +222,12 @@ async function SignUpTable({
             )
             .toSorted((a, b) => a.position - b.position)
             .map((signup) => (
-              <tr
+              <SignUpRow
                 key={signup.position}
-                className="odd:bg-gray-300 even:bg-gray-200"
-              >
-                <td className="border-b border-gray-900 px-2 py-1">
-                  <span>{signup.position}.</span>
-                </td>
-                <td className="border-b border-gray-900 px-2 py-1">
-                  {signup.namePublic ? (
-                    <span>
-                      {signup.firstName} {signup.lastName}
-                    </span>
-                  ) : (
-                    <span className="italic">
-                      {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
-                    </span>
-                  )}
-                </td>
-                {isGeneratedQuota ? (
-                  <td className="border-b border-gray-900 px-2 py-1">
-                    {"quotaTitle" in signup
-                      ? (signup as QuotaSignupWithQuotaTitle).quotaTitle
-                      : ""}
-                  </td>
-                ) : null}
-                <td className="border-b border-gray-900 px-2 py-1">
-                  <time dateTime={signup.createdAt} className="group">
-                    <DateTime
-                      as="span"
-                      defaultFormattedDate={formatDateTimeSeconds(
-                        signup.createdAt,
-                      )}
-                      rawDate={signup.createdAt}
-                      formatOptions={formatDateTimeSecondsOptions}
-                    />
-                    <span className="invisible group-hover:visible">
-                      .{new Date(signup.createdAt).getMilliseconds()}
-                    </span>
-                  </time>
-                </td>
-              </tr>
+                signup={signup}
+                publicQuestions={publicQuestions}
+                isGeneratedQuota={isGeneratedQuota}
+              />
             ))}
         </tbody>
       </table>
@@ -203,6 +247,8 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
     event.openQuotaSize,
   );
 
+  const publicQuestions = event.questions.filter((question) => question.public);
+
   return (
     <div className="space-y-4">
       <h2 className="font-mono text-xl font-semibold text-gray-900">
@@ -214,7 +260,7 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
             <h3 className="font-mono text-lg font-semibold text-gray-900">
               {quota.title}
             </h3>
-            <SignUpTable quota={quota} />
+            <SignUpTable publicQuestions={publicQuestions} quota={quota} />
           </li>
         ))}
       </ul>
