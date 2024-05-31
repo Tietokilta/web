@@ -116,72 +116,78 @@ async function SignUpTable({
   const isGeneratedQuota = !!isOpenQuota || !!isQueueQuota;
 
   return (
-    <table className="shadow-solid w-full table-auto border-separate border-spacing-0 rounded-md border-2 border-gray-900">
-      <thead>
-        <tr className="bg-gray-200">
-          <th className="rounded-tl-md border-b border-gray-900 p-2">
-            {t("headers.Sija")}
-          </th>
-          <th className="border-b border-gray-900 p-2">{t("headers.Nimi")}</th>
-          {isGeneratedQuota ? (
-            <th className="border-b border-gray-900 p-2">
-              {t("headers.Kiintiö")}
+    <div className="shadow-solid block w-full overflow-x-auto rounded-md border-2 border-gray-900">
+      <table className="w-full table-auto border-separate border-spacing-0">
+        <thead>
+          <tr className="bg-gray-200">
+            <th className="rounded-tl-md border-b border-gray-900 p-2">
+              {t("headers.Sija")}
             </th>
-          ) : null}
-          <th className="rounded-tr-md border-b border-gray-900 p-2">
-            {t("headers.Ilmoittautumisaika")}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {signups
-          .filter((signup) => isGeneratedQuota || signup.status === "in-quota")
-          .toSorted((a, b) => a.position - b.position)
-          .map((signup) => (
-            <tr
-              key={signup.position}
-              className="odd:bg-gray-300 even:bg-gray-200"
-            >
-              <td className="border-b border-gray-900 px-2 py-1">
-                <span>{signup.position}.</span>
-              </td>
-              <td className="border-b border-gray-900 px-2 py-1">
-                {signup.namePublic ? (
-                  <span>
-                    {signup.firstName} {signup.lastName}
-                  </span>
-                ) : (
-                  <span className="italic">
-                    {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
-                  </span>
-                )}
-              </td>
-              {isGeneratedQuota ? (
+            <th className="border-b border-gray-900 p-2">
+              {t("headers.Nimi")}
+            </th>
+            {isGeneratedQuota ? (
+              <th className="border-b border-gray-900 p-2">
+                {t("headers.Kiintiö")}
+              </th>
+            ) : null}
+            <th className="rounded-tr-md border-b border-gray-900 p-2">
+              {t("headers.Ilmoittautumisaika")}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {signups
+            .filter(
+              (signup) => isGeneratedQuota || signup.status === "in-quota",
+            )
+            .toSorted((a, b) => a.position - b.position)
+            .map((signup) => (
+              <tr
+                key={signup.position}
+                className="odd:bg-gray-300 even:bg-gray-200"
+              >
                 <td className="border-b border-gray-900 px-2 py-1">
-                  {"quotaTitle" in signup
-                    ? (signup as QuotaSignupWithQuotaTitle).quotaTitle
-                    : ""}
+                  <span>{signup.position}.</span>
                 </td>
-              ) : null}
-              <td className="border-b border-gray-900 px-2 py-1">
-                <time dateTime={signup.createdAt} className="group">
-                  <DateTime
-                    as="span"
-                    defaultFormattedDate={formatDateTimeSeconds(
-                      signup.createdAt,
-                    )}
-                    rawDate={signup.createdAt}
-                    formatOptions={formatDateTimeSecondsOptions}
-                  />
-                  <span className="invisible group-hover:visible">
-                    .{new Date(signup.createdAt).getMilliseconds()}
-                  </span>
-                </time>
-              </td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
+                <td className="border-b border-gray-900 px-2 py-1">
+                  {signup.namePublic ? (
+                    <span>
+                      {signup.firstName} {signup.lastName}
+                    </span>
+                  ) : (
+                    <span className="italic">
+                      {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
+                    </span>
+                  )}
+                </td>
+                {isGeneratedQuota ? (
+                  <td className="border-b border-gray-900 px-2 py-1">
+                    {"quotaTitle" in signup
+                      ? (signup as QuotaSignupWithQuotaTitle).quotaTitle
+                      : ""}
+                  </td>
+                ) : null}
+                <td className="border-b border-gray-900 px-2 py-1">
+                  <time dateTime={signup.createdAt} className="group">
+                    <DateTime
+                      as="span"
+                      defaultFormattedDate={formatDateTimeSeconds(
+                        signup.createdAt,
+                      )}
+                      rawDate={signup.createdAt}
+                      formatOptions={formatDateTimeSecondsOptions}
+                    />
+                    <span className="invisible group-hover:visible">
+                      .{new Date(signup.createdAt).getMilliseconds()}
+                    </span>
+                  </time>
+                </td>
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
