@@ -51,7 +51,10 @@ function NavigationLink({
           {(pageOrTopic.pageConfig?.page as Page).title}
         </Link>
         {!!(pageOrTopic.pageConfig?.page as Page).icon && (
-          <div className="absolute inset-0 flex items-center justify-center">
+          <span
+            aria-hidden="true"
+            className="absolute inset-0 flex items-center justify-center"
+          >
             <RenderIcon
               width={80}
               height={80}
@@ -59,7 +62,7 @@ function NavigationLink({
               className="z-0 opacity-0 transition-opacity duration-300 group-hover/link:opacity-15"
               name={(pageOrTopic.pageConfig?.page as Page).icon ?? "HelpCircle"}
             />
-          </div>
+          </span>
         )}
       </div>
     );
@@ -73,7 +76,10 @@ function NavigationLink({
             {(pageOrTopic.topicConfig?.topic as Topic).title}
           </span>
           {!!(pageOrTopic.topicConfig?.topic as Topic).icon && (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 flex items-center justify-center"
+            >
               <RenderIcon
                 width={100}
                 height={100}
@@ -83,7 +89,7 @@ function NavigationLink({
                   (pageOrTopic.topicConfig?.topic as Topic).icon ?? "HelpCircle"
                 }
               />
-            </div>
+            </span>
           )}
         </NavigationMenuTrigger>
       </div>
