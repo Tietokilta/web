@@ -8,6 +8,7 @@ export type IlmomasiinaResponse = IlmomasiinaEvent[];
 
 export interface IlmomasiinaEvent {
   id: string;
+  questions: EventQuestion[];
   title: string;
   slug: string;
   date?: string | null;
@@ -36,6 +37,12 @@ export interface IlmomasiinaEvent {
   registrationClosed?: boolean | null;
 }
 
+export interface EventQuestion {
+  id: string;
+  question: string;
+  public: boolean;
+}
+
 export interface EventQuota {
   id: string;
   title: string;
@@ -52,11 +59,16 @@ export interface QuotaSignup {
   firstName?: string | null;
   lastName?: string | null;
   namePublic: boolean;
-  answers: unknown[];
+  answers: QuestionAnswer[];
   status: "in-quota" | "in-open" | "in-queue";
   position: number;
   createdAt: string;
   confirmed: boolean;
+}
+
+export interface QuestionAnswer {
+  questionId: string;
+  answer: string | string[];
 }
 
 export interface QuotaSignupWithQuotaTitle extends QuotaSignup {
