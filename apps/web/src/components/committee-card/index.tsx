@@ -4,7 +4,7 @@ import type {
   Media,
 } from "@tietokilta/cms-types/payload";
 import Image from "next/image";
-import { GavelIcon } from "@tietokilta/ui";
+import { ChevronDownIcon, GavelIcon } from "@tietokilta/ui";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
 
@@ -47,26 +47,28 @@ export function CommitteeCard({
   return (
     <section
       className={cn(
-        "not-prose shadow-solid relative my-8 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pb-6 pt-16 font-mono md:px-4 lg:px-6",
+        "not-prose shadow-solid relative my-6 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono md:my-8 md:px-4 lg:px-6",
         !isTightLayout && "md:-mx-8 lg:-mx-32 xl:-mx-48 2xl:-mx-64",
       )}
     >
-      <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
-        <div className="flex w-8 gap-1">
-          <div className="bg-secondary-600 size-3 rounded-full border border-gray-900" />
-          <div className="bg-primary-600 size-3 rounded-full border border-gray-900" />
-        </div>
-        <h2 className="self-center font-medium">{committee.name}</h2>
-        <div className="w-5" />
-      </div>
-      <ul className="grid w-full grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2 md:grid-cols-[repeat(auto-fill,minmax(120px,1fr))] md:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] lg:gap-6 xl:grid-cols-[repeat(auto-fill,minmax(160px,1fr))]">
-        {committee.committeeMembers.map(({ committeeMember }) => (
-          <CommitteeMemberCard
-            committeeMember={committeeMember as CommitteeMember}
-            key={(committeeMember as CommitteeMember).id}
-          />
-        ))}
-      </ul>
+      <details open className="group contents">
+        <summary className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+          <span className="flex w-5 gap-1 sm:w-8">
+            <span className="bg-secondary-600 size-2 rounded-full border border-gray-900 sm:size-3" />
+            <span className="bg-primary-600 size-2 rounded-full border border-gray-900 sm:size-3" />
+          </span>
+          <h2 className="self-center truncate font-medium">{committee.name}</h2>
+          <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
+        </summary>
+        <ul className="my-6 grid w-full grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2 md:grid-cols-[repeat(auto-fill,minmax(120px,1fr))] md:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] lg:gap-6 xl:grid-cols-[repeat(auto-fill,minmax(160px,1fr))]">
+          {committee.committeeMembers.map(({ committeeMember }) => (
+            <CommitteeMemberCard
+              committeeMember={committeeMember as CommitteeMember}
+              key={(committeeMember as CommitteeMember).id}
+            />
+          ))}
+        </ul>
+      </details>
     </section>
   );
 }
