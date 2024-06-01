@@ -121,7 +121,7 @@ function Mobile({
   );
 }
 
-const useActiveHeading = () => {
+const useActiveHeading = ({ topLevelOnly = false } = {}) => {
   const [activeId, setActiveId] = useState<string>();
 
   const headingElementsRef: MutableRefObject<
@@ -176,7 +176,10 @@ const useActiveHeading = () => {
     if (leadParagraph) {
       observer.observe(leadParagraph);
     }
-    const headingElements = Array.from(document.querySelectorAll("h2, h3"));
+    const headingSelector = topLevelOnly ? "h2" : "h2, h3";
+    const headingElements = Array.from(
+      document.querySelectorAll(headingSelector),
+    );
     headingElements.forEach((element) => {
       observer.observe(element);
     });
@@ -184,13 +187,19 @@ const useActiveHeading = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [topLevelOnly]);
 
   return activeId;
 };
 
-export function TableOfContents({ toc }: { toc?: TocItem[] }) {
-  const activeHeadingId = useActiveHeading();
+export function TableOfContents({
+  toc,
+  topLevelOnly,
+}: {
+  toc?: TocItem[];
+  topLevelOnly?: boolean;
+}) {
+  const activeHeadingId = useActiveHeading({ topLevelOnly });
 
   if (!toc || toc.length === 0) return null;
 
