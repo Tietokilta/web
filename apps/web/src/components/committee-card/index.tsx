@@ -52,7 +52,7 @@ export function CommitteeCard({
       )}
     >
       <details open className="group contents">
-        <summary className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+        <summary className="absolute left-0 top-0 flex w-full cursor-pointer justify-between border-b-2 border-gray-900 bg-gray-100 p-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
           <span className="flex w-5 gap-1 sm:w-8">
             <span className="bg-secondary-600 size-2 rounded-full border border-gray-900 sm:size-3" />
             <span className="bg-primary-600 size-2 rounded-full border border-gray-900 sm:size-3" />
