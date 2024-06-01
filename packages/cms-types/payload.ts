@@ -172,7 +172,7 @@ export interface Page {
         | 'Handshake'
       )
     | null;
-  hideTableOfContents?: boolean | null;
+  tableOfContents?: ('all' | 'top-level' | 'none') | null;
   content?: {
     root: {
       type: string;
