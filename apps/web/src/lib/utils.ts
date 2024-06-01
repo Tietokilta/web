@@ -38,7 +38,16 @@ export const lexicalNodeToTextContent = (node: Node): string => {
 };
 
 export const stringToId = (string: string): string =>
-  string.toLocaleLowerCase().replace(/\s/g, "-");
+  string
+    // split accents and other diacritics
+    .normalize("NFD")
+    // remove split accents
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase()
+    .trim()
+    // remove all characters except a-z, 0-9, space and hyphen
+    .replace(/[^a-z0-9 -]/g, "")
+    .replace(/\s/g, "-");
 
 export interface TocItem {
   text: string;
