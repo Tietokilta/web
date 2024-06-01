@@ -143,10 +143,24 @@ const filterCyclicPages: FilterOptions<PageType> = ({ data }) => ({
 
 const standardPageFields = [
   {
-    name: "hideTableOfContents",
-    type: "checkbox",
+    name: "tableOfContents",
+    type: "select",
     required: true,
-    defaultValue: false,
+    defaultValue: "all",
+    options: [
+      {
+        label: "Show all headings",
+        value: "all",
+      },
+      {
+        label: "Show only top-level headings",
+        value: "top-level",
+      },
+      {
+        label: "Hide table of contents",
+        value: "none",
+      },
+    ],
     admin: {
       position: "sidebar",
     },

@@ -144,8 +144,13 @@ async function Page({ params: { path } }: Props) {
         </header>
 
         <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
-          {!page.hideTableOfContents ? (
-            <TableOfContents toc={generateTocFromRichText(content)} />
+          {page.tableOfContents !== "none" ? (
+            <TableOfContents
+              toc={generateTocFromRichText(
+                content,
+                page.tableOfContents === "top-level",
+              )}
+            />
           ) : null}
           <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
             {page.description}

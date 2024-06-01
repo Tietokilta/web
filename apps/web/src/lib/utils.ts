@@ -45,7 +45,10 @@ export interface TocItem {
   level: 2 | 3;
 }
 
-export const generateTocFromRichText = (content?: EditorState): TocItem[] => {
+export const generateTocFromRichText = (
+  content?: EditorState,
+  onlyTopLevel = false,
+): TocItem[] => {
   if (!content) return [];
   const toc: TocItem[] = [];
 
@@ -54,6 +57,9 @@ export const generateTocFromRichText = (content?: EditorState): TocItem[] => {
     if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
       const tag = node.tag;
       const level = parseInt(tag[1], 10) as 2 | 3;
+
+      if (onlyTopLevel && level === 3) continue;
+
       const text = lexicalNodeToTextContent(node);
 
       toc.push({

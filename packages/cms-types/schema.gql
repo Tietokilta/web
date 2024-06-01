@@ -459,7 +459,7 @@ type Page {
   description: String
   type: Page_type
   icon: Page_icon
-  hideTableOfContents: Boolean
+  tableOfContents: Page_tableOfContents
   content(depth: Int): JSON
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
@@ -520,6 +520,12 @@ enum Page_icon {
   NavEvents
   NavApplicants
   Handshake
+}
+
+enum Page_tableOfContents {
+  all
+  top_level
+  none
 }
 
 """
@@ -614,7 +620,7 @@ input Page_where {
   description: Page_description_operator
   type: Page_type_operator
   icon: Page_icon_operator
-  hideTableOfContents: Page_hideTableOfContents_operator
+  tableOfContents: Page_tableOfContents_operator
   content: Page_content_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
@@ -714,9 +720,18 @@ enum Page_icon_Input {
   Handshake
 }
 
-input Page_hideTableOfContents_operator {
-  equals: Boolean
-  not_equals: Boolean
+input Page_tableOfContents_operator {
+  equals: Page_tableOfContents_Input
+  not_equals: Page_tableOfContents_Input
+  in: [Page_tableOfContents_Input]
+  not_in: [Page_tableOfContents_Input]
+  all: [Page_tableOfContents_Input]
+}
+
+enum Page_tableOfContents_Input {
+  all
+  top_level
+  none
 }
 
 input Page_content_operator {
@@ -821,7 +836,7 @@ input Page_where_and {
   description: Page_description_operator
   type: Page_type_operator
   icon: Page_icon_operator
-  hideTableOfContents: Page_hideTableOfContents_operator
+  tableOfContents: Page_tableOfContents_operator
   content: Page_content_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
@@ -841,7 +856,7 @@ input Page_where_or {
   description: Page_description_operator
   type: Page_type_operator
   icon: Page_icon_operator
-  hideTableOfContents: Page_hideTableOfContents_operator
+  tableOfContents: Page_tableOfContents_operator
   content: Page_content_operator
   redirectToPage: Page_redirectToPage_operator
   path: Page_path_operator
@@ -874,7 +889,7 @@ type PagesDocAccessFields {
   description: PagesDocAccessFields_description
   type: PagesDocAccessFields_type
   icon: PagesDocAccessFields_icon
-  hideTableOfContents: PagesDocAccessFields_hideTableOfContents
+  tableOfContents: PagesDocAccessFields_tableOfContents
   content: PagesDocAccessFields_content
   redirectToPage: PagesDocAccessFields_redirectToPage
   path: PagesDocAccessFields_path
@@ -978,26 +993,26 @@ type PagesDocAccessFields_icon_Delete {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_hideTableOfContents {
-  create: PagesDocAccessFields_hideTableOfContents_Create
-  read: PagesDocAccessFields_hideTableOfContents_Read
-  update: PagesDocAccessFields_hideTableOfContents_Update
-  delete: PagesDocAccessFields_hideTableOfContents_Delete
+type PagesDocAccessFields_tableOfContents {
+  create: PagesDocAccessFields_tableOfContents_Create
+  read: PagesDocAccessFields_tableOfContents_Read
+  update: PagesDocAccessFields_tableOfContents_Update
+  delete: PagesDocAccessFields_tableOfContents_Delete
 }
 
-type PagesDocAccessFields_hideTableOfContents_Create {
+type PagesDocAccessFields_tableOfContents_Create {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_hideTableOfContents_Read {
+type PagesDocAccessFields_tableOfContents_Read {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_hideTableOfContents_Update {
+type PagesDocAccessFields_tableOfContents_Update {
   permission: Boolean!
 }
 
-type PagesDocAccessFields_hideTableOfContents_Delete {
+type PagesDocAccessFields_tableOfContents_Delete {
   permission: Boolean!
 }
 
@@ -1248,7 +1263,7 @@ type PageVersion_Version {
   description: String
   type: PageVersion_Version_type
   icon: PageVersion_Version_icon
-  hideTableOfContents: Boolean
+  tableOfContents: PageVersion_Version_tableOfContents
   content(depth: Int): JSON
   redirectToPage(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
   path: String
@@ -1311,6 +1326,12 @@ enum PageVersion_Version_icon {
   Handshake
 }
 
+enum PageVersion_Version_tableOfContents {
+  all
+  top_level
+  none
+}
+
 type PageVersion_Version_Topic_Relationship {
   relationTo: PageVersion_Version_Topic_RelationTo
   value: PageVersion_Version_Topic
@@ -1347,7 +1368,7 @@ input versionsPage_where {
   version__description: versionsPage_version__description_operator
   version__type: versionsPage_version__type_operator
   version__icon: versionsPage_version__icon_operator
-  version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
+  version__tableOfContents: versionsPage_version__tableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
@@ -1460,9 +1481,18 @@ enum versionsPage_version__icon_Input {
   Handshake
 }
 
-input versionsPage_version__hideTableOfContents_operator {
-  equals: Boolean
-  not_equals: Boolean
+input versionsPage_version__tableOfContents_operator {
+  equals: versionsPage_version__tableOfContents_Input
+  not_equals: versionsPage_version__tableOfContents_Input
+  in: [versionsPage_version__tableOfContents_Input]
+  not_in: [versionsPage_version__tableOfContents_Input]
+  all: [versionsPage_version__tableOfContents_Input]
+}
+
+enum versionsPage_version__tableOfContents_Input {
+  all
+  top_level
+  none
 }
 
 input versionsPage_version__content_operator {
@@ -1602,7 +1632,7 @@ input versionsPage_where_and {
   version__description: versionsPage_version__description_operator
   version__type: versionsPage_version__type_operator
   version__icon: versionsPage_version__icon_operator
-  version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
+  version__tableOfContents: versionsPage_version__tableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
@@ -1627,7 +1657,7 @@ input versionsPage_where_or {
   version__description: versionsPage_version__description_operator
   version__type: versionsPage_version__type_operator
   version__icon: versionsPage_version__icon_operator
-  version__hideTableOfContents: versionsPage_version__hideTableOfContents_operator
+  version__tableOfContents: versionsPage_version__tableOfContents_operator
   version__content: versionsPage_version__content_operator
   version__redirectToPage: versionsPage_version__redirectToPage_operator
   version__path: versionsPage_version__path_operator
@@ -8844,7 +8874,7 @@ type PagesFields {
   description: PagesFields_description
   type: PagesFields_type
   icon: PagesFields_icon
-  hideTableOfContents: PagesFields_hideTableOfContents
+  tableOfContents: PagesFields_tableOfContents
   content: PagesFields_content
   redirectToPage: PagesFields_redirectToPage
   path: PagesFields_path
@@ -8948,26 +8978,26 @@ type PagesFields_icon_Delete {
   permission: Boolean!
 }
 
-type PagesFields_hideTableOfContents {
-  create: PagesFields_hideTableOfContents_Create
-  read: PagesFields_hideTableOfContents_Read
-  update: PagesFields_hideTableOfContents_Update
-  delete: PagesFields_hideTableOfContents_Delete
+type PagesFields_tableOfContents {
+  create: PagesFields_tableOfContents_Create
+  read: PagesFields_tableOfContents_Read
+  update: PagesFields_tableOfContents_Update
+  delete: PagesFields_tableOfContents_Delete
 }
 
-type PagesFields_hideTableOfContents_Create {
+type PagesFields_tableOfContents_Create {
   permission: Boolean!
 }
 
-type PagesFields_hideTableOfContents_Read {
+type PagesFields_tableOfContents_Read {
   permission: Boolean!
 }
 
-type PagesFields_hideTableOfContents_Update {
+type PagesFields_tableOfContents_Update {
   permission: Boolean!
 }
 
-type PagesFields_hideTableOfContents_Delete {
+type PagesFields_tableOfContents_Delete {
   permission: Boolean!
 }
 
@@ -13239,7 +13269,7 @@ input mutationPageInput {
   description: String
   type: Page_type_MutationInput!
   icon: Page_icon_MutationInput
-  hideTableOfContents: Boolean
+  tableOfContents: Page_tableOfContents_MutationInput
   content: JSON
   redirectToPage: String
   path: String
@@ -13302,6 +13332,12 @@ enum Page_icon_MutationInput {
   Handshake
 }
 
+enum Page_tableOfContents_MutationInput {
+  all
+  top_level
+  none
+}
+
 input Page_TopicRelationshipInput {
   relationTo: Page_TopicRelationshipInputRelationTo
   value: JSON
@@ -13321,7 +13357,7 @@ input mutationPageUpdateInput {
   description: String
   type: PageUpdate_type_MutationInput
   icon: PageUpdate_icon_MutationInput
-  hideTableOfContents: Boolean
+  tableOfContents: PageUpdate_tableOfContents_MutationInput
   content: JSON
   redirectToPage: String
   path: String
@@ -13382,6 +13418,12 @@ enum PageUpdate_icon_MutationInput {
   NavEvents
   NavApplicants
   Handshake
+}
+
+enum PageUpdate_tableOfContents_MutationInput {
+  all
+  top_level
+  none
 }
 
 input PageUpdate_TopicRelationshipInput {
