@@ -150,6 +150,7 @@ async function Page({ params: { path } }: Props) {
                 content,
                 page.tableOfContents === "top-level",
               )}
+              topLevelOnly={page.tableOfContents === "top-level"}
             />
           ) : null}
           <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
