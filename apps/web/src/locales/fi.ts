@@ -76,6 +76,7 @@ const fi = {
   "weeklyNewsletter.this-week-signups":
     "Tällä viikolla avoinna olevat ilmoittautumiset",
   "weeklyNewsletter.title": "Viikkotiedotteet",
+  "weeklyNewsletter.path": "viikkotiedotteet",
   "calendar.Week": "Viikko",
   "calendar.Work Week": "Työviikko",
   "calendar.Day": "Päivä",

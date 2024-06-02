@@ -260,16 +260,7 @@ export default async function Page({ slug }: { slug?: string }) {
 
         <footer className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
           <p>
-            {t("read")}{" "}
-            <a
-              href={
-                locale === "fi"
-                  ? "/fi/viikkotiedotteet"
-                  : "/en/weekly-newsletters"
-              }
-            >
-              {t("old-link")}
-            </a>
+            {t("read")} <a href={`/${locale}/${t("path")}`}>{t("old-link")}</a>
           </p>
           <p>
             {t("read")}{" "}

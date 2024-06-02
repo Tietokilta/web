@@ -73,6 +73,7 @@ const en = {
   "weeklyNewsletter.this-week": "This week",
   "weeklyNewsletter.this-week-signups": "Sign ups open this week",
   "weeklyNewsletter.title": "Weekly newsletters",
+  "weeklyNewsletter.path": "weekly-newsletters",
   "calendar.Week": "Week",
   "calendar.Work Week": "Work Week",
   "calendar.Day": "Day",
