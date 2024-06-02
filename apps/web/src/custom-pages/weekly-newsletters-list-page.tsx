@@ -27,7 +27,7 @@ export default async function Page() {
             <Link
               className="not-prose shadow-solid my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
               data-relation
-              href={`/${locale}/weekly-newsletters/${newsletter.slug ?? "#no-path"}`}
+              href={`/${locale}/${t("path")}/${newsletter.slug ?? "#no-path"}`}
               key={newsletter.id}
             >
               <FileIcon className="size-6" />
