@@ -394,7 +394,7 @@ export const generateMetadata = async ({
     description: event.data.description,
     openGraph: {
       ...openGraphImage,
-    }
+    },
   };
 };
 
