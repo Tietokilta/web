@@ -310,7 +310,9 @@ function Block({ node }: { node: BlockNode }) {
       return <CommitteeList year={node.fields.year} />;
     }
     case "image-link-grid": {
-      return <ImageLinkGrid images={node.fields.images} />;
+      return (
+        <ImageLinkGrid images={node.fields.images} size={node.fields.size} />
+      );
     }
     case "google-form": {
       return <GoogleForm link={node.fields.link} />;
