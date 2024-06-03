@@ -40,7 +40,7 @@ export function ImageLinkGrid({
   images: ImageLinkGridBlockNode["fields"]["images"];
 }) {
   return (
-    <div className="not-prose shadow-solid relative my-8 flex flex-wrap items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6 ">
+    <div className="not-prose shadow-solid relative my-8 flex flex-wrap items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6">
       {images.map((image) => (
         <ImageLink key={image.image.id} image={image} size={size} />
       ))}
