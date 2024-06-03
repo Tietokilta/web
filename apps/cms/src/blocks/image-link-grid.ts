@@ -4,6 +4,11 @@ export const ImageLinkGrid = {
   slug: "image-link-grid",
   fields: [
     {
+      name: "size",
+      type: "select",
+      options: ["small", "medium", "large"],
+    },
+    {
       name: "images",
       type: "array",
       fields: [

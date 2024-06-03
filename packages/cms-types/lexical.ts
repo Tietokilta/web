@@ -165,6 +165,7 @@ export type CommitteesYearBlockNode = BaseBlockNode & {
 export type ImageLinkGridBlockNode = BaseBlockNode & {
   fields: BaseBlockFields & {
     blockType: "image-link-grid";
+    size: "small" | "medium" | "large";
     images: {
       image: Media;
       caption?: string | null | undefined;
