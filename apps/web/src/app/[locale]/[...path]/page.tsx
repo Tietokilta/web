@@ -11,6 +11,7 @@ import EventsPage from "../../../custom-pages/events-page";
 import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
 import { generateTocFromRichText } from "../../../lib/utils";
 import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
+import { openGraphImage } from "../../shared-metadata";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
@@ -81,6 +82,7 @@ export const generateMetadata = async ({
       type: "article",
       publishedTime: page.createdAt,
       modifiedTime: page.updatedAt,
+      ...openGraphImage,
     },
   };
 };

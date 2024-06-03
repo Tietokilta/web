@@ -25,6 +25,7 @@ import {
 import { BackButton } from "../../../../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 import { DateTime } from "../../../../components/datetime";
+import { openGraphImage } from "../../../shared-metadata";
 
 async function SignUpText({
   startDate,
@@ -391,6 +392,9 @@ export const generateMetadata = async ({
   return {
     title: event.data.title,
     description: event.data.description,
+    openGraph: {
+      ...openGraphImage,
+    }
   };
 };
 
