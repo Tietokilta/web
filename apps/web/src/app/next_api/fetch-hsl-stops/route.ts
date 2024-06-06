@@ -187,17 +187,12 @@ function makePrintTime(arrival: Arrival): string {
 }
 
 const getStop = async (
-  first: string,
-  second: string,
+  stops: readonly [string, string],
   n = N_ARRIVALS,
 ): Promise<RenderableStop | null> => {
-  let data: Stop | null = null;
-  let data2: Stop | null = null;
-  await getData(first).then((result: Stop | null) => (data = result));
-  await getData(second).then((result: Stop | null) => (data2 = result));
-
-  const result1: StopOutData | null = toOutData(data);
-  const result2: StopOutData | null = toOutData(data2);
+  const [result1, result2] = await Promise.all(
+    stops.map((stop) => getData(stop).then(toOutData)),
+  );
 
   if (!result1 || !result2) return null;
 
