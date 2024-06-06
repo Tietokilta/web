@@ -174,7 +174,7 @@ function makePrintTime(arrival: Arrival): string {
   const sec = date.getSeconds();
   const currentTSM = (hour * 60 + min) * 60 + sec;
   let arrivalTime = arrival.realTimeArrival - arrival.serviceDay;
-  if (Math.floor(arrivalTime / 3600) >= 24) {
+  if (arrivalTime / 3600 >= 24) {
     arrivalTime -= 24 * 3600;
   }
   if (arrivalTime - currentTSM > 600) {
