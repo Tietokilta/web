@@ -20,7 +20,7 @@ const STOPS = [
   ["HSL:2222603", "HSL:2222604"],
   ["HSL:2222406", "HSL:2222405"],
   ["HSL:2222234", "HSL:2222212"],
-];
+] as const;
 const N_ARRIVALS = 6;
 
 export const dynamic = "force-dynamic";
