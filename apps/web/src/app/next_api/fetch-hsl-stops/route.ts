@@ -26,19 +26,11 @@ const N_ARRIVALS = 6;
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const dataFromHsl: RenderableStop[] = [];
+  const stops = await Promise.all(STOPS.map(getStop));
 
-  const stopPromises = STOPS.map(async (stop) => {
-    return await getStop(stop[0], stop[1]);
-  });
-
-  // Wait for all promises to resolve
-  const stops = await Promise.all(stopPromises);
-
-  // Filter out null values and add to dataFromHsl
-  stops.forEach((stop) => {
-    if (stop) dataFromHsl.push(stop);
-  });
+  const dataFromHsl: RenderableStop[] = stops.filter(
+    <T>(stop: T | null): stop is T => stop !== null,
+  );
 
   const retData = {
     type: "Data",
