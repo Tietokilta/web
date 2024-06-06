@@ -3,11 +3,11 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
 /**
- * Revalidate a global and root layout.
+ * Revalidate a collection and pages.
  */
 export function POST(request: NextRequest): NextResponse {
-  const globalSlug = decodeURIComponent(
-    request.nextUrl.searchParams.get("globalSlug") ?? "",
+  const collectionSlug = decodeURIComponent(
+    request.nextUrl.searchParams.get("collectionSlug") ?? "",
   );
   const secret = decodeURIComponent(
     request.nextUrl.searchParams.get("secret") ?? "",
@@ -22,22 +22,18 @@ export function POST(request: NextRequest): NextResponse {
     );
   }
 
-  if (typeof globalSlug !== "string") {
+  if (typeof collectionSlug !== "string") {
     // eslint-disable-next-line no-console -- for debugging purposes
-    console.log(
-      "invalid collection or fetchData from revalidate request: ",
-      global,
-    );
+    console.log("invalid collection from revalidate request: ", collectionSlug);
     return NextResponse.json(
       { revalidated: false, now: Date.now() },
-      {
-        status: 400,
-      },
+      { status: 400 },
     );
   }
 
-  revalidateTag(`global-${globalSlug}`);
-  revalidatePath("/[locale]", "layout");
+  revalidateTag("collection-pages");
+  revalidateTag(`collection-${collectionSlug}`);
+  revalidatePath("/[locale]/[...path]", "page");
 
   return NextResponse.json({ revalidated: true, now: Date.now() });
 }

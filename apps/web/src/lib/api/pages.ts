@@ -1,11 +1,12 @@
 import type { Page } from "@tietokilta/cms-types/payload";
-import { getOne } from "./fetcher";
+import { getOneCollectionItem } from "./fetcher";
 
-export const fetchPage = getOne<
+export const fetchPage = getOneCollectionItem<
   {
     where:
       | { path: { equals: string } }
-      | { "path.fi": { equals: string } | { "path.en": { equals: string } } };
+      | { "path.fi": { equals: string } }
+      | { "path.en": { equals: string } };
   },
   Page
->("/api/pages");
+>("pages");

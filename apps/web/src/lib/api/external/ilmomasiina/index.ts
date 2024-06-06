@@ -8,6 +8,7 @@ export type IlmomasiinaResponse = IlmomasiinaEvent[];
 
 export interface IlmomasiinaEvent {
   id: string;
+  questions: EventQuestion[];
   title: string;
   slug: string;
   date?: string | null;
@@ -36,6 +37,12 @@ export interface IlmomasiinaEvent {
   registrationClosed?: boolean | null;
 }
 
+export interface EventQuestion {
+  id: string;
+  question: string;
+  public: boolean;
+}
+
 export interface EventQuota {
   id: string;
   title: string;
@@ -52,11 +59,16 @@ export interface QuotaSignup {
   firstName?: string | null;
   lastName?: string | null;
   namePublic: boolean;
-  answers: unknown[];
+  answers: QuestionAnswer[];
   status: "in-quota" | "in-open" | "in-queue";
   position: number;
   createdAt: string;
   confirmed: boolean;
+}
+
+export interface QuestionAnswer {
+  questionId: string;
+  answer: string | string[];
 }
 
 export interface QuotaSignupWithQuotaTitle extends QuotaSignup {
@@ -100,6 +112,30 @@ export const fetchEvents = async (): Promise<
   } catch (error) {
     return err("ilmomasiina-fetch-fail");
   }
+};
+
+export const fetchUpcomingEvents = async (): Promise<
+  ApiResponse<IlmomasiinaEvent[]>
+> => {
+  const events = await fetchEvents();
+  if (!events.ok) {
+    return events;
+  }
+
+  const currentDate = new Date();
+  return ok(
+    events.data.filter((event) => {
+      if (event.endDate) {
+        const eventEndDate = new Date(event.endDate);
+        return eventEndDate >= currentDate;
+      }
+      if (event.date) {
+        const eventStartDate = new Date(event.date);
+        return eventStartDate >= currentDate;
+      }
+      return false;
+    }),
+  );
 };
 
 export const fetchEvent = async (

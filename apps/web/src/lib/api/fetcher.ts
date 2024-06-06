@@ -1,13 +1,16 @@
-import stringify from "json-stable-stringify";
+import { type Config } from "@tietokilta/cms-types/payload";
 import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { cookies, draftMode } from "next/headers";
 import { stringify as qsStringify } from "qs";
 
+export type CollectionSlug = keyof Config["collections"];
+export type GlobalSlug = keyof Config["globals"];
+
 export function fetcher<TRequest, TResponse>({
-  tagFn,
+  tags,
   dataFetcher,
 }: {
-  tagFn: (req: TRequest) => string;
+  tags: string[];
   dataFetcher: (
     req: TRequest,
     draft: boolean,
@@ -22,12 +25,8 @@ export function fetcher<TRequest, TResponse>({
     if (isDraftMode) {
       payloadToken = cookies().get("payload-token");
     }
-    const tagToCache =
-      tagFn(req) +
-      (isDraftMode && payloadToken ? `_${Date.now().toFixed()}` : "");
-
     // eslint-disable-next-line no-console -- for debugging purposes
-    console.log("tagToCache", tagToCache);
+    console.log("tagToCache", tags);
 
     const res = await dataFetcher(
       req,
@@ -37,7 +36,8 @@ export function fetcher<TRequest, TResponse>({
         // we do this by calling `revalidateTag()` using the same key
         // see `app/api/revalidate.ts` for more info
         next: {
-          tags: [tagToCache],
+          revalidate: false,
+          tags,
         },
         ...(isDraftMode && payloadToken
           ? {
@@ -53,29 +53,30 @@ export function fetcher<TRequest, TResponse>({
   };
 }
 
-export function getAll<
+export function getAllCollectionItems<
   TRequest extends Record<string, unknown>,
   TResponse extends unknown[],
->(path: string) {
+>(collectionSlug: CollectionSlug, globalOpts: { sort?: string } = {}) {
   return fetcher<TRequest & { locale: string }, TResponse>({
-    tagFn: (req) => `get_${path}_${stringify(req)}`,
+    tags: ["collection-pages", `collection-${collectionSlug}`],
     dataFetcher: async (
       req,
       draft,
       fetchOptions,
     ): Promise<TResponse | undefined> => {
-      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}${path}?${qsStringify(
+      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/${collectionSlug}?${qsStringify(
         {
           ...req,
           ...(draft ? { draft: "true" } : {}),
-          depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+          depth: req.depth ?? 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
-          limit: 100,
+          limit: req.limit ?? 100,
+          sort: globalOpts.sort,
         },
       ).toString()}`;
 
       // eslint-disable-next-line no-console -- for debugging purposes
-      console.log("getAll", path, "req", req, "fetchUrl", fetchUrl);
+      console.log("getAll", collectionSlug, "req", req, "fetchUrl", fetchUrl);
 
       const response = await fetch(fetchUrl, {
         method: "GET",
@@ -89,24 +90,31 @@ export function getAll<
   });
 }
 
-export function getOne<TRequest extends Record<string, unknown>, TResponse>(
-  path: string,
-) {
+export function getOneCollectionItem<
+  TRequest extends Record<string, unknown>,
+  TResponse,
+>(collectionSlug: CollectionSlug, globalOpts: { sort?: string } = {}) {
   return (req: TRequest & { locale: string }) =>
-    getAll<TRequest, TResponse[]>(path)(req).then((res) => res?.[0]);
+    getAllCollectionItems<TRequest, TResponse[]>(
+      collectionSlug,
+      globalOpts,
+    )(req).then((res) => res?.[0]);
 }
 
-export function getGlobal<TResponse>(path: string, locale: string) {
+export function getGlobal<TResponse>(
+  globalSlug: GlobalSlug,
+  globalOpts: { locale: string; sort?: string },
+) {
   return fetcher<Record<string, never>, TResponse>({
-    tagFn: () => `getGlobal_${path}?locale=${locale}`,
+    tags: [`global-${globalSlug}`],
     dataFetcher: async (
       _,
       draft,
       fetchOptions,
     ): Promise<TResponse | undefined> => {
-      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}${path}?${qsStringify(
+      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/globals/${globalSlug}?${qsStringify(
         {
-          locale,
+          locale: globalOpts.locale,
           depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
           ...(draft ? { draft: "true" } : {}),
