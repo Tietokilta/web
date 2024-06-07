@@ -99,7 +99,7 @@ function removeSubstring(fullString: string): string {
     if (str) {
       str = str.replace(subString, "");
     } else {
-      ("Null");
+      return "Null";
     }
   }
   return str;
