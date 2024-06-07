@@ -16,17 +16,12 @@ import type {
   StopType,
 } from "../../../lib/types/hsl-helper-types.ts";
 
-/*
-  HSL stops for infoscreen
-    [
-      [Metro east and west],
-      [Raide jokeri east and west],
-      [Aalto Yliopisto bus stop "east" and "west"],
-    ]
-*/
 const STOPS = [
+  // Metro east and west
   ["HSL:2222603", "HSL:2222604"],
+  // Raide jokeri east and west
   ["HSL:2222406", "HSL:2222405"],
+  // Aalto Yliopisto bus stop "east" and "west"
   ["HSL:2222234", "HSL:2222212"],
 ] as const;
 const N_ARRIVALS = 6;
