@@ -1,4 +1,5 @@
 {
+  "name": "tietokilta.fi",
   "private": true,
   "scripts": {
     "build": "dotenv -- turbo run build --cache-dir=.turbo",
@@ -27,7 +28,7 @@
     "prettier": "^3.3.2",
     "prettier-plugin-packagejson": "^2.5.0",
     "prettier-plugin-tailwindcss": "^0.6.2",
-    "turbo": "^1.13.4"
+    "turbo": "^2.0.3"
   },
   "packageManager": "pnpm@9.3.0",
   "engines": {

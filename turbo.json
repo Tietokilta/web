@@ -1,7 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
-  "globalDotEnv": [".env"],
+  "globalDependencies": ["**/.env.*local", ".env"],
   "globalEnv": [
     "PAYLOAD_MONGO_CONNECTION_STRING",
     "PAYLOAD_SECRET",
@@ -16,12 +15,12 @@
     "PUBLIC_FRONTEND_URL",
     "PUBLIC_SERVER_URL",
     "PUBLIC_ILMOMASIINA_URL",
+    "PUBLIC_LEGACY_URL",
     "GIT_COMMIT_SHA",
     "NODE_ENV"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
-      // "outputs" are defined in Workspace Configurations: https://turbo.build/repo/docs/core-concepts/monorepos/configuring-workspaces
       "dependsOn": ["^build"]
     },
     "codegen": {
