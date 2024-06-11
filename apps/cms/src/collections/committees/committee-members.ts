@@ -1,13 +1,28 @@
-import type { CollectionConfig } from "payload/types";
+import type { CollectionConfig, FieldHook } from "payload/types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
+import { CommitteeMember } from "@tietokilta/cms-types/payload";
+
+const formatDisplayTitle: FieldHook<CommitteeMember> = ({
+  data: committeeMember,
+}) => {
+  if (!committeeMember?.name) {
+    return "Untitled member";
+  }
+
+  if (!committeeMember.title) {
+    return committeeMember.name;
+  }
+
+  return `${committeeMember.name}, ${committeeMember.title}`;
+};
 
 export const CommitteeMembers = {
   slug: "committee-members",
   defaultSort: "-guildYear",
   admin: {
-    useAsTitle: "name",
+    useAsTitle: "displayTitle",
   },
   access: {
     read: () => true,
@@ -16,6 +31,22 @@ export const CommitteeMembers = {
     delete: signedIn,
   },
   fields: [
+    {
+      name: "displayTitle",
+      type: "text",
+      admin: {
+        hidden: true,
+      },
+      hooks: {
+        beforeChange: [
+          ({ siblingData }) => {
+            // ensures data is not stored in DB
+            delete siblingData.displayTitle;
+          },
+        ],
+        afterRead: [formatDisplayTitle],
+      },
+    },
     guildYearField({
       name: "guildYear",
       required: true,
