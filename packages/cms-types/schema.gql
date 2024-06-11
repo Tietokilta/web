@@ -4259,6 +4259,7 @@ type BoardsDeleteDocAccess {
 
 type CommitteeMember {
   id: String
+  displayTitle: String
   guildYear: CommitteeMember_guildYear!
   photo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
   name: String!
@@ -4326,6 +4327,7 @@ type CommitteeMembers {
 }
 
 input CommitteeMember_where {
+  displayTitle: CommitteeMember_displayTitle_operator
   guildYear: CommitteeMember_guildYear_operator
   photo: CommitteeMember_photo_operator
   name: CommitteeMember_name_operator
@@ -4337,6 +4339,17 @@ input CommitteeMember_where {
   id: CommitteeMember_id_operator
   AND: [CommitteeMember_where_and]
   OR: [CommitteeMember_where_or]
+}
+
+input CommitteeMember_displayTitle_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
 }
 
 input CommitteeMember_guildYear_operator {
@@ -4469,6 +4482,7 @@ input CommitteeMember_id_operator {
 }
 
 input CommitteeMember_where_and {
+  displayTitle: CommitteeMember_displayTitle_operator
   guildYear: CommitteeMember_guildYear_operator
   photo: CommitteeMember_photo_operator
   name: CommitteeMember_name_operator
@@ -4483,6 +4497,7 @@ input CommitteeMember_where_and {
 }
 
 input CommitteeMember_where_or {
+  displayTitle: CommitteeMember_displayTitle_operator
   guildYear: CommitteeMember_guildYear_operator
   photo: CommitteeMember_photo_operator
   name: CommitteeMember_name_operator
@@ -4509,6 +4524,7 @@ type committee_membersDocAccess {
 }
 
 type CommitteeMembersDocAccessFields {
+  displayTitle: CommitteeMembersDocAccessFields_displayTitle
   guildYear: CommitteeMembersDocAccessFields_guildYear
   photo: CommitteeMembersDocAccessFields_photo
   name: CommitteeMembersDocAccessFields_name
@@ -4517,6 +4533,29 @@ type CommitteeMembersDocAccessFields {
   telegramUsername: CommitteeMembersDocAccessFields_telegramUsername
   updatedAt: CommitteeMembersDocAccessFields_updatedAt
   createdAt: CommitteeMembersDocAccessFields_createdAt
+}
+
+type CommitteeMembersDocAccessFields_displayTitle {
+  create: CommitteeMembersDocAccessFields_displayTitle_Create
+  read: CommitteeMembersDocAccessFields_displayTitle_Read
+  update: CommitteeMembersDocAccessFields_displayTitle_Update
+  delete: CommitteeMembersDocAccessFields_displayTitle_Delete
+}
+
+type CommitteeMembersDocAccessFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_displayTitle_Delete {
+  permission: Boolean!
 }
 
 type CommitteeMembersDocAccessFields_guildYear {
@@ -10505,6 +10544,7 @@ type committee_membersAccess {
 }
 
 type CommitteeMembersFields {
+  displayTitle: CommitteeMembersFields_displayTitle
   guildYear: CommitteeMembersFields_guildYear
   photo: CommitteeMembersFields_photo
   name: CommitteeMembersFields_name
@@ -10513,6 +10553,29 @@ type CommitteeMembersFields {
   telegramUsername: CommitteeMembersFields_telegramUsername
   updatedAt: CommitteeMembersFields_updatedAt
   createdAt: CommitteeMembersFields_createdAt
+}
+
+type CommitteeMembersFields_displayTitle {
+  create: CommitteeMembersFields_displayTitle_Create
+  read: CommitteeMembersFields_displayTitle_Read
+  update: CommitteeMembersFields_displayTitle_Update
+  delete: CommitteeMembersFields_displayTitle_Delete
+}
+
+type CommitteeMembersFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_displayTitle_Delete {
+  permission: Boolean!
 }
 
 type CommitteeMembersFields_guildYear {
@@ -13833,6 +13896,7 @@ input mutationBoardUpdate_BoardMembersInput {
 }
 
 input mutationCommitteeMemberInput {
+  displayTitle: String
   guildYear: CommitteeMember_guildYear_MutationInput!
   photo: String
   name: String!
@@ -13886,6 +13950,7 @@ enum CommitteeMember_guildYear_MutationInput {
 }
 
 input mutationCommitteeMemberUpdateInput {
+  displayTitle: String
   guildYear: CommitteeMemberUpdate_guildYear_MutationInput
   photo: String
   name: String
