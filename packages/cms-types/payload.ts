@@ -409,6 +409,7 @@ export interface Board {
  */
 export interface CommitteeMember {
   id: string;
+  displayTitle?: string | null;
   guildYear:
     | '2024'
     | '2023'

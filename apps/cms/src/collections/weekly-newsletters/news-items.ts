@@ -45,12 +45,6 @@ export const NewsItems: CollectionConfig = {
         hidden: true,
       },
       hooks: {
-        beforeChange: [
-          ({ siblingData }) => {
-            // ensures data is not stored in DB
-            delete siblingData.displayTitle;
-          },
-        ],
         afterRead: [formatDisplayTitle],
       },
     },
