@@ -23,11 +23,7 @@ export const CommitteeMembers = {
   defaultSort: "-guildYear",
   admin: {
     useAsTitle: "displayTitle",
-    defaultColumns: [
-      "displayTitle",
-      "guildYear",
-      "photo",
-    ]
+    defaultColumns: ["displayTitle", "guildYear", "photo"],
   },
   access: {
     read: () => true,
