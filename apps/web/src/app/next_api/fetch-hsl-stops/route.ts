@@ -17,28 +17,23 @@ import type {
 } from "../../../lib/types/hsl-helper-types.ts";
 
 const STOPS = [
+  // Metro east and west
   ["HSL:2222603", "HSL:2222604"],
+  // Raide jokeri east and west
   ["HSL:2222406", "HSL:2222405"],
+  // Aalto Yliopisto bus stop "east" and "west"
   ["HSL:2222234", "HSL:2222212"],
-];
+] as const;
 const N_ARRIVALS = 6;
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const dataFromHsl: RenderableStop[] = [];
+  const stops = await Promise.all(STOPS.map(getStop));
 
-  const stopPromises = STOPS.map(async (stop) => {
-    return await getStop(stop[0], stop[1]);
-  });
-
-  // Wait for all promises to resolve
-  const stops = await Promise.all(stopPromises);
-
-  // Filter out null values and add to dataFromHsl
-  stops.forEach((stop) => {
-    if (stop) dataFromHsl.push(stop);
-  });
+  const dataFromHsl: RenderableStop[] = stops.filter(
+    <T>(stop: T | null): stop is T => stop !== null,
+  );
 
   const retData = {
     type: "Data",
@@ -99,7 +94,7 @@ function removeSubstring(fullString: string): string {
     if (str) {
       str = str.replace(subString, "");
     } else {
-      ("Null");
+      return "Null";
     }
   }
   return str;
@@ -174,7 +169,7 @@ function makePrintTime(arrival: Arrival): string {
   const sec = date.getSeconds();
   const currentTSM = (hour * 60 + min) * 60 + sec;
   let arrivalTime = arrival.realTimeArrival - arrival.serviceDay;
-  if (Math.floor(arrivalTime / 3600) >= 24) {
+  if (arrivalTime / 3600 >= 24) {
     arrivalTime -= 24 * 3600;
   }
   if (arrivalTime - currentTSM > 600) {
@@ -195,17 +190,12 @@ function makePrintTime(arrival: Arrival): string {
 }
 
 const getStop = async (
-  first: string,
-  second: string,
+  stops: readonly [string, string],
   n = N_ARRIVALS,
 ): Promise<RenderableStop | null> => {
-  let data: Stop | null = null;
-  let data2: Stop | null = null;
-  await getData(first).then((result: Stop | null) => (data = result));
-  await getData(second).then((result: Stop | null) => (data2 = result));
-
-  const result1: StopOutData | null = toOutData(data);
-  const result2: StopOutData | null = toOutData(data2);
+  const [result1, result2] = await Promise.all(
+    stops.map((stop) => getData(stop).then(toOutData)),
+  );
 
   if (!result1 || !result2) return null;
 

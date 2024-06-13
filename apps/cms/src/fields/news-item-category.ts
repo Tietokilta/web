@@ -5,7 +5,6 @@ export const newsItemCategoryField = (
 ): Field => ({
   name: "newsItemCategory",
   hasMany: false,
-  localized: true,
   ...base,
   type: "select",
   options: [
@@ -38,4 +37,5 @@ export const newsItemCategoryField = (
       value: "bottom-corner",
     },
   ],
+  defaultValue: "guild",
 });

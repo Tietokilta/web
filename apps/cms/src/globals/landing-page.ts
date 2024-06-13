@@ -6,11 +6,6 @@ const filterEventsListPages: FilterOptions<LandingPageType> = () =>
     and: [
       {
         type: {
-          equals: "special",
-        },
-      },
-      {
-        specialPageType: {
           equals: "events-list",
         },
       },
@@ -24,10 +19,17 @@ export const LandingPage: GlobalConfig = {
   },
   fields: [
     {
-      name: "heroText",
-      type: "text",
+      name: "heroTexts",
+      type: "array",
       localized: true,
       required: true,
+      fields: [
+        {
+          name: "text",
+          type: "text",
+          maxLength: 120,
+        },
+      ],
     },
     {
       name: "heroImages",

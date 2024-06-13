@@ -47,6 +47,9 @@ import { CommitteesInYear } from "./blocks/committees-in-year";
 import { WeeklyNewsletters } from "./collections/weekly-newsletters/weekly-newsletters";
 import { NewsItems } from "./collections/weekly-newsletters/news-items";
 import { ActionsLink, ActionsView } from "./views/actions-view";
+import { ImageLinkGrid } from "./blocks/image-link-grid";
+import { GoogleForm } from "./blocks/google-form";
+import { EditorInChief } from "./blocks/editor-in-chief";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
@@ -159,15 +162,20 @@ export default buildConfig({
         enabledCollections: [Pages.slug],
       }),
       RelationshipFeature({
-        enabledCollections: [Pages.slug, Boards.slug, Committees.slug],
+        enabledCollections: [
+          Pages.slug,
+          Boards.slug,
+          Committees.slug,
+          Magazines.slug,
+        ],
       }),
       BlockQuoteFeature(),
       BlocksFeature({
-        blocks: [CommitteesInYear],
+        blocks: [CommitteesInYear, ImageLinkGrid, GoogleForm, EditorInChief],
       }),
       UploadFeature({
         collections: {
-          media: {
+          [Media.slug]: {
             fields: [
               {
                 name: "caption",
@@ -178,6 +186,9 @@ export default buildConfig({
                 maxLength: 100,
               },
             ],
+          },
+          [Documents.slug]: {
+            fields: [],
           },
         },
       }),

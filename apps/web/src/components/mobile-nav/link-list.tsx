@@ -1,12 +1,13 @@
 import type {
   LinkRowBlock,
   MainNavigationItem,
+  Media,
   Page,
+  SponsorLogoRowBlock,
   Topic,
 } from "@tietokilta/cms-types/payload";
 import {
   RenderIcon,
-  ScrollArea,
   Separator,
   Button,
   ChevronDownIcon,
@@ -16,6 +17,7 @@ import {
   CollapsibleTrigger,
   ExternalLinkIcon,
 } from "@tietokilta/ui";
+import Image from "next/image";
 import { cn } from "../../lib/utils";
 import { getScopedI18n } from "../../locales/server";
 import { Link } from "./link";
@@ -44,11 +46,11 @@ async function NavigationLink({
     <Collapsible>
       <CollapsibleTrigger className="group flex items-center gap-2">
         <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
-        <ChevronDownIcon className="block h-6 w-6 group-data-[state=open]:hidden" />
+        <ChevronDownIcon className="block size-6 group-data-[state=open]:hidden" />
         <span className="sr-only block group-data-[state=open]:hidden">
           {t("Open")}
         </span>
-        <ChevronUpIcon className="hidden h-6 w-6 group-data-[state=open]:block" />
+        <ChevronUpIcon className="hidden size-6 group-data-[state=open]:block" />
         <span className="sr-only hidden group-data-[state=open]:block">
           {t("Close")}
         </span>
@@ -56,12 +58,12 @@ async function NavigationLink({
       <CollapsibleContent className="space-y-3 p-3 text-base">
         {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
           <ul key={linkCategorySublist.title}>
-            <li className="text-lg">{linkCategorySublist.title}</li>
+            <li className="pb-2 pt-4 text-xl">{linkCategorySublist.title}</li>
             {linkCategorySublist.pages?.map(({ page }) => (
               <li key={(page as Page).id}>
                 <Button
                   asChild
-                  className="w-full border-b-0 pl-0"
+                  className="mb-2 mr-2 w-full border-b-0 px-0 pb-0"
                   variant="link"
                 >
                   <Link href={(page as Page).path ?? "#broken"}>
@@ -78,9 +80,9 @@ async function NavigationLink({
                   variant="outlineLink"
                 >
                   <Link href={externalLink.href} target="_blank">
-                    <RenderIcon className="h-6 w-6" name={externalLink.icon} />
+                    <RenderIcon className="size-6" name={externalLink.icon} />
                     <span>{externalLink.title}</span>
-                    <ExternalLinkIcon className="h-4 w-4" />
+                    <ExternalLinkIcon className="size-4" />
                   </Link>
                 </Button>
               </li>
@@ -95,12 +97,14 @@ async function NavigationLink({
 export function LinkList({
   links,
   footerLinks,
+  footerSponsors,
 }: {
   links: MainNavigationItem;
   footerLinks: LinkRowBlock[];
+  footerSponsors: SponsorLogoRowBlock[];
 }) {
   return (
-    <ScrollArea className="h-[100lvh] font-mono text-xl font-semibold text-gray-900">
+    <div className="overflow-y-auto font-mono text-xl font-semibold text-gray-900">
       <ul className="mt-6 flex flex-col gap-6 p-4">
         {links.map((pageOrTopic) => (
           <li key={pageOrTopic.id}>
@@ -109,14 +113,14 @@ export function LinkList({
         ))}
       </ul>
       <Separator className="my-2" />
-      <ul className="space-y-6 p-4">
+      <ul className="space-y-6 p-6">
         {footerLinks.map((linkRow) => (
           <li key={linkRow.id}>
             <ul
               className={cn(
                 "max-w-full overflow-x-clip",
                 !linkRow.showLabel &&
-                  "flex items-center justify-center gap-6 py-2",
+                  "flex items-center justify-start gap-6 py-2",
                 linkRow.showLabel && "space-y-6",
               )}
             >
@@ -136,7 +140,11 @@ export function LinkList({
                         : (link.page as Page).path ?? "#broken"
                     }
                   >
-                    <RenderIcon className="h-6 w-6" name={link.icon} />
+                    <RenderIcon
+                      aria-hidden="true"
+                      className="size-6"
+                      name={link.icon}
+                    />
                     <span className={cn(!linkRow.showLabel && "sr-only")}>
                       {link.label}
                     </span>
@@ -147,6 +155,30 @@ export function LinkList({
           </li>
         ))}
       </ul>
-    </ScrollArea>
+      <Separator className="my-2" />
+      <footer className="mb-8 pt-4">
+        {footerSponsors.map((sponsorRow) => (
+          <ul className="space-y-4" key={sponsorRow.id}>
+            <h2 className="text-center">{sponsorRow.title}</h2>
+            <div className="flex flex-wrap items-center justify-center gap-4">
+              {sponsorRow.logos?.map((logo) => (
+                <li className="relative w-60" key={logo.id}>
+                  <Link href={logo.link}>
+                    {/* TODO: actually check image color and invert / modify according to contrast or something */}
+                    <Image
+                      alt={(logo.image as Media).alt}
+                      className="h-auto w-full object-contain"
+                      height={(logo.image as Media).height ?? 0}
+                      src={(logo.image as Media).url ?? ""}
+                      width={(logo.image as Media).width ?? 0}
+                    />
+                  </Link>
+                </li>
+              ))}
+            </div>
+          </ul>
+        ))}
+      </footer>
+    </div>
   );
 }

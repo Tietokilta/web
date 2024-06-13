@@ -8,10 +8,20 @@ import type {
 import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
-import { cn, lexicalNodeToTextContent, stringToId } from "../../lib/utils";
+import { type Media } from "@tietokilta/cms-types/payload";
+import {
+  cn,
+  insertSoftHyphens,
+  lexicalNodeToTextContent,
+  stringToId,
+} from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
+import { MagazineList } from "../magazine-list";
+import { ImageLinkGrid } from "../image-link-grid";
+import { GoogleForm } from "../google-form";
+import { EditorInChief } from "../editor-in-chief";
 import {
   IS_BOLD,
   IS_CODE,
@@ -27,7 +37,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
     <>
       {nodes.map((node, index): JSX.Element | null => {
         if (node.type === "text") {
-          let text = <span key={index}>{node.text}</span>;
+          let text = <span key={index}>{insertSoftHyphens(node.text)}</span>;
           if (node.format & IS_BOLD) {
             text = <strong key={index}>{text}</strong>;
           }
@@ -116,9 +126,14 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             const Tag = node.tag as Heading;
 
             return (
-              <Tag id={stringToId(lexicalNodeToTextContent(node))} key={index}>
-                {serializedChildren}
-              </Tag>
+              <Link href={`#${stringToId(lexicalNodeToTextContent(node))}`}>
+                <Tag
+                  id={stringToId(lexicalNodeToTextContent(node))}
+                  key={index}
+                >
+                  {serializedChildren}
+                </Tag>
+              </Link>
             );
           }
           case "list": {
@@ -180,25 +195,60 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             );
           }
           case "upload": {
-            const img = (
-              <Image
-                alt={node.value.alt}
-                height={node.value.height ?? 0}
-                key={index}
-                src={node.value.url ?? "#broken-url"}
-                width={node.value.width ?? 0}
-              />
-            );
+            const uploadIsMedia = node.relationTo === "media";
 
-            if (!node.fields?.caption) return img;
+            if (uploadIsMedia) {
+              const img = (
+                <Image
+                  alt={node.value.alt}
+                  height={node.value.height ?? 0}
+                  key={index}
+                  src={node.value.url ?? "#broken-url"}
+                  width={node.value.width ?? 0}
+                />
+              );
+
+              if (!node.fields?.caption) return img;
+
+              return (
+                <figure key={index}>
+                  {img}
+                  <figcaption>
+                    <span>{node.fields.caption}</span>
+                  </figcaption>
+                </figure>
+              );
+            }
+
+            const thumbnail = node.value.thumbnail as Media | undefined;
 
             return (
-              <figure key={index}>
-                {img}
-                <figcaption>
-                  <span>{node.fields.caption}</span>
-                </figcaption>
-              </figure>
+              <Link
+                href={node.value.url ?? "#broken-url"}
+                key={index}
+                target="_blank"
+                className="not-prose shadow-solid my-4 flex w-fit max-w-full items-center gap-4 text-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
+              >
+                <div className="flex max-w-full flex-col items-center gap-2">
+                  {thumbnail ? (
+                    <div className="relative h-40 w-32">
+                      <Image
+                        alt={thumbnail.alt}
+                        src={thumbnail.url ?? "#broken-url"}
+                        fill
+                        className="object-contain object-center"
+                      />
+                    </div>
+                  ) : (
+                    <FileIcon className="size-6" />
+                  )}
+                  {node.value.title ? (
+                    <p className="w-full font-mono font-semibold">
+                      {node.value.title}
+                    </p>
+                  ) : null}
+                </div>
+              </Link>
             );
           }
           case "relationship": {
@@ -226,7 +276,7 @@ function Relationship({ node }: { node: RelationshipNode }) {
           data-relation
           href={node.value.path ?? "#no-path"}
         >
-          <FileIcon className="h-6 w-6" />
+          <FileIcon className="size-6" />
           <p className="flex flex-col">
             <span className="font-mono font-semibold">{node.value.title}</span>
             <span className="line-clamp-2 max-w-80 text-sm text-gray-700">
@@ -240,7 +290,10 @@ function Relationship({ node }: { node: RelationshipNode }) {
       return <BoardGrid board={node.value} />;
     }
     case "committees": {
-      return <CommitteeCard committee={node.value} />;
+      return <CommitteeCard isTightLayout committee={node.value} />;
+    }
+    case "magazines": {
+      return <MagazineList magazine={node.value} />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
@@ -256,7 +309,19 @@ function Block({ node }: { node: BlockNode }) {
     case "committees-in-year": {
       return <CommitteeList year={node.fields.year} />;
     }
+    case "image-link-grid": {
+      return (
+        <ImageLinkGrid images={node.fields.images} size={node.fields.size} />
+      );
+    }
+    case "google-form": {
+      return <GoogleForm link={node.fields.link} />;
+    }
+    case "editor-in-chief": {
+      return <EditorInChief name={node.fields.name} type={node.fields.type} />;
+    }
     default: {
+      // @ts-expect-error -- Extra safety for unknown blockType since we're casting types and there may be some bogus blocks
       // eslint-disable-next-line no-console -- Nice to know if something is missing
       console.warn("Unknown blockType:", node.fields.blockType);
       return null;

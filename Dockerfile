@@ -1,5 +1,5 @@
 # Base image with Node.js
-ARG NODE_VERSION=20
+ARG NODE_VERSION=22
 # Use a specific version of the Node.js Alpine image as the base. Alpine images are minimal and lightweight.
 FROM node:${NODE_VERSION}-alpine AS base
 # Update the package list and install libc6-compat. This package is often required for binary Node.js modules.
@@ -17,13 +17,12 @@ RUN pnpm install --global turbo
 # Build argument for specifying the project
 # Introduce a build argument 'PROJECT' to specify which project in the monorepo to build.
 ARG PROJECT=web
-ARG GIT_COMMIT_SHA=development
-ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 # Install all dependencies in the monorepo
 # Start a new stage for handling dependencies. This stage uses the previously setup image with pnpm and turbo installed.
 FROM setup AS dependencies
 WORKDIR /app
 # Copy the essential configuration files and the specific project's files into the Docker image.
+COPY patches/ ./patches/
 COPY packages/ ./packages/
 COPY turbo.json ./
 COPY package.json turbo.json packages ./
@@ -43,6 +42,9 @@ RUN rm -rf /app/out/full/*/*/node_modules
 # Start a new stage for building the project. This stage will compile and prepare the project for production.
 FROM setup AS builder
 WORKDIR /app
+
+ARG GIT_COMMIT_SHA=development
+ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 
 # Copy pruned lockfile and package.json files
 # This ensures that the builder stage has the exact dependencies needed for the project.
@@ -74,6 +76,7 @@ FROM base AS runner
 ARG PROJECT=web
 ARG GIT_COMMIT_SHA=development
 ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
+ENV NODE_ENV=production
 # Create a non-root user and group for better security.
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nodejs
@@ -85,5 +88,5 @@ WORKDIR /app
 COPY --from=builder --chown=nodejs:nodejs /app .
 
 WORKDIR /app/apps/${PROJECT}
-# Specify the command to run.sh the application. Adjust the path as needed for your project's start script.
+# Specify the command to run the application. Adjust the path as needed for your project's start script.
 CMD ["npm", "run", "start"]

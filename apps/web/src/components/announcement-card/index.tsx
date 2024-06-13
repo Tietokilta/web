@@ -84,14 +84,17 @@ export async function AnnouncementCard({ news }: { news: News }) {
       <AnnouncementIcon className="hidden md:block" type={news.type} />
 
       <div className="hidden flex-col md:flex">
-        <p className="flex flex-col">
-          <span className="text-lg font-medium">{news.title}</span>
-          <span>{news.excerpt}</span>
-        </p>
+        <div className="flex flex-col">
+          <h2 className="text-lg font-medium">{news.title}</h2>
+          <p>{news.excerpt}</p>
+        </div>
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild className="md:self-end" variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
-              {t("Read more")}
+              <span aria-hidden="true">{t("Read more")}</span>
+              <span className="sr-only">
+                {t("Read more about {something}", { something: news.title })}
+              </span>
             </Link>
           </Button>
         ) : null}
@@ -99,16 +102,19 @@ export async function AnnouncementCard({ news }: { news: News }) {
 
       <div className="flex w-full flex-col gap-4 md:hidden">
         <details className="group flex w-full flex-col">
-          <summary className="w-full cursor-pointer list-none text-lg font-medium">
-            <ChevronDownIcon className="mr-2 inline-block h-4 w-4 transition-all group-open:rotate-180" />
-            <span>{news.title}</span>
+          <summary className="flex w-full cursor-pointer list-none items-center justify-between gap-2 text-lg font-medium [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+            <h2>{news.title}</h2>
+            <ChevronDownIcon className="inline-block size-6 shrink-0 transition-all group-open:rotate-180" />
           </summary>
-          <p>{news.excerpt}</p>
+          <p className="pt-2">{news.excerpt}</p>
         </details>
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
-              {t("Read more")}
+              <span aria-hidden="true">{t("Read more")}</span>
+              <span className="sr-only">
+                {t("Read more about {something}", { something: news.title })}
+              </span>
             </Link>
           </Button>
         ) : null}

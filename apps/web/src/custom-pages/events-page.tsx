@@ -3,10 +3,20 @@ import type {
   EventQuota,
   IlmomasiinaEvent,
 } from "../lib/api/external/ilmomasiina";
-import { fetchEvents } from "../lib/api/external/ilmomasiina";
-import { cn, formatDate, formatDatetimeYear } from "../lib/utils";
+import {
+  fetchEvents,
+  fetchUpcomingEvents,
+} from "../lib/api/external/ilmomasiina";
+import {
+  cn,
+  formatDateYear,
+  formatDateYearOptions,
+  formatDatetimeYear,
+} from "../lib/utils";
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
+import { DateTime } from "../components/datetime";
+import EventCalendar from "./event-calendar";
 
 async function SignUpText({
   startDate,
@@ -105,55 +115,73 @@ async function SignupQuotas({
   );
 }
 
-function EventCard({ event }: { event: IlmomasiinaEvent }) {
+async function EventCard({ event }: { event: IlmomasiinaEvent }) {
+  const t = await getScopedI18n("ilmomasiina.path");
+
   const locale = getCurrentLocale();
   return (
-    <li>
+    <li className="shadow-solid group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6">
       <Link
-        className="shadow-solid group flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6"
-        href={`/${locale}/events/${event.slug}`}
+        href={`/${locale}/${t("events")}/${event.slug}`}
+        className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline md:w-1/3"
       >
-        <h2 className="text-pretty text-lg font-bold underline-offset-2 group-hover:underline md:w-1/3">
-          {event.title}
-        </h2>
-
-        {event.date ? (
-          <time className="md:w-1/6" dateTime={event.date}>
-            {formatDate(event.date, locale)}
-          </time>
-        ) : (
-          <div className="md:w-1/6" />
-        )}
-        <SignUpText
-          className="md:w-1/4"
-          endDate={event.registrationEndDate}
-          startDate={event.registrationStartDate}
-        />
-        {event.quotas.length > 0 ? (
-          <SignupQuotas className="md:w-1/4" quotas={event.quotas} />
-        ) : null}
+        <h2>{event.title}</h2>
       </Link>
+
+      {event.date ? (
+        <DateTime
+          className="md:w-1/6"
+          rawDate={event.date}
+          defaultFormattedDate={formatDateYear(event.date, locale)}
+          formatOptions={formatDateYearOptions}
+        />
+      ) : (
+        <div className="md:w-1/6" />
+      )}
+      <SignUpText
+        className="md:w-1/4"
+        endDate={event.registrationEndDate}
+        startDate={event.registrationStartDate}
+      />
+      {event.quotas.length > 0 ? (
+        <SignupQuotas className="md:w-1/4" quotas={event.quotas} />
+      ) : null}
     </li>
+  );
+}
+
+function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+  return (
+    <div className="h-[40rem]">
+      <EventCalendar events={events} />
+    </div>
   );
 }
 
 export default async function Page() {
   const t = await getScopedI18n("ilmomasiina");
+  const ta = await getScopedI18n("action");
   const events = await fetchEvents();
+  const upcomingEvents = await fetchUpcomingEvents();
 
-  if (!events.ok) {
+  if (!events.ok || !upcomingEvents.ok) {
+    // eslint-disable-next-line no-console -- nice to know
     console.warn("Failed to fetch events from Ilmomasiina", events.error);
     throw new Error("Failed to fetch events from Ilmomasiina");
   }
 
   return (
-    <main className="relative mb-8 flex flex-col items-center gap-2 md:gap-6">
+    <main
+      id="main"
+      className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
+    >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
-          <BackButton />
+          <BackButton>{ta("Back")}</BackButton>
           <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
+          <Calendar events={events.data} />
           <ul className="space-y-8">
-            {events.data.map((event) => (
+            {upcomingEvents.data.map((event) => (
               <EventCard event={event} key={event.id} />
             ))}
           </ul>

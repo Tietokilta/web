@@ -1,0 +1,13 @@
+diff --git a/dist/app/middleware/index.js b/dist/app/middleware/index.js
+index afa157ecf8608223860ad42548911e8aa55a6a1c..b34bc4464a6c4dfb7efb9639ef1496370c4cb2eb 100644
+--- a/dist/app/middleware/index.js
++++ b/dist/app/middleware/index.js
+@@ -96,7 +96,7 @@ function addLocaleToResponse(request, response, locale) {
+   var _a;
+   response.headers.set(LOCALE_HEADER, locale);
+   if (((_a = request.cookies.get(LOCALE_COOKIE)) == null ? void 0 : _a.value) !== locale) {
+-    response.cookies.set(LOCALE_COOKIE, locale, { sameSite: "strict" });
++    response.cookies.set(LOCALE_COOKIE, locale, { sameSite: "strict", maxAge: 60 * 60 * 24 * 365 });
+   }
+   return response;
+ }

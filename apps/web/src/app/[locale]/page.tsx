@@ -1,21 +1,30 @@
-import type { EditorState } from "@tietokilta/cms-types/lexical.ts";
-import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload.ts";
+import type { EditorState } from "@tietokilta/cms-types/lexical";
+import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload";
+import { type Metadata } from "next";
 import { EventsDisplay } from "../../components/events-display";
-import { Hero } from "../../components/hero";
-import { LexicalSerializer } from "../../components/lexical/lexical-serializer.tsx";
-import { fetchLandingPage } from "../../lib/api/landing-page.ts";
+import { Hero, type ImageWithPhotographer } from "../../components/hero";
+import { LexicalSerializer } from "../../components/lexical/lexical-serializer";
+import { fetchLandingPage } from "../../lib/api/landing-page";
 import { AnnouncementCard } from "../../components/announcement-card";
-import { getCurrentLocale } from "../../locales/server.ts";
+import { getCurrentLocale } from "../../locales/server";
+import { openGraphImage } from "../shared-metadata";
 
 function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <article className="prose prose-headings:scroll-mt-24 max-w-prose">
+    <div className="prose prose-headings:scroll-mt-24 max-w-prose">
       <LexicalSerializer nodes={content.root.children} />
-    </article>
+    </div>
   );
 }
+
+export const metadata: Metadata = {
+  openGraph: {
+    type: "website",
+    ...openGraphImage,
+  },
+};
 
 export default async function Home({
   searchParams: { page },
@@ -35,15 +44,22 @@ export default async function Home({
   const pageInt = parseInt(String(page), 10);
 
   return (
-    <main className="flex min-h-screen flex-col">
+    <main id="main" className="flex min-h-screen flex-col">
       <Hero
         images={landingPageData.heroImages
-          .map(({ image }) => (typeof image === "string" ? null : image?.url))
+          .map(({ image }) =>
+            typeof image === "string"
+              ? null
+              : { url: image?.url, photographer: image?.photographer },
+          )
+          .filter((url): url is ImageWithPhotographer => Boolean(url))}
+        texts={landingPageData.heroTexts
+          .map(({ text }) => (typeof text === "string" ? text : null))
           .filter((url): url is string => Boolean(url))}
-        text={landingPageData.heroText}
       />
-      <div className="container mx-auto grid grid-cols-1 gap-12 px-6 py-12 lg:grid-cols-2">
-        <section className="order-last space-y-4 lg:order-first">
+      {/* Desktop view */}
+      <div className="container mx-auto hidden grid-cols-2 gap-12 px-6 py-12 lg:grid">
+        <section className="order-first space-y-4">
           <h1 className="font-mono text-4xl font-bold text-gray-900">
             Tietokilta
           </h1>
@@ -56,6 +72,22 @@ export default async function Home({
             currentPage={!isNaN(pageInt) ? pageInt : undefined}
           />
         </div>
+      </div>
+      {/* Mobile view */}
+      <div className="container mx-auto flex flex-col gap-12 px-6 py-12 lg:hidden">
+        <div className="space-y-8">
+          {announcement ? <AnnouncementCard news={announcement} /> : null}
+        </div>
+        <section className="space-y-4">
+          <h1 className="font-mono text-4xl font-bold text-gray-900">
+            Tietokilta
+          </h1>
+          <Content content={body} />
+        </section>
+        <EventsDisplay
+          eventsListPath={eventsListPage?.path ?? undefined}
+          currentPage={!isNaN(pageInt) ? pageInt : undefined}
+        />
       </div>
     </main>
   );

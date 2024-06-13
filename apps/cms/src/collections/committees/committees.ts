@@ -3,8 +3,7 @@ import type { CollectionConfig, FilterOptions } from "payload/types";
 import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
-import { revalidatePage } from "../../hooks/revalidate-page";
-import { getLocale } from "../../util";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 import { importController } from "../../controllers/import-controller";
 
 const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({
@@ -53,24 +52,7 @@ export const Committees = {
     },
   ],
   hooks: {
-    afterChange: [
-      // eslint-disable-next-line @typescript-eslint/require-await -- revalidate page wants promise
-      revalidatePage<Committee>("committees", async (doc, req) => {
-        const locale = getLocale(req);
-        if (!locale) {
-          req.payload.logger.error(
-            "locale not set, cannot revalidate properly",
-          );
-          return;
-        }
-        return {
-          where: {
-            year: { equals: doc.year },
-          },
-          locale,
-        };
-      }),
-    ],
+    afterChange: [revalidateCollection<Committee>("committees")],
   },
   endpoints: [
     {

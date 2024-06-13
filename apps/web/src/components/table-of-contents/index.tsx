@@ -1,40 +1,14 @@
 "use client";
 
-import type { EditorState } from "@tietokilta/cms-types/lexical";
 import { ChevronDownIcon } from "@tietokilta/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState, type MutableRefObject } from "react";
 import {
   cn,
   insertSoftHyphens,
-  lexicalNodeToTextContent,
   stringToId,
+  type TocItem,
 } from "../../lib/utils";
-
-interface TocItem {
-  text: string;
-  level: 2 | 3;
-}
-
-const generateToc = (content: EditorState): TocItem[] => {
-  const toc: TocItem[] = [];
-
-  for (const node of content.root.children) {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
-    if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
-      const tag = node.tag;
-      const level = parseInt(tag[1], 10) as 2 | 3;
-      const text = lexicalNodeToTextContent(node);
-
-      toc.push({
-        text,
-        level,
-      });
-    }
-  }
-
-  return toc;
-};
 
 function HeadingList({
   toc,
@@ -50,9 +24,11 @@ function HeadingList({
       {toc.map((item) => (
         <li
           className={cn(
-            "before:me-[2ch] before:text-gray-600",
-            item.level === 2 && "mb-2 text-base before:content-['#'] last:mb-0",
-            item.level === 3 && "mb-1 text-sm before:content-['##'] last:mb-0",
+            "before:text-gray-600",
+            item.level === 2 &&
+              "before:content-alt-empty mb-2 ms-[2ch] text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'] last:mb-0",
+            item.level === 3 &&
+              "before:content-alt-empty mb-1 ms-[3ch] text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'] last:mb-0",
           )}
           key={`${item.level.toFixed()}-${item.text}`}
         >
@@ -120,19 +96,21 @@ function Mobile({
       )}
       ref={detailsRef}
     >
-      <summary className="flex cursor-pointer items-center justify-between p-4">
+      <summary className="flex cursor-pointer items-center justify-between p-4 shadow-sm drop-shadow-sm group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto [&::-webkit-details-marker]:hidden [&::marker]:hidden">
         <span
           className={cn(
-            "text-2xl font-bold before:me-[2ch] before:text-gray-600",
-            activeHeading.level === 2 && "before:content-['#']",
-            activeHeading.level === 3 && "before:content-['##']",
+            "truncate text-2xl font-bold before:me-[2ch] before:text-gray-600",
+            activeHeading.level === 2 &&
+              "before:content-alt-empty before:content-['#']",
+            activeHeading.level === 3 &&
+              "before:content-alt-empty before:content-['##']",
           )}
         >
           {activeHeading.text}
         </span>
-        <ChevronDownIcon className="h-6 w-6 transition-all group-open:rotate-180" />
+        <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
       </summary>
-      <nav className="px-4 py-2">
+      <nav className="scroll-shadows-sm max-h-[50lvh] overflow-y-scroll px-4 py-2 shadow-sm drop-shadow-sm">
         <HeadingList
           activeHeadingId={activeHeadingId}
           onHeadingClick={() => detailsRef.current?.removeAttribute("open")}
@@ -143,7 +121,7 @@ function Mobile({
   );
 }
 
-const useActiveHeading = () => {
+const useActiveHeading = ({ topLevelOnly = false } = {}) => {
   const [activeId, setActiveId] = useState<string>();
 
   const headingElementsRef: MutableRefObject<
@@ -198,7 +176,10 @@ const useActiveHeading = () => {
     if (leadParagraph) {
       observer.observe(leadParagraph);
     }
-    const headingElements = Array.from(document.querySelectorAll("h2, h3"));
+    const headingSelector = topLevelOnly ? "h2" : "h2, h3";
+    const headingElements = Array.from(
+      document.querySelectorAll(headingSelector),
+    );
     headingElements.forEach((element) => {
       observer.observe(element);
     });
@@ -206,29 +187,32 @@ const useActiveHeading = () => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [topLevelOnly]);
 
   return activeId;
 };
 
-export function TableOfContents({ content }: { content?: EditorState }) {
-  const activeHeadingId = useActiveHeading();
+export function TableOfContents({
+  toc,
+  topLevelOnly,
+}: {
+  toc?: TocItem[];
+  topLevelOnly?: boolean;
+}) {
+  const activeHeadingId = useActiveHeading({ topLevelOnly });
 
-  if (!content) return null;
-
-  const toc = generateToc(content);
-  if (toc.length === 0) return null;
+  if (!toc || toc.length === 0) return null;
 
   return (
     <>
       <Desktop
         activeHeadingId={activeHeadingId}
-        className="hidden xl:block"
+        className="z-20 hidden xl:block"
         toc={toc}
       />
       <Mobile
         activeHeadingId={activeHeadingId}
-        className="xl:hidden"
+        className="z-20 xl:hidden"
         toc={toc}
       />
     </>

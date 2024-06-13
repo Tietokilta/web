@@ -1,4 +1,11 @@
-import type { Board, Committee, Media, Page } from "./payload";
+import type {
+  Board,
+  Committee,
+  Document,
+  Magazine,
+  Media,
+  Page,
+} from "./payload";
 
 type BaseNode = {
   version: number;
@@ -53,7 +60,7 @@ export type QuoteNode = BaseTextNode & {
   children: Node[];
 };
 
-export type UploadNode = BaseNode & {
+export type MediaUploadNode = BaseNode & {
   type: "upload";
   relationTo: "media";
   value: Media;
@@ -61,6 +68,15 @@ export type UploadNode = BaseNode & {
     caption?: string;
   } | null;
 };
+
+export type DocumentUploadNode = BaseNode & {
+  type: "upload";
+  relationTo: "documents";
+  value: Document;
+  fields?: Record<string, never> | null;
+};
+
+export type UploadNode = MediaUploadNode | DocumentUploadNode;
 
 export type ListItemNode = BaseTextNode & {
   type: "listitem";
@@ -117,10 +133,17 @@ export type CommitteeRelationshipNode = BaseNode & {
   value: Committee;
 };
 
+export type MagazineRelationshipNode = BaseNode & {
+  type: "relationship";
+  relationTo: "magazines";
+  value: Magazine;
+};
+
 export type RelationshipNode =
   | PageRelationshipNode
   | BoardRelationshipNode
-  | CommitteeRelationshipNode;
+  | CommitteeRelationshipNode
+  | MagazineRelationshipNode;
 
 export type BaseBlockFields = {
   id: string;
@@ -139,7 +162,38 @@ export type CommitteesYearBlockNode = BaseBlockNode & {
   };
 };
 
-export type BlockNode = CommitteesYearBlockNode;
+export type ImageLinkGridBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "image-link-grid";
+    size: "small" | "medium" | "large";
+    images: {
+      image: Media;
+      caption?: string | null | undefined;
+      externalLink?: string | null | undefined;
+    }[];
+  };
+};
+
+export type GoogleFormBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "google-form";
+    link: string;
+  };
+};
+
+export type EditorInChiefBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "editor-in-chief";
+    name: string;
+    type: string;
+  };
+};
+
+export type BlockNode =
+  | CommitteesYearBlockNode
+  | ImageLinkGridBlockNode
+  | GoogleFormBlockNode
+  | EditorInChiefBlockNode;
 
 export type Node =
   | TextNode

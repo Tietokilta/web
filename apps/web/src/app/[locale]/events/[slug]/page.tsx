@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import { Button, Progress } from "@tietokilta/ui";
+import { type Metadata } from "next";
 import {
   type IlmomasiinaEvent,
   fetchEvent,
@@ -9,15 +10,22 @@ import {
   type QuotaSignupWithQuotaTitle,
   OPEN_QUOTA_ID,
   QUEUE_QUOTA_ID,
+  type EventQuestion,
+  type QuotaSignup,
+  type QuestionAnswer,
 } from "../../../../lib/api/external/ilmomasiina";
-import { signUp } from "../../../../lib/api/external/ilmomasiina/actions.ts";
+import { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
 import {
   formatDateTimeSeconds,
+  formatDateTimeSecondsOptions,
   formatDatetimeYear,
+  formatDatetimeYearOptions,
   getQuotasWithOpenAndQueue,
-} from "../../../../lib/utils.ts";
-import { BackButton } from "../../../../components/back-button.tsx";
-import { getCurrentLocale, getScopedI18n } from "../../../../locales/server.ts";
+} from "../../../../lib/utils";
+import { BackButton } from "../../../../components/back-button";
+import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
+import { DateTime } from "../../../../components/datetime";
+import { openGraphImage } from "../../../shared-metadata";
 
 async function SignUpText({
   startDate,
@@ -96,10 +104,81 @@ async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
+function getFormattedAnswer(
+  question: EventQuestion,
+  answers: QuestionAnswer[],
+) {
+  const answer = answers.find((a) => a.questionId === question.id)?.answer;
+
+  if (!answer) {
+    return "";
+  }
+
+  if (Array.isArray(answer)) {
+    return answer.join(", ");
+  }
+
+  return answer;
+}
+
+function SignUpRow({
+  signup,
+  publicQuestions,
+  isGeneratedQuota,
+}: {
+  signup: QuotaSignup | QuotaSignupWithQuotaTitle;
+  publicQuestions: EventQuestion[];
+  isGeneratedQuota: boolean;
+}) {
+  return (
+    <tr className="odd:bg-gray-300 even:bg-gray-200">
+      <td className="border-b border-gray-900 px-2 py-1">
+        <span>{signup.position}.</span>
+      </td>
+      <td className="border-b border-gray-900 px-2 py-1">
+        {signup.namePublic ? (
+          <span>
+            {signup.firstName} {signup.lastName}
+          </span>
+        ) : (
+          <span className="italic">
+            {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
+          </span>
+        )}
+      </td>
+      {publicQuestions.map((question) => (
+        <td key={question.id} className="border-b border-gray-900 px-2 py-1">
+          {getFormattedAnswer(question, signup.answers)}
+        </td>
+      ))}
+      {isGeneratedQuota ? (
+        <td className="border-b border-gray-900 px-2 py-1">
+          {"quotaTitle" in signup ? signup.quotaTitle : ""}
+        </td>
+      ) : null}
+      <td className="border-b border-gray-900 px-2 py-1">
+        <time dateTime={signup.createdAt} className="group">
+          <DateTime
+            as="span"
+            defaultFormattedDate={formatDateTimeSeconds(signup.createdAt)}
+            rawDate={signup.createdAt}
+            formatOptions={formatDateTimeSecondsOptions}
+          />
+          <span className="invisible group-hover:visible">
+            .{new Date(signup.createdAt).getMilliseconds()}
+          </span>
+        </time>
+      </td>
+    </tr>
+  );
+}
+
 async function SignUpTable({
   quota,
+  publicQuestions,
 }: {
   quota: EventQuota | EventQuotaWithSignups;
+  publicQuestions: EventQuestion[];
 }) {
   const t = await getScopedI18n("ilmomasiina");
   const signups = quota.signups ?? [];
@@ -112,65 +191,48 @@ async function SignUpTable({
   const isGeneratedQuota = !!isOpenQuota || !!isQueueQuota;
 
   return (
-    <table className="shadow-solid w-full table-auto border-separate border-spacing-0 rounded-md border-2 border-gray-900">
-      <thead>
-        <tr className="bg-gray-200">
-          <th className="rounded-tl-md border-b border-gray-900 p-2">
-            {t("headers.Sija")}
-          </th>
-          <th className="border-b border-gray-900 p-2">{t("headers.Nimi")}</th>
-          {isGeneratedQuota ? (
-            <th className="border-b border-gray-900 p-2">
-              {t("headers.Kiintiö")}
+    <div className="shadow-solid block w-full overflow-x-auto rounded-md border-2 border-gray-900">
+      <table className="w-full table-auto border-separate border-spacing-0">
+        <thead>
+          <tr className="bg-gray-200">
+            <th className="rounded-tl-md border-b border-gray-900 p-2">
+              {t("headers.Sija")}
             </th>
-          ) : null}
-          <th className="rounded-tr-md border-b border-gray-900 p-2">
-            {t("headers.Ilmoittautumisaika")}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {signups
-          .filter((signup) => isGeneratedQuota || signup.status === "in-quota")
-          .toSorted((a, b) => a.position - b.position)
-          .map((signup) => (
-            <tr
-              key={signup.position}
-              className="odd:bg-gray-300 even:bg-gray-200"
-            >
-              <td className="border-b border-gray-900 px-2 py-1">
-                <span>{signup.position}.</span>
-              </td>
-              <td className="border-b border-gray-900 px-2 py-1">
-                {signup.namePublic ? (
-                  <span>
-                    {signup.firstName} {signup.lastName}
-                  </span>
-                ) : (
-                  <span className="italic">
-                    {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
-                  </span>
-                )}
-              </td>
-              {isGeneratedQuota ? (
-                <td className="border-b border-gray-900 px-2 py-1">
-                  {"quotaTitle" in signup
-                    ? (signup as QuotaSignupWithQuotaTitle).quotaTitle
-                    : ""}
-                </td>
-              ) : null}
-              <td className="border-b border-gray-900 px-2 py-1">
-                <time dateTime={signup.createdAt} className="group">
-                  <span>{formatDateTimeSeconds(signup.createdAt)}</span>
-                  <span className="invisible group-hover:visible">
-                    .{new Date(signup.createdAt).getMilliseconds()}
-                  </span>
-                </time>
-              </td>
-            </tr>
-          ))}
-      </tbody>
-    </table>
+            <th className="border-b border-gray-900 p-2">
+              {t("headers.Nimi")}
+            </th>
+            {publicQuestions.map((question) => (
+              <th key={question.id} className="border-b border-gray-900 p-2">
+                {question.question}
+              </th>
+            ))}
+            {isGeneratedQuota ? (
+              <th className="border-b border-gray-900 p-2">
+                {t("headers.Kiintiö")}
+              </th>
+            ) : null}
+            <th className="rounded-tr-md border-b border-gray-900 p-2">
+              {t("headers.Ilmoittautumisaika")}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {signups
+            .filter(
+              (signup) => isGeneratedQuota || signup.status === "in-quota",
+            )
+            .toSorted((a, b) => a.position - b.position)
+            .map((signup) => (
+              <SignUpRow
+                key={signup.position}
+                signup={signup}
+                publicQuestions={publicQuestions}
+                isGeneratedQuota={isGeneratedQuota}
+              />
+            ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -186,6 +248,8 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
     event.openQuotaSize,
   );
 
+  const publicQuestions = event.questions.filter((question) => question.public);
+
   return (
     <div className="space-y-4">
       <h2 className="font-mono text-xl font-semibold text-gray-900">
@@ -197,7 +261,7 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
             <h3 className="font-mono text-lg font-semibold text-gray-900">
               {quota.title}
             </h3>
-            <SignUpTable quota={quota} />
+            <SignUpTable publicQuestions={publicQuestions} quota={quota} />
           </li>
         ))}
       </ul>
@@ -225,17 +289,21 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
       {event.date ? (
         <span className="block">
           <span className="font-medium">{t("Alkaa")}:</span>{" "}
-          <time dateTime={event.date}>
-            {formatDatetimeYear(event.date, locale)}
-          </time>
+          <DateTime
+            rawDate={event.date}
+            defaultFormattedDate={formatDatetimeYear(event.date, locale)}
+            formatOptions={formatDatetimeYearOptions}
+          />
         </span>
       ) : null}
       {event.endDate ? (
         <span className="block">
           <span className="font-medium">{t("Loppuu")}:</span>{" "}
-          <time dateTime={event.endDate}>
-            {formatDatetimeYear(event.endDate, locale)}
-          </time>
+          <DateTime
+            rawDate={event.endDate}
+            defaultFormattedDate={formatDatetimeYear(event.endDate, locale)}
+            formatOptions={formatDatetimeYearOptions}
+          />
         </span>
       ) : null}
     </div>
@@ -311,26 +379,49 @@ interface PageProps {
   };
 }
 
+export const generateMetadata = async ({
+  params: { slug },
+}: PageProps): Promise<Metadata> => {
+  const event = await fetchEvent(slug);
+  if (!event.ok) {
+    // eslint-disable-next-line no-console -- nice to know if something goes wrong
+    console.warn("Failed to fetch event from Ilmomasiina", event.error);
+    return {};
+  }
+
+  return {
+    title: event.data.title,
+    description: event.data.description,
+    openGraph: {
+      ...openGraphImage,
+    },
+  };
+};
+
 export default async function Page({ params: { slug } }: PageProps) {
   const event = await fetchEvent(slug);
-
+  const t = await getScopedI18n("action");
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
     notFound();
   }
 
   if (!event.ok) {
+    // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn("Failed to fetch event from Ilmomasiina", event.error);
     throw new Error("Failed to fetch event from Ilmomasiina");
   }
   return (
-    <main className="relative mb-8 flex flex-col items-center gap-2 md:gap-6">
+    <main
+      id="main"
+      className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
+    >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
-          <BackButton />
+          <BackButton>{t("Back")}</BackButton>
           <h1 className="font-mono text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
-              <div className="flex max-w-xl flex-grow-[2] flex-col gap-8">
+              <div className="flex max-w-xl grow-[2] flex-col gap-8">
                 <Tldr event={event.data} />
                 {event.data.description ? (
                   <div className="prose">
@@ -338,7 +429,7 @@ export default async function Page({ params: { slug } }: PageProps) {
                   </div>
                 ) : null}
               </div>
-              <div className="flex flex-grow-[1] flex-col gap-8">
+              <div className="flex grow flex-col gap-8">
                 <SignUpActions event={event.data} />
                 <SignUpQuotas event={event.data} />
               </div>

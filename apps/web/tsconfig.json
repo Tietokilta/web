@@ -2,8 +2,6 @@
   "exclude": ["node_modules"],
   "extends": "@tietokilta/config-typescript/nextjs.json",
   "compilerOptions": {
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
     "outDir": "dist",
     "plugins": [
       {

@@ -46,7 +46,13 @@ export type LinkRowBlockLink =
         | 'Telegram'
         | 'TikLogo'
         | 'Tiktok'
-        | 'X';
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake';
       label: string;
       linkType?: ('external' | 'internal') | null;
       url?: string | null;
@@ -121,8 +127,52 @@ export interface Page {
   id: string;
   title: string;
   description: string;
-  type: 'standard' | 'special' | 'redirect';
-  hideTableOfContents?: boolean | null;
+  type: 'standard' | 'redirect' | 'events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
+  icon?:
+    | (
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake'
+      )
+    | null;
+  tableOfContents?: ('all' | 'top-level' | 'none') | null;
   content?: {
     root: {
       type: string;
@@ -138,7 +188,6 @@ export interface Page {
     };
     [k: string]: unknown;
   } | null;
-  specialPageType?: 'events-list' | null;
   redirectToPage?: (string | null) | Page;
   path?: string | null;
   topic?: {
@@ -159,6 +208,50 @@ export interface Topic {
   id: string;
   title: string;
   slug: string;
+  icon?:
+    | (
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake'
+      )
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -169,6 +262,8 @@ export interface Topic {
 export interface Media {
   id: string;
   alt: string;
+  photographer?: string | null;
+  mediaType?: ('image' | 'logo') | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -177,6 +272,8 @@ export interface Media {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -184,6 +281,8 @@ export interface Media {
  */
 export interface Document {
   id: string;
+  title?: string | null;
+  thumbnail?: string | Media | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -192,6 +291,8 @@ export interface Document {
   filesize?: number | null;
   width?: number | null;
   height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -308,6 +409,7 @@ export interface Board {
  */
 export interface CommitteeMember {
   id: string;
+  displayTitle?: string | null;
   guildYear:
     | '2024'
     | '2023'
@@ -539,6 +641,7 @@ export interface WeeklyNewsletter {
         id?: string | null;
       }[]
     | null;
+  slug?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -632,6 +735,7 @@ export interface LinkRowBlock {
  * via the `definition` "SponsorLogoRowBlock".
  */
 export interface SponsorLogoRowBlock {
+  title: string;
   logos?:
     | {
         image: string | Media;
@@ -649,7 +753,10 @@ export interface SponsorLogoRowBlock {
  */
 export interface LandingPage {
   id: string;
-  heroText: string;
+  heroTexts: {
+    text?: string | null;
+    id?: string | null;
+  }[];
   heroImages: {
     image?: (string | null) | Media;
     id?: string | null;
@@ -680,6 +787,7 @@ export interface LandingPage {
  */
 export interface MainNavigation {
   id: string;
+  logo: string | Media;
   items: MainNavigationItem;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -737,7 +845,13 @@ export interface MainNavigationTopicConfig {
                 | 'Telegram'
                 | 'TikLogo'
                 | 'Tiktok'
-                | 'X';
+                | 'X'
+                | 'NavGuild'
+                | 'NavFuksis'
+                | 'NavCompanies'
+                | 'NavEvents'
+                | 'NavApplicants'
+                | 'Handshake';
               id?: string | null;
             }[]
           | null;

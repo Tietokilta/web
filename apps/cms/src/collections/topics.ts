@@ -1,5 +1,6 @@
 import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../access/signed-in";
+import { iconField } from "../fields/icon-field";
 
 export const Topics: CollectionConfig = {
   slug: "topics",
@@ -27,5 +28,6 @@ export const Topics: CollectionConfig = {
       required: true,
       localized: true,
     },
+    iconField({ required: false }),
   ],
 };

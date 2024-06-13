@@ -1,4 +1,8 @@
-import type { LinkRowBlock } from "@tietokilta/cms-types/payload";
+import type {
+  LinkRowBlock,
+  Media,
+  SponsorLogoRowBlock,
+} from "@tietokilta/cms-types/payload";
 import {
   Button,
   MenuIcon,
@@ -6,6 +10,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@tietokilta/ui";
+import Link from "next/link";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
@@ -20,6 +25,7 @@ export async function MobileNav({
 }: React.ComponentPropsWithoutRef<"header">) {
   const t = await getScopedI18n("action");
   const locale = getCurrentLocale();
+  const href = `/${locale}`;
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});
   if (
@@ -34,6 +40,10 @@ export async function MobileNav({
   const footerLinks = footer.layout.filter(
     (block): block is LinkRowBlock => block.blockType === "link-row",
   );
+  const footerSponsors = footer.layout.filter(
+    (block): block is SponsorLogoRowBlock => block.blockType === "logo-row",
+  );
+  const navLogo = mainNav.logo as Media;
 
   return (
     <header
@@ -43,18 +53,25 @@ export async function MobileNav({
       )}
       {...rest}
     >
-      <LogoLink locale={locale} />
+      <LogoLink locale={locale} image={navLogo} />
+      <Link href={href} className="font-mono text-2xl">
+        Tietokilta
+      </Link>
       <Sheet>
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">
-            <MenuIcon className="h-6 w-6" />
+            <MenuIcon className="size-6" />
             <span className="sr-only">{t("Toggle menu")}</span>
           </Button>
         </SheetTrigger>
         <SheetContent>
-          <nav>
+          <nav className="flex h-full flex-col">
             <LanguageSelector />
-            <LinkList footerLinks={footerLinks} links={links} />
+            <LinkList
+              footerLinks={footerLinks}
+              links={links}
+              footerSponsors={footerSponsors}
+            />
           </nav>
         </SheetContent>
       </Sheet>

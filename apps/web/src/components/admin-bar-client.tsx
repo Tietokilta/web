@@ -19,7 +19,7 @@ export function AdminBarClient({
   return (
     <>
       {isPreviewMode ? (
-        <div className="top-30 fixed z-20 w-full bg-red-500 p-2 text-center text-white">
+        <div className="fixed top-20 z-20 w-full bg-red-500 p-2 text-center text-white">
           This is a draft preview
         </div>
       ) : null}
@@ -28,7 +28,7 @@ export function AdminBarClient({
         cmsURL={process.env.PUBLIC_SERVER_URL ?? window.location.origin}
         collection={collection}
         id={id}
-        onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run.sh for some reason :shrug:
+        onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:
         preview={isPreviewMode}
         style={{
           top: "auto",

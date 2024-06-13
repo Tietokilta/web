@@ -12,9 +12,10 @@ import {
   PaginationPrevious,
 } from "../pagination";
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
-import { fetchEvents } from "../../lib/api/external/ilmomasiina";
-import { getCurrentLocale, getScopedI18n } from "../../locales/server";
-import { formatDatetime } from "../../lib/utils";
+import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
+import { getCurrentLocale, getI18n } from "../../locales/server";
+import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
+import { DateTime } from "../datetime";
 
 function EventListSkeleton() {
   return (
@@ -28,59 +29,89 @@ function EventListSkeleton() {
 
 async function EventItem({ event }: { event: IlmomasiinaEvent }) {
   const locale = getCurrentLocale();
-  const t = await getScopedI18n("action");
+  const t = await getI18n();
 
-  const eventUrl = `/${locale}/events/${event.slug}`;
+  const eventUrl = `/${locale}/${t("ilmomasiina.path.events")}/${event.slug}`;
 
   return (
     <li className="shadow-solid flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
-      <div className="flex-1">
+      <div className="flex-1 shrink-0">
         <span className="block text-pretty text-lg font-bold">
           {event.title}
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
-          <Link href={eventUrl}>{t("Read more")}</Link>
+          <Link href={eventUrl}>
+            <span aria-hidden="true">{t("action.Read more")}</span>
+            <span className="sr-only">
+              {t("action.Read more about {something}", {
+                something: event.title,
+              })}
+            </span>
+          </Link>
         </Button>
       </div>
-      <div className="shrink-0 truncate font-medium">
+      <div className="flex shrink-0 flex-col font-medium md:w-2/5">
         {event.date ? (
           <time
-            className="block truncate"
+            className="line-clamp-2 text-pretty pl-5"
             dateTime={event.date}
-            title={formatDatetime(event.date, locale)}
+            // title={formatDateTime(event.date, locale)}
           >
-            <ClockIcon className="mr-1 inline-block h-4 w-4" />
-            {formatDatetime(event.date, locale)}
+            <ClockIcon className="-ml-5 mr-1 inline-block size-4" />
+            <DateTime
+              as="span"
+              rawDate={event.date}
+              defaultFormattedDate={formatDateTime(event.date, locale)}
+              formatOptions={formatDateTimeOptions}
+            />
           </time>
         ) : null}
         {event.location ? (
-          <span className="block truncate" title={event.location}>
-            <MapPinIcon className="mr-1 inline-block h-4 w-4" />
-            {event.location}
+          <span
+            className="line-clamp-3 text-pretty pl-5"
+            title={event.location}
+          >
+            <MapPinIcon className="-ml-5 mr-1 inline-block size-4" />
+            <span>{event.location}</span>
           </span>
         ) : null}
       </div>
       <Button asChild className="md:hidden" variant="link">
-        <Link href={eventUrl}>{t("Read more")}</Link>
+        <Link href={eventUrl}>
+          <span aria-hidden="true">{t("action.Read more")}</span>
+          <span className="sr-only">
+            {t("action.Read more about {something}", {
+              something: event.title,
+            })}
+          </span>
+        </Link>
       </Button>
     </li>
   );
 }
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
-  const events = await fetchEvents();
+  const upcomingEvents = await fetchUpcomingEvents();
   const locale = getCurrentLocale();
-  if (!events.ok) {
-    console.warn("Failed to fetch events from Ilmomasiina", events.error);
+  const t = await getI18n();
+  if (!upcomingEvents.ok) {
+    // eslint-disable-next-line no-console -- nice to know if something goes wrong
+    console.warn(
+      "Failed to fetch events from Ilmomasiina",
+      upcomingEvents.error,
+    );
     return null;
   }
 
-  const eventsList = events.data;
+  const eventsList = upcomingEvents.data;
+  if (!eventsList.length) {
+    return null;
+  }
+
   const paginatedEvents = _.chunk(eventsList, 5);
   const pageCount = paginatedEvents.length;
 
-  if (currentPage < 1 || currentPage > pageCount) {
-    console.warn(`Invalid page number: ${currentPage.toFixed()}`);
+  if (pageCount !== 0 && (currentPage < 1 || currentPage > pageCount)) {
     return notFound();
   }
 
@@ -98,7 +129,10 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationPrevious
                   href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
-                />
+                  ariaLabel={t("action.Go to previous page")}
+                >
+                  {t("action.Back")}
+                </PaginationPrevious>
               </PaginationItem>
             ) : null}
             {Array.from({ length: pageCount }, (__, i) => i + 1).map((page) => (
@@ -107,7 +141,8 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
                   isActive={page === currentPage}
                   href={`/${locale}/?page=${page.toFixed()}`}
                 >
-                  {page}
+                  <span className="sr-only">{t("generic.Page")}</span>
+                  <span>{page}</span>
                 </PaginationLink>
               </PaginationItem>
             ))}
@@ -115,7 +150,10 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationNext
                   href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
-                />
+                  ariaLabel={t("action.Go to next page")}
+                >
+                  {t("action.Next")}
+                </PaginationNext>
               </PaginationItem>
             ) : null}
           </PaginationContent>
@@ -133,16 +171,16 @@ export async function EventsDisplay({
   currentPage?: number;
 }) {
   const locale = getCurrentLocale();
-  const t = await getScopedI18n("headings");
+  const t = await getI18n();
   return (
     <section className="space-y-4">
       <Link
         className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
-        href={eventsListPath ?? `/${locale}/events`}
+        href={eventsListPath ?? `/${locale}/${t("ilmomasiina.path.events")}`}
       >
-        <h3 className="font-mono text-2xl font-bold text-gray-900">
-          {t("Upcoming events")}
-        </h3>
+        <h2 className="font-mono text-2xl font-bold text-gray-900">
+          {t("heading.Upcoming events")}
+        </h2>
       </Link>
 
       <Suspense fallback={<EventListSkeleton />}>

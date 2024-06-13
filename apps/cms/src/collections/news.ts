@@ -1,5 +1,6 @@
 import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../access/signed-in";
+import { revalidateCollection } from "../hooks/revalidate-collection";
 
 export const News: CollectionConfig = {
   slug: "news",
@@ -87,4 +88,7 @@ export const News: CollectionConfig = {
       localized: true,
     },
   ],
+  hooks: {
+    afterChange: [revalidateCollection("news")],
+  },
 };

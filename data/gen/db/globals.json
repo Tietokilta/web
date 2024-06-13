@@ -26,7 +26,7 @@
 						},
 						"pages": [
 							{
-								"page": "660ec537462dc275833c32a6",
+								"page": "66488d4112729ad2cf17903d",
 								"id": "660ec54f07e0ae4b83d556e1"
 							},
 							{
@@ -36,6 +36,10 @@
 							{
 								"page": "65a2df8e3aa4329c52083af9",
 								"id": "65a2dfb1ac93bb5b462471b0"
+							},
+							{
+								"page": "6648f3dff5c8bf14fb14e377",
+								"id": "6648f40c7b806c13089cd151"
 							}
 						],
 						"externalLinks": [],
@@ -167,9 +171,10 @@
 		"$date": "2023-11-06T14:05:51.452Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T14:20:45.921Z"
+		"$date": "2024-05-18T18:31:49.161Z"
 	},
-	"__v": 0
+	"__v": 0,
+	"logo": "6648ecb1e184dafa12b58503"
 },
 {
 	"_id": {
@@ -288,9 +293,43 @@
 	"_id": {
 		"$oid": "65a64c192b2f140ed06d71fa"
 	},
-	"heroText": {
-		"fi": "TiKillä on kivaa Kantsii olla TiKkiläinen",
-		"en": "TiKillä on kivaa Kantsii olla TiKkiläinen"
+	"heroTexts": {
+		"fi": [
+			{
+				"text": "TiKillä on kivaa, kantsii olla TiKkiläinen",
+				"id": "664894fe6ea43dec7c29bdc9"
+			},
+			{
+				"text": "As seen on TV!",
+				"id": "6648951fe9f34a501083cba9"
+			},
+			{
+				"text": "100% pure!",
+				"id": "66489699e9f34a501083cbad"
+			},
+			{
+				"text": "May contain nuts!",
+				"id": "664896a0e9f34a501083cbae"
+			}
+		],
+		"en": [
+			{
+				"text": "TiKillä on kivaa, kantsii olla TiKkiläinen",
+				"id": "66489507e9f34a501083cba8"
+			},
+			{
+				"text": "As seen on TV!",
+				"id": "66489525e9f34a501083cbaa"
+			},
+			{
+				"text": "100% pure!",
+				"id": "6648968ae9f34a501083cbab"
+			},
+			{
+				"text": "May contain nuts!",
+				"id": "6648968ee9f34a501083cbac"
+			}
+		]
 	},
 	"heroImages": [
 		{
@@ -439,10 +478,10 @@
 		"$date": "2024-01-16T09:27:53.776Z"
 	},
 	"updatedAt": {
-		"$date": "2024-04-04T15:21:05.06Z"
+		"$date": "2024-05-18T15:12:36.25Z"
 	},
 	"__v": 0,
-	"announcement": "65c674496c4e21d65fbe3395",
-	"eventsListPage": "660ec51b462dc275833c3218"
+	"announcement": "664880df217a8925c3715f29",
+	"eventsListPage": "663cda58864517dbe569a395"
 }]
 

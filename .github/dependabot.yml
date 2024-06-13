@@ -21,6 +21,10 @@ updates:
           - "react-dom"
           - "@types/react"
           - "@types/react-dom"
+      turbo:
+        patterns:
+          - "turbo"
+          - "eslint-config-turbo"
       lint:
         patterns:
           - "eslint*"

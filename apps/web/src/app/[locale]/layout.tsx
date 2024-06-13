@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 // eslint-disable-next-line camelcase -- next/font/google
 import { Inter, Roboto_Mono } from "next/font/google";
 import { Footer } from "../../components/footer";
 import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
-import { cn } from "../../lib/utils.ts";
-import "../globals.css";
-import { I18nProviderClient } from "../../locales/client.ts";
-import { type Locale } from "../../locales/server.ts";
+import { SkipLink } from "../../components/skip-link";
+import { cn } from "../../lib/utils";
+import "./globals.css";
+import { type Locale } from "../../locales/server";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
@@ -15,7 +15,7 @@ const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
 });
 
-interface LayoutProps {
+export interface LayoutProps {
   params: {
     locale: Locale;
   };
@@ -38,15 +38,41 @@ const localizedMetadata = {
   },
 } as const;
 
+const icons = {
+  icon: [
+    {
+      rel: "icon",
+      type: "image/png",
+      media: "(prefers-color-scheme: light)",
+      url: "/icon_dark.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      media: "(prefers-color-scheme: dark)",
+      url: "/icon_light.png",
+    },
+  ],
+};
+
+const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
+
 export const generateMetadata = ({
   params: { locale },
 }: LayoutProps): Metadata => ({
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
   ...(localizedMetadata[locale] || localizedMetadata.fi),
-  metadataBase: new URL("https://tietokilta.fi"),
+  metadataBase: new URL(mainUrl),
+  generator: "Next.js",
+  creator: "Tietokilta ry",
+  icons,
 });
 
-export default function LocaleLayout({
+export const viewport: Viewport = {
+  themeColor: "black",
+};
+
+export default function RootLayout({
   children,
   params: { locale },
 }: {
@@ -55,14 +81,13 @@ export default function LocaleLayout({
   return (
     <html lang={locale}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
-        <I18nProviderClient locale={locale}>
-          <div className="flex min-h-screen flex-col">
-            <MobileNav className="sticky top-0 z-50 md:hidden" />
-            <MainNav className="sticky top-0 z-50 hidden md:block" />
-            <div className="min-h-screen flex-1">{children}</div>
-            <Footer />
-          </div>
-        </I18nProviderClient>
+        <SkipLink />
+        <div className="flex min-h-screen flex-col">
+          <MobileNav className="sticky top-0 z-50 lg:hidden" />
+          <MainNav className="sticky top-0 z-50 hidden lg:block" />
+          <div className="min-h-screen flex-1">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

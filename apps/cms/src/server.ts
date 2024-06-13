@@ -61,6 +61,16 @@ const start = async (): Promise<void> => {
               password,
             },
           });
+        } else {
+          payloadInstance.logger.info(
+            `user ${email} found, resetting password...`,
+          );
+          const defaultUser = user.docs[0];
+          await payloadInstance.update({
+            collection: "users",
+            id: defaultUser.id,
+            data: { password },
+          });
         }
       }
     },

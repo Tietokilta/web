@@ -8,7 +8,7 @@
 		"$date": "2023-11-06T13:59:29.144Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-23T11:26:43.299Z"
+		"$date": "2024-05-19T11:36:45.458Z"
 	},
 	"__v": 0,
 	"content": {
@@ -2055,7 +2055,9 @@
 		"fi": "Mahtavaa, että olet kiinnostunut tietotekniikan opiskelusta Aalto-yliopistossa! Tietotekniikan tutkinto Aallossa koostuu monista teoreettisista sekä käytännönläheisistä kursseista, ja opinnot tarjoavatkin koulutuksen joka vastaa Helsingin yliopiston tutkintoa lisätyllä insinöörinäkökulmalla sekä projektikursseilla.",
 		"en": "Mahtavaa, että olet kiinnostunut tietotekniikan opiskelusta Aalto-yliopistossa! Tietotekniikan tutkinto Aallossa koostuu monista teoreettisista sekä käytännönläheisistä kursseista, ja opinnot tarjoavatkin koulutuksen joka vastaa Helsingin yliopiston tutkintoa lisätyllä insinöörinäkökulmalla sekä projektikursseilla."
 	},
-	"hideTableOfContents": false
+	"hideTableOfContents": false,
+	"icon": "NavApplicants",
+	"type": "standard"
 },
 {
 	"_id": {
@@ -2067,7 +2069,7 @@
 		"$date": "2023-11-06T14:00:25.121Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-23T11:29:28.478Z"
+		"$date": "2024-05-19T11:36:32.144Z"
 	},
 	"__v": 0,
 	"content": {
@@ -2085,7 +2087,38 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kysymyksiä ilmetessä yhteyttä voi ottaa myös fuksikapteeneihin Emmaan ja Samiin sähköpostilla fuksikapteeni [at] tietokilta.fi tai telegramissa [at]TiKFuksikapteenit.",
+								"text": "Kysymyksiä ilmetessä yhteyttä voi ottaa myös fuksikapteeneihin Nooraan ja Filippiin sähköpostilla ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "fuksikapteeni@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:fuksikapteeni@tietokilta.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " tai telegramissa @TiKFuksikapteenit.",
 								"type": "text",
 								"version": 1
 							}
@@ -2103,7 +2136,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Johdanto",
+								"text": "Tervetuloa!",
 								"type": "text",
 								"version": 1
 							}
@@ -2122,7 +2155,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Fuksi on ensimmäisen vuoden yliopisto-opiskelija, joka totuttelee elämään yliopistomaailmassa ja opiskelijayhteisössä. Jokainen vanhemmista tieteenharjoittajista on joskus ollut fuksi ja joutunut omaksumaan valtavasti uutta tietoa ja taitoa liittyen niin opiskeluun kuin muuhun oheistoimintaan. Heistä osa on nyt auttamassa uusia opiskelijoita hyvään alkuun Tietokillan fukseina suuressa Aalto-yliopistossa.",
+								"text": "Fuksi on ensimmäisen vuoden yliopisto-opiskelija, joka totuttelee elämään yliopistomaailmassa ja opiskelijayhteisössä. Jokainen vanhemmista tieteenharjoittajista on joskus ollut fuksi ja joutunut omaksumaan valtavasti uutta tietoa ja taitoa liittyen niin opiskeluun kuin muuhun oheistoimintaan. He ovat auttamassa uusia opiskelijoita hyvään alkuun Tietokillan fukseina  Aalto-yliopistossa.",
 								"type": "text",
 								"version": 1
 							}
@@ -2158,13 +2191,44 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Fuksin vuosi huipentuu mahdollisena wappuna, jonka järjestämisestä Fuksimajuri päättää keväällä. Tällöin teekkarin arvonimen arvoisiksi itsensä osoittaneet fuksit saavat ensi kertaa painaa teekkarilakin päähänsä.",
+								"text": "Fuksin vuosi huipentuu mahdollisena Wappuna, jonka järjestämisestä Fuksimajuri päättää keväällä. Tällöin teekkarin arvonimen arvoisiksi itsensä osoittaneet fuksit saavat ensi kertaa painaa teekkarilakin päähänsä.",
 								"type": "text",
 								"version": 1
 							}
 						],
 						"direction": "ltr",
 						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 2,
+								"mode": "normal",
+								"style": "",
+								"text": "Noora Puhakka & Filip Eller",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"type": "linebreak",
+								"version": 1
+							},
+							{
+								"detail": 0,
+								"format": 2,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksikapteenit '24",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -2195,7 +2259,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Teekkareista ja teekkariudesta liikkuu lukematon määrä erilaisia, joskus negatiivisiakin, stereotypioita ja ennakkoluuloja. Älä kuitenkaan anna niiden häiritä, vaan ota kaikki irti ensimmäisestä vuodestasi ja tutustu itse teekkarikulttuuriin ja sen moniin muotoihin.",
+								"text": "Teekkareista ja teekkariudesta liikkuu lukematon määrä erilaisia stereotypioita ja ennakkoluuloja. Ota kaikki irti ensimmäisestä vuodestasi ja tutustu itse teekkarikulttuuriin ja sen moniin muotoihin!",
 								"type": "text",
 								"version": 1
 							}
@@ -2213,7 +2277,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Teekkarius on muun muassa hauskanpitoa, yhdessä tekemistä ja rentoa elämänasennetta. Otaniemen kampusalue kuhisee jatkuvasti elämää ja tapahtumia, jotka ilmentävät tätä: on juhlimista, laulamista, urheilua, musiikkia ja tietenkin myös ihan vain rentoa hengailua kavereiden kanssa.",
+								"text": "Teekkarius on muun muassa hauskanpitoa, yhdessä tekemistä ja rentoa elämänasennetta. Otaniemen kampusalue kuhisee jatkuvasti elämää ja tapahtumia, jotka ilmentävät tätä: on juhlimista, laulamista, pelailua, urheilua, musiikkia ja tietenkin myös ihan vain rentoa hengailua kavereiden kanssa.",
 								"type": "text",
 								"version": 1
 							}
@@ -2249,6 +2313,98 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
+								"text": "Fuksivuosi",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksiopas",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h3"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Fuksiopas on tietopaketti killasta, teekkarielämästä, opinnoista ja muista käytännön asioista kuten ensimmäisien opiskelupäivien sisällöstä ja opiskelija-asunnon hankkimisesta. Se lähetetään elokuun alussa kaikille tietotekniikan tutkinto-ohjelmaan päässeille uusille opiskelijoille eli Tietokillan fukseille.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Opasta ei tarvitse lukea kannesta kanteen saadakseen tarpeelliset tiedot ennen saapumistaan Otaniemeen. Kannattaa kuitenkin tutustua oppaaseen ja painaa mieleen erityisesti tarvike/tehtävälistat, jotka auttavat valtavasti asioiden hoitamisessa ennen opintojen aloittamista ja varsinkin ensimmäisinä päivinä Otaniemessä.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Vuoden 2024 fuksiopas julkaistaan tälle sivulle piakkoin.",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
 								"text": "Fuksipisteet",
 								"type": "text",
 								"version": 1
@@ -2268,7 +2424,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Fuksipisteet ovat kiltojen käyttämä mittari teekkarikulttuurin monimuotoisuuteen tutustumisesta, ja niillä fuksi osoittaa ansaitsevansa teekkarin arvonimen ja sen symbolin eli teekkarilakin. Pisteiden kerääminen ei ole itsetarkoitus vaan tavoitteena on motivoida fukseja tutustumaan laajasti erilaisiin teekkarikulttuurin ilmentymiin, pitämään hauskaa, tutustumaan toisiin opiskelijoihin sekä etenkin auttaa löytämään ne omasta mielestä kivoimmat tekemiset, jotka auttavat rentoutumaan vaativan opiskelun ohella.",
+								"text": "Fuksipisteet ovat kiltojen käyttämä mittari teekkarikulttuurin monimuotoisuuteen tutustumisesta, ja niillä fuksi osoittaa ansaitsevansa teekkarin arvonimen ja sen symbolin eli teekkarilakin. Pisteiden kerääminen ei ole itse tarkoitus vaan tavoitteena on motivoida fukseja tutustumaan laajasti erilaisiin teekkarikulttuurin ilmentymiin, pitämään hauskaa, tutustumaan toisiin opiskelijoihin sekä etenkin auttaa löytämään ne omasta mielestä kivoimmat tekemiset, jotka auttavat rentoutumaan vaativan opiskelun ohella.",
 								"type": "text",
 								"version": 1
 							}
@@ -2296,37 +2452,6 @@
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 2,
-								"mode": "normal",
-								"style": "",
-								"text": "Emma Astikainen & Sami Porio",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"type": "linebreak",
-								"version": 1
-							},
-							{
-								"detail": 0,
-								"format": 2,
-								"mode": "normal",
-								"style": "",
-								"text": "Fuksikapteenit '23",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
 					}
 				],
 				"direction": "ltr"
@@ -2346,7 +2471,69 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kysymyksiä ilmetessä yhteyttä voi ottaa myös fuksikapteeneihin Emmaan ja Samiin sähköpostilla fuksikapteeni [at] tietokilta.fi tai telegramissa [at]TiKFuksikapteenit.",
+								"text": "If you have questions about studying here and can't find the answers on this page, contact the masters and international captain Kirill through mail:  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "international@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:international@tietokilta.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " or in Telegram: @kvtik or the Bachelors captains Noora and Filip  ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "fuksikapteeni@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:fuksikapteeni@tietokilta.fi"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": " or in telegram @TiKFuksikapteenit",
 								"type": "text",
 								"version": 1
 							}
@@ -2604,13 +2791,15 @@
 	},
 	"title": {
 		"fi": "Fuksit",
-		"en": "Fuksis"
+		"en": "New Students"
 	},
 	"description": {
-		"fi": "Moi fuksi! Oletko napannut opiskelupaikan tietotekniikan koulutusohjelmasta? Mahtavaa, onnea! Käy liittymässä fuksien Telegram-ryhmään tästä. Tutustu myös fuksioppaaseen, sieltä löydät koottuna paljon hyödyllistä uusia opiskelijoita koskevaa tietoa.",
-		"en": "Moi fuksi! Oletko napannut opiskelupaikan tietotekniikan koulutusohjelmasta? Mahtavaa, onnea! Käy liittymässä fuksien Telegram-ryhmään tästä. Tutustu myös fuksioppaaseen, sieltä löydät koottuna paljon hyödyllistä uusia opiskelijoita koskevaa tietoa."
+		"fi": "Moi fuksi! Oletko napannut opiskelupaikan tietotekniikan koulutusohjelmasta? Mahtavaa, onnea! Käy liittymässä fuksien Telegram-ryhmään tästä (linkki tulossa). Tutustu myös fuksioppaaseen tästä, sieltä löydät koottuna paljon hyödyllistä uusia opiskelijoita koskevaa tietoa.",
+		"en": "Hello new student! Are you coming to study computer science to Aalto? Awesome, congratulations! Join the new international and masters student Telegram here! Read also the fuksi guide, it has a lot of relevant info for new students!"
 	},
-	"hideTableOfContents": false
+	"hideTableOfContents": false,
+	"type": "standard",
+	"icon": "NavFuksis"
 },
 {
 	"_id": {
@@ -2622,7 +2811,7 @@
 		"$date": "2023-11-06T14:01:11.528Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-23T11:29:45.696Z"
+		"$date": "2024-05-19T11:36:57.781Z"
 	},
 	"__v": 0,
 	"content": {
@@ -2723,6 +2912,129 @@
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Main Partners",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "6648e4de8a328e4b92da63de",
+							"blockName": "",
+							"blockType": "image-link-grid",
+							"images": [
+								{
+									"id": "6648e4df8a328e4b92da63df",
+									"image": "659afc6bfab28407b9c68069",
+									"caption": "Siili",
+									"externalLink": "https://reaktor.fi"
+								},
+								{
+									"id": "6648e50b8a328e4b92da63e0",
+									"image": "659affde2252cfbb398aa590",
+									"caption": "Siili",
+									"externalLink": "https://siili.fi"
+								},
+								{
+									"id": "6648eb5cd0b0d5b587f0e177",
+									"image": "659afc6bfab28407b9c68069",
+									"caption": "Siili",
+									"externalLink": "https://reaktor.fi"
+								},
+								{
+									"id": "6648eb64d0b0d5b587f0e179",
+									"image": "659affde2252cfbb398aa590",
+									"caption": "Siili",
+									"externalLink": "https://siili.fi"
+								},
+								{
+									"id": "6648e5348a328e4b92da63e1",
+									"image": "659b00362252cfbb398aa5a6",
+									"caption": "Smartly",
+									"externalLink": "https://smartly.io"
+								},
+								{
+									"id": "6648eb26d0b0d5b587f0e175",
+									"image": "659b00362252cfbb398aa5a6",
+									"caption": "Smartly",
+									"externalLink": "https://smartly.io"
+								}
+							]
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Partners",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "6648ebfed0b0d5b587f0e17b",
+							"blockName": "",
+							"blockType": "image-link-grid",
+							"images": [
+								{
+									"id": "6648ec00d0b0d5b587f0e17c",
+									"image": "6648f5b34f9a9f8cab779659",
+									"externalLink": "https://atalent.fi"
+								},
+								{
+									"id": "6648ec64d0b0d5b587f0e17d",
+									"image": "6648ec7402dd3df96a2d966e",
+									"externalLink": "https://www.columbiaroad.com"
+								},
+								{
+									"id": "6648ec88d0b0d5b587f0e17e",
+									"image": "6648ec9302dd3df96a2d96d2",
+									"externalLink": "https://www.solita.fi"
+								},
+								{
+									"id": "6648ece9d0b0d5b587f0e17f",
+									"image": "6648ecf402dd3df96a2d9750",
+									"externalLink": "https://global.abb/group/en"
+								},
+								{
+									"id": "6648ed00d0b0d5b587f0e180",
+									"image": "6648ed1202dd3df96a2d97b8",
+									"externalLink": "https://nitor.com/"
+								}
+							]
+						}
 					},
 					{
 						"children": [
@@ -2926,7 +3238,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Näiden sivujen tarkoitus on kerätä kiinnostuneita yrityksiä varten kuvaus Tietokillan harjoittamasta yrityssuhdetoiminnasta. Kaikissa yhteistyöasioissa voitte ottaa yhteyttä killan ",
+								"text": "Näiden sivujen tarkoitus on kerätä kiinnostuneita yrityksiä varten kuvaus Tietokillan harjoittamasta yrityssuhdetoiminnasta. Kaikissa yhteistyöasioissa voitte ottaa yhteyttä killan ",
 								"type": "text",
 								"version": 1
 							},
@@ -2972,6 +3284,129 @@
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Main Partners",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "6648e4de8a328e4b92da63de",
+							"blockName": "",
+							"blockType": "image-link-grid",
+							"images": [
+								{
+									"id": "6648e4df8a328e4b92da63df",
+									"image": "659afc6bfab28407b9c68069",
+									"caption": "Siili",
+									"externalLink": "https://reaktor.fi"
+								},
+								{
+									"id": "6648e50b8a328e4b92da63e0",
+									"image": "659affde2252cfbb398aa590",
+									"caption": "Siili",
+									"externalLink": "https://siili.fi"
+								},
+								{
+									"id": "6648eb5cd0b0d5b587f0e177",
+									"image": "659afc6bfab28407b9c68069",
+									"caption": "Siili",
+									"externalLink": "https://reaktor.fi"
+								},
+								{
+									"id": "6648eb64d0b0d5b587f0e179",
+									"image": "659affde2252cfbb398aa590",
+									"caption": "Siili",
+									"externalLink": "https://siili.fi"
+								},
+								{
+									"id": "6648e5348a328e4b92da63e1",
+									"image": "659b00362252cfbb398aa5a6",
+									"caption": "Smartly",
+									"externalLink": "https://smartly.io"
+								},
+								{
+									"id": "6648eb26d0b0d5b587f0e175",
+									"image": "659b00362252cfbb398aa5a6",
+									"caption": "Smartly",
+									"externalLink": "https://smartly.io"
+								}
+							]
+						}
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Partners",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "6648ebfed0b0d5b587f0e17b",
+							"blockName": "",
+							"blockType": "image-link-grid",
+							"images": [
+								{
+									"id": "6648ec00d0b0d5b587f0e17c",
+									"image": "6648f5b34f9a9f8cab779659",
+									"externalLink": "https://atalent.fi"
+								},
+								{
+									"id": "6648ec64d0b0d5b587f0e17d",
+									"image": "6648ec7402dd3df96a2d966e",
+									"externalLink": "https://www.columbiaroad.com"
+								},
+								{
+									"id": "6648ec88d0b0d5b587f0e17e",
+									"image": "6648ec9302dd3df96a2d96d2",
+									"externalLink": "https://www.solita.fi"
+								},
+								{
+									"id": "6648ece9d0b0d5b587f0e17f",
+									"image": "6648ecf402dd3df96a2d9750",
+									"externalLink": "https://global.abb/group/en"
+								},
+								{
+									"id": "6648ed00d0b0d5b587f0e180",
+									"image": "6648ed1202dd3df96a2d97b8",
+									"externalLink": "https://nitor.com/"
+								}
+							]
+						}
 					},
 					{
 						"children": [
@@ -3141,7 +3576,9 @@
 		"fi": "Tietokilta on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan tutkinto-ohjelman opiskelijoiden aineyhdistys. Kilta tarjoaa noin 900-henkiselle jäsenistölleen sosiaalista toimintaa, ajaa heidän opintoihinsa liittyviä etuja ja aktivoi heitä ammatillisissa ja yhteiskunnallisissa asioissa. Lisätietoja killastamme löydät näiden sivujen muista osioista",
 		"en": "Tietokilta on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan tutkinto-ohjelman opiskelijoiden aineyhdistys. Kilta tarjoaa noin 900-henkiselle jäsenistölleen sosiaalista toimintaa, ajaa heidän opintoihinsa liittyviä etuja ja aktivoi heitä ammatillisissa ja yhteiskunnallisissa asioissa. Lisätietoja killastamme löydät näiden sivujen muista osioista"
 	},
-	"hideTableOfContents": false
+	"hideTableOfContents": false,
+	"type": "standard",
+	"icon": "NavCompanies"
 },
 {
 	"_id": {
@@ -3724,7 +4161,7 @@
 		"$date": "2023-11-06T14:03:10.838Z"
 	},
 	"updatedAt": {
-		"$date": "2024-03-23T11:22:55.848Z"
+		"$date": "2024-05-15T07:55:52.278Z"
 	},
 	"__v": 0,
 	"content": {
@@ -3756,14 +4193,36 @@
 					{
 						"children": [
 							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "hallitus (at) tietokilta.fi ",
-								"type": "text",
-								"version": 1
-							},
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "hallitus@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:hallitus@tietokilta.fi"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
 							{
 								"children": [
 									{
@@ -3782,15 +4241,18 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
+									"url": "https://tietokilta.fi/kilta/hallitus/",
+									"doc": {
+										"value": "65be5086e56e440d594ddd26",
+										"relationTo": "pages"
+									},
 									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/hallitus/"
+									"linkType": "internal"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -3838,40 +4300,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella (kts. ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "kiltacam",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/kiltahuone/"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "). Yhteyttä voi ottaa myös henkilökohtaisesti.",
+								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella. Yhteyttä voi ottaa myös henkilökohtaisesti.",
 								"type": "text",
 								"version": 1
 							}
@@ -3890,78 +4319,6 @@
 								"mode": "normal",
 								"style": "",
 								"text": "Kiltahuonepäivystyksen aikaan kiltahuoneella on joku hallituksen jäsenistä paikalla. Tällöin voit ostaa esimerkiksi haalarimerkkejä.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "IRC:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "#tietokilta (@IRCnet)",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "News:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "tky.alayhd.tik (Otaxin newseissä)",
 								"type": "text",
 								"version": 1
 							}
@@ -4208,14 +4565,36 @@
 					{
 						"children": [
 							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "hallitus (at) tietokilta.fi ",
-								"type": "text",
-								"version": 1
-							},
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "hallitus@tietokilta.fi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "autolink",
+								"version": 2,
+								"fields": {
+									"linkType": "custom",
+									"url": "mailto:hallitus@tietokilta.fi"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
 							{
 								"children": [
 									{
@@ -4234,15 +4613,18 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
+									"url": "https://tietokilta.fi/kilta/hallitus/",
+									"doc": {
+										"value": "65be5086e56e440d594ddd26",
+										"relationTo": "pages"
+									},
 									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/hallitus/"
+									"linkType": "internal"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -4290,40 +4672,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella (kts. ",
-								"type": "text",
-								"version": 1
-							},
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 0,
-										"mode": "normal",
-										"style": "",
-										"text": "kiltacam",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": "ltr",
-								"format": "",
-								"indent": 0,
-								"type": "link",
-								"version": 2,
-								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://tietokilta.fi/kilta/kiltahuone/"
-								}
-							},
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "). Yhteyttä voi ottaa myös henkilökohtaisesti.",
+								"text": "Kiltahuonepäivystykset ovat lukukausien aikana ilmoitustaulun osoittamaan aikaan. Hallituslaisia pyörii kuitenkin muinakin aikoina säännöllisen epäsäännöllisesti kiltahuoneella. Yhteyttä voi ottaa myös henkilökohtaisesti.",
 								"type": "text",
 								"version": 1
 							}
@@ -4342,78 +4691,6 @@
 								"mode": "normal",
 								"style": "",
 								"text": "Kiltahuonepäivystyksen aikaan kiltahuoneella on joku hallituksen jäsenistä paikalla. Tällöin voit ostaa esimerkiksi haalarimerkkejä.",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "IRC:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "#tietokilta (@IRCnet)",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 1,
-								"mode": "normal",
-								"style": "",
-								"text": "News:",
-								"type": "text",
-								"version": 1
-							}
-						],
-						"direction": "ltr",
-						"format": "start",
-						"indent": 0,
-						"type": "paragraph",
-						"version": 1
-					},
-					{
-						"children": [
-							{
-								"detail": 0,
-								"format": 0,
-								"mode": "normal",
-								"style": "",
-								"text": "tky.alayhd.tik (Otaxin newseissä)",
 								"type": "text",
 								"version": 1
 							}
@@ -4646,10 +4923,11 @@
 		"en": "Contact"
 	},
 	"description": {
-		"fi": "Killan yhteystiedot",
+		"fi": "Killan osoite, yhteystiedot, laskutustiedot ja muut",
 		"en": "Guild contact information"
 	},
-	"hideTableOfContents": false
+	"hideTableOfContents": false,
+	"type": "standard"
 },
 {
 	"_id": {
@@ -6264,7 +6542,7 @@
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
 	},
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"type": "standard"
 },
 {
@@ -6425,14 +6703,14 @@
 	"_id": {
 		"$oid": "65be65d4153050fbf6aaedee"
 	},
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"hidden": false,
 	"_status": "published",
 	"createdAt": {
 		"$date": "2024-02-03T16:12:04.152Z"
 	},
 	"updatedAt": {
-		"$date": "2024-04-05T08:04:48.177Z"
+		"$date": "2024-06-01T07:35:36.006Z"
 	},
 	"__v": 0,
 	"content": {
@@ -6686,7 +6964,7 @@
 		"fi": "Toimikunnat, toimikuntien puheenjohtajat ja toimihenkilöt vuodelle 2024. ",
 		"en": "Committees, committee chairs, officials and others for year 2024."
 	},
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -11576,77 +11854,6 @@
 },
 {
 	"_id": {
-		"$oid": "660ec51b462dc275833c3218"
-	},
-	"type": "special",
-	"hideTableOfContents": false,
-	"hidden": false,
-	"_status": "published",
-	"createdAt": {
-		"$date": "2024-04-04T15:19:55.202Z"
-	},
-	"updatedAt": {
-		"$date": "2024-04-04T15:28:27.546Z"
-	},
-	"__v": 0,
-	"description": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	},
-	"path": {
-		"fi": "/fi/tapahtumat",
-		"en": "/en/events"
-	},
-	"slug": {
-		"fi": "tapahtumat",
-		"en": "events"
-	},
-	"specialPageType": "events-list",
-	"title": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	}
-},
-{
-	"_id": {
-		"$oid": "660ec537462dc275833c32a6"
-	},
-	"title": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	},
-	"description": {
-		"fi": "Tapahtumat",
-		"en": "Events"
-	},
-	"type": "redirect",
-	"hideTableOfContents": false,
-	"specialPageType": "events-list",
-	"path": {
-		"fi": "/fi/kilta/tapahtumat",
-		"en": "/en/guild/events"
-	},
-	"slug": {
-		"fi": "tapahtumat",
-		"en": "events"
-	},
-	"hidden": false,
-	"_status": "published",
-	"createdAt": {
-		"$date": "2024-04-04T15:20:23.183Z"
-	},
-	"updatedAt": {
-		"$date": "2024-04-04T15:28:21.326Z"
-	},
-	"__v": 0,
-	"redirectToPage": "660ec51b462dc275833c3218",
-	"topic": {
-		"value": "6548f0f4d7febb86e2235b89",
-		"relationTo": "topics"
-	}
-},
-{
-	"_id": {
 		"$oid": "660faec8e9b2f03b8041308f"
 	},
 	"title": {
@@ -11658,7 +11865,7 @@
 		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -11736,7 +11943,7 @@
 		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -11814,7 +12021,7 @@
 		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -11892,7 +12099,7 @@
 		"en": "Tällä sivulla on esitelty killan hallituksen jäsenet vuodelle 2023 yhteystietoineen.\nMikäli haluat ottaa yhteyttä koko hallitukseen, voit lähettää sähköpostia osoitteeseen hallitus (at) tietokilta.fi."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -11970,7 +12177,7 @@
 		"en": "Committees, committee chairs, officials and others for year 2024."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -12108,7 +12315,7 @@
 		"en": "Committees, committee chairs, officials and others for year 2024."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -12246,7 +12453,7 @@
 		"en": "Committees, committee chairs, officials and others for year 2024."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -12384,7 +12591,7 @@
 		"en": "Committees, committee chairs, officials and others for year 2024."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -12522,7 +12729,7 @@
 		"en": "Committees, committee chairs, officials and others for year 2024."
 	},
 	"type": "standard",
-	"hideTableOfContents": true,
+	"tableOfContents": "none",
 	"content": {
 		"fi": {
 			"root": {
@@ -12651,7 +12858,7 @@
 	"_id": {
 		"$oid": "663cda58864517dbe569a395"
 	},
-	"type": "special",
+	"type": "events-list",
 	"hideTableOfContents": false,
 	"hidden": false,
 	"_status": "published",
@@ -12659,7 +12866,7 @@
 		"$date": "2024-05-09T14:14:48.279Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T14:19:18.662Z"
+		"$date": "2024-05-19T11:37:17.141Z"
 	},
 	"__v": 0,
 	"description": {
@@ -12678,7 +12885,9 @@
 	"title": {
 		"fi": "Tapahtumat",
 		"en": "Events"
-	}
+	},
+	"redirectToPage": "663cda98864517dbe569a469",
+	"icon": "NavEvents"
 },
 {
 	"_id": {
@@ -12692,7 +12901,7 @@
 		"fi": "Tapahtumat",
 		"en": "Events"
 	},
-	"type": "special",
+	"type": "redirect",
 	"hideTableOfContents": false,
 	"specialPageType": "events-list",
 	"path": {
@@ -12709,13 +12918,14 @@
 		"$date": "2024-05-09T14:15:52.35Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T14:19:33.87Z"
+		"$date": "2024-05-18T13:16:52.701Z"
 	},
 	"__v": 0,
 	"topic": {
 		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
-	}
+	},
+	"redirectToPage": "663cda58864517dbe569a395"
 },
 {
 	"_id": {
@@ -12729,7 +12939,7 @@
 		"$date": "2024-05-09T14:16:29.932Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-09T14:21:36.608Z"
+		"$date": "2024-05-15T06:56:06.529Z"
 	},
 	"__v": 0,
 	"content": {
@@ -12778,35 +12988,21 @@
 						"version": 1
 					},
 					{
-						"children": [
-							{
-								"children": [
-									{
-										"detail": 0,
-										"format": 2,
-										"mode": "normal",
-										"style": "",
-										"text": "...",
-										"type": "text",
-										"version": 1
-									}
-								],
-								"direction": null,
-								"format": "",
-								"indent": 0,
-								"type": "listitem",
-								"version": 1,
-								"value": 1
-							}
-						],
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "committees",
+						"value": {
+							"id": "66445c6805b3ecb3f9db652e"
+						}
+					},
+					{
+						"children": [],
 						"direction": null,
 						"format": "",
 						"indent": 0,
-						"type": "list",
-						"version": 1,
-						"listType": "bullet",
-						"start": 1,
-						"tag": "ul"
+						"type": "paragraph",
+						"version": 1
 					},
 					{
 						"children": [
@@ -12998,7 +13194,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Inkubion hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Inkubion häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
+								"text": "Tietokillan hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Tietokillan häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
 								"type": "text",
 								"version": 1
 							}
@@ -13426,7 +13622,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Inkubio on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
+								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Tietokilta on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
 								"type": "text",
 								"version": 1
 							},
@@ -13704,6 +13900,42 @@
 										"format": 0,
 										"mode": "normal",
 										"style": "",
+										"text": "Tietokillan eettinen ohjesääntö (Code of Conduct)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://",
+									"doc": {
+										"value": "663cdaf1864517dbe569a5d4",
+										"relationTo": "pages"
+									},
+									"newTab": false,
+									"linkType": "internal"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
 										"text": "AYY:n turvallisemman tilan periaatteet",
 										"type": "text",
 										"version": 1
@@ -13715,15 +13947,14 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -13748,10 +13979,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -13781,10 +14011,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://into.aalto.fi/pages/viewpage.action?pageId=1183869"
+									"url": "https://www.aalto.fi/fi/opiskelijan-tukipalvelut/tukea-hairintatilanteisiin",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -14063,7 +14292,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Inkubion hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Inkubion häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
+								"text": "Tietokillan hallitus nimittää häirintäyhdyshenkilöt, joihin voi ottaa yhteyttä häirintätilanteissa. Kaikki ilmoitetut tapaukset käsitellään asianomaisen ehdoin. Tietokillan häirintäyhdyshenkilöt ovat sitoutuneet toimimaan häirintätapauksissa luottamuksellisesti sekä kaikkia osapuolia kunnioittaen. ",
 								"type": "text",
 								"version": 1
 							}
@@ -14491,7 +14720,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Inkubio on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
+								"text": "Killan tapahtumissa ei hyväksytä häirintää missään muodossa ja Tietokilta on sitoutunut noudattamaan AYY:n turvallisemman tilan periaatteita. ",
 								"type": "text",
 								"version": 1
 							},
@@ -14769,6 +14998,42 @@
 										"format": 0,
 										"mode": "normal",
 										"style": "",
+										"text": "Tietokillan eettinen ohjesääntö (Code of Conduct)",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://",
+									"doc": {
+										"value": "663cdaf1864517dbe569a5d4",
+										"relationTo": "pages"
+									},
+									"newTab": false,
+									"linkType": "internal"
+								}
+							}
+						],
+						"direction": "ltr",
+						"format": "start",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
 										"text": "AYY:n turvallisemman tilan periaatteet",
 										"type": "text",
 										"version": 1
@@ -14780,15 +15045,14 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet"
+									"url": "https://www.ayy.fi/fi/hallinnolliset-asiakirjat/turvallisemman-tilan-periaatteet",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
 						"direction": "ltr",
-						"format": "start",
+						"format": "",
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
@@ -14813,10 +15077,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot"
+									"url": "https://www.ayy.fi/fi/palvelut-jasenille/hairintayhdyshenkilot",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -14846,10 +15109,9 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"doc": null,
-									"linkType": "custom",
-									"newTab": false,
-									"url": "https://into.aalto.fi/pages/viewpage.action?pageId=1183869"
+									"url": "https://www.aalto.fi/fi/opiskelijan-tukipalvelut/tukea-hairintatilanteisiin",
+									"newTab": true,
+									"linkType": "custom"
 								}
 							}
 						],
@@ -16158,6 +16420,144 @@
 	},
 	"topic": {
 		"value": "663cdb0b864517dbe569a648",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "66488d4112729ad2cf17903d"
+	},
+	"type": "weekly-newsletter",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-18T11:13:05.218Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:47:01.047Z"
+	},
+	"__v": 0,
+	"description": {
+		"fi": "Täältä löydät killan uusimman viikkotiedotteen!",
+		"en": "Here you can find the most recent weekly newsletter!"
+	},
+	"path": {
+		"fi": "/fi/kilta/viikkotiedote",
+		"en": "/en/guild/weekly-newsletter"
+	},
+	"slug": {
+		"fi": "viikkotiedote",
+		"en": "weekly-newsletter"
+	},
+	"title": {
+		"fi": "Viikkotiedote",
+		"en": "Weekly Newsletter"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
+		"relationTo": "topics"
+	}
+},
+{
+	"_id": {
+		"$oid": "6648a315efa9384f07f5c283"
+	},
+	"type": "weekly-newsletters-list",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-18T12:46:13.911Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T12:47:37.603Z"
+	},
+	"__v": 0,
+	"description": {
+		"fi": "Täältä löydät kaikki aikaisemmat viikkotiedotteet!",
+		"en": "Here you can find all previous weekly newsletters!"
+	},
+	"path": {
+		"fi": "/fi/viikkotiedotteet",
+		"en": "/en/weekly-newsletters"
+	},
+	"slug": {
+		"fi": "viikkotiedotteet",
+		"en": "weekly-newsletters"
+	},
+	"title": {
+		"fi": "Viikkotiedotteet",
+		"en": "Weekly Newsletter"
+	}
+},
+{
+	"_id": {
+		"$oid": "6648f3dff5c8bf14fb14e377"
+	},
+	"type": "standard",
+	"hideTableOfContents": false,
+	"hidden": false,
+	"_status": "published",
+	"createdAt": {
+		"$date": "2024-05-18T18:30:55.677Z"
+	},
+	"updatedAt": {
+		"$date": "2024-05-18T18:31:25.226Z"
+	},
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"type": "root",
+				"format": "",
+				"indent": 0,
+				"version": 1,
+				"children": [
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"format": "",
+						"type": "relationship",
+						"version": 1,
+						"relationTo": "magazines",
+						"value": {
+							"id": "65f2e257df1a1760cccfd349"
+						}
+					},
+					{
+						"children": [],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					}
+				],
+				"direction": null
+			}
+		}
+	},
+	"description": {
+		"fi": "Lukija voi lukea."
+	},
+	"path": {
+		"fi": "/fi/kilta/alkorytmi"
+	},
+	"slug": {
+		"fi": "alkorytmi"
+	},
+	"title": {
+		"fi": "Alkorytmi"
+	},
+	"topic": {
+		"value": "6548f0f4d7febb86e2235b89",
 		"relationTo": "topics"
 	}
 }]

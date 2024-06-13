@@ -4,6 +4,7 @@ import type {
   Page as PageType,
 } from "@tietokilta/cms-types/payload";
 import type {
+  BeforeDuplicate,
   CollectionConfig,
   Field,
   FieldHook,
@@ -11,18 +12,22 @@ import type {
   PayloadRequest,
 } from "payload/types";
 import { type Locale } from "payload/config";
+import { customAlphabet } from "nanoid";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
-import { revalidatePage } from "../hooks/revalidate-page";
+import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../preview";
-import { getLocale } from "../util";
+import { iconField } from "../fields/icon-field";
+import { appendToStringOrLocalizedString, getLocale } from "../util";
+
+const nanoid = customAlphabet("abcdefghjklmnpqrstuvwxyz23456789", 6);
 
 type Localized<TField> = Record<Locale["code"], TField>;
 
-const formatPath: FieldHook<
-  Page,
-  Page["path"] | Localized<Page["path"]>
-> = async ({ data, req }) => {
+const getFormattedPath = async (
+  data: Partial<Page> | undefined,
+  req: PayloadRequest,
+): Promise<Page["path"] | Localized<Page["path"]>> => {
   if (!data?.slug || !req.payload.config.localization) {
     req.payload.logger.warn(
       "Could not format page path: missing slug or localization config",
@@ -75,6 +80,61 @@ const formatPath: FieldHook<
   return localizedPaths;
 };
 
+const formatPath: FieldHook<
+  Page,
+  Page["path"] | Localized<Page["path"]>
+> = async ({ originalDoc, data, req }) => {
+  const reqLocale = getLocale(req);
+  if (!reqLocale) {
+    req.payload.logger.warn("Could not format page path: missing locale", data);
+    return data?.path;
+  }
+  const formattedPath = await getFormattedPath(data, req);
+
+  if (!formattedPath || !Object.values(formattedPath).every(Boolean)) {
+    return data?.path;
+  }
+
+  const existingPages = (
+    await req.payload.find({
+      collection: "pages",
+      limit: 5,
+      pagination: false,
+      where: {
+        ...(typeof formattedPath === "string"
+          ? {
+              [`path.${reqLocale}`]: { equals: formattedPath },
+            }
+          : {
+              or: Object.entries(formattedPath).map(([locale, path]) => ({
+                [`path.${locale}`]: { equals: path },
+              })),
+            }),
+      },
+      locale: req.locale,
+    })
+  ).docs;
+  const existsPageWithSamePath = existingPages.some(
+    (page) => page.id !== originalDoc?.id,
+  );
+
+  if (existsPageWithSamePath) {
+    const randomSlug = nanoid();
+    return appendToStringOrLocalizedString(formattedPath, `-${randomSlug}`);
+  }
+
+  return formattedPath;
+};
+
+const updateUniquesOnDuplicate: BeforeDuplicate<Page> = ({ data }) => {
+  return {
+    ...data,
+    title: data.title ? `${data.title} (Copy)` : "",
+    slug: data.slug ? `${data.slug}-copy` : "",
+    path: data.path ? `${data.path}-copy` : "",
+  };
+};
+
 const filterCyclicPages: FilterOptions<PageType> = ({ data }) => ({
   id: {
     not_equals: data.id,
@@ -83,10 +143,24 @@ const filterCyclicPages: FilterOptions<PageType> = ({ data }) => ({
 
 const standardPageFields = [
   {
-    name: "hideTableOfContents",
-    type: "checkbox",
+    name: "tableOfContents",
+    type: "select",
     required: true,
-    defaultValue: false,
+    defaultValue: "all",
+    options: [
+      {
+        label: "Show all headings",
+        value: "all",
+      },
+      {
+        label: "Show only top-level headings",
+        value: "top-level",
+      },
+      {
+        label: "Hide table of contents",
+        value: "none",
+      },
+    ],
     admin: {
       position: "sidebar",
     },
@@ -96,20 +170,6 @@ const standardPageFields = [
     type: "richText",
     localized: true,
     required: true,
-  },
-] satisfies Field[];
-
-const specialPageFields = [
-  {
-    name: "specialPageType",
-    type: "select",
-    required: true,
-    options: [
-      {
-        label: "Events List",
-        value: "events-list",
-      },
-    ],
   },
 ] satisfies Field[];
 
@@ -132,6 +192,9 @@ export const Pages: CollectionConfig = {
     preview: generatePreviewUrl<Page>((doc) => {
       return doc.path ?? "/";
     }),
+    hooks: {
+      beforeDuplicate: updateUniquesOnDuplicate,
+    },
   },
   access: {
     read: publishedAndVisibleOrSignedIn,
@@ -165,26 +228,29 @@ export const Pages: CollectionConfig = {
           value: "standard",
         },
         {
-          label: "Special Page",
-          value: "special",
-        },
-        {
           label: "Redirect to Page",
           value: "redirect",
         },
+        {
+          label: "Special: Events List",
+          value: "events-list",
+        },
+        {
+          label: "Special: Weekly Newsletter",
+          value: "weekly-newsletter",
+        },
+        {
+          label: "Special: Weekly Newsletters List",
+          value: "weekly-newsletters-list",
+        },
       ],
     },
+    iconField({ required: false }),
     ...standardPageFields.map((field) => ({
       ...field,
       admin: {
         ...field.admin,
         condition: (data: Partial<Page>) => data.type === "standard",
-      },
-    })),
-    ...specialPageFields.map((field) => ({
-      ...field,
-      admin: {
-        condition: (data: Partial<Page>) => data.type === "special",
       },
     })),
     ...redirectFields.map((field) => ({
@@ -196,7 +262,9 @@ export const Pages: CollectionConfig = {
     {
       name: "path",
       type: "text",
+      index: true,
       localized: true,
+      unique: true,
       hooks: {
         beforeChange: [formatPath],
       },
@@ -240,89 +308,6 @@ export const Pages: CollectionConfig = {
     },
   },
   hooks: {
-    afterChange: [
-      revalidatePage<Page>("pages", (doc, req) => {
-        const locale = getLocale(req);
-        if (!locale) {
-          req.payload.logger.error(
-            "locale not set, cannot revalidate properly",
-          );
-          return;
-        }
-
-        return {
-          where: {
-            path: { equals: doc.path },
-          },
-          locale,
-        };
-      }),
-      revalidatePage<Page>("pages", async (doc, req) => {
-        const localesData = await getAllLocalesData(doc, req);
-        if (!localesData) {
-          return;
-        }
-        const { allLocalesPagePath, localizedPathKey, locale } = localesData;
-
-        return {
-          where: {
-            [localizedPathKey]: { equals: allLocalesPagePath[locale] },
-          },
-          locale: "all",
-        };
-      }),
-      revalidatePage<Page>("pages", async (doc, req) => {
-        const localesData = await getAllLocalesData(doc, req, true);
-        if (!localesData) {
-          return;
-        }
-        const { allLocalesPagePath, localizedPathKey, locale } = localesData;
-
-        return {
-          where: {
-            [localizedPathKey]: { equals: allLocalesPagePath[locale] },
-          },
-          locale: "all",
-        };
-      }),
-    ],
+    afterChange: [revalidateCollection<Page>("pages")],
   },
 };
-
-async function getAllLocalesData(
-  doc: Page,
-  req: PayloadRequest,
-  reverseLocale?: boolean,
-): Promise<
-  | {
-      allLocalesPagePath: Localized<Page["path"]>;
-      localizedPathKey: string;
-      locale: string;
-    }
-  | undefined
-> {
-  const reqLocale = getLocale(req);
-  if (!reqLocale) {
-    req.payload.logger.error("locale not set, cannot revalidate properly");
-    return;
-  }
-
-  let locale = reqLocale;
-  if (reverseLocale) {
-    locale = reqLocale === "fi" ? "en" : "fi";
-  }
-
-  const page = await req.payload.findByID({
-    collection: "pages",
-    id: doc.id,
-    locale: "all",
-  });
-  const allLocalesPagePath = page.path as unknown as Localized<Page["path"]>;
-  const localizedPathKey = `path.${locale}`;
-
-  return {
-    allLocalesPagePath,
-    localizedPathKey,
-    locale,
-  };
-}
