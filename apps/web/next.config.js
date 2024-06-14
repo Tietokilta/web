@@ -4,6 +4,9 @@ const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 /** @type {import("next").NextConfig} */
 module.exports = {
   reactStrictMode: true,
+  env: {
+    PUBLIC_FRONTEND_URL: process.env.PUBLIC_FRONTEND_URL,
+  },
   images: {
     // TODO: only for dev:
     remotePatterns: !isProd

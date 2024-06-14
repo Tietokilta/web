@@ -1,5 +1,4 @@
 import React from "react";
-import Clock from 'react-live-clock';
 import { Inter, Roboto_Mono } from "next/font/google";
 import { cn } from "../../lib/utils.ts";
 import "../globals.css";
@@ -19,10 +18,15 @@ export default function ScreenLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="fi">
-      <body className={cn(inter.variable, robotoMono.variable, "font-mono min-h-screen flex flex-col")}>
+      <body
+        className={cn(
+          inter.variable,
+          robotoMono.variable,
+          "flex min-h-screen flex-col font-mono",
+        )}
+      >
         <InfoScreenHeader />
         {children}
       </body>

@@ -1,13 +1,7 @@
-'use client'
-
-import React, {useState} from "react";
+"use client";
 
 export function InfoScreen() {
-
-  return (
-    <div className="bg-gray-200 flex-1">
-    </div>
-  );
+  return <div className="flex-1 bg-gray-200" />;
 }
 
 export default InfoScreen;

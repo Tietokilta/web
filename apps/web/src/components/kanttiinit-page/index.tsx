@@ -1,8 +1,3 @@
-
 export function KanttiinitPage() {
-  return (
-    <div>
-
-    </div>
-  )
+  return <div>hehee</div>;
 }

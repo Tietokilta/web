@@ -1,29 +1,59 @@
+"use client";
+import { useState, useEffect } from "react";
 import { HSLSchedule } from "../hsl-schedule";
-import { getStop } from "../../assets/api_hooks/hsl_api_hooks.ts";
-import { RenderableStop } from "../../assets/api_hooks/hsl_api_types.ts";
+import { type RenderableStop } from "../../lib/types/hsl-helper-types";
+import { hslFetcher } from "../../lib/fetcher.ts";
 
+export function HSLcombinedSchedule() {
+  const [stopData, setStopData] = useState<RenderableStop[]>([]);
+  const [error, setError] = useState("");
+  useEffect(() => {
+    // This use effect updates the times displayed on the info screen
+    const fetchData = async (): Promise<void> => {
+      try {
+        const result: RenderableStop[] | null = await hslFetcher();
+        setStopData(result ? result : []);
+      } catch (err: any) {
+        setError(err.message);
+      }
+    };
+    // Call fetchData immediately and then set up the interval
+    fetchData()
+      .then()
+      .catch((err: Error) => {
+        setError(err.message);
+      });
+    const intervalId = setInterval(fetchData, 15000); // 15000 milliseconds = 15 seconds
 
-export async function HSLcombinedSchedule() {
-  var response: Response = await fetch(process.env.PUBLIC_FRONTEND_URL.concat("/next_api/fetch-hsl-data"))
-  const hslData = () => {
-    if (response.status === 200) {
-      return response.json()
-  } else
-      return "Null"
-  }
+    // Clear the interval when the component unmounts
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
-
-  return (
-    <div className="flex-row justify-center w-full">
-      <div className="flex justify-center w-full ">
-        <h1 className="flex justify-center text-3xl font-bold pt-4">Aalto-yliopisto (M)</h1>
+  if (error !== "") {
+    return (
+      <div className="flex w-full justify-center">
+        <h1 className="flex justify-center pt-4 text-3xl font-bold">{error}</h1>
       </div>
-      <div className="flex w-full p-8 pt-0 justify-between gap-4">
-        {
-          // {response.map(res => (<HSLSchedule key={res} className="flex flex-col gap-4" />))}
-          hslData().toString()
-        }
+    );
+  }
+  return (
+    <div className="w-full flex-row justify-center">
+      <div className="flex w-full justify-center">
+        <h1 className="flex justify-center pt-4 text-3xl font-bold">
+          Aalto-yliopisto (M)
+        </h1>
+      </div>
+      <div className="flex w-full justify-between gap-4 p-8 pt-0">
+        {stopData.map((res) => (
+          <HSLSchedule
+            key={res.arrivals[0].headSign}
+            result={res}
+            className="flex flex-col gap-4"
+          />
+        ))}
       </div>
     </div>
-  )
+  );
 }
