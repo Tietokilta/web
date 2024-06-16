@@ -39,7 +39,7 @@ export const CommitteeMembers = {
         hidden: true,
       },
       hooks: {
-        afterRead: [formatDisplayTitle],
+        beforeChange: [formatDisplayTitle],
       },
     },
     guildYearField({
