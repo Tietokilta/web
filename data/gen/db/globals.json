@@ -26,6 +26,10 @@
 						},
 						"pages": [
 							{
+								"page": "664aecc3f5cc95ecc394cebd",
+								"id": "664af0cd9ac64d6b32f4fe3f"
+							},
+							{
 								"page": "66488d4112729ad2cf17903d",
 								"id": "660ec54f07e0ae4b83d556e1"
 							},
@@ -34,12 +38,8 @@
 								"id": "6548f244611be65a813f889d"
 							},
 							{
-								"page": "65a2df8e3aa4329c52083af9",
-								"id": "65a2dfb1ac93bb5b462471b0"
-							},
-							{
-								"page": "6648f3dff5c8bf14fb14e377",
-								"id": "6648f40c7b806c13089cd151"
+								"page": "6648ff73e1b71004f16ca1c9",
+								"id": "6648fee794d27b3ea4e83595"
 							}
 						],
 						"externalLinks": [],
@@ -64,16 +64,38 @@
 								"id": "65be6621852e316d00b3d3ad"
 							},
 							{
-								"page": "65a2d95d598aa16e52bc885a",
-								"id": "6548f252611be65a813f889f"
-							},
-							{
-								"page": "65a2d9c0598aa16e52bc895d",
-								"id": "6548f257611be65a813f88a0"
+								"page": "664a02de33b015537cf07f95",
+								"id": "664a0316930e1c031db16040"
 							}
 						],
 						"externalLinks": [],
 						"id": "6548f24d611be65a813f889e"
+					},
+					{
+						"title": {
+							"fi": "Viralliset",
+							"en": "Official"
+						},
+						"pages": [
+							{
+								"page": "65a2d95d598aa16e52bc885a",
+								"id": "6649ea3b37278626f9ad0ada"
+							},
+							{
+								"page": "6649ee77e83c943b36c8c1b4",
+								"id": "6649f13137278626f9ad0adc"
+							},
+							{
+								"page": "6649f316e83c943b36c8d0bb",
+								"id": "6649f37d37278626f9ad0ade"
+							},
+							{
+								"page": "6548f21ed7febb86e2235f5f",
+								"id": "6649fa58ba32ea9e030583e1"
+							}
+						],
+						"externalLinks": [],
+						"id": "6649ea3437278626f9ad0ad9"
 					},
 					{
 						"title": {
@@ -105,7 +127,7 @@
 									"fi": "Laskugeneraattori",
 									"en": "Invoice"
 								},
-								"href": "https://tietokilta.fi/kilta/laskugeneraattori/",
+								"href": "https://old.tietokilta.fi/kilta/laskugeneraattori/",
 								"icon": "Banknote",
 								"id": "6548f278611be65a813f88a3"
 							},
@@ -171,10 +193,10 @@
 		"$date": "2023-11-06T14:05:51.452Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-18T18:31:49.161Z"
+		"$date": "2024-06-04T10:58:03.875Z"
 	},
 	"__v": 0,
-	"logo": "6648ecb1e184dafa12b58503"
+	"logo": "6648fdcf7bcfaaff24ed661e"
 },
 {
 	"_id": {
@@ -198,11 +220,31 @@
 					"icon": "Inbox",
 					"label": {
 						"fi": "Palautelomake",
-						"en": "Give feedback"
+						"en": "Feedback"
 					},
-					"linkType": "external",
-					"url": "https://tietokilta.fi/kilta/palautelomake",
-					"id": "6548f4e9854a99217b8fbd3e"
+					"linkType": "internal",
+					"page": "664a00fb33b015537cf07ade",
+					"id": "664a1d4c4d76b4f6278138c8"
+				},
+				{
+					"icon": "Handshake",
+					"label": {
+						"fi": "Kiitokset",
+						"en": "Thanks"
+					},
+					"linkType": "internal",
+					"page": "664a3058535bd11c1b1c59bd",
+					"id": "664a36f32f200a500d7a005d"
+				},
+				{
+					"icon": "Megaphone",
+					"label": {
+						"fi": "Ilmoita viasta",
+						"en": "Report a bug"
+					},
+					"linkType": "internal",
+					"page": "664aecc3f5cc95ecc394cebd",
+					"id": "664af0439ac64d6b32f4fe3d"
 				}
 			],
 			"id": "6548f4e6854a99217b8fbd3d",
@@ -258,6 +300,10 @@
 			"blockType": "link-row"
 		},
 		{
+			"title": {
+				"fi": "Pääyhteistyökumppanit",
+				"en": "Main Partners"
+			},
 			"logos": [
 				{
 					"image": "659afc6bfab28407b9c68069",
@@ -285,7 +331,7 @@
 		"$date": "2023-11-06T14:14:03.116Z"
 	},
 	"updatedAt": {
-		"$date": "2024-01-07T19:50:31.844Z"
+		"$date": "2024-05-20T06:57:41.522Z"
 	},
 	"__v": 0
 },
@@ -300,34 +346,726 @@
 				"id": "664894fe6ea43dec7c29bdc9"
 			},
 			{
-				"text": "As seen on TV!",
+				"text": "Kaikki on täällä!",
 				"id": "6648951fe9f34a501083cba9"
 			},
 			{
-				"text": "100% pure!",
+				"text": "Lukija voi miettiä",
 				"id": "66489699e9f34a501083cbad"
 			},
 			{
-				"text": "May contain nuts!",
+				"text": "Testataan tuotannossa 😎",
 				"id": "664896a0e9f34a501083cbae"
+			},
+			{
+				"text": "Harvoin tulee vierailtua TiKin nettisivuilla, mutta jos nyt tänään",
+				"id": "6648cc017bf4f5ccd2358ab7"
+			},
+			{
+				"text": "Tänään Mikkoilee!",
+				"id": "6648cc147bf4f5ccd2358ab8"
+			},
+			{
+				"text": "git push --force",
+				"id": "6648cc807bf4f5ccd2358ab9"
+			},
+			{
+				"text": "Bussi ei odota",
+				"id": "6648cccd7bf4f5ccd2358aba"
+			},
+			{
+				"text": "010101000110100101001011",
+				"id": "6648ccda7bf4f5ccd2358abb"
+			},
+			{
+				"text": "Ilmeeni, kun TiKillä uudet nettisivut 🤯",
+				"id": "6648cd0a7bf4f5ccd2358abc"
+			},
+			{
+				"text": "hei; DROP DATABASE tik_prod",
+				"id": "6648cd407bf4f5ccd2358abd"
+			},
+			{
+				"text": "rm -rf --no-preserve-root /",
+				"id": "6648ce077bf4f5ccd2358abe"
+			},
+			{
+				"text": "404 Not found",
+				"id": "6648ce397bf4f5ccd2358abf"
+			},
+			{
+				"text": "401 Unauthorized",
+				"id": "6648ce607bf4f5ccd2358ac0"
+			},
+			{
+				"text": "Mitä jengi tekee?",
+				"id": "6648ce687bf4f5ccd2358ac1"
+			},
+			{
+				"text": "Uutta kontsaa? Katso kuvat!",
+				"id": "6648ce707bf4f5ccd2358ac2"
+			},
+			{
+				"text": "ISOi juttui tulos",
+				"id": "6648ce907bf4f5ccd2358ac3"
+			},
+			{
+				"text": "Kirjoitetaanko ISO ISOlla?",
+				"id": "6648cea57bf4f5ccd2358ac4"
+			},
+			{
+				"text": "Onks kellään saksia?",
+				"id": "6648cedd7bf4f5ccd2358ac5"
+			},
+			{
+				"text": "Kantsii tulla nopee!",
+				"id": "6648cee57bf4f5ccd2358ac6"
+			},
+			{
+				"text": ":(){ :|:& };:",
+				"id": "6648cef77bf4f5ccd2358ac7"
+			},
+			{
+				"text": "Ongelma.",
+				"id": "6648cf0a7bf4f5ccd2358ac8"
+			},
+			{
+				"text": "Vilpittömät huutikset",
+				"id": "6648cf327bf4f5ccd2358ac9"
+			},
+			{
+				"text": "Ei Maarintaloa lukita yöksi",
+				"id": "6648cf777bf4f5ccd2358aca"
+			},
+			{
+				"text": "Tallenna muutokset, Eiku",
+				"id": "6648cf937bf4f5ccd2358acb"
+			},
+			{
+				"text": "Se on sit just niin",
+				"id": "6648d0987bf4f5ccd2358acc"
+			},
+			{
+				"text": "Uudet sivut tulee, oletko valmis?",
+				"id": "6648d0a87bf4f5ccd2358acd"
+			},
+			{
+				"text": "Olettehan TEKin jo TiKin jäsen?",
+				"id": "6648d0c67bf4f5ccd2358ace"
+			},
+			{
+				"text": "Kerkeeks vielä aloittaa uusiksi?",
+				"id": "6648d34d7bf4f5ccd2358acf"
+			},
+			{
+				"text": "Killan maine ja identiteetti",
+				"id": "6648d3587bf4f5ccd2358ad0"
+			},
+			{
+				"text": "Vuodesta 1986",
+				"id": "6648d3687bf4f5ccd2358ad1"
+			},
+			{
+				"text": "TiK, TiK, TiK, TiK, TiK, TiK, TiK...",
+				"id": "6648d3b67bf4f5ccd2358ad2"
+			},
+			{
+				"text": "Koska droppaa uus Alkorytmi?",
+				"id": "6648d46d7bf4f5ccd2358ad3"
+			},
+			{
+				"text": "Made by pematoimikunta",
+				"id": "6648d4847bf4f5ccd2358ad4"
+			},
+			{
+				"text": "Made in Konemiehentie 2",
+				"id": "6648d5167bf4f5ccd2358ad5"
+			},
+			{
+				"text": "#mitä kävi",
+				"id": "6648d5697bf4f5ccd2358ad6"
+			},
+			{
+				"text": "Tänään Bim Bam Bom",
+				"id": "6648d5827bf4f5ccd2358ad7"
+			},
+			{
+				"text": "Miksei hallitus tee mitään?",
+				"id": "6648d5b77bf4f5ccd2358ad8"
+			},
+			{
+				"text": "t.me/tietokilta",
+				"id": "6648d5c27bf4f5ccd2358ad9"
+			},
+			{
+				"text": "Checkouttaa mun bränchiin",
+				"id": "6648d7247bf4f5ccd2358ada"
+			},
+			{
+				"text": "Chomskyn normaalimuodossa",
+				"id": "6648d7ff7bf4f5ccd2358adb"
+			},
+			{
+				"text": "Tietokanta BCNF:ssä",
+				"id": "6648d84f7bf4f5ccd2358adc"
+			},
+			{
+				"text": "Ympyrä sulkeutuu",
+				"id": "6648d8947bf4f5ccd2358add"
+			},
+			{
+				"text": "Voiksä kattoo mun pullarin?",
+				"id": "6648d8d57bf4f5ccd2358ade"
+			},
+			{
+				"text": "Tuleeko sun taski valmiiks? Salee joo.",
+				"id": "6648d8df7bf4f5ccd2358adf"
+			},
+			{
+				"text": "Vastuuvapaus - Mitä se on?",
+				"id": "6648d8f87bf4f5ccd2358ae0"
+			},
+			{
+				"text": "Jatkot Finnoossa!",
+				"id": "6648d90a7bf4f5ccd2358ae1"
+			},
+			{
+				"text": "Tiesitkö, että Finnoossa on Suomen pisimmät liukuportaat?",
+				"id": "6648d9237bf4f5ccd2358ae2"
+			},
+			{
+				"text": "Mikä sun IRC-nicki on?",
+				"id": "6648d9547bf4f5ccd2358ae3"
+			},
+			{
+				"text": "Sä voit Scalaa koodaa",
+				"id": "6648d9697bf4f5ccd2358ae4"
+			},
+			{
+				"text": "Program in C",
+				"id": "6648d98c7bf4f5ccd2358ae5"
+			},
+			{
+				"text": "Torilla tavataan!",
+				"id": "6648d9917bf4f5ccd2358ae6"
+			},
+			{
+				"text": "Meistä tuli teekkareita",
+				"id": "6648d99d7bf4f5ccd2358ae7"
+			},
+			{
+				"text": "Ja niin koodi joutui jo taas dockeriin",
+				"id": "6648d9b37bf4f5ccd2358ae8"
+			},
+			{
+				"text": "Rekursio: katso kohta Rekursio",
+				"id": "6648dab77bf4f5ccd2358ae9"
+			},
+			{
+				"text": "Toteutettu hajautustaululla",
+				"id": "6648dada7bf4f5ccd2358aea"
+			},
+			{
+				"text": "Latautuu ajassa O(1)",
+				"id": "6648db167bf4f5ccd2358aeb"
+			},
+			{
+				"text": "Made with Puzzle Script",
+				"id": "6648db3d7bf4f5ccd2358aec"
+			},
+			{
+				"text": "Wave function collapse",
+				"id": "6648db777bf4f5ccd2358aed"
+			},
+			{
+				"text": "Panikoidaan paniikissa",
+				"id": "6648db8b7bf4f5ccd2358aee"
+			},
+			{
+				"text": "Tikweb 3.0",
+				"id": "6648dba37bf4f5ccd2358aef"
+			},
+			{
+				"text": "Elääkö hylje?",
+				"id": "6648dbca7bf4f5ccd2358af0"
+			},
+			{
+				"text": "ft. kenompi fuksi",
+				"id": "6648dbed7bf4f5ccd2358af1"
+			},
+			{
+				"text": "Soudetaan öisin",
+				"id": "6648dc107bf4f5ccd2358af2"
+			},
+			{
+				"text": "Sori siit.",
+				"id": "6648dc6b7bf4f5ccd2358af3"
+			},
+			{
+				"text": "Instruction-level parallelism",
+				"id": "6648dd1d7bf4f5ccd2358af4"
+			},
+			{
+				"text": "Kuka näitä tekstejä keksii?",
+				"id": "6648dd3b7bf4f5ccd2358af5"
+			},
+			{
+				"text": "Works on my machine",
+				"id": "6648ddfc7bf4f5ccd2358af6"
+			},
+			{
+				"text": "LGTM!",
+				"id": "6648de017bf4f5ccd2358af7"
+			},
+			{
+				"text": "Milloin tulee uudet nettisivut?",
+				"id": "6648de0f7bf4f5ccd2358af8"
+			},
+			{
+				"text": "Ootko kokeillut käynnistää uudelleen?",
+				"id": "6648debe7bf4f5ccd2358af9"
+			},
+			{
+				"text": "I use arch btw",
+				"id": "6648df347bf4f5ccd2358afa"
+			},
+			{
+				"text": "Asenna Gentoo!",
+				"id": "6648df437bf4f5ccd2358afb"
+			},
+			{
+				"text": "Ainutlaatuinen kokemus!",
+				"id": "6648df6f7bf4f5ccd2358afc"
+			},
+			{
+				"text": "Tietokilta on hip ja pop",
+				"id": "6648df7d7bf4f5ccd2358afd"
+			},
+			{
+				"text": "Toteutettu ALOHA-protokollalla",
+				"id": "6648dfc07bf4f5ccd2358afe"
+			},
+			{
+				"text": "Onko tässä mitään järkeä?",
+				"id": "6648dfd97bf4f5ccd2358aff"
+			},
+			{
+				"text": "too philosophical. case closed.",
+				"id": "6648dfe87bf4f5ccd2358b00"
+			},
+			{
+				"text": "Lataa lisää ramia",
+				"id": "6648e0c37bf4f5ccd2358b01"
+			},
+			{
+				"text": "[Object object]",
+				"id": "6648e1237bf4f5ccd2358b02"
+			},
+			{
+				"text": "Segmentation fault",
+				"id": "6648e1657bf4f5ccd2358b03"
+			},
+			{
+				"text": "Exception in thread \"main\" java.lang.NullPointerException",
+				"id": "6648e1b57bf4f5ccd2358b04"
+			},
+			{
+				"text": "return 0;",
+				"id": "6648e1ce7bf4f5ccd2358b05"
+			},
+			{
+				"text": "git commit -m \"add code\"",
+				"id": "6648e1f37bf4f5ccd2358b06"
+			},
+			{
+				"text": "Initial commit",
+				"id": "6648e2177bf4f5ccd2358b07"
+			},
+			{
+				"text": "git blame src/app.ts",
+				"id": "6648e21d7bf4f5ccd2358b08"
+			},
+			{
+				"text": "Kahvin alijäämä korvattu unella",
+				"id": "6648e27c7bf4f5ccd2358b09"
+			},
+			{
+				"text": "Muutetaan kofeiini koodiksi",
+				"id": "6648e2887bf4f5ccd2358b0a"
+			},
+			{
+				"text": "Koodattu ChatGPT:llä",
+				"id": "6648e2917bf4f5ccd2358b0b"
+			},
+			{
+				"text": "As an AI language model, I cannot...",
+				"id": "6648e2c67bf4f5ccd2358b0c"
+			},
+			{
+				"text": "AC-malli Bell–LaPadula",
+				"id": "6648e3537bf4f5ccd2358b0d"
+			},
+			{
+				"text": "Alice, Bob ja Carol",
+				"id": "6648e3c27bf4f5ccd2358b0e"
+			},
+			{
+				"text": "cat ~/.ssh/id_ed25519",
+				"id": "6648e3f27bf4f5ccd2358b0f"
+			},
+			{
+				"text": "chmod -R 777 /",
+				"id": "6648e43f7bf4f5ccd2358b10"
+			},
+			{
+				"text": "Hip hei, ollaan TiK jej!",
+				"id": "6648e4877bf4f5ccd2358b11"
+			},
+			{
+				"text": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+				"id": "6648e4b47bf4f5ccd2358b12"
+			},
+			{
+				"text": "1000-vuotinen perinne",
+				"id": "6648e5317bf4f5ccd2358b13"
+			},
+			{
+				"text": "Tänään nuotioilta",
+				"id": "6648e5387bf4f5ccd2358b14"
+			},
+			{
+				"text": "Kuuluuko ananas ratikkaan?",
+				"id": "6648e57c7bf4f5ccd2358b15"
+			},
+			{
+				"text": "Lumipalloefekti, joka kasvaa syödessä",
+				"id": "6648e5a27bf4f5ccd2358b16"
+			},
+			{
+				"text": "Muistikokukaantestatatosipitkäätekstiäjossaeioleyhtäänvälilyöntejäolisitodellaikäväjossivueitällaistatukisi",
+				"id": "66491b829d12df08ac30b3bb"
+			},
+			{
+				"text": "1 + 1 = 10",
+				"id": "66491b899d12df08ac30b3bc"
+			},
+			{
+				"text": "No cap fr fr",
+				"id": "66491b8d9d12df08ac30b3bd"
+			},
+			{
+				"text": "Avoin ympyrä",
+				"id": "66491b919d12df08ac30b3be"
+			},
+			{
+				"text": "Ctrl+C, Ctrl+V",
+				"id": "66491d774861320bc44cfa59"
+			},
+			{
+				"text": "#pragma omp parallel for",
+				"id": "6649217f6a0bd3a26193a6bc"
+			},
+			{
+				"text": "console.log('Hello world');",
+				"id": "66498d5a900fd99a6ded437b"
+			},
+			{
+				"text": "std::cout << \"Hello World\" << std::endl;",
+				"id": "66498daa900fd99a6ded437c"
+			},
+			{
+				"text": "Ootko kokeillu bogosortia?",
+				"id": "66498df4900fd99a6ded437d"
+			},
+			{
+				"text": "Nii oisko tota koodii pitäny dokumentoida?",
+				"id": "66498fa4900fd99a6ded437e"
+			},
+			{
+				"text": "Koodattu php:lla",
+				"id": "6649944982a6c3f6f4134e71"
+			},
+			{
+				"text": "Virhe ladattaessa huisin hauskaa tekstiä",
+				"id": "6649aec6c7336d397223cc7d"
+			},
+			{
+				"text": "Toimiiko sun Flappy Bug?",
+				"id": "6649f46a10ad61c9819d4044"
+			},
+			{
+				"text": "public static void main(String[] args)",
+				"id": "6649fc3bba32ea9e030583e2"
+			},
+			{
+				"text": "System.out.println(\"Hello World\");",
+				"id": "6649fc50ba32ea9e030583e3"
+			},
+			{
+				"text": ">>+<--[[<++>->-->+++>+<<<]-->++++]<<.<<-.<<..+++.>.<<-.>.+++.------.>>-.<+.>>.",
+				"id": "6649fcaaba32ea9e030583e4"
+			},
+			{
+				"text": "Milloin TiKille uudet sivut?",
+				"id": "664b6c032cd14c1105caf42f"
+			},
+			{
+				"text": "Lue sinäkin Alkorytmiä ",
+				"id": "664b6c132cd14c1105caf430"
+			},
+			{
+				"text": "Tukeeks tää teksti emojeita 😳😱🤩🥵😂🤣🥳",
+				"id": "664c88dae5f1086f64ac5ccd"
+			},
+			{
+				"text": "Kilta menee pakettiin",
+				"id": "664c9d1918b1f30fe31f829d"
+			},
+			{
+				"text": "Level 50 error boss vs. Level 1 validation error",
+				"id": "66b0e5d9a53e01f4385dd69f"
+			},
+			{
+				"text": "rm -fr /etc/bussin/no.cap",
+				"id": "66b0e5eca53e01f4385dd6a0"
 			}
 		],
 		"en": [
 			{
-				"text": "TiKillä on kivaa, kantsii olla TiKkiläinen",
-				"id": "66489507e9f34a501083cba8"
-			},
-			{
-				"text": "As seen on TV!",
+				"text": "Everyone is here!",
 				"id": "66489525e9f34a501083cbaa"
 			},
 			{
-				"text": "100% pure!",
+				"text": "git push --force",
 				"id": "6648968ae9f34a501083cbab"
 			},
 			{
-				"text": "May contain nuts!",
+				"text": "Testing in production",
 				"id": "6648968ee9f34a501083cbac"
+			},
+			{
+				"text": "010101000110100101001011",
+				"id": "66498ffb96f765afcb521fcb"
+			},
+			{
+				"text": "rm -rf --no-preserve-root /",
+				"id": "66498ffc96f765afcb521fcc"
+			},
+			{
+				"text": "hello; DROP DATABASE tik_prod",
+				"id": "6649900296f765afcb521fcd"
+			},
+			{
+				"text": "404 Not found",
+				"id": "6649903796f765afcb521fce"
+			},
+			{
+				"text": "401 Unauthorized",
+				"id": "6649903d96f765afcb521fcf"
+			},
+			{
+				"text": ":(){ :|:& };:",
+				"id": "6649904096f765afcb521fd0"
+			},
+			{
+				"text": "The new website is coming, are you ready?",
+				"id": "6649904996f765afcb521fd1"
+			},
+			{
+				"text": "Since 1986",
+				"id": "6649906096f765afcb521fd2"
+			},
+			{
+				"text": "TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK, TiK...",
+				"id": "6649906996f765afcb521fd3"
+			},
+			{
+				"text": "Made in Konemiehentie 2",
+				"id": "6649906e96f765afcb521fd4"
+			},
+			{
+				"text": "When is the new Alkorytmi coming out?",
+				"id": "6649907496f765afcb521fd5"
+			},
+			{
+				"text": "Can you review my PR?",
+				"id": "6649907c96f765afcb521fd6"
+			},
+			{
+				"text": "Program in C",
+				"id": "6649909196f765afcb521fd7"
+			},
+			{
+				"text": "Torilla tavataan!",
+				"id": "6649909c96f765afcb521fd8"
+			},
+			{
+				"text": "See you at the market square!",
+				"id": "664990a096f765afcb521fd9"
+			},
+			{
+				"text": "Made with hash tables",
+				"id": "664990b596f765afcb521fda"
+			},
+			{
+				"text": "Loading in O(1)",
+				"id": "664990c496f765afcb521fdb"
+			},
+			{
+				"text": "Wave function collapse",
+				"id": "664990cf96f765afcb521fdc"
+			},
+			{
+				"text": "Panicking in paniikki",
+				"id": "664990d196f765afcb521fdd"
+			},
+			{
+				"text": "Instruction-level parallelism",
+				"id": "664990da96f765afcb521fde"
+			},
+			{
+				"text": "Who is coming up with these texts?",
+				"id": "664990e296f765afcb521fdf"
+			},
+			{
+				"text": "LGTM!",
+				"id": "664990ed96f765afcb521fe0"
+			},
+			{
+				"text": "Works on my machine",
+				"id": "664990f196f765afcb521fe1"
+			},
+			{
+				"text": "When is the new website coming?",
+				"id": "664990f396f765afcb521fe2"
+			},
+			{
+				"text": "I use arch, btw",
+				"id": "664990fc96f765afcb521fe3"
+			},
+			{
+				"text": "Have you tried turning it off and on again?",
+				"id": "6649910496f765afcb521fe4"
+			},
+			{
+				"text": "Does any of this make sense?",
+				"id": "6649911696f765afcb521fe5"
+			},
+			{
+				"text": "too philosophical. case closed.",
+				"id": "6649911f96f765afcb521fe6"
+			},
+			{
+				"text": "Download more RAM",
+				"id": "6649912396f765afcb521fe7"
+			},
+			{
+				"text": "[Object object]",
+				"id": "6649912a96f765afcb521fe8"
+			},
+			{
+				"text": "Segmentation fault",
+				"id": "6649912e96f765afcb521fe9"
+			},
+			{
+				"text": "Exception in thread \"main\" java.lang.NullPointerException",
+				"id": "6649913196f765afcb521fea"
+			},
+			{
+				"text": "return 0;",
+				"id": "6649913596f765afcb521feb"
+			},
+			{
+				"text": "git commit -m \"add code\"",
+				"id": "6649913796f765afcb521fec"
+			},
+			{
+				"text": "Initial commit",
+				"id": "6649913a96f765afcb521fed"
+			},
+			{
+				"text": "git blame src/app.ts",
+				"id": "6649914396f765afcb521fee"
+			},
+			{
+				"text": "Coffee deficit compensated by sleep",
+				"id": "6649914596f765afcb521fef"
+			},
+			{
+				"text": "Turning caffeine into code",
+				"id": "6649915796f765afcb521ff0"
+			},
+			{
+				"text": "Coded with ChatGPT",
+				"id": "6649916d96f765afcb521ff1"
+			},
+			{
+				"text": "As an AI language model, I cannot...",
+				"id": "6649917b96f765afcb521ff2"
+			},
+			{
+				"text": "Alice, Bob and Carol",
+				"id": "6649918096f765afcb521ff3"
+			},
+			{
+				"text": "cat ~/.ssh/id_ed25519",
+				"id": "6649918896f765afcb521ff4"
+			},
+			{
+				"text": "chmod -R 777 /",
+				"id": "6649918a96f765afcb521ff5"
+			},
+			{
+				"text": "    Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
+				"id": "6649918d96f765afcb521ff6"
+			},
+			{
+				"text": "A thousand year tradition",
+				"id": "6649919396f765afcb521ff7"
+			},
+			{
+				"text": "Didsomeoneremembertotestareallylongtextthatcontainsnospaces",
+				"id": "6649919d96f765afcb521ff8"
+			},
+			{
+				"text": "1 + 1 = 10",
+				"id": "664991b596f765afcb521ff9"
+			},
+			{
+				"text": "Ctrl+C, Ctrl+V",
+				"id": "664991b896f765afcb521ffa"
+			},
+			{
+				"text": "#pragma omp parallel for",
+				"id": "664991bc96f765afcb521ffb"
+			},
+			{
+				"text": "console.log('Hello world');",
+				"id": "664991bf96f765afcb521ffc"
+			},
+			{
+				"text": "std::cout << \"Hello World\" << std::endl;",
+				"id": "664991c596f765afcb521ffd"
+			},
+			{
+				"text": "Have you tried bogosort?",
+				"id": "664991c696f765afcb521ffe"
+			},
+			{
+				"text": "Should the code have been documented?",
+				"id": "664991d496f765afcb521fff"
+			},
+			{
+				"text": "t.me/tikenglish",
+				"id": "6649928d82a6c3f6f4134e70"
+			},
+			{
+				"text": ">>+<--[[<++>->-->+++>+<<<]-->++++]<<.<<-.<<..+++.>.<<-.>.+++.------.>>-.<+.>>.",
+				"id": "664a12b67205875b681e899c"
+			},
+			{
+				"text": "Does this text support emojis 😳😱🤩🥵😂🤣🥳",
+				"id": "664c88ebe5f1086f64ac5cce"
 			}
 		]
 	},
@@ -339,15 +1077,43 @@
 		{
 			"image": "65a64bf62b2f140ed06d71f5",
 			"id": "65a64bbb71769f33eb3992e6"
+		},
+		{
+			"image": "6648e6165138eca5076b5ff2",
+			"id": "6648e606917b8b0075957e88"
+		},
+		{
+			"image": "6648e64f5138eca5076b6002",
+			"id": "6648e61d917b8b0075957e89"
+		},
+		{
+			"image": "6648e69d5138eca5076b600c",
+			"id": "6648e67d917b8b0075957e8a"
+		},
+		{
+			"image": "6648e6c65138eca5076b6031",
+			"id": "6648e6a5917b8b0075957e8b"
+		},
+		{
+			"image": "6648e6f25138eca5076b6056",
+			"id": "6648e6cc917b8b0075957e8c"
+		},
+		{
+			"image": "6648e7265138eca5076b606f",
+			"id": "6648e6fa917b8b0075957e8d"
+		},
+		{
+			"image": "6648e74f5138eca5076b6080",
+			"id": "6648e730917b8b0075957e8e"
+		},
+		{
+			"image": "6648e7735138eca5076b6091",
+			"id": "6648e756917b8b0075957e8f"
 		}
 	],
 	"body": {
 		"fi": {
 			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
 				"children": [
 					{
 						"children": [
@@ -402,17 +1168,108 @@
 						"indent": 0,
 						"type": "paragraph",
 						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Liity jäseneksi",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://kide.app/memberships/1af614ae-8333-48b6-83bf-bcc935c676b2",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "!",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Jotain hukassa? Katso ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "vanhoilta nettisivuilta",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://old.tietokilta.fi",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": ".",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
 					}
 				],
-				"direction": "ltr"
+				"direction": "ltr",
+				"format": "",
+				"indent": 0,
+				"type": "root",
+				"version": 1
 			}
 		},
 		"en": {
 			"root": {
-				"type": "root",
-				"format": "",
-				"indent": 0,
-				"version": 1,
 				"children": [
 					{
 						"children": [
@@ -421,7 +1278,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Tietokilta ry (TiK) on Aalto-yliopiston Perustieteiden korkeakoulun tietotekniikan koulutusohjelman opiskelijoiden ainejärjestö eli kilta, joka on avoin muillekin killan toiminnasta kiinnostuneille. TiK toimii kaikkien Aalto-yliopiston opiskelijoiden etuja ajavan Aalto-yliopiston ylioppilaskunnan (AYY) piirissä.",
+								"text": "Tietokilta ry (TiK) is a guild for students of the Computer Science programme at Aalto University School of Science.  TiK works within the Aalto University Student Union (AYY), which represents the interests of all Aalto University students.",
 								"type": "text",
 								"version": 1
 							}
@@ -439,7 +1296,7 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Tietokilta järjestää opiskelijoilleen erilaista vapaa-ajan toimintaa niin Otaniemessä kuin sen ulkopuolellakin, valvoo heidän etujaan korkeakoulun toimielimissä, huolehtii yhteyksistä muihin opiskelijajärjestöihin ja pyrkii muuten huolehtimaan heidän hyvinvoinnistaan. Kaikki killan toiminta perustuu hyvien teekkariperinteiden mukaiseen vapaaehtoistyöhön ja yhteiseen talkoohenkeen.",
+								"text": "The guild organises various leisure activities for its students both inside and outside Otaniemi, monitors their interests in the university's institutions, maintains contacts with other student organisations and otherwise seeks to ensure their well-being. All the activities of the Guild are based on volunteer work and Teekkari traditions and on a common spirit of voluntary work.",
 								"type": "text",
 								"version": 1
 							}
@@ -457,9 +1314,91 @@
 								"format": 0,
 								"mode": "normal",
 								"style": "",
-								"text": "Kampuksella tietokiltalaiset löytää parhaiten kiltahuoneelta eli kiltikseltä, joka sijaitsee Tietotekniikan Talolla osoitteessa Konemiehentie 2 rakennuksen koilliskulmassa.",
+								"text": "The best place to find the guild members on campus is the guild room, the guild office, located in the Computer Science Building at Konemiehentie 2 in the north-east corner of the building.",
 								"type": "text",
 								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Join the guild",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://kide.app/memberships/1af614ae-8333-48b6-83bf-bcc935c676b2",
+									"newTab": true,
+									"linkType": "custom"
+								}
+							},
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "!",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": null,
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Something missing? Visit the ",
+								"type": "text",
+								"version": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "old website",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "link",
+								"version": 2,
+								"fields": {
+									"url": "https://old.tietokilta.fi",
+									"newTab": true,
+									"linkType": "custom"
+								}
 							}
 						],
 						"direction": "ltr",
@@ -469,7 +1408,11 @@
 						"version": 1
 					}
 				],
-				"direction": "ltr"
+				"direction": "ltr",
+				"format": "",
+				"indent": 0,
+				"type": "root",
+				"version": 1
 			}
 		}
 	},
@@ -478,7 +1421,7 @@
 		"$date": "2024-01-16T09:27:53.776Z"
 	},
 	"updatedAt": {
-		"$date": "2024-05-18T15:12:36.25Z"
+		"$date": "2024-08-06T17:17:31.041Z"
 	},
 	"__v": 0,
 	"announcement": "664880df217a8925c3715f29",
