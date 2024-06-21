@@ -53,7 +53,7 @@ import { EditorInChief } from "./blocks/editor-in-chief";
 const {
   GOOGLE_OAUTH_CLIENT_ID,
   GOOGLE_OAUTH_CLIENT_SECRET,
-  MONGODB_URI,
+  PAYLOAD_MONGO_CONNECTION_STRING,
   PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
   AZURE_MEDIA_STORAGE_CONTAINER_NAME,
@@ -194,7 +194,7 @@ export default buildConfig({
   },
   plugins: [
     oAuthPlugin({
-      databaseUri: MONGODB_URI ?? "",
+      databaseUri: PAYLOAD_MONGO_CONNECTION_STRING ?? "",
       clientID: GOOGLE_OAUTH_CLIENT_ID ?? "",
       clientSecret: GOOGLE_OAUTH_CLIENT_SECRET ?? "",
       authorizationURL: "https://accounts.google.com/o/oauth2/v2/auth",
@@ -230,12 +230,6 @@ export default buildConfig({
         };
       },
       userCollection: Users,
-      sessionOptions: {
-        resave: false,
-        saveUninitialized: false,
-        // PAYLOAD_SECRET existing is verified in server.ts
-        secret: process.env.PAYLOAD_SECRET ?? "",
-      },
     }),
     cloudStorage({
       enabled: useCloudStorage(),
