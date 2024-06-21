@@ -1,0 +1,57 @@
+{
+  "name": "payload-plugin-oauth",
+  "version": "2.2.0-rc.1",
+  "homepage": "https://github.com/thgh/payload-plugin-oauth",
+  "bugs": {
+    "url": "https://github.com/thgh/payload-plugin-oauth/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thgh/payload-plugin-oauth"
+  },
+  "license": "MIT",
+  "author": "Thomas Ghysels <info@thomasg.be>",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./dist/*": "./dist/*"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "fix": "pnpm prettier src --write",
+    "test": "echo 'no tests'"
+  },
+  "dependencies": {
+    "connect-mongo": "^4",
+    "debug": "^4",
+    "express-session": "^1",
+    "passport-oauth2": "^1"
+  },
+  "devDependencies": {
+    "@tietokilta/config-typescript": "workspace:*",
+    "@types/debug": "^4",
+    "@types/express-session": "^1",
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/passport": "^1",
+    "@types/passport-oauth2": "^1",
+    "@types/react": "^18.0.33",
+    "payload": "^2",
+    "react": "^18",
+    "typescript": "^5.5.2"
+  },
+  "peerDependencies": {
+    "@payloadcms/db-mongodb": "^1",
+    "mongodb": "^4.17.1",
+    "passport": "^0.6",
+    "payload": "^2",
+    "react": "^18"
+  }
+}
