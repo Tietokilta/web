@@ -7,7 +7,7 @@
   "scripts": {
     "build": "NODE_ENV=production pnpm copyfiles && pnpm build:payload && pnpm build:server",
     "build:payload": "payload build",
-    "build:server": "tsc",
+    "build:server": "tsc --project tsconfig.server.json",
     "clean": "rm -rf dist",
     "codegen": "pnpm generate:types & pnpm generate:graphQLSchema",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
@@ -45,6 +45,6 @@
     "eslint": "^8.57.0",
     "react": "^18.3.1",
     "tsx": "^4.15.6",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.2"
   }
 }

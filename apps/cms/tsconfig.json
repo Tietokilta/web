@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2023",
     "downlevelIteration": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "checkJs": true,
     "strict": true,
+    "noEmit": true,
     "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "skipLibCheck": true,
     "outDir": "./dist",
     "rootDir": "./src",
