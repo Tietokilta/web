@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production pnpm copyfiles && pnpm build:payload && pnpm build:server",
     "build:payload": "payload build",
     "build:server": "tsc --project tsconfig.server.json",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf build dist",
     "codegen": "pnpm generate:types & pnpm generate:graphQLSchema",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
     "dev": "tsx watch src/server.ts",
