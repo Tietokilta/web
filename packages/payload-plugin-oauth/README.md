@@ -38,15 +38,15 @@ yarn add payload-plugin-oauth@^1
 
 ```js
 // payload.config.ts
-import path from 'path'
+import path from "path";
 
-import { webpackBundler } from '@payloadcms/bundler-webpack'
-import { mongooseAdapter } from '@payloadcms/db-mongodb'
-import { slateEditor } from '@payloadcms/richtext-slate'
-import axios from 'axios'
-import { oAuthPlugin } from 'payload-plugin-oauth'
-import { buildConfig } from 'payload/config'
-import Users from './collections/Users'
+import { webpackBundler } from "@payloadcms/bundler-webpack";
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
+import { slateEditor } from "@payloadcms/richtext-slate";
+import axios from "axios";
+import { oAuthPlugin } from "payload-plugin-oauth";
+import { buildConfig } from "payload/config";
+import Users from "./collections/Users";
 
 export default buildConfig({
   admin: {
@@ -56,39 +56,39 @@ export default buildConfig({
   editor: slateEditor({}),
   collections: [Users],
   typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts'),
+    outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
   graphQL: {
-    schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
+    schemaOutputFile: path.resolve(__dirname, "generated-schema.graphql"),
   },
   plugins: [
     payloadCloud(),
     oAuthPlugin({
-      buttonLabel: 'Sign in with oAuth',
+      buttonLabel: "Sign in with oAuth",
       databaseUri: process.env.DATABASE_URI,
       clientID: process.env.OAUTH_CLIENT_ID,
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
       authorizationURL: process.env.OAUTH_AUTH_ENDPOINT,
       tokenURL: process.env.OAUTH_TOKEN_ENDPOINT,
-      authorizePath: '/oauth/authorize1',
-      callbackURL: process.env.ORIGIN + '/oauth/callback1',
+      authorizePath: "/oauth/authorize1",
+      callbackURL: process.env.ORIGIN + "/oauth/callback1",
       async userinfo(accessToken) {
         const { data: user } = await axios.get(
           process.env.OAUTH_USERINFO_ENDPOINT,
-          { headers: { Authorization: `Bearer ${accessToken}` } }
-        )
+          { headers: { Authorization: `Bearer ${accessToken}` } },
+        );
         return {
           sub: user.ID,
           username: user.preferred_username,
-        }
+        };
       },
     }),
     // Another oAuth provider
     oAuthPlugin({
-      buttonLabel: 'Sign in with Alternative',
+      buttonLabel: "Sign in with Alternative",
       // These paths must be unique per provider
-      authorizePath: '/oauth/authorize2',
-      callbackURL: process.env.ORIGIN + '/oauth/callback2',
+      authorizePath: "/oauth/authorize2",
+      callbackURL: process.env.ORIGIN + "/oauth/callback2",
 
       ...rest,
     }),
@@ -96,7 +96,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
-})
+});
 ```
 
 ## Changelog

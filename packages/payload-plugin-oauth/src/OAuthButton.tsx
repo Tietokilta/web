@@ -1,6 +1,6 @@
-import Button from 'payload/dist/admin/components/elements/Button'
-import React from 'react'
-import { ButtonProps } from './types'
+import Button from "payload/dist/admin/components/elements/Button";
+import React from "react";
+import { ButtonProps } from "./types";
 
 export default function OAuthButton(props: ButtonProps) {
   return (
@@ -9,5 +9,5 @@ export default function OAuthButton(props: ButtonProps) {
         {props.buttonLabel}
       </Button>
     </div>
-  )
+  );
 }

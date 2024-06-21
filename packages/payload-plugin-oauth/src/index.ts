@@ -1,48 +1,48 @@
-import MongoStore from 'connect-mongo'
-import session from 'express-session'
-import jwt from 'jsonwebtoken'
-import passport from 'passport'
-import OAuth2Strategy, { VerifyCallback } from 'passport-oauth2'
-import debug from 'debug'
-import { Payload } from 'payload'
-import { Config } from 'payload/config'
+import MongoStore from "connect-mongo";
+import session from "express-session";
+import jwt from "jsonwebtoken";
+import passport from "passport";
+import OAuth2Strategy, { VerifyCallback } from "passport-oauth2";
+import debug from "debug";
+import { Payload } from "payload";
+import { Config } from "payload/config";
 import {
   Field,
   fieldAffectsData,
   fieldHasSubFields,
-} from 'payload/dist/fields/config/types'
-import { PaginatedDocs } from 'payload/dist/database/types'
-import getCookieExpiration from 'payload/dist/utilities/getCookieExpiration'
-import { TextField } from 'payload/types'
+} from "payload/dist/fields/config/types";
+import { PaginatedDocs } from "payload/dist/database/types";
+import getCookieExpiration from "payload/dist/utilities/getCookieExpiration";
+import { TextField } from "payload/types";
 
-import OAuthButton from './OAuthButton'
-import type { oAuthPluginOptions } from './types'
-import { createElement } from 'react'
+import OAuthButton from "./OAuthButton";
+import type { oAuthPluginOptions } from "./types";
+import { createElement } from "react";
 
-export { OAuthButton, oAuthPluginOptions }
+export { OAuthButton, oAuthPluginOptions };
 
 function generatePassword(length: number) {
   const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|:;<>,.?/~-='
-  const charactersLength = characters.length
-  let password = ''
-  const randomBytes = crypto.getRandomValues(new Uint8Array(length))
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+{}[]|:;<>,.?/~-=";
+  const charactersLength = characters.length;
+  let password = "";
+  const randomBytes = crypto.getRandomValues(new Uint8Array(length));
 
   for (let i = 0; i < length; i++) {
-    const randomIndex = randomBytes[i] % charactersLength
-    password += characters[randomIndex]
+    const randomIndex = randomBytes[i] % charactersLength;
+    password += characters[randomIndex];
   }
 
-  return password
+  return password;
 }
 interface User {}
 
 // will be initialized in onInit
-let payload: Payload
-const log = debug('plugin:oauth')
+let payload: Payload;
+const log = debug("plugin:oauth");
 
 // Detect client side because some dependencies may be nullified
-const CLIENTSIDE = typeof session !== 'function'
+const CLIENTSIDE = typeof session !== "function";
 
 /**
  * Example for Wordpress:
@@ -78,8 +78,8 @@ export const oAuthPlugin =
   (options: oAuthPluginOptions) =>
   (incoming: Config): Config => {
     // Shorthands
-    const collectionSlug = options.userCollection?.slug || 'users'
-    const sub = options.subField?.name || 'sub'
+    const collectionSlug = options.userCollection?.slug || "users";
+    const sub = options.subField?.name || "sub";
 
     // Spread the existing config
     const config: Config = {
@@ -92,25 +92,25 @@ export const oAuthPlugin =
         ) {
           c.fields.push({
             name: sub,
-            type: 'text',
+            type: "text",
             admin: { readOnly: true },
             access: { update: () => false },
-          })
+          });
         }
-        return c
+        return c;
       }),
-    }
+    };
 
     return CLIENTSIDE
       ? oAuthPluginClient(config, options)
-      : oAuthPluginServer(config, options)
-  }
+      : oAuthPluginServer(config, options);
+  };
 
 function oAuthPluginClient(
   incoming: Config,
   options: oAuthPluginOptions,
 ): Config {
-  const button = options.components?.Button ?? OAuthButton
+  const button = options.components?.Button ?? OAuthButton;
   return button
     ? {
         ...incoming,
@@ -121,14 +121,14 @@ function oAuthPluginClient(
             beforeLogin: (incoming.admin?.components?.beforeLogin || []).concat(
               () =>
                 createElement(button, {
-                  authorizePath: options.authorizePath || '/oauth2/authorize',
+                  authorizePath: options.authorizePath || "/oauth2/authorize",
                   buttonLabel: options.buttonLabel || `Sign in with oAuth`,
                 }),
             ),
           },
         },
       }
-    : incoming
+    : incoming;
 }
 
 function oAuthPluginServer(
@@ -139,25 +139,25 @@ function oAuthPluginServer(
   const callbackPath =
     options.callbackPath ||
     (options.callbackURL && new URL(options.callbackURL).pathname) ||
-    '/oauth2/callback'
-  const authorizePath = options.authorizePath ?? '/oauth2/authorize'
-  const collectionSlug = (options.userCollection?.slug as 'users') || 'users'
-  const sub = options.subField?.name || 'sub'
-  const oAuthStrategyCount = (incoming.custom?.oAuthStrategyCount || 0) + 1
-  const strategyName = `oauth2-${oAuthStrategyCount}`
+    "/oauth2/callback";
+  const authorizePath = options.authorizePath ?? "/oauth2/authorize";
+  const collectionSlug = (options.userCollection?.slug as "users") || "users";
+  const sub = options.subField?.name || "sub";
+  const oAuthStrategyCount = (incoming.custom?.oAuthStrategyCount || 0) + 1;
+  const strategyName = `oauth2-${oAuthStrategyCount}`;
 
   if (options.clientID) {
     // Validate paths, they must be unique
-    const oAuthPaths = incoming.custom?.oAuthPaths || new Set()
+    const oAuthPaths = incoming.custom?.oAuthPaths || new Set();
     if (oAuthPaths.has(authorizePath))
       throw new Error(
         `Choose a unique authorizePath for oAuth strategy ${oAuthStrategyCount} (not ${options.authorizePath})`,
-      )
-    oAuthPaths.add(authorizePath)
+      );
+    oAuthPaths.add(authorizePath);
     if (oAuthPaths.has(callbackPath))
       throw new Error(
         `Choose a unique callbackPath for oAuth strategy ${oAuthStrategyCount} (not ${options.callbackPath})`,
-      )
+      );
 
     // Passport strategy
     const strategy = new OAuth2Strategy(options, async function (
@@ -167,29 +167,29 @@ function oAuthPluginServer(
       cb: VerifyCallback,
     ) {
       let info: {
-        sub: string
-        email?: string
-        password?: string
-        name?: string
-      }
-      let user: User & { collection?: any; _strategy?: any }
-      let users: PaginatedDocs<User>
+        sub: string;
+        email?: string;
+        password?: string;
+        name?: string;
+      };
+      let user: User & { collection?: any; _strategy?: any };
+      let users: PaginatedDocs<User>;
       try {
         // Get the userinfo
-        info = await options.userinfo?.(accessToken)
-        if (!info) throw new Error('Failed to get userinfo')
+        info = await options.userinfo?.(accessToken);
+        if (!info) throw new Error("Failed to get userinfo");
 
         // Match existing user
         users = await payload.find({
           collection: collectionSlug,
-          where: { [sub]: { equals: info[sub as 'sub'] } },
+          where: { [sub]: { equals: info[sub as "sub"] } },
           showHiddenFields: true,
-        })
+        });
 
         if (users.docs && users.docs.length) {
-          user = users.docs[0]
-          user.collection = collectionSlug
-          user._strategy = strategyName
+          user = users.docs[0];
+          user.collection = collectionSlug;
+          user._strategy = strategyName;
         } else {
           // Register new user
           user = await payload.create({
@@ -200,18 +200,18 @@ function oAuthPluginServer(
               password: info.password || generatePassword(20),
             },
             showHiddenFields: true,
-          })
-          log('signin.user', user)
-          user.collection = collectionSlug
-          user._strategy = strategyName
+          });
+          log("signin.user", user);
+          user.collection = collectionSlug;
+          user._strategy = strategyName;
         }
 
-        cb(null, user)
+        cb(null, user);
       } catch (error: any) {
-        log('signin.fail', error.message, error.trace)
-        cb(error)
+        log("signin.fail", error.message, error.trace);
+        cb(error);
       }
-    })
+    });
 
     // Alternative?
     // strategy.userProfile = async (accessToken, cb) => {
@@ -219,18 +219,18 @@ function oAuthPluginServer(
     //   if (!user) cb(new Error('Failed to get userinfo'))
     //   else cb(null, user)
     // }
-    log('registering strategy', strategyName, strategy)
-    passport.use(strategyName, strategy)
+    log("registering strategy", strategyName, strategy);
+    passport.use(strategyName, strategy);
     // passport.serializeUser((user: Express.User, done) => {
     passport.serializeUser((user: any, done) => {
-      done(null, user.id)
-    })
+      done(null, user.id);
+    });
     passport.deserializeUser(async (id: string, done) => {
-      const ok = await payload.findByID({ collection: collectionSlug, id })
-      done(null, ok)
-    })
+      const ok = await payload.findByID({ collection: collectionSlug, id });
+      done(null, ok);
+    });
   } else {
-    console.warn('No client id, oauth disabled')
+    console.warn("No client id, oauth disabled");
   }
 
   return {
@@ -239,33 +239,34 @@ function oAuthPluginServer(
     admin: {
       ...incoming.admin,
       webpack: (webpackConfig) => {
-        const config = incoming.admin?.webpack?.(webpackConfig) || webpackConfig
+        const config =
+          incoming.admin?.webpack?.(webpackConfig) || webpackConfig;
         return {
           ...config,
           resolve: {
             ...config.resolve,
             alias: {
               ...config.resolve?.alias,
-              'connect-mongo': false,
-              'express-session': false,
-              'passport-oauth2': false,
+              "connect-mongo": false,
+              "express-session": false,
+              "passport-oauth2": false,
               jsonwebtoken: false,
               passport: false,
             },
           },
-        }
+        };
       },
     },
     endpoints: (incoming.endpoints || []).concat([
       {
         path: authorizePath,
-        method: 'get',
+        method: "get",
         root: true,
         handler: passport.authenticate(strategyName),
       },
       {
         path: callbackPath,
-        method: 'get',
+        method: "get",
         root: true,
         handler: session(
           options.sessionOptions ?? {
@@ -273,8 +274,8 @@ function oAuthPluginServer(
             saveUninitialized: false,
             secret:
               process.env.PAYLOAD_SECRET ||
-              log('Missing process.env.PAYLOAD_SECRET') ||
-              'unsafe',
+              log("Missing process.env.PAYLOAD_SECRET") ||
+              "unsafe",
             store: options.databaseUri
               ? MongoStore.create({ mongoUrl: options.databaseUri })
               : undefined,
@@ -283,73 +284,73 @@ function oAuthPluginServer(
       },
       {
         path: callbackPath,
-        method: 'get',
+        method: "get",
         root: true,
-        handler: passport.authenticate(strategyName, { failureRedirect: '/' }),
+        handler: passport.authenticate(strategyName, { failureRedirect: "/" }),
       },
       {
         path: callbackPath,
-        method: 'get',
+        method: "get",
         root: true,
         async handler(req, res) {
           // Get the Mongoose user
-          const collectionConfig = payload.collections[collectionSlug].config
+          const collectionConfig = payload.collections[collectionSlug].config;
 
           // Sanitize the user object
           // let user = userDoc.toJSON({ virtuals: true })
-          let user = JSON.parse(JSON.stringify(req.user))
+          let user = JSON.parse(JSON.stringify(req.user));
 
           // Decide which user fields to include in the JWT
           const fieldsToSign = collectionConfig.fields.reduce(
             (signedFields, field: Field) => {
               const result = {
                 ...signedFields,
-              }
+              };
 
               if (!fieldAffectsData(field) && fieldHasSubFields(field)) {
                 field.fields.forEach((subField) => {
                   if (fieldAffectsData(subField) && subField.saveToJWT) {
-                    result[subField.name] = user[subField.name]
+                    result[subField.name] = user[subField.name];
                   }
-                })
+                });
               }
 
               if (fieldAffectsData(field) && field.saveToJWT) {
-                result[field.name] = user[field.name]
+                result[field.name] = user[field.name];
               }
 
-              return result
+              return result;
             },
             {
               email: user.email,
               id: user.id,
               collection: collectionConfig.slug,
             } as any,
-          )
+          );
 
           // Sign the JWT
           const token = jwt.sign(fieldsToSign, payload.secret, {
             expiresIn: collectionConfig.auth.tokenExpiration,
-          })
+          });
 
           // Set cookie
           res.cookie(`${payload.config.cookiePrefix}-token`, token, {
-            path: '/',
+            path: "/",
             httpOnly: true,
             expires: getCookieExpiration(collectionConfig.auth.tokenExpiration),
             secure: collectionConfig.auth.cookies.secure,
             sameSite: collectionConfig.auth.cookies.sameSite,
             domain: collectionConfig.auth.cookies.domain || undefined,
-          })
+          });
 
           // Redirect to the defined path or default to the admin dashboard
-          res.redirect(options.successRedirect || '/admin')
+          res.redirect(options.successRedirect || "/admin");
         },
       },
     ]),
     onInit(incomingPayload) {
-      payload = incomingPayload
-      return incoming.onInit?.(payload)
+      payload = incomingPayload;
+      return incoming.onInit?.(payload);
     },
-  }
+  };
 }
