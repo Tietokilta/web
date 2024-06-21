@@ -2,7 +2,7 @@
   "name": "tietokilta.fi",
   "private": true,
   "scripts": {
-    "build": "dotenv -- turbo run build --cache-dir=.turbo",
+    "build": "turbo run build --cache-dir=.turbo",
     "clean": "turbo run clean --cache-dir=.turbo",
     "codegen": "dotenv -- turbo run codegen --cache-dir=.turbo",
     "db:clear": "docker compose down -v && rm -rf apps/cms/uploads",
