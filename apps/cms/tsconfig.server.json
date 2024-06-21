@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": false,
+    "outDir": "dist"
+  },
+  "extends": "./tsconfig.json",
+  "include": ["src/server.ts", "src/payload.config.ts"]
+}
