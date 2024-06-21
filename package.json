@@ -37,21 +37,6 @@
   "pnpm": {
     "patchedDependencies": {
       "next-international@1.2.4": "patches/next-international@1.2.4.patch"
-    },
-    "packageExtensions": {
-      "mongodb@4.17.1": {
-        "dependencies": {
-          "@aws-sdk/credential-providers": "3.575.0"
-        }
-      },
-      "payload-plugin-oauth@^2.1.1": {
-        "dependencies": {
-          "passport": "^0.6"
-        },
-        "peerDependencies": {
-          "@types/passport-oauth2": "^1.4.15"
-        }
-      }
     }
   }
 }
