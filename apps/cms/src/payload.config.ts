@@ -23,6 +23,7 @@ import {
   UploadFeature,
   lexicalEditor,
 } from "@payloadcms/richtext-lexical";
+import type { Config } from "@tietokilta/cms-types/payload";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
 import { BoardMembers } from "./collections/board/board-members";
@@ -49,6 +50,11 @@ import { ActionsLink, ActionsView } from "./views/actions-view";
 import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { GoogleForm } from "./blocks/google-form";
 import { EditorInChief } from "./blocks/editor-in-chief";
+
+declare module "payload" {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface -- not applicable
+  export interface GeneratedTypes extends Config {}
+}
 
 const {
   GOOGLE_OAUTH_CLIENT_ID,

@@ -1,5 +1,10 @@
 import payload from "payload";
-import type { Board, Committee } from "@tietokilta/cms-types/payload";
+import type {
+  Board,
+  Committee,
+  BoardMember as BoardMemberType,
+  CommitteeMember as CommitteeMemberType,
+} from "@tietokilta/cms-types/payload";
 import { parse } from "papaparse";
 import { type PayloadRequest } from "payload/types";
 import { CommitteeMembers } from "../collections/committees/committee-members";
@@ -100,9 +105,9 @@ async function createCommittee(
     );
   }
 
-  const committeeMembers = (await Promise.all(promises)).map((member) => ({
-    committeeMember: String(member.id),
-  }));
+  const committeeMembers = (await Promise.all(promises)).map(
+    (member: CommitteeMemberType) => ({ committeeMember: member.id }),
+  );
 
   const collection: CommitteesSlug = "committees";
   await payload.create({
@@ -146,9 +151,9 @@ async function createBoard(
     );
   }
 
-  const boardMembers = (await Promise.all(promises)).map((member) => ({
-    boardMember: String(member.id),
-  }));
+  const boardMembers = (await Promise.all(promises)).map(
+    (member: BoardMemberType) => ({ boardMember: member.id }),
+  );
 
   await payload.create({
     collection: Boards.slug,
