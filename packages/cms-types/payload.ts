@@ -563,6 +563,7 @@ export interface MagazineIssue {
   file: string | Document;
   thumbnail: string | Media;
   name?: string | null;
+  textIssueNumber?: string | null;
   updatedAt: string;
   createdAt: string;
 }
