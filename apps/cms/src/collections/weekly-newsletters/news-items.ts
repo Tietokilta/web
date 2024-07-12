@@ -20,7 +20,7 @@ const formatDisplayTitle: FieldHook<NewsItem> = ({ data: newsItem, req }) => {
   return `${newsItem.title} - ${date}`;
 };
 
-export const NewsItems: CollectionConfig = {
+export const NewsItems = {
   slug: "news-items",
   admin: {
     useAsTitle: "displayTitle",
@@ -45,7 +45,7 @@ export const NewsItems: CollectionConfig = {
         hidden: true,
       },
       hooks: {
-        afterRead: [formatDisplayTitle],
+        beforeChange: [formatDisplayTitle],
       },
     },
     {
@@ -87,4 +87,4 @@ export const NewsItems: CollectionConfig = {
       revalidateCollection("weekly-newsletters"),
     ],
   },
-};
+} as const satisfies CollectionConfig;
