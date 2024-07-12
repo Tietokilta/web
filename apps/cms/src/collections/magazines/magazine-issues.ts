@@ -6,7 +6,12 @@ import { revalidateCollection } from "../../hooks/revalidate-collection";
 
 const formatTitle: FieldHook<MagazineIssue> = ({ data }) => {
   if ((!data?.issueNumber && data?.issueNumber !== 0) || !data.year) return "";
-  const baseTitle = `${data.issueNumber.toString()}/${data.year}`;
+  let baseTitle = "";
+  if (data.textIssueNumber) {
+    baseTitle = `${data.textIssueNumber}/${data.year}`;
+  } else {
+    baseTitle = `${data.issueNumber.toString()}/${data.year}`;
+  }
   if (!data.name) {
     return baseTitle;
   }
@@ -59,6 +64,18 @@ export const MagazineIssues: CollectionConfig = {
     {
       name: "name",
       type: "text",
+      admin: {
+        description:
+          "Optional name to be displayed after issue number and year. Mainly used for older Alkorytmi issues.",
+      },
+    },
+    {
+      name: "textIssueNumber",
+      type: "text",
+      admin: {
+        description:
+          "Optional text to be displayed instead of numerical issue number. Order of issues is still determined by numerical issueNumber.",
+      },
     },
   ],
   hooks: {
