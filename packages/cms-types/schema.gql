@@ -5196,6 +5196,7 @@ type MagazineIssue {
   file(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Document!
   thumbnail(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media!
   name: String
+  textIssueNumber: String
   updatedAt: DateTime
   createdAt: DateTime
 }
@@ -5263,6 +5264,7 @@ input MagazineIssue_where {
   file: MagazineIssue_file_operator
   thumbnail: MagazineIssue_thumbnail_operator
   name: MagazineIssue_name_operator
+  textIssueNumber: MagazineIssue_textIssueNumber_operator
   updatedAt: MagazineIssue_updatedAt_operator
   createdAt: MagazineIssue_createdAt_operator
   id: MagazineIssue_id_operator
@@ -5367,6 +5369,17 @@ input MagazineIssue_name_operator {
   exists: Boolean
 }
 
+input MagazineIssue_textIssueNumber_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
 input MagazineIssue_updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -5407,6 +5420,7 @@ input MagazineIssue_where_and {
   file: MagazineIssue_file_operator
   thumbnail: MagazineIssue_thumbnail_operator
   name: MagazineIssue_name_operator
+  textIssueNumber: MagazineIssue_textIssueNumber_operator
   updatedAt: MagazineIssue_updatedAt_operator
   createdAt: MagazineIssue_createdAt_operator
   id: MagazineIssue_id_operator
@@ -5421,6 +5435,7 @@ input MagazineIssue_where_or {
   file: MagazineIssue_file_operator
   thumbnail: MagazineIssue_thumbnail_operator
   name: MagazineIssue_name_operator
+  textIssueNumber: MagazineIssue_textIssueNumber_operator
   updatedAt: MagazineIssue_updatedAt_operator
   createdAt: MagazineIssue_createdAt_operator
   id: MagazineIssue_id_operator
@@ -5447,6 +5462,7 @@ type MagazineIssuesDocAccessFields {
   file: MagazineIssuesDocAccessFields_file
   thumbnail: MagazineIssuesDocAccessFields_thumbnail
   name: MagazineIssuesDocAccessFields_name
+  textIssueNumber: MagazineIssuesDocAccessFields_textIssueNumber
   updatedAt: MagazineIssuesDocAccessFields_updatedAt
   createdAt: MagazineIssuesDocAccessFields_createdAt
 }
@@ -5586,6 +5602,29 @@ type MagazineIssuesDocAccessFields_name_Update {
 }
 
 type MagazineIssuesDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_textIssueNumber {
+  create: MagazineIssuesDocAccessFields_textIssueNumber_Create
+  read: MagazineIssuesDocAccessFields_textIssueNumber_Read
+  update: MagazineIssuesDocAccessFields_textIssueNumber_Update
+  delete: MagazineIssuesDocAccessFields_textIssueNumber_Delete
+}
+
+type MagazineIssuesDocAccessFields_textIssueNumber_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_textIssueNumber_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_textIssueNumber_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesDocAccessFields_textIssueNumber_Delete {
   permission: Boolean!
 }
 
@@ -11000,6 +11039,7 @@ type MagazineIssuesFields {
   file: MagazineIssuesFields_file
   thumbnail: MagazineIssuesFields_thumbnail
   name: MagazineIssuesFields_name
+  textIssueNumber: MagazineIssuesFields_textIssueNumber
   updatedAt: MagazineIssuesFields_updatedAt
   createdAt: MagazineIssuesFields_createdAt
 }
@@ -11139,6 +11179,29 @@ type MagazineIssuesFields_name_Update {
 }
 
 type MagazineIssuesFields_name_Delete {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_textIssueNumber {
+  create: MagazineIssuesFields_textIssueNumber_Create
+  read: MagazineIssuesFields_textIssueNumber_Read
+  update: MagazineIssuesFields_textIssueNumber_Update
+  delete: MagazineIssuesFields_textIssueNumber_Delete
+}
+
+type MagazineIssuesFields_textIssueNumber_Create {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_textIssueNumber_Read {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_textIssueNumber_Update {
+  permission: Boolean!
+}
+
+type MagazineIssuesFields_textIssueNumber_Delete {
   permission: Boolean!
 }
 
@@ -14120,6 +14183,7 @@ input mutationMagazineIssueInput {
   file: String
   thumbnail: String
   name: String
+  textIssueNumber: String
   updatedAt: String
   createdAt: String
 }
@@ -14173,6 +14237,7 @@ input mutationMagazineIssueUpdateInput {
   file: String
   thumbnail: String
   name: String
+  textIssueNumber: String
   updatedAt: String
   createdAt: String
 }

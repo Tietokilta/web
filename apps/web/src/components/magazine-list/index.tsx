@@ -1,18 +1,18 @@
 import type {
+  Document,
   Magazine,
   MagazineIssue,
   Media,
-  Document,
 } from "@tietokilta/cms-types/payload";
-import Image from "next/image";
 import _ from "lodash";
+import Image from "next/image";
 import TikLogo from "../../assets/TiK-logo.png";
 
 function IssueCard({ issue }: { issue: MagazineIssue }) {
   const thumbnail = issue.thumbnail as Media;
   const file = issue.file as Document;
   return (
-    <div className="w-full max-w-xs sm:w-44">
+    <div className="w-full max-w-xs min-[460px]:w-44">
       <a href={file.url ?? ""}>
         <Image
           alt={thumbnail.alt}
@@ -58,7 +58,7 @@ export function MagazineList({
             <span className="self-center text-sm font-medium">{year}</span>
             <div className="w-5" />
           </div>
-          <div className="flex max-w-[800px] flex-wrap justify-start gap-8">
+          <div className="grid max-w-64 grid-cols-1 gap-8 min-[460px]:max-w-none min-[460px]:grid-cols-2 min-[660px]:grid-cols-3 lg:grid-cols-4">
             {issuesByYear[year]
               .sort(
                 (a, b) =>
