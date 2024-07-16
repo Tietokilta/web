@@ -1,8 +1,8 @@
 import type { CollectionConfig, FieldHook } from "payload/types";
+import type { CommitteeMember } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
-import { CommitteeMember } from "@tietokilta/cms-types/payload";
 
 const formatDisplayTitle: FieldHook<CommitteeMember> = ({
   data: committeeMember,
