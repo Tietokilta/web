@@ -176,11 +176,18 @@ function SignUpRow({
 async function SignUpTable({
   quota,
   publicQuestions,
+  signupsPublic,
 }: {
   quota: EventQuota | EventQuotaWithSignups;
   publicQuestions: EventQuestion[];
+  signupsPublic?: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
+
+  if (!signupsPublic) {
+    return <p>{t("status.Ilmoittautumistiedot eivät ole julkisia")}</p>;
+  }
+
   const signups = quota.signups ?? [];
   if (signups.length === 0) {
     return <p>{t("status.Ei ilmoittautuneita vielä")}</p>;
@@ -261,7 +268,11 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
             <h3 className="font-mono text-lg font-semibold text-gray-900">
               {quota.title}
             </h3>
-            <SignUpTable publicQuestions={publicQuestions} quota={quota} />
+            <SignUpTable
+              signupsPublic={event.signupsPublic}
+              publicQuestions={publicQuestions}
+              quota={quota}
+            />
           </li>
         ))}
       </ul>
