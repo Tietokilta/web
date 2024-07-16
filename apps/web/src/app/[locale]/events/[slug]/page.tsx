@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { Button, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import {
@@ -436,7 +437,9 @@ export default async function Page({ params: { slug } }: PageProps) {
                 <Tldr event={event.data} />
                 {event.data.description ? (
                   <div className="prose">
-                    <Markdown>{event.data.description}</Markdown>
+                    <Markdown remarkPlugins={[remarkGfm]}>
+                      {event.data.description}
+                    </Markdown>
                   </div>
                 ) : null}
               </div>
