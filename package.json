@@ -25,10 +25,10 @@
   },
   "devDependencies": {
     "dotenv-cli": "^7.4.2",
-    "prettier": "^3.3.2",
-    "prettier-plugin-packagejson": "^2.5.0",
-    "prettier-plugin-tailwindcss": "^0.6.4",
-    "turbo": "^2.0.4"
+    "prettier": "^3.3.3",
+    "prettier-plugin-packagejson": "^2.5.1",
+    "prettier-plugin-tailwindcss": "^0.6.5",
+    "turbo": "^2.0.6"
   },
   "packageManager": "pnpm@9.3.0",
   "engines": {
@@ -39,17 +39,9 @@
       "next-international@1.2.4": "patches/next-international@1.2.4.patch"
     },
     "packageExtensions": {
-      "mongodb@4.17.1": {
-        "dependencies": {
-          "@aws-sdk/credential-providers": "3.575.0"
-        }
-      },
-      "payload-plugin-oauth@^2.1.1": {
-        "dependencies": {
-          "passport": "^0.6"
-        },
+      "payload-plugin-oauth@2.2.0": {
         "peerDependencies": {
-          "@types/passport-oauth2": "^1.4.15"
+          "@types/passport-oauth2": "^1.4.17"
         }
       }
     }
