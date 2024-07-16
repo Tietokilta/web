@@ -53,6 +53,8 @@ const en = {
   "ilmomasiina.status.Ilmoittautuminen auki":
     "Open for sign ups until {endDate}",
   "ilmomasiina.status.Ilmoittautuminen on päättynyt": "Sign ups have ended",
+  "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
+    "Sign up information is not public",
   "ilmomasiina.status.Jonossa": "{queueCount} in queue",
   "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
     "Event does not have sign ups",
