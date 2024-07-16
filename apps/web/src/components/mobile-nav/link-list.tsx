@@ -136,8 +136,8 @@ export function LinkList({
                     )}
                     href={
                       "url" in link
-                        ? link.url ?? "#broken"
-                        : (link.page as Page).path ?? "#broken"
+                        ? (link.url ?? "#broken")
+                        : ((link.page as Page).path ?? "#broken")
                     }
                   >
                     <RenderIcon
