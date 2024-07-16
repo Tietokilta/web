@@ -55,6 +55,8 @@ const fi = {
     "Ilmoittautuminen auki {endDate} asti",
   "ilmomasiina.status.Ilmoittautuminen on päättynyt":
     "Ilmoittautuminen on päättynyt",
+  "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
+    "Ilmoittautumistiedot eivät ole julkisia.",
   "ilmomasiina.status.Jonossa": "Jonossa {queueCount}",
   "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
     "Tapahtumaan ei voi ilmoittautua",
