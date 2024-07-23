@@ -4,6 +4,51 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@tailwindcss/typography':
+      specifier: ^0.5.12
+      version: 0.5.13
+    '@types/node':
+      specifier: ^20.14.11
+      version: 20.14.11
+    '@types/react':
+      specifier: ^18.3.3
+      version: 18.3.3
+    '@types/react-dom':
+      specifier: ^18.3.0
+      version: 18.3.0
+    autoprefixer:
+      specifier: ^10.4.19
+      version: 10.4.19
+    clsx:
+      specifier: ^2.1.1
+      version: 2.1.1
+    eslint:
+      specifier: ^8.57.0
+      version: 8.57.0
+    postcss:
+      specifier: ^8.4.38
+      version: 8.4.39
+    react:
+      specifier: ^18.3.1
+      version: 18.3.1
+    react-dom:
+      specifier: ^18.3.1
+      version: 18.3.1
+    tailwind-merge:
+      specifier: ^2.4.0
+      version: 2.4.0
+    tailwindcss:
+      specifier: ^3.4.6
+      version: 3.4.6
+    tailwindcss-animate:
+      specifier: ^1.0.7
+      version: 1.0.7
+    typescript:
+      specifier: ^5.5.4
+      version: 5.5.4
+
 packageExtensionsChecksum: 9a242e92514223575f4ea19c31943306
 
 patchedDependencies:
@@ -92,22 +137,22 @@ importers:
         specifier: ^5.3.14
         version: 5.3.14
       '@types/react':
-        specifier: ^18.3.3
+        specifier: 'catalog:'
         version: 18.3.3
       copyfiles:
         specifier: ^2.4.1
         version: 2.4.1
       eslint:
-        specifier: ^8.57.0
+        specifier: 'catalog:'
         version: 8.57.0
       react:
-        specifier: ^18.3.1
+        specifier: 'catalog:'
         version: 18.3.1
       tsx:
         specifier: ^4.16.2
         version: 4.16.2
       typescript:
-        specifier: ^5.5.4
+        specifier: 'catalog:'
         version: 5.5.4
 
   apps/web:
@@ -119,10 +164,10 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       autoprefixer:
-        specifier: ^10.4.19
+        specifier: 'catalog:'
         version: 10.4.19(postcss@8.4.39)
       clsx:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1
       date-fns:
         specifier: ^3.6.0
@@ -143,19 +188,19 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       postcss:
-        specifier: ^8.4.39
+        specifier: 'catalog:'
         version: 8.4.39
       qs:
         specifier: ^6.12.3
         version: 6.12.3
       react:
-        specifier: ^18.3.1
+        specifier: 'catalog:'
         version: 18.3.1
       react-big-calendar:
         specifier: ^1.13.1
         version: 1.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-dom:
-        specifier: ^18.3.1
+        specifier: 'catalog:'
         version: 18.3.1(react@18.3.1)
       react-markdown:
         specifier: ^9.0.1
@@ -170,11 +215,14 @@ importers:
         specifier: ^0.33.4
         version: 0.33.4
       tailwind-merge:
-        specifier: ^2.4.0
+        specifier: 'catalog:'
         version: 2.4.0
       tailwindcss:
-        specifier: ^3.4.6
+        specifier: 'catalog:'
         version: 3.4.6
+      tailwindcss-animate:
+        specifier: 'catalog:'
+        version: 1.0.7(tailwindcss@3.4.6)
       use-scramble:
         specifier: ^2.2.15
         version: 2.2.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -183,7 +231,7 @@ importers:
         specifier: ^14.2.5
         version: 14.2.5
       '@tailwindcss/typography':
-        specifier: ^0.5.13
+        specifier: 'catalog:'
         version: 0.5.13(tailwindcss@3.4.6)
       '@tietokilta/cms-types':
         specifier: workspace:*
@@ -198,28 +246,28 @@ importers:
         specifier: ^4.17.7
         version: 4.17.7
       '@types/node':
-        specifier: ^20.14.11
+        specifier: 'catalog:'
         version: 20.14.11
       '@types/qs':
         specifier: ^6.9.15
         version: 6.9.15
       '@types/react':
-        specifier: ^18.3.3
+        specifier: 'catalog:'
         version: 18.3.3
       '@types/react-big-calendar':
         specifier: ^1.8.9
         version: 1.8.9
       '@types/react-dom':
-        specifier: ^18.3.0
+        specifier: 'catalog:'
         version: 18.3.0
+      eslint:
+        specifier: 'catalog:'
+        version: 8.57.0
       react-dvd-screensaver:
         specifier: ^0.1.1
         version: 0.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      tailwindcss-animate:
-        specifier: ^1.0.7
-        version: 1.0.7(tailwindcss@3.4.6)
       typescript:
-        specifier: ^5.5.4
+        specifier: 'catalog:'
         version: 5.5.4
 
   packages/cms-types: {}
@@ -227,7 +275,7 @@ importers:
   packages/config-eslint:
     dependencies:
       eslint:
-        specifier: ^8.56.0
+        specifier: 'catalog:'
         version: 8.57.0
     devDependencies:
       '@vercel/style-guide':
@@ -281,31 +329,31 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tailwindcss/typography':
-        specifier: ^0.5.12
+        specifier: 'catalog:'
         version: 0.5.13(tailwindcss@3.4.6)
       autoprefixer:
-        specifier: 10.4.19
+        specifier: 'catalog:'
         version: 10.4.19(postcss@8.4.39)
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
       clsx:
-        specifier: ^2.1.1
+        specifier: 'catalog:'
         version: 2.1.1
       lucide-react:
         specifier: ^0.414.0
         version: 0.414.0(react@18.3.1)
       postcss:
-        specifier: ^8.4.38
+        specifier: 'catalog:'
         version: 8.4.39
       tailwind-merge:
-        specifier: ^2.4.0
+        specifier: 'catalog:'
         version: 2.4.0
       tailwindcss:
-        specifier: ^3.4.3
+        specifier: 'catalog:'
         version: 3.4.6
       tailwindcss-animate:
-        specifier: ^1.0.7
+        specifier: 'catalog:'
         version: 1.0.7(tailwindcss@3.4.6)
     devDependencies:
       '@tietokilta/config-typescript':
@@ -315,25 +363,28 @@ importers:
         specifier: workspace:*
         version: link:../config-eslint
       '@types/node':
-        specifier: ^20.14.11
+        specifier: 'catalog:'
         version: 20.14.11
       '@types/react':
-        specifier: ^18.3.3
+        specifier: 'catalog:'
         version: 18.3.3
       '@types/react-dom':
-        specifier: ^18.3.0
+        specifier: 'catalog:'
         version: 18.3.0
+      eslint:
+        specifier: 'catalog:'
+        version: 8.57.0
       react:
-        specifier: ^18.3.1
+        specifier: 'catalog:'
         version: 18.3.1
       react-dom:
-        specifier: ^18.3.1
+        specifier: 'catalog:'
         version: 18.3.1(react@18.3.1)
       tsup:
         specifier: ^8.2.2
         version: 8.2.2(@swc/core@1.7.0)(jiti@1.21.6)(postcss@8.4.39)(tsx@4.16.2)(typescript@5.5.4)(yaml@2.4.5)
       typescript:
-        specifier: ^5.5.4
+        specifier: 'catalog:'
         version: 5.5.4
 
 packages:
