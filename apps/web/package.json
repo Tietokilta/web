@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "^3.10.8",
+    "@apollo/client": "^3.11.0",
     "@tietokilta/ui": "workspace:*",
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
@@ -41,13 +41,13 @@
     "@tietokilta/config-typescript": "workspace:*",
     "@tietokilta/eslint-config": "workspace:*",
     "@types/lodash": "^4.17.7",
-    "@types/node": "^20.14.10",
+    "@types/node": "^20.14.11",
     "@types/qs": "^6.9.15",
     "@types/react": "^18.3.3",
     "@types/react-big-calendar": "^1.8.9",
     "@types/react-dom": "^18.3.0",
     "react-dvd-screensaver": "^0.1.1",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.4"
   }
 }
