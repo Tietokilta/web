@@ -235,7 +235,7 @@ export const getQuotasWithOpenAndQueue = (
         }));
       return {
         ...openQ,
-        signupCount: openQ.signupCount + openSignups.length,
+        signupCount: (openQ.signupCount ?? 0) + openSignups.length,
         signups: [...openQ.signups, ...openSignups],
       };
     },
@@ -259,7 +259,7 @@ export const getQuotasWithOpenAndQueue = (
         }));
       return {
         ...queuedQ,
-        signupCount: queuedQ.signupCount + queuedSignups.length,
+        signupCount: (queuedQ.signupCount ?? 0) + queuedSignups.length,
         signups: [...queuedQ.signups, ...queuedSignups],
       };
     },
@@ -275,7 +275,9 @@ export const getQuotasWithOpenAndQueue = (
   const quotasWithOpenAndQueue = [
     ...quotas,
     ...(includeOpen && openQuotaSize > 0 ? [openQuota] : []),
-    ...(includeQueue && queuedQuota.signupCount > 0 ? [queuedQuota] : []),
+    ...(includeQueue && (queuedQuota.signupCount ?? 0) > 0
+      ? [queuedQuota]
+      : []),
   ];
 
   return quotasWithOpenAndQueue;
