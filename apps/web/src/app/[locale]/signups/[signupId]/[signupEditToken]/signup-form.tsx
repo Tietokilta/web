@@ -39,14 +39,23 @@ function InputRow({
     "aria-invalid": !!errors?.length,
   };
 
+  const isMultiLabel =
+    question.type === "checkbox" || question.type === "select";
+
+  const Label = isMultiLabel ? "legend" : "label";
+  const Container = isMultiLabel ? "fieldset" : "p";
+
   return (
-    <div className="w-full max-w-sm space-y-2" key={sharedInputProps.id}>
-      <label className="block" htmlFor={sharedInputProps.id}>
+    <Container className="w-full max-w-sm space-y-2" key={sharedInputProps.id}>
+      <Label
+        className="block"
+        htmlFor={!isMultiLabel ? sharedInputProps.id : undefined}
+      >
         <span>{question.question}</span>
         {!question.required && (
           <span className="text-gray-700"> ({t("optional")})</span>
         )}
-      </label>
+      </Label>
       {question.type === "checkbox" ? (
         <div className="grid gap-2">
           {(question.options ?? []).map((option) => (
@@ -96,7 +105,7 @@ function InputRow({
           {errors.join(", ")}
         </span>
       ) : null}
-    </div>
+    </Container>
   );
 }
 
@@ -182,6 +191,7 @@ function Form({
                 name="firstName"
                 type="text"
                 placeholder="Teemu"
+                autoComplete="given-name"
                 required
                 defaultValue={signup.firstName ?? undefined}
                 disabled={signup.confirmed}
@@ -201,6 +211,7 @@ function Form({
                 name="lastName"
                 type="text"
                 placeholder="Teekkari"
+                autoComplete="family-name"
                 required
                 defaultValue={signup.lastName ?? undefined}
                 disabled={signup.confirmed}
@@ -232,6 +243,7 @@ function Form({
               id="email"
               name="email"
               type="email"
+              autoComplete="email"
               placeholder="teemu.teekkari@aalto.fi"
               required
               defaultValue={signup.email ?? undefined}
