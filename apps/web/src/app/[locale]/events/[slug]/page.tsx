@@ -351,12 +351,13 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
                 <div className="relative">
                   <Progress
                     value={Math.min(
-                      (quota.signupCount / quota.size) * 100,
+                      ((quota.signupCount ?? 0) / quota.size) * 100,
                       100,
                     )}
                   />
                   <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
-                    {Math.min(quota.signupCount, quota.size)} / {quota.size}
+                    {Math.min(quota.signupCount ?? 0, quota.size)} /{" "}
+                    {quota.size}
                   </span>
                 </div>
               </>
@@ -430,7 +431,7 @@ export default async function Page({ params: { slug } }: PageProps) {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{t("Back")}</BackButton>
-          <h1 className="font-mono text-4xl">{event.data.title}</h1>
+          <h1 className="font-mono text-2xl md:text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
               <div className="flex max-w-xl grow-[2] flex-col gap-8">
