@@ -15,6 +15,7 @@ export interface OkResponse<T> {
 export interface ErrorResponse {
   ok: false;
   error: ErrorType;
+  originalError?: unknown;
   data: null;
 }
 
@@ -26,8 +27,12 @@ export const ok = <T>(data: T): OkResponse<T> => ({
   data,
 });
 
-export const err = (error: ErrorType): ErrorResponse => ({
+export const err = (
+  error: ErrorType,
+  options: { originalError?: unknown } = {},
+): ErrorResponse => ({
   ok: false,
   error,
   data: null,
+  originalError: options.originalError,
 });

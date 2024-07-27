@@ -72,7 +72,7 @@ async function SignupQuotas({
 }) {
   const t = await getScopedI18n("ilmomasiina");
   const totalSignupCount = quotas.reduce(
-    (acc, quota) => acc + quota.signupCount,
+    (acc, quota) => acc + (quota.signupCount ?? 0),
     0,
   );
   const totalSize = quotas.reduce((acc, quota) => acc + quota.size, 0);

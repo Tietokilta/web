@@ -31,11 +31,34 @@ const fi = {
     "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
   "errors.ilmomasiina-ilmo-missing-quota-id":
     "Virheellinen pyyntö, yritä uudelleen.",
+  "errors.ilmomasiina-signup-not-found":
+    "Ilmoittautumista ei löytynyt, tarkista osoite.",
   "errors.ilmomasiina-unknown-error":
     "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
+  "errors.ilmomasiina-validation-failed":
+    "Validointi epäonnistui. Tarkista lomake.",
   "generic.Page": "Sivu",
   "generic.Version": "Versio",
   "heading.Upcoming events": "Tulevat tapahtumat",
+  "ilmomasiina.form.You are in queue at position {position}":
+    "Olet jonossa sijalla {position}.",
+  "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
+    "Olet kiintiössä {quotaName} sijalla {position}/{quotaSize}.",
+  "ilmomasiina.form.optional": "valinnainen",
+  "ilmomasiina.form.Shown in the public list of sign ups":
+    "Näytetään julkisessa osallistujalistassa",
+  "ilmomasiina.form.First name": "Etunimi",
+  "ilmomasiina.form.Last name": "Sukunimi",
+  "ilmomasiina.form.Email": "Sähköposti",
+  "ilmomasiina.form.Show name in the public list of sign ups":
+    "Näytä nimi julkisessa osallistujalistassa",
+  "ilmomasiina.form.Submit": "Tallenna",
+  "ilmomasiina.form.Update": "Päivitä",
+  "ilmomasiina.form.Edit sign up": "Muokkaa ilmoittautumista",
+  "ilmomasiina.form.Delete sign up": "Poista ilmoittautuminen",
+  "ilmomasiina.form.Sign up saved": "Ilmoittautuminen tallennettu!",
+  "ilmomasiina.form.You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
+    "Voit muokata ilmoittautumistasi tai poistaa sen myöhemmin tästä osoitteesta, joka lähetetään sähköpostiisi vahvistusviestissä.",
   "ilmomasiina.headers.Alkaa": "Alkaa",
   "ilmomasiina.headers.Ilmoittautumisaika": "Ilmoittautumisaika",
   "ilmomasiina.headers.Kategoria": "Kategoria",

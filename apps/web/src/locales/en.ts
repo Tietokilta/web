@@ -31,11 +31,34 @@ const en = {
     "Failed to fetch events from Ilmomasiina. Please try again later.",
   "errors.ilmomasiina-ilmo-missing-quota-id":
     "Invalid request. Please try again.",
+  "errors.ilmomasiina-signup-not-found":
+    "Sign up not found. Please check the URL.",
   "errors.ilmomasiina-unknown-error":
     "An unknown error occurred. Please try again later.",
+  "errors.ilmomasiina-validation-failed":
+    "Validation failed. Please check the form.",
   "generic.Page": "Page",
   "generic.Version": "Version",
   "heading.Upcoming events": "Upcoming events",
+  "ilmomasiina.form.You are in queue at position {position}":
+    "You are in queue at position {position}.",
+  "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
+    "You are in the quota {quotaName} at position {position}/{quotaSize}.",
+  "ilmomasiina.form.optional": "optional",
+  "ilmomasiina.form.Shown in the public list of sign ups":
+    "Shown in the public list of sign ups",
+  "ilmomasiina.form.First name": "First name",
+  "ilmomasiina.form.Last name": "Last name",
+  "ilmomasiina.form.Email": "Email",
+  "ilmomasiina.form.Show name in the public list of sign ups":
+    "Show name in the public list of sign ups",
+  "ilmomasiina.form.Submit": "Submit",
+  "ilmomasiina.form.Update": "Update",
+  "ilmomasiina.form.Edit sign up": "Edit sign up",
+  "ilmomasiina.form.Delete sign up": "Delete sign up",
+  "ilmomasiina.form.Sign up saved": "Sign up saved!",
+  "ilmomasiina.form.You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
+    "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message.",
   "ilmomasiina.headers.Alkaa": "Starts",
   "ilmomasiina.headers.Ilmoittautumisaika": "Sign up time",
   "ilmomasiina.headers.Kategoria": "Category",
