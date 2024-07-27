@@ -47,6 +47,8 @@ const en = {
   "ilmomasiina.form.optional": "optional",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Shown in the public list of sign ups",
+  "ilmomasiina.form.Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}":
+    "Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}",
   "ilmomasiina.form.First name": "First name",
   "ilmomasiina.form.Last name": "Last name",
   "ilmomasiina.form.Email": "Email",

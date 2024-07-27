@@ -47,6 +47,8 @@ const fi = {
   "ilmomasiina.form.optional": "valinnainen",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Näytetään julkisessa osallistujalistassa",
+  "ilmomasiina.form.Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}":
+    "Huomio: Ilmoittautuminen suoraan sivuilla on beta-vaiheessa, jos kohtaat ongelmia voit ilmoittautua tapahtuman sivulla ilmomasiinassa: {eventUrl}",
   "ilmomasiina.form.First name": "Etunimi",
   "ilmomasiina.form.Last name": "Sukunimi",
   "ilmomasiina.form.Email": "Sähköposti",
