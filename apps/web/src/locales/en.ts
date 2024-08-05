@@ -39,6 +39,7 @@ const en = {
     "Validation failed. Please check the form.",
   "generic.Page": "Page",
   "generic.Version": "Version",
+  "heading.Main navigation": "Main navigation",
   "heading.Upcoming events": "Upcoming events",
   "ilmomasiina.form.You are in queue at position {position}":
     "You are in queue at position {position}.",
