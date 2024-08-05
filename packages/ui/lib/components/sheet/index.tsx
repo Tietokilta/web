@@ -51,27 +51,42 @@ const sheetVariants = cva(
 
 interface SheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
-    VariantProps<typeof sheetVariants> {}
+    VariantProps<typeof sheetVariants> {
+  closeLabel?: string;
+}
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
-  <SheetPortal>
-    <SheetOverlay />
-    <SheetPrimitive.Content
-      className={cn(sheetVariants({ side }), className)}
-      ref={ref}
-      {...props}
-    >
-      {children}
-      <SheetPrimitive.Close className="absolute right-4 top-4 -m-2 rounded-full p-2 hover:bg-gray-300 focus:ring-2 focus:ring-gray-900 focus-visible:outline-none disabled:pointer-events-none data-[state=open]:bg-gray-900">
-        <XIcon className="size-6" />
-        <span className="sr-only">Close</span>
-      </SheetPrimitive.Close>
-    </SheetPrimitive.Content>
-  </SheetPortal>
-));
+>(
+  (
+    {
+      side = "right",
+      closeLabel,
+      className,
+      "aria-describedby": ariaDescribedby,
+      children,
+      ...props
+    },
+    ref,
+  ) => (
+    <SheetPortal>
+      <SheetOverlay />
+      <SheetPrimitive.Content
+        className={cn(sheetVariants({ side }), className)}
+        ref={ref}
+        aria-describedby={ariaDescribedby}
+        {...props}
+      >
+        {children}
+        <SheetPrimitive.Close className="absolute right-4 top-4 -m-2 rounded-full p-2 hover:bg-gray-300 focus:ring-2 focus:ring-gray-900 focus-visible:outline-none disabled:pointer-events-none data-[state=open]:bg-gray-900">
+          <XIcon className="size-6" />
+          <span className="sr-only">{closeLabel ?? "Close"}</span>
+        </SheetPrimitive.Close>
+      </SheetPrimitive.Content>
+    </SheetPortal>
+  ),
+);
 SheetContent.displayName = SheetPrimitive.Content.displayName;
 
 function SheetHeader({
