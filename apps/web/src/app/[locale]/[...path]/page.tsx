@@ -12,6 +12,7 @@ import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
 import { generateTocFromRichText } from "../../../lib/utils";
 import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
 import { openGraphImage } from "../../shared-metadata";
+import { Card } from "@tietokilta/ui";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
@@ -155,9 +156,9 @@ async function Page({ params: { path } }: Props) {
               topLevelOnly={page.tableOfContents === "top-level"}
             />
           ) : null}
-          <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
-            {page.description}
-          </p>
+          <Card className="max-w-prose">
+            <p>{page.description}</p>
+          </Card>
           <Content content={content} />
         </div>
       </main>
