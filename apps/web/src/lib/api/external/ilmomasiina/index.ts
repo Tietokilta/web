@@ -35,19 +35,24 @@ export interface IlmomasiinaEvent {
   quotas: EventQuota[];
   millisTillOpening?: number | null;
   registrationClosed?: boolean | null;
+  nameQuestion?: boolean;
+  emailQuestion?: boolean;
 }
 
 export interface EventQuestion {
   id: string;
   question: string;
   public: boolean;
+  type?: "text" | "textarea" | "number" | "select" | "checkbox";
+  options?: string[] | null;
+  required?: boolean | null;
 }
 
 export interface EventQuota {
   id: string;
   title: string;
   size: number;
-  signupCount: number;
+  signupCount?: number;
   signups?: QuotaSignup[] | null;
 }
 
@@ -58,6 +63,7 @@ export interface EventQuotaWithSignups extends EventQuota {
 export interface QuotaSignup {
   firstName?: string | null;
   lastName?: string | null;
+  email?: string | null;
   namePublic: boolean;
   answers: QuestionAnswer[];
   status: "in-quota" | "in-open" | "in-queue";
@@ -88,6 +94,16 @@ export interface IlmomasiinaErrorResponse {
 export type IlmomasiinaSignupResponse =
   | IlmomasiinaSignupSuccessResponse
   | IlmomasiinaErrorResponse;
+
+export interface IlmomasiinaSignupInfo extends QuotaSignup {
+  id: string;
+  quota: EventQuota;
+}
+
+export interface IlmomasiinaSignupInfoResponse {
+  signup: IlmomasiinaSignupInfo;
+  event: IlmomasiinaEvent;
+}
 
 // TODO: better env handling since next.js doesn't have that built-in
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ideally would throw during build, but let's at least throw here if it's missing
@@ -156,6 +172,114 @@ export const fetchEvent = async (
       return err("ilmomasiina-fetch-fail");
     }
     const data = (await response.json()) as IlmomasiinaEvent;
+
+    return ok(data);
+  } catch (error) {
+    return err("ilmomasiina-fetch-fail");
+  }
+};
+
+export const getSignup = async (
+  signupId: string,
+  signupEditToken: string,
+): Promise<ApiResponse<IlmomasiinaSignupInfoResponse>> => {
+  try {
+    const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
+      headers: {
+        "x-edit-token": signupEditToken,
+      },
+      next: {
+        tags: ["ilmomasiina-signup"],
+        revalidate: 10, // 10 seconds
+      },
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return err("ilmomasiina-signup-not-found");
+      }
+
+      return err("ilmomasiina-fetch-fail");
+    }
+
+    const data = (await response.json()) as IlmomasiinaSignupInfoResponse;
+
+    return ok(data);
+  } catch (error) {
+    return err("ilmomasiina-fetch-fail");
+  }
+};
+
+export const deleteSignUp = async (
+  signupId: string,
+  signupEditToken: string,
+): Promise<ApiResponse<"ok">> => {
+  try {
+    const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
+      method: "DELETE",
+      headers: {
+        "x-edit-token": signupEditToken,
+      },
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return err("ilmomasiina-signup-not-found");
+      }
+
+      return err("ilmomasiina-fetch-fail");
+    }
+
+    return ok("ok");
+  } catch (error) {
+    return err("ilmomasiina-fetch-fail");
+  }
+};
+
+export const patchSignUp = async (
+  signupId: string,
+  signupEditToken: string,
+  request: {
+    id: string;
+    answers: QuestionAnswer[];
+    language: "en" | "fi";
+    firstName?: string;
+    lastName?: string;
+    email?: string;
+    namePublic?: boolean;
+  },
+): Promise<ApiResponse<{ id: string }>> => {
+  try {
+    const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
+      method: "PATCH",
+      headers: {
+        "x-edit-token": signupEditToken,
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(request),
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return err("ilmomasiina-signup-not-found");
+      }
+
+      const errorData = (await response.json()) as IlmomasiinaErrorResponse;
+
+      if (
+        errorData.message.startsWith("Validation error") ||
+        errorData.message.startsWith("Invalid answer") ||
+        errorData.message.startsWith("Missing answer")
+      ) {
+        return err("ilmomasiina-validation-failed", {
+          originalError: errorData.message,
+        });
+      }
+
+      return err("ilmomasiina-fetch-fail");
+    }
+
+    const data = (await response.json()) as { id: string };
 
     return ok(data);
   } catch (error) {
