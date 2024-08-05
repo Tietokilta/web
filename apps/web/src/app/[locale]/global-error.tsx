@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@tietokilta/ui";
+import { Button, Card } from "@tietokilta/ui";
 import {
   I18nProviderClient,
   useCurrentLocale,
@@ -29,12 +29,14 @@ function GlobalError({
           </header>
 
           <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
-            <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
-              {t(
-                "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
-              )}{" "}
-              <code className="font-mono">{error.digest}</code>.
-            </p>
+            <Card className="max-w-prose">
+              <p>
+                {t(
+                  "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
+                )}{" "}
+                <code className="font-mono">{error.digest}</code>.
+              </p>
+            </Card>
             <Button onClick={reset} type="button">
               {t("Yritä uudelleen")}
             </Button>
