@@ -39,6 +39,7 @@ const fi = {
     "Validointi epäonnistui. Tarkista lomake.",
   "generic.Page": "Sivu",
   "generic.Version": "Versio",
+  "heading.Main navigation": "Päävalikko",
   "heading.Upcoming events": "Tulevat tapahtumat",
   "ilmomasiina.form.You are in queue at position {position}":
     "Olet jonossa sijalla {position}.",
