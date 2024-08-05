@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Button, Progress } from "@tietokilta/ui";
+import { Button, Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import {
   type IlmomasiinaEvent,
@@ -332,7 +332,7 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize);
 
   return (
-    <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
+    <Card className="max-w-prose space-y-4">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
         {t("Ilmoittautuneet")}
       </h2>
@@ -365,7 +365,7 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
           </li>
         ))}
       </ul>
-    </div>
+    </Card>
   );
 }
 

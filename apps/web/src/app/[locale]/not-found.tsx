@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@tietokilta/ui";
+import { Button, Card } from "@tietokilta/ui";
 import Link from "next/link";
 import { DinoGame } from "../../components/dino-game";
 import {
@@ -22,9 +22,9 @@ function Page() {
       </header>
 
       <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
-        <p className="shadow-solid max-w-prose rounded-md border-2 border-gray-900 p-4 md:p-6">
-          {t("Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.")}
-        </p>
+        <Card className="max-w-prose">
+          <p>{t("Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.")}</p>
+        </Card>
         <Button asChild variant="link">
           <Link href="/">{t("Etusivulle")}</Link>
         </Button>
