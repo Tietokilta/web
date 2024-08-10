@@ -85,6 +85,7 @@ const en = {
   "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
     "Event does not have sign ups",
   "ilmomasiina.Tapahtumat": "Events",
+  "ilmomasiina.Tilaa kalenteri": "Subscribe to calendar",
   "not-found.Etusivulle": "To front page",
   "not-found.Sivua ei löytynyt": "Page not found",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
