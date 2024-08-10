@@ -35,17 +35,20 @@ async function NewsSection({ newsItem }: { newsItem: NewsItem }) {
   return (
     <article>
       <h3 id={stringToId(newsItem.title)}>{newsItem.title}</h3>
-      {
-        newsItem.linkToSignUp ? <a
-            // Do not create relative links
-            href={newsItem.linkToSignUp.startsWith("http") ? 
-              newsItem.linkToSignUp : `//${newsItem.linkToSignUp}`}
-            target="_blank"
-            rel="noopener"
-          >
-            {t("link-to-sign-up")}
-          </a> : null
-      }
+      {newsItem.linkToSignUp ? (
+        <a
+          // Do not create relative links
+          href={
+            newsItem.linkToSignUp.startsWith("http")
+              ? newsItem.linkToSignUp
+              : `//${newsItem.linkToSignUp}`
+          }
+          target="_blank"
+          rel="noopener"
+        >
+          {t("link-to-sign-up")}
+        </a>
+      ) : null}
       <NewsItemContent content={content} />
     </article>
   );
