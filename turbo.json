@@ -19,7 +19,8 @@
     "PUBLIC_ILMOMASIINA_URL",
     "PUBLIC_LEGACY_URL",
     "GIT_COMMIT_SHA",
-    "NODE_ENV"
+    "NODE_ENV",
+    "CI"
   ],
   "tasks": {
     "build": {
@@ -40,10 +41,11 @@
       "persistent": true
     },
     "start": {
-      "dependsOn": ["^build", "codegen", "^codegen"],
+      "dependsOn": ["build", "^build", "codegen", "^codegen"],
       "cache": false,
       "persistent": true
     },
+    "test": {},
     "clean": {
       "cache": false
     }
