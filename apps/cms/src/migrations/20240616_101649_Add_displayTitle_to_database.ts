@@ -31,9 +31,9 @@ export async function up({ payload }: MigrateUpArgs): Promise<void> {
   }
 
   for (const item of newsItems.docs) {
-    const date = new Date(item.date ?? "");
+    const date = new Date(item.date as string);
     const displayTitle = isNaN(date.getTime())
-      ? item.title
+      ? (item.title as string)
       : `${item.title} - ${date.toLocaleDateString("fi-FI")}`;
     await payload.update({
       collection: NewsItems.slug,
