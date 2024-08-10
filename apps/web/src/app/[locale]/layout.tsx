@@ -7,6 +7,7 @@ import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
 import { SkipLink } from "../../components/skip-link";
 import { cn } from "../../lib/utils";
+import "@tietokilta/ui/global.css";
 import "./globals.css";
 import { type Locale } from "../../locales/server";
 
@@ -83,8 +84,7 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <SkipLink />
-        {/* gray-100 (TODO: replace with CSS variable after refactoring tailwind config ot use CSS variables) */}
-        <NextTopLoader color="#f8f9fa" showSpinner={false} />
+        <NextTopLoader color="var(--color-gray-100)" showSpinner={false} />
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
           <MainNav className="sticky top-0 z-50 hidden lg:block" />
