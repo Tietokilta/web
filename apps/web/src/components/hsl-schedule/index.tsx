@@ -1,7 +1,8 @@
 "use client";
 import type {
+  ArrivalAttribute,
   RenderableStop,
-  StopType,
+  StopType
 } from "../../lib/types/hsl-helper-types";
 
 export function HSLSchedule(props: {
@@ -46,14 +47,19 @@ export function HSLSchedule(props: {
       <h1 className="flex h-12 w-full justify-center p-2 font-mono text-2xl font-bold text-[var(--infonayttoHSLcolor)]">
         {stopName(result.type)}
       </h1>
-      <ul className="justify-between space-y-2 font-bold">
-        {result.arrivals.map((arr) => (
+      <ul className="space-y-4 font-bold">
+        {result.arrivals
+          /*These are here to prevent the async useEffect from including extraneous data here*/
+          .filter((arr) => arr.fullTime !== "NaN")
+          .sort((arr1: ArrivalAttribute, arr2: ArrivalAttribute) => arr1.realtimeArrival - arr2.realtimeArrival)
+          .slice(0, 8)
+          .map((arr) => (
           <li key={arr.route + arr.fullTime} className={className}>
-            <div className="w-[10%] text-2xl text-[var(--infonayttoHSLcolor)]">
+            <div className="w-[15%] text-2xl text-[var(--infonyttoHSLcolor)]">
               {arr.route}
             </div>
-            <div className="text-left text-xl">{arr.headSign}</div>
-            <div className="text-right text-2xl">{arr.fullTime}</div>
+            <div className="w-1/2 text-xl">{arr.headSign}</div>
+            <div className="w-[35‰] text-right text-2xl">{arr.fullTime}</div>
           </li>
         ))}
       </ul>

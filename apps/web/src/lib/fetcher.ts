@@ -10,18 +10,18 @@ export function delay(s: number) {
   return wait(s);
 }
 
-export async function hslFetcher(): Promise<RenderableStop[] | null> {
+export async function hslFetcher(): Promise<{status: number, result: RenderableStop[] | null}> {
   if (!process.env.PUBLIC_FRONTEND_URL) {
-    return null;
+    return {status: 500, result: null};
   }
   const response: Response = await fetch(
-    process.env.PUBLIC_FRONTEND_URL.concat("/next_api/fetch-hsl-stops"),
+    "http://localhost:3000".concat("/next_api/fetch-hsl-stops"),   // process.env.PUBLIC_FRONTEND_URL
     { headers: { "cache-control": "no-cache" } },
   );
   if (response.status !== 200) {
-    throw new Error("Something went wrong");
+    return {status: response.status, result: null};
   }
   const responseBody: { retData: { data: RenderableStop[] } } =
     await response.json();
-  return responseBody.retData.data;
+  return {status: 200, result: responseBody.retData.data};
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useRouter } from 'next/navigation'
 import { HSLSchedule } from "../hsl-schedule";
 import { type RenderableStop } from "../../lib/types/hsl-helper-types";
 import { hslFetcher } from "../../lib/fetcher.ts";
@@ -7,14 +8,22 @@ import { hslFetcher } from "../../lib/fetcher.ts";
 export function HSLcombinedSchedule() {
   const [stopData, setStopData] = useState<RenderableStop[]>([]);
   const [error, setError] = useState("");
+  const router = useRouter()
+
   useEffect(() => {
     // This use effect updates the times displayed on the info screen
     const fetchData = async (): Promise<void> => {
       try {
-        const result: RenderableStop[] | null = await hslFetcher();
-        setStopData(result ? result : []);
+        const result: {status: number, result: RenderableStop[] | null} = await hslFetcher();
+        if (result.status === 200) {
+          setError("")
+          setStopData(result.result ? result.result : []);
+        } else {
+          router.push("/infonaytto/HSL")
+        }
       } catch (err: any) {
         setError(err.message);
+        router.push("/infonaytto/HSL")
       }
     };
     // Call fetchData immediately and then set up the interval
@@ -23,7 +32,7 @@ export function HSLcombinedSchedule() {
       .catch((err: Error) => {
         setError(err.message);
       });
-    const intervalId = setInterval(fetchData, 15000); // 15000 milliseconds = 15 seconds
+    const intervalId = setInterval(fetchData, 1000); // timeout n milliseconds
 
     // Clear the interval when the component unmounts
     return () => {
@@ -46,7 +55,8 @@ export function HSLcombinedSchedule() {
         </h1>
       </div>
       <div className="flex w-full justify-between gap-4 p-8 pt-0">
-        {stopData.map((res) => (
+        {stopData
+          .map((res) => (
           <HSLSchedule
             key={res.arrivals[0].headSign}
             result={res}

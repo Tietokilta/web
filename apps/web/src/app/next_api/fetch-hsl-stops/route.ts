@@ -34,7 +34,11 @@ export async function GET() {
 
   const dataFromHsl: RenderableStop[] = stops.filter(
     <T>(stop: T | null): stop is T => stop !== null,
-  );
+  )
+  dataFromHsl.forEach( (stop) => stop.arrivals.filter(
+    (arrival) => arrival.fullTime !== "NaN").sort(
+      (arr1: ArrivalAttribute, arr2: ArrivalAttribute) => arr1.realtimeArrival - arr2.realtimeArrival)
+  )
 
   const retData = {
     type: "Data",
@@ -47,8 +51,6 @@ export async function GET() {
       status: 200,
       headers: {
         "Cache-Control": "no-cache",
-        Pragma: "no-cache",
-        Expires: "0",
       },
     },
   );
@@ -218,11 +220,11 @@ const getStop = async (
         hours:
           Math.floor((arr.realTimeArrival - arr.serviceDay) / 60 / 60) % 24,
         minutes: Math.floor(((arr.realTimeArrival - arr.serviceDay) / 60) % 60),
+        realtimeArrival: arr.realTimeArrival,
         intTime: arr.realTimeArrival,
         fullTime: pad(makePrintTime(arr), 5, "‎"),
       };
     })
-    .filter((arr) => arr.fullTime !== "NaN");
   return {
     name: result.name,
     type: result.type,
