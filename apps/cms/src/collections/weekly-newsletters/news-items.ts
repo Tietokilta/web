@@ -75,16 +75,16 @@ export const NewsItems = {
       ],
     },
     {
-      name: "content",
-      type: "richText",
-      required: true,
-      localized: true,
-    },
-    {
       name: "linkToSignUp",
       type: "text",
       required: false,
       localized: false,
+    },
+    {
+      name: "content",
+      type: "richText",
+      required: true,
+      localized: true,
     },
   ],
   hooks: {
