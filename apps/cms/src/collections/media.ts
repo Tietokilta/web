@@ -1,6 +1,5 @@
 import path from "path";
 import type { CollectionConfig } from "payload/types";
-import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../access/signed-in";
 import { useCloudStorage } from "../util";
 import { mediaImportController } from "../controllers/media-import-controller";
