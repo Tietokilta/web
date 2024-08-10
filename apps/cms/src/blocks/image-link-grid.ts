@@ -17,6 +17,7 @@ export const ImageLinkGrid = {
           type: "upload",
           relationTo: "media",
           required: true,
+          displayPreview: true,
         },
         {
           name: "caption",
