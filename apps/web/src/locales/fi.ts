@@ -87,6 +87,7 @@ const fi = {
   "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
     "Tapahtumaan ei voi ilmoittautua",
   "ilmomasiina.Tapahtumat": "Tapahtumat",
+  "ilmomasiina.Tilaa kalenteri": "Tilaa kalenteri",
   "not-found.Etusivulle": "Etusivulle",
   "not-found.Sivua ei löytynyt": "Sivua ei löytynyt",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
