@@ -21,10 +21,12 @@
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
+    "test": "turbo run test --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/cms/uploads"
   },
   "devDependencies": {
+    "@playwright/test": "catalog:",
     "@types/node": "catalog:",
     "dotenv-cli": "^8.0.0",
     "eslint": "catalog:",
