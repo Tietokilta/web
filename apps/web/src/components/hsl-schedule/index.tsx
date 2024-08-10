@@ -2,7 +2,7 @@
 import type {
   ArrivalAttribute,
   RenderableStop,
-  StopType
+  StopType,
 } from "../../lib/types/hsl-helper-types";
 
 export function HSLSchedule(props: {
@@ -51,17 +51,20 @@ export function HSLSchedule(props: {
         {result.arrivals
           /*These are here to prevent the async useEffect from including extraneous data here*/
           .filter((arr) => arr.fullTime !== "NaN")
-          .sort((arr1: ArrivalAttribute, arr2: ArrivalAttribute) => arr1.realtimeArrival - arr2.realtimeArrival)
+          .sort(
+            (arr1: ArrivalAttribute, arr2: ArrivalAttribute) =>
+              arr1.realtimeArrival - arr2.realtimeArrival,
+          )
           .slice(0, 8)
           .map((arr) => (
-          <li key={arr.route + arr.fullTime} className={className}>
-            <div className="w-[15%] text-2xl text-[var(--infonyttoHSLcolor)]">
-              {arr.route}
-            </div>
-            <div className="w-1/2 text-xl">{arr.headSign}</div>
-            <div className="w-[35‰] text-right text-2xl">{arr.fullTime}</div>
-          </li>
-        ))}
+            <li key={arr.route + arr.fullTime} className={className}>
+              <div className="w-[15%] text-2xl text-[var(--infonyttoHSLcolor)]">
+                {arr.route}
+              </div>
+              <div className="w-1/2 text-xl">{arr.headSign}</div>
+              <div className="w-[35‰] text-right text-2xl">{arr.fullTime}</div>
+            </li>
+          ))}
       </ul>
     </div>
   );

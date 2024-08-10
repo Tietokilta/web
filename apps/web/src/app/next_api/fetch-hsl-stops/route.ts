@@ -34,11 +34,15 @@ export async function GET() {
 
   const dataFromHsl: RenderableStop[] = stops.filter(
     <T>(stop: T | null): stop is T => stop !== null,
-  )
-  dataFromHsl.forEach( (stop) => stop.arrivals.filter(
-    (arrival) => arrival.fullTime !== "NaN").sort(
-      (arr1: ArrivalAttribute, arr2: ArrivalAttribute) => arr1.realtimeArrival - arr2.realtimeArrival)
-  )
+  );
+  dataFromHsl.forEach((stop) =>
+    stop.arrivals
+      .filter((arrival) => arrival.fullTime !== "NaN")
+      .sort(
+        (arr1: ArrivalAttribute, arr2: ArrivalAttribute) =>
+          arr1.realtimeArrival - arr2.realtimeArrival,
+      ),
+  );
 
   const retData = {
     type: "Data",
@@ -212,8 +216,8 @@ const getStop = async (
       .sort((arr1, arr2) => arr1.realTimeArrival - arr2.realTimeArrival)
       .slice(0, N_ARRIVALS + 1),
   };
-  const ArrivalsFormatted: ArrivalAttribute[] = result.arrival
-    .map((arr: Arrival) => {
+  const ArrivalsFormatted: ArrivalAttribute[] = result.arrival.map(
+    (arr: Arrival) => {
       return {
         route: arr.route ? arr.route.replace(" ", "") : "Null",
         headSign: removeSubstring(arr.headSign),
@@ -224,7 +228,8 @@ const getStop = async (
         intTime: arr.realTimeArrival,
         fullTime: pad(makePrintTime(arr), 5, "‎"),
       };
-    })
+    },
+  );
   return {
     name: result.name,
     type: result.type,
