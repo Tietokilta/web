@@ -4,19 +4,20 @@
 
 :root {
   --border-radius: 0.375rem;
-  --tw-shadow: 2px 2px 0px 0px #0a0d10;
+  --tw-shadow: var(--box-shadow-solid);
   --box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
     var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  --border-color: rgb(10 13 16);
+  --border-color: var(--color-gray-900);
   --border-width: 2px;
-  --event-color: rgb(126 249 140);
-  --bg-color: rgb(248 249 250);
-  --currentDayColor: #dedbfd;
-  --text-color: black;
-  --event-text-color: black;
-  --greyed-date-color: #e6e6e6;
-  --selected-button-bg-color: #d4d4d4;
-  --grid-line-color: #ddd;
+  --event-color: var(--color-primary-500);
+  --bg-color: var(--color-gray-100);
+  --currentDayColor: var(--color-secondary-200);
+  --text-color: var(--color-gray-900);
+  --event-text-color: var(--color-gray-900);
+  --greyed-date-color: var(--color-gray-300);
+  --greyed-date-text-color: var(--color-gray-600);
+  --selected-button-bg-color: var(--color-gray-400);
+  --grid-line-color: var(--color-gray-400);
 }
 
 /*
@@ -111,7 +112,7 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-off-range {
-  color: #999999;
+  color: var(--greyed-date-text-color);
 }
 
 .rbc-off-range-bg {
