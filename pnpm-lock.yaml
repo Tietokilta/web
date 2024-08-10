@@ -184,6 +184,9 @@ importers:
       next-international:
         specifier: ^1.2.4
         version: 1.2.4(patch_hash=xeq66wimb7lsj4vnwftgigy5za)
+      nextjs-toploader:
+        specifier: ^1.6.12
+        version: 1.6.12(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       payload-admin-bar:
         specifier: ^1.0.6
         version: 1.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -5368,6 +5371,13 @@ packages:
       sass:
         optional: true
 
+  nextjs-toploader@1.6.12:
+    resolution: {integrity: sha512-nbun5lvVjlKnxLQlahzZ55nELVEduqoEXT03KCHnsEYJnFpI/3BaIzpMyq/v8C7UGU2NfxQmjq6ldZ310rsDqA==}
+    peerDependencies:
+      next: '>= 6.0.0'
+      react: '>= 16.0.0'
+      react-dom: '>= 16.0.0'
+
   no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
 
@@ -5447,6 +5457,9 @@ packages:
   npm-run-path@4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
+
+  nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
@@ -13785,6 +13798,14 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
+  nextjs-toploader@1.6.12(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+    dependencies:
+      next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
+      nprogress: 0.2.0
+      prop-types: 15.8.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
@@ -13863,6 +13884,8 @@ snapshots:
   npm-run-path@4.0.1:
     dependencies:
       path-key: 3.1.1
+
+  nprogress@0.2.0: {}
 
   nth-check@2.1.1:
     dependencies:
