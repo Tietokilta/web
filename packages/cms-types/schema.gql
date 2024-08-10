@@ -6507,6 +6507,7 @@ type NewsItem {
   signupStartDate: DateTime
   signupEndDate: DateTime
   content(depth: Int): JSON
+  linkToSignUp: String
   updatedAt: DateTime
   createdAt: DateTime
 }
@@ -6904,6 +6905,7 @@ input NewsItem_where {
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
   content: NewsItem_content_operator
+  linkToSignUp: NewsItem_linkToSignUp_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
   id: NewsItem_id_operator
@@ -6987,6 +6989,17 @@ input NewsItem_content_operator {
   contains: JSON
 }
 
+input NewsItem_linkToSignUp_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
 input NewsItem_updatedAt_operator {
   equals: DateTime
   not_equals: DateTime
@@ -7028,6 +7041,7 @@ input NewsItem_where_and {
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
   content: NewsItem_content_operator
+  linkToSignUp: NewsItem_linkToSignUp_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
   id: NewsItem_id_operator
@@ -7043,6 +7057,7 @@ input NewsItem_where_or {
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
   content: NewsItem_content_operator
+  linkToSignUp: NewsItem_linkToSignUp_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
   id: NewsItem_id_operator
@@ -7070,6 +7085,7 @@ type NewsItemsDocAccessFields {
   signupStartDate: NewsItemsDocAccessFields_signupStartDate
   signupEndDate: NewsItemsDocAccessFields_signupEndDate
   content: NewsItemsDocAccessFields_content
+  linkToSignUp: NewsItemsDocAccessFields_linkToSignUp
   updatedAt: NewsItemsDocAccessFields_updatedAt
   createdAt: NewsItemsDocAccessFields_createdAt
 }
@@ -7232,6 +7248,29 @@ type NewsItemsDocAccessFields_content_Update {
 }
 
 type NewsItemsDocAccessFields_content_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_linkToSignUp {
+  create: NewsItemsDocAccessFields_linkToSignUp_Create
+  read: NewsItemsDocAccessFields_linkToSignUp_Read
+  update: NewsItemsDocAccessFields_linkToSignUp_Update
+  delete: NewsItemsDocAccessFields_linkToSignUp_Delete
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Delete {
   permission: Boolean!
 }
 
@@ -11965,6 +12004,7 @@ type NewsItemsFields {
   signupStartDate: NewsItemsFields_signupStartDate
   signupEndDate: NewsItemsFields_signupEndDate
   content: NewsItemsFields_content
+  linkToSignUp: NewsItemsFields_linkToSignUp
   updatedAt: NewsItemsFields_updatedAt
   createdAt: NewsItemsFields_createdAt
 }
@@ -12127,6 +12167,29 @@ type NewsItemsFields_content_Update {
 }
 
 type NewsItemsFields_content_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_linkToSignUp {
+  create: NewsItemsFields_linkToSignUp_Create
+  read: NewsItemsFields_linkToSignUp_Read
+  update: NewsItemsFields_linkToSignUp_Update
+  delete: NewsItemsFields_linkToSignUp_Delete
+}
+
+type NewsItemsFields_linkToSignUp_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_linkToSignUp_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_linkToSignUp_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_linkToSignUp_Delete {
   permission: Boolean!
 }
 
@@ -14394,6 +14457,7 @@ input mutationNewsItemInput {
   signupStartDate: String
   signupEndDate: String
   content: JSON
+  linkToSignUp: String
   updatedAt: String
   createdAt: String
 }
@@ -14413,6 +14477,7 @@ input mutationNewsItemUpdateInput {
   signupStartDate: String
   signupEndDate: String
   content: JSON
+  linkToSignUp: String
   updatedAt: String
   createdAt: String
 }
