@@ -6506,8 +6506,8 @@ type NewsItem {
   date: DateTime
   signupStartDate: DateTime
   signupEndDate: DateTime
-  content(depth: Int): JSON
   linkToSignUp: String
+  content(depth: Int): JSON
   updatedAt: DateTime
   createdAt: DateTime
 }
@@ -6904,8 +6904,8 @@ input NewsItem_where {
   date: NewsItem_date_operator
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
-  content: NewsItem_content_operator
   linkToSignUp: NewsItem_linkToSignUp_operator
+  content: NewsItem_content_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
   id: NewsItem_id_operator
@@ -6982,13 +6982,6 @@ input NewsItem_signupEndDate_operator {
   exists: Boolean
 }
 
-input NewsItem_content_operator {
-  equals: JSON
-  not_equals: JSON
-  like: JSON
-  contains: JSON
-}
-
 input NewsItem_linkToSignUp_operator {
   equals: String
   not_equals: String
@@ -6998,6 +6991,13 @@ input NewsItem_linkToSignUp_operator {
   not_in: [String]
   all: [String]
   exists: Boolean
+}
+
+input NewsItem_content_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
 }
 
 input NewsItem_updatedAt_operator {
@@ -7040,8 +7040,8 @@ input NewsItem_where_and {
   date: NewsItem_date_operator
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
-  content: NewsItem_content_operator
   linkToSignUp: NewsItem_linkToSignUp_operator
+  content: NewsItem_content_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
   id: NewsItem_id_operator
@@ -7056,8 +7056,8 @@ input NewsItem_where_or {
   date: NewsItem_date_operator
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
-  content: NewsItem_content_operator
   linkToSignUp: NewsItem_linkToSignUp_operator
+  content: NewsItem_content_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
   id: NewsItem_id_operator
@@ -7084,8 +7084,8 @@ type NewsItemsDocAccessFields {
   date: NewsItemsDocAccessFields_date
   signupStartDate: NewsItemsDocAccessFields_signupStartDate
   signupEndDate: NewsItemsDocAccessFields_signupEndDate
-  content: NewsItemsDocAccessFields_content
   linkToSignUp: NewsItemsDocAccessFields_linkToSignUp
+  content: NewsItemsDocAccessFields_content
   updatedAt: NewsItemsDocAccessFields_updatedAt
   createdAt: NewsItemsDocAccessFields_createdAt
 }
@@ -7228,29 +7228,6 @@ type NewsItemsDocAccessFields_signupEndDate_Delete {
   permission: Boolean!
 }
 
-type NewsItemsDocAccessFields_content {
-  create: NewsItemsDocAccessFields_content_Create
-  read: NewsItemsDocAccessFields_content_Read
-  update: NewsItemsDocAccessFields_content_Update
-  delete: NewsItemsDocAccessFields_content_Delete
-}
-
-type NewsItemsDocAccessFields_content_Create {
-  permission: Boolean!
-}
-
-type NewsItemsDocAccessFields_content_Read {
-  permission: Boolean!
-}
-
-type NewsItemsDocAccessFields_content_Update {
-  permission: Boolean!
-}
-
-type NewsItemsDocAccessFields_content_Delete {
-  permission: Boolean!
-}
-
 type NewsItemsDocAccessFields_linkToSignUp {
   create: NewsItemsDocAccessFields_linkToSignUp_Create
   read: NewsItemsDocAccessFields_linkToSignUp_Read
@@ -7271,6 +7248,29 @@ type NewsItemsDocAccessFields_linkToSignUp_Update {
 }
 
 type NewsItemsDocAccessFields_linkToSignUp_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content {
+  create: NewsItemsDocAccessFields_content_Create
+  read: NewsItemsDocAccessFields_content_Read
+  update: NewsItemsDocAccessFields_content_Update
+  delete: NewsItemsDocAccessFields_content_Delete
+}
+
+type NewsItemsDocAccessFields_content_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_content_Delete {
   permission: Boolean!
 }
 
@@ -12003,8 +12003,8 @@ type NewsItemsFields {
   date: NewsItemsFields_date
   signupStartDate: NewsItemsFields_signupStartDate
   signupEndDate: NewsItemsFields_signupEndDate
-  content: NewsItemsFields_content
   linkToSignUp: NewsItemsFields_linkToSignUp
+  content: NewsItemsFields_content
   updatedAt: NewsItemsFields_updatedAt
   createdAt: NewsItemsFields_createdAt
 }
@@ -12147,29 +12147,6 @@ type NewsItemsFields_signupEndDate_Delete {
   permission: Boolean!
 }
 
-type NewsItemsFields_content {
-  create: NewsItemsFields_content_Create
-  read: NewsItemsFields_content_Read
-  update: NewsItemsFields_content_Update
-  delete: NewsItemsFields_content_Delete
-}
-
-type NewsItemsFields_content_Create {
-  permission: Boolean!
-}
-
-type NewsItemsFields_content_Read {
-  permission: Boolean!
-}
-
-type NewsItemsFields_content_Update {
-  permission: Boolean!
-}
-
-type NewsItemsFields_content_Delete {
-  permission: Boolean!
-}
-
 type NewsItemsFields_linkToSignUp {
   create: NewsItemsFields_linkToSignUp_Create
   read: NewsItemsFields_linkToSignUp_Read
@@ -12190,6 +12167,29 @@ type NewsItemsFields_linkToSignUp_Update {
 }
 
 type NewsItemsFields_linkToSignUp_Delete {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content {
+  create: NewsItemsFields_content_Create
+  read: NewsItemsFields_content_Read
+  update: NewsItemsFields_content_Update
+  delete: NewsItemsFields_content_Delete
+}
+
+type NewsItemsFields_content_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_content_Delete {
   permission: Boolean!
 }
 
@@ -14456,8 +14456,8 @@ input mutationNewsItemInput {
   date: String
   signupStartDate: String
   signupEndDate: String
-  content: JSON
   linkToSignUp: String
+  content: JSON
   updatedAt: String
   createdAt: String
 }
@@ -14476,8 +14476,8 @@ input mutationNewsItemUpdateInput {
   date: String
   signupStartDate: String
   signupEndDate: String
-  content: JSON
   linkToSignUp: String
+  content: JSON
   updatedAt: String
   createdAt: String
 }

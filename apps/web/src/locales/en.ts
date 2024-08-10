@@ -106,6 +106,7 @@ const en = {
   "weeklyNewsletter.title": "Weekly newsletters",
   "weeklyNewsletter.path": "weekly-newsletters",
   "weeklyNewsletter.link-to-sign-up": "To sign up",
+  "weeklyNewsletter.for-event": "for event",
   "calendar.Week": "Week",
   "calendar.Work Week": "Work Week",
   "calendar.Day": "Day",
