@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { type EditorState } from "@tietokilta/cms-types/lexical";
 import { type NewsItem } from "@tietokilta/cms-types/payload";
 import {
@@ -18,38 +19,37 @@ import { LexicalSerializer } from "../components/lexical/lexical-serializer";
 import { TableOfContents } from "../components/table-of-contents";
 import { DateTime } from "../components/datetime";
 
-function NewsItemContent({ content }: { content?: EditorState }) {
-  if (!content) return null;
+async function NewsItemContent({ item }: { item: NewsItem }) {
+  const t = await getScopedI18n("weeklyNewsletter");
+  const content = item.content as unknown as EditorState;
 
   return (
     <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+      {item.linkToSignUp ? (
+        <Link
+          // Do not create relative links
+          href={
+            item.linkToSignUp.startsWith("http")
+              ? item.linkToSignUp
+              : `//${item.linkToSignUp}`
+          }
+          target="_blank"
+          rel="noopener"
+        >
+          {t("link-to-sign-up")}{" "}
+          <span className="sr-only">{` ${t("for-event")} ${item.title}`}</span>
+        </Link>
+      ) : null}
       <LexicalSerializer nodes={content.root.children} />
     </div>
   );
 }
 
-async function NewsSection({ newsItem }: { newsItem: NewsItem }) {
-  const t = await getScopedI18n("weeklyNewsletter");
-  const content = newsItem.content as unknown as EditorState;
-
+function NewsSection({ newsItem }: { newsItem: NewsItem }) {
   return (
     <article>
       <h3 id={stringToId(newsItem.title)}>{newsItem.title}</h3>
-      {newsItem.linkToSignUp ? (
-        <a
-          // Do not create relative links
-          href={
-            newsItem.linkToSignUp.startsWith("http")
-              ? newsItem.linkToSignUp
-              : `//${newsItem.linkToSignUp}`
-          }
-          target="_blank"
-          rel="noopener"
-        >
-          {t("link-to-sign-up")}
-        </a>
-      ) : null}
-      <NewsItemContent content={content} />
+      <NewsItemContent item={newsItem} />
     </article>
   );
 }
