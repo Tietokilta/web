@@ -28,12 +28,24 @@ function NewsItemContent({ content }: { content?: EditorState }) {
   );
 }
 
-function NewsSection({ newsItem }: { newsItem: NewsItem }) {
+async function NewsSection({ newsItem }: { newsItem: NewsItem }) {
+  const t = await getScopedI18n("weeklyNewsletter");
   const content = newsItem.content as unknown as EditorState;
 
   return (
     <article>
       <h3 id={stringToId(newsItem.title)}>{newsItem.title}</h3>
+      {
+        newsItem.linkToSignUp ? <a
+            // Do not create relative links
+            href={newsItem.linkToSignUp.startsWith("http") ? 
+              newsItem.linkToSignUp : `//${newsItem.linkToSignUp}`}
+            target="_blank"
+            rel="noopener"
+          >
+            {t("link-to-sign-up")}
+          </a> : null
+      }
       <NewsItemContent content={content} />
     </article>
   );
