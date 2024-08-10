@@ -21,7 +21,7 @@ import { DateTime } from "../components/datetime";
 
 async function NewsItemContent({ item }: { item: NewsItem }) {
   const t = await getScopedI18n("weeklyNewsletter");
-  const content = item.content as unknown as EditorState;
+  const content = item.content as unknown as EditorState | null;
 
   return (
     <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
@@ -40,7 +40,7 @@ async function NewsItemContent({ item }: { item: NewsItem }) {
           <span className="sr-only">{` ${t("for-event")} ${item.title}`}</span>
         </Link>
       ) : null}
-      <LexicalSerializer nodes={content.root.children} />
+      {content ? <LexicalSerializer nodes={content.root.children} /> : null}
     </div>
   );
 }
