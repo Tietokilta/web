@@ -58,4 +58,9 @@
   --color-warning-300: #f5eda6;
   --color-warning-200: #f9f4c9;
   --color-warning-100: #fbf7e6;
+
+  --box-shadow-solid: 2px 2px 0px 0px var(--color-gray-900);
+  --box-shadow-solid-lg: 4px 4px 0px 0px var(--color-gray-900);
+  --box-shadow-solid-xl: 6px 6px 0px 0px var(--color-gray-900);
+  --box-shadow-underline: inset 0 -2px 0 0 var(--color-gray-900);
 }
