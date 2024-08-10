@@ -3,7 +3,7 @@ import type { PayloadRequest } from "payload/types";
 import { signedIn } from "../access/signed-in";
 import { importCommittees } from "../util/import";
 
-export const importController = async (
+export const committeesImportController = async (
   req: PayloadRequest,
   res: Response,
 ): Promise<void> => {
