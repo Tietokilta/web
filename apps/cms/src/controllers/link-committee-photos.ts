@@ -1,3 +1,5 @@
+/* eslint-disable no-console -- Allow console logs for this file */
+/* eslint-disable @typescript-eslint/restrict-template-expressions -- Allow string concatenation for logging */
 import type { Response } from "express";
 import type { PayloadRequest } from "payload/types";
 import payload from "payload";
@@ -11,12 +13,14 @@ export const linkCommitteePhotos = async (
 ): Promise<void> => {
   if (!signedIn({ req }) || !req.user) {
     res.sendStatus(401);
+    return;
   }
 
   const { year } = req.body as { year: number };
 
   if (!year) {
     res.status(400).send("Missing required fields");
+    return;
   }
 
   const committeeMembers = await payload.find({
@@ -29,8 +33,9 @@ export const linkCommitteePhotos = async (
     pagination: false,
   });
 
-  if (!committeeMembers) {
+  if (committeeMembers.docs.length === 0) {
     res.status(500).send("No committee members found for the given year");
+    return;
   }
 
   for (const committeeMember of committeeMembers.docs) {
