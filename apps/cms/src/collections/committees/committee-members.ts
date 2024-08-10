@@ -1,8 +1,10 @@
 import type { CollectionConfig, FieldHook } from "payload/types";
 import type { CommitteeMember } from "@tietokilta/cms-types/payload";
+import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
+import { linkCommitteePhotos } from "../../controllers/link-committee-photos";
 
 const formatDisplayTitle: FieldHook<CommitteeMember> = ({
   data: committeeMember,
@@ -77,4 +79,13 @@ export const CommitteeMembers = {
       revalidateCollection("committees"),
     ],
   },
+  endpoints: [
+    {
+      path: "/link-photos",
+      method: "post",
+      handler: linkCommitteePhotos as PayloadHandler,
+    },
+  ],
 } as const satisfies CollectionConfig;
+
+export type CommitteeMembersSlug = (typeof CommitteeMembers)["slug"];
