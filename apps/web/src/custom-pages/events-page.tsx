@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@tietokilta/ui";
 import type {
   EventQuota,
   IlmomasiinaEvent,
@@ -150,10 +151,17 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+  const t = await getScopedI18n("ilmomasiina");
+
   return (
-    <div className="h-[40rem]">
-      <EventCalendar events={events} />
+    <div className="flex flex-col gap-2">
+      <div className="h-[40rem]">
+        <EventCalendar events={events} />
+      </div>
+      <Button asChild variant="outlineLink" className="self-end">
+        <Link href="/next_api/ilmo-calendar">{t("Tilaa kalenteri")}</Link>
+      </Button>
     </div>
   );
 }
