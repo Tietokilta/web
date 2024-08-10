@@ -2,8 +2,8 @@ packages:
   - apps/*
   - packages/*
 catalog:
-  "@tailwindcss/typography": ^0.5.12
-  "@types/node": ^22.1.0
+  "@tailwindcss/typography": ^0.5.14
+  "@types/node": ^22.2.0
   "@types/react-dom": ^18.3.0
   "@types/react": ^18.3.3
   autoprefixer: ^10.4.20
@@ -14,5 +14,5 @@ catalog:
   react: ^18.3.1
   tailwind-merge: ^2.4.0
   tailwindcss-animate: ^1.0.7
-  tailwindcss: ^3.4.7
+  tailwindcss: ^3.4.9
   typescript: ^5.5.4
