@@ -31,6 +31,7 @@ export const Documents: CollectionConfig = {
       name: "thumbnail",
       type: "upload",
       relationTo: Media.slug,
+      displayPreview: true,
     },
   ],
 };
