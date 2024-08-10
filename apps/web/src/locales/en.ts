@@ -86,6 +86,8 @@ const en = {
     "Event does not have sign ups",
   "ilmomasiina.Tapahtumat": "Events",
   "ilmomasiina.Tilaa kalenteri": "Subscribe to calendar",
+  "ilmomasiina.Kopioidaan leikepöydälle": "Copying to clipboard",
+  "ilmomasiina.Kopioitu leikepöydälle": "Copied to clipboard",
   "not-found.Etusivulle": "To front page",
   "not-found.Sivua ei löytynyt": "Page not found",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
