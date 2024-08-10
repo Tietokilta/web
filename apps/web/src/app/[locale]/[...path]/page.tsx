@@ -7,11 +7,9 @@ import { LexicalSerializer } from "../../../components/lexical/lexical-serialize
 import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
 import { getCurrentLocale, type Locale } from "../../../locales/server";
-import EventsPage from "../../../custom-pages/events-page";
-import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
 import { generateTocFromRichText } from "../../../lib/utils";
-import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
 import { openGraphImage } from "../../shared-metadata";
+import { CustomPage } from "../../../custom-pages";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
@@ -101,16 +99,14 @@ async function Page({ params: { path } }: Props) {
   const locale = getCurrentLocale();
   const page = await getPage(path, locale);
 
-  if (page.type === "events-list") {
-    return <EventsPage />;
-  }
-
-  if (page.type === "weekly-newsletter") {
-    return <WeeklyNewsletterPage />;
-  }
-
-  if (page.type === "weekly-newsletters-list") {
-    return <WeeklyNewslettersListPage />;
+  if (
+    // done this way instead of .includes for better typeescript
+    // some typewizard can take a look if they want
+    page.type === "events-list" ||
+    page.type === "weekly-newsletter" ||
+    page.type === "weekly-newsletters-list"
+  ) {
+    return <CustomPage page={page} />;
   }
 
   if (page.type === "redirect") {

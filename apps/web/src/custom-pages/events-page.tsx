@@ -1,4 +1,5 @@
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import type {
   EventQuota,
   IlmomasiinaEvent,
@@ -16,7 +17,8 @@ import {
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { DateTime } from "../components/datetime";
-import EventCalendar from "./event-calendar";
+
+const EventCalendar = dynamic(() => import("./event-calendar"));
 
 async function SignUpText({
   startDate,

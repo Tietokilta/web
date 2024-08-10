@@ -42,4 +42,7 @@ module.exports = {
       fullUrl: true,
     },
   },
+  experimental: {
+    optimizePackageImports: ["react-big-calendar"],
+  },
 };
