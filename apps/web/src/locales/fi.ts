@@ -88,6 +88,8 @@ const fi = {
     "Tapahtumaan ei voi ilmoittautua",
   "ilmomasiina.Tapahtumat": "Tapahtumat",
   "ilmomasiina.Tilaa kalenteri": "Tilaa kalenteri",
+  "ilmomasiina.Kopioidaan leikepöydälle": "Kopioidaan leikepöydälle",
+  "ilmomasiina.Kopioitu leikepöydälle": "Kopioitu leikepöydälle",
   "not-found.Etusivulle": "Etusivulle",
   "not-found.Sivua ei löytynyt": "Sivua ei löytynyt",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":

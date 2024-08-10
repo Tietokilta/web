@@ -17,6 +17,7 @@ import {
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { DateTime } from "../components/datetime";
+import { CalendarSubButton } from "../components/calendar-sub-button";
 import EventCalendar from "./event-calendar";
 
 async function SignUpText({
@@ -159,9 +160,11 @@ async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
       <div className="h-[40rem]">
         <EventCalendar events={events} />
       </div>
-      <Button asChild variant="outlineLink" className="self-end">
-        <Link href="/next_api/ilmo-calendar">{t("Tilaa kalenteri")}</Link>
-      </Button>
+      <CalendarSubButton
+        ctaText={t("Tilaa kalenteri")}
+        copyingText={t("Kopioidaan leikepöydälle")}
+        copiedText={t("Kopioitu leikepöydälle")}
+      />
     </div>
   );
 }
