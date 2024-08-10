@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 // eslint-disable-next-line camelcase -- next/font/google
 import { Inter, Roboto_Mono } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import { Footer } from "../../components/footer";
 import { MainNav } from "../../components/main-nav";
 import { MobileNav } from "../../components/mobile-nav";
@@ -82,6 +83,8 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <SkipLink />
+        {/* gray-100 (TODO: replace with CSS variable after refactoring tailwind config ot use CSS variables) */}
+        <NextTopLoader color="#f8f9fa" showSpinner={false} />
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
           <MainNav className="sticky top-0 z-50 hidden lg:block" />
