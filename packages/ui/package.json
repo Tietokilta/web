@@ -4,14 +4,33 @@
   "private": true,
   "license": "MIT",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./*": {
+      "import": "./dist/*",
+      "require": "./dist/*",
+      "types": "./dist/*"
+    }
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup lib/index.tsx --format esm,cjs --dts --external react",
+    "build": "tsup lib/index.tsx lib/global.css --format esm,cjs --dts --external react",
     "clean": "rm -rf dist",
     "dev": "tsup lib/index.tsx --format esm,cjs --watch --dts --external react",
     "lint": "eslint lib/",
