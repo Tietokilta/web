@@ -673,6 +673,7 @@ export interface NewsItem {
     };
     [k: string]: unknown;
   };
+  linkToSignUp?: string | null;
   updatedAt: string;
   createdAt: string;
 }
