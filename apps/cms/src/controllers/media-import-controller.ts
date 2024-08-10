@@ -25,6 +25,7 @@ export const mediaImportController = async (
     alt: string;
     photographer: string;
   };
+
   // Get the file from the request
   const rawFile = req.files?.file;
   if (!rawFile) {
