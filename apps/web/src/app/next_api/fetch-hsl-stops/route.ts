@@ -181,7 +181,7 @@ function makePrintTime(arrival: Arrival): string {
   if (arrivalTime / 3600 >= 24) {
     arrivalTime -= 24 * 3600;
   }
-  if (arrivalTime - currentTSM > 600) {
+  if (true) {// arrivalTime - currentTSM > 600) {
     return `${pad(
       Math.floor((arrival.realTimeArrival - arrival.serviceDay) / 60 / 60) % 24,
       2,
