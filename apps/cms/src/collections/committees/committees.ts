@@ -4,7 +4,7 @@ import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
-import { importController } from "../../controllers/import-controller";
+import { committeesImportController } from "../../controllers/committees-import-controller";
 
 const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({
   guildYear: {
@@ -58,7 +58,7 @@ export const Committees = {
     {
       path: "/import",
       method: "post",
-      handler: importController as PayloadHandler,
+      handler: committeesImportController as PayloadHandler,
     },
   ],
 } as const satisfies CollectionConfig;
