@@ -80,6 +80,12 @@ export const NewsItems = {
       required: true,
       localized: true,
     },
+    {
+      name: "linkToSignUp",
+      type: "text",
+      required: false,
+      localized: false,
+    },
   ],
   hooks: {
     afterChange: [
