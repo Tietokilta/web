@@ -454,6 +454,7 @@ export interface CommitteeMember {
   name: string;
   title: string;
   chair?: boolean | null;
+  email?: string | null;
   telegramUsername?: string | null;
   updatedAt: string;
   createdAt: string;
