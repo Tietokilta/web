@@ -4,8 +4,13 @@ import type {
   Media,
 } from "@tietokilta/cms-types/payload";
 import Image from "next/image";
-import { ChevronDownIcon, GavelIcon } from "@tietokilta/ui";
 import type { JSX } from "react";
+import {
+  ChevronDownIcon,
+  GavelIcon,
+  GmailIcon,
+  TelegramIcon,
+} from "@tietokilta/ui";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
 
@@ -36,6 +41,34 @@ function CommitteeMemberCard({
         <span className="text-sm">
           {insertSoftHyphens(committeeMember.title)}
         </span>
+        <span className="m-1 text-sm">
+          {committeeMember.email ? (
+            <a
+              className="flex items-center gap-1"
+              href={`mailto:${committeeMember.email}`}
+            >
+              <GmailIcon className="size-6 shrink-0" />
+              <span className="underline">
+                {insertSoftHyphens(committeeMember.email)}
+              </span>
+            </a>
+          ) : null}{" "}
+        </span>
+        <span className="m-1 text-sm">
+          {committeeMember.telegramUsername ? (
+            <a
+              className="flex items-center gap-1"
+              href={`https://t.me/${committeeMember.telegramUsername}`}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <TelegramIcon className="size-6 shrink-0" />
+              <span className="underline">
+                {committeeMember.telegramUsername}
+              </span>
+            </a>
+          ) : null}{" "}
+        </span>
       </p>
     </li>
   );
@@ -64,7 +97,7 @@ export function CommitteeCard({
           <h2 className="self-center truncate font-medium">{committee.name}</h2>
           <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
         </summary>
-        <ul className="my-6 grid w-full grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-2 md:grid-cols-[repeat(auto-fill,minmax(120px,1fr))] md:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(140px,1fr))] lg:gap-6 xl:grid-cols-[repeat(auto-fill,minmax(160px,1fr))]">
+        <ul className="my-6 grid w-full grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-2 md:grid-cols-[repeat(auto-fill,minmax(160px,1fr))] md:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(160px,1fr))] lg:gap-6 xl:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] xl:gap-8">
           {committee.committeeMembers.map(({ committeeMember }) => (
             <CommitteeMemberCard
               committeeMember={committeeMember as CommitteeMember}
