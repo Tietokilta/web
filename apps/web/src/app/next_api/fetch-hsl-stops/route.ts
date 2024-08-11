@@ -1,9 +1,10 @@
-import type {
-  ApolloQueryResult,
-  DefaultOptions,
-  DocumentNode,
+import {
+  type ApolloQueryResult,
+  type DocumentNode,
+  ApolloClient,
+  gql,
+  InMemoryCache,
 } from "@apollo/client";
-import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
 import type {
   Arrival,
   ArrivalAttribute,
@@ -24,7 +25,7 @@ const STOPS = [
   // Aalto Yliopisto bus stop "east" and "west"
   ["HSL:2222234", "HSL:2222212"],
 ] as const;
-const N_ARRIVALS = 6;
+const N_ARRIVALS = 10;
 
 export const dynamic = "force-dynamic";
 
@@ -33,6 +34,14 @@ export async function GET() {
 
   const dataFromHsl: RenderableStop[] = stops.filter(
     <T>(stop: T | null): stop is T => stop !== null,
+  );
+  dataFromHsl.forEach((stop) =>
+    stop.arrivals
+      .filter((arrival) => arrival.fullTime !== "NaN")
+      .sort(
+        (arr1: ArrivalAttribute, arr2: ArrivalAttribute) =>
+          arr1.realtimeArrival - arr2.realtimeArrival,
+      ),
   );
 
   const retData = {
@@ -45,9 +54,7 @@ export async function GET() {
     {
       status: 200,
       headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache, no-store",
-        Expires: "0",
+        "Cache-Control": "no-cache",
       },
     },
   );
@@ -71,10 +78,10 @@ const GetStopSchedule = (StopId: string): DocumentNode =>
   }
 `);
 
-function pad(number: number, size: number) {
+function pad(number: number | string, size: number, padChar = "0"): string {
   let s = String(number);
   while (s.length < (size || 2)) {
-    s = "0".concat(s);
+    s = padChar.concat(s);
   }
   return s;
 }
@@ -131,18 +138,19 @@ function toOutData(stop: Stop | null): StopOutData | null {
 }
 
 const getData = async (stop: string): Promise<Stop | null> => {
-  const defaultOptions: DefaultOptions = {
-    query: {
-      fetchPolicy: "no-cache",
-    },
-  };
-
   const client = new ApolloClient<object>({
     uri: "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql",
-    cache: new InMemoryCache({
-      resultCaching: false,
-    }),
-    defaultOptions,
+    cache: new InMemoryCache(),
+    defaultOptions: {
+      watchQuery: {
+        fetchPolicy: "no-cache",
+        errorPolicy: "ignore",
+      },
+      query: {
+        fetchPolicy: "no-cache",
+        errorPolicy: "all",
+      },
+    },
     headers: {
       "Content-Type": "application/json",
       "digitransit-subscription-key":
@@ -154,6 +162,7 @@ const getData = async (stop: string): Promise<Stop | null> => {
   await client
     .query({
       query: GetStopSchedule(stop),
+      fetchPolicy: "no-cache",
     })
     .then((result: ApolloQueryResult<Data>) => {
       data = result.data.stop;
@@ -182,7 +191,7 @@ function makePrintTime(arrival: Arrival): string {
     )}`;
   }
   const t1 = Math.floor(arrivalTime - currentTSM);
-  if (t1 < -60) {
+  if (t1 < -30) {
     return "NaN";
   }
   const t = Math.floor(Math.max(t1, 0) / 60);
@@ -191,7 +200,6 @@ function makePrintTime(arrival: Arrival): string {
 
 const getStop = async (
   stops: readonly [string, string],
-  n = N_ARRIVALS,
 ): Promise<RenderableStop | null> => {
   const [result1, result2] = await Promise.all(
     stops.map((stop) => getData(stop).then(toOutData)),
@@ -206,21 +214,22 @@ const getStop = async (
       .map((arr) => arr)
       .concat(result2.arrival.map((arr) => arr))
       .sort((arr1, arr2) => arr1.realTimeArrival - arr2.realTimeArrival)
-      .slice(0, n + 1),
+      .slice(0, N_ARRIVALS + 1),
   };
-  const ArrivalsFormatted: ArrivalAttribute[] = result.arrival
-    .map((arr: Arrival) => {
+  const ArrivalsFormatted: ArrivalAttribute[] = result.arrival.map(
+    (arr: Arrival) => {
       return {
         route: arr.route ? arr.route.replace(" ", "") : "Null",
         headSign: removeSubstring(arr.headSign),
         hours:
           Math.floor((arr.realTimeArrival - arr.serviceDay) / 60 / 60) % 24,
         minutes: Math.floor(((arr.realTimeArrival - arr.serviceDay) / 60) % 60),
+        realtimeArrival: arr.realTimeArrival,
         intTime: arr.realTimeArrival,
-        fullTime: makePrintTime(arr),
+        fullTime: pad(makePrintTime(arr), 5, "‎"),
       };
-    })
-    .filter((arr) => arr.fullTime !== "NaN");
+    },
+  );
   return {
     name: result.name,
     type: result.type,
