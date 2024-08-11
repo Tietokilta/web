@@ -87,24 +87,15 @@ function pad(number: number | string, size: number, padChar = "0"): string {
 }
 
 function removeSubstring(fullString: string): string {
-  const subStrings: string[] = [
-    " via Leppävaara",
-    " via Rautatientori",
-    " via Tapiola (M)",
-    " via Huopalahti as.",
-    " via Tapiola",
-    " via Pasila as.",
-  ];
-  let str = fullString;
-  for (const subString of subStrings) {
-    // HSL sometimes has a bug where HEadSign is null so this handles case string in is null :D
-    if (str) {
-      str = str.replace(subString, "");
-    } else {
-      return "Null";
-    }
+  // HSL sometimes has a bug where HEadSign is null so this handles case string in is null :D
+  if (!fullString) {
+    return "Null";
   }
-  return str;
+  return fullString.replace(
+    / via.*/, ""
+  ).replace(
+    " (M)", ""
+  )
 }
 
 function isTram(arrival: Arrival): boolean {
