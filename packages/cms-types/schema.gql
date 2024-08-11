@@ -4288,6 +4288,7 @@ type CommitteeMember {
   name: String!
   title: String
   chair: Boolean
+  email: EmailAddress
   telegramUsername: String
   updatedAt: DateTime
   createdAt: DateTime
@@ -4356,6 +4357,7 @@ input CommitteeMember_where {
   name: CommitteeMember_name_operator
   title: CommitteeMember_title_operator
   chair: CommitteeMember_chair_operator
+  email: CommitteeMember_email_operator
   telegramUsername: CommitteeMember_telegramUsername_operator
   updatedAt: CommitteeMember_updatedAt_operator
   createdAt: CommitteeMember_createdAt_operator
@@ -4460,6 +4462,17 @@ input CommitteeMember_chair_operator {
   exists: Boolean
 }
 
+input CommitteeMember_email_operator {
+  equals: EmailAddress
+  not_equals: EmailAddress
+  like: EmailAddress
+  contains: EmailAddress
+  in: [EmailAddress]
+  not_in: [EmailAddress]
+  all: [EmailAddress]
+  exists: Boolean
+}
+
 input CommitteeMember_telegramUsername_operator {
   equals: String
   not_equals: String
@@ -4511,6 +4524,7 @@ input CommitteeMember_where_and {
   name: CommitteeMember_name_operator
   title: CommitteeMember_title_operator
   chair: CommitteeMember_chair_operator
+  email: CommitteeMember_email_operator
   telegramUsername: CommitteeMember_telegramUsername_operator
   updatedAt: CommitteeMember_updatedAt_operator
   createdAt: CommitteeMember_createdAt_operator
@@ -4526,6 +4540,7 @@ input CommitteeMember_where_or {
   name: CommitteeMember_name_operator
   title: CommitteeMember_title_operator
   chair: CommitteeMember_chair_operator
+  email: CommitteeMember_email_operator
   telegramUsername: CommitteeMember_telegramUsername_operator
   updatedAt: CommitteeMember_updatedAt_operator
   createdAt: CommitteeMember_createdAt_operator
@@ -4553,6 +4568,7 @@ type CommitteeMembersDocAccessFields {
   name: CommitteeMembersDocAccessFields_name
   title: CommitteeMembersDocAccessFields_title
   chair: CommitteeMembersDocAccessFields_chair
+  email: CommitteeMembersDocAccessFields_email
   telegramUsername: CommitteeMembersDocAccessFields_telegramUsername
   updatedAt: CommitteeMembersDocAccessFields_updatedAt
   createdAt: CommitteeMembersDocAccessFields_createdAt
@@ -4693,6 +4709,29 @@ type CommitteeMembersDocAccessFields_chair_Update {
 }
 
 type CommitteeMembersDocAccessFields_chair_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_email {
+  create: CommitteeMembersDocAccessFields_email_Create
+  read: CommitteeMembersDocAccessFields_email_Read
+  update: CommitteeMembersDocAccessFields_email_Update
+  delete: CommitteeMembersDocAccessFields_email_Delete
+}
+
+type CommitteeMembersDocAccessFields_email_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_email_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_email_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersDocAccessFields_email_Delete {
   permission: Boolean!
 }
 
@@ -11677,6 +11716,7 @@ type CommitteeMembersFields {
   name: CommitteeMembersFields_name
   title: CommitteeMembersFields_title
   chair: CommitteeMembersFields_chair
+  email: CommitteeMembersFields_email
   telegramUsername: CommitteeMembersFields_telegramUsername
   updatedAt: CommitteeMembersFields_updatedAt
   createdAt: CommitteeMembersFields_createdAt
@@ -11817,6 +11857,29 @@ type CommitteeMembersFields_chair_Update {
 }
 
 type CommitteeMembersFields_chair_Delete {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_email {
+  create: CommitteeMembersFields_email_Create
+  read: CommitteeMembersFields_email_Read
+  update: CommitteeMembersFields_email_Update
+  delete: CommitteeMembersFields_email_Delete
+}
+
+type CommitteeMembersFields_email_Create {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_email_Read {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_email_Update {
+  permission: Boolean!
+}
+
+type CommitteeMembersFields_email_Delete {
   permission: Boolean!
 }
 
@@ -15501,6 +15564,7 @@ input mutationCommitteeMemberInput {
   name: String!
   title: String
   chair: Boolean
+  email: String
   telegramUsername: String
   updatedAt: String
   createdAt: String
@@ -15555,6 +15619,7 @@ input mutationCommitteeMemberUpdateInput {
   name: String
   title: String
   chair: Boolean
+  email: String
   telegramUsername: String
   updatedAt: String
   createdAt: String
