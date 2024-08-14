@@ -8,6 +8,10 @@ import { createEvents } from "../../../lib/ics";
 export async function GET(request: NextRequest) {
   const events = await fetchEvents();
 
+  // Set the host to the one in the request headers
+  // We trust the middleware to set the host header correctly in Azure
+  // See https://github.com/vercel/next.js/issues/37536#issuecomment-1157000990
+  request.nextUrl.host = request.headers.get("Host") ?? request.nextUrl.host;
   const host = request.nextUrl.host;
   const origin = request.nextUrl.origin;
 
