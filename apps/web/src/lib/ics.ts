@@ -2,7 +2,14 @@ import { remark } from "remark";
 import strip from "strip-markdown";
 import { type IlmomasiinaEvent } from "./api/external/ilmomasiina";
 
-export function createEvents(events: IlmomasiinaEvent[]): string {
+export function createEvents(
+  events: IlmomasiinaEvent[],
+  {
+    originUrl,
+  }: {
+    originUrl: string;
+  },
+): string {
   return `BEGIN:VCALENDAR\r
 PRODID:-//Tietokilta//Ilmomasiina//FI\r
 VERSION:2.0\r
@@ -72,19 +79,31 @@ DTSTART:19961027T040000\r
 RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r
 END:STANDARD\r
 END:VTIMEZONE
-${events.map(createEvent).filter(Boolean).join("\r\n")}
+${events
+  .map((event) => createEvent(event, { originUrl }))
+  .filter(Boolean)
+  .join("\r\n")}
 END:VCALENDAR`;
 }
 
-function createEvent(event: IlmomasiinaEvent): string {
+function createEvent(
+  event: IlmomasiinaEvent,
+  {
+    originUrl,
+  }: {
+    originUrl: string;
+  },
+): string {
   if (!event.date) {
     return "";
   }
 
   return `BEGIN:VEVENT\r
-UID:tik-ilmo-event-${event.id}\r
+UID:${event.id}@${originUrl}\r
 SUMMARY:${event.title}\r
 LOCATION:${event.location}\r
+URL:${originUrl}/events/${event.slug}\r
+CATEGORIES:${event.category}\r
 DESCRIPTION:
  ${formatDescription(event.description)}
 ${formatDates(event.date, event.endDate)}
@@ -94,8 +113,10 @@ END:VEVENT`;
 function formatDates(start: string, end?: string | null) {
   const startDate = new Date(start);
   if (!end) {
-    return `DTSTART;VALUE=DATE:${formatDate(startDate)}\r
-DTEND;VALUE=DATE:${(parseInt(formatDate(startDate), 10) + 1).toFixed()}`;
+    // Make the event an all-day event if there's no end date.
+    return `DTSTAMP:${formatDateTime(startDate)}Z\r
+DTSTART;VALUE=DATE:${formatDate(startDate)}\r
+DTEND;VALUE=DATE:${formatDate(startDate)}`;
   }
 
   const endDate = new Date(end);
@@ -105,7 +126,8 @@ DTSTART:${formatDateTime(startDate)}Z\r
 DTEND:${formatDateTime(endDate)}`;
 }
 
-const formatDate = (date: Date) => date.toISOString().slice(0, 10);
+const formatDate = (date: Date) =>
+  date.toISOString().slice(0, 10).replace(/-/g, "");
 
 const formatDateTime = (date: Date) =>
   date.toISOString().slice(0, 19).replace(/[-:]/g, "");
