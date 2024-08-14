@@ -12,6 +12,8 @@ export async function GET(request: NextRequest) {
   // We trust the middleware to set the host header correctly in Azure
   // See https://github.com/vercel/next.js/issues/37536#issuecomment-1157000990
   request.nextUrl.host = request.headers.get("Host") ?? request.nextUrl.host;
+  // Remove the port and trust the browser to use the correct one to connect to Azure
+  request.nextUrl.port = "";
   const host = request.nextUrl.host;
   const origin = request.nextUrl.origin;
 
