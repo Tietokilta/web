@@ -7,7 +7,7 @@ RUN apk add --no-cache libc6-compat
 
 # Setup pnpm and turbo
 # Start a new stage based on the base image for setting up pnpm (a package manager) and turbo (for monorepo management).
-FROM base as setup
+FROM base AS setup
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
