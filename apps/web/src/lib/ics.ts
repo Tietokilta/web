@@ -5,9 +5,11 @@ import { type IlmomasiinaEvent } from "./api/external/ilmomasiina";
 export function createEvents(
   events: IlmomasiinaEvent[],
   {
-    originUrl,
+    host,
+    origin,
   }: {
-    originUrl: string;
+    host: string;
+    origin: string;
   },
 ): string {
   return `BEGIN:VCALENDAR\r
@@ -80,7 +82,7 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r
 END:STANDARD\r
 END:VTIMEZONE
 ${events
-  .map((event) => createEvent(event, { originUrl }))
+  .map((event) => createEvent(event, { host, origin }))
   .filter(Boolean)
   .join("\r\n")}
 END:VCALENDAR`;
@@ -89,9 +91,11 @@ END:VCALENDAR`;
 function createEvent(
   event: IlmomasiinaEvent,
   {
-    originUrl,
+    host,
+    origin,
   }: {
-    originUrl: string;
+    host: string;
+    origin: string;
   },
 ): string {
   if (!event.date) {
@@ -99,10 +103,10 @@ function createEvent(
   }
 
   return `BEGIN:VEVENT\r
-UID:${event.id}@${originUrl}\r
+UID:${event.id}@${host}\r
 SUMMARY:${event.title}\r
 LOCATION:${event.location}\r
-URL:${originUrl}/events/${event.slug}\r
+URL:${origin}/events/${event.slug}\r
 CATEGORIES:${event.category}\r
 DESCRIPTION:
  ${formatDescription(event.description)}
