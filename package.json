@@ -20,10 +20,12 @@
     "docker:start:web": "docker run -p 3000:3000 web",
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
-    "start": "dotenv -- turbo run start --cache-dir=.turbo",
+    "start": "NODE_ENV=\"production\" dotenv -- turbo run start --cache-dir=.turbo",
+    "test": "turbo run test --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo"
   },
   "devDependencies": {
+    "@playwright/test": "catalog:",
     "dotenv-cli": "^7.4.2",
     "prettier": "^3.3.3",
     "prettier-plugin-packagejson": "^2.5.1",

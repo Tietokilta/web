@@ -1,7 +1,9 @@
 packages:
   - apps/*
   - packages/*
+  - tests
 catalog:
+  "@playwright/test": ^1.46.0
   "@tailwindcss/typography": ^0.5.14
   "@types/node": ^22.2.0
   "@types/react-dom": ^18.3.0
