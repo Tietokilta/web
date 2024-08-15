@@ -49,6 +49,7 @@ import { ActionsLink, ActionsView } from "./views/actions-view";
 import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { GoogleForm } from "./blocks/google-form";
 import { EditorInChief } from "./blocks/editor-in-chief";
+import { InvoiceGenerator } from "./blocks/invoice-generator";
 
 const {
   GOOGLE_OAUTH_CLIENT_ID,
@@ -165,7 +166,13 @@ export default buildConfig({
       }),
       BlockQuoteFeature(),
       BlocksFeature({
-        blocks: [CommitteesInYear, ImageLinkGrid, GoogleForm, EditorInChief],
+        blocks: [
+          CommitteesInYear,
+          ImageLinkGrid,
+          GoogleForm,
+          EditorInChief,
+          InvoiceGenerator,
+        ],
       }),
       UploadFeature({
         collections: {
