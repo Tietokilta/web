@@ -13475,7 +13475,7 @@
 		"$date": "2024-02-03T16:12:04.152Z"
 	},
 	"updatedAt": {
-		"$date": "2024-08-10T11:11:40.212Z"
+		"$date": "2024-08-10T17:37:43.309Z"
 	},
 	"__v": 0,
 	"content": {
@@ -41957,18 +41957,370 @@
 },
 {
 	"_id": {
-		"$oid": "66b25df25352d1288618b28c"
+		"$oid": "66b899735a920462bc3c1a1a"
 	},
 	"type": "standard",
-	"tableOfContents": "all",
+	"tableOfContents": "none",
 	"hidden": false,
-	"_status": "draft",
+	"_status": "published",
 	"createdAt": {
-		"$date": "2024-08-06T17:31:30.736Z"
+		"$date": "2024-08-11T10:58:59.09Z"
 	},
 	"updatedAt": {
-		"$date": "2024-08-06T17:31:30.736Z"
+		"$date": "2024-08-11T12:39:57.689Z"
 	},
-	"__v": 0
+	"__v": 0,
+	"content": {
+		"fi": {
+			"root": {
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Ohjeita killan laskuttamiseen",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Pidäthän mielessä seuraavat asiat, kun laskutat kiltaa:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli kyseessä on toimikuntahengailu/-kokoustaminen tai fuksiryhmätapahtuma, niin listaathan osallistujien ",
+										"type": "text",
+										"version": 1
+									},
+									{
+										"detail": 0,
+										"format": 1,
+										"mode": "normal",
+										"style": "",
+										"text": "etu- ja sukunimet",
+										"type": "text",
+										"version": 1
+									},
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "! Myös tapahtuman päivämäärä tulee ilmoittaa!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli käytät kimppakyytejä, niin lisääthän myös tässä tilanteessa mukanaolevien henkilöiden etu- ja sukunimet!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Pidä kuitti tallessa ainakin siihen asti, kunnes olet saanut rahat!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Mikäli samalla kuitilla on omia ostoksia joita et laskuta killalta, niin yliviivaathan nämä ostokset ja päivität loppusumman vastaamaan korvattavien ostosten summaa.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Laskugeneraattori",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"format": "",
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "66b8acd81c7166769a90f5e4",
+							"blockName": "",
+							"blockType": "invoice-generator"
+						}
+					}
+				],
+				"direction": "ltr",
+				"format": "",
+				"indent": 0,
+				"type": "root",
+				"version": 1
+			}
+		},
+		"en": {
+			"root": {
+				"children": [
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Guild invoicing guidelines",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "heading",
+						"version": 1,
+						"tag": "h2"
+					},
+					{
+						"children": [
+							{
+								"detail": 0,
+								"format": 0,
+								"mode": "normal",
+								"style": "",
+								"text": "Please keep the following things in mind when invoicing the guild:",
+								"type": "text",
+								"version": 1
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "paragraph",
+						"version": 1
+					},
+					{
+						"children": [
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "If it is a committee meeting/meeting or a freshman group event, please list the first and last names of the participants!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 1
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "If you are carpooling, please also include the first and last names of the people involved in this situation!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 2
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "Keep the receipt at least until you have received the money!",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 3
+							},
+							{
+								"children": [
+									{
+										"detail": 0,
+										"format": 0,
+										"mode": "normal",
+										"style": "",
+										"text": "If you have your own purchases on the same receipt that you are not invoicing the guild for, please cross out these purchases and update the total amount to match the amount of the reimbursable purchases.",
+										"type": "text",
+										"version": 1
+									}
+								],
+								"direction": "ltr",
+								"format": "",
+								"indent": 0,
+								"type": "listitem",
+								"version": 1,
+								"value": 4
+							}
+						],
+						"direction": "ltr",
+						"format": "",
+						"indent": 0,
+						"type": "list",
+						"version": 1,
+						"listType": "bullet",
+						"start": 1,
+						"tag": "ul"
+					},
+					{
+						"format": "",
+						"type": "block",
+						"version": 2,
+						"fields": {
+							"id": "66b8b023d9d6946ffa485fd6",
+							"blockName": "",
+							"blockType": "invoice-generator"
+						}
+					}
+				],
+				"direction": "ltr",
+				"format": "",
+				"indent": 0,
+				"type": "root",
+				"version": 1
+			}
+		}
+	},
+	"description": {
+		"fi": "Tällä laskugeneraattorilla voit laskuttaa killalta maksamiasi budjetoituja menoja. Täytä lomakkeen kaikki kentät ja lähetä se hyväksyttäväksi. Muista tarkistaa että kuvat kuiteista ovat selkeitä ja kuitin kaikki tiedot ovat luettavissa.",
+		"en": "With this invoice generator, you can invoice the budgeted expenses you pay to the guild. Fill in all the fields on the form and submit it for approval. Be sure to check that the images on the receipts are clear and that all the information on the receipt is legible."
+	},
+	"path": {
+		"fi": "/fi/virallinen/laskugeneraattori",
+		"en": "/en/official/invoice-generator"
+	},
+	"slug": {
+		"fi": "laskugeneraattori",
+		"en": "invoice-generator"
+	},
+	"title": {
+		"fi": "Laskugeneraattori",
+		"en": "Invoice Generator"
+	},
+	"topic": {
+		"relationTo": "topics",
+		"value": "663cdb0b864517dbe569a648"
+	},
+	"icon": "Banknote"
 }]
 
