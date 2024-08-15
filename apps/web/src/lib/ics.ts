@@ -110,7 +110,7 @@ URL:${origin}/events/${event.slug}\r
 CATEGORIES:${event.category}\r
 DESCRIPTION:
  ${formatDescription(event.description)}
- ${foldICSText(`\\n\\n---\\nLue lisää: ${origin}/events/${event.slug}\\nRead more: ${origin}/events/${event.slug}`)}
+ ${foldICSText(`\\n\\n---\\nLue lisää: ${origin}/fi/tapahtumat/${event.slug}\\nRead more: ${origin}/en/events/${event.slug}`)}
 ${formatDates(event.date, event.endDate)}
 END:VEVENT`;
 }
