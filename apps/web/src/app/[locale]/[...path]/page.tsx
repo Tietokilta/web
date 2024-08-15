@@ -2,6 +2,7 @@ import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import type { Page as CMSPage } from "@tietokilta/cms-types/payload";
+import { Card } from "@tietokilta/ui";
 import { AdminBar } from "../../../components/admin-bar";
 import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
 import { TableOfContents } from "../../../components/table-of-contents";
@@ -12,7 +13,6 @@ import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
 import { generateTocFromRichText } from "../../../lib/utils";
 import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
 import { openGraphImage } from "../../shared-metadata";
-import { Card } from "@tietokilta/ui";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;

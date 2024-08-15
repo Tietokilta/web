@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { Button } from "@tietokilta/ui";
 import type {
   EventQuota,
   IlmomasiinaEvent,
