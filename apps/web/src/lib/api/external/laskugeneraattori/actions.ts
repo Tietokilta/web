@@ -1,3 +1,5 @@
+"use server";
+
 import {
   type InvoiceGeneratorFormState,
   type LaskugeneraattoriRequest,
@@ -9,7 +11,7 @@ const zip = <T>(...arr: T[][]) =>
     .fill(0)
     .map((_, i) => arr.map((a) => a[i]));
 
-export const laskugeneraattoriBaseUrl =
+const laskugeneraattoriBaseUrl =
   process.env.NEXT_PUBLIC_LASKUGENERAATTORI_URL ??
   "https://laskutus.tietokilta.fi";
 
@@ -17,7 +19,6 @@ export async function SaveAction(
   currentState: unknown,
   formData: FormData,
 ): Promise<InvoiceGeneratorFormState> {
-  "use client";
   const product = formData.getAll("rows.product");
   const quantity = formData.getAll("rows.quantity");
   const unit = formData.getAll("rows.unit");
