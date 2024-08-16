@@ -156,7 +156,7 @@ function InputRowArray({
   label,
   name,
   state,
-  minimumRows
+  minimumRows,
 }: {
   Row: ({
     state,
@@ -168,7 +168,7 @@ function InputRowArray({
   label: string;
   name: string;
   state: InvoiceGeneratorFormState | null;
-  minimumRows?: 1 | 0
+  minimumRows?: 1 | 0;
 }) {
   const [rows, setRows] = useState<number[]>(minimumRows === 1 ? [0] : []);
   const [counter, setCounter] = useState<number>(1);
@@ -191,11 +191,13 @@ function InputRowArray({
             <div key={row} id={`${htmlId}.${index.toString()}`}>
               <Row state={state} index={index} />
               {/* Do not add delete button for first row because the invoice has to always have at least one row */}
-              {index > 0 && minimumRows === 1 ? <DeleteButton
-                onClick={() => {
-                  setRows(rows.filter((filterRow) => filterRow !== row));
-                }}
-              /> : null}
+              {index > 0 && minimumRows === 1 ? (
+                <DeleteButton
+                  onClick={() => {
+                    setRows(rows.filter((filterRow) => filterRow !== row));
+                  }}
+                />
+              ) : null}
             </div>
           ))}
         </div>
@@ -406,11 +408,7 @@ function InvoiceGeneratorForm() {
           />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="city" formState={state}>
-          <InputRow 
-            label={t("City")} 
-            name="city" 
-            maxLength={128} 
-            required />
+          <InputRow label={t("City")} name="city" maxLength={128} required />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="zip" formState={state}>
           <InputRow
