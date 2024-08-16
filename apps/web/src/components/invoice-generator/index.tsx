@@ -156,6 +156,7 @@ function InputRowArray({
   label,
   name,
   state,
+  minimumRows
 }: {
   Row: ({
     state,
@@ -167,9 +168,10 @@ function InputRowArray({
   label: string;
   name: string;
   state: InvoiceGeneratorFormState | null;
+  minimumRows?: 1 | 0
 }) {
-  const [rows, setRows] = useState<number[]>([]);
-  const [counter, setCounter] = useState<number>(0);
+  const [rows, setRows] = useState<number[]>(minimumRows === 1 ? [0] : []);
+  const [counter, setCounter] = useState<number>(1);
   const htmlId = `inputRowArray.${name}`;
   const t = useScopedI18n("invoicegenerator");
 
@@ -188,15 +190,16 @@ function InputRowArray({
           {rows.map((row, index) => (
             <div key={row} id={`${htmlId}.${index.toString()}`}>
               <Row state={state} index={index} />
-              <DeleteButton
+              {/* Do not add delete button for first row because the invoice has to always have at least one row */}
+              {index > 0 && minimumRows === 1 ? <DeleteButton
                 onClick={() => {
                   setRows(rows.filter((filterRow) => filterRow !== row));
                 }}
-              />
+              /> : null}
             </div>
           ))}
         </div>
-        <Button type="button" onClick={addRow}>
+        <Button type="button" className="mt-2" onClick={addRow}>
           {t("Add")}
         </Button>
       </fieldset>
@@ -382,6 +385,7 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Phone number")}
             name="phone_number"
+            placeholder="+358451234567"
             type="tel"
             maxLength={32}
             autoComplete="tel"
@@ -402,7 +406,11 @@ function InvoiceGeneratorForm() {
           />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="city" formState={state}>
-          <InputRow label={t("City")} name="city" maxLength={128} required />
+          <InputRow 
+            label={t("City")} 
+            name="city" 
+            maxLength={128} 
+            required />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="zip" formState={state}>
           <InputRow
@@ -435,6 +443,7 @@ function InvoiceGeneratorForm() {
           label={t("Bank account number")}
           name="bank_account_number"
           autoComplete="cc-number"
+          placeholder="FI2112345600000785"
           maxLength={128}
           required
         />
@@ -448,6 +457,7 @@ function InvoiceGeneratorForm() {
           name="rows"
           state={state}
           Row={InvoiceItem}
+          minimumRows={1}
         />
       </ErrorMessageBlock>
       <InputRowArray
