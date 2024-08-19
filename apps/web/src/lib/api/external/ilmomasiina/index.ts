@@ -199,6 +199,11 @@ export const getSignup = async (
         return err("ilmomasiina-signup-not-found");
       }
 
+      if (response.status === 403) {
+        // invalid edit token
+        return err("ilmomasiina-signup-not-found");
+      }
+
       return err("ilmomasiina-fetch-fail");
     }
 
