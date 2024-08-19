@@ -98,6 +98,10 @@ const fi = {
   "ilmomasiina.Ilmoittautuminen": "Ilmoittautuminen",
   "ilmomasiina.Ilmoittautuneet": "Ilmoittautuneet",
   "ilmomasiina.Ilmoittautuneita": "Ilmoittautuneita",
+  "ilmomasiina.Piilotettu": "Piilotettu",
+  "ilmomasiina.Vahvistamaton": "Vahvistamaton",
+  "ilmomasiina.Avoin kiintiö": "Avoin kiintiö",
+  "ilmomasiina.Jonossa": "Jonossa",
   "ilmomasiina.path.events": "tapahtumat",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "Ei ilmoittautuneita vielä.",
   "ilmomasiina.status.Ilmoittautuminen alkaa":
