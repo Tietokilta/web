@@ -120,9 +120,16 @@ const fi = {
   "ilmomasiina.Kopioidaan leikepöydälle": "Kopioidaan leikepöydälle",
   "ilmomasiina.Kopioitu leikepöydälle": "Kopioitu leikepöydälle",
   "not-found.Etusivulle": "Etusivulle",
+  "not-found.Tapahtumalistaukseen": "Tapahtumalistaukseen",
   "not-found.Sivua ei löytynyt": "Sivua ei löytynyt",
+  "not-found.Tapahtumaa ei löytynyt": "Tapahtumaa ei löytynyt",
+  "not-found.Ilmoittautumista ei löytynyt": "Ilmoit­tau­tumista ei löytynyt",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
     "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.",
+  "not-found.Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.",
+  "not-found.Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.",
   "weeklyNewsletter.ayy-aalto": "AYY & Aalto",
   "weeklyNewsletter.bottom-corner": "Pohjanurkkaus",
   "weeklyNewsletter.calendar": "Kalenteri",

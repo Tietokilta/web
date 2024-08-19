@@ -118,9 +118,16 @@ const en = {
   "ilmomasiina.Kopioidaan leikepöydälle": "Copying to clipboard",
   "ilmomasiina.Kopioitu leikepöydälle": "Copied to clipboard",
   "not-found.Etusivulle": "To front page",
+  "not-found.Tapahtumalistaukseen": "To event list",
   "not-found.Sivua ei löytynyt": "Page not found",
+  "not-found.Tapahtumaa ei löytynyt": "Event not found",
+  "not-found.Ilmoittautumista ei löytynyt": "Sign up not found",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
     "Page not found. Check the URL or return to the front page.",
+  "not-found.Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Event not found. Check the URL or return to the event list.",
+  "not-found.Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Sign up not found or the edit token was invalid. Check the URL or return to the event list.",
   "weeklyNewsletter.ayy-aalto": "AYY & Aalto",
   "weeklyNewsletter.bottom-corner": "Bottom Corner",
   "weeklyNewsletter.calendar": "Calendar",
