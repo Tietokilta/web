@@ -221,9 +221,19 @@ export const isNextWeek = (date: string): boolean => {
 export const getQuotasWithOpenAndQueue = (
   quotas: EventQuota[],
   openQuotaSize: number,
-  options: { includeOpen?: boolean; includeQueue?: boolean } = {},
+  options: {
+    includeOpen?: boolean;
+    includeQueue?: boolean;
+    openQuotaName?: string;
+    queueQuotaName?: string;
+  } = {},
 ) => {
-  const { includeOpen = true, includeQueue = true } = options;
+  const {
+    includeOpen = true,
+    includeQueue = true,
+    openQuotaName = "Avoin kiintiö",
+    queueQuotaName = "Jonossa",
+  } = options;
   const openQuota = quotas.reduce<EventQuotaWithSignups>(
     (openQ, quota) => {
       const quotaSignups = quota.signups ?? [];
@@ -241,7 +251,7 @@ export const getQuotasWithOpenAndQueue = (
     },
     {
       id: OPEN_QUOTA_ID,
-      title: "Avoin kiintiö",
+      title: openQuotaName,
       size: openQuotaSize,
       signupCount: 0,
       signups: [],
@@ -265,7 +275,7 @@ export const getQuotasWithOpenAndQueue = (
     },
     {
       id: QUEUE_QUOTA_ID,
-      title: "Jonossa",
+      title: queueQuotaName,
       size: 0,
       signupCount: 0,
       signups: [],
