@@ -191,7 +191,7 @@ function InputRowArray({
             <div key={row} id={`${htmlId}.${index.toString()}`}>
               <Row state={state} index={index} />
               {/* Do not add delete button for first row because the invoice has to always have at least one row */}
-              {index > 0 && minimumRows === 1 ? (
+              {minimumRows !== 1 || index > 0 ? (
                 <DeleteButton
                   onClick={() => {
                     setRows(rows.filter((filterRow) => filterRow !== row));
@@ -431,7 +431,7 @@ function InvoiceGeneratorForm() {
         <TextAreaInputRow
           label={t("Description")}
           name="description"
-          maxLength={128}
+          maxLength={4096}
           required
         />
       </ErrorMessageBlock>
