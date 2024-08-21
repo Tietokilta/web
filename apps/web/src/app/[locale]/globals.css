@@ -15,6 +15,10 @@
 @tailwind components;
 
 @layer components {
+  ::backdrop {
+    @apply backdrop-blur-sm;
+  }
+
   .scroll-shadows {
     background:
     /* Shadow Cover TOP */
