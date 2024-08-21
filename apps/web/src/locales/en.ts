@@ -108,6 +108,8 @@ const en = {
   "ilmomasiina.Avoin kiintiö": "Open quota",
   "ilmomasiina.Jonossa": "In queue",
   "ilmomasiina.path.events": "events",
+  "ilmomasiina.countdown.Starting in {seconds} seconds":
+    "Starting in {seconds} seconds",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
   "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign ups start on {startDate}",
   "ilmomasiina.status.Ilmoittautuminen auki":
