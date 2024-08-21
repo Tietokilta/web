@@ -87,6 +87,11 @@ const fi = {
   "ilmomasiina.form.Sign up saved": "Ilmoittautuminen tallennettu!",
   "ilmomasiina.form.You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
     "Voit muokata ilmoittautumistasi tai poistaa sen myöhemmin tästä osoitteesta, joka lähetetään sähköpostiisi vahvistusviestissä.",
+  "ilmomasiina.form.Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.":
+    "Oletka varma, että haluat poistaa ilmoittautumisesi tapahtumaan {eventTitle}? Jos poistat ilmoittautumisesi, menetät paikkasi jonossa.",
+  "ilmomasiina.form.This action cannot be undone.":
+    "Tätä toimintoa ei voi perua.",
+  "ilmomasiina.form.Cancel": "Peruuta",
   "ilmomasiina.headers.Alkaa": "Alkaa",
   "ilmomasiina.headers.Ilmoittautumisaika": "Ilmoittautumisaika",
   "ilmomasiina.headers.Kategoria": "Kategoria",
