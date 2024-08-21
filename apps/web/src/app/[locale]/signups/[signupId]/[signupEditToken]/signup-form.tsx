@@ -2,7 +2,15 @@
 
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
-import { Button, Checkbox, Input, Textarea, Radio } from "@tietokilta/ui";
+import {
+  Button,
+  Checkbox,
+  Input,
+  Textarea,
+  Radio,
+  Card,
+  type ButtonProps,
+} from "@tietokilta/ui";
 // eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
@@ -109,14 +117,59 @@ function InputRow({
   );
 }
 
-function SubmitButton({ isConfirmed }: { isConfirmed: boolean }) {
-  const t = useScopedI18n("ilmomasiina.form");
+function StatusButton(props: Omit<ButtonProps, "disabled">) {
   const { pending } = useFormStatus();
 
+  return <Button disabled={pending} {...props} />;
+}
+
+function ConfirmDeletePopover({
+  id,
+  eventTitle,
+  deleteAction,
+}: {
+  id: string;
+  eventTitle: string;
+  deleteAction: typeof deleteSignUpAction;
+}) {
+  const t = useScopedI18n("ilmomasiina.form");
   return (
-    <Button className="w-full max-w-sm" type="submit" disabled={pending}>
-      {isConfirmed ? t("Update") : t("Submit")}
-    </Button>
+    <Card
+      id={id}
+      popover="auto"
+      className="[&:popover-open]:flex [&:popover-open]:w-full [&:popover-open]:max-w-sm [&:popover-open]:flex-col [&:popover-open]:gap-2"
+    >
+      <p>
+        {t(
+          "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
+          {
+            eventTitle,
+          },
+        )}
+      </p>
+      <p>
+        <strong>{t("This action cannot be undone.")}</strong>
+      </p>
+      <Button
+        type="button"
+        popoverTarget={id}
+        popoverTargetAction="hide"
+        variant="outline"
+        className="w-full max-w-sm"
+      >
+        {t("Cancel")}
+      </Button>
+      <StatusButton
+        type="submit"
+        formNoValidate
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises
+        formAction={deleteAction}
+        variant="destructive"
+        className="w-full max-w-sm"
+      >
+        {t("Delete sign up")}
+      </StatusButton>
+    </Card>
   );
 }
 
@@ -272,16 +325,22 @@ function Form({
             "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message",
           )}
         </p>
-        <SubmitButton isConfirmed={signup.confirmed} />
+        <StatusButton className="w-full max-w-sm" type="submit">
+          {signup.confirmed ? t("Update") : t("Submit")}
+        </StatusButton>
         <Button
-          formNoValidate
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises
-          formAction={deleteAction}
+          type="button"
+          popoverTarget="confirm-delete"
           variant="outline"
           className="w-full max-w-sm"
         >
           {t("Delete sign up")}
         </Button>
+        <ConfirmDeletePopover
+          id="confirm-delete"
+          eventTitle={event.title}
+          deleteAction={deleteAction}
+        />
       </div>
     </form>
   );
