@@ -51,12 +51,10 @@ type Query {
   allNews(where: News_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allNews
   countallNews(where: News_where, locale: LocaleInputType): countallNews
   docAccessNews(id: String!): newsDocAccess
-  WeeklyNewsletter(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletter
-  WeeklyNewsletters(draft: Boolean, where: WeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): WeeklyNewsletters
-  countWeeklyNewsletters(draft: Boolean, where: WeeklyNewsletter_where, locale: LocaleInputType): countWeeklyNewsletters
+  WeeklyNewsletter(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletter
+  WeeklyNewsletters(where: WeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): WeeklyNewsletters
+  countWeeklyNewsletters(where: WeeklyNewsletter_where, locale: LocaleInputType): countWeeklyNewsletters
   docAccessWeeklyNewsletter(id: String!): weekly_newslettersDocAccess
-  versionWeeklyNewsletter(id: String, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletterVersion
-  versionsWeeklyNewsletters(where: versionsWeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): versionsWeeklyNewsletters
   NewsItem(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): NewsItem
   NewsItems(where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
   countNewsItems(where: NewsItem_where, locale: LocaleInputType): countNewsItems
@@ -6493,7 +6491,6 @@ type WeeklyNewsletter {
   slug: String
   updatedAt: DateTime
   createdAt: DateTime
-  _status: WeeklyNewsletter__status
 }
 
 type WeeklyNewsletter_NewsItems {
@@ -6522,11 +6519,6 @@ enum NewsItem_newsItemCategory {
   bottom_corner
 }
 
-enum WeeklyNewsletter__status {
-  draft
-  published
-}
-
 type WeeklyNewsletters {
   docs: [WeeklyNewsletter]
   hasNextPage: Boolean
@@ -6549,7 +6541,6 @@ input WeeklyNewsletter_where {
   slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
-  _status: WeeklyNewsletter__status_operator
   id: WeeklyNewsletter_id_operator
   AND: [WeeklyNewsletter_where_and]
   OR: [WeeklyNewsletter_where_or]
@@ -6624,20 +6615,6 @@ input WeeklyNewsletter_createdAt_operator {
   exists: Boolean
 }
 
-input WeeklyNewsletter__status_operator {
-  equals: WeeklyNewsletter__status_Input
-  not_equals: WeeklyNewsletter__status_Input
-  in: [WeeklyNewsletter__status_Input]
-  not_in: [WeeklyNewsletter__status_Input]
-  all: [WeeklyNewsletter__status_Input]
-  exists: Boolean
-}
-
-enum WeeklyNewsletter__status_Input {
-  draft
-  published
-}
-
 input WeeklyNewsletter_id_operator {
   equals: String
   not_equals: String
@@ -6657,7 +6634,6 @@ input WeeklyNewsletter_where_and {
   slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
-  _status: WeeklyNewsletter__status_operator
   id: WeeklyNewsletter_id_operator
   AND: [WeeklyNewsletter_where_and]
   OR: [WeeklyNewsletter_where_or]
@@ -6671,7 +6647,6 @@ input WeeklyNewsletter_where_or {
   slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
-  _status: WeeklyNewsletter__status_operator
   id: WeeklyNewsletter_id_operator
   AND: [WeeklyNewsletter_where_and]
   OR: [WeeklyNewsletter_where_or]
@@ -6687,7 +6662,6 @@ type weekly_newslettersDocAccess {
   read: WeeklyNewslettersReadDocAccess
   update: WeeklyNewslettersUpdateDocAccess
   delete: WeeklyNewslettersDeleteDocAccess
-  readVersions: WeeklyNewslettersReadVersionsDocAccess
 }
 
 type WeeklyNewslettersDocAccessFields {
@@ -6697,7 +6671,6 @@ type WeeklyNewslettersDocAccessFields {
   slug: WeeklyNewslettersDocAccessFields_slug
   updatedAt: WeeklyNewslettersDocAccessFields_updatedAt
   createdAt: WeeklyNewslettersDocAccessFields_createdAt
-  _status: WeeklyNewslettersDocAccessFields__status
 }
 
 type WeeklyNewslettersDocAccessFields_title {
@@ -6890,29 +6863,6 @@ type WeeklyNewslettersDocAccessFields_createdAt_Delete {
   permission: Boolean!
 }
 
-type WeeklyNewslettersDocAccessFields__status {
-  create: WeeklyNewslettersDocAccessFields__status_Create
-  read: WeeklyNewslettersDocAccessFields__status_Read
-  update: WeeklyNewslettersDocAccessFields__status_Update
-  delete: WeeklyNewslettersDocAccessFields__status_Delete
-}
-
-type WeeklyNewslettersDocAccessFields__status_Create {
-  permission: Boolean!
-}
-
-type WeeklyNewslettersDocAccessFields__status_Read {
-  permission: Boolean!
-}
-
-type WeeklyNewslettersDocAccessFields__status_Update {
-  permission: Boolean!
-}
-
-type WeeklyNewslettersDocAccessFields__status_Delete {
-  permission: Boolean!
-}
-
 type WeeklyNewslettersCreateDocAccess {
   permission: Boolean!
   where: JSONObject
@@ -6931,239 +6881,6 @@ type WeeklyNewslettersUpdateDocAccess {
 type WeeklyNewslettersDeleteDocAccess {
   permission: Boolean!
   where: JSONObject
-}
-
-type WeeklyNewslettersReadVersionsDocAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type WeeklyNewsletterVersion {
-  parent(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): WeeklyNewsletter
-  version: WeeklyNewsletterVersion_Version
-  createdAt: DateTime
-  updatedAt: DateTime
-  latest: Boolean
-  id: String
-}
-
-type WeeklyNewsletterVersion_Version {
-  title: String
-  greetings(depth: Int): JSON
-  newsItems: [WeeklyNewsletterVersion_Version_NewsItems!]
-  slug: String
-  updatedAt: DateTime
-  createdAt: DateTime
-  _status: WeeklyNewsletterVersion_Version__status
-}
-
-type WeeklyNewsletterVersion_Version_NewsItems {
-  newsItem(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): NewsItem
-  id: String
-}
-
-enum WeeklyNewsletterVersion_Version__status {
-  draft
-  published
-}
-
-type versionsWeeklyNewsletters {
-  docs: [WeeklyNewsletterVersion]
-  hasNextPage: Boolean
-  hasPrevPage: Boolean
-  limit: Int
-  nextPage: Int
-  offset: Int
-  page: Int
-  pagingCounter: Int
-  prevPage: Int
-  totalDocs: Int
-  totalPages: Int
-}
-
-input versionsWeeklyNewsletter_where {
-  parent: versionsWeeklyNewsletter_parent_operator
-  version__title: versionsWeeklyNewsletter_version__title_operator
-  version__greetings: versionsWeeklyNewsletter_version__greetings_operator
-  version__newsItems__newsItem: versionsWeeklyNewsletter_version__newsItems__newsItem_operator
-  version__newsItems__id: versionsWeeklyNewsletter_version__newsItems__id_operator
-  version__slug: versionsWeeklyNewsletter_version__slug_operator
-  version__updatedAt: versionsWeeklyNewsletter_version__updatedAt_operator
-  version__createdAt: versionsWeeklyNewsletter_version__createdAt_operator
-  version___status: versionsWeeklyNewsletter_version___status_operator
-  createdAt: versionsWeeklyNewsletter_createdAt_operator
-  updatedAt: versionsWeeklyNewsletter_updatedAt_operator
-  latest: versionsWeeklyNewsletter_latest_operator
-  id: versionsWeeklyNewsletter_id_operator
-  AND: [versionsWeeklyNewsletter_where_and]
-  OR: [versionsWeeklyNewsletter_where_or]
-}
-
-input versionsWeeklyNewsletter_parent_operator {
-  equals: JSON
-  not_equals: JSON
-  in: [JSON]
-  not_in: [JSON]
-  all: [JSON]
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_version__title_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-}
-
-input versionsWeeklyNewsletter_version__greetings_operator {
-  equals: JSON
-  not_equals: JSON
-  like: JSON
-  contains: JSON
-}
-
-input versionsWeeklyNewsletter_version__newsItems__newsItem_operator {
-  equals: JSON
-  not_equals: JSON
-  in: [JSON]
-  not_in: [JSON]
-  all: [JSON]
-}
-
-input versionsWeeklyNewsletter_version__newsItems__id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_version__slug_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_version__updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_version__createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_version___status_operator {
-  equals: versionsWeeklyNewsletter_version___status_Input
-  not_equals: versionsWeeklyNewsletter_version___status_Input
-  in: [versionsWeeklyNewsletter_version___status_Input]
-  not_in: [versionsWeeklyNewsletter_version___status_Input]
-  all: [versionsWeeklyNewsletter_version___status_Input]
-  exists: Boolean
-}
-
-enum versionsWeeklyNewsletter_version___status_Input {
-  draft
-  published
-}
-
-input versionsWeeklyNewsletter_createdAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_updatedAt_operator {
-  equals: DateTime
-  not_equals: DateTime
-  greater_than_equal: DateTime
-  greater_than: DateTime
-  less_than_equal: DateTime
-  less_than: DateTime
-  like: DateTime
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_latest_operator {
-  equals: Boolean
-  not_equals: Boolean
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_id_operator {
-  equals: String
-  not_equals: String
-  like: String
-  contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
-  exists: Boolean
-}
-
-input versionsWeeklyNewsletter_where_and {
-  parent: versionsWeeklyNewsletter_parent_operator
-  version__title: versionsWeeklyNewsletter_version__title_operator
-  version__greetings: versionsWeeklyNewsletter_version__greetings_operator
-  version__newsItems__newsItem: versionsWeeklyNewsletter_version__newsItems__newsItem_operator
-  version__newsItems__id: versionsWeeklyNewsletter_version__newsItems__id_operator
-  version__slug: versionsWeeklyNewsletter_version__slug_operator
-  version__updatedAt: versionsWeeklyNewsletter_version__updatedAt_operator
-  version__createdAt: versionsWeeklyNewsletter_version__createdAt_operator
-  version___status: versionsWeeklyNewsletter_version___status_operator
-  createdAt: versionsWeeklyNewsletter_createdAt_operator
-  updatedAt: versionsWeeklyNewsletter_updatedAt_operator
-  latest: versionsWeeklyNewsletter_latest_operator
-  id: versionsWeeklyNewsletter_id_operator
-  AND: [versionsWeeklyNewsletter_where_and]
-  OR: [versionsWeeklyNewsletter_where_or]
-}
-
-input versionsWeeklyNewsletter_where_or {
-  parent: versionsWeeklyNewsletter_parent_operator
-  version__title: versionsWeeklyNewsletter_version__title_operator
-  version__greetings: versionsWeeklyNewsletter_version__greetings_operator
-  version__newsItems__newsItem: versionsWeeklyNewsletter_version__newsItems__newsItem_operator
-  version__newsItems__id: versionsWeeklyNewsletter_version__newsItems__id_operator
-  version__slug: versionsWeeklyNewsletter_version__slug_operator
-  version__updatedAt: versionsWeeklyNewsletter_version__updatedAt_operator
-  version__createdAt: versionsWeeklyNewsletter_version__createdAt_operator
-  version___status: versionsWeeklyNewsletter_version___status_operator
-  createdAt: versionsWeeklyNewsletter_createdAt_operator
-  updatedAt: versionsWeeklyNewsletter_updatedAt_operator
-  latest: versionsWeeklyNewsletter_latest_operator
-  id: versionsWeeklyNewsletter_id_operator
-  AND: [versionsWeeklyNewsletter_where_and]
-  OR: [versionsWeeklyNewsletter_where_or]
 }
 
 type NewsItems {
@@ -12050,7 +11767,6 @@ type weekly_newslettersAccess {
   read: WeeklyNewslettersReadAccess
   update: WeeklyNewslettersUpdateAccess
   delete: WeeklyNewslettersDeleteAccess
-  readVersions: WeeklyNewslettersReadVersionsAccess
 }
 
 type WeeklyNewslettersFields {
@@ -12060,7 +11776,6 @@ type WeeklyNewslettersFields {
   slug: WeeklyNewslettersFields_slug
   updatedAt: WeeklyNewslettersFields_updatedAt
   createdAt: WeeklyNewslettersFields_createdAt
-  _status: WeeklyNewslettersFields__status
 }
 
 type WeeklyNewslettersFields_title {
@@ -12253,29 +11968,6 @@ type WeeklyNewslettersFields_createdAt_Delete {
   permission: Boolean!
 }
 
-type WeeklyNewslettersFields__status {
-  create: WeeklyNewslettersFields__status_Create
-  read: WeeklyNewslettersFields__status_Read
-  update: WeeklyNewslettersFields__status_Update
-  delete: WeeklyNewslettersFields__status_Delete
-}
-
-type WeeklyNewslettersFields__status_Create {
-  permission: Boolean!
-}
-
-type WeeklyNewslettersFields__status_Read {
-  permission: Boolean!
-}
-
-type WeeklyNewslettersFields__status_Update {
-  permission: Boolean!
-}
-
-type WeeklyNewslettersFields__status_Delete {
-  permission: Boolean!
-}
-
 type WeeklyNewslettersCreateAccess {
   permission: Boolean!
   where: JSONObject
@@ -12292,11 +11984,6 @@ type WeeklyNewslettersUpdateAccess {
 }
 
 type WeeklyNewslettersDeleteAccess {
-  permission: Boolean!
-  where: JSONObject
-}
-
-type WeeklyNewslettersReadVersionsAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -13697,10 +13384,9 @@ type Mutation {
   createNews(data: mutationNewsInput!, locale: LocaleInputType): News
   updateNews(id: String!, autosave: Boolean, data: mutationNewsUpdateInput!, locale: LocaleInputType): News
   deleteNews(id: String!): News
-  createWeeklyNewsletter(data: mutationWeeklyNewsletterInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
-  updateWeeklyNewsletter(id: String!, autosave: Boolean, data: mutationWeeklyNewsletterUpdateInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
+  createWeeklyNewsletter(data: mutationWeeklyNewsletterInput!, locale: LocaleInputType): WeeklyNewsletter
+  updateWeeklyNewsletter(id: String!, autosave: Boolean, data: mutationWeeklyNewsletterUpdateInput!, locale: LocaleInputType): WeeklyNewsletter
   deleteWeeklyNewsletter(id: String!): WeeklyNewsletter
-  restoreVersionWeeklyNewsletter(id: String): WeeklyNewsletter
   createNewsItem(data: mutationNewsItemInput!, locale: LocaleInputType): NewsItem
   updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, locale: LocaleInputType): NewsItem
   deleteNewsItem(id: String!): NewsItem
@@ -14742,17 +14428,11 @@ input mutationWeeklyNewsletterInput {
   slug: String
   updatedAt: String
   createdAt: String
-  _status: WeeklyNewsletter__status_MutationInput
 }
 
 input mutationWeeklyNewsletter_NewsItemsInput {
   newsItem: String
   id: String
-}
-
-enum WeeklyNewsletter__status_MutationInput {
-  draft
-  published
 }
 
 input mutationWeeklyNewsletterUpdateInput {
@@ -14762,17 +14442,11 @@ input mutationWeeklyNewsletterUpdateInput {
   slug: String
   updatedAt: String
   createdAt: String
-  _status: WeeklyNewsletterUpdate__status_MutationInput
 }
 
 input mutationWeeklyNewsletterUpdate_NewsItemsInput {
   newsItem: String
   id: String
-}
-
-enum WeeklyNewsletterUpdate__status_MutationInput {
-  draft
-  published
 }
 
 input mutationNewsItemInput {
