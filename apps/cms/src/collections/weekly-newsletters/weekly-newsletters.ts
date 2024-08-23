@@ -72,4 +72,7 @@ export const WeeklyNewsletters: CollectionConfig = {
   hooks: {
     afterChange: [revalidateCollection<WeeklyNewsletter>("weekly-newsletters")],
   },
+  versions: {
+    drafts: true,
+  },
 };
