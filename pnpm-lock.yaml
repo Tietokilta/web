@@ -182,14 +182,14 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       next:
-        specifier: ^14.2.5
-        version: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
+        specifier: ^14.2.6
+        version: 14.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
       next-international:
         specifier: ^1.2.4
         version: 1.2.4(patch_hash=xeq66wimb7lsj4vnwftgigy5za)
       nextjs-toploader:
         specifier: ^1.6.12
-        version: 1.6.12(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 1.6.12(next@14.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       payload-admin-bar:
         specifier: ^1.0.6
         version: 1.0.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -243,8 +243,8 @@ importers:
         version: 3.23.8
     devDependencies:
       '@next/eslint-plugin-next':
-        specifier: ^14.2.5
-        version: 14.2.5
+        specifier: ^14.2.6
+        version: 14.2.6
       '@tailwindcss/typography':
         specifier: 'catalog:'
         version: 0.5.14(tailwindcss@3.4.10)
@@ -295,7 +295,7 @@ importers:
     devDependencies:
       '@vercel/style-guide':
         specifier: ^6.0.0
-        version: 6.0.0(@next/eslint-plugin-next@14.2.5)(eslint@8.57.0)(prettier@3.3.3)(typescript@5.5.4)
+        version: 6.0.0(@next/eslint-plugin-next@14.2.6)(eslint@8.57.0)(prettier@3.3.3)(typescript@5.5.4)
       eslint-config-turbo:
         specifier: ^2.0.14
         version: 2.0.14(eslint@8.57.0)
@@ -397,7 +397,7 @@ importers:
         version: 18.3.1(react@18.3.1)
       tsup:
         specifier: ^8.2.4
-        version: 8.2.4(@swc/core@1.7.12(@swc/helpers@0.5.12))(jiti@1.21.6)(postcss@8.4.41)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
+        version: 8.2.4(@swc/core@1.7.12)(jiti@1.21.6)(postcss@8.4.41)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0)
       typescript:
         specifier: 'catalog:'
         version: 5.5.4
@@ -1547,62 +1547,62 @@ packages:
   '@mongodb-js/saslprep@1.1.8':
     resolution: {integrity: sha512-qKwC/M/nNNaKUBMQ0nuzm47b7ZYWQHN3pcXq4IIcoSBc2hOIrflAxJduIvvqmhoz3gR2TacTAs8vlsCVPkiEdQ==}
 
-  '@next/env@14.2.5':
-    resolution: {integrity: sha512-/zZGkrTOsraVfYjGP8uM0p6r0BDT6xWpkjdVbcz66PJVSpwXX3yNiRycxAuDfBKGWBrZBXRuK/YVlkNgxHGwmA==}
+  '@next/env@14.2.6':
+    resolution: {integrity: sha512-bs5DFKV+08EjWrl8EB+KKqev1ZTNONH1vFCaHh911aaB362NnP32UDTbE9VQhyiAgbFqJsfDkSxFERNDDb3j0g==}
 
-  '@next/eslint-plugin-next@14.2.5':
-    resolution: {integrity: sha512-LY3btOpPh+OTIpviNojDpUdIbHW9j0JBYBjsIp8IxtDFfYFyORvw3yNq6N231FVqQA7n7lwaf7xHbVJlA1ED7g==}
+  '@next/eslint-plugin-next@14.2.6':
+    resolution: {integrity: sha512-d3+p4AjIYmhqzYHhhmkRYYN6ZU35TwZAKX08xKRfnHkz72KhWL2kxMFsDptpZs5e8bBGdepn7vn1+9DaF8iX+A==}
 
-  '@next/swc-darwin-arm64@14.2.5':
-    resolution: {integrity: sha512-/9zVxJ+K9lrzSGli1///ujyRfon/ZneeZ+v4ptpiPoOU+GKZnm8Wj8ELWU1Pm7GHltYRBklmXMTUqM/DqQ99FQ==}
+  '@next/swc-darwin-arm64@14.2.6':
+    resolution: {integrity: sha512-BtJZb+hYXGaVJJivpnDoi3JFVn80SHKCiiRUW3kk1SY6UCUy5dWFFSbh+tGi5lHAughzeduMyxbLt3pspvXNSg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
 
-  '@next/swc-darwin-x64@14.2.5':
-    resolution: {integrity: sha512-vXHOPCwfDe9qLDuq7U1OYM2wUY+KQ4Ex6ozwsKxp26BlJ6XXbHleOUldenM67JRyBfVjv371oneEvYd3H2gNSA==}
+  '@next/swc-darwin-x64@14.2.6':
+    resolution: {integrity: sha512-ZHRbGpH6KHarzm6qEeXKSElSXh8dS2DtDPjQt3IMwY8QVk7GbdDYjvV4NgSnDA9huGpGgnyy3tH8i5yHCqVkiQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
 
-  '@next/swc-linux-arm64-gnu@14.2.5':
-    resolution: {integrity: sha512-vlhB8wI+lj8q1ExFW8lbWutA4M2ZazQNvMWuEDqZcuJJc78iUnLdPPunBPX8rC4IgT6lIx/adB+Cwrl99MzNaA==}
+  '@next/swc-linux-arm64-gnu@14.2.6':
+    resolution: {integrity: sha512-O4HqUEe3ZvKshXHcDUXn1OybN4cSZg7ZdwHJMGCXSUEVUqGTJVsOh17smqilIjooP/sIJksgl+1kcf2IWMZWHg==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-arm64-musl@14.2.5':
-    resolution: {integrity: sha512-NpDB9NUR2t0hXzJJwQSGu1IAOYybsfeB+LxpGsXrRIb7QOrYmidJz3shzY8cM6+rO4Aojuef0N/PEaX18pi9OA==}
+  '@next/swc-linux-arm64-musl@14.2.6':
+    resolution: {integrity: sha512-xUcdhr2hfalG8RDDGSFxQ75yOG894UlmFS4K2M0jLrUhauRBGOtUOxoDVwiIIuZQwZ3Y5hDsazNjdYGB0cQ9yQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
 
-  '@next/swc-linux-x64-gnu@14.2.5':
-    resolution: {integrity: sha512-8XFikMSxWleYNryWIjiCX+gU201YS+erTUidKdyOVYi5qUQo/gRxv/3N1oZFCgqpesN6FPeqGM72Zve+nReVXQ==}
+  '@next/swc-linux-x64-gnu@14.2.6':
+    resolution: {integrity: sha512-InosKxw8UMcA/wEib5n2QttwHSKHZHNSbGcMepBM0CTcNwpxWzX32KETmwbhKod3zrS8n1vJ+DuJKbL9ZAB0Ag==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-linux-x64-musl@14.2.5':
-    resolution: {integrity: sha512-6QLwi7RaYiQDcRDSU/os40r5o06b5ue7Jsk5JgdRBGGp8l37RZEh9JsLSM8QF0YDsgcosSeHjglgqi25+m04IQ==}
+  '@next/swc-linux-x64-musl@14.2.6':
+    resolution: {integrity: sha512-d4QXfJmt5pGJ7cG8qwxKSBnO5AXuKAFYxV7qyDRHnUNvY/dgDh+oX292gATpB2AAHgjdHd5ks1wXxIEj6muLUQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
 
-  '@next/swc-win32-arm64-msvc@14.2.5':
-    resolution: {integrity: sha512-1GpG2VhbspO+aYoMOQPQiqc/tG3LzmsdBH0LhnDS3JrtDx2QmzXe0B6mSZZiN3Bq7IOMXxv1nlsjzoS1+9mzZw==}
+  '@next/swc-win32-arm64-msvc@14.2.6':
+    resolution: {integrity: sha512-AlgIhk4/G+PzOG1qdF1b05uKTMsuRatFlFzAi5G8RZ9h67CVSSuZSbqGHbJDlcV1tZPxq/d4G0q6qcHDKWf4aQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
 
-  '@next/swc-win32-ia32-msvc@14.2.5':
-    resolution: {integrity: sha512-Igh9ZlxwvCDsu6438FXlQTHlRno4gFpJzqPjSIBZooD22tKeI4fE/YMRoHVJHmrQ2P5YL1DoZ0qaOKkbeFWeMg==}
+  '@next/swc-win32-ia32-msvc@14.2.6':
+    resolution: {integrity: sha512-hNukAxq7hu4o5/UjPp5jqoBEtrpCbOmnUqZSKNJG8GrUVzfq0ucdhQFVrHcLRMvQcwqqDh1a5AJN9ORnNDpgBQ==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
 
-  '@next/swc-win32-x64-msvc@14.2.5':
-    resolution: {integrity: sha512-tEQ7oinq1/CjSG9uSTerca3v4AZ+dFa+4Yu6ihaG8Ud8ddqLQgFGcnwYls13H5X5CPDPZJdYxyeMui6muOLd4g==}
+  '@next/swc-win32-x64-msvc@14.2.6':
+    resolution: {integrity: sha512-NANtw+ead1rSDK1jxmzq3TYkl03UNK2KHqUYf1nIhNci6NkeqBD4s1njSzYGIlSHxCK+wSaL8RXZm4v+NF/pMw==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -2532,6 +2532,9 @@ packages:
   '@types/node@22.4.1':
     resolution: {integrity: sha512-1tbpb9325+gPnKK0dMm+/LMriX0vKxf6RnB0SZUqfyVkQ4fMgUSySqhxE/y8Jvs4NyF1yHzTfG9KlnkIODxPKg==}
 
+  '@types/node@22.5.0':
+    resolution: {integrity: sha512-DkFrJOe+rfdHTqqMg0bSNlGlQ85hSoh2TPzZyhHsXnMtligRWpxUySiyw8FY14ITt24HVCiQPWxS3KO/QlGmWg==}
+
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
 
@@ -3134,9 +3137,6 @@ packages:
   camelcase-css@2.0.1:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
-
-  caniuse-lite@1.0.30001642:
-    resolution: {integrity: sha512-3XQ0DoRgLijXJErLSl+bLnJ+Et4KqV1PY6JJBGAFlsNsz31zeAIncyeZfLCabHK/jtSh+671RM9YMldxjUPZtA==}
 
   caniuse-lite@1.0.30001649:
     resolution: {integrity: sha512-fJegqZZ0ZX8HOWr6rcafGr72+xcgJKI9oWfDW5DrD7ExUtgZC7a7R7ZYmZqplh7XDocFdGeIFn7roAxhOeYrPQ==}
@@ -5432,8 +5432,8 @@ packages:
   next-tick@1.1.0:
     resolution: {integrity: sha512-CXdUiJembsNjuToQvxayPZF9Vqht7hewsvy2sOWafLvi2awflj9mOC6bHIg50orX8IJvWKY9wYQ/zB2kogPslQ==}
 
-  next@14.2.5:
-    resolution: {integrity: sha512-0f8aRfBVL+mpzfBjYfQuLWh2WyAwtJXCRfkPF4UJ5qd2YwrHczsrSzXU4tRMV0OAxR8ZJZWPFn6uhSC56UTsLA==}
+  next@14.2.6:
+    resolution: {integrity: sha512-57Su7RqXs5CBKKKOagt8gPhMM3CpjgbeQhrtei2KLAA1vTNm7jfKS+uDARkSW8ZETUflDCBIsUKGSyQdRs4U4g==}
     engines: {node: '>=18.17.0'}
     hasBin: true
     peerDependencies:
@@ -7222,6 +7222,9 @@ packages:
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
+  tslib@2.7.0:
+    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+
   tsup@8.2.4:
     resolution: {integrity: sha512-akpCPePnBnC/CXgRrcy72ZSntgIEUa1jN0oJbbvpALWKNOz1B7aM+UVDWGRGIO/T/PZugAESWDJUAb5FD48o8Q==}
     engines: {node: '>=18'}
@@ -7360,6 +7363,9 @@ packages:
 
   undici-types@6.19.6:
     resolution: {integrity: sha512-e/vggGopEfTKSvj4ihnOLTsqhrKRN3LeO6qSN/GxohhuRv8qH9bNQ4B8W7e/vFL+0XTnmHPB4/kegunZGA4Org==}
+
+  undici-types@6.19.8:
+    resolution: {integrity: sha512-ve2KP6f/JnbPBFyobGHuerC9g1FYGn/F8n1LWTwNxCEzd6IfqTwUQcNXgEtmmQ6DlRrC1hrSrBnCZPokRrDHjw==}
 
   unified-engine@11.2.1:
     resolution: {integrity: sha512-xBAdZ8UY2X4R9Hm6X6kMne4Nz0PlpOc1oE6DPeqJnewr5Imkb8uT5Eyvy1h7xNekPL3PSWh3ZJyNrMW6jnNQBg==}
@@ -7795,26 +7801,26 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@aws-sdk/util-locate-window': 3.568.0
       '@smithy/util-utf8': 2.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-crypto/sha256-js@5.2.0':
     dependencies:
       '@aws-crypto/util': 5.2.0
       '@aws-sdk/types': 3.609.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-crypto/supports-web-crypto@5.2.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-crypto/util@5.2.0':
     dependencies:
       '@aws-sdk/types': 3.609.0
       '@smithy/util-utf8': 2.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/client-cognito-identity@3.624.0':
@@ -7859,7 +7865,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -7906,7 +7912,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -7952,7 +7958,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -7998,7 +8004,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8044,7 +8050,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8088,7 +8094,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8132,7 +8138,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8178,7 +8184,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8224,7 +8230,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8239,7 +8245,7 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/util-middleware': 3.0.3
       fast-xml-parser: 4.4.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/core@3.629.0':
@@ -8253,7 +8259,7 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/util-middleware': 3.0.3
       fast-xml-parser: 4.4.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/credential-provider-cognito-identity@3.624.0':
@@ -8262,7 +8268,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8273,7 +8279,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - aws-crt
     optional: true
@@ -8283,7 +8289,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/credential-provider-http@3.622.0':
@@ -8296,7 +8302,7 @@ snapshots:
       '@smithy/smithy-client': 3.1.12
       '@smithy/types': 3.3.0
       '@smithy/util-stream': 3.1.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/credential-provider-ini@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))(@aws-sdk/client-sts@3.624.0)':
@@ -8312,7 +8318,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8331,7 +8337,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8350,7 +8356,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8369,7 +8375,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8388,7 +8394,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8407,7 +8413,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - '@aws-sdk/client-sts'
@@ -8427,7 +8433,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - '@aws-sdk/client-sts'
@@ -8447,7 +8453,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - '@aws-sdk/client-sts'
@@ -8467,7 +8473,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - '@aws-sdk/client-sts'
@@ -8487,7 +8493,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - '@aws-sdk/client-sts'
@@ -8500,7 +8506,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/credential-provider-sso@3.624.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))':
@@ -8511,7 +8517,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8525,7 +8531,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8539,7 +8545,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8553,7 +8559,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8565,7 +8571,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/credential-provider-web-identity@3.621.0(@aws-sdk/client-sts@3.632.0)':
@@ -8574,7 +8580,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/credential-providers@3.624.0(@aws-sdk/client-sso-oidc@3.632.0(@aws-sdk/client-sts@3.624.0))':
@@ -8594,7 +8600,7 @@ snapshots:
       '@smithy/credential-provider-imds': 3.2.0
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8617,7 +8623,7 @@ snapshots:
       '@smithy/credential-provider-imds': 3.2.0
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - '@aws-sdk/client-sso-oidc'
       - aws-crt
@@ -8628,14 +8634,14 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/protocol-http': 4.1.0
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/middleware-logger@3.609.0':
     dependencies:
       '@aws-sdk/types': 3.609.0
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/middleware-recursion-detection@3.620.0':
@@ -8643,7 +8649,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/protocol-http': 4.1.0
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/middleware-user-agent@3.620.0':
@@ -8652,7 +8658,7 @@ snapshots:
       '@aws-sdk/util-endpoints': 3.614.0
       '@smithy/protocol-http': 4.1.0
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/middleware-user-agent@3.632.0':
@@ -8661,7 +8667,7 @@ snapshots:
       '@aws-sdk/util-endpoints': 3.632.0
       '@smithy/protocol-http': 4.1.0
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/region-config-resolver@3.614.0':
@@ -8671,7 +8677,7 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/util-config-provider': 3.0.0
       '@smithy/util-middleware': 3.0.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/token-providers@3.614.0(@aws-sdk/client-sso-oidc@3.624.0(@aws-sdk/client-sts@3.624.0))':
@@ -8681,7 +8687,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/token-providers@3.614.0(@aws-sdk/client-sso-oidc@3.632.0(@aws-sdk/client-sts@3.624.0))':
@@ -8691,7 +8697,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/token-providers@3.614.0(@aws-sdk/client-sso-oidc@3.632.0(@aws-sdk/client-sts@3.632.0))':
@@ -8701,13 +8707,13 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/types@3.609.0':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/util-endpoints@3.614.0':
@@ -8715,7 +8721,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/types': 3.3.0
       '@smithy/util-endpoints': 2.0.5
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/util-endpoints@3.632.0':
@@ -8723,12 +8729,12 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/types': 3.3.0
       '@smithy/util-endpoints': 2.0.5
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/util-locate-window@3.568.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/util-user-agent-browser@3.609.0':
@@ -8736,7 +8742,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/types': 3.3.0
       bowser: 2.11.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@aws-sdk/util-user-agent-node@3.614.0':
@@ -8744,7 +8750,7 @@ snapshots:
       '@aws-sdk/types': 3.609.0
       '@smithy/node-config-provider': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@azure/abort-controller@1.1.0':
@@ -8753,7 +8759,7 @@ snapshots:
 
   '@azure/abort-controller@2.1.2':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/core-auth@1.7.2':
     dependencies:
@@ -9209,7 +9215,7 @@ snapshots:
   '@dnd-kit/accessibility@3.1.0(react@18.3.1)':
     dependencies:
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@dnd-kit/core@6.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
@@ -9229,11 +9235,11 @@ snapshots:
   '@dnd-kit/utilities@3.2.2(react@18.3.1)':
     dependencies:
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@emnapi/runtime@1.2.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@emotion/babel-plugin@11.12.0':
@@ -9734,37 +9740,37 @@ snapshots:
     dependencies:
       sparse-bitfield: 3.0.3
 
-  '@next/env@14.2.5': {}
+  '@next/env@14.2.6': {}
 
-  '@next/eslint-plugin-next@14.2.5':
+  '@next/eslint-plugin-next@14.2.6':
     dependencies:
       glob: 10.3.10
 
-  '@next/swc-darwin-arm64@14.2.5':
+  '@next/swc-darwin-arm64@14.2.6':
     optional: true
 
-  '@next/swc-darwin-x64@14.2.5':
+  '@next/swc-darwin-x64@14.2.6':
     optional: true
 
-  '@next/swc-linux-arm64-gnu@14.2.5':
+  '@next/swc-linux-arm64-gnu@14.2.6':
     optional: true
 
-  '@next/swc-linux-arm64-musl@14.2.5':
+  '@next/swc-linux-arm64-musl@14.2.6':
     optional: true
 
-  '@next/swc-linux-x64-gnu@14.2.5':
+  '@next/swc-linux-x64-gnu@14.2.6':
     optional: true
 
-  '@next/swc-linux-x64-musl@14.2.5':
+  '@next/swc-linux-x64-musl@14.2.6':
     optional: true
 
-  '@next/swc-win32-arm64-msvc@14.2.5':
+  '@next/swc-win32-arm64-msvc@14.2.6':
     optional: true
 
-  '@next/swc-win32-ia32-msvc@14.2.5':
+  '@next/swc-win32-ia32-msvc@14.2.6':
     optional: true
 
-  '@next/swc-win32-x64-msvc@14.2.5':
+  '@next/swc-win32-x64-msvc@14.2.6':
     optional: true
 
   '@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1':
@@ -10288,7 +10294,7 @@ snapshots:
   '@smithy/abort-controller@3.1.1':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/config-resolver@3.0.5':
@@ -10297,7 +10303,7 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/util-config-provider': 3.0.0
       '@smithy/util-middleware': 3.0.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/core@2.3.2':
@@ -10309,7 +10315,7 @@ snapshots:
       '@smithy/smithy-client': 3.1.12
       '@smithy/types': 3.3.0
       '@smithy/util-middleware': 3.0.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/core@2.4.0':
@@ -10323,7 +10329,7 @@ snapshots:
       '@smithy/util-body-length-browser': 3.0.0
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/credential-provider-imds@3.2.0':
@@ -10332,7 +10338,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/types': 3.3.0
       '@smithy/url-parser': 3.0.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/fetch-http-handler@3.2.4':
@@ -10341,7 +10347,7 @@ snapshots:
       '@smithy/querystring-builder': 3.0.3
       '@smithy/types': 3.3.0
       '@smithy/util-base64': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/hash-node@3.0.3':
@@ -10349,30 +10355,30 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/util-buffer-from': 3.0.0
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/invalid-dependency@3.0.3':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/is-array-buffer@2.2.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/is-array-buffer@3.0.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/middleware-content-length@3.0.5':
     dependencies:
       '@smithy/protocol-http': 4.1.0
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/middleware-endpoint@3.1.0':
@@ -10383,7 +10389,7 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/url-parser': 3.0.3
       '@smithy/util-middleware': 3.0.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/middleware-retry@3.0.14':
@@ -10395,7 +10401,7 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
-      tslib: 2.6.3
+      tslib: 2.7.0
       uuid: 9.0.1
     optional: true
 
@@ -10408,20 +10414,20 @@ snapshots:
       '@smithy/types': 3.3.0
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-retry': 3.0.3
-      tslib: 2.6.3
+      tslib: 2.7.0
       uuid: 9.0.1
     optional: true
 
   '@smithy/middleware-serde@3.0.3':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/middleware-stack@3.0.3':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/node-config-provider@3.1.4':
@@ -10429,7 +10435,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/shared-ini-file-loader': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/node-http-handler@3.1.4':
@@ -10438,32 +10444,32 @@ snapshots:
       '@smithy/protocol-http': 4.1.0
       '@smithy/querystring-builder': 3.0.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/property-provider@3.1.3':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/protocol-http@4.1.0':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/querystring-builder@3.0.3':
     dependencies:
       '@smithy/types': 3.3.0
       '@smithy/util-uri-escape': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/querystring-parser@3.0.3':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/service-error-classification@3.0.3':
@@ -10474,7 +10480,7 @@ snapshots:
   '@smithy/shared-ini-file-loader@3.1.4':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/signature-v4@4.1.0':
@@ -10486,7 +10492,7 @@ snapshots:
       '@smithy/util-middleware': 3.0.3
       '@smithy/util-uri-escape': 3.0.0
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/smithy-client@3.1.12':
@@ -10496,7 +10502,7 @@ snapshots:
       '@smithy/protocol-http': 4.1.0
       '@smithy/types': 3.3.0
       '@smithy/util-stream': 3.1.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/smithy-client@3.2.0':
@@ -10506,53 +10512,53 @@ snapshots:
       '@smithy/protocol-http': 4.1.0
       '@smithy/types': 3.3.0
       '@smithy/util-stream': 3.1.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/types@3.3.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/url-parser@3.0.3':
     dependencies:
       '@smithy/querystring-parser': 3.0.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-base64@3.0.0':
     dependencies:
       '@smithy/util-buffer-from': 3.0.0
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-body-length-browser@3.0.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-body-length-node@3.0.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-buffer-from@2.2.0':
     dependencies:
       '@smithy/is-array-buffer': 2.2.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-buffer-from@3.0.0':
     dependencies:
       '@smithy/is-array-buffer': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-config-provider@3.0.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-defaults-mode-browser@3.0.14':
@@ -10561,7 +10567,7 @@ snapshots:
       '@smithy/smithy-client': 3.1.12
       '@smithy/types': 3.3.0
       bowser: 2.11.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-defaults-mode-browser@3.0.15':
@@ -10570,7 +10576,7 @@ snapshots:
       '@smithy/smithy-client': 3.2.0
       '@smithy/types': 3.3.0
       bowser: 2.11.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-defaults-mode-node@3.0.14':
@@ -10581,7 +10587,7 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/smithy-client': 3.1.12
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-defaults-mode-node@3.0.15':
@@ -10592,32 +10598,32 @@ snapshots:
       '@smithy/property-provider': 3.1.3
       '@smithy/smithy-client': 3.2.0
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-endpoints@2.0.5':
     dependencies:
       '@smithy/node-config-provider': 3.1.4
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-hex-encoding@3.0.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-middleware@3.0.3':
     dependencies:
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-retry@3.0.3':
     dependencies:
       '@smithy/service-error-classification': 3.0.3
       '@smithy/types': 3.3.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-stream@3.1.3':
@@ -10629,24 +10635,24 @@ snapshots:
       '@smithy/util-buffer-from': 3.0.0
       '@smithy/util-hex-encoding': 3.0.0
       '@smithy/util-utf8': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-uri-escape@3.0.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-utf8@2.3.0':
     dependencies:
       '@smithy/util-buffer-from': 2.2.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@smithy/util-utf8@3.0.0':
     dependencies:
       '@smithy/util-buffer-from': 3.0.0
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@storybook/csf@0.0.1':
@@ -10730,7 +10736,7 @@ snapshots:
       '@swc/core-win32-x64-msvc': 1.6.1
       '@swc/helpers': 0.5.12
 
-  '@swc/core@1.7.12(@swc/helpers@0.5.12)':
+  '@swc/core@1.7.12':
     dependencies:
       '@swc/counter': 0.1.3
       '@swc/types': 0.1.12
@@ -10745,20 +10751,19 @@ snapshots:
       '@swc/core-win32-arm64-msvc': 1.7.12
       '@swc/core-win32-ia32-msvc': 1.7.12
       '@swc/core-win32-x64-msvc': 1.7.12
-      '@swc/helpers': 0.5.12
     optional: true
 
   '@swc/counter@0.1.3': {}
 
   '@swc/helpers@0.5.12':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
     optional: true
 
   '@swc/helpers@0.5.5':
     dependencies:
       '@swc/counter': 0.1.3
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@swc/register@0.1.10(@swc/core@1.6.1(@swc/helpers@0.5.12))':
     dependencies:
@@ -10883,11 +10888,15 @@ snapshots:
     dependencies:
       undici-types: 6.19.6
 
+  '@types/node@22.5.0':
+    dependencies:
+      undici-types: 6.19.8
+
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/oauth@0.9.5':
     dependencies:
-      '@types/node': 22.4.1
+      '@types/node': 22.5.0
 
   '@types/papaparse@5.3.14':
     dependencies:
@@ -11086,7 +11095,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vercel/style-guide@6.0.0(@next/eslint-plugin-next@14.2.5)(eslint@8.57.0)(prettier@3.3.3)(typescript@5.5.4)':
+  '@vercel/style-guide@6.0.0(@next/eslint-plugin-next@14.2.6)(eslint@8.57.0)(prettier@3.3.3)(typescript@5.5.4)':
     dependencies:
       '@babel/core': 7.24.9
       '@babel/eslint-parser': 7.24.8(@babel/core@7.24.9)(eslint@8.57.0)
@@ -11109,7 +11118,7 @@ snapshots:
       eslint-plugin-vitest: 0.3.26(@typescript-eslint/eslint-plugin@7.16.1(@typescript-eslint/parser@7.16.1(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)
       prettier-plugin-packagejson: 2.5.1(prettier@3.3.3)
     optionalDependencies:
-      '@next/eslint-plugin-next': 14.2.5
+      '@next/eslint-plugin-next': 14.2.6
       eslint: 8.57.0
       prettier: 3.3.3
       typescript: 5.5.4
@@ -11216,7 +11225,7 @@ snapshots:
 
   '@wry/context@0.7.4':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@wry/equality@0.5.7':
     dependencies:
@@ -11224,7 +11233,7 @@ snapshots:
 
   '@wry/trie@0.4.3':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@wry/trie@0.5.0':
     dependencies:
@@ -11555,7 +11564,7 @@ snapshots:
 
   browserslist@4.23.2:
     dependencies:
-      caniuse-lite: 1.0.30001642
+      caniuse-lite: 1.0.30001649
       electron-to-chromium: 1.4.828
       node-releases: 2.0.14
       update-browserslist-db: 1.1.0(browserslist@4.23.2)
@@ -11619,11 +11628,9 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   camelcase-css@2.0.1: {}
-
-  caniuse-lite@1.0.30001642: {}
 
   caniuse-lite@1.0.30001649: {}
 
@@ -11869,13 +11876,13 @@ snapshots:
 
   css-loader@5.2.7(webpack@5.93.0(@swc/core@1.6.1(@swc/helpers@0.5.12))(webpack-cli@4.10.0)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.31)
+      icss-utils: 5.1.0(postcss@8.4.41)
       loader-utils: 2.0.4
-      postcss: 8.4.31
-      postcss-modules-extract-imports: 3.1.0(postcss@8.4.31)
-      postcss-modules-local-by-default: 4.0.5(postcss@8.4.31)
-      postcss-modules-scope: 3.2.0(postcss@8.4.31)
-      postcss-modules-values: 4.0.0(postcss@8.4.31)
+      postcss: 8.4.41
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.41)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.41)
+      postcss-modules-scope: 3.2.0(postcss@8.4.41)
+      postcss-modules-values: 4.0.0(postcss@8.4.41)
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.6.2
@@ -12110,7 +12117,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   dot-prop@6.0.1:
     dependencies:
@@ -13311,9 +13318,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.4.31):
+  icss-utils@5.1.0(postcss@8.4.41):
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.41
 
   ieee754@1.2.1: {}
 
@@ -13775,7 +13782,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   lru-cache@10.4.3: {}
 
@@ -14444,35 +14451,35 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8):
+  next@14.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8):
     dependencies:
-      '@next/env': 14.2.5
+      '@next/env': 14.2.6
       '@swc/helpers': 0.5.5
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001642
+      caniuse-lite: 1.0.30001649
       graceful-fs: 4.2.11
       postcss: 8.4.31
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       styled-jsx: 5.1.1(react@18.3.1)
     optionalDependencies:
-      '@next/swc-darwin-arm64': 14.2.5
-      '@next/swc-darwin-x64': 14.2.5
-      '@next/swc-linux-arm64-gnu': 14.2.5
-      '@next/swc-linux-arm64-musl': 14.2.5
-      '@next/swc-linux-x64-gnu': 14.2.5
-      '@next/swc-linux-x64-musl': 14.2.5
-      '@next/swc-win32-arm64-msvc': 14.2.5
-      '@next/swc-win32-ia32-msvc': 14.2.5
-      '@next/swc-win32-x64-msvc': 14.2.5
+      '@next/swc-darwin-arm64': 14.2.6
+      '@next/swc-darwin-x64': 14.2.6
+      '@next/swc-linux-arm64-gnu': 14.2.6
+      '@next/swc-linux-arm64-musl': 14.2.6
+      '@next/swc-linux-x64-gnu': 14.2.6
+      '@next/swc-linux-x64-musl': 14.2.6
+      '@next/swc-win32-arm64-msvc': 14.2.6
+      '@next/swc-win32-ia32-msvc': 14.2.6
+      '@next/swc-win32-x64-msvc': 14.2.6
       sass: 1.77.8
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-toploader@1.6.12(next@14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  nextjs-toploader@1.6.12(next@14.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      next: 14.2.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
+      next: 14.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.8)
       nprogress: 0.2.0
       prop-types: 15.8.1
       react: 18.3.1
@@ -14481,7 +14488,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   node-abi@3.65.0:
     dependencies:
@@ -14675,7 +14682,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   parent-module@1.0.1:
     dependencies:
@@ -14723,7 +14730,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   passport-anonymous@1.0.1:
     dependencies:
@@ -15125,26 +15132,26 @@ snapshots:
       postcss: 8.4.31
       postcss-value-parser: 4.2.0
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.4.31):
+  postcss-modules-extract-imports@3.1.0(postcss@8.4.41):
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.41
 
-  postcss-modules-local-by-default@4.0.5(postcss@8.4.31):
+  postcss-modules-local-by-default@4.0.5(postcss@8.4.41):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.31)
-      postcss: 8.4.31
+      icss-utils: 5.1.0(postcss@8.4.41)
+      postcss: 8.4.41
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.0(postcss@8.4.31):
+  postcss-modules-scope@3.2.0(postcss@8.4.41):
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.41
       postcss-selector-parser: 6.1.2
 
-  postcss-modules-values@4.0.0(postcss@8.4.31):
+  postcss-modules-values@4.0.0(postcss@8.4.41):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.31)
-      postcss: 8.4.31
+      icss-utils: 5.1.0(postcss@8.4.41)
+      postcss: 8.4.41
 
   postcss-nested@6.2.0(postcss@8.4.41):
     dependencies:
@@ -15558,7 +15565,7 @@ snapshots:
     dependencies:
       react: 18.3.1
       react-style-singleton: 2.2.1(@types/react@18.3.3)(react@18.3.1)
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.3
 
@@ -15628,7 +15635,7 @@ snapshots:
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.3
 
@@ -16569,7 +16576,9 @@ snapshots:
 
   tslib@2.6.3: {}
 
-  tsup@8.2.4(@swc/core@1.7.12(@swc/helpers@0.5.12))(jiti@1.21.6)(postcss@8.4.41)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0):
+  tslib@2.7.0: {}
+
+  tsup@8.2.4(@swc/core@1.7.12)(jiti@1.21.6)(postcss@8.4.41)(tsx@4.17.0)(typescript@5.5.4)(yaml@2.5.0):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.23.0)
       cac: 6.7.14
@@ -16588,7 +16597,7 @@ snapshots:
       sucrase: 3.35.0
       tree-kill: 1.2.2
     optionalDependencies:
-      '@swc/core': 1.7.12(@swc/helpers@0.5.12)
+      '@swc/core': 1.7.12
       postcss: 8.4.41
       typescript: 5.5.4
     transitivePeerDependencies:
@@ -16720,6 +16729,8 @@ snapshots:
 
   undici-types@6.19.6: {}
 
+  undici-types@6.19.8: {}
+
   unified-engine@11.2.1:
     dependencies:
       '@types/concat-stream': 2.0.3
@@ -16831,7 +16842,7 @@ snapshots:
   use-callback-ref@1.3.2(@types/react@18.3.3)(react@18.3.1):
     dependencies:
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.3
 
@@ -16857,7 +16868,7 @@ snapshots:
     dependencies:
       detect-node-es: 1.1.0
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.3
 
