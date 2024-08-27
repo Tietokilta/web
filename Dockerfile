@@ -1,5 +1,5 @@
 # Base image with Node.js
-ARG NODE_VERSION=20.17.0
+ARG NODE_VERSION=22.6.0
 # Use a specific version of the Node.js Alpine image as the base. Alpine images are minimal and lightweight.
 FROM node:${NODE_VERSION}-alpine AS base
 # Update the package list and install libc6-compat. This package is often required for binary Node.js modules.
