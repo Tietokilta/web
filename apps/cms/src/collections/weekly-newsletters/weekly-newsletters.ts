@@ -2,6 +2,7 @@ import type { CollectionConfig, FieldHook } from "payload/types";
 import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../../access/signed-in";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
+import { publishedOrSignedIn } from "../../access/published-or-signed-in";
 
 const formatSlug: FieldHook<WeeklyNewsletter, WeeklyNewsletter["slug"]> = ({
   data,
@@ -25,7 +26,7 @@ export const WeeklyNewsletters: CollectionConfig = {
     defaultColumns: ["title", "newsItems", "updatedAt", "createdAt"],
   },
   access: {
-    read: () => true,
+    read: publishedOrSignedIn,
     create: signedIn,
     update: signedIn,
     delete: signedIn,
