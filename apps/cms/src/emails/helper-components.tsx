@@ -10,16 +10,16 @@ import {
   IS_SUBSCRIPT,
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
-} from "web/src/components/lexical/rich-text-node-format";
+} from "./utils/lexical";
 import { Link } from "@react-email/components";
 import {
   formatDate,
+  GetDateTimeFormatterOptions,
   insertSoftHyphens,
   lexicalNodeToTextContent,
   stringToId,
   type TocItem,
-} from "web/src/lib/utils";
-import { type GetDateTimeFormatterOptions } from "../lib/utils";
+} from "./utils/utils";
 
 export function Greetings({ content }: { content?: EditorState }) {
   if (!content) return null;
@@ -437,24 +437,6 @@ type SpanProps = SharedProps &
     as?: "span";
   };
 type Props = TimeProps | SpanProps;
-
-export function DateTime({
-  defaultFormattedDate,
-  rawDate,
-  as = "time",
-  ...rest
-}: Props) {
-  const Component = as;
-
-  return (
-    <Component
-      dateTime={as === "time" && rawDate ? rawDate : undefined}
-      {...rest}
-    >
-      {defaultFormattedDate}
-    </Component>
-  );
-}
 
 function HeadingList({ toc }: { toc: TocItem[] }): React.ReactElement {
   return (

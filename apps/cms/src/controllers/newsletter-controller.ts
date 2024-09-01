@@ -78,7 +78,9 @@ export const getEmailController = async (
       subject: `${finnishNewsletter.title} / ${englishNewsletter.title}`,
     });
   } catch (error) {
-    console.error("Error performing action:", error);
-    return res.status(500).json({ error: error.message });
+    if (error instanceof Error) {
+      return res.status(500).json({ error: error.message });
+    }
+    return res.status(500).json({ error: "An unknown error occurred." });
   }
 };

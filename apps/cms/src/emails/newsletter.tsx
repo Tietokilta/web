@@ -4,15 +4,9 @@ import {
   type WeeklyNewsletter,
 } from "@tietokilta/cms-types/payload";
 import { type EditorState } from "@tietokilta/cms-types/lexical";
-import {
-  formatDateYear,
-  formatDateYearOptions,
-  isThisWeek,
-  type TocItem,
-} from "web/src/lib/utils";
+import { formatDateYear, isThisWeek, type TocItem } from "./utils/utils";
 import {
   Calendar,
-  DateTime,
   Greetings,
   NewsletterCategory,
   TableOfContents,
@@ -122,12 +116,9 @@ export const Newsletter = ({
       <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
         <header className="space-y-2">
           <h1 className="font-mono text-4xl">{newsletter.title}</h1>
-          <DateTime
-            className="block text-lg text-gray-800"
-            rawDate={newsletter.createdAt}
-            formatOptions={formatDateYearOptions}
-            defaultFormattedDate={formatDateYear(newsletter.createdAt)}
-          />
+          <p className="block text-lg text-gray-800">
+            {formatDateYear(newsletter.createdAt)}
+          </p>
         </header>
         <Greetings content={greetings} />
         <h2>{t[locale].summary}</h2>
