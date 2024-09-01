@@ -4,6 +4,7 @@ import { render } from "@react-email/components";
 import { signedIn } from "../access/signed-in";
 import { sendEmail } from "../mailgun";
 import NewsletterEmail from "../emails/newsletter-email";
+import { WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 
 export const newsletterSenderController = async (
   req: PayloadRequest,
@@ -39,20 +40,21 @@ export const getEmailController = async (
 
   try {
     // Fetch the English version of the newsletter
-    const englishNewsletter = await req.payload.findByID({
+    const englishNewsletter = (await req.payload.findByID({
       collection: "weekly-newsletters",
       id: newsletterId,
       depth: 2,
       locale: "en",
-    });
+    })) as unknown as WeeklyNewsletter;
 
     // Fetch the Finnish version of the newsletter
-    const finnishNewsletter = await req.payload.findByID({
+    const finnishNewsletter = (await req.payload.findByID({
       collection: "weekly-newsletters",
       id: newsletterId,
       depth: 2,
       locale: "fi",
-    });
+    })) as unknown as WeeklyNewsletter;
+
     // Ensure both newsletters exist
     if (!englishNewsletter) {
       throw new Error("English newsletter not found");
