@@ -106,7 +106,7 @@ async function SignupQuotas({
           className="flex w-full justify-between gap-4 whitespace-nowrap"
           key={quota.id}
         >
-          <span className="w-3/4">{quota.title}</span>{" "}
+          <span className="w-3/4 truncate">{quota.title}</span>{" "}
           <span className="w-1/4 text-left">
             {quota.signupCount} / {quota.size}
           </span>
