@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Button, Card, Progress } from "@tietokilta/ui";
+import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
+import { Suspense } from "react";
 import {
   type IlmomasiinaEvent,
   fetchEvent,
@@ -27,6 +28,7 @@ import { BackButton } from "../../../../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 import { DateTime } from "../../../../components/datetime";
 import { openGraphImage } from "../../../shared-metadata";
+import { AutoEnableButton, Countdown } from "./client-components";
 
 async function SignUpText({
   startDate,
@@ -78,10 +80,10 @@ async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
     return null;
   }
 
-  const t = await getScopedI18n("action");
+  const startDate = event.registrationStartDate;
+  const endDate = event.registrationEndDate;
 
-  const hasStarted = new Date(event.registrationStartDate) < new Date();
-  const hasEnded = new Date(event.registrationEndDate) < new Date();
+  const t = await getScopedI18n("action");
 
   return (
     <ul className="flex flex-col gap-2">
@@ -90,14 +92,15 @@ async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
           {/* eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises */}
           <form action={signUp} className="contents">
             <input type="hidden" name="quotaId" value={quota.id} />
-            <Button
+            <AutoEnableButton
               type="submit"
-              disabled={!hasStarted || hasEnded}
               variant="secondary"
+              startDate={startDate}
+              endDate={endDate}
             >
               {t("Sign up")}
-              {event.quotas.length === 1 ? "" : `: ${quota.title}`}
-            </Button>
+              {event.quotas.length === 1 ? null : `: ${quota.title}`}
+            </AutoEnableButton>
           </form>
         </li>
       ))}
@@ -373,6 +376,14 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
+export function LiveCountdown(props: React.ComponentProps<typeof Countdown>) {
+  return (
+    <Suspense fallback={null}>
+      <Countdown {...props} />
+    </Suspense>
+  );
+}
+
 async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina");
   return (
@@ -386,6 +397,9 @@ async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
         endDate={event.registrationEndDate}
       />
       <SignupButtons event={event} />
+      {event.registrationStartDate ? (
+        <LiveCountdown startDate={event.registrationStartDate} />
+      ) : null}
     </div>
   );
 }
