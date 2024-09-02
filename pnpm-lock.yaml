@@ -161,8 +161,8 @@ importers:
   apps/web:
     dependencies:
       '@apollo/client':
-        specifier: ^3.11.4
-        version: 3.11.4(@types/react@18.3.4)(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^3.11.5
+        version: 3.11.5(@types/react@18.3.4)(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@tietokilta/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -270,8 +270,8 @@ importers:
         specifier: 'catalog:'
         version: 18.3.4
       '@types/react-big-calendar':
-        specifier: ^1.8.9
-        version: 1.8.9
+        specifier: ^1.8.10
+        version: 1.8.10
       '@types/react-dom':
         specifier: 'catalog:'
         version: 18.3.0
@@ -416,8 +416,8 @@ packages:
     resolution: {integrity: sha512-pRrmXMCwnmrkS3MLgAIW5dXRzeTv6GLjkjb4HmxNnvAKXN1Nfzp4KmGADBQvlVUcqi+a5D+hfGDLLnd5NnYxog==}
     engines: {node: '>= 16'}
 
-  '@apollo/client@3.11.4':
-    resolution: {integrity: sha512-bmgYKkULpym8wt8aXlAZ1heaYo0skLJ5ru0qJ+JCRoo03Pe+yIDbBCnqlDw6Mjj76hFkDw3HwFMgZC2Hxp30Mg==}
+  '@apollo/client@3.11.5':
+    resolution: {integrity: sha512-gmTKgXhYH2Q3VT9vUWChuMy34gfK7n/EEJYc7kXt1GP7678Vz2L0xUlHSMEoPoqit317eamZjXQSyxlpn03lnQ==}
     peerDependencies:
       graphql: ^15.0.0 || ^16.0.0
       graphql-ws: ^5.5.5
@@ -2675,14 +2675,14 @@ packages:
   '@types/ms@0.7.34':
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
 
-  '@types/node@20.14.10':
-    resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
-
   '@types/node@20.14.11':
     resolution: {integrity: sha512-kprQpL8MMeszbz6ojB5/tU8PLN4kesnN8Gjzw349rDlNgsSzg90lAVj3llK99Dh7JON+t9AuscPPFW6mPbTnSA==}
 
   '@types/node@22.5.0':
     resolution: {integrity: sha512-DkFrJOe+rfdHTqqMg0bSNlGlQ85hSoh2TPzZyhHsXnMtligRWpxUySiyw8FY14ITt24HVCiQPWxS3KO/QlGmWg==}
+
+  '@types/node@22.5.2':
+    resolution: {integrity: sha512-acJsPTEqYqulZS/Yp/S3GgeE6GZ0qYODUR8aVr/DkhHQ8l9nd4j5x1/ZJy9/gHrRlFMqkO6i0I3E27Alu4jjPg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -2711,8 +2711,8 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  '@types/react-big-calendar@1.8.9':
-    resolution: {integrity: sha512-HIHLUxR3PzWHrFdZ00VnCMvDjAh5uzlL0vMC2b7tL3bKaAJsqq9T8h+x0GVeDbZfMfHAd1cs5tZBhVvourNJXQ==}
+  '@types/react-big-calendar@1.8.10':
+    resolution: {integrity: sha512-HczsLxbLic0wppijPYay9fNaJjYAM9umdKY/0Jats1u3RyYHl+6uHX+uwMVk/ssX6JfuP6tKOhvVld/9xgtFgA==}
 
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
@@ -7943,7 +7943,7 @@ snapshots:
       '@types/json-schema': 7.0.15
       js-yaml: 4.1.0
 
-  '@apollo/client@3.11.4(@types/react@18.3.4)(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@apollo/client@3.11.5(@types/react@18.3.4)(graphql@16.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       '@graphql-typed-document-node/core': 3.2.0(graphql@16.9.0)
       '@wry/caches': 1.0.1
@@ -7958,7 +7958,7 @@ snapshots:
       response-iterator: 0.2.6
       symbol-observable: 4.0.0
       ts-invariant: 0.10.3
-      tslib: 2.6.3
+      tslib: 2.7.0
       zen-observable-ts: 1.2.5
     optionalDependencies:
       react: 18.3.1
@@ -8878,17 +8878,17 @@ snapshots:
 
   '@azure/abort-controller@1.1.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/abort-controller@2.1.2':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/core-auth@1.7.2':
     dependencies:
       '@azure/abort-controller': 2.1.2
       '@azure/core-util': 1.9.1
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/core-client@1.9.2':
     dependencies:
@@ -8898,7 +8898,7 @@ snapshots:
       '@azure/core-tracing': 1.1.2
       '@azure/core-util': 1.9.1
       '@azure/logger': 1.1.3
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - supports-color
 
@@ -8915,11 +8915,11 @@ snapshots:
       '@azure/abort-controller': 2.1.2
       '@azure/core-util': 1.9.1
       '@azure/logger': 1.1.3
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/core-paging@1.6.2':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/core-rest-pipeline@1.16.2':
     dependencies:
@@ -8930,27 +8930,27 @@ snapshots:
       '@azure/logger': 1.1.3
       http-proxy-agent: 7.0.2
       https-proxy-agent: 7.0.5
-      tslib: 2.6.3
+      tslib: 2.7.0
     transitivePeerDependencies:
       - supports-color
 
   '@azure/core-tracing@1.1.2':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/core-util@1.9.1':
     dependencies:
       '@azure/abort-controller': 2.1.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/core-xml@1.4.2':
     dependencies:
       fast-xml-parser: 4.4.0
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/logger@1.1.3':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@azure/storage-blob@12.24.0':
     dependencies:
@@ -10993,19 +10993,19 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
 
   '@types/busboy@1.5.4':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
 
   '@types/concat-stream@2.0.3':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
 
   '@types/date-arithmetic@4.1.4': {}
 
@@ -11036,7 +11036,7 @@ snapshots:
 
   '@types/express-serve-static-core@4.19.5':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
       '@types/qs': 6.9.15
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -11076,10 +11076,6 @@ snapshots:
 
   '@types/ms@0.7.34': {}
 
-  '@types/node@20.14.10':
-    dependencies:
-      undici-types: 5.26.5
-
   '@types/node@20.14.11':
     dependencies:
       undici-types: 5.26.5
@@ -11088,15 +11084,19 @@ snapshots:
     dependencies:
       undici-types: 6.19.8
 
+  '@types/node@22.5.2':
+    dependencies:
+      undici-types: 6.19.8
+
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/oauth@0.9.5':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
 
   '@types/papaparse@5.3.14':
     dependencies:
-      '@types/node': 20.14.10
+      '@types/node': 22.5.2
 
   '@types/parse-json@4.0.2': {}
 
@@ -11116,7 +11116,7 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-big-calendar@1.8.9':
+  '@types/react-big-calendar@1.8.10':
     dependencies:
       '@types/date-arithmetic': 4.1.4
       '@types/prop-types': 15.7.12
@@ -11140,12 +11140,12 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
       '@types/send': 0.17.4
 
   '@types/supports-color@8.1.3': {}
@@ -11164,7 +11164,7 @@ snapshots:
 
   '@types/whatwg-url@8.2.2':
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
       '@types/webidl-conversions': 7.0.3
 
   '@typescript-eslint/eslint-plugin@7.16.1(@typescript-eslint/parser@7.16.1(eslint@8.57.0)(typescript@5.5.4))(eslint@8.57.0)(typescript@5.5.4)':
@@ -11417,23 +11417,23 @@ snapshots:
 
   '@wry/caches@1.0.1':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@wry/context@0.7.4':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@wry/equality@0.5.7':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@wry/trie@0.4.3':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@wry/trie@0.5.0':
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   '@xtuc/ieee754@1.2.0': {}
 
@@ -11526,7 +11526,7 @@ snapshots:
 
   aria-hidden@1.2.4:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   aria-query@5.1.3:
     dependencies:
@@ -11824,7 +11824,7 @@ snapshots:
   camel-case@4.1.2:
     dependencies:
       pascal-case: 3.1.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   camelcase-css@2.0.1: {}
 
@@ -12076,13 +12076,13 @@ snapshots:
 
   css-loader@5.2.7(webpack@5.93.0(@swc/core@1.6.1(@swc/helpers@0.5.12))(webpack-cli@4.10.0)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.31)
+      icss-utils: 5.1.0(postcss@8.4.41)
       loader-utils: 2.0.4
-      postcss: 8.4.31
-      postcss-modules-extract-imports: 3.1.0(postcss@8.4.31)
-      postcss-modules-local-by-default: 4.0.5(postcss@8.4.31)
-      postcss-modules-scope: 3.2.0(postcss@8.4.31)
-      postcss-modules-values: 4.0.0(postcss@8.4.31)
+      postcss: 8.4.41
+      postcss-modules-extract-imports: 3.1.0(postcss@8.4.41)
+      postcss-modules-local-by-default: 4.0.5(postcss@8.4.41)
+      postcss-modules-scope: 3.2.0(postcss@8.4.41)
+      postcss-modules-values: 4.0.0(postcss@8.4.41)
       postcss-value-parser: 4.2.0
       schema-utils: 3.3.0
       semver: 7.6.2
@@ -12317,7 +12317,7 @@ snapshots:
   dot-case@3.0.4:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   dot-prop@6.0.1:
     dependencies:
@@ -12627,7 +12627,7 @@ snapshots:
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
       synckit: 0.9.1
-      tslib: 2.6.3
+      tslib: 2.7.0
       unified: 11.0.5
       unified-engine: 11.2.1
       unist-util-visit: 5.0.0
@@ -13377,7 +13377,7 @@ snapshots:
   graphql-tag@2.12.6(graphql@16.9.0):
     dependencies:
       graphql: 16.9.0
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   graphql-type-json@0.3.2(graphql@16.8.1):
     dependencies:
@@ -13550,9 +13550,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.4.31):
+  icss-utils@5.1.0(postcss@8.4.41):
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.41
 
   ieee754@1.2.1: {}
 
@@ -13814,7 +13814,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 22.5.0
+      '@types/node': 22.5.2
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
@@ -14014,7 +14014,7 @@ snapshots:
 
   lower-case@2.0.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   lru-cache@10.4.3: {}
 
@@ -14720,7 +14720,7 @@ snapshots:
   no-case@3.0.4:
     dependencies:
       lower-case: 2.0.2
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   node-abi@3.67.0:
     dependencies:
@@ -14874,7 +14874,7 @@ snapshots:
       '@wry/caches': 1.0.1
       '@wry/context': 0.7.4
       '@wry/trie': 0.4.3
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   optionator@0.9.4:
     dependencies:
@@ -14914,7 +14914,7 @@ snapshots:
   param-case@3.0.4:
     dependencies:
       dot-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   parent-module@1.0.1:
     dependencies:
@@ -14962,7 +14962,7 @@ snapshots:
   pascal-case@3.1.2:
     dependencies:
       no-case: 3.0.4
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   passport-anonymous@1.0.1:
     dependencies:
@@ -15364,26 +15364,26 @@ snapshots:
       postcss: 8.4.31
       postcss-value-parser: 4.2.0
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.4.31):
+  postcss-modules-extract-imports@3.1.0(postcss@8.4.41):
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.41
 
-  postcss-modules-local-by-default@4.0.5(postcss@8.4.31):
+  postcss-modules-local-by-default@4.0.5(postcss@8.4.41):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.31)
-      postcss: 8.4.31
+      icss-utils: 5.1.0(postcss@8.4.41)
+      postcss: 8.4.41
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.0(postcss@8.4.31):
+  postcss-modules-scope@3.2.0(postcss@8.4.41):
     dependencies:
-      postcss: 8.4.31
+      postcss: 8.4.41
       postcss-selector-parser: 6.1.2
 
-  postcss-modules-values@4.0.0(postcss@8.4.31):
+  postcss-modules-values@4.0.0(postcss@8.4.41):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.4.31)
-      postcss: 8.4.31
+      icss-utils: 5.1.0(postcss@8.4.41)
+      postcss: 8.4.41
 
   postcss-nested@6.2.0(postcss@8.4.41):
     dependencies:
@@ -15804,7 +15804,7 @@ snapshots:
     dependencies:
       react: 18.3.1
       react-style-singleton: 2.2.1(@types/react@18.3.4)(react@18.3.1)
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.4
 
@@ -15813,7 +15813,7 @@ snapshots:
       react: 18.3.1
       react-remove-scroll-bar: 2.3.6(@types/react@18.3.4)(react@18.3.1)
       react-style-singleton: 2.2.1(@types/react@18.3.4)(react@18.3.1)
-      tslib: 2.6.3
+      tslib: 2.7.0
       use-callback-ref: 1.3.2(@types/react@18.3.4)(react@18.3.1)
       use-sidecar: 1.1.2(@types/react@18.3.4)(react@18.3.1)
     optionalDependencies:
@@ -15874,7 +15874,7 @@ snapshots:
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.4
 
@@ -16624,7 +16624,7 @@ snapshots:
   synckit@0.9.1:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   tabbable@5.3.3: {}
 
@@ -16813,7 +16813,7 @@ snapshots:
 
   ts-invariant@0.10.3:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   tsconfig-paths@3.15.0:
     dependencies:
@@ -17090,7 +17090,7 @@ snapshots:
   use-callback-ref@1.3.2(@types/react@18.3.4)(react@18.3.1):
     dependencies:
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.4
 
@@ -17116,7 +17116,7 @@ snapshots:
     dependencies:
       detect-node-es: 1.1.0
       react: 18.3.1
-      tslib: 2.6.3
+      tslib: 2.7.0
     optionalDependencies:
       '@types/react': 18.3.4
 
