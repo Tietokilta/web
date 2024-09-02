@@ -6,9 +6,7 @@ import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
 // eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import {
-  type FormEventHandler,
-  type HTMLInputAutoCompleteAttribute,
-  type HTMLInputTypeAttribute,
+  type InputHTMLAttributes,
   type ReactNode,
   useEffect,
   useState,
@@ -21,21 +19,9 @@ import {
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
 
-interface GenericFieldProps {
-  placeholder?: string;
+interface GenericFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  id?: string;
-  name: string;
-  autoComplete?: HTMLInputAutoCompleteAttribute;
-  type?: HTMLInputTypeAttribute;
-  defaultValue?: string;
-  multiple?: boolean;
-  required?: boolean;
-  step?: number | "any";
-  min?: number;
   unit?: string;
-  maxLength?: number;
-  onBeforeInput?: FormEventHandler<HTMLInputElement>;
 }
 
 function InputLabel({ name, htmlId }: { name: string; htmlId: string }) {
