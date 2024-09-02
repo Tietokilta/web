@@ -355,6 +355,7 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Invoicer name")}
             name="recipient_name"
+            placeholder="Teemu Teekkari"
             autoComplete="name"
             maxLength={128}
             required
@@ -364,6 +365,7 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Invoicer email")}
             maxLength={128}
+            placeholder="teemu.teekkari@aalto.fi"
             name="recipient_email"
             type="email"
             required
@@ -389,17 +391,24 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Street name")}
             name="street_name"
+            placeholder="Konemiehentie 2"
             maxLength={128}
             required
           />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="city" formState={state}>
-          <InputRow label={t("City")} name="city" maxLength={128} required />
+          <InputRow 
+            label={t("City")} 
+            name="city" 
+            placeholder="Espoo"
+            maxLength={128} 
+            required />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="zip" formState={state}>
           <InputRow
             label={t("Postal code")}
             name="zip"
+            placeholder="02150"
             maxLength={128}
             required
           />
