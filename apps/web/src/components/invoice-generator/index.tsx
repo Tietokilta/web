@@ -22,6 +22,7 @@ import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugene
 interface GenericFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   unit?: string;
+  name: string;
 }
 
 function InputLabel({ name, htmlId }: { name: string; htmlId: string }) {
@@ -174,7 +175,11 @@ function InputRowArray({
       <fieldset id={htmlId} name={name}>
         <div>
           {rows.map((row, index) => (
-            <div className="mt-6" key={row} id={`${htmlId}.${index.toString()}`}>
+            <div
+              className="mt-6"
+              key={row}
+              id={`${htmlId}.${index.toString()}`}
+            >
               <Row state={state} index={index} />
               {/* Do not add delete button for first row because the invoice has to always have at least one row */}
               {minimumRows !== 1 || index > 0 ? (
@@ -397,12 +402,13 @@ function InvoiceGeneratorForm() {
           />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="city" formState={state}>
-          <InputRow 
-            label={t("City")} 
-            name="city" 
+          <InputRow
+            label={t("City")}
+            name="city"
             placeholder="Espoo"
-            maxLength={128} 
-            required />
+            maxLength={128}
+            required
+          />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="zip" formState={state}>
           <InputRow
