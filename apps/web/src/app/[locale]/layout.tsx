@@ -8,7 +8,7 @@ import { MobileNav } from "../../components/mobile-nav";
 import { SkipLink } from "../../components/skip-link";
 import { cn } from "../../lib/utils";
 import "@tietokilta/ui/global.css";
-import "./globals.css";
+import "../globals.css";
 import { type Locale } from "../../locales/server";
 import { DigiCommitteeRecruitmentAlert } from "../../components/digi-committee-recruitment-alert";
 
