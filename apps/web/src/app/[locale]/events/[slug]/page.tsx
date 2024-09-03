@@ -122,7 +122,7 @@ function getFormattedAnswer(
   return answer;
 }
 
-function SignUpRow({
+async function SignUpRow({
   signup,
   publicQuestions,
   isGeneratedQuota,
@@ -131,6 +131,7 @@ function SignUpRow({
   publicQuestions: EventQuestion[];
   isGeneratedQuota: boolean;
 }) {
+  const t = await getScopedI18n("ilmomasiina");
   return (
     <tr className="odd:bg-gray-300 even:bg-gray-200">
       <td className="border-b border-gray-900 px-2 py-1">
@@ -143,7 +144,7 @@ function SignUpRow({
           </span>
         ) : (
           <span className="italic">
-            {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
+            {signup.confirmed ? t("Piilotettu") : t("Vahvistamaton")}
           </span>
         )}
       </td>
@@ -329,7 +330,10 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
 
   const t = await getScopedI18n("ilmomasiina");
 
-  const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize);
+  const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize, {
+    openQuotaName: t("Avoin kiintiö"),
+    queueQuotaName: t("Jonossa"),
+  });
 
   return (
     <Card className="max-w-prose space-y-4">

@@ -82,16 +82,6 @@ export default async function Page({
           saveAction={saveSignUpAction}
           deleteAction={deleteSignUpAction}
         />
-        <footer className="text-sm text-gray-800">
-          <p>
-            {t(
-              "Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}",
-              {
-                eventUrl: `${process.env.PUBLIC_ILMOMASIINA_URL ?? ""}/signup/${signupId}/${signupEditToken}`,
-              },
-            )}
-          </p>
-        </footer>
       </div>
     </main>
   );

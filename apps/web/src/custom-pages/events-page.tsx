@@ -16,6 +16,7 @@ import {
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { DateTime } from "../components/datetime";
+import { CalendarSubButton } from "../components/calendar-sub-button";
 import EventCalendar from "./event-calendar";
 
 async function SignUpText({
@@ -105,7 +106,7 @@ async function SignupQuotas({
           className="flex w-full justify-between gap-4 whitespace-nowrap"
           key={quota.id}
         >
-          <span className="w-3/4">{quota.title}</span>{" "}
+          <span className="w-3/4 truncate">{quota.title}</span>{" "}
           <span className="w-1/4 text-left">
             {quota.signupCount} / {quota.size}
           </span>
@@ -150,10 +151,19 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+  const t = await getScopedI18n("ilmomasiina");
+
   return (
-    <div className="h-[40rem]">
-      <EventCalendar events={events} />
+    <div className="flex flex-col gap-2">
+      <div className="h-[40rem]">
+        <EventCalendar events={events} />
+      </div>
+      <CalendarSubButton
+        ctaText={t("Tilaa kalenteri")}
+        copyingText={t("Kopioidaan leikepöydälle")}
+        copiedText={t("Kopioitu leikepöydälle")}
+      />
     </div>
   );
 }

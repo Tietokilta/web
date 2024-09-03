@@ -2,8 +2,9 @@ import path from "path";
 import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../access/signed-in";
 import { useCloudStorage } from "../util";
+import { mediaImportController } from "../controllers/media-import-controller";
 
-export const Media: CollectionConfig = {
+export const Media = {
   slug: "media",
   access: {
     // TODO: this
@@ -29,7 +30,7 @@ export const Media: CollectionConfig = {
       localized: true,
       type: "text",
       required: true,
-      minLength: 20,
+      minLength: 1,
     },
     { name: "photographer", type: "text" },
     {
@@ -49,4 +50,15 @@ export const Media: CollectionConfig = {
       defaultValue: "image",
     },
   ],
-};
+  endpoints: [
+    {
+      path: "/upload",
+      method: "post",
+      handler: (req, res, next) => {
+        mediaImportController(req, res).then(null, next);
+      },
+    },
+  ],
+} as const satisfies CollectionConfig;
+
+export type MediaSlug = (typeof Media)["slug"];

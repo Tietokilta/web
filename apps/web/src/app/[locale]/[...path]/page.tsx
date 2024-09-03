@@ -2,6 +2,7 @@ import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import type { Page as CMSPage } from "@tietokilta/cms-types/payload";
+import { Card } from "@tietokilta/ui";
 import { AdminBar } from "../../../components/admin-bar";
 import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
 import { TableOfContents } from "../../../components/table-of-contents";
@@ -12,7 +13,6 @@ import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
 import { generateTocFromRichText } from "../../../lib/utils";
 import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
 import { openGraphImage } from "../../shared-metadata";
-import { Card } from "@tietokilta/ui";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Params;
@@ -142,7 +142,7 @@ async function Page({ params: { path } }: Props) {
         id="main"
         className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
       >
-        <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 text-gray-100 md:h-[25svh]">
+        <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 text-gray-100 md:h-[25svh]">
           <h1 className="font-mono text-4xl md:text-5xl">{page.title}</h1>
         </header>
 

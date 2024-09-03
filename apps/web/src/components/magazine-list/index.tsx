@@ -16,7 +16,6 @@ function IssueCard({ issue }: { issue: MagazineIssue }) {
       <a href={file.url ?? ""}>
         <Image
           alt={thumbnail.alt}
-          className="aspect-[1/1.41] w-full object-contain object-bottom"
           height={thumbnail.height ?? undefined}
           src={thumbnail.url ?? TikLogo}
           width={thumbnail.width ?? undefined}
@@ -58,7 +57,7 @@ export function MagazineList({
             <span className="self-center text-sm font-medium">{year}</span>
             <div className="w-5" />
           </div>
-          <div className="grid max-w-64 grid-cols-1 gap-8 min-[460px]:max-w-none min-[460px]:grid-cols-2 min-[660px]:grid-cols-3 lg:grid-cols-4">
+          <div className="grid max-w-64 grid-cols-1 items-baseline gap-8 min-[460px]:max-w-none min-[460px]:grid-cols-2 min-[660px]:grid-cols-3 lg:grid-cols-4">
             {issuesByYear[year]
               .sort(
                 (a, b) =>

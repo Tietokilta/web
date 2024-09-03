@@ -23,7 +23,15 @@ export async function CommitteeList({
   return (
     <>
       {committees
-        .sort((a, b) => a.name.localeCompare(b.name, locale))
+        .sort((a, b) => {
+          // Puts others as last element in the list.
+          const others = ["muut", "others"];
+          const isAOthers = others.includes(a.name.toLowerCase());
+          const isBOthers = others.includes(b.name.toLowerCase());
+          if (isBOthers) return -1;
+          if (isAOthers) return 1;
+          return a.name.localeCompare(b.name, locale);
+        })
         .map((committee) => (
           <CommitteeCard committee={committee} key={committee.id} />
         ))}

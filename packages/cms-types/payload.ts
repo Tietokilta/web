@@ -645,6 +645,7 @@ export interface WeeklyNewsletter {
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -658,6 +659,7 @@ export interface NewsItem {
   date?: string | null;
   signupStartDate?: string | null;
   signupEndDate?: string | null;
+  linkToSignUp?: string | null;
   content: {
     root: {
       type: string;

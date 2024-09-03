@@ -189,11 +189,18 @@ export type EditorInChiefBlockNode = BaseBlockNode & {
   };
 };
 
+export type InvoiceGeneratorBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "invoice-generator";
+  };
+};
+
 export type BlockNode =
   | CommitteesYearBlockNode
   | ImageLinkGridBlockNode
   | GoogleFormBlockNode
-  | EditorInChiefBlockNode;
+  | EditorInChiefBlockNode
+  | InvoiceGeneratorBlockNode;
 
 export type Node =
   | TextNode

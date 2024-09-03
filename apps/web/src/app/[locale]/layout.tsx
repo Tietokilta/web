@@ -10,6 +10,7 @@ import { cn } from "../../lib/utils";
 import "@tietokilta/ui/global.css";
 import "./globals.css";
 import { type Locale } from "../../locales/server";
+import { DigiCommitteeRecruitmentAlert } from "../../components/digi-committee-recruitment-alert";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
@@ -84,6 +85,7 @@ export default function RootLayout({
     <html lang={locale}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <SkipLink />
+        <DigiCommitteeRecruitmentAlert />
         <NextTopLoader color="var(--color-gray-100)" showSpinner={false} />
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
