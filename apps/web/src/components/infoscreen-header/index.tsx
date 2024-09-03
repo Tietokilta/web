@@ -7,7 +7,7 @@ export function InfoScreenHeader() {
   return (
     <div className="flex h-[6.0rem] space-y-2 bg-black text-white">
       <InfoScreenHeaderLogo />
-      <div className="flex h-full flex-col"  suppressHydrationWarning={true}>
+      <div className="flex h-full flex-col" suppressHydrationWarning={true}>
         <Clock
           format="HH:mm:ss"
           style={{
