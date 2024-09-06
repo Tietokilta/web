@@ -27,6 +27,7 @@ import { BackButton } from "../../../../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 import { DateTime } from "../../../../components/datetime";
 import { openGraphImage } from "../../../shared-metadata";
+import { SignUpButton } from "./signup-button";
 
 async function SignUpText({
   startDate,
@@ -87,18 +88,14 @@ async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
     <ul className="flex flex-col gap-2">
       {event.quotas.map((quota) => (
         <li key={quota.id} className="contents">
-          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises */}
-          <form action={signUp} className="contents">
-            <input type="hidden" name="quotaId" value={quota.id} />
-            <Button
-              type="submit"
-              disabled={!hasStarted || hasEnded}
-              variant="secondary"
-            >
-              {t("Sign up")}
-              {event.quotas.length === 1 ? "" : `: ${quota.title}`}
-            </Button>
-          </form>
+          <SignUpButton
+            quotaId={quota.id}
+            isDisabled={!hasStarted || hasEnded}
+            signUpAction={signUp}
+          >
+            {t("Sign up")}
+            {event.quotas.length === 1 ? "" : `: ${quota.title}`}
+          </SignUpButton>
         </li>
       ))}
     </ul>
