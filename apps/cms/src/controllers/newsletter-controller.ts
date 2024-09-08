@@ -1,21 +1,32 @@
 import type { Response } from "express";
 import type { PayloadRequest } from "payload/types";
 import { render } from "@react-email/components";
+import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
+import { type Node } from "@tietokilta/cms-types/lexical";
 import { signedIn } from "../access/signed-in";
 import { sendEmail } from "../mailgun";
-import NewsletterEmail from "../emails/newsletter-email";
-import { WeeklyNewsletter } from "@tietokilta/cms-types/payload";
+import { NewsletterEmail } from "../emails/newsletter-email";
+import { type Locale } from "../emails/utils/utils";
+import { parseToc, parseToTelegramString } from "./utils/tg-parser";
 
 export const newsletterSenderController = async (
   req: PayloadRequest,
   res: Response,
-) => {
+): Promise<
+  | Response<{
+      message: string;
+    }>
+  | undefined
+> => {
   if (!signedIn({ req }) || !req.user) {
     res.sendStatus(401);
     return;
   }
   try {
-    const { subject, html } = req.body;
+    const { subject, html } = req.body as {
+      subject: string | undefined;
+      html: string | undefined;
+    };
 
     if (!subject || !html) {
       return res
@@ -27,7 +38,6 @@ export const newsletterSenderController = async (
 
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
-    console.error("Error sending email:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -35,7 +45,12 @@ export const newsletterSenderController = async (
 export const getEmailController = async (
   req: PayloadRequest,
   res: Response,
-) => {
+): Promise<
+  Response<{
+    html: string;
+    subject: string;
+  }>
+> => {
   const { newsletterId } = req.params;
 
   try {
@@ -55,13 +70,6 @@ export const getEmailController = async (
       locale: "fi",
     })) as unknown as WeeklyNewsletter;
 
-    // Ensure both newsletters exist
-    if (!englishNewsletter) {
-      throw new Error("English newsletter not found");
-    }
-    if (!finnishNewsletter) {
-      throw new Error("Finnish newsletter not found");
-    }
     const { PUBLIC_LEGACY_URL, PUBLIC_FRONTEND_URL } = process.env;
 
     // Render the HTML content
@@ -73,11 +81,41 @@ export const getEmailController = async (
         PUBLIC_FRONTEND_URL: PUBLIC_FRONTEND_URL ?? "",
       }),
     );
-
     // Return the result to the client
     return res.status(200).json({
       html,
       subject: `${finnishNewsletter.title} / ${englishNewsletter.title}`,
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      return res.status(500).json({ error: error.message });
+    }
+    return res.status(500).json({ error: "An unknown error occurred." });
+  }
+};
+
+export const getTelegramMessageController = async (
+  req: PayloadRequest,
+  res: Response,
+): Promise<Response> => {
+  const { newsletterId } = req.params;
+  const { locale } = req.query;
+  try {
+    const newsletter = (await req.payload.findByID({
+      collection: "weekly-newsletters",
+      id: newsletterId,
+      depth: 2,
+      locale: locale as string,
+    })) as unknown as WeeklyNewsletter;
+    let message = "";
+    message += `**${newsletter.title}**\n\n`;
+    message += parseToTelegramString(
+      newsletter.greetings.root.children as unknown as Node[],
+    );
+    message += parseToc(newsletter, locale as Locale);
+
+    return res.status(200).json({
+      message,
     });
   } catch (error) {
     if (error instanceof Error) {

@@ -1,4 +1,4 @@
-import type { EditorState, Node } from "@tietokilta/cms-types/lexical";
+import type { Node } from "@tietokilta/cms-types/lexical";
 
 export type Locale = (typeof locales)[number];
 
@@ -42,37 +42,13 @@ export const stringToId = (string: string): string =>
     .replace(/[^a-z0-9 -]/g, "")
     .replace(/\s/g, "-");
 
+interface TocItemChild {
+  text: string;
+}
 export interface TocItem {
   text: string;
-  level: 2 | 3;
+  children: TocItemChild[];
 }
-
-export const generateTocFromRichText = (
-  content?: EditorState,
-  onlyTopLevel = false,
-): TocItem[] => {
-  if (!content) return [];
-  const toc: TocItem[] = [];
-
-  for (const node of content.root.children) {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
-    if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
-      const tag = node.tag;
-      const level = parseInt(tag[1], 10) as 2 | 3;
-
-      if (onlyTopLevel && level === 3) continue;
-
-      const text = lexicalNodeToTextContent(node);
-
-      toc.push({
-        text,
-        level,
-      });
-    }
-  }
-
-  return toc;
-};
 
 /**
  * Insert soft hyphens or breaks where lacking in the Finnish dictionary.
@@ -105,7 +81,9 @@ export type GetDateTimeFormatterOptions = Omit<
 /**
  * Construct a function that formats a date string to a given format.
  */
-export function getDateTimeFormatter(options: GetDateTimeFormatterOptions) {
+export function getDateTimeFormatter(
+  options: GetDateTimeFormatterOptions,
+): (date: string, locale?: Locale, timeZone?: string) => string {
   const formatFn = (
     date: string,
     locale?: Locale,
