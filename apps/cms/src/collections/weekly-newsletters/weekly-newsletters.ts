@@ -6,6 +6,7 @@ import { revalidateCollection } from "../../hooks/revalidate-collection";
 import { publishedOrSignedIn } from "../../access/published-or-signed-in";
 import {
   getEmailController,
+  getTelegramMessageController,
   newsletterSenderController,
 } from "../../controllers/newsletter-controller";
 import NewsletterButton from "./newsletter-button";
@@ -99,6 +100,11 @@ export const WeeklyNewsletters: CollectionConfig = {
       path: "/mail/:newsletterId",
       method: "get",
       handler: getEmailController as PayloadHandler,
+    },
+    {
+      path: "/telegram/:newsletterId",
+      method: "get",
+      handler: getTelegramMessageController as PayloadHandler,
     },
   ],
   versions: {

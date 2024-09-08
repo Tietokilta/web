@@ -1,14 +1,16 @@
 // mailgun.ts
 
 import FormData from "form-data";
-import Mailgun from "mailgun.js";
+import Mailgun, { type MessagesSendResult } from "mailgun.js";
 
 interface SendEmailOptions {
   subject: string;
   html: string;
 }
 
-export const sendEmail = async (options: SendEmailOptions) => {
+export const sendEmail = async (
+  options: SendEmailOptions,
+): Promise<MessagesSendResult> => {
   const mailgun = new Mailgun(FormData);
   const {
     MAILGUN_SENDER,
