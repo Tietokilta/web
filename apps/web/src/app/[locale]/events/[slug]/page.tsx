@@ -17,6 +17,7 @@ import {
 } from "../../../../lib/api/external/ilmomasiina";
 import { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
 import {
+  cn,
   formatDateTimeSeconds,
   formatDateTimeSecondsOptions,
   formatDatetimeYear,
@@ -93,8 +94,13 @@ async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
             isDisabled={!hasStarted || hasEnded}
             signUpAction={signUp}
           >
-            {t("Sign up")}
-            {event.quotas.length === 1 ? "" : `: ${quota.title}`}
+            <span>
+              <span className={cn(event.quotas.length > 1 && "sr-only")}>
+                {t("Sign up")}
+                {event.quotas.length === 1 ? "" : `: `}
+              </span>
+              {event.quotas.length > 1 ? <span>{quota.title}</span> : null}
+            </span>
           </SignUpButton>
         </li>
       ))}
