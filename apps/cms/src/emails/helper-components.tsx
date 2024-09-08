@@ -1,7 +1,9 @@
+/* eslint-disable no-bitwise -- lexical nodes are defined bitwise*/
 import * as React from "react";
 import { type Media, type NewsItem } from "@tietokilta/cms-types/payload";
 import { type EditorState, type Node } from "@tietokilta/cms-types/lexical";
 import { cn, FileIcon } from "@tietokilta/ui";
+import { Link } from "@react-email/components";
 import {
   IS_BOLD,
   IS_CODE,
@@ -11,17 +13,19 @@ import {
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
 } from "./utils/lexical";
-import { Link } from "@react-email/components";
 import {
   formatDate,
-  GetDateTimeFormatterOptions,
   insertSoftHyphens,
   lexicalNodeToTextContent,
   stringToId,
   type TocItem,
 } from "./utils/utils";
 
-export function Greetings({ content }: { content?: EditorState }) {
+export function Greetings({
+  content,
+}: {
+  content?: EditorState;
+}): JSX.Element | null {
   if (!content) return null;
 
   return (
@@ -264,7 +268,7 @@ function NewsItemContent({
 }: {
   item: NewsItem;
   locale: "en" | "fi";
-}) {
+}): JSX.Element {
   const content = item.content as unknown as EditorState | null;
   const t = {
     en: {
@@ -304,7 +308,7 @@ function NewsSection({
 }: {
   newsItem: NewsItem;
   locale: "en" | "fi";
-}) {
+}): JSX.Element {
   return (
     <article>
       <h3 id={stringToId(newsItem.title)}>{newsItem.title}</h3>
@@ -321,7 +325,7 @@ export function NewsletterCategory({
   title: string;
   newsItems: NewsItem[];
   locale: "en" | "fi";
-}) {
+}): JSX.Element | null {
   if (newsItems.length === 0) return null;
 
   return (
@@ -346,7 +350,7 @@ export function Calendar({
   eventsNextWeek: NewsItem[];
   signupsThisWeek: NewsItem[];
   locale: "en" | "fi";
-}) {
+}): JSX.Element | null {
   if (
     eventsThisWeek.length === 0 &&
     eventsNextWeek.length === 0 &&
@@ -369,12 +373,12 @@ export function Calendar({
     },
   };
   return (
-    <section className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <section>
       <h2 id={stringToId(t[locale].calendar)}>{t[locale].calendar}</h2>
       {eventsThisWeek.length > 0 ? (
         <div>
           <span>{t[locale]["this-week"]}:</span>
-          <ol className="not-prose ml-[4ch]">
+          <ul>
             {eventsThisWeek.map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
@@ -383,13 +387,13 @@ export function Calendar({
                 <span>{newsItem.title}</span>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       ) : null}
       {eventsNextWeek.length > 0 ? (
         <div>
           <span>{t[locale]["next-week"]}:</span>
-          <ol className="not-prose ml-[4ch]">
+          <ul>
             {eventsNextWeek.map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
@@ -398,13 +402,13 @@ export function Calendar({
                 <span>{newsItem.title}</span>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       ) : null}
       {signupsThisWeek.length > 0 ? (
         <div>
           <span>{t[locale]["this-week-signups"]}:</span>
-          <ol className="not-prose ml-[4ch]">
+          <ul>
             {signupsThisWeek.map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.signupStartDate ? (
@@ -416,51 +420,42 @@ export function Calendar({
                 <span>{newsItem.title}</span>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
       ) : null}
     </section>
   );
 }
 
-interface SharedProps {
-  defaultFormattedDate: string;
-  rawDate: string;
-  formatOptions: GetDateTimeFormatterOptions;
-}
-type TimeProps = SharedProps &
-  Omit<React.HTMLProps<HTMLTimeElement>, "dateTime"> & {
-    as?: "time";
-  };
-type SpanProps = SharedProps &
-  React.HTMLProps<HTMLSpanElement> & {
-    as?: "span";
-  };
-type Props = TimeProps | SpanProps;
-
-function HeadingList({ toc }: { toc: TocItem[] }): React.ReactElement {
-  return (
-    <ol>
-      {toc.map((item: { level: number; text: string }) => (
-        <li
-          className={cn(
-            "before:text-gray-600",
-            item.level === 2 &&
-              "before:content-alt-empty mb-2 ms-[2ch] text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'] last:mb-0",
-            item.level === 3 &&
-              "before:content-alt-empty mb-1 ms-[3ch] text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'] last:mb-0",
-          )}
-          key={`${item.level.toFixed()}-${item.text}`}
-        >
-          {insertSoftHyphens(item.text)}
-        </li>
-      ))}
-    </ol>
-  );
-}
-
-export function TableOfContents({ toc }: { toc?: TocItem[] }) {
+export function TableOfContents({
+  toc,
+}: {
+  toc?: TocItem[];
+}): JSX.Element | null {
   if (!toc || toc.length === 0) return null;
 
-  return <HeadingList toc={toc} />;
+  return (
+    <ol style={{ listStyleType: "none", paddingLeft: "0" }}>
+      {toc.map((item, index) => {
+        const currentPrefix = `${(index + 1).toString()}.`;
+        return (
+          <li key={currentPrefix} style={{ margin: "5px" }}>
+            {currentPrefix} {item.text}
+            {item.children.length > 0 && (
+              <ol style={{ listStyleType: "none", paddingLeft: "20px" }}>
+                {item.children.map((child, i) => (
+                  <li
+                    key={`${currentPrefix}${(i + 1).toString()}`}
+                    style={{ margin: "5px" }}
+                  >
+                    {`${currentPrefix}${(i + 1).toString()}.`} {child.text}
+                  </li>
+                ))}
+              </ol>
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  );
 }

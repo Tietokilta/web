@@ -36,7 +36,7 @@ export const Newsletter = ({
       path: "weekly-newsletters",
       "old-link": "old weekly newsletters",
       "super-old-link": "very old weekly newsletters",
-      summary: "Summary",
+      summary: "Table of Contents",
     },
     fi: {
       calendar: "Kalenteri",
@@ -48,7 +48,7 @@ export const Newsletter = ({
       path: "viikkotiedotteet",
       "old-link": "vanhoja viikkotiedotteita",
       "super-old-link": "erittäin vanhoja viikkotiedotteita",
-      summary: "Kooste",
+      summary: "Sisällysluettelo",
     },
   };
 
@@ -84,32 +84,40 @@ export const Newsletter = ({
     eventsThisWeek.length > 0 ||
     eventsNextWeek.length > 0 ||
     signupsThisWeek.length > 0
-      ? { level: 2, text: t[locale].calendar }
+      ? { text: t[locale].calendar, children: [] }
       : null,
-    guildNewsItems.length > 0 ? { level: 2, text: t[locale].guild } : null,
-    ...guildNewsItems.map((newsItem) => ({
-      level: 3,
-      text: newsItem.title,
-    })),
+    guildNewsItems.length > 0
+      ? {
+          text: t[locale].guild,
+          children: guildNewsItems.map((newsItem) => ({
+            text: newsItem.title,
+          })),
+        }
+      : null,
     ayyAaltoNewsItems.length > 0
-      ? { level: 2, text: t[locale]["ayy-aalto"] }
+      ? {
+          text: t[locale]["ayy-aalto"],
+          children: ayyAaltoNewsItems.map((newsItem) => ({
+            text: newsItem.title,
+          })),
+        }
       : null,
-    ...ayyAaltoNewsItems.map((newsItem) => ({
-      level: 3,
-      text: newsItem.title,
-    })),
-    otherNewsItems.length > 0 ? { level: 2, text: t[locale].other } : null,
-    ...otherNewsItems.map((newsItem) => ({
-      level: 3,
-      text: newsItem.title,
-    })),
+    otherNewsItems.length > 0
+      ? {
+          text: t[locale].other,
+          children: otherNewsItems.map((newsItem) => ({
+            text: newsItem.title,
+          })),
+        }
+      : null,
     bottomCornerNewsItems.length > 0
-      ? { level: 2, text: t[locale]["bottom-corner"] }
+      ? {
+          text: t[locale]["bottom-corner"],
+          children: bottomCornerNewsItems.map((newsItem) => ({
+            text: newsItem.title,
+          })),
+        }
       : null,
-    ...bottomCornerNewsItems.map((newsItem) => ({
-      level: 3,
-      text: newsItem.title,
-    })),
   ].filter((itemOrNull): itemOrNull is TocItem => Boolean(itemOrNull));
   return (
     <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
