@@ -47,7 +47,7 @@ const en = {
   "invoicegenerator.Subject": "Subject",
   "invoicegenerator.Description": "Description",
   "invoicegenerator.Bank account number": "Bank account number (IBAN)",
-  "invoicegenerator.Due date": "Due date",
+  "invoicegenerator.Date": "Date",
   "invoicegenerator.Submit": "Submit",
   "invoicegenerator.Street name": "Street name",
   "invoicegenerator.City": "City",

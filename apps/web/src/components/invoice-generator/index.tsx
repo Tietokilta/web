@@ -448,7 +448,7 @@ function InvoiceGeneratorForm() {
         />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="due_date" formState={state}>
-        <InputRow label={t("Due date")} name="due_date" type="date" required />
+        <InputRow label={t("Date")} name="due_date" type="date" required />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="rows" formState={state}>
         <InputRowArray
