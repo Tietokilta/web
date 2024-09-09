@@ -2,6 +2,7 @@ import type { Response } from "express";
 import type { PayloadRequest } from "payload/types";
 import { render } from "@react-email/components";
 import { type Node } from "@tietokilta/cms-types/lexical";
+import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../access/signed-in";
 import { sendEmail } from "../mailgun";
 import { NewsletterEmail } from "../emails/newsletter-email";
@@ -60,20 +61,20 @@ export const getEmailController = async (
     const { newsletterId } = req.params;
 
     // Fetch the English version of the newsletter
-    const englishNewsletter = await req.payload.findByID({
+    const englishNewsletter = (await req.payload.findByID({
       collection: "weekly-newsletters",
       id: newsletterId,
       depth: 2,
       locale: "en",
-    });
+    })) as unknown as WeeklyNewsletter;
 
     // Fetch the Finnish version of the newsletter
-    const finnishNewsletter = await req.payload.findByID({
+    const finnishNewsletter = (await req.payload.findByID({
       collection: "weekly-newsletters",
       id: newsletterId,
       depth: 2,
       locale: "fi",
-    });
+    })) as unknown as WeeklyNewsletter;
 
     const { PUBLIC_LEGACY_URL, PUBLIC_FRONTEND_URL } = process.env;
 
@@ -111,12 +112,12 @@ export const getTelegramMessageController = async (
     const { newsletterId } = req.params;
     const { locale } = req.query;
 
-    const newsletter = await req.payload.findByID({
+    const newsletter = (await req.payload.findByID({
       collection: "weekly-newsletters",
       id: newsletterId,
       depth: 2,
       locale: locale as string,
-    });
+    })) as unknown as WeeklyNewsletter;
     let message = "";
     message += `**${newsletter.title}**\n\n`;
     message += parseToTelegramString(
