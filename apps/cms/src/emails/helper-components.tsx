@@ -1,8 +1,6 @@
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise*/
-import * as React from "react";
-import { type Media, type NewsItem } from "@tietokilta/cms-types/payload";
+import { type NewsItem } from "@tietokilta/cms-types/payload";
 import { type EditorState, type Node } from "@tietokilta/cms-types/lexical";
-import { cn, FileIcon } from "@tietokilta/ui";
 import { Link } from "@react-email/components";
 import {
   IS_BOLD,
@@ -27,12 +25,7 @@ export function Greetings({
   content?: EditorState;
 }): JSX.Element | null {
   if (!content) return null;
-
-  return (
-    <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
-      <LexicalSerializer nodes={content.root.children} />
-    </div>
-  );
+  return <LexicalSerializer nodes={content.root.children} />;
 }
 
 export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
@@ -48,18 +41,10 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             text = <em key={index}>{text}</em>;
           }
           if (node.format & IS_STRIKETHROUGH) {
-            text = (
-              <span className="line-through" key={index}>
-                {text}
-              </span>
-            );
+            text = <del key={index}>{text}</del>;
           }
           if (node.format & IS_UNDERLINE) {
-            text = (
-              <span className="underline" key={index}>
-                {text}
-              </span>
-            );
+            text = <u key={index}>{text}</u>;
           }
           if (node.format & IS_CODE) {
             text = <code key={index}>{text}</code>;
@@ -103,22 +88,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             };
             const ParagraphTag = hasAllowedChildren(node) ? "p" : "div";
             return (
-              <ParagraphTag
-                className={cn(
-                  node.indent === 1 && "ml-[4ch]",
-                  node.indent === 2 && "ml-[8ch]",
-                  node.indent === 3 && "ml-[12ch]",
-                  node.indent === 4 && "ml-[16ch]",
-                  node.indent === 5 && "ml-[20ch]",
-
-                  node.format === "left" && "text-left",
-                  node.format === "center" && "text-center",
-                  node.format === "right" && "text-right",
-                )}
-                key={index}
-              >
-                {serializedChildren}
-              </ParagraphTag>
+              <ParagraphTag key={index}>{serializedChildren}</ParagraphTag>
             );
           }
           case "heading": {
@@ -129,24 +99,20 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             const Tag = node.tag as Heading;
 
             return (
-              <Link href={`#${stringToId(lexicalNodeToTextContent(node))}`}>
+              <a href={`#${stringToId(lexicalNodeToTextContent(node))}`}>
                 <Tag
                   id={stringToId(lexicalNodeToTextContent(node))}
                   key={index}
                 >
                   {serializedChildren}
                 </Tag>
-              </Link>
+              </a>
             );
           }
           case "list": {
             type List = Extract<keyof JSX.IntrinsicElements, "ul" | "ol">;
             const Tag: List = node.tag;
-            return (
-              <Tag className={node.listType as string} key={index}>
-                {serializedChildren}
-              </Tag>
-            );
+            return <Tag key={index}>{serializedChildren}</Tag>;
           }
           case "listitem": {
             return (
@@ -197,62 +163,6 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
               </a>
             );
           }
-          case "upload": {
-            const uploadIsMedia = node.relationTo === "media";
-
-            if (uploadIsMedia) {
-              const img = (
-                <img
-                  alt={node.value.alt}
-                  height={node.value.height ?? 0}
-                  key={index}
-                  src={node.value.url ?? "#broken-url"}
-                  width={node.value.width ?? 0}
-                />
-              );
-
-              if (!node.fields?.caption) return img;
-
-              return (
-                <figure key={index}>
-                  {img}
-                  <figcaption>
-                    <span>{node.fields.caption}</span>
-                  </figcaption>
-                </figure>
-              );
-            }
-
-            const thumbnail = node.value.thumbnail as Media | undefined;
-
-            return (
-              <Link
-                href={node.value.url ?? "#broken-url"}
-                key={index}
-                target="_blank"
-                className="not-prose shadow-solid my-4 flex w-fit max-w-full items-center gap-4 text-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
-              >
-                <div className="flex max-w-full flex-col items-center gap-2">
-                  {thumbnail ? (
-                    <div className="relative h-40 w-32">
-                      <img
-                        alt={thumbnail.alt}
-                        src={thumbnail.url ?? "#broken-url"}
-                        className="object-contain object-center"
-                      />
-                    </div>
-                  ) : (
-                    <FileIcon className="size-6" />
-                  )}
-                  {node.value.title ? (
-                    <p className="w-full font-mono font-semibold">
-                      {node.value.title}
-                    </p>
-                  ) : null}
-                </div>
-              </Link>
-            );
-          }
           default:
             // eslint-disable-next-line no-console -- Nice to know if something is missing
             console.warn("Unknown node:", node);
@@ -281,7 +191,7 @@ function NewsItemContent({
     },
   };
   return (
-    <div className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
+    <div>
       {item.linkToSignUp ? (
         <Link
           // Do not create relative links
@@ -294,7 +204,7 @@ function NewsItemContent({
           rel="noopener"
         >
           {t[locale]["link-to-sign-up"]}{" "}
-          <span className="sr-only">{` ${t[locale]["for-event"]} ${item.title}`}</span>
+          <span>{` ${t[locale]["for-event"]} ${item.title}`}</span>
         </Link>
       ) : null}
       {content ? <LexicalSerializer nodes={content.root.children} /> : null}
@@ -329,14 +239,12 @@ export function NewsletterCategory({
   if (newsItems.length === 0) return null;
 
   return (
-    <section className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
-      <h2 className="font-mono text-2xl" id={stringToId(title)}>
-        {title}
-      </h2>
+    <div>
+      <h2 id={stringToId(title)}>{title}</h2>
       {newsItems.map((newsItem) => (
         <NewsSection key={newsItem.id} newsItem={newsItem} locale={locale} />
       ))}
-    </section>
+    </div>
   );
 }
 
@@ -373,7 +281,7 @@ export function Calendar({
     },
   };
   return (
-    <section>
+    <div>
       <h2 id={stringToId(t[locale].calendar)}>{t[locale].calendar}</h2>
       {eventsThisWeek.length > 0 ? (
         <div>
@@ -423,7 +331,7 @@ export function Calendar({
           </ul>
         </div>
       ) : null}
-    </section>
+    </div>
   );
 }
 

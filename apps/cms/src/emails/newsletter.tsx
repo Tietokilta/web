@@ -52,7 +52,7 @@ export const Newsletter = ({
     },
   };
 
-  const greetings = newsletter.greetings as unknown as EditorState | undefined;
+  const greetings = newsletter.greetings as EditorState | undefined;
 
   const allNewsItems =
     newsletter.newsItems?.map((item) => item.newsItem as NewsItem) ?? [];
@@ -120,14 +120,10 @@ export const Newsletter = ({
       : null,
   ].filter((itemOrNull): itemOrNull is TocItem => Boolean(itemOrNull));
   return (
-    <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
-      <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
-        <header className="space-y-2">
-          <h1 className="font-mono text-4xl">{newsletter.title}</h1>
-          <p className="block text-lg text-gray-800">
-            {formatDateYear(newsletter.createdAt)}
-          </p>
-        </header>
+    <div>
+      <div>
+        <h1>{newsletter.title}</h1>
+        <p>{formatDateYear(newsletter.createdAt)}</p>
         <Greetings content={greetings} />
         <h2>{t[locale].summary}</h2>
         <TableOfContents toc={toc} />
@@ -160,28 +156,26 @@ export const Newsletter = ({
         />
       </div>
 
-      <footer className="prose prose-headings:scroll-mt-40 prose-headings:xl:scroll-mt-24 max-w-prose hyphens-auto text-pretty">
-        <p>
-          {t[locale].read}{" "}
-          <a href={`${PUBLIC_FRONTEND_URL}/${locale}/${t[locale].path}`}>
-            {t[locale]["old-link"]}
-          </a>
-        </p>
-        <p>
-          {t[locale].read}{" "}
-          <a
-            target="_blank"
-            href={
-              locale === "fi"
-                ? `${PUBLIC_LEGACY_URL}/arkisto/viikkomailit/`
-                : `${PUBLIC_LEGACY_URL}/arkisto/weekly_mails/`
-            }
-            rel="noopener"
-          >
-            {t[locale]["super-old-link"]}
-          </a>
-        </p>
-      </footer>
+      <p>
+        {t[locale].read}{" "}
+        <a href={`${PUBLIC_FRONTEND_URL}/${locale}/${t[locale].path}`}>
+          {t[locale]["old-link"]}
+        </a>
+      </p>
+      <p>
+        {t[locale].read}{" "}
+        <a
+          target="_blank"
+          href={
+            locale === "fi"
+              ? `${PUBLIC_LEGACY_URL}/arkisto/viikkomailit/`
+              : `${PUBLIC_LEGACY_URL}/arkisto/weekly_mails/`
+          }
+          rel="noopener"
+        >
+          {t[locale]["super-old-link"]}
+        </a>
+      </p>
     </div>
   );
 };
