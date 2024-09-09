@@ -47,7 +47,7 @@ const fi = {
   "invoicegenerator.Subject": "Aihe",
   "invoicegenerator.Description": "Perustelut",
   "invoicegenerator.Bank account number": "Pankkitilin numero (IBAN)",
-  "invoicegenerator.Due date": "Päiväys",
+  "invoicegenerator.Date": "Päiväys",
   "invoicegenerator.Submit": "Lähetä",
   "invoicegenerator.Street name": "Katuosoite",
   "invoicegenerator.City": "Kaupunki",
