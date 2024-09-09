@@ -16,6 +16,7 @@ export function LanguageSelector() {
           aria-current={isFinnish ? "page" : undefined}
           className="underline-offset-2 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline"
           href={pathname.replace(/^\/(?:en|fi)/, "/fi")}
+          prefetch={false}
         >
           <span aria-hidden="true">FI</span>
           <span className="sr-only">Suomeksi</span>
@@ -26,6 +27,7 @@ export function LanguageSelector() {
           aria-current={isEnglish ? "page" : undefined}
           className="underline-offset-2 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline"
           href={pathname.replace(/^\/(?:en|fi)/, "/en")}
+          prefetch={false}
         >
           <span aria-hidden="true">EN</span>
           <span className="sr-only">In English</span>
