@@ -128,7 +128,7 @@ DTEND;VALUE=DATE:${formatDate(startDate)}`;
 
   return `DTSTAMP:${formatDateTime(startDate)}Z\r
 DTSTART:${formatDateTime(startDate)}Z\r
-DTEND:${formatDateTime(endDate)}`;
+DTEND:${formatDateTime(endDate)}Z`;
 }
 
 const formatDate = (date: Date) =>
