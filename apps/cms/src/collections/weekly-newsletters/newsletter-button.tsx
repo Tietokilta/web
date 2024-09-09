@@ -45,7 +45,7 @@ const NewsletterButton = (): React.ReactElement => {
     );
     if (!confirmed) return;
     const email = await getEmail();
-    void fetch("/api/weekly-newsletters/mail", {
+    await fetch("/api/weekly-newsletters/mail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
