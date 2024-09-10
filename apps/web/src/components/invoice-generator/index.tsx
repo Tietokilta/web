@@ -200,7 +200,9 @@ function InputRowArray({
         <div>
           {rows.map((row, index) => (
             <div key={row} id={`${htmlId}.${index.toString()}`}>
-              <h3>Tuote {index + 1}</h3>
+              <h3>
+                {t("Product")} {index + 1}
+              </h3>
               <Row state={state} index={index} />
               <DeleteButton
                 disabled={rows.length === minimumRows}
