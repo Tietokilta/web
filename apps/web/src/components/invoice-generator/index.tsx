@@ -265,7 +265,7 @@ function InvoiceItem({
           required
         />
       </ErrorMessageBlock>
-      <span className="flex justify-center">
+      <fieldset className="flex">
         <span className="mr-0.5 grow">
           <ErrorMessageBlock
             elementName={`rows[${index.toString()}].quantity`}
@@ -295,7 +295,7 @@ function InvoiceItem({
             />
           </ErrorMessageBlock>
         </span>
-      </span>
+      </fieldset>
       <ErrorMessageBlock
         elementName={`rows[${index.toString()}].unit_price`}
         formState={state}
