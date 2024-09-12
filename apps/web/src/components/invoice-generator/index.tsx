@@ -186,11 +186,7 @@ function InputRowArray({
       <fieldset id={htmlId} name={name}>
         <div>
           {rows.map((row, index) => (
-            <div
-              classname="mt-6"
-              key={row}
-              id={`${htmlId}.${index.toString()}`}
-            >
+            <div key={row} id={`${htmlId}.${index.toString()}`}>
               <h3>
                 {t("Product")} {index + 1}
               </h3>
