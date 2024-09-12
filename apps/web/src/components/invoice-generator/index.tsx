@@ -6,9 +6,7 @@ import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
 // eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import {
-  type FormEventHandler,
-  type HTMLInputAutoCompleteAttribute,
-  type HTMLInputTypeAttribute,
+  type InputHTMLAttributes,
   type ReactNode,
   useEffect,
   useState,
@@ -21,21 +19,10 @@ import {
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
 
-interface GenericFieldProps {
-  placeholder?: string;
+interface GenericFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  id?: string;
-  name: string;
-  autoComplete?: HTMLInputAutoCompleteAttribute;
-  type?: HTMLInputTypeAttribute;
-  defaultValue?: string;
-  multiple?: boolean;
-  required?: boolean;
-  step?: number | "any";
-  min?: number;
   unit?: string;
-  maxLength?: number;
-  onBeforeInput?: FormEventHandler<HTMLInputElement>;
+  name: string;
 }
 
 function InputLabel({ name, htmlId }: { name: string; htmlId: string }) {
@@ -199,7 +186,11 @@ function InputRowArray({
       <fieldset id={htmlId} name={name}>
         <div>
           {rows.map((row, index) => (
-            <div key={row} id={`${htmlId}.${index.toString()}`}>
+            <div
+              classname="mt-6"
+              key={row}
+              id={`${htmlId}.${index.toString()}`}
+            >
               <h3>
                 {t("Product")} {index + 1}
               </h3>
@@ -387,6 +378,7 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Invoicer name")}
             name="recipient_name"
+            placeholder="Teemu Teekkari"
             autoComplete="name"
             maxLength={128}
             required
@@ -396,6 +388,7 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Invoicer email")}
             maxLength={128}
+            placeholder="teemu.teekkari@aalto.fi"
             name="recipient_email"
             type="email"
             required
@@ -421,17 +414,25 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Street name")}
             name="street_name"
+            placeholder="Konemiehentie 2"
             maxLength={128}
             required
           />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="city" formState={state}>
-          <InputRow label={t("City")} name="city" maxLength={128} required />
+          <InputRow
+            label={t("City")}
+            name="city"
+            placeholder="Espoo"
+            maxLength={128}
+            required
+          />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="zip" formState={state}>
           <InputRow
             label={t("Postal code")}
             name="zip"
+            placeholder="02150"
             maxLength={128}
             required
           />
@@ -449,7 +450,7 @@ function InvoiceGeneratorForm() {
         <TextAreaInputRow
           label={t("Description")}
           name="description"
-          maxLength={128}
+          maxLength={4096}
           required
         />
       </ErrorMessageBlock>
@@ -465,7 +466,7 @@ function InvoiceGeneratorForm() {
         />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="due_date" formState={state}>
-        <InputRow label={t("Due date")} name="due_date" type="date" required />
+        <InputRow label={t("Date")} name="due_date" type="date" required />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="rows" formState={state}>
         <InputRowArray
