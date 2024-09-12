@@ -188,7 +188,7 @@ function InputRowArray({
           {rows.map((row, index) => (
             <div key={row} id={`${htmlId}.${index.toString()}`}>
               <h3>
-                {t("Product")} {index + 1}
+                {t("Attachment")} {index + 1}
               </h3>
               <Row state={state} index={index} />
               <DeleteButton
