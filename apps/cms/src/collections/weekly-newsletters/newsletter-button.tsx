@@ -27,11 +27,6 @@ const getTelegramMessage = async (
   return (await response.json()) as { message: string };
 };
 
-const copyToClipboard = async (): Promise<void> => {
-  const textToCopy = await getEmail();
-  void navigator.clipboard.writeText(textToCopy.html);
-};
-
 const copyTelegramMessage = async (locale: string): Promise<void> => {
   const textToCopy = await getTelegramMessage(locale);
   void navigator.clipboard.writeText(textToCopy.message);
@@ -66,6 +61,7 @@ const NewsletterButton = (): React.ReactElement => {
   const buttonHoverStyle = {
     backgroundColor: "#333333",
   };
+  const newsletterId = getIdFromUrl();
 
   return (
     <div
@@ -91,7 +87,8 @@ const NewsletterButton = (): React.ReactElement => {
       >
         Send email
       </Button>
-      <Button
+      <a
+        href={`/api/weekly-newsletters/mail/${newsletterId}`}
         style={buttonStyle}
         onMouseOver={(e) =>
           ((e.target as HTMLElement).style.backgroundColor =
@@ -101,10 +98,9 @@ const NewsletterButton = (): React.ReactElement => {
           ((e.target as HTMLElement).style.backgroundColor =
             buttonStyle.backgroundColor)
         }
-        onClick={() => void copyToClipboard()}
       >
-        Copy email
-      </Button>
+        Download HTML
+      </a>
       <Button
         style={buttonStyle}
         onMouseOver={(e) =>
