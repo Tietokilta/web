@@ -27,33 +27,6 @@ const getTelegramMessage = async (
   return (await response.json()) as { message: string };
 };
 
-const downloadHtmlFile = async (): Promise<void> => {
-  const textToCopy = await getEmail();
-
-  // Create a Blob with the HTML content
-  const blob = new Blob([textToCopy.html], { type: "text/html" });
-
-  // Create a link element
-  const link = document.createElement("a");
-
-  // Create a URL for the Blob and set it as the href attribute of the link
-  const url = URL.createObjectURL(blob);
-  link.href = url;
-
-  // Set the download attribute with a filename
-  link.download = `${textToCopy.subject}.html`;
-
-  // Append the link to the body (not visible)
-  document.body.appendChild(link);
-
-  // Programmatically click the link to trigger the download
-  link.click();
-
-  // Clean up by removing the link and revoking the Blob URL
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
-};
-
 const copyTelegramMessage = async (locale: string): Promise<void> => {
   const textToCopy = await getTelegramMessage(locale);
   void navigator.clipboard.writeText(textToCopy.message);
@@ -88,6 +61,7 @@ const NewsletterButton = (): React.ReactElement => {
   const buttonHoverStyle = {
     backgroundColor: "#333333",
   };
+  const newsletterId = getIdFromUrl();
 
   return (
     <div
@@ -113,7 +87,8 @@ const NewsletterButton = (): React.ReactElement => {
       >
         Send email
       </Button>
-      <Button
+      <a
+        href={`/api/weekly-newsletters/mail/${newsletterId}`}
         style={buttonStyle}
         onMouseOver={(e) =>
           ((e.target as HTMLElement).style.backgroundColor =
@@ -123,10 +98,9 @@ const NewsletterButton = (): React.ReactElement => {
           ((e.target as HTMLElement).style.backgroundColor =
             buttonStyle.backgroundColor)
         }
-        onClick={() => void downloadHtmlFile()}
       >
         Download HTML
-      </Button>
+      </a>
       <Button
         style={buttonStyle}
         onMouseOver={(e) =>
