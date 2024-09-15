@@ -152,6 +152,7 @@ function DeleteButton({
 function InputRowArray({
   Row,
   label,
+  itemLabel,
   name,
   state,
   minimumRows,
@@ -164,6 +165,7 @@ function InputRowArray({
     index: number;
   }) => ReactNode;
   label: string;
+  itemLabel: string;
   name: string;
   state: InvoiceGeneratorFormState | null;
   minimumRows?: 1 | 0;
@@ -188,7 +190,7 @@ function InputRowArray({
           {rows.map((row, index) => (
             <div key={row} id={`${htmlId}.${index.toString()}`}>
               <h3>
-                {t("Attachment")} {index + 1}
+                {itemLabel} {index + 1}
               </h3>
               <Row state={state} index={index} />
               <DeleteButton
@@ -467,6 +469,7 @@ function InvoiceGeneratorForm() {
       <ErrorMessageBlock elementName="rows" formState={state}>
         <InputRowArray
           label={t("Items")}
+          itemLabel={t("Product")}
           name="rows"
           state={state}
           Row={InvoiceItem}
@@ -475,6 +478,7 @@ function InvoiceGeneratorForm() {
       </ErrorMessageBlock>
       <InputRowArray
         label={t("Attachments")}
+        itemLabel={t("Attachment")}
         name="attachments"
         state={state}
         Row={AttachmentRow}
