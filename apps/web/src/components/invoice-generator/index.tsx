@@ -129,10 +129,21 @@ function SubmitButton({
   );
 }
 
-function DeleteButton({ onClick }: { onClick: () => void }) {
+function DeleteButton({
+  onClick,
+  disabled,
+}: {
+  onClick: () => void;
+  disabled: boolean;
+}) {
   const t = useScopedI18n("invoicegenerator");
   return (
-    <Button className="my-8" onClick={onClick} type="button">
+    <Button
+      className="my-8"
+      onClick={onClick}
+      type="button"
+      disabled={disabled}
+    >
       {t("Remove")}
     </Button>
   );
@@ -141,6 +152,7 @@ function DeleteButton({ onClick }: { onClick: () => void }) {
 function InputRowArray({
   Row,
   label,
+  itemLabel,
   name,
   state,
   minimumRows,
@@ -153,6 +165,7 @@ function InputRowArray({
     index: number;
   }) => ReactNode;
   label: string;
+  itemLabel: string;
   name: string;
   state: InvoiceGeneratorFormState | null;
   minimumRows?: 1 | 0;
@@ -175,20 +188,17 @@ function InputRowArray({
       <fieldset id={htmlId} name={name}>
         <div>
           {rows.map((row, index) => (
-            <div
-              className="mt-6"
-              key={row}
-              id={`${htmlId}.${index.toString()}`}
-            >
+            <div key={row} id={`${htmlId}.${index.toString()}`}>
+              <h3>
+                {itemLabel} {index + 1}
+              </h3>
               <Row state={state} index={index} />
-              {/* Do not add delete button for first row because the invoice has to always have at least one row */}
-              {minimumRows !== 1 || index > 0 ? (
-                <DeleteButton
-                  onClick={() => {
-                    setRows(rows.filter((filterRow) => filterRow !== row));
-                  }}
-                />
-              ) : null}
+              <DeleteButton
+                disabled={rows.length === minimumRows}
+                onClick={() => {
+                  setRows(rows.filter((filterRow) => filterRow !== row));
+                }}
+              />
             </div>
           ))}
         </div>
@@ -244,31 +254,37 @@ function InvoiceItem({
           required
         />
       </ErrorMessageBlock>
-      <ErrorMessageBlock
-        elementName={`rows[${index.toString()}].quantity`}
-        formState={state}
-      >
-        <InputRow
-          label={t("Quantity")}
-          name="rows.quantity"
-          id={`rows[${index.toString()}].quantity`}
-          type="number"
-          required
-        />
-      </ErrorMessageBlock>
-      <ErrorMessageBlock
-        elementName={`rows[${index.toString()}].unit`}
-        formState={state}
-      >
-        <InputRow
-          label={t("Unit")}
-          name="rows.unit"
-          id={`rows[${index.toString()}].unit`}
-          defaultValue="kpl"
-          maxLength={128}
-          required
-        />
-      </ErrorMessageBlock>
+      <fieldset className="flex">
+        <span className="mr-0.5 grow">
+          <ErrorMessageBlock
+            elementName={`rows[${index.toString()}].quantity`}
+            formState={state}
+          >
+            <InputRow
+              label={t("Quantity")}
+              name="rows.quantity"
+              id={`rows[${index.toString()}].quantity`}
+              type="number"
+              required
+            />
+          </ErrorMessageBlock>
+        </span>
+        <span className="ml-0.5 grow">
+          <ErrorMessageBlock
+            elementName={`rows[${index.toString()}].unit`}
+            formState={state}
+          >
+            <InputRow
+              label={t("Unit")}
+              name="rows.unit"
+              id={`rows[${index.toString()}].unit`}
+              defaultValue="kpl"
+              maxLength={128}
+              required
+            />
+          </ErrorMessageBlock>
+        </span>
+      </fieldset>
       <ErrorMessageBlock
         elementName={`rows[${index.toString()}].unit_price`}
         formState={state}
@@ -453,6 +469,7 @@ function InvoiceGeneratorForm() {
       <ErrorMessageBlock elementName="rows" formState={state}>
         <InputRowArray
           label={t("Items")}
+          itemLabel={t("Product")}
           name="rows"
           state={state}
           Row={InvoiceItem}
@@ -461,6 +478,7 @@ function InvoiceGeneratorForm() {
       </ErrorMessageBlock>
       <InputRowArray
         label={t("Attachments")}
+        itemLabel={t("Attachment")}
         name="attachments"
         state={state}
         Row={AttachmentRow}
