@@ -45,13 +45,7 @@ export const newsletterSenderController = async (
 export const getEmailController = async (
   req: PayloadRequest,
   res: Response,
-): Promise<
-  | Response<{
-      html: string;
-      subject: string;
-    }>
-  | undefined
-> => {
+): Promise<Response<HTMLElement> | undefined> => {
   if (!signedIn({ req }) || !req.user) {
     res.sendStatus(401);
     return;
@@ -88,10 +82,12 @@ export const getEmailController = async (
       }),
     );
     // Return the result to the client
-    return res.status(200).json({
-      html,
-      subject: `${finnishNewsletter.title} / ${englishNewsletter.title}`,
-    });
+    return res
+      .writeHead(200, {
+        "Content-Type": "text/html",
+        "Content-Disposition": `attachment; filename=${finnishNewsletter.title}/${englishNewsletter.title}.html`,
+      })
+      .end(html);
   } catch (error) {
     if (error instanceof Error) {
       return res.status(500).json({ error: error.message });
