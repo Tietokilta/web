@@ -154,6 +154,7 @@ function ConfirmDeletePopover({
       </p>
       <input
         type="button"
+        // @ts-expect-error -- this is a valid attribute
         popovertarget={id}
         popovertargetaction="hide"
         className={cn(
@@ -333,6 +334,7 @@ function Form({
         </StatusButton>
         <input
           type="button"
+          // @ts-expect-error -- this is a valid attribute
           popovertarget="confirm-delete"
           className={cn(
             buttonVariants({ variant: "outline" }),
