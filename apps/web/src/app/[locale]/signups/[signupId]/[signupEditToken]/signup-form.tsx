@@ -10,6 +10,7 @@ import {
   Radio,
   Card,
   type ButtonProps,
+  buttonVariants,
 } from "@tietokilta/ui";
 // eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
@@ -27,6 +28,7 @@ import {
   useCurrentLocale,
   useScopedI18n,
 } from "../../../../../locales/client";
+import { cn } from "../../../../../lib/utils";
 
 function InputRow({
   question,
@@ -150,15 +152,16 @@ function ConfirmDeletePopover({
       <p>
         <strong>{t("This action cannot be undone.")}</strong>
       </p>
-      <Button
+      <input
         type="button"
-        popoverTarget={id}
-        popoverTargetAction="hide"
-        variant="outline"
-        className="w-full max-w-sm"
-      >
-        {t("Cancel")}
-      </Button>
+        popovertarget={id}
+        popovertargetaction="hide"
+        className={cn(
+          buttonVariants({ variant: "outline" }),
+          "w-full max-w-sm",
+        )}
+        value={t("Cancel")}
+      />
       <StatusButton
         type="submit"
         formNoValidate
@@ -328,14 +331,15 @@ function Form({
         <StatusButton className="w-full max-w-sm" type="submit">
           {signup.confirmed ? t("Update") : t("Submit")}
         </StatusButton>
-        <Button
+        <input
           type="button"
-          popoverTarget="confirm-delete"
-          variant="outline"
-          className="w-full max-w-sm"
-        >
-          {t("Delete sign up")}
-        </Button>
+          popovertarget="confirm-delete"
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "w-full max-w-sm",
+          )}
+          value={t("Delete sign up")}
+        />
         <ConfirmDeletePopover
           id="confirm-delete"
           eventTitle={event.title}
