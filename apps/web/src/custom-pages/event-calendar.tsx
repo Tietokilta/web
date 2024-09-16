@@ -10,7 +10,7 @@ import {
 import { useState, useCallback } from "react";
 import "./event-calendar.css";
 import { format, parse, startOfWeek, getDay, endOfDay } from "date-fns";
-import { toZonedTime } from "date-fns-tz";
+import { tz } from "@date-fns/tz";
 import { enUS } from "date-fns/locale/en-US";
 import { fi as fin } from "date-fns/locale/fi";
 import Link from "next/link";
@@ -51,11 +51,11 @@ function EventCalendar({
   );
 
   const parsedEvents: CalendarEvent[] = filteredEvents.map((event) => {
-    const startDate = toZonedTime(event.date, "Europe/Helsinki");
+    const startDate = tz("Europe/Helsinki")(event.date);
 
     const endDate = event.endDate
-      ? toZonedTime(event.endDate, "Europe/Helsinki")
-      : endOfDay(toZonedTime(event.date, "Europe/Helsinki"));
+      ? tz("Europe/Helsinki")(event.endDate)
+      : endOfDay(event.date, { in: tz("Europe/Helsinki") });
 
     // Url of the event page.
     const eventUrl = eventsUrl + event.slug;
