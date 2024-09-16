@@ -16,6 +16,8 @@ import {
 import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
 import {
+  type IlmomasiinaFieldError,
+  ilmomasiinaFieldErrors,
   type IlmomasiinaEvent,
   type IlmomasiinaSignupInfo,
 } from "../../../../../lib/api/external/ilmomasiina";
@@ -30,6 +32,24 @@ import {
 } from "../../../../../locales/client";
 import { cn } from "../../../../../lib/utils";
 
+type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
+
+function renderError(error: string, t: FieldErrorI18n) {
+  const isFieldError = ilmomasiinaFieldErrors.includes(
+    error as IlmomasiinaFieldError,
+  );
+
+  if (isFieldError) {
+    return t(error as IlmomasiinaFieldError);
+  }
+
+  return error;
+}
+
+function renderErrors(errors: string[], t: FieldErrorI18n) {
+  return errors.map((e) => renderError(e, t)).join(", ");
+}
+
 function InputRow({
   question,
   defaultValue,
@@ -40,6 +60,7 @@ function InputRow({
   errors?: string[];
 }) {
   const t = useScopedI18n("ilmomasiina.form");
+  const tfe = useScopedI18n("ilmomasiina.form.fieldError");
 
   const sharedInputProps = {
     id: `question-${question.id}`,
@@ -112,7 +133,7 @@ function InputRow({
       ) : null}
       {errors?.length ? (
         <span aria-live="polite" className="block text-red-600">
-          {errors.join(", ")}
+          {renderErrors(errors, tfe)}
         </span>
       ) : null}
     </Container>
