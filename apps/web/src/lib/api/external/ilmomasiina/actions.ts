@@ -119,9 +119,20 @@ export async function saveSignUpAction(
 
   if (!response.ok) {
     if (response.error === "ilmomasiina-validation-failed") {
+      const fieldErrors = response.originalError?.errors?.answers
+        ? Object.fromEntries(
+            Object.entries(response.originalError.errors.answers).map(
+              ([questionId, error]) => [questionId, [error]],
+            ),
+          )
+        : {};
+
       return {
         errors: {
-          _form: [t(response.error), response.originalError as string],
+          _form: [t(response.error), response.originalError?.message].filter(
+            (x): x is string => !!x,
+          ),
+          ...fieldErrors,
         },
       };
     }

@@ -70,6 +70,16 @@ const en = {
     "You are in queue at position {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "You are in the quota {quotaName} at position {position}/{quotaSize}.",
+  "ilmomasiina.form.fieldError.missing": "This field is required.",
+  "ilmomasiina.form.fieldError.wrongType":
+    "The answer to this field is of the wrong type. Try refreshing the page.",
+  "ilmomasiina.form.fieldError.tooLong":
+    "Please enter a shorter value for this field.",
+  "ilmomasiina.form.fieldError.invalidEmail":
+    "Please enter a valid email address.",
+  "ilmomasiina.form.fieldError.notANumber": "Please enter a valid number.",
+  "ilmomasiina.form.fieldError.notAnOption":
+    "The answer to this question isn't in the allowed options. Try refreshing the page.",
   "ilmomasiina.form.optional": "optional",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Shown in the public list of sign ups",
