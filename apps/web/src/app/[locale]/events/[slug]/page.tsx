@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Button, Card, Progress } from "@tietokilta/ui";
+import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import {
   type IlmomasiinaEvent,
