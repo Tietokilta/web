@@ -104,11 +104,19 @@ export async function saveSignUpAction(
 
   const t = await getScopedI18n("errors");
 
-  const response = await patchSignUp(signupId, signupEditToken, {
+  const signupResult = await getSignup(signupId, signupEditToken);
+  const multipleChoiceQuestions = signupResult.data?.event.questions
+    .filter((question) => question.type === "checkbox")
+    .map((question) => question.id);
+
+  const updatedSignupResult = await patchSignUp(signupId, signupEditToken, {
     id: signupId,
     answers: Object.entries(otherAnswers).map(([questionId, answer]) => ({
       questionId,
-      answer,
+      answer:
+        multipleChoiceQuestions?.includes(questionId) && !Array.isArray(answer)
+          ? [answer]
+          : answer,
     })),
     language: locale,
     firstName,
@@ -117,21 +125,22 @@ export async function saveSignUpAction(
     namePublic: namePublic === "on",
   });
 
-  if (!response.ok) {
-    if (response.error === "ilmomasiina-validation-failed") {
-      const fieldErrors = response.originalError?.errors?.answers
+  if (!updatedSignupResult.ok) {
+    if (updatedSignupResult.error === "ilmomasiina-validation-failed") {
+      const fieldErrors = updatedSignupResult.originalError?.errors?.answers
         ? Object.fromEntries(
-            Object.entries(response.originalError.errors.answers).map(
-              ([questionId, error]) => [questionId, [error]],
-            ),
+            Object.entries(
+              updatedSignupResult.originalError.errors.answers,
+            ).map(([questionId, error]) => [questionId, [error]]),
           )
         : {};
 
       return {
         errors: {
-          _form: [t(response.error), response.originalError?.message].filter(
-            (x): x is string => !!x,
-          ),
+          _form: [
+            t(updatedSignupResult.error),
+            updatedSignupResult.originalError?.message,
+          ].filter((x): x is string => !!x),
           ...fieldErrors,
         },
       };
@@ -139,7 +148,7 @@ export async function saveSignUpAction(
 
     return {
       errors: {
-        _form: [t(response.error)],
+        _form: [t(updatedSignupResult.error)],
       },
     };
   }
