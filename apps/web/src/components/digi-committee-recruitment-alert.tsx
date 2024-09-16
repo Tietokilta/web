@@ -54,8 +54,14 @@ export function DigiCommitteeRecruitmentAlert() {
 
   useEffect(() => {
     if (isProd) {
+      const recruitmentText = isFinnish
+        ? finnishRecruitmentText
+        : englishRecruitmentText;
       // eslint-disable-next-line no-console -- use console for recruiting new members
-      console.log(isFinnish ? finnishRecruitmentText : englishRecruitmentText);
+      console.log(
+        `%c${recruitmentText}`,
+        "font-family: ui-monospace, monospace; color: #ff0000;",
+      );
     }
   }, [pathname, isFinnish]);
 
