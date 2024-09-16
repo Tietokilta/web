@@ -159,7 +159,7 @@ function ConfirmDeletePopover({
         popovertargetaction="hide"
         className={cn(
           buttonVariants({ variant: "outline" }),
-          "w-full max-w-sm",
+          "w-full max-w-sm cursor-pointer",
         )}
         value={t("Cancel")}
       />
@@ -338,7 +338,7 @@ function Form({
           popovertarget="confirm-delete"
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "w-full max-w-sm",
+            "w-full max-w-sm cursor-pointer",
           )}
           value={t("Delete sign up")}
         />
