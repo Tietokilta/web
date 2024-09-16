@@ -70,6 +70,16 @@ const fi = {
     "Olet jonossa sijalla {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "Olet kiintiössä {quotaName} sijalla {position}/{quotaSize}.",
+  "ilmomasiina.form.fieldError.missing": "Tämä kenttä on pakollinen.",
+  "ilmomasiina.form.fieldError.wrongType":
+    "Kentän vastaus on väärää tyyppiä. Kokeile päivittää sivu.",
+  "ilmomasiina.form.fieldError.tooLong": "Kentän vastaus on liian pitkä.",
+  "ilmomasiina.form.fieldError.invalidEmail":
+    "sähköpostiosoite on virheellinen. Syötä sallittu sähköpostiosoite.",
+  "ilmomasiina.form.fieldError.notANumber":
+    "Kentän vastauksen tulee olla numero.",
+  "ilmomasiina.form.fieldError.notAnOption":
+    "Kentän vastaus ei ole sallituissa vaihtoehdoissa. Kokeile päivittää sivu.",
   "ilmomasiina.form.optional": "valinnainen",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Näytetään julkisessa osallistujalistassa",
