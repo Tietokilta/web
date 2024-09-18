@@ -92,7 +92,7 @@ export const WeeklyNewsletters: CollectionConfig = {
   },
   endpoints: [
     {
-      path: "/mail",
+      path: "/mail/:newsletterId",
       method: "post",
       handler: newsletterSenderController as PayloadHandler,
     },
