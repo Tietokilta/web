@@ -23,18 +23,40 @@ export const newsletterSenderController = async (
     return;
   }
   try {
-    const { subject, html } = req.body as {
-      subject: string | undefined;
-      html: string | undefined;
-    };
+    const { newsletterId } = req.params;
 
-    if (!subject || !html) {
-      return res
-        .status(400)
-        .json({ error: "Missing required fields: subject, html" });
-    }
+    // Fetch the English version of the newsletter
+    const englishNewsletter = (await req.payload.findByID({
+      collection: "weekly-newsletters",
+      id: newsletterId,
+      depth: 2,
+      locale: "en",
+    })) as unknown as WeeklyNewsletter;
 
-    await sendEmail({ subject, html });
+    // Fetch the Finnish version of the newsletter
+    const finnishNewsletter = (await req.payload.findByID({
+      collection: "weekly-newsletters",
+      id: newsletterId,
+      depth: 2,
+      locale: "fi",
+    })) as unknown as WeeklyNewsletter;
+
+    const { PUBLIC_LEGACY_URL, PUBLIC_FRONTEND_URL } = process.env;
+
+    // Render the HTML content
+    const html = await render(
+      NewsletterEmail({
+        finnishNewsletter,
+        englishNewsletter,
+        PUBLIC_LEGACY_URL: PUBLIC_LEGACY_URL ?? "",
+        PUBLIC_FRONTEND_URL: PUBLIC_FRONTEND_URL ?? "",
+      }),
+    );
+
+    await sendEmail({
+      subject: `${finnishNewsletter.title}/${englishNewsletter.title}`,
+      html,
+    });
 
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {

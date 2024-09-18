@@ -6,14 +6,6 @@ const getIdFromUrl = (): string => {
   const id = pathArray[pathArray.length - 1];
   return id;
 };
-const getEmail = async (): Promise<{
-  html: string;
-  subject: string;
-}> => {
-  const newsletterId = getIdFromUrl();
-  const response = await fetch(`/api/weekly-newsletters/mail/${newsletterId}`);
-  return (await response.json()) as { html: string; subject: string };
-};
 
 const getTelegramMessage = async (
   locale: string,
@@ -39,13 +31,11 @@ const NewsletterButton = (): React.ReactElement => {
       `Are you sure you want to send email? Remember to publish changes before.`,
     );
     if (!confirmed) return;
-    const email = await getEmail();
-    await fetch("/api/weekly-newsletters/mail", {
+    await fetch(`/api/weekly-newsletters/mail/${newsletterId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(email),
     });
   };
   const buttonStyle = {
