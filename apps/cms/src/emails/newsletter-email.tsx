@@ -1,6 +1,6 @@
 import * as React from "react";
 import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
-import { Html } from "@react-email/components";
+import { Head, Html, Font } from "@react-email/components";
 import { newsletterPreviewProps } from "./newsletter-example";
 import { Newsletter } from "./newsletter";
 
@@ -19,6 +19,16 @@ export const NewsletterEmail = ({
 }: NewsletterEmailProps): React.ReactElement => {
   return (
     <Html>
+      <Head>
+        <Font
+          fontFamily="Inter"
+          fallbackFontFamily="sans-serif"
+          webFont={{
+            url: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
+            format: "woff2",
+          }}
+        />
+      </Head>
       <Newsletter
         newsletter={finnishNewsletter}
         locale="fi"
