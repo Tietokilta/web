@@ -215,13 +215,17 @@ function NewsItemContent({
 function NewsSection({
   newsItem,
   locale,
+  order,
 }: {
   newsItem: NewsItem;
   locale: "en" | "fi";
+  order: string;
 }): JSX.Element {
   return (
     <article>
-      <h3 id={stringToId(newsItem.title)}>{newsItem.title}</h3>
+      <h3 id={stringToId(newsItem.title)}>
+        {order} {newsItem.title}
+      </h3>
       <NewsItemContent item={newsItem} locale={locale} />
     </article>
   );
@@ -231,18 +235,27 @@ export function NewsletterCategory({
   title,
   newsItems,
   locale,
+  order,
 }: {
   title: string;
   newsItems: NewsItem[];
   locale: "en" | "fi";
+  order: string;
 }): JSX.Element | null {
   if (newsItems.length === 0) return null;
 
   return (
     <div>
-      <h2 id={stringToId(title)}>{title}</h2>
-      {newsItems.map((newsItem) => (
-        <NewsSection key={newsItem.id} newsItem={newsItem} locale={locale} />
+      <h2 id={stringToId(title)}>
+        {order} {title}
+      </h2>
+      {newsItems.map((newsItem, i) => (
+        <NewsSection
+          key={newsItem.id}
+          newsItem={newsItem}
+          locale={locale}
+          order={order + (i + 1).toString()}
+        />
       ))}
     </div>
   );
@@ -253,11 +266,13 @@ export function Calendar({
   eventsNextWeek,
   signupsThisWeek,
   locale,
+  order,
 }: {
   eventsThisWeek: NewsItem[];
   eventsNextWeek: NewsItem[];
   signupsThisWeek: NewsItem[];
   locale: "en" | "fi";
+  order: string;
 }): JSX.Element | null {
   if (
     eventsThisWeek.length === 0 &&
@@ -282,7 +297,9 @@ export function Calendar({
   };
   return (
     <div>
-      <h2 id={stringToId(t[locale].calendar)}>{t[locale].calendar}</h2>
+      <h2 id={stringToId(t[locale].calendar)}>
+        {order} {t[locale].calendar}
+      </h2>
       {eventsThisWeek.length > 0 ? (
         <div>
           <span>{t[locale]["this-week"]}:</span>
