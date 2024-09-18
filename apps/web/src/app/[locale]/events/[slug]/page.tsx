@@ -170,7 +170,11 @@ async function SignUpRow({
             formatOptions={formatDateTimeSecondsOptions}
           />
           <span className="invisible group-hover:visible">
-            .{new Date(signup.createdAt).getMilliseconds()}
+            .
+            {new Date(signup.createdAt)
+              .getMilliseconds()
+              .toFixed()
+              .padStart(3, "0")}
           </span>
         </time>
       </td>
