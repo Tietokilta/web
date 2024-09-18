@@ -80,12 +80,12 @@ export const Newsletter = ({
     (newsItem) =>
       newsItem.signupStartDate && isThisWeek(newsItem.signupStartDate),
   );
-  const toc: TocItem[] = [
+  const showCalendar =
     eventsThisWeek.length > 0 ||
     eventsNextWeek.length > 0 ||
-    signupsThisWeek.length > 0
-      ? { text: t[locale].calendar, children: [] }
-      : null,
+    signupsThisWeek.length > 0;
+  const toc: TocItem[] = [
+    showCalendar ? { text: t[locale].calendar, children: [] } : null,
     guildNewsItems.length > 0
       ? {
           text: t[locale].guild,
@@ -119,6 +119,12 @@ export const Newsletter = ({
         }
       : null,
   ].filter((itemOrNull): itemOrNull is TocItem => Boolean(itemOrNull));
+  const newsletterCategories = [
+    { title: t[locale].guild, newsItems: guildNewsItems },
+    { title: t[locale]["ayy-aalto"], newsItems: ayyAaltoNewsItems },
+    { title: t[locale].other, newsItems: otherNewsItems },
+    { title: t[locale]["bottom-corner"], newsItems: bottomCornerNewsItems },
+  ];
   return (
     <div>
       <div>
@@ -133,27 +139,22 @@ export const Newsletter = ({
           eventsNextWeek={eventsNextWeek}
           signupsThisWeek={signupsThisWeek}
           locale={locale}
+          order={"1."}
         />
-        <NewsletterCategory
-          title={t[locale].guild}
-          newsItems={guildNewsItems}
-          locale={locale}
-        />
-        <NewsletterCategory
-          title={t[locale]["ayy-aalto"]}
-          newsItems={ayyAaltoNewsItems}
-          locale={locale}
-        />
-        <NewsletterCategory
-          title={t[locale].other}
-          newsItems={otherNewsItems}
-          locale={locale}
-        />
-        <NewsletterCategory
-          title={t[locale]["bottom-corner"]}
-          newsItems={bottomCornerNewsItems}
-          locale={locale}
-        />
+        {newsletterCategories
+          .filter((c) => c.newsItems.length > 0)
+          .map((category, index) => (
+            <NewsletterCategory
+              title={category.title}
+              newsItems={category.newsItems}
+              locale={locale}
+              order={
+                showCalendar
+                  ? `${(index + 2).toString()}.`
+                  : `${(index + 1).toString()}.`
+              }
+            />
+          ))}
       </div>
 
       <p>
