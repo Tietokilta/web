@@ -12,13 +12,13 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
-    "@date-fns/tz": "^1.0.1",
+    "@date-fns/tz": "^1.0.2",
     "@tietokilta/ui": "workspace:*",
     "autoprefixer": "catalog:",
     "clsx": "catalog:",
-    "date-fns": "^4.0.0",
+    "date-fns": "^4.1.0",
     "lodash": "^4.17.21",
-    "next": "^14.2.11",
+    "next": "^14.2.13",
     "next-international": "^1.2.4",
     "nextjs-toploader": "^3.6.15",
     "payload-admin-bar": "^1.0.6",
@@ -40,7 +40,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^14.2.11",
+    "@next/eslint-plugin-next": "^14.2.13",
     "@tailwindcss/typography": "catalog:",
     "@tietokilta/cms-types": "workspace:*",
     "@tietokilta/config-typescript": "workspace:*",
