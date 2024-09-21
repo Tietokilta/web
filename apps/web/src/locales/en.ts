@@ -101,6 +101,8 @@ const en = {
     "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
   "ilmomasiina.form.This action cannot be undone.":
     "This action cannot be undone.",
+  "ilmomasiina.form.Your signup cannot be changed anymore as the signup for the event has closed":
+    "Your signup cannot be changed anymore as the signup for the event has closed.",
   "ilmomasiina.form.Cancel": "Cancel",
   "ilmomasiina.headers.Alkaa": "Starts",
   "ilmomasiina.headers.Ilmoittautumisaika": "Sign up time",
