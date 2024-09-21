@@ -140,10 +140,11 @@ function InputRow({
   );
 }
 
-function StatusButton(props: Omit<ButtonProps, "disabled">) {
+function StatusButton({ disabled, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
 
-  return <Button disabled={pending} {...props} />;
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- it's on purpose to overwrite false in case it's pending
+  return <Button disabled={disabled || pending} {...props} />;
 }
 
 function ConfirmDeletePopover({
@@ -215,6 +216,9 @@ function Form({
 }) {
   const t = useScopedI18n("ilmomasiina.form");
   const [state, formAction] = useFormState(saveAction, null);
+  const isSignupPeriodEnded =
+    !!event.registrationEndDate &&
+    new Date(event.registrationEndDate) < new Date();
 
   useEffect(() => {
     const errorFields = state?.errors
@@ -345,16 +349,30 @@ function Form({
             errors={state?.errors?.[question.id]}
           />
         ))}
-        <p className="w-full max-w-sm">
-          {t(
-            "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message",
+        <p
+          className={cn(
+            "w-full max-w-sm",
+            isSignupPeriodEnded && "text-red-600",
           )}
+        >
+          {isSignupPeriodEnded
+            ? t(
+                "Your signup cannot be changed anymore as the signup for the event has closed",
+              )
+            : t(
+                "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message",
+              )}
         </p>
-        <StatusButton className="w-full max-w-sm" type="submit">
+        <StatusButton
+          disabled={isSignupPeriodEnded}
+          className="w-full max-w-sm"
+          type="submit"
+        >
           {signup.confirmed ? t("Update") : t("Submit")}
         </StatusButton>
         <input
           type="button"
+          disabled={isSignupPeriodEnded}
           // @ts-expect-error -- this is a valid attribute
           popovertarget="confirm-delete"
           className={cn(
