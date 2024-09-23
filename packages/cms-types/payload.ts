@@ -592,8 +592,9 @@ export interface News {
   title: string;
   slug: string;
   excerpt: string;
-  ctaType: 'none' | 'news' | 'page';
+  ctaType: 'none' | 'news' | 'page' | 'external';
   pageLink?: (string | null) | Page;
+  externalLink?: string | null;
   type?: ('announcement' | 'warning' | 'danger') | null;
   author: string | User;
   content: {
