@@ -6018,6 +6018,7 @@ type News {
   excerpt: String
   ctaType: News_ctaType!
   pageLink(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  externalLink: String
   type: News_type
   author(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): User!
   content(depth: Int): JSON
@@ -6029,6 +6030,7 @@ enum News_ctaType {
   none
   news
   page
+  external
 }
 
 enum News_type {
@@ -6057,6 +6059,7 @@ input News_where {
   excerpt: News_excerpt_operator
   ctaType: News_ctaType_operator
   pageLink: News_pageLink_operator
+  externalLink: News_externalLink_operator
   type: News_type_operator
   author: News_author_operator
   content: News_content_operator
@@ -6105,6 +6108,7 @@ enum News_ctaType_Input {
   none
   news
   page
+  external
 }
 
 input News_pageLink_operator {
@@ -6113,6 +6117,16 @@ input News_pageLink_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+}
+
+input News_externalLink_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
 }
 
 input News_type_operator {
@@ -6184,6 +6198,7 @@ input News_where_and {
   excerpt: News_excerpt_operator
   ctaType: News_ctaType_operator
   pageLink: News_pageLink_operator
+  externalLink: News_externalLink_operator
   type: News_type_operator
   author: News_author_operator
   content: News_content_operator
@@ -6200,6 +6215,7 @@ input News_where_or {
   excerpt: News_excerpt_operator
   ctaType: News_ctaType_operator
   pageLink: News_pageLink_operator
+  externalLink: News_externalLink_operator
   type: News_type_operator
   author: News_author_operator
   content: News_content_operator
@@ -6228,6 +6244,7 @@ type NewsDocAccessFields {
   excerpt: NewsDocAccessFields_excerpt
   ctaType: NewsDocAccessFields_ctaType
   pageLink: NewsDocAccessFields_pageLink
+  externalLink: NewsDocAccessFields_externalLink
   type: NewsDocAccessFields_type
   author: NewsDocAccessFields_author
   content: NewsDocAccessFields_content
@@ -6347,6 +6364,29 @@ type NewsDocAccessFields_pageLink_Update {
 }
 
 type NewsDocAccessFields_pageLink_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink {
+  create: NewsDocAccessFields_externalLink_Create
+  read: NewsDocAccessFields_externalLink_Read
+  update: NewsDocAccessFields_externalLink_Update
+  delete: NewsDocAccessFields_externalLink_Delete
+}
+
+type NewsDocAccessFields_externalLink_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink_Delete {
   permission: Boolean!
 }
 
@@ -11787,6 +11827,7 @@ type NewsFields {
   excerpt: NewsFields_excerpt
   ctaType: NewsFields_ctaType
   pageLink: NewsFields_pageLink
+  externalLink: NewsFields_externalLink
   type: NewsFields_type
   author: NewsFields_author
   content: NewsFields_content
@@ -11906,6 +11947,29 @@ type NewsFields_pageLink_Update {
 }
 
 type NewsFields_pageLink_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink {
+  create: NewsFields_externalLink_Create
+  read: NewsFields_externalLink_Read
+  update: NewsFields_externalLink_Update
+  delete: NewsFields_externalLink_Delete
+}
+
+type NewsFields_externalLink_Create {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink_Read {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink_Update {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink_Delete {
   permission: Boolean!
 }
 
@@ -14703,6 +14767,7 @@ input mutationNewsInput {
   excerpt: String
   ctaType: String!
   pageLink: String
+  externalLink: String
   type: News_type_MutationInput
   author: String
   content: JSON
@@ -14722,6 +14787,7 @@ input mutationNewsUpdateInput {
   excerpt: String
   ctaType: String
   pageLink: String
+  externalLink: String
   type: NewsUpdate_type_MutationInput
   author: String
   content: JSON
