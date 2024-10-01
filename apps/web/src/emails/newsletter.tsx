@@ -1,7 +1,12 @@
 import * as React from "react";
 import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
 import { type EditorState } from "@lexical-types";
-import { formatDateYear, isThisWeek, type TocItem } from "./utils/utils";
+import {
+  formatDateYear,
+  isThisWeek,
+  isNextWeek,
+  type TocItem,
+} from "./utils/utils";
 import {
   Calendar,
   Greetings,
@@ -71,7 +76,7 @@ export function Newsletter({
     (newsItem) => newsItem.date && isThisWeek(newsItem.date),
   );
   const eventsNextWeek = allNewsItems.filter(
-    (newsItem) => newsItem.date && !isThisWeek(newsItem.date),
+    (newsItem) => newsItem.date && isNextWeek(newsItem.date),
   );
   const signupsThisWeek = allNewsItems.filter(
     (newsItem) =>

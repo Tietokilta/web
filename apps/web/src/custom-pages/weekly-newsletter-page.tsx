@@ -8,9 +8,11 @@ import {
 } from "../lib/api/weekly-newsletters";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import {
+  byDate,
   formatDate,
   formatDateYear,
   formatDateYearOptions,
+  isNextWeek,
   isThisWeek,
   stringToId,
   type TocItem,
@@ -101,7 +103,7 @@ async function Calendar({
         <div>
           <span>{t("this-week")}:</span>
           <ol className="not-prose ml-[4ch]">
-            {eventsThisWeek.map((newsItem) => (
+            {eventsThisWeek.toSorted(byDate).map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
                   <span>{formatDate(newsItem.date)} </span>
@@ -116,7 +118,7 @@ async function Calendar({
         <div>
           <span>{t("next-week")}:</span>
           <ol className="not-prose ml-[4ch]">
-            {eventsNextWeek.map((newsItem) => (
+            {eventsNextWeek.toSorted(byDate).map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
                   <span>{formatDate(newsItem.date)} </span>
@@ -131,7 +133,7 @@ async function Calendar({
         <div>
           <span>{t("this-week-signups")}:</span>
           <ol className="not-prose ml-[4ch]">
-            {signupsThisWeek.map((newsItem) => (
+            {signupsThisWeek.toSorted(byDate).map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.signupStartDate ? (
                   <span>{formatDate(newsItem.signupStartDate)}</span>
@@ -200,7 +202,7 @@ export default async function Page({ slug }: { slug?: string }) {
     (newsItem) => newsItem.date && isThisWeek(newsItem.date),
   );
   const eventsNextWeek = allNewsItems.filter(
-    (newsItem) => newsItem.date && !isThisWeek(newsItem.date),
+    (newsItem) => newsItem.date && isNextWeek(newsItem.date),
   );
   const signupsThisWeek = allNewsItems.filter(
     (newsItem) =>
@@ -244,7 +246,7 @@ export default async function Page({ slug }: { slug?: string }) {
     >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <TableOfContents toc={toc} />
-
+        <pre>{JSON.stringify(weeklyNewsletter, null, 2)}</pre>
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <header className="space-y-2">
             <h1 className="font-mono text-4xl">{weeklyNewsletter.title}</h1>
