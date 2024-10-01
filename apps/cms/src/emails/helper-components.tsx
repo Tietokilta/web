@@ -13,6 +13,7 @@ import {
   IS_UNDERLINE,
 } from "./utils/lexical";
 import {
+  byDate,
   formatDate,
   insertSoftHyphens,
   lexicalNodeToTextContent,
@@ -305,7 +306,7 @@ export function Calendar({
         <div>
           <span>{t[locale]["this-week"]}:</span>
           <ul>
-            {eventsThisWeek.map((newsItem) => (
+            {eventsThisWeek.toSorted(byDate).map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
                   <span>{formatDate(newsItem.date)} </span>
@@ -320,7 +321,7 @@ export function Calendar({
         <div>
           <span>{t[locale]["next-week"]}:</span>
           <ul>
-            {eventsNextWeek.map((newsItem) => (
+            {eventsNextWeek.toSorted(byDate).map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
                   <span>{formatDate(newsItem.date)} </span>
@@ -335,7 +336,7 @@ export function Calendar({
         <div>
           <span>{t[locale]["this-week-signups"]}:</span>
           <ul>
-            {signupsThisWeek.map((newsItem) => (
+            {signupsThisWeek.toSorted(byDate).map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.signupStartDate ? (
                   <span>{formatDate(newsItem.signupStartDate)}</span>
