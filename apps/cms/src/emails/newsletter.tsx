@@ -4,7 +4,12 @@ import {
   type WeeklyNewsletter,
 } from "@tietokilta/cms-types/payload";
 import { type EditorState } from "@tietokilta/cms-types/lexical";
-import { formatDateYear, isThisWeek, type TocItem } from "./utils/utils";
+import {
+  formatDateYear,
+  isNextWeek,
+  isThisWeek,
+  type TocItem,
+} from "./utils/utils";
 import {
   Calendar,
   Greetings,
@@ -74,7 +79,7 @@ export const Newsletter = ({
     (newsItem) => newsItem.date && isThisWeek(newsItem.date),
   );
   const eventsNextWeek = allNewsItems.filter(
-    (newsItem) => newsItem.date && !isThisWeek(newsItem.date),
+    (newsItem) => newsItem.date && isNextWeek(newsItem.date),
   );
   const signupsThisWeek = allNewsItems.filter(
     (newsItem) =>

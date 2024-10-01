@@ -218,6 +218,15 @@ export const isNextWeek = (date: string): boolean => {
   return currentWeek + 1 === eventWeek;
 };
 
+export const byDate = (
+  a: { date?: string | null },
+  b: { date?: string | null },
+): number => {
+  if (!a.date || !b.date) return 0;
+
+  return new Date(a.date).getTime() - new Date(b.date).getTime();
+};
+
 export const getQuotasWithOpenAndQueue = (
   quotas: EventQuota[],
   openQuotaSize: number,
