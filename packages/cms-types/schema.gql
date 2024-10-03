@@ -8131,9 +8131,6 @@ input AwardedHonor_description_operator {
   not_equals: String
   like: String
   contains: String
-  in: [String]
-  not_in: [String]
-  all: [String]
   exists: Boolean
 }
 
