@@ -52,7 +52,7 @@ export const AwardedHonors = {
     },
     {
       name: "description",
-      type: "text",
+      type: "textarea",
       required: false,
       localized: true,
     },
