@@ -1,4 +1,4 @@
-import type { CollectionConfig, FilterOptions } from "payload/types";
+import type { CollectionConfig } from "payload/types";
 import { signedIn } from "../../access/signed-in";
 
 export const Honors = {

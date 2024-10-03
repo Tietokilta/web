@@ -1,10 +1,7 @@
 import type { CollectionConfig, FieldHook } from "payload/types";
 import type { AwardedHonor } from "@tietokilta/cms-types/payload";
-import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
-import { revalidateCollection } from "../../hooks/revalidate-collection";
-import { linkCommitteePhotos } from "../../controllers/link-committee-photos";
 
 const formatDisplayTitle: FieldHook<AwardedHonor> = ({
   data: awardedHonor,

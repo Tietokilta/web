@@ -1,5 +1,5 @@
 import type { AwardedHonor, Honor } from "@tietokilta/cms-types/payload";
-import { ChevronDownIcon, GavelIcon } from "@tietokilta/ui";
+import { ChevronDownIcon } from "@tietokilta/ui";
 import _ from "lodash";
 
 function AwardedPersonDropdown({
