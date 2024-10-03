@@ -10,15 +10,20 @@ function AwardedPersonDropdown({
   return (
     <div className="not-prose shadow-solid relative my-4 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono md:px-3">
       <details className="group contents">
-        <summary className="absolute left-0 top-0 flex w-full cursor-pointer justify-between border-b-2 border-gray-900 bg-gray-100 p-2 md:px-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+        <summary className={`absolute left-0 top-0 flex w-full ${awardedPerson.description ? 'cursor-pointer' : ''} justify-between border-b-2 border-gray-900 bg-gray-100 p-2 md:px-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden`}>
           <p className="self-center truncate font-medium">
             {awardedPerson.name}
           </p>
-          <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
+          {awardedPerson.description && (
+            <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
+          )}
         </summary>
-        <div className="text-md py-2">
-          <p>{awardedPerson.description}</p>
-        </div>
+        {awardedPerson.description && (
+          <div className="text-md py-2">
+            <p>{awardedPerson.description}</p>
+          </div>
+        )}
+
       </details>
     </div>
   );
