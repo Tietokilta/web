@@ -61,6 +61,14 @@ type Query {
   NewsItems(where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
   countNewsItems(where: NewsItem_where, locale: LocaleInputType): countNewsItems
   docAccessNewsItem(id: String!): news_itemsDocAccess
+  Honor(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Honor
+  Honors(where: Honor_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Honors
+  countHonors(where: Honor_where, locale: LocaleInputType): countHonors
+  docAccessHonor(id: String!): honorsDocAccess
+  AwardedHonor(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): AwardedHonor
+  AwardedHonors(where: AwardedHonor_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): AwardedHonors
+  countAwardedHonors(where: AwardedHonor_where, locale: LocaleInputType): countAwardedHonors
+  docAccessAwardedHonor(id: String!): awarded_honorsDocAccess
   PayloadPreference(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   countPayloadPreferences(where: PayloadPreference_where, locale: LocaleInputType): countPayloadPreferences
@@ -7663,6 +7671,705 @@ type NewsItemsDeleteDocAccess {
   where: JSONObject
 }
 
+type Honor {
+  id: String
+  name: String
+  awardedHonors: [Honor_AwardedHonors!]!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Honor_AwardedHonors {
+  awardedHonor(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): AwardedHonor
+  id: String
+}
+
+type AwardedHonor {
+  id: String
+  displayTitle: String
+  guildYear: AwardedHonor_guildYear!
+  name: String!
+  description: String
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum AwardedHonor_guildYear {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+type Honors {
+  docs: [Honor]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Honor_where {
+  name: Honor_name_operator
+  awardedHonors__awardedHonor: Honor_awardedHonors__awardedHonor_operator
+  awardedHonors__id: Honor_awardedHonors__id_operator
+  updatedAt: Honor_updatedAt_operator
+  createdAt: Honor_createdAt_operator
+  id: Honor_id_operator
+  AND: [Honor_where_and]
+  OR: [Honor_where_or]
+}
+
+input Honor_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Honor_awardedHonors__awardedHonor_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Honor_awardedHonors__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Honor_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Honor_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Honor_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Honor_where_and {
+  name: Honor_name_operator
+  awardedHonors__awardedHonor: Honor_awardedHonors__awardedHonor_operator
+  awardedHonors__id: Honor_awardedHonors__id_operator
+  updatedAt: Honor_updatedAt_operator
+  createdAt: Honor_createdAt_operator
+  id: Honor_id_operator
+  AND: [Honor_where_and]
+  OR: [Honor_where_or]
+}
+
+input Honor_where_or {
+  name: Honor_name_operator
+  awardedHonors__awardedHonor: Honor_awardedHonors__awardedHonor_operator
+  awardedHonors__id: Honor_awardedHonors__id_operator
+  updatedAt: Honor_updatedAt_operator
+  createdAt: Honor_createdAt_operator
+  id: Honor_id_operator
+  AND: [Honor_where_and]
+  OR: [Honor_where_or]
+}
+
+type countHonors {
+  totalDocs: Int
+}
+
+type honorsDocAccess {
+  fields: HonorsDocAccessFields
+  create: HonorsCreateDocAccess
+  read: HonorsReadDocAccess
+  update: HonorsUpdateDocAccess
+  delete: HonorsDeleteDocAccess
+}
+
+type HonorsDocAccessFields {
+  name: HonorsDocAccessFields_name
+  awardedHonors: HonorsDocAccessFields_awardedHonors
+  updatedAt: HonorsDocAccessFields_updatedAt
+  createdAt: HonorsDocAccessFields_createdAt
+}
+
+type HonorsDocAccessFields_name {
+  create: HonorsDocAccessFields_name_Create
+  read: HonorsDocAccessFields_name_Read
+  update: HonorsDocAccessFields_name_Update
+  delete: HonorsDocAccessFields_name_Delete
+}
+
+type HonorsDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors {
+  create: HonorsDocAccessFields_awardedHonors_Create
+  read: HonorsDocAccessFields_awardedHonors_Read
+  update: HonorsDocAccessFields_awardedHonors_Update
+  delete: HonorsDocAccessFields_awardedHonors_Delete
+  fields: HonorsDocAccessFields_awardedHonors_Fields
+}
+
+type HonorsDocAccessFields_awardedHonors_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Fields {
+  awardedHonor: HonorsDocAccessFields_awardedHonors_awardedHonor
+  id: HonorsDocAccessFields_awardedHonors_id
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor {
+  create: HonorsDocAccessFields_awardedHonors_awardedHonor_Create
+  read: HonorsDocAccessFields_awardedHonors_awardedHonor_Read
+  update: HonorsDocAccessFields_awardedHonors_awardedHonor_Update
+  delete: HonorsDocAccessFields_awardedHonors_awardedHonor_Delete
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id {
+  create: HonorsDocAccessFields_awardedHonors_id_Create
+  read: HonorsDocAccessFields_awardedHonors_id_Read
+  update: HonorsDocAccessFields_awardedHonors_id_Update
+  delete: HonorsDocAccessFields_awardedHonors_id_Delete
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt {
+  create: HonorsDocAccessFields_updatedAt_Create
+  read: HonorsDocAccessFields_updatedAt_Read
+  update: HonorsDocAccessFields_updatedAt_Update
+  delete: HonorsDocAccessFields_updatedAt_Delete
+}
+
+type HonorsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt {
+  create: HonorsDocAccessFields_createdAt_Create
+  read: HonorsDocAccessFields_createdAt_Read
+  update: HonorsDocAccessFields_createdAt_Update
+  delete: HonorsDocAccessFields_createdAt_Delete
+}
+
+type HonorsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonors {
+  docs: [AwardedHonor]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input AwardedHonor_where {
+  displayTitle: AwardedHonor_displayTitle_operator
+  guildYear: AwardedHonor_guildYear_operator
+  name: AwardedHonor_name_operator
+  description: AwardedHonor_description_operator
+  updatedAt: AwardedHonor_updatedAt_operator
+  createdAt: AwardedHonor_createdAt_operator
+  id: AwardedHonor_id_operator
+  AND: [AwardedHonor_where_and]
+  OR: [AwardedHonor_where_or]
+}
+
+input AwardedHonor_displayTitle_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input AwardedHonor_guildYear_operator {
+  equals: AwardedHonor_guildYear_Input
+  not_equals: AwardedHonor_guildYear_Input
+  in: [AwardedHonor_guildYear_Input]
+  not_in: [AwardedHonor_guildYear_Input]
+  all: [AwardedHonor_guildYear_Input]
+}
+
+enum AwardedHonor_guildYear_Input {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input AwardedHonor_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input AwardedHonor_description_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  exists: Boolean
+}
+
+input AwardedHonor_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input AwardedHonor_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input AwardedHonor_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input AwardedHonor_where_and {
+  displayTitle: AwardedHonor_displayTitle_operator
+  guildYear: AwardedHonor_guildYear_operator
+  name: AwardedHonor_name_operator
+  description: AwardedHonor_description_operator
+  updatedAt: AwardedHonor_updatedAt_operator
+  createdAt: AwardedHonor_createdAt_operator
+  id: AwardedHonor_id_operator
+  AND: [AwardedHonor_where_and]
+  OR: [AwardedHonor_where_or]
+}
+
+input AwardedHonor_where_or {
+  displayTitle: AwardedHonor_displayTitle_operator
+  guildYear: AwardedHonor_guildYear_operator
+  name: AwardedHonor_name_operator
+  description: AwardedHonor_description_operator
+  updatedAt: AwardedHonor_updatedAt_operator
+  createdAt: AwardedHonor_createdAt_operator
+  id: AwardedHonor_id_operator
+  AND: [AwardedHonor_where_and]
+  OR: [AwardedHonor_where_or]
+}
+
+type countAwardedHonors {
+  totalDocs: Int
+}
+
+type awarded_honorsDocAccess {
+  fields: AwardedHonorsDocAccessFields
+  create: AwardedHonorsCreateDocAccess
+  read: AwardedHonorsReadDocAccess
+  update: AwardedHonorsUpdateDocAccess
+  delete: AwardedHonorsDeleteDocAccess
+}
+
+type AwardedHonorsDocAccessFields {
+  displayTitle: AwardedHonorsDocAccessFields_displayTitle
+  guildYear: AwardedHonorsDocAccessFields_guildYear
+  name: AwardedHonorsDocAccessFields_name
+  description: AwardedHonorsDocAccessFields_description
+  updatedAt: AwardedHonorsDocAccessFields_updatedAt
+  createdAt: AwardedHonorsDocAccessFields_createdAt
+}
+
+type AwardedHonorsDocAccessFields_displayTitle {
+  create: AwardedHonorsDocAccessFields_displayTitle_Create
+  read: AwardedHonorsDocAccessFields_displayTitle_Read
+  update: AwardedHonorsDocAccessFields_displayTitle_Update
+  delete: AwardedHonorsDocAccessFields_displayTitle_Delete
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear {
+  create: AwardedHonorsDocAccessFields_guildYear_Create
+  read: AwardedHonorsDocAccessFields_guildYear_Read
+  update: AwardedHonorsDocAccessFields_guildYear_Update
+  delete: AwardedHonorsDocAccessFields_guildYear_Delete
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name {
+  create: AwardedHonorsDocAccessFields_name_Create
+  read: AwardedHonorsDocAccessFields_name_Read
+  update: AwardedHonorsDocAccessFields_name_Update
+  delete: AwardedHonorsDocAccessFields_name_Delete
+}
+
+type AwardedHonorsDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description {
+  create: AwardedHonorsDocAccessFields_description_Create
+  read: AwardedHonorsDocAccessFields_description_Read
+  update: AwardedHonorsDocAccessFields_description_Update
+  delete: AwardedHonorsDocAccessFields_description_Delete
+}
+
+type AwardedHonorsDocAccessFields_description_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt {
+  create: AwardedHonorsDocAccessFields_updatedAt_Create
+  read: AwardedHonorsDocAccessFields_updatedAt_Read
+  update: AwardedHonorsDocAccessFields_updatedAt_Update
+  delete: AwardedHonorsDocAccessFields_updatedAt_Delete
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt {
+  create: AwardedHonorsDocAccessFields_createdAt_Create
+  read: AwardedHonorsDocAccessFields_createdAt_Read
+  update: AwardedHonorsDocAccessFields_createdAt_Update
+  delete: AwardedHonorsDocAccessFields_createdAt_Delete
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -9090,6 +9797,8 @@ type Access {
   news: newsAccess
   weekly_newsletters: weekly_newslettersAccess
   news_items: news_itemsAccess
+  honors: honorsAccess
+  awarded_honors: awarded_honorsAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -12636,6 +13345,360 @@ type NewsItemsDeleteAccess {
   where: JSONObject
 }
 
+type honorsAccess {
+  fields: HonorsFields
+  create: HonorsCreateAccess
+  read: HonorsReadAccess
+  update: HonorsUpdateAccess
+  delete: HonorsDeleteAccess
+}
+
+type HonorsFields {
+  name: HonorsFields_name
+  awardedHonors: HonorsFields_awardedHonors
+  updatedAt: HonorsFields_updatedAt
+  createdAt: HonorsFields_createdAt
+}
+
+type HonorsFields_name {
+  create: HonorsFields_name_Create
+  read: HonorsFields_name_Read
+  update: HonorsFields_name_Update
+  delete: HonorsFields_name_Delete
+}
+
+type HonorsFields_name_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_name_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_name_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_name_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors {
+  create: HonorsFields_awardedHonors_Create
+  read: HonorsFields_awardedHonors_Read
+  update: HonorsFields_awardedHonors_Update
+  delete: HonorsFields_awardedHonors_Delete
+  fields: HonorsFields_awardedHonors_Fields
+}
+
+type HonorsFields_awardedHonors_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Fields {
+  awardedHonor: HonorsFields_awardedHonors_awardedHonor
+  id: HonorsFields_awardedHonors_id
+}
+
+type HonorsFields_awardedHonors_awardedHonor {
+  create: HonorsFields_awardedHonors_awardedHonor_Create
+  read: HonorsFields_awardedHonors_awardedHonor_Read
+  update: HonorsFields_awardedHonors_awardedHonor_Update
+  delete: HonorsFields_awardedHonors_awardedHonor_Delete
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id {
+  create: HonorsFields_awardedHonors_id_Create
+  read: HonorsFields_awardedHonors_id_Read
+  update: HonorsFields_awardedHonors_id_Update
+  delete: HonorsFields_awardedHonors_id_Delete
+}
+
+type HonorsFields_awardedHonors_id_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt {
+  create: HonorsFields_updatedAt_Create
+  read: HonorsFields_updatedAt_Read
+  update: HonorsFields_updatedAt_Update
+  delete: HonorsFields_updatedAt_Delete
+}
+
+type HonorsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt {
+  create: HonorsFields_createdAt_Create
+  read: HonorsFields_createdAt_Read
+  update: HonorsFields_createdAt_Update
+  delete: HonorsFields_createdAt_Delete
+}
+
+type HonorsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type awarded_honorsAccess {
+  fields: AwardedHonorsFields
+  create: AwardedHonorsCreateAccess
+  read: AwardedHonorsReadAccess
+  update: AwardedHonorsUpdateAccess
+  delete: AwardedHonorsDeleteAccess
+}
+
+type AwardedHonorsFields {
+  displayTitle: AwardedHonorsFields_displayTitle
+  guildYear: AwardedHonorsFields_guildYear
+  name: AwardedHonorsFields_name
+  description: AwardedHonorsFields_description
+  updatedAt: AwardedHonorsFields_updatedAt
+  createdAt: AwardedHonorsFields_createdAt
+}
+
+type AwardedHonorsFields_displayTitle {
+  create: AwardedHonorsFields_displayTitle_Create
+  read: AwardedHonorsFields_displayTitle_Read
+  update: AwardedHonorsFields_displayTitle_Update
+  delete: AwardedHonorsFields_displayTitle_Delete
+}
+
+type AwardedHonorsFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_displayTitle_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear {
+  create: AwardedHonorsFields_guildYear_Create
+  read: AwardedHonorsFields_guildYear_Read
+  update: AwardedHonorsFields_guildYear_Update
+  delete: AwardedHonorsFields_guildYear_Delete
+}
+
+type AwardedHonorsFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name {
+  create: AwardedHonorsFields_name_Create
+  read: AwardedHonorsFields_name_Read
+  update: AwardedHonorsFields_name_Update
+  delete: AwardedHonorsFields_name_Delete
+}
+
+type AwardedHonorsFields_name_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description {
+  create: AwardedHonorsFields_description_Create
+  read: AwardedHonorsFields_description_Read
+  update: AwardedHonorsFields_description_Update
+  delete: AwardedHonorsFields_description_Delete
+}
+
+type AwardedHonorsFields_description_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt {
+  create: AwardedHonorsFields_updatedAt_Create
+  read: AwardedHonorsFields_updatedAt_Read
+  update: AwardedHonorsFields_updatedAt_Update
+  delete: AwardedHonorsFields_updatedAt_Delete
+}
+
+type AwardedHonorsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt {
+  create: AwardedHonorsFields_createdAt_Create
+  read: AwardedHonorsFields_createdAt_Read
+  update: AwardedHonorsFields_createdAt_Update
+  delete: AwardedHonorsFields_createdAt_Delete
+}
+
+type AwardedHonorsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -13768,6 +14831,12 @@ type Mutation {
   createNewsItem(data: mutationNewsItemInput!, locale: LocaleInputType): NewsItem
   updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, locale: LocaleInputType): NewsItem
   deleteNewsItem(id: String!): NewsItem
+  createHonor(data: mutationHonorInput!, locale: LocaleInputType): Honor
+  updateHonor(id: String!, autosave: Boolean, data: mutationHonorUpdateInput!, locale: LocaleInputType): Honor
+  deleteHonor(id: String!): Honor
+  createAwardedHonor(data: mutationAwardedHonorInput!, locale: LocaleInputType): AwardedHonor
+  updateAwardedHonor(id: String!, autosave: Boolean, data: mutationAwardedHonorUpdateInput!, locale: LocaleInputType): AwardedHonor
+  deleteAwardedHonor(id: String!): AwardedHonor
   createPayloadPreference(data: mutationPayloadPreferenceInput!, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -14879,6 +15948,132 @@ enum NewsItemUpdate_newsItemCategory_MutationInput {
   ayy_aalto
   other
   bottom_corner
+}
+
+input mutationHonorInput {
+  name: String
+  awardedHonors: [mutationHonor_AwardedHonorsInput!]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationHonor_AwardedHonorsInput {
+  awardedHonor: String
+  id: String
+}
+
+input mutationHonorUpdateInput {
+  name: String
+  awardedHonors: [mutationHonorUpdate_AwardedHonorsInput]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationHonorUpdate_AwardedHonorsInput {
+  awardedHonor: String
+  id: String
+}
+
+input mutationAwardedHonorInput {
+  displayTitle: String
+  guildYear: AwardedHonor_guildYear_MutationInput!
+  name: String!
+  description: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum AwardedHonor_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationAwardedHonorUpdateInput {
+  displayTitle: String
+  guildYear: AwardedHonorUpdate_guildYear_MutationInput
+  name: String
+  description: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum AwardedHonorUpdate_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
 }
 
 input mutationPayloadPreferenceInput {

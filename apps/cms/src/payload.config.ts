@@ -25,6 +25,8 @@ import {
 } from "@payloadcms/richtext-lexical";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
+import { Honors } from "./collections/honors/honors";
+import { AwardedHonors } from "./collections/honors/awarded-honors";
 import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
 import { CommitteeMembers } from "./collections/committees/committee-members";
@@ -108,6 +110,8 @@ export default buildConfig({
     News,
     WeeklyNewsletters,
     NewsItems,
+    Honors,
+    AwardedHonors,
   ],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
@@ -162,6 +166,7 @@ export default buildConfig({
           Boards.slug,
           Committees.slug,
           Magazines.slug,
+          Honors.slug,
         ],
       }),
       BlockQuoteFeature(),
