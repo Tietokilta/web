@@ -11,6 +11,7 @@ import "@tietokilta/ui/global.css";
 import "./globals.css";
 import { type Locale } from "../../locales/server";
 import { DigiCommitteeRecruitmentAlert } from "../../components/digi-committee-recruitment-alert";
+import { TopScroller } from "../../components/top-scroller";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
@@ -86,6 +87,7 @@ export default function RootLayout({
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
         <SkipLink />
         <DigiCommitteeRecruitmentAlert />
+        <TopScroller />
         <NextTopLoader color="var(--color-gray-100)" showSpinner={false} />
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
