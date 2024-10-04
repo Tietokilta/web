@@ -36,5 +36,3 @@ export const Honors = {
     },
   ],
 } as const satisfies CollectionConfig;
-
-export type CommitteesSlug = (typeof Honors)["slug"];

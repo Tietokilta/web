@@ -1,5 +1,6 @@
 import type { AwardedHonor, Honor } from "@tietokilta/cms-types/payload";
 import { ChevronDownIcon } from "@tietokilta/ui";
+import { cn } from "../../lib/utils";
 import _ from "lodash";
 
 function AwardedPersonDropdown({
@@ -11,7 +12,7 @@ function AwardedPersonDropdown({
     <div className="not-prose shadow-solid relative my-4 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono md:px-3">
       <details className="group contents">
         <summary
-          className={`absolute left-0 top-0 flex w-full ${awardedPerson.description ? "cursor-pointer" : ""} justify-between border-b-2 border-gray-900 bg-gray-100 p-2 md:px-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden`}
+          className={cn("absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2 md:px-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden", !!awardedPerson.description && "cursor-pointer")}
         >
           <p className="self-center truncate font-medium">
             {awardedPerson.name}
@@ -67,7 +68,7 @@ export function HonorsList({ honor }: { honor: Honor }): JSX.Element {
     <div className="space-y-8">
       {Object.entries(years).map((awardYear) => (
         <YearGroup
-          year={parseInt(awardYear[1])}
+          year={parseInt(awardYear[1], 10)}
           awardedPersons={awardsByYear[awardYear[1]]}
           key={awardYear[1]}
         />

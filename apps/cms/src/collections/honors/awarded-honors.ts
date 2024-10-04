@@ -58,5 +58,3 @@ export const AwardedHonors = {
     },
   ],
 } as const satisfies CollectionConfig;
-
-export type CommitteeMembersSlug = (typeof AwardedHonors)["slug"];
