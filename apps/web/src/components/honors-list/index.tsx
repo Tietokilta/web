@@ -12,7 +12,10 @@ function AwardedPersonDropdown({
     <div className="not-prose shadow-solid relative my-4 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono md:px-3">
       <details className="group contents">
         <summary
-          className={cn("absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2 md:px-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden", !!awardedPerson.description && "cursor-pointer")}
+          className={cn(
+            "absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2 md:px-3 [&::-webkit-details-marker]:hidden [&::marker]:hidden",
+            !!awardedPerson.description && "cursor-pointer",
+          )}
         >
           <p className="self-center truncate font-medium">
             {awardedPerson.name}
