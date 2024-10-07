@@ -105,8 +105,6 @@ function createEvent(
     return "";
   }
 
-  console.log(event);
-
   return `BEGIN:VEVENT\r
 UID:${event.id}@${host}\r
 SUMMARY:${event.title}\r
