@@ -2,6 +2,8 @@ import { type NextRequest } from "next/server";
 import { fetchEvents } from "../../../lib/api/external/ilmomasiina";
 import { createEvents } from "../../../lib/ics";
 
+export const revalidate = 60 * 60; // 1 hour
+
 /**
  * Return all events in ICS format
  */
@@ -28,6 +30,7 @@ export async function GET(request: NextRequest) {
   return new Response(icsEvents, {
     headers: {
       "Content-Type": "text/calendar",
+      "Cache-Control": "public, max-age=3600",
     },
   });
 }
