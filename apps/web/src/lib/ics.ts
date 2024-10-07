@@ -15,7 +15,10 @@ export function createEvents(
   return `BEGIN:VCALENDAR\r
 PRODID:-//Tietokilta//Ilmomasiina//FI\r
 VERSION:2.0\r
+METHOD:PUBLISH\r
 CALSCALE:GREGORIAN\r
+X-WR-CALNAME:Tietokillan tapahtumat | Tietokilta events\r
+X-PUBLISHED-TTL:PT1H\r
 BEGIN:VTIMEZONE\r
 TZID:Europe/Helsinki\r
 TZURL:https://www.tzurl.org/zoneinfo/Europe/Helsinki\r
@@ -101,6 +104,8 @@ function createEvent(
   if (!event.date) {
     return "";
   }
+
+  console.log(event);
 
   return `BEGIN:VEVENT\r
 UID:${event.id}@${host}\r
