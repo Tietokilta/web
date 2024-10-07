@@ -3,6 +3,7 @@
 import type { StaticImageData } from "next/image";
 import type { KeyboardEvent } from "react";
 import { useEffect, useRef, useState } from "react";
+import { VT323 } from "next/font/google";
 import ErrorImage from "../../assets/DinoGame/Error.svg";
 import RestartImage from "../../assets/DinoGame/Restart.svg";
 import StandImage from "../../assets/DinoGame/Stand.svg";
@@ -31,6 +32,12 @@ interface Point {
   x: number;
   y: number;
 }
+
+const vt323 = VT323({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-vt323",
+});
 
 class HitBox {
   width: number;
@@ -286,7 +293,7 @@ export function DinoGame() {
     const drawScore = () => {
       const score = time * pointsPerSecond;
       ctx.fillStyle = "black";
-      ctx.font = "40px VT323";
+      ctx.font = `40px ${vt323.style.fontFamily}`;
       const digits = 5;
       const scoreText = score.toFixed(0).padStart(digits, "0");
       ctx.fillText(scoreText, ctx.canvas.width - 100, 40);
@@ -294,7 +301,7 @@ export function DinoGame() {
 
     const drawGameOverText = () => {
       const gameOverText = "GAME OVER";
-      ctx.font = "40px VT323";
+      ctx.font = `40px ${vt323.style.fontFamily}`;
       ctx.fillText(
         gameOverText,
         ctx.canvas.width / 2 - ctx.measureText(gameOverText).width / 2,
