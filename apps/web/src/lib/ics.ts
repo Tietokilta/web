@@ -111,7 +111,7 @@ function createEvent(
 UID:${event.id}@${host}\r
 SUMMARY:${event.title}\r
 LOCATION:${event.location}\r
-URL:${origin}/events/${event.slug}\r
+URL:${foldICSText(`${origin}/events/${event.slug}`)}\r
 CATEGORIES:${event.category}\r
 DESCRIPTION:
  ${formatDescription(event.description)}
