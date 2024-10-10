@@ -12,7 +12,6 @@ import {
   type ButtonProps,
   buttonVariants,
 } from "@tietokilta/ui";
-// eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
 import {

@@ -3,7 +3,6 @@
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
 import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
-// eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import {
   type InputHTMLAttributes,

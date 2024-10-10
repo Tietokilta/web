@@ -1,7 +1,6 @@
 "use client";
 
 import { Button, type ButtonProps } from "@tietokilta/ui";
-// eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormStatus } from "react-dom";
 import type { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
 

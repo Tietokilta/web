@@ -1,6 +1,17 @@
-const { resolve } = require("node:path");
+import js from "@eslint/js";
+import ts from "typescript-eslint";
+import { FlatCompat } from "@eslint/eslintrc";
+import vercelTypescript from "@vercel/style-guide/eslint/typescript";
+import vercelBrowser from "@vercel/style-guide/eslint/browser";
+import vercelReact from "@vercel/style-guide/eslint/react";
+import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
+import onlyWarn from "eslint-plugin-only-warn";
+import turbo from "eslint-plugin-turbo";
+import globals from "globals";
+import tailwindcss from "eslint-plugin-tailwindcss";
+import importPlugin from "eslint-plugin-import";
 
-const project = resolve(process.cwd(), "tsconfig.json");
+const compat = new FlatCompat({ recommendedConfig: js.configs.recommended });
 
 /*
  * This is a custom ESLint configuration for use a library
@@ -9,34 +20,53 @@ const project = resolve(process.cwd(), "tsconfig.json");
  * This config extends the Vercel Engineering Style Guide.
  * For more information, see https://github.com/vercel/style-guide
  */
-
-module.exports = {
-  extends: [
-    ...[
-      "@vercel/style-guide/eslint/browser",
-      "@vercel/style-guide/eslint/typescript",
-      "@vercel/style-guide/eslint/react",
-    ].map(require.resolve),
-    "plugin:tailwindcss/recommended",
-  ],
-  parserOptions: {
-    project,
-  },
-  globals: {
-    JSX: true,
-  },
-  plugins: ["only-warn"],
-  settings: {
-    "import/resolver": {
-      typescript: {
-        project,
+export default ts.config(
+  importPlugin.flatConfigs.recommended,
+  importPlugin.flatConfigs.react,
+  importPlugin.flatConfigs.typescript,
+  ...fixupConfigRules(compat.config(vercelBrowser)),
+  ...fixupConfigRules(compat.config(vercelTypescript)),
+  ...fixupConfigRules(compat.config(vercelReact)),
+  ...tailwindcss.configs["flat/recommended"],
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        JSX: "readonly",
+        React: "readonly",
+      },
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: process.cwd(),
+      },
+    },
+    plugins: {
+      "only-warn": fixupPluginRules(onlyWarn),
+      turbo: fixupPluginRules(turbo),
+    },
+    settings: {
+      "import/resolver": {
+        typescript: {
+          project: true,
+        },
       },
     },
   },
-  ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js", "**/*.css"],
-  // add rules configurations here
-  rules: {
-    "import/no-default-export": "off",
-    "tailwindcss/classnames-order": "off", // handled by prettier
+  {
+    ignores: ["node_modules/", "dist/", ".eslintrc.js", "**/*.css"],
   },
-};
+  {
+    rules: {
+      "import/no-default-export": "off",
+      "tailwindcss/classnames-order": "off", // handled by prettier
+      "no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
+    },
+  },
+);

@@ -1,0 +1,23 @@
+diff --git a/eslint/_base.js b/eslint/_base.js
+index 9cff936d4547578bcaa65a71b5f54bbc24b41bf9..4070f2eb83b07182c3f25a042caa368244e24bd3 100644
+--- a/eslint/_base.js
++++ b/eslint/_base.js
+@@ -9,7 +9,6 @@ require('@rushstack/eslint-patch/modern-module-resolution');
+ module.exports = {
+   extends: [
+     'eslint:recommended',
+-    'plugin:import/recommended',
+     'prettier',
+     require.resolve('./rules/best-practice'),
+     require.resolve('./rules/comments'),
+diff --git a/eslint/browser.js b/eslint/browser.js
+index d52aa9c90052ba2cd30fe0dece0dc025260f4458..00c4857d1bfb1a1e9ee0d4c002385bcd375f4dc5 100644
+--- a/eslint/browser.js
++++ b/eslint/browser.js
+@@ -1,5 +1,5 @@
+ module.exports = {
+-  extends: './_base',
++  extends: require.resolve('./_base'),
+   env: {
+     browser: true,
+   },
