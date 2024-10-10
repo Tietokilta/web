@@ -188,7 +188,6 @@ function ConfirmDeletePopover({
       <StatusButton
         type="submit"
         formNoValidate
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises
         formAction={deleteAction}
         variant="destructive"
         className="w-full max-w-sm"
