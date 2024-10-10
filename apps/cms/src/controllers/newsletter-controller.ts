@@ -59,7 +59,7 @@ export const newsletterSenderController = async (
     });
 
     return res.status(200).json({ message: "Email sent successfully" });
-  } catch (error) {
+  } catch (_) {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
