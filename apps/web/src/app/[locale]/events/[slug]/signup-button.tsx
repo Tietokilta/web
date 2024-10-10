@@ -22,7 +22,6 @@ export function SignUpButton({
   signUpAction: typeof signUp;
 }>) {
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises
     <form action={signUpAction} className="contents">
       <input type="hidden" name="quotaId" value={quotaId} />
       <StatusButton type="submit" disabled={isDisabled} variant="secondary">
