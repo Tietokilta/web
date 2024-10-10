@@ -34,7 +34,7 @@ export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
           `Error revalidating collection ${global.slug}`,
         );
       }
-    } catch (err: unknown) {
+    } catch (_) {
       req.payload.logger.error(
         `Error hitting revalidate collection ${global.slug}`,
       );
