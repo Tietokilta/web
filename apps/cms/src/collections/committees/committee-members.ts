@@ -69,6 +69,10 @@ export const CommitteeMembers = {
       type: "checkbox",
     },
     {
+      name: "email",
+      type: "email",
+    },
+    {
       name: "telegramUsername",
       type: "text",
     },
