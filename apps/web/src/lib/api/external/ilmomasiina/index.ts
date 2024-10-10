@@ -140,7 +140,7 @@ export const fetchEvents = async (): Promise<
     const data = (await response.json()) as IlmomasiinaResponse;
 
     return ok(data);
-  } catch (error) {
+  } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
 };
@@ -189,7 +189,7 @@ export const fetchEvent = async (
     const data = (await response.json()) as IlmomasiinaEvent;
 
     return ok(data);
-  } catch (error) {
+  } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
 };
@@ -225,7 +225,7 @@ export const getSignup = async (
     const data = (await response.json()) as IlmomasiinaSignupInfoResponse;
 
     return ok(data);
-  } catch (error) {
+  } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
 };
@@ -251,7 +251,7 @@ export const deleteSignUp = async (
     }
 
     return ok("ok");
-  } catch (error) {
+  } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
 };
@@ -304,7 +304,7 @@ export const patchSignUp = async (
     const data = (await response.json()) as { id: string };
 
     return ok(data);
-  } catch (error) {
+  } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
 };

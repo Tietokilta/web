@@ -6,7 +6,7 @@
     "build": "next build",
     "clean": "rm -rf .next",
     "dev": "next dev",
-    "lint": "next lint",
+    "lint": "eslint  \"./src/**/*.{js,ts,jsx,tsx}\"",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },
@@ -53,6 +53,7 @@
     "@types/react-dom": "catalog:",
     "eslint": "catalog:",
     "react-dvd-screensaver": "^0.1.1",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "typescript-eslint": "catalog:"
   }
 }
