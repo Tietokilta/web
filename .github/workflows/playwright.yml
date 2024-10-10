@@ -7,17 +7,14 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4
-        with:
-          version: 9.6.0
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
           cache: "pnpm"
 
       - name: Install dependencies
@@ -26,11 +23,24 @@ jobs:
       - name: Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
+      - name: Install MongoDB Database Tools
+        run: |
+          wget https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2404-x86_64-100.10.0.deb
+          sudo apt install ./mongodb-database-tools-*-100.10.0.deb
+
+
+      - name: Prepare env & database
+        run: |
+          cp .env.example .env
+          pnpm db:start
+          pnpm db:populate
+
+
       - name: Run Playwright tests
-        run: pnpm exec playwright test
+        run: pnpm test
 
       - uses: actions/upload-artifact@v4
-        if: always()
+        if: always()    
         with:
           name: playwright-report
           path: playwright-report/

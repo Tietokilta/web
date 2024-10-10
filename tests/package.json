@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "playwright test --repeat-each=100"
+    "test_full": "playwright test --repeat-each=100",
+    "test": "playwright test"
   },
   "devDependencies": {
     "@playwright/test": "catalog:",
