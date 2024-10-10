@@ -114,7 +114,7 @@ function SubmitButton({
       {formState?.success ? (
         <p
           data-form-status
-          className="w-full max-w-sm text-green-600"
+          className="text-2l w-full max-w-sm text-green-600"
           aria-live="polite"
         >
           {t("Sent invoice")}
