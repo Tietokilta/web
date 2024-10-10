@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Button, Card, Progress } from "@tietokilta/ui";
+import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import {
   type IlmomasiinaEvent,
@@ -17,6 +17,7 @@ import {
 } from "../../../../lib/api/external/ilmomasiina";
 import { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
 import {
+  cn,
   formatDateTimeSeconds,
   formatDateTimeSecondsOptions,
   formatDatetimeYear,
@@ -27,6 +28,7 @@ import { BackButton } from "../../../../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 import { DateTime } from "../../../../components/datetime";
 import { openGraphImage } from "../../../shared-metadata";
+import { SignUpButton } from "./signup-button";
 
 async function SignUpText({
   startDate,
@@ -87,18 +89,19 @@ async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
     <ul className="flex flex-col gap-2">
       {event.quotas.map((quota) => (
         <li key={quota.id} className="contents">
-          {/* eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises */}
-          <form action={signUp} className="contents">
-            <input type="hidden" name="quotaId" value={quota.id} />
-            <Button
-              type="submit"
-              disabled={!hasStarted || hasEnded}
-              variant="secondary"
-            >
-              {t("Sign up")}
-              {event.quotas.length === 1 ? "" : `: ${quota.title}`}
-            </Button>
-          </form>
+          <SignUpButton
+            quotaId={quota.id}
+            isDisabled={!hasStarted || hasEnded}
+            signUpAction={signUp}
+          >
+            <span>
+              <span className={cn(event.quotas.length > 1 && "sr-only")}>
+                {t("Sign up")}
+                {event.quotas.length === 1 ? "" : `: `}
+              </span>
+              {event.quotas.length > 1 ? <span>{quota.title}</span> : null}
+            </span>
+          </SignUpButton>
         </li>
       ))}
     </ul>
@@ -122,7 +125,7 @@ function getFormattedAnswer(
   return answer;
 }
 
-function SignUpRow({
+async function SignUpRow({
   signup,
   publicQuestions,
   isGeneratedQuota,
@@ -131,6 +134,7 @@ function SignUpRow({
   publicQuestions: EventQuestion[];
   isGeneratedQuota: boolean;
 }) {
+  const t = await getScopedI18n("ilmomasiina");
   return (
     <tr className="odd:bg-gray-300 even:bg-gray-200">
       <td className="border-b border-gray-900 px-2 py-1">
@@ -143,7 +147,7 @@ function SignUpRow({
           </span>
         ) : (
           <span className="italic">
-            {signup.confirmed ? "Piilotettu" : "Vahvistamaton"}
+            {signup.confirmed ? t("Piilotettu") : t("Vahvistamaton")}
           </span>
         )}
       </td>
@@ -166,7 +170,11 @@ function SignUpRow({
             formatOptions={formatDateTimeSecondsOptions}
           />
           <span className="invisible group-hover:visible">
-            .{new Date(signup.createdAt).getMilliseconds()}
+            .
+            {new Date(signup.createdAt)
+              .getMilliseconds()
+              .toFixed()
+              .padStart(3, "0")}
           </span>
         </time>
       </td>
@@ -329,7 +337,10 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
 
   const t = await getScopedI18n("ilmomasiina");
 
-  const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize);
+  const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize, {
+    openQuotaName: t("Avoin kiintiö"),
+    queueQuotaName: t("Jonossa"),
+  });
 
   return (
     <Card className="max-w-prose space-y-4">

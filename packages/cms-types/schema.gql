@@ -51,14 +51,24 @@ type Query {
   allNews(where: News_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): allNews
   countallNews(where: News_where, locale: LocaleInputType): countallNews
   docAccessNews(id: String!): newsDocAccess
-  WeeklyNewsletter(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletter
-  WeeklyNewsletters(where: WeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): WeeklyNewsletters
-  countWeeklyNewsletters(where: WeeklyNewsletter_where, locale: LocaleInputType): countWeeklyNewsletters
+  WeeklyNewsletter(id: String!, draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletter
+  WeeklyNewsletters(draft: Boolean, where: WeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): WeeklyNewsletters
+  countWeeklyNewsletters(draft: Boolean, where: WeeklyNewsletter_where, locale: LocaleInputType): countWeeklyNewsletters
   docAccessWeeklyNewsletter(id: String!): weekly_newslettersDocAccess
+  versionWeeklyNewsletter(id: String, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): WeeklyNewsletterVersion
+  versionsWeeklyNewsletters(where: versionsWeeklyNewsletter_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): versionsWeeklyNewsletters
   NewsItem(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): NewsItem
   NewsItems(where: NewsItem_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): NewsItems
   countNewsItems(where: NewsItem_where, locale: LocaleInputType): countNewsItems
   docAccessNewsItem(id: String!): news_itemsDocAccess
+  Honor(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Honor
+  Honors(where: Honor_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Honors
+  countHonors(where: Honor_where, locale: LocaleInputType): countHonors
+  docAccessHonor(id: String!): honorsDocAccess
+  AwardedHonor(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): AwardedHonor
+  AwardedHonors(where: AwardedHonor_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): AwardedHonors
+  countAwardedHonors(where: AwardedHonor_where, locale: LocaleInputType): countAwardedHonors
+  docAccessAwardedHonor(id: String!): awarded_honorsDocAccess
   PayloadPreference(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   countPayloadPreferences(where: PayloadPreference_where, locale: LocaleInputType): countPayloadPreferences
@@ -6016,6 +6026,7 @@ type News {
   excerpt: String
   ctaType: News_ctaType!
   pageLink(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Page
+  externalLink: String
   type: News_type
   author(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): User!
   content(depth: Int): JSON
@@ -6027,6 +6038,7 @@ enum News_ctaType {
   none
   news
   page
+  external
 }
 
 enum News_type {
@@ -6055,6 +6067,7 @@ input News_where {
   excerpt: News_excerpt_operator
   ctaType: News_ctaType_operator
   pageLink: News_pageLink_operator
+  externalLink: News_externalLink_operator
   type: News_type_operator
   author: News_author_operator
   content: News_content_operator
@@ -6103,6 +6116,7 @@ enum News_ctaType_Input {
   none
   news
   page
+  external
 }
 
 input News_pageLink_operator {
@@ -6111,6 +6125,16 @@ input News_pageLink_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
+}
+
+input News_externalLink_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
 }
 
 input News_type_operator {
@@ -6182,6 +6206,7 @@ input News_where_and {
   excerpt: News_excerpt_operator
   ctaType: News_ctaType_operator
   pageLink: News_pageLink_operator
+  externalLink: News_externalLink_operator
   type: News_type_operator
   author: News_author_operator
   content: News_content_operator
@@ -6198,6 +6223,7 @@ input News_where_or {
   excerpt: News_excerpt_operator
   ctaType: News_ctaType_operator
   pageLink: News_pageLink_operator
+  externalLink: News_externalLink_operator
   type: News_type_operator
   author: News_author_operator
   content: News_content_operator
@@ -6226,6 +6252,7 @@ type NewsDocAccessFields {
   excerpt: NewsDocAccessFields_excerpt
   ctaType: NewsDocAccessFields_ctaType
   pageLink: NewsDocAccessFields_pageLink
+  externalLink: NewsDocAccessFields_externalLink
   type: NewsDocAccessFields_type
   author: NewsDocAccessFields_author
   content: NewsDocAccessFields_content
@@ -6345,6 +6372,29 @@ type NewsDocAccessFields_pageLink_Update {
 }
 
 type NewsDocAccessFields_pageLink_Delete {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink {
+  create: NewsDocAccessFields_externalLink_Create
+  read: NewsDocAccessFields_externalLink_Read
+  update: NewsDocAccessFields_externalLink_Update
+  delete: NewsDocAccessFields_externalLink_Delete
+}
+
+type NewsDocAccessFields_externalLink_Create {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink_Read {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink_Update {
+  permission: Boolean!
+}
+
+type NewsDocAccessFields_externalLink_Delete {
   permission: Boolean!
 }
 
@@ -6491,6 +6541,7 @@ type WeeklyNewsletter {
   slug: String
   updatedAt: DateTime
   createdAt: DateTime
+  _status: WeeklyNewsletter__status
 }
 
 type WeeklyNewsletter_NewsItems {
@@ -6506,6 +6557,7 @@ type NewsItem {
   date: DateTime
   signupStartDate: DateTime
   signupEndDate: DateTime
+  linkToSignUp: String
   content(depth: Int): JSON
   updatedAt: DateTime
   createdAt: DateTime
@@ -6516,6 +6568,11 @@ enum NewsItem_newsItemCategory {
   ayy_aalto
   other
   bottom_corner
+}
+
+enum WeeklyNewsletter__status {
+  draft
+  published
 }
 
 type WeeklyNewsletters {
@@ -6540,6 +6597,7 @@ input WeeklyNewsletter_where {
   slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
+  _status: WeeklyNewsletter__status_operator
   id: WeeklyNewsletter_id_operator
   AND: [WeeklyNewsletter_where_and]
   OR: [WeeklyNewsletter_where_or]
@@ -6614,6 +6672,20 @@ input WeeklyNewsletter_createdAt_operator {
   exists: Boolean
 }
 
+input WeeklyNewsletter__status_operator {
+  equals: WeeklyNewsletter__status_Input
+  not_equals: WeeklyNewsletter__status_Input
+  in: [WeeklyNewsletter__status_Input]
+  not_in: [WeeklyNewsletter__status_Input]
+  all: [WeeklyNewsletter__status_Input]
+  exists: Boolean
+}
+
+enum WeeklyNewsletter__status_Input {
+  draft
+  published
+}
+
 input WeeklyNewsletter_id_operator {
   equals: String
   not_equals: String
@@ -6633,6 +6705,7 @@ input WeeklyNewsletter_where_and {
   slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
+  _status: WeeklyNewsletter__status_operator
   id: WeeklyNewsletter_id_operator
   AND: [WeeklyNewsletter_where_and]
   OR: [WeeklyNewsletter_where_or]
@@ -6646,6 +6719,7 @@ input WeeklyNewsletter_where_or {
   slug: WeeklyNewsletter_slug_operator
   updatedAt: WeeklyNewsletter_updatedAt_operator
   createdAt: WeeklyNewsletter_createdAt_operator
+  _status: WeeklyNewsletter__status_operator
   id: WeeklyNewsletter_id_operator
   AND: [WeeklyNewsletter_where_and]
   OR: [WeeklyNewsletter_where_or]
@@ -6661,6 +6735,7 @@ type weekly_newslettersDocAccess {
   read: WeeklyNewslettersReadDocAccess
   update: WeeklyNewslettersUpdateDocAccess
   delete: WeeklyNewslettersDeleteDocAccess
+  readVersions: WeeklyNewslettersReadVersionsDocAccess
 }
 
 type WeeklyNewslettersDocAccessFields {
@@ -6670,6 +6745,7 @@ type WeeklyNewslettersDocAccessFields {
   slug: WeeklyNewslettersDocAccessFields_slug
   updatedAt: WeeklyNewslettersDocAccessFields_updatedAt
   createdAt: WeeklyNewslettersDocAccessFields_createdAt
+  _status: WeeklyNewslettersDocAccessFields__status
 }
 
 type WeeklyNewslettersDocAccessFields_title {
@@ -6862,6 +6938,29 @@ type WeeklyNewslettersDocAccessFields_createdAt_Delete {
   permission: Boolean!
 }
 
+type WeeklyNewslettersDocAccessFields__status {
+  create: WeeklyNewslettersDocAccessFields__status_Create
+  read: WeeklyNewslettersDocAccessFields__status_Read
+  update: WeeklyNewslettersDocAccessFields__status_Update
+  delete: WeeklyNewslettersDocAccessFields__status_Delete
+}
+
+type WeeklyNewslettersDocAccessFields__status_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields__status_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields__status_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersDocAccessFields__status_Delete {
+  permission: Boolean!
+}
+
 type WeeklyNewslettersCreateDocAccess {
   permission: Boolean!
   where: JSONObject
@@ -6880,6 +6979,239 @@ type WeeklyNewslettersUpdateDocAccess {
 type WeeklyNewslettersDeleteDocAccess {
   permission: Boolean!
   where: JSONObject
+}
+
+type WeeklyNewslettersReadVersionsDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type WeeklyNewsletterVersion {
+  parent(draft: Boolean, locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): WeeklyNewsletter
+  version: WeeklyNewsletterVersion_Version
+  createdAt: DateTime
+  updatedAt: DateTime
+  latest: Boolean
+  id: String
+}
+
+type WeeklyNewsletterVersion_Version {
+  title: String
+  greetings(depth: Int): JSON
+  newsItems: [WeeklyNewsletterVersion_Version_NewsItems!]
+  slug: String
+  updatedAt: DateTime
+  createdAt: DateTime
+  _status: WeeklyNewsletterVersion_Version__status
+}
+
+type WeeklyNewsletterVersion_Version_NewsItems {
+  newsItem(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): NewsItem
+  id: String
+}
+
+enum WeeklyNewsletterVersion_Version__status {
+  draft
+  published
+}
+
+type versionsWeeklyNewsletters {
+  docs: [WeeklyNewsletterVersion]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input versionsWeeklyNewsletter_where {
+  parent: versionsWeeklyNewsletter_parent_operator
+  version__title: versionsWeeklyNewsletter_version__title_operator
+  version__greetings: versionsWeeklyNewsletter_version__greetings_operator
+  version__newsItems__newsItem: versionsWeeklyNewsletter_version__newsItems__newsItem_operator
+  version__newsItems__id: versionsWeeklyNewsletter_version__newsItems__id_operator
+  version__slug: versionsWeeklyNewsletter_version__slug_operator
+  version__updatedAt: versionsWeeklyNewsletter_version__updatedAt_operator
+  version__createdAt: versionsWeeklyNewsletter_version__createdAt_operator
+  version___status: versionsWeeklyNewsletter_version___status_operator
+  createdAt: versionsWeeklyNewsletter_createdAt_operator
+  updatedAt: versionsWeeklyNewsletter_updatedAt_operator
+  latest: versionsWeeklyNewsletter_latest_operator
+  id: versionsWeeklyNewsletter_id_operator
+  AND: [versionsWeeklyNewsletter_where_and]
+  OR: [versionsWeeklyNewsletter_where_or]
+}
+
+input versionsWeeklyNewsletter_parent_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_version__title_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input versionsWeeklyNewsletter_version__greetings_operator {
+  equals: JSON
+  not_equals: JSON
+  like: JSON
+  contains: JSON
+}
+
+input versionsWeeklyNewsletter_version__newsItems__newsItem_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input versionsWeeklyNewsletter_version__newsItems__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_version__slug_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_version__updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_version__createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_version___status_operator {
+  equals: versionsWeeklyNewsletter_version___status_Input
+  not_equals: versionsWeeklyNewsletter_version___status_Input
+  in: [versionsWeeklyNewsletter_version___status_Input]
+  not_in: [versionsWeeklyNewsletter_version___status_Input]
+  all: [versionsWeeklyNewsletter_version___status_Input]
+  exists: Boolean
+}
+
+enum versionsWeeklyNewsletter_version___status_Input {
+  draft
+  published
+}
+
+input versionsWeeklyNewsletter_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_latest_operator {
+  equals: Boolean
+  not_equals: Boolean
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input versionsWeeklyNewsletter_where_and {
+  parent: versionsWeeklyNewsletter_parent_operator
+  version__title: versionsWeeklyNewsletter_version__title_operator
+  version__greetings: versionsWeeklyNewsletter_version__greetings_operator
+  version__newsItems__newsItem: versionsWeeklyNewsletter_version__newsItems__newsItem_operator
+  version__newsItems__id: versionsWeeklyNewsletter_version__newsItems__id_operator
+  version__slug: versionsWeeklyNewsletter_version__slug_operator
+  version__updatedAt: versionsWeeklyNewsletter_version__updatedAt_operator
+  version__createdAt: versionsWeeklyNewsletter_version__createdAt_operator
+  version___status: versionsWeeklyNewsletter_version___status_operator
+  createdAt: versionsWeeklyNewsletter_createdAt_operator
+  updatedAt: versionsWeeklyNewsletter_updatedAt_operator
+  latest: versionsWeeklyNewsletter_latest_operator
+  id: versionsWeeklyNewsletter_id_operator
+  AND: [versionsWeeklyNewsletter_where_and]
+  OR: [versionsWeeklyNewsletter_where_or]
+}
+
+input versionsWeeklyNewsletter_where_or {
+  parent: versionsWeeklyNewsletter_parent_operator
+  version__title: versionsWeeklyNewsletter_version__title_operator
+  version__greetings: versionsWeeklyNewsletter_version__greetings_operator
+  version__newsItems__newsItem: versionsWeeklyNewsletter_version__newsItems__newsItem_operator
+  version__newsItems__id: versionsWeeklyNewsletter_version__newsItems__id_operator
+  version__slug: versionsWeeklyNewsletter_version__slug_operator
+  version__updatedAt: versionsWeeklyNewsletter_version__updatedAt_operator
+  version__createdAt: versionsWeeklyNewsletter_version__createdAt_operator
+  version___status: versionsWeeklyNewsletter_version___status_operator
+  createdAt: versionsWeeklyNewsletter_createdAt_operator
+  updatedAt: versionsWeeklyNewsletter_updatedAt_operator
+  latest: versionsWeeklyNewsletter_latest_operator
+  id: versionsWeeklyNewsletter_id_operator
+  AND: [versionsWeeklyNewsletter_where_and]
+  OR: [versionsWeeklyNewsletter_where_or]
 }
 
 type NewsItems {
@@ -6903,6 +7235,7 @@ input NewsItem_where {
   date: NewsItem_date_operator
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
+  linkToSignUp: NewsItem_linkToSignUp_operator
   content: NewsItem_content_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
@@ -6980,6 +7313,17 @@ input NewsItem_signupEndDate_operator {
   exists: Boolean
 }
 
+input NewsItem_linkToSignUp_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
 input NewsItem_content_operator {
   equals: JSON
   not_equals: JSON
@@ -7027,6 +7371,7 @@ input NewsItem_where_and {
   date: NewsItem_date_operator
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
+  linkToSignUp: NewsItem_linkToSignUp_operator
   content: NewsItem_content_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
@@ -7042,6 +7387,7 @@ input NewsItem_where_or {
   date: NewsItem_date_operator
   signupStartDate: NewsItem_signupStartDate_operator
   signupEndDate: NewsItem_signupEndDate_operator
+  linkToSignUp: NewsItem_linkToSignUp_operator
   content: NewsItem_content_operator
   updatedAt: NewsItem_updatedAt_operator
   createdAt: NewsItem_createdAt_operator
@@ -7069,6 +7415,7 @@ type NewsItemsDocAccessFields {
   date: NewsItemsDocAccessFields_date
   signupStartDate: NewsItemsDocAccessFields_signupStartDate
   signupEndDate: NewsItemsDocAccessFields_signupEndDate
+  linkToSignUp: NewsItemsDocAccessFields_linkToSignUp
   content: NewsItemsDocAccessFields_content
   updatedAt: NewsItemsDocAccessFields_updatedAt
   createdAt: NewsItemsDocAccessFields_createdAt
@@ -7212,6 +7559,29 @@ type NewsItemsDocAccessFields_signupEndDate_Delete {
   permission: Boolean!
 }
 
+type NewsItemsDocAccessFields_linkToSignUp {
+  create: NewsItemsDocAccessFields_linkToSignUp_Create
+  read: NewsItemsDocAccessFields_linkToSignUp_Read
+  update: NewsItemsDocAccessFields_linkToSignUp_Update
+  delete: NewsItemsDocAccessFields_linkToSignUp_Delete
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Create {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Read {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Update {
+  permission: Boolean!
+}
+
+type NewsItemsDocAccessFields_linkToSignUp_Delete {
+  permission: Boolean!
+}
+
 type NewsItemsDocAccessFields_content {
   create: NewsItemsDocAccessFields_content_Create
   read: NewsItemsDocAccessFields_content_Read
@@ -7297,6 +7667,705 @@ type NewsItemsUpdateDocAccess {
 }
 
 type NewsItemsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type Honor {
+  id: String
+  name: String
+  awardedHonors: [Honor_AwardedHonors!]!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type Honor_AwardedHonors {
+  awardedHonor(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): AwardedHonor
+  id: String
+}
+
+type AwardedHonor {
+  id: String
+  displayTitle: String
+  guildYear: AwardedHonor_guildYear!
+  name: String!
+  description: String
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum AwardedHonor_guildYear {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+type Honors {
+  docs: [Honor]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Honor_where {
+  name: Honor_name_operator
+  awardedHonors__awardedHonor: Honor_awardedHonors__awardedHonor_operator
+  awardedHonors__id: Honor_awardedHonors__id_operator
+  updatedAt: Honor_updatedAt_operator
+  createdAt: Honor_createdAt_operator
+  id: Honor_id_operator
+  AND: [Honor_where_and]
+  OR: [Honor_where_or]
+}
+
+input Honor_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Honor_awardedHonors__awardedHonor_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+  exists: Boolean
+}
+
+input Honor_awardedHonors__id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Honor_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Honor_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Honor_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Honor_where_and {
+  name: Honor_name_operator
+  awardedHonors__awardedHonor: Honor_awardedHonors__awardedHonor_operator
+  awardedHonors__id: Honor_awardedHonors__id_operator
+  updatedAt: Honor_updatedAt_operator
+  createdAt: Honor_createdAt_operator
+  id: Honor_id_operator
+  AND: [Honor_where_and]
+  OR: [Honor_where_or]
+}
+
+input Honor_where_or {
+  name: Honor_name_operator
+  awardedHonors__awardedHonor: Honor_awardedHonors__awardedHonor_operator
+  awardedHonors__id: Honor_awardedHonors__id_operator
+  updatedAt: Honor_updatedAt_operator
+  createdAt: Honor_createdAt_operator
+  id: Honor_id_operator
+  AND: [Honor_where_and]
+  OR: [Honor_where_or]
+}
+
+type countHonors {
+  totalDocs: Int
+}
+
+type honorsDocAccess {
+  fields: HonorsDocAccessFields
+  create: HonorsCreateDocAccess
+  read: HonorsReadDocAccess
+  update: HonorsUpdateDocAccess
+  delete: HonorsDeleteDocAccess
+}
+
+type HonorsDocAccessFields {
+  name: HonorsDocAccessFields_name
+  awardedHonors: HonorsDocAccessFields_awardedHonors
+  updatedAt: HonorsDocAccessFields_updatedAt
+  createdAt: HonorsDocAccessFields_createdAt
+}
+
+type HonorsDocAccessFields_name {
+  create: HonorsDocAccessFields_name_Create
+  read: HonorsDocAccessFields_name_Read
+  update: HonorsDocAccessFields_name_Update
+  delete: HonorsDocAccessFields_name_Delete
+}
+
+type HonorsDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors {
+  create: HonorsDocAccessFields_awardedHonors_Create
+  read: HonorsDocAccessFields_awardedHonors_Read
+  update: HonorsDocAccessFields_awardedHonors_Update
+  delete: HonorsDocAccessFields_awardedHonors_Delete
+  fields: HonorsDocAccessFields_awardedHonors_Fields
+}
+
+type HonorsDocAccessFields_awardedHonors_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_Fields {
+  awardedHonor: HonorsDocAccessFields_awardedHonors_awardedHonor
+  id: HonorsDocAccessFields_awardedHonors_id
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor {
+  create: HonorsDocAccessFields_awardedHonors_awardedHonor_Create
+  read: HonorsDocAccessFields_awardedHonors_awardedHonor_Read
+  update: HonorsDocAccessFields_awardedHonors_awardedHonor_Update
+  delete: HonorsDocAccessFields_awardedHonors_awardedHonor_Delete
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_awardedHonor_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id {
+  create: HonorsDocAccessFields_awardedHonors_id_Create
+  read: HonorsDocAccessFields_awardedHonors_id_Read
+  update: HonorsDocAccessFields_awardedHonors_id_Update
+  delete: HonorsDocAccessFields_awardedHonors_id_Delete
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_awardedHonors_id_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt {
+  create: HonorsDocAccessFields_updatedAt_Create
+  read: HonorsDocAccessFields_updatedAt_Read
+  update: HonorsDocAccessFields_updatedAt_Update
+  delete: HonorsDocAccessFields_updatedAt_Delete
+}
+
+type HonorsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt {
+  create: HonorsDocAccessFields_createdAt_Create
+  read: HonorsDocAccessFields_createdAt_Read
+  update: HonorsDocAccessFields_createdAt_Update
+  delete: HonorsDocAccessFields_createdAt_Delete
+}
+
+type HonorsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type HonorsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonors {
+  docs: [AwardedHonor]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input AwardedHonor_where {
+  displayTitle: AwardedHonor_displayTitle_operator
+  guildYear: AwardedHonor_guildYear_operator
+  name: AwardedHonor_name_operator
+  description: AwardedHonor_description_operator
+  updatedAt: AwardedHonor_updatedAt_operator
+  createdAt: AwardedHonor_createdAt_operator
+  id: AwardedHonor_id_operator
+  AND: [AwardedHonor_where_and]
+  OR: [AwardedHonor_where_or]
+}
+
+input AwardedHonor_displayTitle_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input AwardedHonor_guildYear_operator {
+  equals: AwardedHonor_guildYear_Input
+  not_equals: AwardedHonor_guildYear_Input
+  in: [AwardedHonor_guildYear_Input]
+  not_in: [AwardedHonor_guildYear_Input]
+  all: [AwardedHonor_guildYear_Input]
+}
+
+enum AwardedHonor_guildYear_Input {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input AwardedHonor_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input AwardedHonor_description_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  exists: Boolean
+}
+
+input AwardedHonor_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input AwardedHonor_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input AwardedHonor_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input AwardedHonor_where_and {
+  displayTitle: AwardedHonor_displayTitle_operator
+  guildYear: AwardedHonor_guildYear_operator
+  name: AwardedHonor_name_operator
+  description: AwardedHonor_description_operator
+  updatedAt: AwardedHonor_updatedAt_operator
+  createdAt: AwardedHonor_createdAt_operator
+  id: AwardedHonor_id_operator
+  AND: [AwardedHonor_where_and]
+  OR: [AwardedHonor_where_or]
+}
+
+input AwardedHonor_where_or {
+  displayTitle: AwardedHonor_displayTitle_operator
+  guildYear: AwardedHonor_guildYear_operator
+  name: AwardedHonor_name_operator
+  description: AwardedHonor_description_operator
+  updatedAt: AwardedHonor_updatedAt_operator
+  createdAt: AwardedHonor_createdAt_operator
+  id: AwardedHonor_id_operator
+  AND: [AwardedHonor_where_and]
+  OR: [AwardedHonor_where_or]
+}
+
+type countAwardedHonors {
+  totalDocs: Int
+}
+
+type awarded_honorsDocAccess {
+  fields: AwardedHonorsDocAccessFields
+  create: AwardedHonorsCreateDocAccess
+  read: AwardedHonorsReadDocAccess
+  update: AwardedHonorsUpdateDocAccess
+  delete: AwardedHonorsDeleteDocAccess
+}
+
+type AwardedHonorsDocAccessFields {
+  displayTitle: AwardedHonorsDocAccessFields_displayTitle
+  guildYear: AwardedHonorsDocAccessFields_guildYear
+  name: AwardedHonorsDocAccessFields_name
+  description: AwardedHonorsDocAccessFields_description
+  updatedAt: AwardedHonorsDocAccessFields_updatedAt
+  createdAt: AwardedHonorsDocAccessFields_createdAt
+}
+
+type AwardedHonorsDocAccessFields_displayTitle {
+  create: AwardedHonorsDocAccessFields_displayTitle_Create
+  read: AwardedHonorsDocAccessFields_displayTitle_Read
+  update: AwardedHonorsDocAccessFields_displayTitle_Update
+  delete: AwardedHonorsDocAccessFields_displayTitle_Delete
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_displayTitle_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear {
+  create: AwardedHonorsDocAccessFields_guildYear_Create
+  read: AwardedHonorsDocAccessFields_guildYear_Read
+  update: AwardedHonorsDocAccessFields_guildYear_Update
+  delete: AwardedHonorsDocAccessFields_guildYear_Delete
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name {
+  create: AwardedHonorsDocAccessFields_name_Create
+  read: AwardedHonorsDocAccessFields_name_Read
+  update: AwardedHonorsDocAccessFields_name_Update
+  delete: AwardedHonorsDocAccessFields_name_Delete
+}
+
+type AwardedHonorsDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description {
+  create: AwardedHonorsDocAccessFields_description_Create
+  read: AwardedHonorsDocAccessFields_description_Read
+  update: AwardedHonorsDocAccessFields_description_Update
+  delete: AwardedHonorsDocAccessFields_description_Delete
+}
+
+type AwardedHonorsDocAccessFields_description_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_description_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt {
+  create: AwardedHonorsDocAccessFields_updatedAt_Create
+  read: AwardedHonorsDocAccessFields_updatedAt_Read
+  update: AwardedHonorsDocAccessFields_updatedAt_Update
+  delete: AwardedHonorsDocAccessFields_updatedAt_Delete
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt {
+  create: AwardedHonorsDocAccessFields_createdAt_Create
+  read: AwardedHonorsDocAccessFields_createdAt_Read
+  update: AwardedHonorsDocAccessFields_createdAt_Update
+  delete: AwardedHonorsDocAccessFields_createdAt_Delete
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsDeleteDocAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -8728,6 +9797,8 @@ type Access {
   news: newsAccess
   weekly_newsletters: weekly_newslettersAccess
   news_items: news_itemsAccess
+  honors: honorsAccess
+  awarded_honors: awarded_honorsAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -11465,6 +12536,7 @@ type NewsFields {
   excerpt: NewsFields_excerpt
   ctaType: NewsFields_ctaType
   pageLink: NewsFields_pageLink
+  externalLink: NewsFields_externalLink
   type: NewsFields_type
   author: NewsFields_author
   content: NewsFields_content
@@ -11584,6 +12656,29 @@ type NewsFields_pageLink_Update {
 }
 
 type NewsFields_pageLink_Delete {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink {
+  create: NewsFields_externalLink_Create
+  read: NewsFields_externalLink_Read
+  update: NewsFields_externalLink_Update
+  delete: NewsFields_externalLink_Delete
+}
+
+type NewsFields_externalLink_Create {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink_Read {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink_Update {
+  permission: Boolean!
+}
+
+type NewsFields_externalLink_Delete {
   permission: Boolean!
 }
 
@@ -11728,6 +12823,7 @@ type weekly_newslettersAccess {
   read: WeeklyNewslettersReadAccess
   update: WeeklyNewslettersUpdateAccess
   delete: WeeklyNewslettersDeleteAccess
+  readVersions: WeeklyNewslettersReadVersionsAccess
 }
 
 type WeeklyNewslettersFields {
@@ -11737,6 +12833,7 @@ type WeeklyNewslettersFields {
   slug: WeeklyNewslettersFields_slug
   updatedAt: WeeklyNewslettersFields_updatedAt
   createdAt: WeeklyNewslettersFields_createdAt
+  _status: WeeklyNewslettersFields__status
 }
 
 type WeeklyNewslettersFields_title {
@@ -11929,6 +13026,29 @@ type WeeklyNewslettersFields_createdAt_Delete {
   permission: Boolean!
 }
 
+type WeeklyNewslettersFields__status {
+  create: WeeklyNewslettersFields__status_Create
+  read: WeeklyNewslettersFields__status_Read
+  update: WeeklyNewslettersFields__status_Update
+  delete: WeeklyNewslettersFields__status_Delete
+}
+
+type WeeklyNewslettersFields__status_Create {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields__status_Read {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields__status_Update {
+  permission: Boolean!
+}
+
+type WeeklyNewslettersFields__status_Delete {
+  permission: Boolean!
+}
+
 type WeeklyNewslettersCreateAccess {
   permission: Boolean!
   where: JSONObject
@@ -11949,6 +13069,11 @@ type WeeklyNewslettersDeleteAccess {
   where: JSONObject
 }
 
+type WeeklyNewslettersReadVersionsAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type news_itemsAccess {
   fields: NewsItemsFields
   create: NewsItemsCreateAccess
@@ -11964,6 +13089,7 @@ type NewsItemsFields {
   date: NewsItemsFields_date
   signupStartDate: NewsItemsFields_signupStartDate
   signupEndDate: NewsItemsFields_signupEndDate
+  linkToSignUp: NewsItemsFields_linkToSignUp
   content: NewsItemsFields_content
   updatedAt: NewsItemsFields_updatedAt
   createdAt: NewsItemsFields_createdAt
@@ -12107,6 +13233,29 @@ type NewsItemsFields_signupEndDate_Delete {
   permission: Boolean!
 }
 
+type NewsItemsFields_linkToSignUp {
+  create: NewsItemsFields_linkToSignUp_Create
+  read: NewsItemsFields_linkToSignUp_Read
+  update: NewsItemsFields_linkToSignUp_Update
+  delete: NewsItemsFields_linkToSignUp_Delete
+}
+
+type NewsItemsFields_linkToSignUp_Create {
+  permission: Boolean!
+}
+
+type NewsItemsFields_linkToSignUp_Read {
+  permission: Boolean!
+}
+
+type NewsItemsFields_linkToSignUp_Update {
+  permission: Boolean!
+}
+
+type NewsItemsFields_linkToSignUp_Delete {
+  permission: Boolean!
+}
+
 type NewsItemsFields_content {
   create: NewsItemsFields_content_Create
   read: NewsItemsFields_content_Read
@@ -12192,6 +13341,360 @@ type NewsItemsUpdateAccess {
 }
 
 type NewsItemsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type honorsAccess {
+  fields: HonorsFields
+  create: HonorsCreateAccess
+  read: HonorsReadAccess
+  update: HonorsUpdateAccess
+  delete: HonorsDeleteAccess
+}
+
+type HonorsFields {
+  name: HonorsFields_name
+  awardedHonors: HonorsFields_awardedHonors
+  updatedAt: HonorsFields_updatedAt
+  createdAt: HonorsFields_createdAt
+}
+
+type HonorsFields_name {
+  create: HonorsFields_name_Create
+  read: HonorsFields_name_Read
+  update: HonorsFields_name_Update
+  delete: HonorsFields_name_Delete
+}
+
+type HonorsFields_name_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_name_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_name_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_name_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors {
+  create: HonorsFields_awardedHonors_Create
+  read: HonorsFields_awardedHonors_Read
+  update: HonorsFields_awardedHonors_Update
+  delete: HonorsFields_awardedHonors_Delete
+  fields: HonorsFields_awardedHonors_Fields
+}
+
+type HonorsFields_awardedHonors_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_Fields {
+  awardedHonor: HonorsFields_awardedHonors_awardedHonor
+  id: HonorsFields_awardedHonors_id
+}
+
+type HonorsFields_awardedHonors_awardedHonor {
+  create: HonorsFields_awardedHonors_awardedHonor_Create
+  read: HonorsFields_awardedHonors_awardedHonor_Read
+  update: HonorsFields_awardedHonors_awardedHonor_Update
+  delete: HonorsFields_awardedHonors_awardedHonor_Delete
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_awardedHonor_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id {
+  create: HonorsFields_awardedHonors_id_Create
+  read: HonorsFields_awardedHonors_id_Read
+  update: HonorsFields_awardedHonors_id_Update
+  delete: HonorsFields_awardedHonors_id_Delete
+}
+
+type HonorsFields_awardedHonors_id_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_awardedHonors_id_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt {
+  create: HonorsFields_updatedAt_Create
+  read: HonorsFields_updatedAt_Read
+  update: HonorsFields_updatedAt_Update
+  delete: HonorsFields_updatedAt_Delete
+}
+
+type HonorsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt {
+  create: HonorsFields_createdAt_Create
+  read: HonorsFields_createdAt_Read
+  update: HonorsFields_createdAt_Update
+  delete: HonorsFields_createdAt_Delete
+}
+
+type HonorsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type HonorsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type HonorsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type HonorsDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type awarded_honorsAccess {
+  fields: AwardedHonorsFields
+  create: AwardedHonorsCreateAccess
+  read: AwardedHonorsReadAccess
+  update: AwardedHonorsUpdateAccess
+  delete: AwardedHonorsDeleteAccess
+}
+
+type AwardedHonorsFields {
+  displayTitle: AwardedHonorsFields_displayTitle
+  guildYear: AwardedHonorsFields_guildYear
+  name: AwardedHonorsFields_name
+  description: AwardedHonorsFields_description
+  updatedAt: AwardedHonorsFields_updatedAt
+  createdAt: AwardedHonorsFields_createdAt
+}
+
+type AwardedHonorsFields_displayTitle {
+  create: AwardedHonorsFields_displayTitle_Create
+  read: AwardedHonorsFields_displayTitle_Read
+  update: AwardedHonorsFields_displayTitle_Update
+  delete: AwardedHonorsFields_displayTitle_Delete
+}
+
+type AwardedHonorsFields_displayTitle_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_displayTitle_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_displayTitle_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_displayTitle_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear {
+  create: AwardedHonorsFields_guildYear_Create
+  read: AwardedHonorsFields_guildYear_Read
+  update: AwardedHonorsFields_guildYear_Update
+  delete: AwardedHonorsFields_guildYear_Delete
+}
+
+type AwardedHonorsFields_guildYear_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_guildYear_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name {
+  create: AwardedHonorsFields_name_Create
+  read: AwardedHonorsFields_name_Read
+  update: AwardedHonorsFields_name_Update
+  delete: AwardedHonorsFields_name_Delete
+}
+
+type AwardedHonorsFields_name_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_name_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description {
+  create: AwardedHonorsFields_description_Create
+  read: AwardedHonorsFields_description_Read
+  update: AwardedHonorsFields_description_Update
+  delete: AwardedHonorsFields_description_Delete
+}
+
+type AwardedHonorsFields_description_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_description_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt {
+  create: AwardedHonorsFields_updatedAt_Create
+  read: AwardedHonorsFields_updatedAt_Read
+  update: AwardedHonorsFields_updatedAt_Update
+  delete: AwardedHonorsFields_updatedAt_Delete
+}
+
+type AwardedHonorsFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt {
+  create: AwardedHonorsFields_createdAt_Create
+  read: AwardedHonorsFields_createdAt_Read
+  update: AwardedHonorsFields_createdAt_Update
+  delete: AwardedHonorsFields_createdAt_Delete
+}
+
+type AwardedHonorsFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type AwardedHonorsFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type AwardedHonorsCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type AwardedHonorsDeleteAccess {
   permission: Boolean!
   where: JSONObject
 }
@@ -13321,12 +14824,19 @@ type Mutation {
   createNews(data: mutationNewsInput!, locale: LocaleInputType): News
   updateNews(id: String!, autosave: Boolean, data: mutationNewsUpdateInput!, locale: LocaleInputType): News
   deleteNews(id: String!): News
-  createWeeklyNewsletter(data: mutationWeeklyNewsletterInput!, locale: LocaleInputType): WeeklyNewsletter
-  updateWeeklyNewsletter(id: String!, autosave: Boolean, data: mutationWeeklyNewsletterUpdateInput!, locale: LocaleInputType): WeeklyNewsletter
+  createWeeklyNewsletter(data: mutationWeeklyNewsletterInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
+  updateWeeklyNewsletter(id: String!, autosave: Boolean, data: mutationWeeklyNewsletterUpdateInput!, draft: Boolean, locale: LocaleInputType): WeeklyNewsletter
   deleteWeeklyNewsletter(id: String!): WeeklyNewsletter
+  restoreVersionWeeklyNewsletter(id: String): WeeklyNewsletter
   createNewsItem(data: mutationNewsItemInput!, locale: LocaleInputType): NewsItem
   updateNewsItem(id: String!, autosave: Boolean, data: mutationNewsItemUpdateInput!, locale: LocaleInputType): NewsItem
   deleteNewsItem(id: String!): NewsItem
+  createHonor(data: mutationHonorInput!, locale: LocaleInputType): Honor
+  updateHonor(id: String!, autosave: Boolean, data: mutationHonorUpdateInput!, locale: LocaleInputType): Honor
+  deleteHonor(id: String!): Honor
+  createAwardedHonor(data: mutationAwardedHonorInput!, locale: LocaleInputType): AwardedHonor
+  updateAwardedHonor(id: String!, autosave: Boolean, data: mutationAwardedHonorUpdateInput!, locale: LocaleInputType): AwardedHonor
+  deleteAwardedHonor(id: String!): AwardedHonor
   createPayloadPreference(data: mutationPayloadPreferenceInput!, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -14326,6 +15836,7 @@ input mutationNewsInput {
   excerpt: String
   ctaType: String!
   pageLink: String
+  externalLink: String
   type: News_type_MutationInput
   author: String
   content: JSON
@@ -14345,6 +15856,7 @@ input mutationNewsUpdateInput {
   excerpt: String
   ctaType: String
   pageLink: String
+  externalLink: String
   type: NewsUpdate_type_MutationInput
   author: String
   content: JSON
@@ -14365,11 +15877,17 @@ input mutationWeeklyNewsletterInput {
   slug: String
   updatedAt: String
   createdAt: String
+  _status: WeeklyNewsletter__status_MutationInput
 }
 
 input mutationWeeklyNewsletter_NewsItemsInput {
   newsItem: String
   id: String
+}
+
+enum WeeklyNewsletter__status_MutationInput {
+  draft
+  published
 }
 
 input mutationWeeklyNewsletterUpdateInput {
@@ -14379,11 +15897,17 @@ input mutationWeeklyNewsletterUpdateInput {
   slug: String
   updatedAt: String
   createdAt: String
+  _status: WeeklyNewsletterUpdate__status_MutationInput
 }
 
 input mutationWeeklyNewsletterUpdate_NewsItemsInput {
   newsItem: String
   id: String
+}
+
+enum WeeklyNewsletterUpdate__status_MutationInput {
+  draft
+  published
 }
 
 input mutationNewsItemInput {
@@ -14393,6 +15917,7 @@ input mutationNewsItemInput {
   date: String
   signupStartDate: String
   signupEndDate: String
+  linkToSignUp: String
   content: JSON
   updatedAt: String
   createdAt: String
@@ -14412,6 +15937,7 @@ input mutationNewsItemUpdateInput {
   date: String
   signupStartDate: String
   signupEndDate: String
+  linkToSignUp: String
   content: JSON
   updatedAt: String
   createdAt: String
@@ -14422,6 +15948,132 @@ enum NewsItemUpdate_newsItemCategory_MutationInput {
   ayy_aalto
   other
   bottom_corner
+}
+
+input mutationHonorInput {
+  name: String
+  awardedHonors: [mutationHonor_AwardedHonorsInput!]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationHonor_AwardedHonorsInput {
+  awardedHonor: String
+  id: String
+}
+
+input mutationHonorUpdateInput {
+  name: String
+  awardedHonors: [mutationHonorUpdate_AwardedHonorsInput]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationHonorUpdate_AwardedHonorsInput {
+  awardedHonor: String
+  id: String
+}
+
+input mutationAwardedHonorInput {
+  displayTitle: String
+  guildYear: AwardedHonor_guildYear_MutationInput!
+  name: String!
+  description: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum AwardedHonor_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
+}
+
+input mutationAwardedHonorUpdateInput {
+  displayTitle: String
+  guildYear: AwardedHonorUpdate_guildYear_MutationInput
+  name: String
+  description: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum AwardedHonorUpdate_guildYear_MutationInput {
+  _2024
+  _2023
+  _2022
+  _2021
+  _2020
+  _2019
+  _2018
+  _2017
+  _2016
+  _2015
+  _2014
+  _2013
+  _2012
+  _2011
+  _2010
+  _2009
+  _2008
+  _2007
+  _2006
+  _2005
+  _2004
+  _2003
+  _2002
+  _2001
+  _2000
+  _1999
+  _1998
+  _1997
+  _1996
+  _1995
+  _1994
+  _1993
+  _1992
+  _1991
+  _1990
+  _1989
+  _1988
+  _1987
+  _1986
 }
 
 input mutationPayloadPreferenceInput {

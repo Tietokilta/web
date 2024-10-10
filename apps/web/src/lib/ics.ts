@@ -2,11 +2,23 @@ import { remark } from "remark";
 import strip from "strip-markdown";
 import { type IlmomasiinaEvent } from "./api/external/ilmomasiina";
 
-export function createEvents(events: IlmomasiinaEvent[]): string {
+export function createEvents(
+  events: IlmomasiinaEvent[],
+  {
+    host,
+    origin,
+  }: {
+    host: string;
+    origin: string;
+  },
+): string {
   return `BEGIN:VCALENDAR\r
 PRODID:-//Tietokilta//Ilmomasiina//FI\r
 VERSION:2.0\r
+METHOD:PUBLISH\r
 CALSCALE:GREGORIAN\r
+X-WR-CALNAME:Tietokillan tapahtumat | Tietokilta events\r
+X-PUBLISHED-TTL:PT1H\r
 BEGIN:VTIMEZONE\r
 TZID:Europe/Helsinki\r
 TZURL:https://www.tzurl.org/zoneinfo/Europe/Helsinki\r
@@ -72,21 +84,36 @@ DTSTART:19961027T040000\r
 RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r
 END:STANDARD\r
 END:VTIMEZONE
-${events.map(createEvent).filter(Boolean).join("\r\n")}
+${events
+  .map((event) => createEvent(event, { host, origin }))
+  .filter(Boolean)
+  .join("\r\n")}
 END:VCALENDAR`;
 }
 
-function createEvent(event: IlmomasiinaEvent): string {
+function createEvent(
+  event: IlmomasiinaEvent,
+  {
+    host,
+    origin,
+  }: {
+    host: string;
+    origin: string;
+  },
+): string {
   if (!event.date) {
     return "";
   }
 
   return `BEGIN:VEVENT\r
-UID:tik-ilmo-event-${event.id}\r
+UID:${event.id}@${host}\r
 SUMMARY:${event.title}\r
 LOCATION:${event.location}\r
+URL:${foldICSText(`${origin}/events/${event.slug}`)}\r
+CATEGORIES:${event.category}\r
 DESCRIPTION:
  ${formatDescription(event.description)}
+ ${foldICSText(`\\n\\n---\\nLue lisää: ${origin}/fi/tapahtumat/${event.slug}\\nRead more: ${origin}/en/events/${event.slug}`)}
 ${formatDates(event.date, event.endDate)}
 END:VEVENT`;
 }
@@ -94,18 +121,21 @@ END:VEVENT`;
 function formatDates(start: string, end?: string | null) {
   const startDate = new Date(start);
   if (!end) {
-    return `DTSTART;VALUE=DATE:${formatDate(startDate)}\r
-DTEND;VALUE=DATE:${(parseInt(formatDate(startDate), 10) + 1).toFixed()}`;
+    // Make the event an all-day event if there's no end date.
+    return `DTSTAMP:${formatDateTime(startDate)}Z\r
+DTSTART;VALUE=DATE:${formatDate(startDate)}\r
+DTEND;VALUE=DATE:${formatDate(startDate)}`;
   }
 
   const endDate = new Date(end);
 
   return `DTSTAMP:${formatDateTime(startDate)}Z\r
 DTSTART:${formatDateTime(startDate)}Z\r
-DTEND:${formatDateTime(endDate)}`;
+DTEND:${formatDateTime(endDate)}Z`;
 }
 
-const formatDate = (date: Date) => date.toISOString().slice(0, 10);
+const formatDate = (date: Date) =>
+  date.toISOString().slice(0, 10).replace(/-/g, "");
 
 const formatDateTime = (date: Date) =>
   date.toISOString().slice(0, 19).replace(/[-:]/g, "");

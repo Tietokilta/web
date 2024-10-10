@@ -3,6 +3,7 @@ import type {
   Committee,
   Document,
   Magazine,
+  Honor,
   Media,
   Page,
 } from "./payload";
@@ -139,11 +140,18 @@ export type MagazineRelationshipNode = BaseNode & {
   value: Magazine;
 };
 
+export type HonorsRelationshipNode = BaseNode & {
+  type: "relationship";
+  relationTo: "honors";
+  value: Honor;
+};
+
 export type RelationshipNode =
   | PageRelationshipNode
   | BoardRelationshipNode
   | CommitteeRelationshipNode
-  | MagazineRelationshipNode;
+  | MagazineRelationshipNode
+  | HonorsRelationshipNode;
 
 export type BaseBlockFields = {
   id: string;
@@ -189,11 +197,18 @@ export type EditorInChiefBlockNode = BaseBlockNode & {
   };
 };
 
+export type InvoiceGeneratorBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "invoice-generator";
+  };
+};
+
 export type BlockNode =
   | CommitteesYearBlockNode
   | ImageLinkGridBlockNode
   | GoogleFormBlockNode
-  | EditorInChiefBlockNode;
+  | EditorInChiefBlockNode
+  | InvoiceGeneratorBlockNode;
 
 export type Node =
   | TextNode

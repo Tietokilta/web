@@ -3,7 +3,6 @@
 import { redirect } from "next/navigation";
 import { revalidateTag } from "next/cache";
 import * as z from "zod";
-import { err } from "../helpers";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 import {
   baseUrl,
@@ -15,13 +14,13 @@ import {
 
 // TODO: check if this makes any sense to introduce extra steps for signing up
 // perhaps it's much better to fetch on client side directly and then redirect
-export async function signUp(formData: FormData) {
+export async function signUp(formData: FormData): Promise<void> {
   "use server";
   const locale = getCurrentLocale();
 
   const quotaId = formData.get("quotaId");
   if (!quotaId) {
-    return err("ilmomasiina-ilmo-missing-quota-id");
+    return;
   }
 
   const response = await fetch(`${baseUrl}/api/signups`, {
@@ -33,13 +32,13 @@ export async function signUp(formData: FormData) {
   });
 
   if (!response.ok) {
-    return err("ilmomasiina-unknown-error");
+    return;
   }
 
   const data = (await response.json()) as IlmomasiinaSignupResponse;
 
   if ("statusCode" in data) {
-    return err("ilmomasiina-unknown-error");
+    return;
   }
 
   revalidateTag("ilmomasiina-events");
@@ -104,11 +103,19 @@ export async function saveSignUpAction(
 
   const t = await getScopedI18n("errors");
 
-  const response = await patchSignUp(signupId, signupEditToken, {
+  const signupResult = await getSignup(signupId, signupEditToken);
+  const multipleChoiceQuestions = signupResult.data?.event.questions
+    .filter((question) => question.type === "checkbox")
+    .map((question) => question.id);
+
+  const updatedSignupResult = await patchSignUp(signupId, signupEditToken, {
     id: signupId,
     answers: Object.entries(otherAnswers).map(([questionId, answer]) => ({
       questionId,
-      answer,
+      answer:
+        multipleChoiceQuestions?.includes(questionId) && !Array.isArray(answer)
+          ? [answer]
+          : answer,
     })),
     language: locale,
     firstName,
@@ -117,18 +124,30 @@ export async function saveSignUpAction(
     namePublic: namePublic === "on",
   });
 
-  if (!response.ok) {
-    if (response.error === "ilmomasiina-validation-failed") {
+  if (!updatedSignupResult.ok) {
+    if (updatedSignupResult.error === "ilmomasiina-validation-failed") {
+      const fieldErrors = updatedSignupResult.originalError?.errors?.answers
+        ? Object.fromEntries(
+            Object.entries(
+              updatedSignupResult.originalError.errors.answers,
+            ).map(([questionId, error]) => [questionId, [error]]),
+          )
+        : {};
+
       return {
         errors: {
-          _form: [t(response.error), response.originalError as string],
+          _form: [
+            t(updatedSignupResult.error),
+            updatedSignupResult.originalError?.message,
+          ].filter((x): x is string => !!x),
+          ...fieldErrors,
         },
       };
     }
 
     return {
       errors: {
-        _form: [t(response.error)],
+        _form: [t(updatedSignupResult.error)],
       },
     };
   }
@@ -146,19 +165,16 @@ const deleteSignUpSchema = z.object({
   signupEditToken: z.string(),
 });
 
-export async function deleteSignUpAction(formData: FormData) {
+export async function deleteSignUpAction(formData: FormData): Promise<void> {
   "use server";
   const locale = getCurrentLocale();
   const tp = await getScopedI18n("ilmomasiina.path");
-  const te = await getScopedI18n("errors");
   const data = deleteSignUpSchema.safeParse(
     Object.fromEntries(formData.entries()),
   );
 
   if (!data.success) {
-    return {
-      errors: data.error.flatten().fieldErrors,
-    };
+    return;
   }
 
   const { signupId, signupEditToken } = data.data;
@@ -167,11 +183,7 @@ export async function deleteSignUpAction(formData: FormData) {
   const deleteResult = await deleteSignUp(signupId, signupEditToken);
 
   if (!deleteResult.ok) {
-    return {
-      errors: {
-        _form: [te(deleteResult.error)],
-      },
-    };
+    return;
   }
 
   revalidateTag("ilmomasiina-events");

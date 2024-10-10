@@ -41,10 +41,45 @@ const fi = {
   "generic.Version": "Versio",
   "heading.Main navigation": "Päävalikko",
   "heading.Upcoming events": "Tulevat tapahtumat",
+  "invoicegenerator.Invoicer name": "Laskuttajan nimi",
+  "invoicegenerator.Invoicer email": "Laskuttajan sähköpostiosoite",
+  "invoicegenerator.Phone number": "Puhelinnumero",
+  "invoicegenerator.Subject": "Aihe",
+  "invoicegenerator.Description": "Perustelut",
+  "invoicegenerator.Bank account number": "Pankkitilin numero (IBAN)",
+  "invoicegenerator.Date": "Päiväys",
+  "invoicegenerator.Submit": "Lähetä",
+  "invoicegenerator.Street name": "Katuosoite",
+  "invoicegenerator.City": "Kaupunki",
+  "invoicegenerator.Postal code": "Postinumero",
+  "invoicegenerator.Product": "Tuote",
+  "invoicegenerator.Quantity": "Määrä",
+  "invoicegenerator.Unit": "Yksikkö",
+  "invoicegenerator.Unit price": "Yksikköhinta",
+  "invoicegenerator.Attachment": "Liite",
+  "invoicegenerator.Attachments": "Liitteet",
+  "invoicegenerator.Items": "Erittely",
+  "invoicegenerator.Sent invoice": "Lasku lähetetty",
+  "invoicegenerator.Remove": "Poista",
+  "invoicegenerator.Add": "Lisää",
+  "invoicegenerator.Address": "Osoite",
+  "invoicegenerator.Confirmation":
+    "Vakuutan antamani tiedot oikeiksi ja olen tarkistanut, että kuvat kuiteista ovat selkeitä.",
+  "invoicegenerator.Invoicer information": "Laskuttajan tiedot",
   "ilmomasiina.form.You are in queue at position {position}":
     "Olet jonossa sijalla {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "Olet kiintiössä {quotaName} sijalla {position}/{quotaSize}.",
+  "ilmomasiina.form.fieldError.missing": "Tämä kenttä on pakollinen.",
+  "ilmomasiina.form.fieldError.wrongType":
+    "Kentän vastaus on väärää tyyppiä. Kokeile päivittää sivu.",
+  "ilmomasiina.form.fieldError.tooLong": "Kentän vastaus on liian pitkä.",
+  "ilmomasiina.form.fieldError.invalidEmail":
+    "sähköpostiosoite on virheellinen. Syötä sallittu sähköpostiosoite.",
+  "ilmomasiina.form.fieldError.notANumber":
+    "Kentän vastauksen tulee olla numero.",
+  "ilmomasiina.form.fieldError.notAnOption":
+    "Kentän vastaus ei ole sallituissa vaihtoehdoissa. Kokeile päivittää sivu.",
   "ilmomasiina.form.optional": "valinnainen",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Näytetään julkisessa osallistujalistassa",
@@ -62,6 +97,13 @@ const fi = {
   "ilmomasiina.form.Sign up saved": "Ilmoittautuminen tallennettu!",
   "ilmomasiina.form.You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
     "Voit muokata ilmoittautumistasi tai poistaa sen myöhemmin tästä osoitteesta, joka lähetetään sähköpostiisi vahvistusviestissä.",
+  "ilmomasiina.form.Your signup cannot be changed anymore as the signup for the event has closed":
+    "Ilmoittautumistasi ei voi enää muokata tai perua, koska tapahtuman ilmoittautuminen on sulkeutunut.",
+  "ilmomasiina.form.Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.":
+    "Oletka varma, että haluat poistaa ilmoittautumisesi tapahtumaan {eventTitle}? Jos poistat ilmoittautumisesi, menetät paikkasi jonossa.",
+  "ilmomasiina.form.This action cannot be undone.":
+    "Tätä toimintoa ei voi perua.",
+  "ilmomasiina.form.Cancel": "Peruuta",
   "ilmomasiina.headers.Alkaa": "Alkaa",
   "ilmomasiina.headers.Ilmoittautumisaika": "Ilmoittautumisaika",
   "ilmomasiina.headers.Kategoria": "Kategoria",
@@ -73,6 +115,10 @@ const fi = {
   "ilmomasiina.Ilmoittautuminen": "Ilmoittautuminen",
   "ilmomasiina.Ilmoittautuneet": "Ilmoittautuneet",
   "ilmomasiina.Ilmoittautuneita": "Ilmoittautuneita",
+  "ilmomasiina.Piilotettu": "Piilotettu",
+  "ilmomasiina.Vahvistamaton": "Vahvistamaton",
+  "ilmomasiina.Avoin kiintiö": "Avoin kiintiö",
+  "ilmomasiina.Jonossa": "Jonossa",
   "ilmomasiina.path.events": "tapahtumat",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "Ei ilmoittautuneita vielä.",
   "ilmomasiina.status.Ilmoittautuminen alkaa":
@@ -91,9 +137,16 @@ const fi = {
   "ilmomasiina.Kopioidaan leikepöydälle": "Kopioidaan leikepöydälle",
   "ilmomasiina.Kopioitu leikepöydälle": "Kopioitu leikepöydälle",
   "not-found.Etusivulle": "Etusivulle",
+  "not-found.Tapahtumalistaukseen": "Tapahtumalistaukseen",
   "not-found.Sivua ei löytynyt": "Sivua ei löytynyt",
+  "not-found.Tapahtumaa ei löytynyt": "Tapahtumaa ei löytynyt",
+  "not-found.Ilmoittautumista ei löytynyt": "Ilmoit­tau­tumista ei löytynyt",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
     "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.",
+  "not-found.Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.",
+  "not-found.Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.",
   "weeklyNewsletter.ayy-aalto": "AYY & Aalto",
   "weeklyNewsletter.bottom-corner": "Pohjanurkkaus",
   "weeklyNewsletter.calendar": "Kalenteri",
@@ -108,6 +161,8 @@ const fi = {
     "Tällä viikolla avoinna olevat ilmoittautumiset",
   "weeklyNewsletter.title": "Viikkotiedotteet",
   "weeklyNewsletter.path": "viikkotiedotteet",
+  "weeklyNewsletter.link-to-sign-up": "Ilmoittautumiseen",
+  "weeklyNewsletter.for-event": "tapahtumalle",
   "calendar.Week": "Viikko",
   "calendar.Work Week": "Työviikko",
   "calendar.Day": "Päivä",

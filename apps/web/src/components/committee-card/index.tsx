@@ -21,7 +21,10 @@ function CommitteeMemberCard({
     <li className="relative flex flex-col border-2 border-gray-900">
       <Image
         alt={photo?.alt ?? ""}
-        className="w-full border-b-2 border-gray-900 object-cover object-center"
+        className={cn(
+          "h-48 w-full border-b-2 border-gray-900 object-center",
+          photo?.url ? "object-cover" : "bg-gray-100 object-contain",
+        )}
         height={photo?.height ? Math.trunc(photo.height) : undefined}
         src={photo?.url ?? TikLogo}
         width={photo?.width ? Math.trunc(photo.width) : undefined}

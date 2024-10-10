@@ -2,11 +2,22 @@
 
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
-import { Button, Checkbox, Input, Textarea, Radio } from "@tietokilta/ui";
+import {
+  Button,
+  Checkbox,
+  Input,
+  Textarea,
+  Radio,
+  Card,
+  type ButtonProps,
+  buttonVariants,
+} from "@tietokilta/ui";
 // eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
 import {
+  type IlmomasiinaFieldError,
+  ilmomasiinaFieldErrors,
   type IlmomasiinaEvent,
   type IlmomasiinaSignupInfo,
 } from "../../../../../lib/api/external/ilmomasiina";
@@ -19,6 +30,25 @@ import {
   useCurrentLocale,
   useScopedI18n,
 } from "../../../../../locales/client";
+import { cn } from "../../../../../lib/utils";
+
+type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
+
+function renderError(error: string, t: FieldErrorI18n) {
+  const isFieldError = ilmomasiinaFieldErrors.includes(
+    error as IlmomasiinaFieldError,
+  );
+
+  if (isFieldError) {
+    return t(error as IlmomasiinaFieldError);
+  }
+
+  return error;
+}
+
+function renderErrors(errors: string[], t: FieldErrorI18n) {
+  return errors.map((e) => renderError(e, t)).join(", ");
+}
 
 function InputRow({
   question,
@@ -30,6 +60,7 @@ function InputRow({
   errors?: string[];
 }) {
   const t = useScopedI18n("ilmomasiina.form");
+  const tfe = useScopedI18n("ilmomasiina.form.fieldError");
 
   const sharedInputProps = {
     id: `question-${question.id}`,
@@ -102,21 +133,68 @@ function InputRow({
       ) : null}
       {errors?.length ? (
         <span aria-live="polite" className="block text-red-600">
-          {errors.join(", ")}
+          {renderErrors(errors, tfe)}
         </span>
       ) : null}
     </Container>
   );
 }
 
-function SubmitButton({ isConfirmed }: { isConfirmed: boolean }) {
-  const t = useScopedI18n("ilmomasiina.form");
+function StatusButton({ disabled, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
 
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- it's on purpose to overwrite false in case it's pending
+  return <Button disabled={disabled || pending} {...props} />;
+}
+
+function ConfirmDeletePopover({
+  id,
+  eventTitle,
+  deleteAction,
+}: {
+  id: string;
+  eventTitle: string;
+  deleteAction: typeof deleteSignUpAction;
+}) {
+  const t = useScopedI18n("ilmomasiina.form");
   return (
-    <Button className="w-full max-w-sm" type="submit" disabled={pending}>
-      {isConfirmed ? t("Update") : t("Submit")}
-    </Button>
+    <Card
+      id={id}
+      popover="auto"
+      className="[&:popover-open]:flex [&:popover-open]:w-full [&:popover-open]:max-w-sm [&:popover-open]:flex-col [&:popover-open]:gap-2"
+    >
+      <p>
+        {t(
+          "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
+          {
+            eventTitle,
+          },
+        )}
+      </p>
+      <p>
+        <strong>{t("This action cannot be undone.")}</strong>
+      </p>
+      <input
+        type="button"
+        // @ts-expect-error -- this is a valid attribute
+        popovertarget={id}
+        popovertargetaction="hide"
+        className={cn(
+          buttonVariants({ variant: "outline" }),
+          "w-full max-w-sm cursor-pointer",
+        )}
+        value={t("Cancel")}
+      />
+      <StatusButton
+        type="submit"
+        formNoValidate
+        formAction={deleteAction}
+        variant="destructive"
+        className="w-full max-w-sm"
+      >
+        {t("Delete sign up")}
+      </StatusButton>
+    </Card>
   );
 }
 
@@ -137,6 +215,9 @@ function Form({
 }) {
   const t = useScopedI18n("ilmomasiina.form");
   const [state, formAction] = useFormState(saveAction, null);
+  const isSignupPeriodEnded =
+    !!event.registrationEndDate &&
+    new Date(event.registrationEndDate) < new Date();
 
   useEffect(() => {
     const errorFields = state?.errors
@@ -267,21 +348,43 @@ function Form({
             errors={state?.errors?.[question.id]}
           />
         ))}
-        <p className="w-full max-w-sm">
-          {t(
-            "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message",
+        <p
+          className={cn(
+            "w-full max-w-sm",
+            isSignupPeriodEnded && "text-red-600",
           )}
-        </p>
-        <SubmitButton isConfirmed={signup.confirmed} />
-        <Button
-          formNoValidate
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises
-          formAction={deleteAction}
-          variant="outline"
-          className="w-full max-w-sm"
         >
-          {t("Delete sign up")}
-        </Button>
+          {isSignupPeriodEnded
+            ? t(
+                "Your signup cannot be changed anymore as the signup for the event has closed",
+              )
+            : t(
+                "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message",
+              )}
+        </p>
+        <StatusButton
+          disabled={isSignupPeriodEnded}
+          className="w-full max-w-sm"
+          type="submit"
+        >
+          {signup.confirmed ? t("Update") : t("Submit")}
+        </StatusButton>
+        <input
+          type="button"
+          disabled={isSignupPeriodEnded}
+          // @ts-expect-error -- this is a valid attribute
+          popovertarget="confirm-delete"
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "w-full max-w-sm cursor-pointer",
+          )}
+          value={t("Delete sign up")}
+        />
+        <ConfirmDeletePopover
+          id="confirm-delete"
+          eventTitle={event.title}
+          deleteAction={deleteAction}
+        />
       </div>
     </form>
   );

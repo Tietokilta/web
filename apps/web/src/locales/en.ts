@@ -41,10 +41,45 @@ const en = {
   "generic.Version": "Version",
   "heading.Main navigation": "Main navigation",
   "heading.Upcoming events": "Upcoming events",
+  "invoicegenerator.Invoicer name": "Invoicer name",
+  "invoicegenerator.Invoicer email": "Invoicer email",
+  "invoicegenerator.Phone number": "Phone number",
+  "invoicegenerator.Subject": "Subject",
+  "invoicegenerator.Description": "Description",
+  "invoicegenerator.Bank account number": "Bank account number (IBAN)",
+  "invoicegenerator.Date": "Date",
+  "invoicegenerator.Submit": "Submit",
+  "invoicegenerator.Street name": "Street name",
+  "invoicegenerator.City": "City",
+  "invoicegenerator.Postal code": "Postal code",
+  "invoicegenerator.Product": "Product",
+  "invoicegenerator.Quantity": "Quantity",
+  "invoicegenerator.Unit": "Unit",
+  "invoicegenerator.Unit price": "Unit price",
+  "invoicegenerator.Attachment": "Attachment",
+  "invoicegenerator.Attachments": "Attachments",
+  "invoicegenerator.Items": "Items",
+  "invoicegenerator.Sent invoice": "Sent invoice",
+  "invoicegenerator.Remove": "Remove",
+  "invoicegenerator.Add": "Add",
+  "invoicegenerator.Address": "Address",
+  "invoicegenerator.Confirmation":
+    "I confirm that the information I have provided is correct and I have checked that the pictures of the receipts are clear.",
+  "invoicegenerator.Invoicer information": "Invoicer information",
   "ilmomasiina.form.You are in queue at position {position}":
     "You are in queue at position {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "You are in the quota {quotaName} at position {position}/{quotaSize}.",
+  "ilmomasiina.form.fieldError.missing": "This field is required.",
+  "ilmomasiina.form.fieldError.wrongType":
+    "The answer to this field is of the wrong type. Try refreshing the page.",
+  "ilmomasiina.form.fieldError.tooLong":
+    "Please enter a shorter value for this field.",
+  "ilmomasiina.form.fieldError.invalidEmail":
+    "Please enter a valid email address.",
+  "ilmomasiina.form.fieldError.notANumber": "Please enter a valid number.",
+  "ilmomasiina.form.fieldError.notAnOption":
+    "The answer to this question isn't in the allowed options. Try refreshing the page.",
   "ilmomasiina.form.optional": "optional",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Shown in the public list of sign ups",
@@ -62,6 +97,13 @@ const en = {
   "ilmomasiina.form.Sign up saved": "Sign up saved!",
   "ilmomasiina.form.You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
     "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message.",
+  "ilmomasiina.form.Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.":
+    "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
+  "ilmomasiina.form.This action cannot be undone.":
+    "This action cannot be undone.",
+  "ilmomasiina.form.Your signup cannot be changed anymore as the signup for the event has closed":
+    "Your signup cannot be changed anymore as the signup for the event has closed.",
+  "ilmomasiina.form.Cancel": "Cancel",
   "ilmomasiina.headers.Alkaa": "Starts",
   "ilmomasiina.headers.Ilmoittautumisaika": "Sign up time",
   "ilmomasiina.headers.Kategoria": "Category",
@@ -73,6 +115,10 @@ const en = {
   "ilmomasiina.Ilmoittautuminen": "Sign up",
   "ilmomasiina.Ilmoittautuneet": "Signed up",
   "ilmomasiina.Ilmoittautuneita": "Signed up",
+  "ilmomasiina.Piilotettu": "Hidden",
+  "ilmomasiina.Vahvistamaton": "Unconfirmed",
+  "ilmomasiina.Avoin kiintiö": "Open quota",
+  "ilmomasiina.Jonossa": "In queue",
   "ilmomasiina.path.events": "events",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
   "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign ups start on {startDate}",
@@ -89,9 +135,16 @@ const en = {
   "ilmomasiina.Kopioidaan leikepöydälle": "Copying to clipboard",
   "ilmomasiina.Kopioitu leikepöydälle": "Copied to clipboard",
   "not-found.Etusivulle": "To front page",
+  "not-found.Tapahtumalistaukseen": "To event list",
   "not-found.Sivua ei löytynyt": "Page not found",
+  "not-found.Tapahtumaa ei löytynyt": "Event not found",
+  "not-found.Ilmoittautumista ei löytynyt": "Sign up not found",
   "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
     "Page not found. Check the URL or return to the front page.",
+  "not-found.Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Event not found. Check the URL or return to the event list.",
+  "not-found.Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.":
+    "Sign up not found or the edit token was invalid. Check the URL or return to the event list.",
   "weeklyNewsletter.ayy-aalto": "AYY & Aalto",
   "weeklyNewsletter.bottom-corner": "Bottom Corner",
   "weeklyNewsletter.calendar": "Calendar",
@@ -105,6 +158,8 @@ const en = {
   "weeklyNewsletter.this-week-signups": "Sign ups open this week",
   "weeklyNewsletter.title": "Weekly newsletters",
   "weeklyNewsletter.path": "weekly-newsletters",
+  "weeklyNewsletter.link-to-sign-up": "To sign up",
+  "weeklyNewsletter.for-event": "for event",
   "calendar.Week": "Week",
   "calendar.Work Week": "Work Week",
   "calendar.Day": "Day",

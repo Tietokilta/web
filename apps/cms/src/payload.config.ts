@@ -25,6 +25,8 @@ import {
 } from "@payloadcms/richtext-lexical";
 import { oAuthPlugin } from "payload-plugin-oauth";
 import { buildConfig } from "payload/config";
+import { Honors } from "./collections/honors/honors";
+import { AwardedHonors } from "./collections/honors/awarded-honors";
 import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
 import { CommitteeMembers } from "./collections/committees/committee-members";
@@ -49,6 +51,7 @@ import { ActionsLink, ActionsView } from "./views/actions-view";
 import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { GoogleForm } from "./blocks/google-form";
 import { EditorInChief } from "./blocks/editor-in-chief";
+import { InvoiceGenerator } from "./blocks/invoice-generator";
 
 const {
   GOOGLE_OAUTH_CLIENT_ID,
@@ -107,6 +110,8 @@ export default buildConfig({
     News,
     WeeklyNewsletters,
     NewsItems,
+    Honors,
+    AwardedHonors,
   ],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
@@ -161,11 +166,18 @@ export default buildConfig({
           Boards.slug,
           Committees.slug,
           Magazines.slug,
+          Honors.slug,
         ],
       }),
       BlockQuoteFeature(),
       BlocksFeature({
-        blocks: [CommitteesInYear, ImageLinkGrid, GoogleForm, EditorInChief],
+        blocks: [
+          CommitteesInYear,
+          ImageLinkGrid,
+          GoogleForm,
+          EditorInChief,
+          InvoiceGenerator,
+        ],
       }),
       UploadFeature({
         collections: {

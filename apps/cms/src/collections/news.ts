@@ -54,6 +54,10 @@ export const News: CollectionConfig = {
           label: "PageLink",
           value: "page",
         },
+        {
+          label: "ExternalLink",
+          value: "external",
+        },
       ],
     },
     {
@@ -63,6 +67,24 @@ export const News: CollectionConfig = {
         condition: (_, siblingData) => siblingData.ctaType === "page",
       },
       relationTo: "pages",
+      required: true,
+    },
+    {
+      name: "externalLink",
+      type: "text",
+      admin: {
+        condition: (_, siblingData) => siblingData.ctaType === "external",
+      },
+      validate: (value: unknown) => {
+        try {
+          // eslint-disable-next-line no-new -- we want to throw an error if the URL is invalid
+          new URL(value as string);
+        } catch {
+          return "Invalid URL";
+        }
+
+        return true;
+      },
       required: true,
     },
     {

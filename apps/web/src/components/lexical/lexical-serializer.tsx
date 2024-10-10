@@ -19,9 +19,11 @@ import { BoardGrid } from "../board-grid";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
 import { MagazineList } from "../magazine-list";
+import { HonorsList } from "../honors-list";
 import { ImageLinkGrid } from "../image-link-grid";
 import { GoogleForm } from "../google-form";
 import { EditorInChief } from "../editor-in-chief";
+import { InvoiceGenerator } from "../invoice-generator";
 import {
   IS_BOLD,
   IS_CODE,
@@ -295,6 +297,9 @@ function Relationship({ node }: { node: RelationshipNode }) {
     case "magazines": {
       return <MagazineList magazine={node.value} />;
     }
+    case "honors": {
+      return <HonorsList honor={node.value} />;
+    }
     default: {
       // @ts-expect-error -- Extra safety for unknown relationTo since we're casting types and there may be some bogus relationships
       // eslint-disable-next-line no-console -- Nice to know if something is missing
@@ -319,6 +324,9 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "editor-in-chief": {
       return <EditorInChief name={node.fields.name} type={node.fields.type} />;
+    }
+    case "invoice-generator": {
+      return <InvoiceGenerator />;
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown blockType since we're casting types and there may be some bogus blocks

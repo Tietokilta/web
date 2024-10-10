@@ -1,6 +1,10 @@
 @tailwind base;
 
 @layer base {
+  :root {
+    color-scheme: light;
+  }
+
   *,
   *::before,
   *::after {
@@ -11,6 +15,10 @@
 @tailwind components;
 
 @layer components {
+  ::backdrop {
+    @apply backdrop-blur-sm;
+  }
+
   .scroll-shadows {
     background:
     /* Shadow Cover TOP */

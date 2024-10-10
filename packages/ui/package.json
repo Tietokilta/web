@@ -37,18 +37,18 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@icons-pack/react-simple-icons": "^9.6.0",
-    "@radix-ui/react-collapsible": "^1.1.0",
-    "@radix-ui/react-dialog": "^1.1.1",
-    "@radix-ui/react-navigation-menu": "^1.2.0",
+    "@icons-pack/react-simple-icons": "^10.0.0",
+    "@radix-ui/react-collapsible": "^1.1.1",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-navigation-menu": "^1.2.1",
     "@radix-ui/react-progress": "^1.1.0",
-    "@radix-ui/react-scroll-area": "^1.1.0",
+    "@radix-ui/react-scroll-area": "^1.2.0",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-tabs": "^1.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "catalog:",
-    "lucide-react": "^0.427.0",
+    "lucide-react": "^0.451.0",
     "tailwind-merge": "catalog:"
   },
   "devDependencies": {
@@ -60,7 +60,7 @@
     "eslint": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tsup": "^8.2.4",
+    "tsup": "^8.3.0",
     "typescript": "catalog:"
   },
   "peerDependencies": {

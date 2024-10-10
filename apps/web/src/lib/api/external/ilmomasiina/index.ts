@@ -86,9 +86,24 @@ export interface IlmomasiinaSignupSuccessResponse {
   editToken: string;
 }
 
+export const ilmomasiinaFieldErrors = [
+  "missing",
+  "wrongType",
+  "tooLong",
+  "invalidEmail",
+  "notANumber",
+  "notAnOption",
+] as const;
+
+export type IlmomasiinaFieldError = (typeof ilmomasiinaFieldErrors)[number];
+
 export interface IlmomasiinaErrorResponse {
   statusCode: number;
   message: string;
+  errors?: {
+    answers?: Record<string, IlmomasiinaFieldError>;
+  };
+  code?: string;
 }
 
 export type IlmomasiinaSignupResponse =
@@ -199,6 +214,11 @@ export const getSignup = async (
         return err("ilmomasiina-signup-not-found");
       }
 
+      if (response.status === 403) {
+        // invalid edit token
+        return err("ilmomasiina-signup-not-found");
+      }
+
       return err("ilmomasiina-fetch-fail");
     }
 
@@ -248,7 +268,7 @@ export const patchSignUp = async (
     email?: string;
     namePublic?: boolean;
   },
-): Promise<ApiResponse<{ id: string }>> => {
+): Promise<ApiResponse<{ id: string }, IlmomasiinaErrorResponse>> => {
   try {
     const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
       method: "PATCH",
@@ -267,12 +287,14 @@ export const patchSignUp = async (
       const errorData = (await response.json()) as IlmomasiinaErrorResponse;
 
       if (
+        errorData.code === "SignupValidationError" ||
+        errorData.message.startsWith("Errors validating signup") ||
         errorData.message.startsWith("Validation error") ||
         errorData.message.startsWith("Invalid answer") ||
         errorData.message.startsWith("Missing answer")
       ) {
         return err("ilmomasiina-validation-failed", {
-          originalError: errorData.message,
+          originalError: errorData,
         });
       }
 
