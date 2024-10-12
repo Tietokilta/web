@@ -1,3 +1,6 @@
 {
-  "extends": "@tietokilta/config-typescript/base.json"
+  "extends": "@tietokilta/config-typescript/base.json",
+  "compilerOptions": {
+    "target": "ES2018"
+  }
 }

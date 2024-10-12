@@ -64,9 +64,9 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: 'pnpm -C ../ dev',
-    url: 'http://127.0.0.1:3000',
+    command: "pnpm -C ../ dev",
+    url: "http://127.0.0.1:3000",
     timeout: 300 * 1000,
-    //reuseExistingServer: !process.env.CI,
+    reuseExistingServer: !process.env.CI,
   },
 });
