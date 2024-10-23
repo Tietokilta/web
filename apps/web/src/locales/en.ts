@@ -47,7 +47,7 @@ const en = {
   "invoicegenerator.Subject": "Subject",
   "invoicegenerator.Description": "Description",
   "invoicegenerator.Bank account number": "Bank account number (IBAN)",
-  "invoicegenerator.Due date": "Due date",
+  "invoicegenerator.Date": "Date",
   "invoicegenerator.Submit": "Submit",
   "invoicegenerator.Street name": "Street name",
   "invoicegenerator.City": "City",
@@ -70,6 +70,16 @@ const en = {
     "You are in queue at position {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "You are in the quota {quotaName} at position {position}/{quotaSize}.",
+  "ilmomasiina.form.fieldError.missing": "This field is required.",
+  "ilmomasiina.form.fieldError.wrongType":
+    "The answer to this field is of the wrong type. Try refreshing the page.",
+  "ilmomasiina.form.fieldError.tooLong":
+    "Please enter a shorter value for this field.",
+  "ilmomasiina.form.fieldError.invalidEmail":
+    "Please enter a valid email address.",
+  "ilmomasiina.form.fieldError.notANumber": "Please enter a valid number.",
+  "ilmomasiina.form.fieldError.notAnOption":
+    "The answer to this question isn't in the allowed options. Try refreshing the page.",
   "ilmomasiina.form.optional": "optional",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Shown in the public list of sign ups",
@@ -91,6 +101,8 @@ const en = {
     "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
   "ilmomasiina.form.This action cannot be undone.":
     "This action cannot be undone.",
+  "ilmomasiina.form.Your signup cannot be changed anymore as the signup for the event has closed":
+    "Your signup cannot be changed anymore as the signup for the event has closed.",
   "ilmomasiina.form.Cancel": "Cancel",
   "ilmomasiina.headers.Alkaa": "Starts",
   "ilmomasiina.headers.Ilmoittautumisaika": "Sign up time",

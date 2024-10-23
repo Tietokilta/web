@@ -3,12 +3,9 @@
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
 import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
-// eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import {
-  type FormEventHandler,
-  type HTMLInputAutoCompleteAttribute,
-  type HTMLInputTypeAttribute,
+  type InputHTMLAttributes,
   type ReactNode,
   useEffect,
   useState,
@@ -21,21 +18,10 @@ import {
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
 
-interface GenericFieldProps {
-  placeholder?: string;
+interface GenericFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  id?: string;
-  name: string;
-  autoComplete?: HTMLInputAutoCompleteAttribute;
-  type?: HTMLInputTypeAttribute;
-  defaultValue?: string;
-  multiple?: boolean;
-  required?: boolean;
-  step?: number | "any";
-  min?: number;
   unit?: string;
-  maxLength?: number;
-  onBeforeInput?: FormEventHandler<HTMLInputElement>;
+  name: string;
 }
 
 function InputLabel({ name, htmlId }: { name: string; htmlId: string }) {
@@ -142,10 +128,21 @@ function SubmitButton({
   );
 }
 
-function DeleteButton({ onClick }: { onClick: () => void }) {
+function DeleteButton({
+  onClick,
+  disabled,
+}: {
+  onClick: () => void;
+  disabled: boolean;
+}) {
   const t = useScopedI18n("invoicegenerator");
   return (
-    <Button className="my-8" onClick={onClick} type="button">
+    <Button
+      className="my-8"
+      onClick={onClick}
+      type="button"
+      disabled={disabled}
+    >
       {t("Remove")}
     </Button>
   );
@@ -154,6 +151,7 @@ function DeleteButton({ onClick }: { onClick: () => void }) {
 function InputRowArray({
   Row,
   label,
+  itemLabel,
   name,
   state,
   minimumRows,
@@ -166,6 +164,7 @@ function InputRowArray({
     index: number;
   }) => ReactNode;
   label: string;
+  itemLabel: string;
   name: string;
   state: InvoiceGeneratorFormState | null;
   minimumRows?: 1 | 0;
@@ -189,15 +188,16 @@ function InputRowArray({
         <div>
           {rows.map((row, index) => (
             <div key={row} id={`${htmlId}.${index.toString()}`}>
+              <h3>
+                {itemLabel} {index + 1}
+              </h3>
               <Row state={state} index={index} />
-              {/* Do not add delete button for first row because the invoice has to always have at least one row */}
-              {index > 0 && minimumRows === 1 ? (
-                <DeleteButton
-                  onClick={() => {
-                    setRows(rows.filter((filterRow) => filterRow !== row));
-                  }}
-                />
-              ) : null}
+              <DeleteButton
+                disabled={rows.length === minimumRows}
+                onClick={() => {
+                  setRows(rows.filter((filterRow) => filterRow !== row));
+                }}
+              />
             </div>
           ))}
         </div>
@@ -253,31 +253,37 @@ function InvoiceItem({
           required
         />
       </ErrorMessageBlock>
-      <ErrorMessageBlock
-        elementName={`rows[${index.toString()}].quantity`}
-        formState={state}
-      >
-        <InputRow
-          label={t("Quantity")}
-          name="rows.quantity"
-          id={`rows[${index.toString()}].quantity`}
-          type="number"
-          required
-        />
-      </ErrorMessageBlock>
-      <ErrorMessageBlock
-        elementName={`rows[${index.toString()}].unit`}
-        formState={state}
-      >
-        <InputRow
-          label={t("Unit")}
-          name="rows.unit"
-          id={`rows[${index.toString()}].unit`}
-          defaultValue="kpl"
-          maxLength={128}
-          required
-        />
-      </ErrorMessageBlock>
+      <fieldset className="flex">
+        <span className="mr-0.5 grow">
+          <ErrorMessageBlock
+            elementName={`rows[${index.toString()}].quantity`}
+            formState={state}
+          >
+            <InputRow
+              label={t("Quantity")}
+              name="rows.quantity"
+              id={`rows[${index.toString()}].quantity`}
+              type="number"
+              required
+            />
+          </ErrorMessageBlock>
+        </span>
+        <span className="ml-0.5 grow">
+          <ErrorMessageBlock
+            elementName={`rows[${index.toString()}].unit`}
+            formState={state}
+          >
+            <InputRow
+              label={t("Unit")}
+              name="rows.unit"
+              id={`rows[${index.toString()}].unit`}
+              defaultValue="kpl"
+              maxLength={128}
+              required
+            />
+          </ErrorMessageBlock>
+        </span>
+      </fieldset>
       <ErrorMessageBlock
         elementName={`rows[${index.toString()}].unit_price`}
         formState={state}
@@ -369,6 +375,7 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Invoicer name")}
             name="recipient_name"
+            placeholder="Teemu Teekkari"
             autoComplete="name"
             maxLength={128}
             required
@@ -378,6 +385,7 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Invoicer email")}
             maxLength={128}
+            placeholder="teemu.teekkari@aalto.fi"
             name="recipient_email"
             type="email"
             required
@@ -403,17 +411,25 @@ function InvoiceGeneratorForm() {
           <InputRow
             label={t("Street name")}
             name="street_name"
+            placeholder="Konemiehentie 2"
             maxLength={128}
             required
           />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="city" formState={state}>
-          <InputRow label={t("City")} name="city" maxLength={128} required />
+          <InputRow
+            label={t("City")}
+            name="city"
+            placeholder="Espoo"
+            maxLength={128}
+            required
+          />
         </ErrorMessageBlock>
         <ErrorMessageBlock elementName="zip" formState={state}>
           <InputRow
             label={t("Postal code")}
             name="zip"
+            placeholder="02150"
             maxLength={128}
             required
           />
@@ -431,7 +447,7 @@ function InvoiceGeneratorForm() {
         <TextAreaInputRow
           label={t("Description")}
           name="description"
-          maxLength={128}
+          maxLength={4096}
           required
         />
       </ErrorMessageBlock>
@@ -447,11 +463,12 @@ function InvoiceGeneratorForm() {
         />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="due_date" formState={state}>
-        <InputRow label={t("Due date")} name="due_date" type="date" required />
+        <InputRow label={t("Date")} name="due_date" type="date" required />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="rows" formState={state}>
         <InputRowArray
           label={t("Items")}
+          itemLabel={t("Product")}
           name="rows"
           state={state}
           Row={InvoiceItem}
@@ -460,6 +477,7 @@ function InvoiceGeneratorForm() {
       </ErrorMessageBlock>
       <InputRowArray
         label={t("Attachments")}
+        itemLabel={t("Attachment")}
         name="attachments"
         state={state}
         Row={AttachmentRow}

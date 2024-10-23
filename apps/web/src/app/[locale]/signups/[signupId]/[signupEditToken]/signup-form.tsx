@@ -10,11 +10,13 @@ import {
   Radio,
   Card,
   type ButtonProps,
+  buttonVariants,
 } from "@tietokilta/ui";
-// eslint-disable-next-line import/named -- Next.js magic enables this
 import { useFormState, useFormStatus } from "react-dom";
 import { useEffect } from "react";
 import {
+  type IlmomasiinaFieldError,
+  ilmomasiinaFieldErrors,
   type IlmomasiinaEvent,
   type IlmomasiinaSignupInfo,
 } from "../../../../../lib/api/external/ilmomasiina";
@@ -27,6 +29,25 @@ import {
   useCurrentLocale,
   useScopedI18n,
 } from "../../../../../locales/client";
+import { cn } from "../../../../../lib/utils";
+
+type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
+
+function renderError(error: string, t: FieldErrorI18n) {
+  const isFieldError = ilmomasiinaFieldErrors.includes(
+    error as IlmomasiinaFieldError,
+  );
+
+  if (isFieldError) {
+    return t(error as IlmomasiinaFieldError);
+  }
+
+  return error;
+}
+
+function renderErrors(errors: string[], t: FieldErrorI18n) {
+  return errors.map((e) => renderError(e, t)).join(", ");
+}
 
 function InputRow({
   question,
@@ -38,6 +59,7 @@ function InputRow({
   errors?: string[];
 }) {
   const t = useScopedI18n("ilmomasiina.form");
+  const tfe = useScopedI18n("ilmomasiina.form.fieldError");
 
   const sharedInputProps = {
     id: `question-${question.id}`,
@@ -110,17 +132,18 @@ function InputRow({
       ) : null}
       {errors?.length ? (
         <span aria-live="polite" className="block text-red-600">
-          {errors.join(", ")}
+          {renderErrors(errors, tfe)}
         </span>
       ) : null}
     </Container>
   );
 }
 
-function StatusButton(props: Omit<ButtonProps, "disabled">) {
+function StatusButton({ disabled, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
 
-  return <Button disabled={pending} {...props} />;
+  // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing -- it's on purpose to overwrite false in case it's pending
+  return <Button disabled={disabled || pending} {...props} />;
 }
 
 function ConfirmDeletePopover({
@@ -150,19 +173,20 @@ function ConfirmDeletePopover({
       <p>
         <strong>{t("This action cannot be undone.")}</strong>
       </p>
-      <Button
+      <input
         type="button"
-        popoverTarget={id}
-        popoverTargetAction="hide"
-        variant="outline"
-        className="w-full max-w-sm"
-      >
-        {t("Cancel")}
-      </Button>
+        // @ts-expect-error -- this is a valid attribute
+        popovertarget={id}
+        popovertargetaction="hide"
+        className={cn(
+          buttonVariants({ variant: "outline" }),
+          "w-full max-w-sm cursor-pointer",
+        )}
+        value={t("Cancel")}
+      />
       <StatusButton
         type="submit"
         formNoValidate
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises -- server actions can be ignored promises
         formAction={deleteAction}
         variant="destructive"
         className="w-full max-w-sm"
@@ -190,6 +214,9 @@ function Form({
 }) {
   const t = useScopedI18n("ilmomasiina.form");
   const [state, formAction] = useFormState(saveAction, null);
+  const isSignupPeriodEnded =
+    !!event.registrationEndDate &&
+    new Date(event.registrationEndDate) < new Date();
 
   useEffect(() => {
     const errorFields = state?.errors
@@ -320,22 +347,38 @@ function Form({
             errors={state?.errors?.[question.id]}
           />
         ))}
-        <p className="w-full max-w-sm">
-          {t(
-            "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message",
+        <p
+          className={cn(
+            "w-full max-w-sm",
+            isSignupPeriodEnded && "text-red-600",
           )}
+        >
+          {isSignupPeriodEnded
+            ? t(
+                "Your signup cannot be changed anymore as the signup for the event has closed",
+              )
+            : t(
+                "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message",
+              )}
         </p>
-        <StatusButton className="w-full max-w-sm" type="submit">
+        <StatusButton
+          disabled={isSignupPeriodEnded}
+          className="w-full max-w-sm"
+          type="submit"
+        >
           {signup.confirmed ? t("Update") : t("Submit")}
         </StatusButton>
-        <Button
+        <input
           type="button"
-          popoverTarget="confirm-delete"
-          variant="outline"
-          className="w-full max-w-sm"
-        >
-          {t("Delete sign up")}
-        </Button>
+          disabled={isSignupPeriodEnded}
+          // @ts-expect-error -- this is a valid attribute
+          popovertarget="confirm-delete"
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "w-full max-w-sm cursor-pointer",
+          )}
+          value={t("Delete sign up")}
+        />
         <ConfirmDeletePopover
           id="confirm-delete"
           eventTitle={event.title}

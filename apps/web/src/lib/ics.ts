@@ -15,7 +15,10 @@ export function createEvents(
   return `BEGIN:VCALENDAR\r
 PRODID:-//Tietokilta//Ilmomasiina//FI\r
 VERSION:2.0\r
+METHOD:PUBLISH\r
 CALSCALE:GREGORIAN\r
+X-WR-CALNAME:Tietokillan tapahtumat | Tietokilta events\r
+X-PUBLISHED-TTL:PT1H\r
 BEGIN:VTIMEZONE\r
 TZID:Europe/Helsinki\r
 TZURL:https://www.tzurl.org/zoneinfo/Europe/Helsinki\r
@@ -106,7 +109,7 @@ function createEvent(
 UID:${event.id}@${host}\r
 SUMMARY:${event.title}\r
 LOCATION:${event.location}\r
-URL:${origin}/events/${event.slug}\r
+URL:${foldICSText(`${origin}/events/${event.slug}`)}\r
 CATEGORIES:${event.category}\r
 DESCRIPTION:
  ${formatDescription(event.description)}
@@ -128,7 +131,7 @@ DTEND;VALUE=DATE:${formatDate(startDate)}`;
 
   return `DTSTAMP:${formatDateTime(startDate)}Z\r
 DTSTART:${formatDateTime(startDate)}Z\r
-DTEND:${formatDateTime(endDate)}`;
+DTEND:${formatDateTime(endDate)}Z`;
 }
 
 const formatDate = (date: Date) =>

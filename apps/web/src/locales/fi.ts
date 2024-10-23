@@ -47,7 +47,7 @@ const fi = {
   "invoicegenerator.Subject": "Aihe",
   "invoicegenerator.Description": "Perustelut",
   "invoicegenerator.Bank account number": "Pankkitilin numero (IBAN)",
-  "invoicegenerator.Due date": "Päiväys",
+  "invoicegenerator.Date": "Päiväys",
   "invoicegenerator.Submit": "Lähetä",
   "invoicegenerator.Street name": "Katuosoite",
   "invoicegenerator.City": "Kaupunki",
@@ -70,6 +70,16 @@ const fi = {
     "Olet jonossa sijalla {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "Olet kiintiössä {quotaName} sijalla {position}/{quotaSize}.",
+  "ilmomasiina.form.fieldError.missing": "Tämä kenttä on pakollinen.",
+  "ilmomasiina.form.fieldError.wrongType":
+    "Kentän vastaus on väärää tyyppiä. Kokeile päivittää sivu.",
+  "ilmomasiina.form.fieldError.tooLong": "Kentän vastaus on liian pitkä.",
+  "ilmomasiina.form.fieldError.invalidEmail":
+    "sähköpostiosoite on virheellinen. Syötä sallittu sähköpostiosoite.",
+  "ilmomasiina.form.fieldError.notANumber":
+    "Kentän vastauksen tulee olla numero.",
+  "ilmomasiina.form.fieldError.notAnOption":
+    "Kentän vastaus ei ole sallituissa vaihtoehdoissa. Kokeile päivittää sivu.",
   "ilmomasiina.form.optional": "valinnainen",
   "ilmomasiina.form.Shown in the public list of sign ups":
     "Näytetään julkisessa osallistujalistassa",
@@ -87,6 +97,8 @@ const fi = {
   "ilmomasiina.form.Sign up saved": "Ilmoittautuminen tallennettu!",
   "ilmomasiina.form.You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
     "Voit muokata ilmoittautumistasi tai poistaa sen myöhemmin tästä osoitteesta, joka lähetetään sähköpostiisi vahvistusviestissä.",
+  "ilmomasiina.form.Your signup cannot be changed anymore as the signup for the event has closed":
+    "Ilmoittautumistasi ei voi enää muokata tai perua, koska tapahtuman ilmoittautuminen on sulkeutunut.",
   "ilmomasiina.form.Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.":
     "Oletka varma, että haluat poistaa ilmoittautumisesi tapahtumaan {eventTitle}? Jos poistat ilmoittautumisesi, menetät paikkasi jonossa.",
   "ilmomasiina.form.This action cannot be undone.":

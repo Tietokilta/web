@@ -3,6 +3,7 @@ import type {
   Committee,
   Document,
   Magazine,
+  Honor,
   Media,
   Page,
 } from "./payload";
@@ -139,11 +140,18 @@ export type MagazineRelationshipNode = BaseNode & {
   value: Magazine;
 };
 
+export type HonorsRelationshipNode = BaseNode & {
+  type: "relationship";
+  relationTo: "honors";
+  value: Honor;
+};
+
 export type RelationshipNode =
   | PageRelationshipNode
   | BoardRelationshipNode
   | CommitteeRelationshipNode
-  | MagazineRelationshipNode;
+  | MagazineRelationshipNode
+  | HonorsRelationshipNode;
 
 export type BaseBlockFields = {
   id: string;

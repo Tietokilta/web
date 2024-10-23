@@ -1,8 +1,15 @@
 import type { CollectionConfig, FieldHook } from "payload/types";
 import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
+import { type PayloadHandler } from "payload/config";
 import { signedIn } from "../../access/signed-in";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
 import { publishedOrSignedIn } from "../../access/published-or-signed-in";
+import {
+  getEmailController,
+  getTelegramMessageController,
+  newsletterSenderController,
+} from "../../controllers/newsletter-controller";
+import NewsletterButton from "./newsletter-button";
 
 const formatSlug: FieldHook<WeeklyNewsletter, WeeklyNewsletter["slug"]> = ({
   data,
@@ -69,10 +76,37 @@ export const WeeklyNewsletters: CollectionConfig = {
         position: "sidebar",
       },
     },
+    {
+      name: "sendEmailButton",
+      type: "ui",
+      admin: {
+        components: {
+          Field: NewsletterButton,
+        },
+        position: "sidebar",
+      },
+    },
   ],
   hooks: {
     afterChange: [revalidateCollection<WeeklyNewsletter>("weekly-newsletters")],
   },
+  endpoints: [
+    {
+      path: "/mail/:newsletterId",
+      method: "post",
+      handler: newsletterSenderController as PayloadHandler,
+    },
+    {
+      path: "/mail/:newsletterId",
+      method: "get",
+      handler: getEmailController as PayloadHandler,
+    },
+    {
+      path: "/telegram/:newsletterId",
+      method: "get",
+      handler: getTelegramMessageController as PayloadHandler,
+    },
+  ],
   versions: {
     drafts: true,
   },

@@ -83,7 +83,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
 
       <AnnouncementIcon className="hidden md:block" type={news.type} />
 
-      <div className="hidden flex-col md:flex">
+      <div className="hidden flex-1 flex-col md:flex">
         <div className="flex flex-col">
           <h2 className="text-lg font-medium">{news.title}</h2>
           <p>{news.excerpt}</p>
@@ -91,6 +91,16 @@ export async function AnnouncementCard({ news }: { news: News }) {
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild className="md:self-end" variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
+              <span aria-hidden="true">{t("Read more")}</span>
+              <span className="sr-only">
+                {t("Read more about {something}", { something: news.title })}
+              </span>
+            </Link>
+          </Button>
+        ) : null}
+        {news.ctaType === "external" && news.externalLink ? (
+          <Button asChild className="md:self-end" variant="link">
+            <Link href={news.externalLink}>
               <span aria-hidden="true">{t("Read more")}</span>
               <span className="sr-only">
                 {t("Read more about {something}", { something: news.title })}
@@ -111,6 +121,16 @@ export async function AnnouncementCard({ news }: { news: News }) {
         {news.ctaType === "page" && news.pageLink ? (
           <Button asChild variant="link">
             <Link href={(news.pageLink as Page).path ?? "#broken"}>
+              <span aria-hidden="true">{t("Read more")}</span>
+              <span className="sr-only">
+                {t("Read more about {something}", { something: news.title })}
+              </span>
+            </Link>
+          </Button>
+        ) : null}
+        {news.ctaType === "external" && news.externalLink ? (
+          <Button asChild className="md:self-end" variant="link">
+            <Link href={news.externalLink}>
               <span aria-hidden="true">{t("Read more")}</span>
               <span className="sr-only">
                 {t("Read more about {something}", { something: news.title })}

@@ -52,7 +52,7 @@ function ImageWithCitation({
       <footer className="contents">
         <cite
           className={cn(
-            "absolute bottom-0 right-2 text-gray-100 opacity-50",
+            "absolute right-2 top-0 text-gray-100 opacity-50",
             isCurrentImage ? "block" : "hidden",
           )}
         >
