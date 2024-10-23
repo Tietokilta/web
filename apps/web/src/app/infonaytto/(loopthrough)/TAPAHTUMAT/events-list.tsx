@@ -167,7 +167,11 @@ function getWeek(date: Date) {
   // Calculate how many weeks have passed
   const diff = date.getTime() - firstMondayOfYear.getTime();
   const days = diff / (1000 * 60 * 60 * 24 * 7);
-  const weeknumber = Math.ceil(days);
+  let weeknumber = Math.ceil(days);
+  weeknumber =
+    date.getFullYear() > new Date().getFullYear()
+      ? weeknumber + 52
+      : weeknumber;
   return weeknumber;
 }
 
