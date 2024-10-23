@@ -24,7 +24,7 @@ const STOPS = [
   // Aalto Yliopisto bus stop "east" and "west"
   ["HSL:2222234", "HSL:2222212"],
 ] as const;
-const N_ARRIVALS = 6;
+const N_ARRIVALS = 10;
 
 export const dynamic = "force-dynamic";
 
@@ -206,7 +206,7 @@ const getStop = async (
       .map((arr) => arr)
       .concat(result2.arrival.map((arr) => arr))
       .sort((arr1, arr2) => arr1.realTimeArrival - arr2.realTimeArrival)
-      .slice(0, n + 1),
+      .slice(0, N_ARRIVALS),
   };
   const ArrivalsFormatted: ArrivalAttribute[] = result.arrival
     .map((arr: Arrival) => {
