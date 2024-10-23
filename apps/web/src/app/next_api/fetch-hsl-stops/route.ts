@@ -30,7 +30,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const stops = await Promise.all(STOPS.map(getStop));
-
+  console.log(stops)
   const dataFromHsl: RenderableStop[] = stops.filter(
     <T>(stop: T | null): stop is T => stop !== null,
   );
