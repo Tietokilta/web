@@ -1,5 +1,7 @@
+import Eventslist from "./events-list";
+
 export function InfoScreen() {
-  return <div />;
+  return <Eventslist />;
 }
 
 export default InfoScreen;
