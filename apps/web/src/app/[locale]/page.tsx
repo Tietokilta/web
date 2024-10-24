@@ -26,11 +26,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Home({
-  searchParams: { page },
-}: {
-  searchParams: { page?: string | string[] };
+export default async function Home(props: {
+  searchParams: Promise<{ page?: string | string[] }>;
 }) {
+  const searchParams = await props.searchParams;
+
+  const { page } = searchParams;
+
   const locale = getCurrentLocale();
 
   const landingPageData = await fetchLandingPage(locale)({});

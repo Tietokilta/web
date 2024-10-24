@@ -19,9 +19,9 @@ const robotoMono = Roboto_Mono({
 });
 
 export interface LayoutProps {
-  params: {
+  params: Promise<{
     locale: Locale;
-  };
+  }>;
 }
 
 const localizedMetadata = {
@@ -60,27 +60,36 @@ const icons = {
 
 const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
 
-export const generateMetadata = ({
-  params: { locale },
-}: LayoutProps): Metadata => ({
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
-  ...(localizedMetadata[locale] || localizedMetadata.fi),
-  metadataBase: new URL(mainUrl),
-  generator: "Next.js",
-  creator: "Tietokilta ry",
-  icons,
-});
+export const generateMetadata = async (
+  props: LayoutProps,
+): Promise<Metadata> => {
+  const { locale } = await props.params;
+  return {
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
+    ...(localizedMetadata[locale] || localizedMetadata.fi),
+
+    metadataBase: new URL(mainUrl),
+    generator: "Next.js",
+    creator: "Tietokilta ry",
+    icons,
+  };
+};
 
 export const viewport: Viewport = {
   themeColor: "black",
 };
 
-export default function RootLayout({
-  children,
-  params: { locale },
-}: {
-  children: React.ReactNode;
-} & LayoutProps) {
+export default async function RootLayout(
+  props: {
+    children: React.ReactNode;
+  } & LayoutProps,
+) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  const { children } = props;
+
   return (
     <html lang={locale}>
       <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>

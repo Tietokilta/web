@@ -1,4 +1,5 @@
 import type { CommitteesYearBlockNode } from "@tietokilta/cms-types/lexical";
+import type { JSX } from "react";
 import { fetchCommittees } from "../../lib/api/committees";
 import { CommitteeCard } from "../committee-card";
 import { getCurrentLocale } from "../../locales/server";
