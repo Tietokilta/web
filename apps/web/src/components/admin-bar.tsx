@@ -1,5 +1,5 @@
 import type { Config } from "@tietokilta/cms-types/payload";
-import { draftMode } from "next/headers";
+import { draftMode, type UnsafeUnwrappedDraftMode } from "next/headers";
 import { AdminBarClient } from "./admin-bar-client";
 
 export function AdminBar({
@@ -9,7 +9,8 @@ export function AdminBar({
   id?: string;
   collection?: keyof Config["collections"];
 }) {
-  const { isEnabled: isPreviewMode } = draftMode();
+  const { isEnabled: isPreviewMode } =
+    draftMode() as unknown as UnsafeUnwrappedDraftMode;
 
   return (
     <AdminBarClient
