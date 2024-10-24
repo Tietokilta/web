@@ -55,11 +55,11 @@
     "@tietokilta/config-typescript": "workspace:*",
     "@tietokilta/eslint-config": "workspace:*",
     "@types/node": "catalog:",
-    "@types/react": "catalog:",
-    "@types/react-dom": "catalog:",
+    "@types/react": "catalog:react19",
+    "@types/react-dom": "catalog:react19",
     "eslint": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19",
     "tsup": "^8.3.5",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"
@@ -68,8 +68,8 @@
     "@tailwindcss/typography": "catalog:",
     "autoprefixer": "catalog:",
     "postcss": "catalog:",
-    "react": "catalog:",
-    "react-dom": "catalog:",
+    "react": "catalog:react19",
+    "react-dom": "catalog:react19",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "catalog:"
   }

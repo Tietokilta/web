@@ -37,13 +37,13 @@ export async function GET(
   const userRes = (await userReq.json()) as { user?: unknown } | null;
 
   if (!userReq.ok || !userRes?.user) {
-    draftMode().disable();
+    (await draftMode()).disable();
     return new Response("You are not allowed to preview this page", {
       status: 403,
     });
   }
 
-  draftMode().enable();
+  (await draftMode()).enable();
 
   redirect(url);
 }

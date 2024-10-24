@@ -409,14 +409,16 @@ async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
 }
 
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export const generateMetadata = async ({
-  params: { slug },
-}: PageProps): Promise<Metadata> => {
+export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
+  const params = await props.params;
+
+  const { slug } = params;
+
   const event = await fetchEvent(slug);
   if (!event.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
@@ -434,8 +436,12 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function Page({ params: { slug } }: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+  const { slug } = params;
+
   const locale = await getCurrentLocale();
+
   const event = await fetchEvent(slug);
   const t = await getScopedI18n("action");
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
