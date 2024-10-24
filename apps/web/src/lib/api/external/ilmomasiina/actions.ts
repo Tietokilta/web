@@ -42,7 +42,7 @@ export async function signUp(formData: FormData): Promise<void> {
   }
 
   revalidateTag("ilmomasiina-events");
-  redirect(`/${locale}/signups/${data.id}/${data.editToken}`);
+  redirect(`/${locale}/signups/${data.id}/${data.editToken}?scroll-top`);
 }
 
 const saveSignUpSchema = z
