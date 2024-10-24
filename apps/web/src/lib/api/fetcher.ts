@@ -20,10 +20,10 @@ export function fetcher<TRequest, TResponse>({
   return async (req: TRequest): Promise<TResponse | undefined | null> => {
     let payloadToken: RequestCookie | undefined;
 
-    const { isEnabled: isDraftMode } = draftMode();
+    const { isEnabled: isDraftMode } = await draftMode();
 
     if (isDraftMode) {
-      payloadToken = cookies().get("payload-token");
+      payloadToken = (await cookies()).get("payload-token");
     }
     // eslint-disable-next-line no-console -- for debugging purposes
     console.log("tagToCache", tags);

@@ -11,15 +11,17 @@ import { getLocalizedEventTitle } from "../../../../../lib/utils";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     signupId: string;
     signupEditToken: string;
-  };
+  }>;
 }
 
-export const generateMetadata = async ({
-  params: { signupId, signupEditToken },
-}: PageProps) => {
+export const generateMetadata = async (props: PageProps) => {
+  const params = await props.params;
+
+  const { signupId, signupEditToken } = params;
+
   const signupInfo = await getSignup(signupId, signupEditToken);
   const t = await getScopedI18n("ilmomasiina.form");
 
@@ -36,9 +38,11 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function Page({
-  params: { signupId, signupEditToken },
-}: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+
+  const { signupId, signupEditToken } = params;
+
   const signupInfo = await getSignup(signupId, signupEditToken);
 
   if (!signupInfo.ok && signupInfo.error === "ilmomasiina-signup-not-found") {
