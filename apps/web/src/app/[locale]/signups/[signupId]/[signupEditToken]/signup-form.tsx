@@ -12,8 +12,9 @@ import {
   type ButtonProps,
   buttonVariants,
 } from "@tietokilta/ui";
-import { useFormState, useFormStatus } from "react-dom";
-import { useEffect } from "react";
+import { useFormStatus } from "react-dom";
+import { useActionState, useEffect } from "react";
+import NextForm from "next/form";
 import {
   type IlmomasiinaFieldError,
   ilmomasiinaFieldErrors,
@@ -213,7 +214,7 @@ function Form({
   deleteAction: typeof deleteSignUpAction;
 }) {
   const t = useScopedI18n("ilmomasiina.form");
-  const [state, formAction] = useFormState(saveAction, null);
+  const [state, formAction] = useActionState(saveAction, null);
   const isSignupPeriodEnded =
     !!event.registrationEndDate &&
     new Date(event.registrationEndDate) < new Date();
@@ -232,7 +233,7 @@ function Form({
   }, [state]);
 
   return (
-    <form
+    <NextForm
       action={formAction}
       className="shadow-solid w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 md:px-6 md:py-8"
     >
@@ -385,7 +386,7 @@ function Form({
           deleteAction={deleteAction}
         />
       </div>
-    </form>
+    </NextForm>
   );
 }
 
