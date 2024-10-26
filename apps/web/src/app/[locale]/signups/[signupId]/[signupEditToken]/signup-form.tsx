@@ -218,6 +218,11 @@ function Form({
     !!event.registrationEndDate &&
     new Date(event.registrationEndDate) < new Date();
 
+  // On first render, scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   useEffect(() => {
     const errorFields = state?.errors
       ? Object.keys(state.errors).filter((v) => v !== "_form")
