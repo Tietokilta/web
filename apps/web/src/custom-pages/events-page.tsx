@@ -12,6 +12,7 @@ import {
   formatDateYear,
   formatDateYearOptions,
   formatDatetimeYear,
+  getLocalizedEventTitle,
 } from "../lib/utils";
 import { BackButton } from "../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
@@ -130,7 +131,7 @@ async function EventCard({ event }: { event: IlmomasiinaEvent }) {
         href={`/${locale}/${t("events")}/${event.slug}`}
         className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline md:w-1/3"
       >
-        <h2>{event.title}</h2>
+        <h2>{getLocalizedEventTitle(event.title, locale)}</h2>
       </Link>
 
       {event.date ? (
