@@ -68,6 +68,8 @@ const en = {
   "invoicegenerator.Invoicer information": "Invoicer information",
   "ilmomasiina.form.You are in queue at position {position}":
     "You are in queue at position {position}.",
+  "ilmomasiina.form.You are in the quota {quotaName} at position {position}":
+    "You are in the quota {quotaName} at position {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "You are in the quota {quotaName} at position {position}/{quotaSize}.",
   "ilmomasiina.form.fieldError.missing": "This field is required.",

@@ -76,7 +76,7 @@ async function SignupQuotas({
     (acc, quota) => acc + (quota.signupCount ?? 0),
     0,
   );
-  const totalSize = quotas.reduce((acc, quota) => acc + quota.size, 0);
+  const totalSize = quotas.reduce((acc, quota) => acc + (quota.size ?? 0), 0);
 
   const isSingleQuota = quotas.length === 1;
 
@@ -107,9 +107,13 @@ async function SignupQuotas({
           key={quota.id}
         >
           <span className="w-3/4 truncate">{quota.title}</span>{" "}
-          <span className="w-1/4 text-left">
-            {quota.signupCount} / {quota.size}
-          </span>
+          {typeof quota.size === "number" ? (
+            <span className="w-1/4 text-left">
+              {quota.signupCount} / {quota.size}
+            </span>
+          ) : (
+            <span className="w-1/4 text-left">{quota.signupCount}</span>
+          )}
         </li>
       ))}
     </ul>
