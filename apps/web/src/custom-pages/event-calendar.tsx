@@ -20,15 +20,17 @@ import {
   useCurrentLocale,
   I18nProviderClient,
 } from "../locales/client";
+import { getLocalizedEventTitle } from "../lib/utils";
+import type { Locale } from "../locales/server";
 
 type IlmomasiinEventWithDate = IlmomasiinaEvent & { date: string };
 type CalendarEvent = Omit<Event, "resource"> & { resource: { url: string } };
 
 // Make calendar events into clickable links.
-function EventElement(event: EventProps<CalendarEvent>) {
+function EventElement(props: EventProps<CalendarEvent>) {
   return (
-    <Link className="block h-full" href={event.event.resource.url}>
-      {event.title}
+    <Link className="block h-full" href={props.event.resource.url}>
+      {props.title}
     </Link>
   );
 }
@@ -40,7 +42,7 @@ function EventCalendar({
 }: {
   events: IlmomasiinaEvent[];
   eventsUrl: string;
-  locale: string;
+  locale: Locale;
 }) {
   const t = useScopedI18n("calendar");
   const ta = useScopedI18n("action");
@@ -63,7 +65,7 @@ function EventCalendar({
     return {
       start: startDate,
       end: endDate,
-      title: event.title,
+      title: getLocalizedEventTitle(event.title, locale),
       resource: {
         url: eventUrl,
       },

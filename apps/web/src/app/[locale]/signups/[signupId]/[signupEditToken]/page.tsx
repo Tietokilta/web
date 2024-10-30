@@ -6,7 +6,8 @@ import {
   deleteSignUpAction,
   saveSignUpAction,
 } from "../../../../../lib/api/external/ilmomasiina/actions";
-import { getScopedI18n } from "../../../../../locales/server";
+import { getCurrentLocale, getScopedI18n } from "../../../../../locales/server";
+import { getLocalizedEventTitle } from "../../../../../lib/utils";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
@@ -48,6 +49,7 @@ export default async function Page({
     throw new Error("Failed to fetch signup info");
   }
 
+  const locale = await getCurrentLocale();
   const t = await getScopedI18n("ilmomasiina.form");
 
   return (
@@ -58,7 +60,8 @@ export default async function Page({
       <div className="relative flex max-w-4xl flex-col items-center gap-8 p-4 md:p-6">
         <hgroup className="space-y-4 text-pretty">
           <h1 className="font-mono text-2xl md:text-4xl">
-            {t("Edit sign up")} - {signupInfo.data.event.title}
+            {t("Edit sign up")} -{" "}
+            {getLocalizedEventTitle(signupInfo.data.event.title, locale)}
           </h1>
           <p>
             {signupInfo.data.signup.status === "in-queue"
