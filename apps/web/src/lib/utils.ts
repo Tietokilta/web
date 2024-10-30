@@ -294,6 +294,17 @@ export const getQuotasWithOpenAndQueue = (
   return quotasWithOpenAndQueue;
 };
 
+export function getLocalizedEventTitle(eventTitle: string, locale: Locale) {
+  const titleLocaleSeparator = " // ";
+  const [fiTitle, enTitle] = eventTitle.split(titleLocaleSeparator);
+
+  if (locale === "en") {
+    return enTitle || fiTitle;
+  }
+
+  return fiTitle;
+}
+
 /**
  * Typescript gymnastics
  */
