@@ -7,7 +7,7 @@ import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { lexicalNodeToTextContent } from "../lib/utils";
 
 export default async function Page() {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getScopedI18n("weeklyNewsletter");
   const weeklyNewsletters = await fetchWeeklyNewsletters({ locale });
 

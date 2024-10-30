@@ -13,7 +13,7 @@ import { getCurrentLocale } from "../../locales/server";
 import { VersionSha } from "./version-sha";
 
 export async function Footer() {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const footer = await fetchFooter(locale)({});
   if (!footer) return null;
 
