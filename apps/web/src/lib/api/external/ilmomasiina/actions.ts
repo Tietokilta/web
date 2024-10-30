@@ -16,7 +16,7 @@ import {
 // perhaps it's much better to fetch on client side directly and then redirect
 export async function signUp(formData: FormData): Promise<void> {
   "use server";
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
 
   const quotaId = formData.get("quotaId");
   if (!quotaId) {
@@ -65,7 +65,7 @@ export async function saveSignUpAction(
 } | null> {
   "use server";
 
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
 
   const formEntries = [...formData.entries()].reduce<
     Record<string, string | string[]>
@@ -167,7 +167,7 @@ const deleteSignUpSchema = z.object({
 
 export async function deleteSignUpAction(formData: FormData): Promise<void> {
   "use server";
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const tp = await getScopedI18n("ilmomasiina.path");
   const data = deleteSignUpSchema.safeParse(
     Object.fromEntries(formData.entries()),

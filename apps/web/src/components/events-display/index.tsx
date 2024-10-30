@@ -28,7 +28,7 @@ function EventListSkeleton() {
 }
 
 async function EventItem({ event }: { event: IlmomasiinaEvent }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getI18n();
 
   const eventUrl = `/${locale}/${t("ilmomasiina.path.events")}/${event.slug}`;
@@ -92,7 +92,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const upcomingEvents = await fetchUpcomingEvents();
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getI18n();
   if (!upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
@@ -170,7 +170,7 @@ export async function EventsDisplay({
   eventsListPath?: string;
   currentPage?: number;
 }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getI18n();
   return (
     <section className="space-y-4">

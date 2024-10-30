@@ -73,7 +73,7 @@ const getPage = async (path: string[], locale: Locale) => {
 export const generateMetadata = async ({
   params: { path },
 }: Props): Promise<Metadata> => {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const page = await getPage(path, locale);
 
   return {
@@ -99,7 +99,7 @@ function Content({ content }: { content?: EditorState }) {
 }
 
 async function Page({ params: { path } }: Props) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const page = await getPage(path, locale);
 
   if (page.type === "events-list") {

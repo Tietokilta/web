@@ -37,7 +37,7 @@
   "pnpm": {
     "patchedDependencies": {
       "@vercel/style-guide": "patches/@vercel__style-guide.patch",
-      "next-international@1.2.4": "patches/next-international@1.2.4.patch"
+      "next-international": "patches/next-international.patch"
     },
     "packageExtensions": {
       "payload-plugin-oauth@2.2.0": {
