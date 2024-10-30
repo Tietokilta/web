@@ -121,8 +121,8 @@ importers:
         specifier: ^10.2.3
         version: 10.2.3
       nanoid:
-        specifier: ^3.3.7
-        version: 3.3.7
+        specifier: ^5.0.8
+        version: 5.0.8
       papaparse:
         specifier: ^5.4.1
         version: 5.4.1
@@ -6094,6 +6094,11 @@ packages:
   nanoid@3.3.7:
     resolution: {integrity: sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
+    hasBin: true
+
+  nanoid@5.0.8:
+    resolution: {integrity: sha512-TcJPw+9RV9dibz1hHUzlLVy8N4X9TnwirAjrU08Juo6BNKggzVfP2ZJ/3ZUSq15Xl5i85i+Z89XBO90pB2PghQ==}
+    engines: {node: ^18 || >=20}
     hasBin: true
 
   napi-build-utils@1.0.2:
@@ -14963,6 +14968,8 @@ snapshots:
       thenify-all: 1.6.0
 
   nanoid@3.3.7: {}
+
+  nanoid@5.0.8: {}
 
   napi-build-utils@1.0.2: {}
 
