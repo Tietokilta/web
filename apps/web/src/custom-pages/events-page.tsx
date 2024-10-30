@@ -28,7 +28,7 @@ async function SignUpText({
   endDate?: string | null;
   className?: string;
 }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getScopedI18n("ilmomasiina.status");
   if (!startDate || !endDate) {
     return (
@@ -119,7 +119,7 @@ async function SignupQuotas({
 async function EventCard({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina.path");
 
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   return (
     <li className="shadow-solid group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 md:flex-row md:gap-4 md:p-6">
       <Link

@@ -31,7 +31,7 @@ export default async function Home({
 }: {
   searchParams: { page?: string | string[] };
 }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
 
   const landingPageData = await fetchLandingPage(locale)({});
   if (!landingPageData) {
