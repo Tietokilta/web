@@ -51,7 +51,7 @@ export interface EventQuestion {
 export interface EventQuota {
   id: string;
   title: string;
-  size: number;
+  size?: number | null;
   signupCount?: number;
   signups?: QuotaSignup[] | null;
 }
