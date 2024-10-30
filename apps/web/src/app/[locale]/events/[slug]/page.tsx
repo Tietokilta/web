@@ -28,6 +28,7 @@ import { BackButton } from "../../../../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 import { DateTime } from "../../../../components/datetime";
 import { openGraphImage } from "../../../shared-metadata";
+import { remarkI18n } from "../../../../lib/plugins/remark-i18n";
 import { SignUpButton } from "./signup-button";
 
 async function SignUpText({
@@ -432,6 +433,7 @@ export const generateMetadata = async ({
 };
 
 export default async function Page({ params: { slug } }: PageProps) {
+  const locale = await getCurrentLocale();
   const event = await fetchEvent(slug);
   const t = await getScopedI18n("action");
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
@@ -458,7 +460,9 @@ export default async function Page({ params: { slug } }: PageProps) {
                 <Tldr event={event.data} />
                 {event.data.description ? (
                   <div className="prose">
-                    <Markdown remarkPlugins={[remarkGfm]}>
+                    <Markdown
+                      remarkPlugins={[[remarkI18n, { locale }], remarkGfm]}
+                    >
                       {event.data.description}
                     </Markdown>
                   </div>
