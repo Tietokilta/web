@@ -42,6 +42,7 @@ import {
   HandshakeIcon,
 } from "lucide-react";
 import React from "react";
+import type { JSX } from "react";
 import { default as TikLogo } from "./tik-logo";
 import NavGuildIcon from "./nav/guild";
 import NavFuksisIcon from "./nav/fuksis";

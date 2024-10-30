@@ -5,6 +5,7 @@ import type {
 } from "@tietokilta/cms-types/payload";
 import Image from "next/image";
 import { ChevronDownIcon, GavelIcon } from "@tietokilta/ui";
+import type { JSX } from "react";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
 

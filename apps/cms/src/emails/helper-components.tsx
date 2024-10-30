@@ -2,6 +2,7 @@
 import { type NewsItem } from "@tietokilta/cms-types/payload";
 import { type EditorState, type Node } from "@tietokilta/cms-types/lexical";
 import { Link } from "@react-email/components";
+import type { JSX } from "react";
 import {
   IS_BOLD,
   IS_CODE,
