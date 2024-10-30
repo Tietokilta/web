@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary -- I like */
 import { notFound } from "next/navigation";
 import { getSignup } from "../../../../../lib/api/external/ilmomasiina";
 import { openGraphImage } from "../../../../shared-metadata";
@@ -64,14 +65,19 @@ export default async function Page({
               ? t("You are in queue at position {position}", {
                   position: signupInfo.data.signup.position,
                 })
-              : t(
-                  "You are in the quota {quotaName} at position {position}/{quotaSize}",
-                  {
+              : typeof signupInfo.data.signup.quota.size === "number"
+                ? t(
+                    "You are in the quota {quotaName} at position {position}/{quotaSize}",
+                    {
+                      quotaName: signupInfo.data.signup.quota.title,
+                      position: signupInfo.data.signup.position,
+                      quotaSize: signupInfo.data.signup.quota.size,
+                    },
+                  )
+                : t("You are in the quota {quotaName} at position {position}", {
                     quotaName: signupInfo.data.signup.quota.title,
                     position: signupInfo.data.signup.position,
-                    quotaSize: signupInfo.data.signup.quota.size,
-                  },
-                )}
+                  })}
           </p>
         </hgroup>
         <SignupForm

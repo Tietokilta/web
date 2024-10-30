@@ -359,18 +359,27 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
             ) : (
               <>
                 <span>{quota.title}</span>
-                <div className="relative">
-                  <Progress
-                    value={Math.min(
-                      ((quota.signupCount ?? 0) / quota.size) * 100,
-                      100,
-                    )}
-                  />
-                  <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
-                    {Math.min(quota.signupCount ?? 0, quota.size)} /{" "}
-                    {quota.size}
-                  </span>
-                </div>
+                {typeof quota.size === "number" ? (
+                  <div className="relative">
+                    <Progress
+                      value={Math.min(
+                        ((quota.signupCount ?? 0) / quota.size) * 100,
+                        100,
+                      )}
+                    />
+                    <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
+                      {Math.min(quota.signupCount ?? 0, quota.size)} /{" "}
+                      {quota.size}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="relative">
+                    <Progress value={100} />
+                    <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
+                      {quota.signupCount}
+                    </span>
+                  </div>
+                )}
               </>
             )}
           </li>
