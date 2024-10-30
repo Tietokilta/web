@@ -2,7 +2,7 @@ import { type NextRequest } from "next/server";
 import { fetchEvents } from "../../../lib/api/external/ilmomasiina";
 import { createEvents } from "../../../lib/ics";
 
-export const revalidate = 60 * 60; // 1 hour
+export const revalidate = 3600; // 1 hour
 
 /**
  * Return all events in ICS format
