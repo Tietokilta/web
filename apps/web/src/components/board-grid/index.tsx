@@ -1,6 +1,7 @@
 import type { Board, BoardMember, Media } from "@tietokilta/cms-types/payload";
 import { MailIcon, SendIcon, PhoneIcon } from "@tietokilta/ui";
 import Image from "next/image";
+import type { JSX } from "react";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
 
