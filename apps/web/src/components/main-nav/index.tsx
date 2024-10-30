@@ -11,7 +11,7 @@ export async function MainNav({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof NavigationMenu>) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const mainNav = await fetchMainNavigation(locale)({});
   if (!mainNav || mainNav.items.length === 0) return null;
 

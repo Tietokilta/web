@@ -8,10 +8,10 @@ export async function CommitteeList({
 }: {
   year: CommitteesYearBlockNode["fields"]["year"];
 }): Promise<JSX.Element | null> {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const committees = await fetchCommittees({
     where: { year: { equals: year } },
-    locale: getCurrentLocale(),
+    locale,
   });
 
   if (!committees || committees.length === 0) {
