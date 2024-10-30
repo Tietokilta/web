@@ -119,17 +119,18 @@ END:VEVENT`;
 }
 
 function formatDates(start: string, end?: string | null) {
+  const nowDate = new Date();
   const startDate = new Date(start);
   if (!end) {
     // Make the event an all-day event if there's no end date.
-    return `DTSTAMP:${formatDateTime(startDate)}Z\r
+    return `DTSTAMP:${formatDateTime(nowDate)}Z\r
 DTSTART;VALUE=DATE:${formatDate(startDate)}\r
 DTEND;VALUE=DATE:${formatDate(startDate)}`;
   }
 
   const endDate = new Date(end);
 
-  return `DTSTAMP:${formatDateTime(startDate)}Z\r
+  return `DTSTAMP:${formatDateTime(nowDate)}Z\r
 DTSTART:${formatDateTime(startDate)}Z\r
 DTEND:${formatDateTime(endDate)}Z`;
 }
