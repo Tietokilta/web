@@ -56,6 +56,7 @@ const fi = {
   "invoicegenerator.Quantity": "Määrä",
   "invoicegenerator.Unit": "Yksikkö",
   "invoicegenerator.Unit price": "Yksikköhinta",
+  "invoicegenerator.Total price": "Yhteensä",
   "invoicegenerator.Attachment": "Liite",
   "invoicegenerator.Attachments": "Liitteet",
   "invoicegenerator.Items": "Erittely",
