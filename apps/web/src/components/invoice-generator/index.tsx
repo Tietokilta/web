@@ -33,47 +33,19 @@ function InputLabel({ name, htmlId }: { name: string; htmlId: string }) {
 }
 
 function InputRow({
-  placeholder,
-  label,
   id,
-  name,
-  autoComplete,
   type,
-  defaultValue,
-  value,
-  multiple,
-  required,
-  step,
-  min,
-  onBeforeInput,
-  onInput,
   unit,
-  maxLength,
-  readOnly,
+  label,
+  name,
+  ...restProps
 }: GenericFieldProps) {
   const htmlId = id ?? `inputfield.${name}`;
-
   return (
     <div>
       <InputLabel name={label} htmlId={htmlId} />
       <span className="flex">
-        <Input
-          id={htmlId}
-          name={name}
-          type={type ?? "text"}
-          placeholder={placeholder}
-          autoComplete={autoComplete}
-          defaultValue={defaultValue}
-          value={value}
-          required={required}
-          multiple={multiple}
-          step={step}
-          min={min}
-          onBeforeInput={onBeforeInput}
-          onInput={onInput}
-          maxLength={maxLength}
-          readOnly={readOnly}
-        />
+        <Input id={htmlId} type={type ?? "text"} {...restProps} />
         {unit ? <span className="ml-1 translate-y-1">{unit}</span> : null}
       </span>
     </div>
@@ -247,11 +219,7 @@ function InvoiceItem({
 
   const [quantity, setQuantity] = useState(0);
   const [unitPrice, setUnitPrice] = useState(0);
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    setTotalPrice(quantity * unitPrice);
-  }, [quantity, unitPrice]);
+  const totalPrice = quantity * unitPrice;
 
   return (
     <fieldset>
