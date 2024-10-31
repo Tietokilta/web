@@ -56,6 +56,7 @@ const en = {
   "invoicegenerator.Quantity": "Quantity",
   "invoicegenerator.Unit": "Unit",
   "invoicegenerator.Unit price": "Unit price",
+  "invoicegenerator.Total price": "Total price",
   "invoicegenerator.Attachment": "Attachment",
   "invoicegenerator.Attachments": "Attachments",
   "invoicegenerator.Items": "Items",
