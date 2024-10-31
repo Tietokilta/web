@@ -45,7 +45,7 @@ function InputRow({
     <div>
       <InputLabel name={label} htmlId={htmlId} />
       <span className="flex">
-        <Input id={htmlId} type={type ?? "text"} {...restProps} />
+        <Input id={htmlId} type={type ?? "text"} name={name} {...restProps} />
         {unit ? <span className="ml-1 translate-y-1">{unit}</span> : null}
       </span>
     </div>
