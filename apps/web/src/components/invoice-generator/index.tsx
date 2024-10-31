@@ -294,7 +294,7 @@ function InvoiceItem({
             value={totalPrice.toFixed(2)}
             id={`rows[${index.toString()}].total_price`}
             unit="€"
-            readOnly={true}
+            disabled={true}
           />
         </span>
       </fieldset>
