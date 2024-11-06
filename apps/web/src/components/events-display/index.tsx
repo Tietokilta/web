@@ -181,7 +181,10 @@ export async function EventsDisplay({
         className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
         href={eventsListPath ?? `/${locale}/${tPath("events")}`}
       >
-        <h2 className="font-mono text-2xl font-bold text-gray-900">
+        <h2
+          className="glitch layers font-mono text-2xl font-bold text-gray-900"
+          data-text={tHeading("Upcoming events")}
+        >
           {tHeading("Upcoming events")}
         </h2>
       </Link>

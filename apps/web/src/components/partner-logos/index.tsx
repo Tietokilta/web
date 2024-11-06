@@ -37,7 +37,7 @@ export async function PartnerLogos({
 
   if (type === "row" || type === "infoscreen") {
     return (
-      <ul className="flex flex-wrap items-center justify-center gap-4">
+      <ul className="partner-logos flex flex-wrap items-center justify-center gap-4">
         {logos.map((logo) => (
           <li
             className={cn(
@@ -68,7 +68,7 @@ export async function PartnerLogos({
   if (type === "mobileRow") {
     // No inversion for mobile (has light background), different Link element
     return (
-      <ul className="flex flex-wrap items-center justify-center gap-4">
+      <ul className="partner-logos flex flex-wrap items-center justify-center gap-4">
         {logos.map((logo) => (
           <li
             className="relative flex h-16 max-w-48 items-center justify-center"
@@ -94,7 +94,7 @@ export async function PartnerLogos({
   }
 
   return (
-    <div>
+    <div className="partner-logos">
       <ImageLinkGrid size={size} images={logos} />
     </div>
   );
