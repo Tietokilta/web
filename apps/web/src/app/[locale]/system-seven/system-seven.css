@@ -1,0 +1,90 @@
+.wrapper {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  font-size: 1.5rem;
+  color: theme("colors.red.600");
+  text-shadow: 0 0 1rem theme("colors.red.600");
+  text-align: center;
+
+  @media screen(sm) {
+    font-size: 3rem;
+  }
+  @media screen(lg) {
+    font-size: 4rem;
+  }
+}
+
+.time {
+  margin: 0rem;
+  font-size: 3rem;
+  color: theme("colors.red.600");
+  text-shadow: 0 0 1rem theme("colors.red.600");
+
+  @media screen(sm) {
+    font-size: 6rem;
+  }
+  @media screen(lg) {
+    font-size: 8rem;
+  }
+}
+
+.header-container {
+  display: flex;
+  padding: 2rem;
+  width: 40rem;
+  max-width: 100vw;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  padding: 2rem;
+  width: 60rem;
+  max-width: calc(100vw - 2rem);
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.video-container {
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.video {
+  max-width: calc(100vw - 4rem);
+  box-shadow: 0 0 2rem 0.5rem theme("colors.red.600");
+}
+
+a,
+svg,
+h2,
+p,
+span {
+  color: theme("colors.red.600");
+}
+
+img {
+  /* Filter that turns white to red */
+  filter: invert(8%) sepia(96%) saturate(5343%) hue-rotate(354deg)
+    brightness(108%) contrast(103%) !important;
+}
+
+img[alt~="Tietokilta"] {
+  /* For some reason the above filter doesn't work on this image */
+  filter: invert(92%) sepia(96%) saturate(5343%) hue-rotate(354deg)
+    brightness(108%) contrast(103%) !important;
+}
