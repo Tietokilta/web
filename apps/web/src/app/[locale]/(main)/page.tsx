@@ -45,7 +45,7 @@ export default async function Home(props: {
   const pageInt = parseInt(String(page), 10);
 
   return (
-    <main id="main" className="flex min-h-screen flex-col">
+    <main id="main" className="flex min-h-screen flex-col overflow-x-hidden">
       <Hero
         images={landingPageData.heroImages
           .map(({ image }) =>
@@ -64,7 +64,10 @@ export default async function Home(props: {
       {/* Desktop view */}
       <div className="container mx-auto hidden grid-cols-2 gap-12 px-6 py-12 lg:grid">
         <section className="order-first space-y-4">
-          <h1 className="font-mono text-4xl font-bold text-gray-900">
+          <h1
+            className="glitch layers font-mono text-4xl font-bold text-gray-900"
+            data-text="Tietokilta"
+          >
             Tietokilta
           </h1>
           <Content content={body} />
@@ -83,7 +86,10 @@ export default async function Home(props: {
           {announcement ? <AnnouncementCard news={announcement} /> : null}
         </div>
         <section className="space-y-4">
-          <h1 className="font-mono text-4xl font-bold text-gray-900">
+          <h1
+            className="glitch layers font-mono text-4xl font-bold text-gray-900"
+            data-text="Tietokilta"
+          >
             Tietokilta
           </h1>
           <Content content={body} />
