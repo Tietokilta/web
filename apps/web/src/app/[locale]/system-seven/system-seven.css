@@ -71,8 +71,10 @@
 
 a,
 svg,
+h1,
 h2,
 p,
+li,
 span {
   color: theme("colors.red.600");
 }
@@ -88,3 +90,138 @@ img[alt~="Tietokilta"] {
   filter: invert(92%) sepia(96%) saturate(5343%) hue-rotate(354deg)
     brightness(108%) contrast(103%) !important;
 }
+
+img[alt~="SystemSeven"] {
+  filter: none !important;
+}
+
+section {
+  :hover {
+    p,
+    h1,
+    h2,
+    span,
+    a {
+      animation: skew-x-shakeng 4s infinite;
+      animation-delay: 1s;
+      animation-timing-function: steps(1, end);
+    }
+  }
+}
+
+a:hover {
+  opacity: 0.9;
+  text-shadow:
+    0px -4px #ec2225,
+    0px 4px #00c2cb,
+    -4px 0px #ec2225,
+    4px 0px #00c2cb;
+  animation: glitch 12ms ease-in-out infinite;
+  z-index: 1;
+}
+
+a::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #e0ffff;
+  z-index: -1;
+}
+
+@keyframes glitch {
+  0%,
+  100% {
+    top: -3px;
+    left: 0;
+    opacity: 1;
+  }
+  20% {
+    top: 0;
+    left: -4px;
+    opacity: 0.7;
+  }
+  40% {
+    top: 3px;
+    left: 0;
+    opacity: 0.2;
+  }
+  60% {
+    top: 0;
+    left: 4px;
+    opacity: 0.3;
+  }
+  80% {
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+  }
+}
+
+@keyframes skew-x-shakeng {
+  0% {
+    transform: translate(3px, -1px);
+  }
+  3% {
+    transform: translate(-2px, 1px);
+  }
+  4% {
+    transform: translate(0, 0);
+  }
+  30% {
+    transform: skewX(-5deg);
+  }
+  31% {
+    transform: skewX(5deg);
+  }
+  32% {
+    transform: skewX(-5deg);
+  }
+  33% {
+    transform: skewX(0deg);
+  }
+  60% {
+    transform: translate(4px, 2px);
+  }
+  75% {
+    transform: translate(-3px, -1px);
+  }
+  80% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes horizontal-shaking {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(3px);
+  }
+  50% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+section {
+  opacity: 1;
+  :hover {
+    opacity: 0;
+    transition: opacity 5s;
+    transition-delay: 5s;
+  }
+}
+
+/* This makes the site completely unusable
+section {
+  :hover {
+    display: none;
+  }
+}
+*/
