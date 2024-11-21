@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { HSLSchedule } from "../hsl-schedule";
@@ -22,26 +22,25 @@ export function HSLcombinedSchedule() {
           setStopData(result.result ? result.result : []);
         } else {
           setError("Error fetching data");
-          router.push("/infonaytto/HSL");
+          router.push("/infonaytto");
         }
       } catch (err: any) {
         setError(err.message);
-        router.push("/infonaytto/HSL");
+        router.push("/infonaytto");
       }
     };
     // Call fetchData immediately and then set up the interval
     fetchData()
-      .then()
       .catch((err: Error) => {
         setError(err.message);
       });
-    const intervalId = setInterval(fetchData, 1000); // timeout n milliseconds
+    const intervalId = setInterval(fetchData, 4000); // timeout n milliseconds
 
     // Clear the interval when the component unmounts
     return () => {
       clearInterval(intervalId);
     };
-  }, []);
+  }, [router]);
 
   if (error !== "") {
     return (

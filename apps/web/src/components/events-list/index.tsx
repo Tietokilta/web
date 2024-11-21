@@ -3,12 +3,12 @@ import {
   type EventQuota,
   fetchEvents,
   type IlmomasiinaEvent,
-} from "../../../../lib/api/external/ilmomasiina";
+} from "../../lib/api/external/ilmomasiina";
 import {
   formatDateTime,
   formatDatetimeYear,
   getQuotasWithOpenAndQueue,
-} from "../../../../lib/utils";
+} from "../../lib/utils.ts";
 
 function OpenSignup({
   startDate,

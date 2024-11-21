@@ -55,9 +55,9 @@ export function HSLSchedule(props: {
             (arr1: ArrivalAttribute, arr2: ArrivalAttribute) =>
               arr1.realtimeArrival - arr2.realtimeArrival,
           )
-          .slice(0, 8)
+          .slice(0, 10)
           .map((arr) => (
-            <li key={arr.route + arr.fullTime} className={className}>
+            <li key={arr.route + arr.headSign + arr.fullTime} className={className}>
               <div className="w-[15%] text-2xl text-[var(--infonyttoHSLcolor)]">
                 {arr.route}
               </div>

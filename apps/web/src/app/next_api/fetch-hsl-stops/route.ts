@@ -30,7 +30,6 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const stops = await Promise.all(STOPS.map(getStop));
-  console.log(stops)
   const dataFromHsl: RenderableStop[] = stops.filter(
     <T>(stop: T | null): stop is T => stop !== null,
   );
@@ -39,6 +38,19 @@ export async function GET() {
     type: "Data",
     data: dataFromHsl,
   };
+  if (dataFromHsl.length == 0) {
+    return Response.json(
+        {type: "Data", data: "Failed Fetch"},
+        {
+          status: 500,
+          headers: {
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            Pragma: "no-cache, no-store",
+            Expires: "0",
+          },
+        }
+    )
+  }
 
   return Response.json(
     { retData },
@@ -90,7 +102,7 @@ function removeSubstring(fullString: string): string {
   ];
   let str = fullString;
   for (const subString of subStrings) {
-    // HSL sometimes has a bug where HEadSign is null so this handles case string in is null :D
+    // hsl sometimes has a bug where HEadSign is null so this handles case string in is null :D
     if (str) {
       str = str.replace(subString, "");
     } else {
@@ -150,7 +162,7 @@ const getData = async (stop: string): Promise<Stop | null> => {
     },
   });
   let data: StopFromApi | null = null;
-
+  console.log(process.env.DIGITRANSIT_SUBSCRIPTION_KEY)
   await client
     .query({
       query: GetStopSchedule(stop),
@@ -158,7 +170,7 @@ const getData = async (stop: string): Promise<Stop | null> => {
     .then((result: ApolloQueryResult<Data>) => {
       data = result.data.stop;
     });
-
+  console.log(data)
   return data;
 };
 
@@ -216,7 +228,7 @@ const getStop = async (
         hours:
           Math.floor((arr.realTimeArrival - arr.serviceDay) / 60 / 60) % 24,
         minutes: Math.floor(((arr.realTimeArrival - arr.serviceDay) / 60) % 60),
-        intTime: arr.realTimeArrival,
+        realtimeArrival: arr.realTimeArrival,
         fullTime: makePrintTime(arr),
       };
     })

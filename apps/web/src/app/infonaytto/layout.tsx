@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { Inter, Roboto_Mono } from "next/font/google";
 import { cn } from "../../lib/utils.ts";
@@ -24,7 +25,7 @@ export default function ScreenLayout({
         className={cn(
           inter.variable,
           robotoMono.variable,
-          "flex min-h-screen flex-col font-mono",
+          "flex h-full flex-col font-mono",
         )}
       >
         <InfoScreenHeader />

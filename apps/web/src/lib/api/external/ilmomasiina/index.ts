@@ -122,7 +122,7 @@ export interface IlmomasiinaSignupInfoResponse {
 
 // TODO: better env handling since next.js doesn't have that built-in
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ideally would throw during build, but let's at least throw here if it's missing
-export const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
+export const baseUrl = process.env.NEXT_PUBLIC_ILMOMASIINA_URL!;
 
 export const fetchEvents = async (): Promise<
   ApiResponse<IlmomasiinaEvent[]>
