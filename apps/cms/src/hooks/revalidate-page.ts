@@ -33,7 +33,7 @@ export function revalidatePage<T extends TypeWithID>(
     const revalidate = async (): Promise<void> => {
       try {
         const fetchData = JSON.stringify(await getFetchData(doc, req));
-        const fetchUrl = `${process.env.PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-page?${new URLSearchParams(
+        const fetchUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-page?${new URLSearchParams(
           {
             secret: encodeURIComponent(revalidationKey),
             collection: encodeURIComponent(collectionSlug),

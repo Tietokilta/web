@@ -36,7 +36,7 @@ export function revalidateCollection<T extends TypeWithID>(
 
     const revalidate = async (): Promise<void> => {
       try {
-        const fetchUrl = `${process.env.PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-collection?${new URLSearchParams(
+        const fetchUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-collection?${new URLSearchParams(
           {
             secret: encodeURIComponent(revalidationKey),
             collectionSlug: encodeURIComponent(collectionSlug),

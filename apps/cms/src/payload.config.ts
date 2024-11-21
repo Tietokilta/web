@@ -57,7 +57,7 @@ const {
   GOOGLE_OAUTH_CLIENT_ID,
   GOOGLE_OAUTH_CLIENT_SECRET,
   MONGODB_URI,
-  PUBLIC_FRONTEND_URL,
+  NEXT_PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
   AZURE_MEDIA_STORAGE_CONTAINER_NAME,
   AZURE_DOCUMENTS_STORAGE_CONTAINER_NAME,
@@ -66,7 +66,7 @@ const {
 
 export default buildConfig({
   // TODO: should probably enable this for production but it breaks auth in development
-  // serverURL: process.env.PUBLIC_SERVER_URL,
+  // serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
   admin: {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- stupid eslint doesn't find the type
     bundler: webpackBundler(),
@@ -211,7 +211,7 @@ export default buildConfig({
       clientSecret: GOOGLE_OAUTH_CLIENT_SECRET ?? "",
       authorizationURL: "https://accounts.google.com/o/oauth2/v2/auth",
       tokenURL: "https://www.googleapis.com/oauth2/v4/token",
-      callbackURL: `${PUBLIC_FRONTEND_URL ?? "http://localhost:3000"}/oauth2/callback`,
+      callbackURL: `${NEXT_PUBLIC_FRONTEND_URL ?? "http://localhost:3000"}/oauth2/callback`,
       scope: ["profile", "email"],
       async userinfo(accessToken: string) {
         const user = await fetch(

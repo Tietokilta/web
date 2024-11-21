@@ -15,7 +15,7 @@ export const revalidateGlobal: AfterChangeHook = ({ doc, req, global }) => {
     }
     try {
       const fetchUrl = `${
-        process.env.PUBLIC_FRONTEND_URL ?? ""
+        process.env.NEXT_PUBLIC_FRONTEND_URL ?? ""
       }/next_api/revalidate-global?${new URLSearchParams({
         secret: encodeURIComponent(revalidationKey),
         globalSlug: encodeURIComponent(global.slug),

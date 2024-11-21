@@ -48,8 +48,8 @@ export const newsletterSenderController = async (
       NewsletterEmail({
         finnishNewsletter,
         englishNewsletter,
-        PUBLIC_LEGACY_URL: PUBLIC_LEGACY_URL ?? "",
-        PUBLIC_FRONTEND_URL: PUBLIC_FRONTEND_URL ?? "",
+        NEXT_PUBLIC_LEGACY_URL: PUBLIC_LEGACY_URL ?? "",
+        NEXT_PUBLIC_FRONTEND_URL: PUBLIC_FRONTEND_URL ?? "",
       }),
     );
 
@@ -99,8 +99,8 @@ export const getEmailController = async (
       NewsletterEmail({
         finnishNewsletter,
         englishNewsletter,
-        PUBLIC_LEGACY_URL: PUBLIC_LEGACY_URL ?? "",
-        PUBLIC_FRONTEND_URL: PUBLIC_FRONTEND_URL ?? "",
+        NEXT_PUBLIC_LEGACY_URL: PUBLIC_LEGACY_URL ?? "",
+        NEXT_PUBLIC_FRONTEND_URL: PUBLIC_FRONTEND_URL ?? "",
       }),
     );
     // Return the result to the client
