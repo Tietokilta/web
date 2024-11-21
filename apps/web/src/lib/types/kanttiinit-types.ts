@@ -1,15 +1,15 @@
 export interface Restaurant {
-    opening_hours: Date[],
-    id: string,
-    type: string,
-    url: string,
-    name: string,
+  opening_hours: Date[];
+  id: string;
+  type: string;
+  url: string;
+  name: string;
 }
 export interface Food {
-    title: string,
-    properties: string[],
+  title: string;
+  properties: string[];
 }
 export interface RestaurantMenu {
-    restaurant: Restaurant,
-    foods: Food[],
+  restaurant: Restaurant;
+  foods: Food[];
 }
