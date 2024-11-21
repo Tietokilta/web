@@ -131,7 +131,7 @@ export interface Page {
   id: string;
   title: string;
   description: string;
-  type: 'standard' | 'redirect' | 'events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
+  type: 'standard' | 'redirect' | 'events-list' | 'all-events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
   icon?:
     | (
         | 'AlertOctagon'
