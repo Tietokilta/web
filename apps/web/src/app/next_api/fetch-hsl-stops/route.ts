@@ -40,16 +40,16 @@ export async function GET() {
   };
   if (dataFromHsl.length == 0) {
     return Response.json(
-        {type: "Data", data: "Failed Fetch"},
-        {
-          status: 500,
-          headers: {
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-            Pragma: "no-cache, no-store",
-            Expires: "0",
-          },
-        }
-    )
+      { type: "Data", data: "Failed Fetch" },
+      {
+        status: 500,
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache, no-store",
+          Expires: "0",
+        },
+      },
+    );
   }
 
   return Response.json(

@@ -4,7 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { InfoScreenHeaderLogo } from "../infoscreen-header-logo";
 
-const Clock = dynamic(() => import("react-live-clock"), {ssr: false});
+const Clock = dynamic(() => import("react-live-clock"), { ssr: false });
 
 export function InfoScreenHeader() {
   return (

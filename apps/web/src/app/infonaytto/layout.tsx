@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Inter, Roboto_Mono } from "next/font/google";
 import { cn } from "../../lib/utils.ts";

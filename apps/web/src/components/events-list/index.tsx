@@ -197,7 +197,6 @@ export default function Page({
   events: IlmomasiinaEvent[];
   setEvents: React.Dispatch<React.SetStateAction<IlmomasiinaEvent[]>>;
 }) {
-
   useEffect(() => {
     async function loadEvents() {
       const fetchedEvents = await fetchEvents();
