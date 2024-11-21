@@ -9,6 +9,7 @@ import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
 import { getCurrentLocale, type Locale } from "../../../locales/server";
 import EventsPage from "../../../custom-pages/events-page";
+import AllEventsPage from "../../../custom-pages/all-events-page";
 import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
 import { generateTocFromRichText } from "../../../lib/utils";
 import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
@@ -104,6 +105,10 @@ async function Page({ params: { path } }: Props) {
 
   if (page.type === "events-list") {
     return <EventsPage />;
+  }
+
+  if (page.type === "all-events-list") {
+    return <AllEventsPage />;
   }
 
   if (page.type === "weekly-newsletter") {
