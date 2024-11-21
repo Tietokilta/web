@@ -64,7 +64,7 @@ export function getAllCollectionItems<
       draft,
       fetchOptions,
     ): Promise<TResponse | undefined> => {
-      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/${collectionSlug}?${qsStringify(
+      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_URL ?? ""}/api/${collectionSlug}?${qsStringify(
         {
           ...req,
           ...(draft ? { draft: "true" } : {}),

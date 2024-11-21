@@ -5,19 +5,19 @@ const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 module.exports = {
   reactStrictMode: true,
   env: {
-    PUBLIC_FRONTEND_URL: process.env.PUBLIC_FRONTEND_URL,
+    PUBLIC_FRONTEND_URL: process.env.NEXT_PUBLIC_FRONTEND_URL,
   },
   images: {
     // TODO: only for dev:
     remotePatterns: !isProd
       ? [
-          {
-            protocol: "http",
-            hostname: "localhost",
-            port: process.env.PAYLOAD_PORT,
-            pathname: "/media/**",
-          },
-        ]
+        {
+          protocol: "http",
+          hostname: "localhost",
+          port: process.env.PAYLOAD_PORT,
+          pathname: "/media/**",
+        },
+      ]
       : undefined,
     minimumCacheTTL: 3600,
   },
