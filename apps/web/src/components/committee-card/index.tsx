@@ -22,7 +22,7 @@ function CommitteeMemberCard({
   const photo = committeeMember.photo as Media | undefined;
   const isChair = !!committeeMember.chair;
   const name = committeeMember.name.replace(/-/g, "\u2011"); // use non-breaking hyphens
-
+  const parseTG = (username: string) => username.replace("@", "");
   return (
     <li className="relative flex flex-col border-2 border-gray-900">
       <Image
@@ -41,34 +41,30 @@ function CommitteeMemberCard({
         <span className="text-sm">
           {insertSoftHyphens(committeeMember.title)}
         </span>
-        <span className="m-1 text-sm">
-          {committeeMember.email ? (
-            <a
-              className="flex items-center gap-1"
-              href={`mailto:${committeeMember.email}`}
-            >
-              <GmailIcon className="size-6 shrink-0" />
-              <span className="underline">
-                {insertSoftHyphens(committeeMember.email)}
-              </span>
-            </a>
-          ) : null}{" "}
-        </span>
-        <span className="m-1 text-sm">
-          {committeeMember.telegramUsername ? (
-            <a
-              className="flex items-center gap-1"
-              href={`https://t.me/${committeeMember.telegramUsername}`}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              <TelegramIcon className="size-6 shrink-0" />
-              <span className="underline">
-                {committeeMember.telegramUsername}
-              </span>
-            </a>
-          ) : null}{" "}
-        </span>
+        <div className="flex items-center justify-center space-x-2">
+          <span className="m-1 text-sm">
+            {committeeMember.email ? (
+              <a
+                className="flex items-center gap-1"
+                href={`mailto:${committeeMember.email}`}
+              >
+                <GmailIcon className="size-6 shrink-0" />
+              </a>
+            ) : null}
+          </span>
+          <span className="m-1 text-sm">
+            {committeeMember.telegramUsername ? (
+              <a
+                className="flex items-center gap-1"
+                href={`https://t.me/${parseTG(committeeMember.telegramUsername)}`}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <TelegramIcon className="size-6 shrink-0" />
+              </a>
+            ) : null}
+          </span>
+        </div>
       </p>
     </li>
   );
