@@ -486,6 +486,7 @@ enum Page_type {
   standard
   redirect
   events_list
+  all_events_list
   weekly_newsletter
   weekly_newsletters_list
 }
@@ -679,6 +680,7 @@ enum Page_type_Input {
   standard
   redirect
   events_list
+  all_events_list
   weekly_newsletter
   weekly_newsletters_list
 }
@@ -1296,6 +1298,7 @@ enum PageVersion_Version_type {
   standard
   redirect
   events_list
+  all_events_list
   weekly_newsletter
   weekly_newsletters_list
 }
@@ -1444,6 +1447,7 @@ enum versionsPage_version__type_Input {
   standard
   redirect
   events_list
+  all_events_list
   weekly_newsletter
   weekly_newsletters_list
 }
@@ -15002,6 +15006,7 @@ enum Page_type_MutationInput {
   standard
   redirect
   events_list
+  all_events_list
   weekly_newsletter
   weekly_newsletters_list
 }
@@ -15092,6 +15097,7 @@ enum PageUpdate_type_MutationInput {
   standard
   redirect
   events_list
+  all_events_list
   weekly_newsletter
   weekly_newsletters_list
 }
