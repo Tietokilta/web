@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import {
   type EventQuota,
   fetchEvents,
@@ -189,11 +190,23 @@ function groupEventsByWeek(
   }, {});
 }
 
-export default async function Page() {
-  const events = await fetchEvents();
-  const upcomingEvents = [...(events.data ?? [])];
+export default function Page({
+  events,
+  setEvents,
+}: {
+  events: IlmomasiinaEvent[];
+  setEvents: React.Dispatch<React.SetStateAction<IlmomasiinaEvent[]>>;
+}) {
 
-  const upcomingEventsDataByWeek = groupEventsByWeek(upcomingEvents);
+  useEffect(() => {
+    async function loadEvents() {
+      const fetchedEvents = await fetchEvents();
+      setEvents(fetchedEvents.data ?? []);
+    }
+    void loadEvents();
+  }, [setEvents]);
+
+  const upcomingEventsDataByWeek = groupEventsByWeek(events);
 
   return (
     <main id="main" className="flex flex-col align-top">

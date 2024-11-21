@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import {HSLcombinedSchedule} from "../hsl-schedules-combined";
 import { Foods } from "../foods";
 import Eventslist from "../events-list";
+import { type RenderableStop } from "../../lib/types/hsl-helper-types";
+import { type IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 
 export function InfoScreenContents() {
     const [current, setCurrent] = useState(0);
+    const [stopData, setStopData] = useState<RenderableStop[]>([]);
+    const [events, setEvents] = useState<IlmomasiinaEvent[]>([]);
 
     useEffect(() => {
         const setNextChild = () => {
@@ -22,13 +26,13 @@ export function InfoScreenContents() {
     if (current === 0) {
         return (
             <div className="h-full flex-1 bg-gray-200">
-                <HSLcombinedSchedule/>
+                <HSLcombinedSchedule stopData={stopData} setStopData={setStopData}/>
             </div>
         );
     } else if (current === 1) {
         return (
             <div className="h-full flex-1 bg-gray-200">
-                <Eventslist/>
+                <Eventslist events={events} setEvents={setEvents}/>
             </div>
         );
     }

@@ -5,8 +5,7 @@ import { HSLSchedule } from "../hsl-schedule";
 import { type RenderableStop } from "../../lib/types/hsl-helper-types";
 import { hslFetcher } from "../../lib/fetcher.ts";
 
-export function HSLcombinedSchedule() {
-  const [stopData, setStopData] = useState<RenderableStop[]>([]);
+export function HSLcombinedSchedule({ stopData, setStopData }: { stopData: RenderableStop[], setStopData: React.Dispatch<React.SetStateAction<RenderableStop[]>> }) {
   const [error, setError] = useState("");
   const router = useRouter();
 
@@ -16,17 +15,17 @@ export function HSLcombinedSchedule() {
       try {
         const result: { status: number; result: RenderableStop[] | null } =
           await hslFetcher();
-        console.log("Fetched data", result.status)
+        //console.log("Fetched data", result.status)
         if (result.status === 200) {
           setError("");
           setStopData(result.result ? result.result : []);
         } else {
           setError("Error fetching data");
-          router.push("/infonaytto");
+          router.push("/infonaytto/naytto");
         }
       } catch (err: any) {
         setError(err.message);
-        router.push("/infonaytto");
+        router.push("/infonaytto/naytto");
       }
     };
     // Call fetchData immediately and then set up the interval
@@ -40,7 +39,7 @@ export function HSLcombinedSchedule() {
     return () => {
       clearInterval(intervalId);
     };
-  }, [router]);
+  }, [router, setStopData]);
 
   if (error !== "") {
     return (

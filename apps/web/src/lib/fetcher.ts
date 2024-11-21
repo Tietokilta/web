@@ -15,12 +15,12 @@ export async function hslFetcher(): Promise<{
   status: number;
   result: RenderableStop[] | null;
 }> {
-  console.log(process.env.NEXT_PUBLIC_FRONTEND_URL)
+  //console.log(process.env.NEXT_PUBLIC_FRONTEND_URL)
   if (!process.env.NEXT_PUBLIC_FRONTEND_URL) {
     return { status: 500, result: null };
   }
   const response: Response = await fetch(
-    process.env.NEXT_PUBLIC_FRONTEND_URL.concat("/next_api/fetch-hsl-stops"),
+    "/next_api/fetch-hsl-stops",
     { headers: { "cache-control": "no-cache" } },
   );
   if (response.status !== 200) {

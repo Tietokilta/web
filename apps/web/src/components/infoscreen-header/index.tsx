@@ -1,13 +1,16 @@
 "use client";
 import React from "react";
-import Clock from "react-live-clock";
+//import Clock from "react-live-clock";
+import dynamic from "next/dynamic";
 import { InfoScreenHeaderLogo } from "../infoscreen-header-logo";
+
+const Clock = dynamic(() => import("react-live-clock"), {ssr: false});
 
 export function InfoScreenHeader() {
   return (
     <div className="flex h-[6.0rem] space-y-2 bg-black text-white">
       <InfoScreenHeaderLogo />
-      <div className="flex h-full flex-col" suppressHydrationWarning={true}>
+      <div className="flex h-full flex-col">
         <Clock
           format="HH:mm:ss"
           style={{
