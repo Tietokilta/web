@@ -236,6 +236,10 @@ export const Pages: CollectionConfig = {
           value: "events-list",
         },
         {
+          label: "Special: All Events List",
+          value: "all-events-list",
+        },
+        {
           label: "Special: Weekly Newsletter",
           value: "weekly-newsletter",
         },
