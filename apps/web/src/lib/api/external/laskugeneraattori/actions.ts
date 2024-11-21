@@ -5,6 +5,17 @@ import {
   type LaskugeneraattoriRequest,
 } from "./index";
 
+type ErrorArray = [
+  string,
+  {
+    message: string;
+  },
+][];
+
+interface ErrorResponse {
+  errors?: ErrorArray;
+}
+
 // https://stackoverflow.com/a/22015930
 const zip = <T>(...arr: T[][]) =>
   Array(Math.max(...arr.map((a) => a.length)))
@@ -93,22 +104,25 @@ export async function SaveAction(
     };
   }
 
-  const errorText = await res.text();
+  const body = await res.text();
 
-  // Parse the text/plain error format returned by laskugeneraattori. We could also try to return JSON on the backend
-  const errors = errorText
-    .split("\n")
-    .filter((row) => row.startsWith("data."))
-    .map((row) => row.substring("data.".length))
-    .map((row) => [
-      row.slice(0, row.indexOf(":")),
-      row.slice(row.indexOf(":") + 1).trim(),
-    ])
-    .filter((error) => error.length === 2);
+  function tryParse(): ErrorArray {
+    try {
+      const errorResponse = JSON.parse(body) as ErrorResponse;
+      return errorResponse.errors ?? [];
+    } catch {
+      return [];
+    }
+  }
+
+  const errors: string[][] = tryParse().map((error) => [
+    error[0].startsWith("data.") ? error[0].substring(5) : error[0],
+    error[1].message,
+  ]);
 
   return {
     success: false,
-    errorText,
+    errorText: body,
     errors: errors.reduce(
       (obj, error) => ({ ...obj, [error[0]]: error[1] }),
       {},
