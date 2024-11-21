@@ -59,13 +59,13 @@ export function HSLSchedule(props: {
           .map((arr) => (
             <li
               key={arr.route + arr.headSign + arr.fullTime}
-              className={className}
+              className={`${className} grid grid-cols-[1fr_2fr_1fr] items-center`}
             >
-              <div className="w-[15%] text-2xl text-[var(--infonayttoHSLcolor)]">
+              <div className="text-left text-2xl text-[var(--infonayttoHSLcolor)]">
                 {arr.route}
               </div>
-              <div className="w-1/2 text-xl">{arr.headSign}</div>
-              <div className="w-[35‰] text-right text-2xl">{arr.fullTime}</div>
+              <div className="text-center text-xl">{arr.headSign}</div>
+              <div className="text-right text-2xl">{arr.fullTime}</div>
             </li>
           ))}
       </ul>
