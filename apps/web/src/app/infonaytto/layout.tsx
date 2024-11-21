@@ -3,7 +3,7 @@ import React from "react";
 import { Inter, Roboto_Mono } from "next/font/google";
 import { cn } from "../../lib/utils.ts";
 import "../globals.css";
-import { InfoScreenHeader } from "../../components/infoscreen-header";
+import { InfoScreenHeader } from "../../components/infoscreen/infoscreen-header";
 
 const inter = Inter({
   subsets: ["latin"],

@@ -1,5 +1,5 @@
 "use client";
-import { InfoScreenContents } from "../../../components/info-screen-contents";
+import { InfoScreenContents } from "../../../components/infoscreen/info-screen-contents";
 
 function InfoScreen() {
   return <InfoScreenContents />;

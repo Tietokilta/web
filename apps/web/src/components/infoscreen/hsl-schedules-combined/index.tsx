@@ -2,8 +2,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { HSLSchedule } from "../hsl-schedule";
-import { type RenderableStop } from "../../lib/types/hsl-helper-types";
-import { hslFetcher } from "../../lib/fetcher.ts";
+import { type RenderableStop } from "../../../lib/types/hsl-helper-types.ts";
+import { hslFetcher } from "../../../lib/fetcher.ts";
 
 export function HSLcombinedSchedule({
   stopData,

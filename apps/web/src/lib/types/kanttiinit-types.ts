@@ -1,6 +1,3 @@
-import exp from "node:constants";
-import {list} from "postcss";
-
 export interface Restaurant {
     opening_hours: Date[],
     id: string,
