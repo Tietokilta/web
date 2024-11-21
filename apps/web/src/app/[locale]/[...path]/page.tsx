@@ -9,6 +9,7 @@ import { TableOfContents } from "../../../components/table-of-contents";
 import { fetchPage } from "../../../lib/api/pages";
 import { getCurrentLocale, type Locale } from "../../../locales/server";
 import EventsPage from "../../../custom-pages/events-page";
+import AllEventsPage from "../../../custom-pages/all-events-page";
 import WeeklyNewsletterPage from "../../../custom-pages/weekly-newsletter-page";
 import { generateTocFromRichText } from "../../../lib/utils";
 import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-list-page";
@@ -73,7 +74,7 @@ const getPage = async (path: string[], locale: Locale) => {
 export const generateMetadata = async ({
   params: { path },
 }: Props): Promise<Metadata> => {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const page = await getPage(path, locale);
 
   return {
@@ -99,11 +100,15 @@ function Content({ content }: { content?: EditorState }) {
 }
 
 async function Page({ params: { path } }: Props) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const page = await getPage(path, locale);
 
   if (page.type === "events-list") {
     return <EventsPage />;
+  }
+
+  if (page.type === "all-events-list") {
+    return <AllEventsPage />;
   }
 
   if (page.type === "weekly-newsletter") {

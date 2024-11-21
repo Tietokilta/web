@@ -14,7 +14,11 @@ import {
 import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
 import { getCurrentLocale, getI18n } from "../../locales/server";
-import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
+import {
+  formatDateTime,
+  formatDateTimeOptions,
+  getLocalizedEventTitle,
+} from "../../lib/utils";
 import { DateTime } from "../datetime";
 
 function EventListSkeleton() {
@@ -28,7 +32,7 @@ function EventListSkeleton() {
 }
 
 async function EventItem({ event }: { event: IlmomasiinaEvent }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getI18n();
 
   const eventUrl = `/${locale}/${t("ilmomasiina.path.events")}/${event.slug}`;
@@ -37,14 +41,14 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
     <li className="shadow-solid flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
       <div className="flex-1 shrink-0">
         <span className="block text-pretty text-lg font-bold">
-          {event.title}
+          {getLocalizedEventTitle(event.title, locale)}
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
           <Link href={eventUrl}>
             <span aria-hidden="true">{t("action.Read more")}</span>
             <span className="sr-only">
               {t("action.Read more about {something}", {
-                something: event.title,
+                something: getLocalizedEventTitle(event.title, locale),
               })}
             </span>
           </Link>
@@ -81,7 +85,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           <span aria-hidden="true">{t("action.Read more")}</span>
           <span className="sr-only">
             {t("action.Read more about {something}", {
-              something: event.title,
+              something: getLocalizedEventTitle(event.title, locale),
             })}
           </span>
         </Link>
@@ -92,7 +96,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
   const upcomingEvents = await fetchUpcomingEvents();
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getI18n();
   if (!upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
@@ -170,7 +174,7 @@ export async function EventsDisplay({
   eventsListPath?: string;
   currentPage?: number;
 }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getI18n();
   return (
     <section className="space-y-4">
@@ -178,7 +182,10 @@ export async function EventsDisplay({
         className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
         href={eventsListPath ?? `/${locale}/${t("ilmomasiina.path.events")}`}
       >
-        <h2 className="font-mono text-2xl font-bold text-gray-900">
+        <h2
+          className="glitch layers font-mono text-2xl font-bold text-gray-900"
+          data-text={t("heading.Upcoming events")}
+        >
           {t("heading.Upcoming events")}
         </h2>
       </Link>

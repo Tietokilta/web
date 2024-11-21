@@ -51,7 +51,7 @@ export interface EventQuestion {
 export interface EventQuota {
   id: string;
   title: string;
-  size: number;
+  size?: number | null;
   signupCount?: number;
   signups?: QuotaSignup[] | null;
 }
@@ -124,11 +124,20 @@ export interface IlmomasiinaSignupInfoResponse {
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ideally would throw during build, but let's at least throw here if it's missing
 export const baseUrl = process.env.NEXT_PUBLIC_ILMOMASIINA_URL!;
 
-export const fetchEvents = async (): Promise<
-  ApiResponse<IlmomasiinaEvent[]>
-> => {
+export const fetchEvents = async (
+  since?: Date,
+): Promise<ApiResponse<IlmomasiinaEvent[]>> => {
   try {
-    const response = await fetch(`${baseUrl}/api/events`, {
+    let url = `${baseUrl}/api/events`;
+    if (since) {
+      url += `?${new URLSearchParams({
+        since: since.toISOString() || "",
+      }).toString()}`;
+    }
+
+    console.log(url);
+
+    const response = await fetch(url, {
       next: {
         tags: ["ilmomasiina-events"],
         revalidate: 120, // 2 minutes

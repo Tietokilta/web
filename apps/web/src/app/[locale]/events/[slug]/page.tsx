@@ -22,12 +22,14 @@ import {
   formatDateTimeSecondsOptions,
   formatDatetimeYear,
   formatDatetimeYearOptions,
+  getLocalizedEventTitle,
   getQuotasWithOpenAndQueue,
 } from "../../../../lib/utils";
 import { BackButton } from "../../../../components/back-button";
 import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
 import { DateTime } from "../../../../components/datetime";
 import { openGraphImage } from "../../../shared-metadata";
+import { remarkI18n } from "../../../../lib/plugins/remark-i18n";
 import { SignUpButton } from "./signup-button";
 
 async function SignUpText({
@@ -39,7 +41,7 @@ async function SignUpText({
   endDate?: string | null;
   className?: string;
 }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getScopedI18n("ilmomasiina.status");
   if (!startDate || !endDate) {
     return (
@@ -291,7 +293,7 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
 
 async function Tldr({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina.headers");
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   return (
     <div className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
       {event.category ? (
@@ -359,18 +361,27 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
             ) : (
               <>
                 <span>{quota.title}</span>
-                <div className="relative">
-                  <Progress
-                    value={Math.min(
-                      ((quota.signupCount ?? 0) / quota.size) * 100,
-                      100,
-                    )}
-                  />
-                  <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
-                    {Math.min(quota.signupCount ?? 0, quota.size)} /{" "}
-                    {quota.size}
-                  </span>
-                </div>
+                {typeof quota.size === "number" ? (
+                  <div className="relative">
+                    <Progress
+                      value={Math.min(
+                        ((quota.signupCount ?? 0) / quota.size) * 100,
+                        100,
+                      )}
+                    />
+                    <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
+                      {Math.min(quota.signupCount ?? 0, quota.size)} /{" "}
+                      {quota.size}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="relative">
+                    <Progress value={100} />
+                    <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
+                      {quota.signupCount}
+                    </span>
+                  </div>
+                )}
               </>
             )}
           </li>
@@ -412,9 +423,10 @@ export const generateMetadata = async ({
     console.warn("Failed to fetch event from Ilmomasiina", event.error);
     return {};
   }
+  const locale = await getCurrentLocale();
 
   return {
-    title: event.data.title,
+    title: getLocalizedEventTitle(event.data.title, locale),
     description: event.data.description,
     openGraph: {
       ...openGraphImage,
@@ -423,6 +435,7 @@ export const generateMetadata = async ({
 };
 
 export default async function Page({ params: { slug } }: PageProps) {
+  const locale = await getCurrentLocale();
   const event = await fetchEvent(slug);
   const t = await getScopedI18n("action");
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
@@ -442,14 +455,18 @@ export default async function Page({ params: { slug } }: PageProps) {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{t("Back")}</BackButton>
-          <h1 className="font-mono text-2xl md:text-4xl">{event.data.title}</h1>
+          <h1 className="font-mono text-2xl md:text-4xl">
+            {getLocalizedEventTitle(event.data.title, locale)}
+          </h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
               <div className="flex max-w-xl grow-[2] flex-col gap-8">
                 <Tldr event={event.data} />
                 {event.data.description ? (
                   <div className="prose">
-                    <Markdown remarkPlugins={[remarkGfm]}>
+                    <Markdown
+                      remarkPlugins={[[remarkI18n, { locale }], remarkGfm]}
+                    >
                       {event.data.description}
                     </Markdown>
                   </div>

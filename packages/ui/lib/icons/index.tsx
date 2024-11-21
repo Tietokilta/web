@@ -31,15 +31,18 @@ import {
   ImageIcon,
   InboxIcon,
   LanguagesIcon,
+  MailIcon,
   MapPinIcon,
   MegaphoneIcon,
   MenuIcon,
   MoreHorizontalIcon,
   PhoneIcon,
+  SendIcon,
   XIcon,
   HandshakeIcon,
 } from "lucide-react";
 import React from "react";
+import type { JSX } from "react";
 import { default as TikLogo } from "./tik-logo";
 import NavGuildIcon from "./nav/guild";
 import NavFuksisIcon from "./nav/fuksis";
@@ -73,10 +76,12 @@ export const icons = {
   Instagram: InstagramIcon,
   Languages: LanguagesIcon,
   Linkedin: LinkedinIcon,
+  Mail: MailIcon,
   MapPin: MapPinIcon,
   Megaphone: MegaphoneIcon,
   Menu: MenuIcon,
   MoreHorizontal: MoreHorizontalIcon,
+  PaperAirplane: SendIcon,
   Phone: PhoneIcon,
   Telegram: TelegramIcon,
   TikLogo,
@@ -116,11 +121,13 @@ export {
   InstagramIcon,
   LanguagesIcon,
   LinkedinIcon,
+  MailIcon,
   MapPinIcon,
   MegaphoneIcon,
   MenuIcon,
   MoreHorizontalIcon,
   PhoneIcon,
+  SendIcon,
   TelegramIcon,
   TikLogo,
   TiktokIcon,

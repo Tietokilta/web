@@ -1,11 +1,17 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { HSLSchedule } from "../hsl-schedule";
 import { type RenderableStop } from "../../lib/types/hsl-helper-types";
 import { hslFetcher } from "../../lib/fetcher.ts";
 
-export function HSLcombinedSchedule({ stopData, setStopData }: { stopData: RenderableStop[], setStopData: React.Dispatch<React.SetStateAction<RenderableStop[]>> }) {
+export function HSLcombinedSchedule({
+  stopData,
+  setStopData,
+}: {
+  stopData: RenderableStop[];
+  setStopData: React.Dispatch<React.SetStateAction<RenderableStop[]>>;
+}) {
   const [error, setError] = useState("");
   const router = useRouter();
 
@@ -29,10 +35,9 @@ export function HSLcombinedSchedule({ stopData, setStopData }: { stopData: Rende
       }
     };
     // Call fetchData immediately and then set up the interval
-    fetchData()
-      .catch((err: Error) => {
-        setError(err.message);
-      });
+    fetchData().catch((err: Error) => {
+      setError(err.message);
+    });
     const intervalId = setInterval(fetchData, 4000); // timeout n milliseconds
 
     // Clear the interval when the component unmounts

@@ -29,7 +29,7 @@ import {
   useCurrentLocale,
   useScopedI18n,
 } from "../../../../../locales/client";
-import { cn } from "../../../../../lib/utils";
+import { cn, getLocalizedEventTitle } from "../../../../../lib/utils";
 
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
 
@@ -212,11 +212,17 @@ function Form({
   saveAction: typeof saveSignUpAction;
   deleteAction: typeof deleteSignUpAction;
 }) {
+  const locale = useCurrentLocale();
   const t = useScopedI18n("ilmomasiina.form");
   const [state, formAction] = useFormState(saveAction, null);
   const isSignupPeriodEnded =
     !!event.registrationEndDate &&
     new Date(event.registrationEndDate) < new Date();
+
+  // On first render, scroll to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
 
   useEffect(() => {
     const errorFields = state?.errors
@@ -381,7 +387,7 @@ function Form({
         />
         <ConfirmDeletePopover
           id="confirm-delete"
-          eventTitle={event.title}
+          eventTitle={getLocalizedEventTitle(event.title, locale)}
           deleteAction={deleteAction}
         />
       </div>

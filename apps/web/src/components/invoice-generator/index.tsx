@@ -33,42 +33,20 @@ function InputLabel({ name, htmlId }: { name: string; htmlId: string }) {
 }
 
 function InputRow({
-  placeholder,
-  label,
   id,
-  name,
-  autoComplete,
   type,
-  defaultValue,
-  multiple,
-  required,
-  step,
-  min,
-  onBeforeInput: onInput,
   unit,
-  maxLength,
+  label,
+  name,
+  ...restProps
 }: GenericFieldProps) {
   const htmlId = id ?? `inputfield.${name}`;
-
   return (
     <div>
       <InputLabel name={label} htmlId={htmlId} />
       <span className="flex">
-        <Input
-          id={htmlId}
-          name={name}
-          type={type ?? "text"}
-          placeholder={placeholder}
-          autoComplete={autoComplete}
-          defaultValue={defaultValue}
-          required={required}
-          multiple={multiple}
-          step={step}
-          min={min}
-          onBeforeInput={onInput}
-          maxLength={maxLength}
-        />
-        {unit ? <span className="ml-2 translate-y-1">{unit}</span> : null}
+        <Input id={htmlId} type={type ?? "text"} name={name} {...restProps} />
+        {unit ? <span className="ml-1 translate-y-1">{unit}</span> : null}
       </span>
     </div>
   );
@@ -239,6 +217,10 @@ function InvoiceItem({
 }) {
   const t = useScopedI18n("invoicegenerator");
 
+  const [quantity, setQuantity] = useState(0);
+  const [unitPrice, setUnitPrice] = useState(0);
+  const totalPrice = quantity * unitPrice;
+
   return (
     <fieldset>
       <ErrorMessageBlock
@@ -254,7 +236,7 @@ function InvoiceItem({
         />
       </ErrorMessageBlock>
       <fieldset className="flex">
-        <span className="mr-0.5 grow">
+        <span className="mr-1 grow">
           <ErrorMessageBlock
             elementName={`rows[${index.toString()}].quantity`}
             formState={state}
@@ -264,11 +246,12 @@ function InvoiceItem({
               name="rows.quantity"
               id={`rows[${index.toString()}].quantity`}
               type="number"
+              onInput={(e) => setQuantity(Number(e.currentTarget.value))}
               required
             />
           </ErrorMessageBlock>
         </span>
-        <span className="ml-0.5 grow">
+        <span className="ml-1 grow">
           <ErrorMessageBlock
             elementName={`rows[${index.toString()}].unit`}
             formState={state}
@@ -284,23 +267,37 @@ function InvoiceItem({
           </ErrorMessageBlock>
         </span>
       </fieldset>
-      <ErrorMessageBlock
-        elementName={`rows[${index.toString()}].unit_price`}
-        formState={state}
-      >
-        <span>
+      <fieldset className="flex">
+        <span className="mr-1 grow">
+          <ErrorMessageBlock
+            elementName={`rows[${index.toString()}].unit_price`}
+            formState={state}
+          >
+            <InputRow
+              label={t("Unit price")}
+              type="number"
+              name="rows.unit_price"
+              id={`rows[${index.toString()}].unit_price`}
+              onInput={(e) => setUnitPrice(Number(e.currentTarget.value))}
+              required
+              step={0.01}
+              min={0}
+              unit="€"
+            />
+          </ErrorMessageBlock>
+        </span>
+        <span className="ml-1 grow">
           <InputRow
-            label={t("Unit price")}
-            type="number"
-            name="rows.unit_price"
-            id={`rows[${index.toString()}].unit_price`}
-            required
-            step={0.01}
-            min={0}
+            label={t("Total price")}
+            type="text"
+            name="rows.total_price"
+            value={totalPrice.toFixed(2)}
+            id={`rows[${index.toString()}].total_price`}
             unit="€"
+            disabled={true}
           />
         </span>
-      </ErrorMessageBlock>
+      </fieldset>
     </fieldset>
   );
 }

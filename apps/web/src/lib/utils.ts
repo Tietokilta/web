@@ -1,6 +1,7 @@
 import type { EditorState, Node } from "@tietokilta/cms-types/lexical";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import type { JSX } from "react";
 import { type Locale } from "../locales/server";
 import {
   type EventQuotaWithSignups,
@@ -292,6 +293,17 @@ export const getQuotasWithOpenAndQueue = (
 
   return quotasWithOpenAndQueue;
 };
+
+export function getLocalizedEventTitle(eventTitle: string, locale: Locale) {
+  const titleLocaleSeparator = " // ";
+  const [fiTitle, enTitle] = eventTitle.split(titleLocaleSeparator);
+
+  if (locale === "en") {
+    return enTitle || fiTitle;
+  }
+
+  return fiTitle;
+}
 
 /**
  * Typescript gymnastics

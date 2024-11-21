@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import Eventslist from "../events-list";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export function Events() {
   const [count, setCount] = useState(0);
@@ -15,7 +15,7 @@ export function Events() {
     return () => clearInterval(intervalId);
   }, []); // Empty dependency array means this effect runs once when the component mounts
 
-  return <Eventslist key={Math.random()}/>;
+  return <Eventslist key={Math.random()} />;
 }
 
 export default Events;

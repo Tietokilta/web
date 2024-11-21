@@ -1,4 +1,5 @@
 import type { CommitteesYearBlockNode } from "@tietokilta/cms-types/lexical";
+import type { JSX } from "react";
 import { fetchCommittees } from "../../lib/api/committees";
 import { CommitteeCard } from "../committee-card";
 import { getCurrentLocale } from "../../locales/server";
@@ -8,10 +9,10 @@ export async function CommitteeList({
 }: {
   year: CommitteesYearBlockNode["fields"]["year"];
 }): Promise<JSX.Element | null> {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const committees = await fetchCommittees({
     where: { year: { equals: year } },
-    locale: getCurrentLocale(),
+    locale,
   });
 
   if (!committees || committees.length === 0) {

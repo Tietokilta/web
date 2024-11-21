@@ -1,6 +1,5 @@
 import { type RenderableStop } from "./types/hsl-helper-types.ts";
 
-
 async function wait(s: number): Promise<void> {
   await new Promise((resolve) => {
     setTimeout(resolve, 1000 * s);
@@ -19,10 +18,9 @@ export async function hslFetcher(): Promise<{
   if (!process.env.NEXT_PUBLIC_FRONTEND_URL) {
     return { status: 500, result: null };
   }
-  const response: Response = await fetch(
-    "/next_api/fetch-hsl-stops",
-    { headers: { "cache-control": "no-cache" } },
-  );
+  const response: Response = await fetch("/next_api/fetch-hsl-stops", {
+    headers: { "cache-control": "no-cache" },
+  });
   if (response.status !== 200) {
     return { status: response.status, result: null };
   }
