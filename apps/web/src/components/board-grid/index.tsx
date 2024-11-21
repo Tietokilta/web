@@ -1,6 +1,7 @@
 import type { Board, BoardMember, Media } from "@tietokilta/cms-types/payload";
-import { GmailIcon, TelegramIcon, PhoneIcon } from "@tietokilta/ui";
+import { MailIcon, SendIcon, PhoneIcon } from "@tietokilta/ui";
 import Image from "next/image";
+import type { JSX } from "react";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
 
@@ -35,7 +36,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
               className="flex items-center gap-1"
               href={`mailto:${boardMember.email}`}
             >
-              <GmailIcon className="size-6 shrink-0" />
+              <MailIcon className="size-6 shrink-0" />
               <span className="underline">
                 {insertSoftHyphens(boardMember.email)}
               </span>
@@ -48,7 +49,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
               rel="noopener noreferrer"
               target="_blank"
             >
-              <TelegramIcon className="size-6 shrink-0" />
+              <SendIcon className="size-6 shrink-0" />
               <span className="underline">{boardMember.telegram}</span>
             </a>
           ) : null}

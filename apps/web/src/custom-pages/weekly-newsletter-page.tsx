@@ -163,7 +163,7 @@ export const legacyUrl =
   process.env.PUBLIC_LEGACY_URL ?? "https://tietokilta.fi";
 
 export default async function Page({ slug }: { slug?: string }) {
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const t = await getScopedI18n("weeklyNewsletter");
   const weeklyNewsletter = await (slug
     ? fetchWeeklyNewsletterBySlug({

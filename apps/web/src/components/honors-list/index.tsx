@@ -1,6 +1,7 @@
 import type { AwardedHonor, Honor } from "@tietokilta/cms-types/payload";
 import { ChevronDownIcon } from "@tietokilta/ui";
 import _ from "lodash";
+import type { JSX } from "react";
 import { cn } from "../../lib/utils";
 
 function AwardedPersonDropdown({

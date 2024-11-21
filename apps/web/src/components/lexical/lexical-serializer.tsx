@@ -9,6 +9,7 @@ import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { type Media } from "@tietokilta/cms-types/payload";
+import type { JSX } from "react";
 import {
   cn,
   insertSoftHyphens,

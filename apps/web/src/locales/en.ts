@@ -56,6 +56,7 @@ const en = {
   "invoicegenerator.Quantity": "Quantity",
   "invoicegenerator.Unit": "Unit",
   "invoicegenerator.Unit price": "Unit price",
+  "invoicegenerator.Total price": "Total price",
   "invoicegenerator.Attachment": "Attachment",
   "invoicegenerator.Attachments": "Attachments",
   "invoicegenerator.Items": "Items",
@@ -68,6 +69,8 @@ const en = {
   "invoicegenerator.Invoicer information": "Invoicer information",
   "ilmomasiina.form.You are in queue at position {position}":
     "You are in queue at position {position}.",
+  "ilmomasiina.form.You are in the quota {quotaName} at position {position}":
+    "You are in the quota {quotaName} at position {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "You are in the quota {quotaName} at position {position}/{quotaSize}.",
   "ilmomasiina.form.fieldError.missing": "This field is required.",
@@ -120,6 +123,8 @@ const en = {
   "ilmomasiina.Avoin kiintiö": "Open quota",
   "ilmomasiina.Jonossa": "In queue",
   "ilmomasiina.path.events": "events",
+  "ilmomasiina.path.all-events": "all-events",
+  "ilmomasiina.all-events.Kaikki tapahtumat": "All events",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
   "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign ups start on {startDate}",
   "ilmomasiina.status.Ilmoittautuminen auki":
@@ -134,6 +139,7 @@ const en = {
   "ilmomasiina.Tilaa kalenteri": "Subscribe to calendar",
   "ilmomasiina.Kopioidaan leikepöydälle": "Copying to clipboard",
   "ilmomasiina.Kopioitu leikepöydälle": "Copied to clipboard",
+  "ilmomasiina.Selaa vanhoja tapahtumia": "Browse old events",
   "not-found.Etusivulle": "To front page",
   "not-found.Tapahtumalistaukseen": "To event list",
   "not-found.Sivua ei löytynyt": "Page not found",

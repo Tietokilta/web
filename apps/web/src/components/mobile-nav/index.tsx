@@ -26,7 +26,7 @@ export async function MobileNav({
   ...rest
 }: React.ComponentPropsWithoutRef<"header">) {
   const t = await getI18n();
-  const locale = getCurrentLocale();
+  const locale = await getCurrentLocale();
   const href = `/${locale}`;
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});

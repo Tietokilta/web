@@ -38,10 +38,12 @@ export type LinkRowBlockLink =
         | 'Instagram'
         | 'Languages'
         | 'Linkedin'
+        | 'Mail'
         | 'MapPin'
         | 'Megaphone'
         | 'Menu'
         | 'MoreHorizontal'
+        | 'PaperAirplane'
         | 'Phone'
         | 'Telegram'
         | 'TikLogo'
@@ -129,7 +131,7 @@ export interface Page {
   id: string;
   title: string;
   description: string;
-  type: 'standard' | 'redirect' | 'events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
+  type: 'standard' | 'redirect' | 'events-list' | 'all-events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
   icon?:
     | (
         | 'AlertOctagon'
@@ -157,10 +159,12 @@ export interface Page {
         | 'Instagram'
         | 'Languages'
         | 'Linkedin'
+        | 'Mail'
         | 'MapPin'
         | 'Megaphone'
         | 'Menu'
         | 'MoreHorizontal'
+        | 'PaperAirplane'
         | 'Phone'
         | 'Telegram'
         | 'TikLogo'
@@ -237,10 +241,12 @@ export interface Topic {
         | 'Instagram'
         | 'Languages'
         | 'Linkedin'
+        | 'Mail'
         | 'MapPin'
         | 'Megaphone'
         | 'Menu'
         | 'MoreHorizontal'
+        | 'PaperAirplane'
         | 'Phone'
         | 'Telegram'
         | 'TikLogo'
@@ -456,6 +462,7 @@ export interface CommitteeMember {
   name: string;
   title: string;
   chair?: boolean | null;
+  email?: string | null;
   telegramUsername?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -909,10 +916,12 @@ export interface MainNavigationTopicConfig {
                 | 'Instagram'
                 | 'Languages'
                 | 'Linkedin'
+                | 'Mail'
                 | 'MapPin'
                 | 'Megaphone'
                 | 'Menu'
                 | 'MoreHorizontal'
+                | 'PaperAirplane'
                 | 'Phone'
                 | 'Telegram'
                 | 'TikLogo'

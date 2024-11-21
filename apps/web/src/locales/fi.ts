@@ -56,6 +56,7 @@ const fi = {
   "invoicegenerator.Quantity": "Määrä",
   "invoicegenerator.Unit": "Yksikkö",
   "invoicegenerator.Unit price": "Yksikköhinta",
+  "invoicegenerator.Total price": "Yhteensä",
   "invoicegenerator.Attachment": "Liite",
   "invoicegenerator.Attachments": "Liitteet",
   "invoicegenerator.Items": "Erittely",
@@ -68,6 +69,8 @@ const fi = {
   "invoicegenerator.Invoicer information": "Laskuttajan tiedot",
   "ilmomasiina.form.You are in queue at position {position}":
     "Olet jonossa sijalla {position}.",
+  "ilmomasiina.form.You are in the quota {quotaName} at position {position}":
+    "Olet kiintiössä {quotaName} sijalla {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
     "Olet kiintiössä {quotaName} sijalla {position}/{quotaSize}.",
   "ilmomasiina.form.fieldError.missing": "Tämä kenttä on pakollinen.",
@@ -120,6 +123,8 @@ const fi = {
   "ilmomasiina.Avoin kiintiö": "Avoin kiintiö",
   "ilmomasiina.Jonossa": "Jonossa",
   "ilmomasiina.path.events": "tapahtumat",
+  "ilmomasiina.path.all-events": "kaikki-tapahtumat",
+  "ilmomasiina.all-events.Kaikki tapahtumat": "Kaikki tapahtumat",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "Ei ilmoittautuneita vielä.",
   "ilmomasiina.status.Ilmoittautuminen alkaa":
     "Ilmoittautuminen alkaa {startDate}",
@@ -136,6 +141,7 @@ const fi = {
   "ilmomasiina.Tilaa kalenteri": "Tilaa kalenteri",
   "ilmomasiina.Kopioidaan leikepöydälle": "Kopioidaan leikepöydälle",
   "ilmomasiina.Kopioitu leikepöydälle": "Kopioitu leikepöydälle",
+  "ilmomasiina.Selaa vanhoja tapahtumia": "Selaa vanhoja tapahtumia",
   "not-found.Etusivulle": "Etusivulle",
   "not-found.Tapahtumalistaukseen": "Tapahtumalistaukseen",
   "not-found.Sivua ei löytynyt": "Sivua ei löytynyt",
