@@ -1,5 +1,3 @@
-import {open} from "node:fs";
-
 export interface Restaurant {
   opening_hours: openingHour[];
   id: number;
@@ -21,6 +19,7 @@ export interface KanttinitResponse {
   "name": string
 }
 export interface Food {
+  id: number;
   title: string;
   properties: string[];
 }

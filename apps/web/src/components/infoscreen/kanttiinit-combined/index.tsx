@@ -1,9 +1,9 @@
 "use client";
 
-import {Restaurant, type RestaurantMenu} from "../../../lib/types/kanttiinit-types.ts";
+import {Food, Restaurant, type RestaurantMenu} from "../../../lib/types/kanttiinit-types.ts";
 import {useEffect, useState} from "react";
 import type {RenderableStop} from "../../../lib/types/hsl-helper-types.ts";
-import {kanttiinitFetcher} from "../../../lib/fetcher.ts";
+import {kanttiinitFetcher, kanttiinitMenuFetcher} from "../../../lib/fetcher.ts";
 import {useRouter} from "next/navigation";
 
 export function KanttiinitCombined({
@@ -19,12 +19,23 @@ export function KanttiinitCombined({
     // This use effect updates the times displayed on the info screen
     const fetchData = async (): Promise<void> => {
       try {
-        const result: { status: number; result: Restaurant[] | null } =
+        const restaurantResults: { status: number; result: Restaurant[] | null } =
           await kanttiinitFetcher("https://kitchen.kanttiinit.fi/restaurants?lang=fi&ids=2,7,52&priceCategories=student");
-        //console.log("Fetched data", result.status)
-        if (result.status === 200) {
+        const menuResults: { status: number; result: Food[] | null } =
+          await kanttiinitMenuFetcher("https://kitchen.kanttiinit.fi/menus?restaurants=", [2, 7, 52]);
+        console.log(restaurantResults)
+        console.log(menuResults)
+        if (restaurantResults.status === 200 && menuResults.status === 200) {
           setError("");
-          // setMenus(result.result ? result.result : []);
+          const newMenus: RestaurantMenu[] =
+            (restaurantResults.result ? restaurantResults.result : []).map(
+              (restaurant: Restaurant) => {
+              return {
+                restaurant: restaurant,
+                foods: (menuResults.result ? menuResults.result : []).filter((food: Food) => food.id === restaurant.id),
+              };
+          });
+          setMenus(newMenus);
         } else {
           setError("Error fetching data");
           router.push("/infonaytto/naytto");
@@ -45,9 +56,16 @@ export function KanttiinitCombined({
       clearInterval(intervalId);
     };
   }, [menus, setMenus]);
+  if (error !== "") {
+    return (
+      <div className="flex w-full justify-center">
+        <h1 className="flex justify-center pt-4 text-3xl font-bold">{error}</h1>
+      </div>
+    );
+  }
   return (
     <div>
-      <h1>{}</h1>
+      {menus.map(menu => (<div><p>{menu.restaurant.name}</p><p>{menu.restaurant.id}</p></div>))}
     </div>
   );
 }

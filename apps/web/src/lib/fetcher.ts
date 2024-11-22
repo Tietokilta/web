@@ -1,5 +1,5 @@
 import { type RenderableStop } from "./types/hsl-helper-types.ts";
-import {KanttinitResponse, Restaurant} from "./types/kanttiinit-types.ts";
+import {Food, KanttinitResponse, Restaurant} from "./types/kanttiinit-types.ts";
 
 async function wait(s: number): Promise<void> {
   await new Promise((resolve) => {
@@ -53,25 +53,28 @@ export async function kanttiinitFetcher(url: string): Promise<{
   return { status: 200, result: restaurants };
 }
 
-export async function kanttiinitMenuFetcher(url: string): Promise<{
+export async function kanttiinitMenuFetcher(url: string, ids: number[]): Promise<{
   status: number;
-  result: Restaurant[] | null;
+  result: Food[] | null;
 }> {
-  const response: Response = await fetch(url);
+  const today = new Date().toISOString().split('T')[0]
+  const response: Response = await fetch(`${url}${ids.join(",")}&days=${today}`);
   if (response.status !== 200) {
     return { status: response.status, result: null };
   }
-  const responseBody: { retData: { data: KanttinitResponse[] } } =
+  const responseBody: { retData: { data: any } } =
     await response.json();
-  const restaurants: Restaurant[] = responseBody.retData.data.map(
-    (restaurant: KanttinitResponse) => {
-      return {
-        id: restaurant.id,
-        name: restaurant.name,
-        type: restaurant.type,
-        url: restaurant.url,
-        opening_hours: restaurant.openingHours,
-      };
-    })
-  return { status: 200, result: restaurants };
+
+  const menus: Food[] = []
+
+  responseBody.retData.data.forEach((data: any[]) => {
+    data.map((menus: any) => {
+      menus.append({
+        id: menus.getItem(ids),
+        title: menus.getItem(ids).getItem(today).title,
+        properties: menus.getItem(ids).getItem(today).properties,
+      })
+    });
+  });
+  return { status: 200, result: menus };
 }
