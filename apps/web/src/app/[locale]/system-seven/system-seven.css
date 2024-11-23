@@ -91,8 +91,16 @@ img[alt~="Tietokilta"] {
     brightness(108%) contrast(103%) !important;
 }
 
-img[alt~="SystemSeven"] {
+img[alt~="SystemSeven"],
+a[href="#yhteistyokumppanit"] ~ div a img,
+a[href="#paayhteistyokumppanit"] ~ div a img,
+a[href="#main-partners"] ~ div a img,
+a[href="#partners"] ~ div a img {
   filter: none !important;
+}
+
+footer div ul li a img {
+  filter: invert(100%) !important;
 }
 
 section {
