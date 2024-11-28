@@ -125,17 +125,13 @@ export interface IlmomasiinaSignupInfoResponse {
 export const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
 
 export const fetchEvents = async (
-  since?: Date,
+  maxAge?: number,
 ): Promise<ApiResponse<IlmomasiinaEvent[]>> => {
   try {
     let url = `${baseUrl}/api/events`;
-    if (since) {
-      url += `?${new URLSearchParams({
-        since: since.toISOString() || "",
-      }).toString()}`;
+    if (maxAge !== undefined) {
+      url += `?${new URLSearchParams({ maxAge: String(maxAge) }).toString()}`;
     }
-
-    console.log(url);
 
     const response = await fetch(url, {
       next: {
