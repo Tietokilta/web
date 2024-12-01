@@ -48,12 +48,7 @@ export default async function Page() {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{ta("Back")}</BackButton>
-          <h1
-            className="glitch layers font-mono text-4xl"
-            data-text={t("Tapahtumat")}
-          >
-            {t("Tapahtumat")}
-          </h1>
+          <h1 className="font-mono text-4xl">{t("Tapahtumat")}</h1>
           <Calendar events={events.data} />
           <ul className="space-y-8">
             {upcomingEvents.data.map((event) => (
