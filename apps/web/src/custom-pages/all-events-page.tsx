@@ -6,9 +6,8 @@ import { getScopedI18n } from "../locales/server";
 export default async function Page() {
   const t = await getScopedI18n("ilmomasiina.all-events");
   const ta = await getScopedI18n("action");
-  const since = new Date();
-  since.setMonth(since.getMonth() - 6);
-  const events = await fetchEvents(since);
+  const maxAge = 180; // days, maximum for default Ilmomasiina config
+  const events = await fetchEvents(maxAge);
 
   return (
     <main
