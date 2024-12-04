@@ -2,7 +2,6 @@
 
 import {Food, Restaurant, type RestaurantMenu} from "../../../lib/types/kanttiinit-types.ts";
 import {useEffect, useState} from "react";
-import type {RenderableStop} from "../../../lib/types/hsl-helper-types.ts";
 import {kanttiinitFetcher, kanttiinitMenuFetcher} from "../../../lib/fetcher.ts";
 import {useRouter} from "next/navigation";
 
