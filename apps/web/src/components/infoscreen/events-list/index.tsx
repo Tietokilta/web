@@ -190,7 +190,9 @@ function groupEventsByWeek(
   return events.reduce<Record<number, IlmomasiinaEvent[]>>((acc, event) => {
     const eventDate = event.date
       ? new Date(event.date)
-      : new Date(event.registrationStartDate ? event.registrationStartDate : "");
+      : new Date(
+          event.registrationStartDate ? event.registrationStartDate : "",
+        );
     const weekNumber = getWeek(eventDate);
     if (!acc[weekNumber]) {
       acc[weekNumber] = [];
