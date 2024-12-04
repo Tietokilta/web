@@ -33,7 +33,7 @@ export function HSLSchedule(props: {
     if (type === "metro") {
       return "Metro";
     } else if (type === "tram") {
-      return "Raidejokeri";
+      return "Raide-Jokeri";
     } else if (type === "bus") {
       return "Bussit";
     }
