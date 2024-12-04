@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 import { Inter, Roboto_Mono } from "next/font/google";
 import { cn } from "../../lib/utils.ts";
 import "../globals.css";
@@ -19,17 +19,45 @@ export default function ScreenLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const containerRef = useRef(null);
+
+  const enterFullScreen = () => {
+    if (containerRef.current) {
+      if (containerRef.current.requestFullscreen) {
+        containerRef.current.requestFullscreen();
+      } else if (containerRef.current.webkitRequestFullscreen) {
+        containerRef.current.webkitRequestFullscreen(); // For Safari
+      } else if (containerRef.current.msRequestFullscreen) {
+        containerRef.current.msRequestFullscreen(); // For older browsers
+      }
+    }
+  };
+
   return (
     <html lang="fi">
       <body
+        ref={containerRef}
         className={cn(
           inter.variable,
           robotoMono.variable,
-          "flex h-full flex-col font-mono",
+          "flex h-full flex-col bg-gray-200 font-mono",
         )}
       >
         <InfoScreenHeader />
-        {children}
+        <div className="size-full p-4">{children}</div>
+        <button
+          onClick={enterFullScreen}
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            right: "10px",
+            padding: "10px 20px",
+            border: "none",
+            cursor: "pointer",
+          }}
+        >
+          Enter Fullscreen
+        </button>
       </body>
     </html>
   );

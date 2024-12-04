@@ -20,7 +20,7 @@ export function InfoScreenContents() {
       setCurrent((prev) => (prev + 1) % 3);
     };
 
-    const intervalId = setInterval(setNextChild, 5000);
+    const intervalId = setInterval(setNextChild, 15000);
 
     // Clear the interval when the component unmounts
     return () => {
@@ -44,19 +44,23 @@ export function InfoScreenContents() {
 
   if (current === 0) {
     return (
-      <div className="h-full flex-1 bg-gray-200">
+      <div className="h-full flex-1 bg-white">
         <HSLcombinedSchedule stopData={stopData} setStopData={setStopData} />
       </div>
     );
   } else if (current === 1) {
     return (
-      <div className="h-full flex-1 bg-gray-200">
-        <Eventslist events={events} setEvents={setEvents} />
+      <div className="h-full flex-1 bg-white">
+        <Eventslist
+          events={events}
+          setEvents={setEvents}
+          showIlmostatus={false}
+        />
       </div>
     );
   } else if (current === 2) {
     return (
-      <div className="h-full flex-1 bg-gray-200">
+      <div className="h-full flex-1 bg-white">
         <KanttiinitCombined menus={menus} />
       </div>
     );

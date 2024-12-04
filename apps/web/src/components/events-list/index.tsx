@@ -112,8 +112,14 @@ function SignupQuotas({
   );
 }
 
-function EventCard({ event }: { event: IlmomasiinaEvent }) {
-  let showSignupQuotas = true;
+function EventCard({
+  event,
+  showSignup = true,
+}: {
+  event: IlmomasiinaEvent;
+  showSignup: boolean;
+}) {
+  var showSignupQuotas = true;
   const signupStartDate = event.registrationStartDate;
   const signupEndDate = event.registrationEndDate;
   const eventDate = event.date ? new Date(event.date) : new Date();
@@ -133,19 +139,21 @@ function EventCard({ event }: { event: IlmomasiinaEvent }) {
           >
             <h2>{`${event.title}, ${formatDateTime(
               eventDate.toISOString(),
-            ).slice(0, eventDate.toISOString.length - 5)}`}</h2>
+            )}`}</h2>
           </Link>
 
           {showSignupQuotas ? (
             <OpenSignup endDate={signupEndDate} startDate={signupStartDate} />
           ) : null}
         </div>
-        <SignupQuotas
-          showQuotas={showSignupQuotas}
-          quotas={event.quotas}
-          openQuotaSize={event.openQuotaSize}
-          className="ml-5 w-1/3 shrink-0"
-        />
+        {showSignup ? (
+          <SignupQuotas
+            showQuotas={showSignupQuotas}
+            quotas={event.quotas}
+            openQuotaSize={event.openQuotaSize}
+            className="ml-5 w-1/3 shrink-0"
+          />
+        ) : null}
       </div>
     </li>
   );
@@ -180,11 +188,15 @@ function groupEventsByWeek(
   events: IlmomasiinaEvent[],
 ): Record<number, IlmomasiinaEvent[]> {
   return events.reduce<Record<number, IlmomasiinaEvent[]>>((acc, event) => {
-    const eventDate = event.date ? new Date(event.date) : new Date();
+    // @ts-ignore
+    const eventDate = event.date
+      ? new Date(event.date)
+      : new Date(event.registrationStartDate);
     const weekNumber = getWeek(eventDate);
     if (!acc[weekNumber]) {
       acc[weekNumber] = [];
     }
+
     acc[weekNumber].push(event);
     return acc;
   }, {});
@@ -193,9 +205,11 @@ function groupEventsByWeek(
 export default function Page({
   events,
   setEvents,
+  showIlmostatus = true,
 }: {
   events: IlmomasiinaEvent[];
   setEvents: React.Dispatch<React.SetStateAction<IlmomasiinaEvent[]>>;
+  showIlmostatus?: boolean;
 }) {
   useEffect(() => {
     async function loadEvents() {
@@ -214,7 +228,7 @@ export default function Page({
       </h1>
       <ul className="flex flex-row flex-wrap">
         {Object.entries(upcomingEventsDataByWeek)
-          .slice(0, 3)
+          .slice(1, 4)
           .map((entry) => {
             const eventsInWeek = entry[1];
             return (
@@ -224,7 +238,13 @@ export default function Page({
                 </span>
                 <div className="flex flex-col gap-3">
                   {eventsInWeek.map((event) => {
-                    return <EventCard event={event} key={event.id} />;
+                    return (
+                      <EventCard
+                        event={event}
+                        showSignup={showIlmostatus}
+                        key={event.id}
+                      />
+                    );
                   })}
                 </div>
               </div>

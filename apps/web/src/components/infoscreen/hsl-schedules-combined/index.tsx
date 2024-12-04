@@ -63,7 +63,9 @@ export function HSLcombinedSchedule({
       <div className="flex w-full justify-between gap-4 p-8 pt-0">
         {stopData.map((res) => (
           <HSLSchedule
-            key={res.arrivals[0].headSign}
+            key={
+              res.arrivals[0].headSign ? res.arrivals[0].headSign : "Unknown"
+            }
             result={res}
             className="flex flex-col gap-4"
           />

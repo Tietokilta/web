@@ -7,7 +7,7 @@ import type {
 
 export const fetchMenus = async (
   setMenus: React.Dispatch<React.SetStateAction<RestaurantMenu[]>>,
-	//setError: React.Dispatch<React.SetStateAction<string>>
+  //setError: React.Dispatch<React.SetStateAction<string>>
 ): Promise<void> => {
   try {
     const restaurantResults: {
@@ -30,7 +30,37 @@ export const fetchMenus = async (
             .filter(
               (menu: RestaurantMenuLite) => menu.restaurantID === restaurant.id,
             )
-            .flatMap((menu) => menu.menus),
+            .flatMap((menu) =>
+              menu.menus.map((dayMenu) => {
+                return {
+                  date: dayMenu.date,
+                  foods: dayMenu.foods
+                    .map((food) => {
+                      console.log(food.title);
+                      if (
+                        !/chef´s Kitchen|erikoisannos|jälkiruoka|wicked rabbit/i.test(
+                          food.title,
+                        )
+                      ) {
+                        if (food.title.includes(":")) {
+                          return {
+                            id: food.id,
+                            title: food.title.replace(/^(.*?): /, ""),
+                            properties: food.properties,
+                          };
+                        }
+                        return {
+                          id: food.id,
+                          title: food.title,
+                          properties: food.properties,
+                        };
+                      }
+                      return undefined;
+                    })
+                    .filter((food) => food !== undefined),
+                };
+              }),
+            ),
         };
       });
       setMenus(newMenus);
