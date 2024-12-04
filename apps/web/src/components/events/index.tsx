@@ -1,5 +1,5 @@
 "use client";
-import Eventslist from "../events-list";
+import Eventslist from "../infoscreen/events-list";
 import { useEffect, useState } from "react";
 
 export function Events() {

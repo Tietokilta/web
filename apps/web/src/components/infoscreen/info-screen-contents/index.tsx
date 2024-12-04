@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { HSLcombinedSchedule } from "../hsl-schedules-combined";
 import { Foods } from "../../foods";
-import Eventslist from "../../events-list";
+import Eventslist from "../events-list";
 import { type RenderableStop } from "../../../lib/types/hsl-helper-types.ts";
 import type { RestaurantMenu } from "../../../lib/types/kanttiinit-types.ts";
 import { type IlmomasiinaEvent } from "../../../lib/api/external/ilmomasiina";

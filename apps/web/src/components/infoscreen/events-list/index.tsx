@@ -4,12 +4,12 @@ import {
   type EventQuota,
   fetchEvents,
   type IlmomasiinaEvent,
-} from "../../lib/api/external/ilmomasiina";
+} from "../../../lib/api/external/ilmomasiina";
 import {
   formatDateTime,
   formatDatetimeYear,
   getQuotasWithOpenAndQueue,
-} from "../../lib/utils.ts";
+} from "../../../lib/utils.ts";
 
 function OpenSignup({
   startDate,
@@ -188,10 +188,9 @@ function groupEventsByWeek(
   events: IlmomasiinaEvent[],
 ): Record<number, IlmomasiinaEvent[]> {
   return events.reduce<Record<number, IlmomasiinaEvent[]>>((acc, event) => {
-    // @ts-ignore
     const eventDate = event.date
       ? new Date(event.date)
-      : new Date(event.registrationStartDate);
+      : new Date(event.registrationStartDate ? event.registrationStartDate : "");
     const weekNumber = getWeek(eventDate);
     if (!acc[weekNumber]) {
       acc[weekNumber] = [];
