@@ -44,6 +44,7 @@ export interface ArrivalAttribute {
   headSign: string;
   hours: number;
   minutes: number;
+  realtimeArrival: number;
   fullTime: string;
 }
 export interface RenderableStop {

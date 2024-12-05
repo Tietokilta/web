@@ -7,15 +7,15 @@ import { Newsletter } from "./newsletter";
 interface NewsletterEmailProps {
   finnishNewsletter: WeeklyNewsletter;
   englishNewsletter: WeeklyNewsletter;
-  PUBLIC_LEGACY_URL: string;
-  PUBLIC_FRONTEND_URL: string;
+  NEXT_PUBLIC_LEGACY_URL: string;
+  NEXT_PUBLIC_FRONTEND_URL: string;
 }
 
 export const NewsletterEmail = ({
   finnishNewsletter,
   englishNewsletter,
-  PUBLIC_LEGACY_URL,
-  PUBLIC_FRONTEND_URL,
+  NEXT_PUBLIC_LEGACY_URL,
+  NEXT_PUBLIC_FRONTEND_URL,
 }: NewsletterEmailProps): React.ReactElement => {
   return (
     <Html>
@@ -32,14 +32,14 @@ export const NewsletterEmail = ({
       <Newsletter
         newsletter={finnishNewsletter}
         locale="fi"
-        PUBLIC_LEGACY_URL={PUBLIC_LEGACY_URL}
-        PUBLIC_FRONTEND_URL={PUBLIC_FRONTEND_URL}
+        NEXT_PUBLIC_LEGACY_URL={NEXT_PUBLIC_LEGACY_URL}
+        NEXT_PUBLIC_FRONTEND_URL={NEXT_PUBLIC_FRONTEND_URL}
       ></Newsletter>
       <Newsletter
         newsletter={englishNewsletter}
         locale="en"
-        PUBLIC_LEGACY_URL={PUBLIC_LEGACY_URL}
-        PUBLIC_FRONTEND_URL={PUBLIC_FRONTEND_URL}
+        NEXT_PUBLIC_LEGACY_URL={NEXT_PUBLIC_LEGACY_URL}
+        NEXT_PUBLIC_FRONTEND_URL={NEXT_PUBLIC_FRONTEND_URL}
       ></Newsletter>
     </Html>
   );

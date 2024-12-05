@@ -20,7 +20,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/api") ||
     pathname.startsWith("/oauth2");
   if (pathnameHasCMSPath) {
-    const destination = new URL(process.env.PUBLIC_SERVER_URL ?? "");
+    const destination = new URL(process.env.NEXT_PUBLIC_SERVER_URL ?? "");
     const url = request.nextUrl.clone();
     url.host = destination.host;
     url.port = destination.port;
@@ -33,6 +33,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|next_api|static|favicon.ico|icon.svg|icon_dark.png|icon_light.png|og-image.png|robots.txt).*)",
+    "/((?!_next|next_api|static|favicon.ico|icon.svg|icon_dark.png|icon_light.png|og-image.png|robots.txt|infonaytto).*)",
   ],
 };
