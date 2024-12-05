@@ -21,7 +21,7 @@ export async function GET() {
   );
 
   if (response.status !== 200) {
-    return { status: response.status, result: null };
+    return Response.error();
   }
   const responseBody = (await response.json()) as RestaurantResponse[];
 

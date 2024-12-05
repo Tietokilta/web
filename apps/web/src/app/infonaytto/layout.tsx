@@ -19,17 +19,11 @@ export default function ScreenLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLBodyElement>(null);
 
   const enterFullScreen = () => {
     if (containerRef.current) {
-      if (containerRef.current.requestFullscreen) {
-        containerRef.current.requestFullscreen();
-      } else if (containerRef.current.webkitRequestFullscreen) {
-        containerRef.current.webkitRequestFullscreen(); // For Safari
-      } else if (containerRef.current.msRequestFullscreen) {
-        containerRef.current.msRequestFullscreen(); // For older browsers
-      }
+      void containerRef.current.requestFullscreen();
     }
   };
 
@@ -47,6 +41,7 @@ export default function ScreenLayout({
         <div className="size-full p-4">{children}</div>
         <button
           onClick={enterFullScreen}
+          type="button"
           style={{
             position: "absolute",
             bottom: "10px",
