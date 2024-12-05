@@ -19,7 +19,6 @@ export default function ScreenLayout({
 }: {
   children: React.ReactNode;
 }) {
-
   return (
     <html lang="fi">
       <body
