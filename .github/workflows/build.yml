@@ -40,14 +40,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Payload types (to ensure that they are up to date)
+        run: pnpm codegen && git diff --exit-code
+
       - name: Format (to ensure that code has been formatted)
         run: pnpm format && git diff --exit-code
 
       - name: Lint
         run: pnpm lint
-
-      - name: Generate Payload types (to ensure that they are up to date)
-        run: pnpm codegen && git diff --exit-code
 
       - name: Typecheck
         run: pnpm typecheck
