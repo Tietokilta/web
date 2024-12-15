@@ -41,7 +41,7 @@ function CommitteeMemberCard({
         <span className="text-sm">
           {insertSoftHyphens(committeeMember.title)}
         </span>
-        <div className="flex items-center justify-center space-x-2">
+        <span className="flex items-center justify-center space-x-2">
           <span className="m-1 text-sm">
             {committeeMember.email ? (
               <a
@@ -64,7 +64,7 @@ function CommitteeMemberCard({
               </a>
             ) : null}
           </span>
-        </div>
+        </span>
       </p>
     </li>
   );
