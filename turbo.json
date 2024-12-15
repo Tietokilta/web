@@ -29,16 +29,20 @@
   ],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "persistent": false
     },
     "codegen": {
-      "dependsOn": ["^build", "^codegen"]
+      "dependsOn": ["^build", "^codegen"],
+      "persistent": false
     },
     "lint": {
-      "dependsOn": ["^build", "codegen", "^codegen"]
+      "dependsOn": ["^build", "codegen", "^codegen"],
+      "persistent": false
     },
     "typecheck": {
-      "dependsOn": ["^build", "codegen", "^codegen"]
+      "dependsOn": ["^build", "codegen", "^codegen"],
+      "persistent": false
     },
     "dev": {
       "dependsOn": ["^build", "codegen", "^codegen"],
@@ -51,7 +55,8 @@
       "persistent": true
     },
     "clean": {
-      "cache": false
+      "cache": false,
+      "persistent": false
     }
   }
 }
