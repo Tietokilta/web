@@ -246,7 +246,9 @@ function InvoiceItem({
               name="rows.quantity"
               id={`rows[${index.toString()}].quantity`}
               type="number"
-              onInput={(e) => setQuantity(Number(e.currentTarget.value))}
+              onInput={(e) => {
+                setQuantity(Number(e.currentTarget.value));
+              }}
               required
             />
           </ErrorMessageBlock>
@@ -278,7 +280,9 @@ function InvoiceItem({
               type="number"
               name="rows.unit_price"
               id={`rows[${index.toString()}].unit_price`}
-              onInput={(e) => setUnitPrice(Number(e.currentTarget.value))}
+              onInput={(e) => {
+                setUnitPrice(Number(e.currentTarget.value));
+              }}
               required
               step={0.01}
               min={0}
@@ -294,7 +298,7 @@ function InvoiceItem({
             value={totalPrice.toFixed(2)}
             id={`rows[${index.toString()}].total_price`}
             unit="€"
-            disabled={true}
+            disabled
           />
         </span>
       </fieldset>
