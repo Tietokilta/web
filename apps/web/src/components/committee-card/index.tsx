@@ -48,6 +48,9 @@ function CommitteeMemberCard({
                 className="flex items-center gap-1"
                 href={`mailto:${committeeMember.email}`}
               >
+                <span className="sr-only">
+                  {committeeMember.name} Email: {committeeMember.email}
+                </span>
                 <GmailIcon className="size-6 shrink-0" />
               </a>
             ) : null}
@@ -60,6 +63,10 @@ function CommitteeMemberCard({
                 rel="noopener noreferrer"
                 target="_blank"
               >
+                <span className="sr-only">
+                  {committeeMember.name} Telegram:{" "}
+                  {parseTG(committeeMember.telegramUsername)}
+                </span>
                 <TelegramIcon className="size-6 shrink-0" />
               </a>
             ) : null}
