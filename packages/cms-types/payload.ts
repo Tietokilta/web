@@ -309,6 +309,7 @@ export interface Document {
 export interface BoardMember {
   id: string;
   guildYear:
+    | '2025'
     | '2024'
     | '2023'
     | '2022'
@@ -364,6 +365,7 @@ export interface BoardMember {
 export interface Board {
   id: string;
   year:
+    | '2025'
     | '2024'
     | '2023'
     | '2022'
@@ -419,6 +421,7 @@ export interface CommitteeMember {
   id: string;
   displayTitle?: string | null;
   guildYear:
+    | '2025'
     | '2024'
     | '2023'
     | '2022'
@@ -474,6 +477,7 @@ export interface CommitteeMember {
 export interface Committee {
   id: string;
   year:
+    | '2025'
     | '2024'
     | '2023'
     | '2022'
@@ -529,6 +533,7 @@ export interface MagazineIssue {
   id: string;
   title?: string | null;
   year:
+    | '2025'
     | '2024'
     | '2023'
     | '2022'
@@ -710,6 +715,7 @@ export interface AwardedHonor {
   id: string;
   displayTitle?: string | null;
   guildYear:
+    | '2025'
     | '2024'
     | '2023'
     | '2022'
