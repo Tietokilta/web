@@ -114,9 +114,6 @@ importers:
       form-data:
         specifier: ^4.0.1
         version: 4.0.1
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
       mailgun.js:
         specifier: ^10.2.4
         version: 10.2.4
@@ -151,9 +148,6 @@ importers:
       '@types/express-fileupload':
         specifier: ^1.5.1
         version: 1.5.1
-      '@types/lodash':
-        specifier: ^4.17.13
-        version: 4.17.13
       '@types/papaparse':
         specifier: ^5.3.15
         version: 5.3.15
@@ -202,9 +196,6 @@ importers:
       date-fns:
         specifier: ^4.1.0
         version: 4.1.0
-      lodash:
-        specifier: ^4.17.21
-        version: 4.17.21
       next:
         specifier: ^14.2.20
         version: 14.2.20(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.79.3)
@@ -241,6 +232,9 @@ importers:
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.0
+      remeda:
+        specifier: ^2.19.0
+        version: 2.19.0
       server-only:
         specifier: ^0.0.1
         version: 0.0.1
@@ -284,9 +278,6 @@ importers:
       '@tietokilta/eslint-config':
         specifier: workspace:*
         version: link:../../packages/config-eslint
-      '@types/lodash':
-        specifier: ^4.17.13
-        version: 4.17.13
       '@types/mdast':
         specifier: ^4.0.4
         version: 4.0.4
@@ -7286,6 +7277,9 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
+  remeda@2.19.0:
+    resolution: {integrity: sha512-B/2+zHNPXu0BAopJU8ZrqMjA0u56M/l6BUxDq8AcU+3LWlOYVuf98I6qpYrB5BeeEICunpmXPcQl2ReGXkiQyw==}
+
   renderkid@3.0.0:
     resolution: {integrity: sha512-q/7VIQA8lmM1hF+jn+sFSPWGlMkSAeNYcPLmDQx2zzuiDfaLrOmumR8iaUKlenFgh0XRPIUeSPlH3A+AW3Z5pg==}
 
@@ -8032,6 +8026,10 @@ packages:
   type-fest@0.8.1:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
+
+  type-fest@4.31.0:
+    resolution: {integrity: sha512-yCxltHW07Nkhv/1F6wWBr8kz+5BGMfP+RbRSYFnegVb0qV/UMT0G0ElBloPVerqn4M2ZV80Ir1FtCcYv1cT6vQ==}
+    engines: {node: '>=16'}
 
   type-is@1.6.18:
     resolution: {integrity: sha512-TkRKr9sUTxEH8MdfuCSP7VizJyzRNMjj2J2do2Jr3Kym598JVdEksuzPQCnlFPW4ky9Q+iA+ma9BGm06XQBy8g==}
@@ -16512,6 +16510,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  remeda@2.19.0:
+    dependencies:
+      type-fest: 4.31.0
+
   renderkid@3.0.0:
     dependencies:
       css-select: 4.3.0
@@ -17376,6 +17378,8 @@ snapshots:
   type-fest@0.6.0: {}
 
   type-fest@0.8.1: {}
+
+  type-fest@4.31.0: {}
 
   type-is@1.6.18:
     dependencies:

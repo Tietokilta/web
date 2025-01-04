@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useScramble } from "use-scramble";
-import _ from "lodash";
+import { shuffle } from "remeda";
 import { cn } from "../../lib/utils";
 
 export interface ImageWithPhotographer {
@@ -86,7 +86,7 @@ export function Hero({
   });
 
   useEffect(() => {
-    const shuffledTexts = _.shuffle(texts);
+    const shuffledTexts = shuffle(texts);
     setCurrentText(shuffledTexts[0]);
 
     const interval = setInterval(() => {

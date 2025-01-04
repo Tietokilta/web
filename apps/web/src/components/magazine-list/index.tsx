@@ -4,8 +4,8 @@ import type {
   MagazineIssue,
   Media,
 } from "@tietokilta/cms-types/payload";
-import _ from "lodash";
 import Image from "next/image";
+import { unique } from "remeda";
 import TikLogo from "../../assets/TiK-logo.png";
 
 function IssueCard({ issue }: { issue: MagazineIssue }) {
@@ -33,12 +33,12 @@ export function MagazineList({
 }): React.ReactNode {
   if (magazine.type !== "Alkorytmi" || !magazine.issues) return null;
 
-  const issuesByYear = _.groupBy(
+  const issuesByYear = Object.groupBy(
     magazine.issues,
     (issue) => (issue.issue as MagazineIssue).year,
   );
 
-  const years = _.uniq(
+  const years = unique(
     magazine.issues.map((issue) => (issue.issue as MagazineIssue).year),
   ).sort((a, b) => Number(b) - Number(a));
 
@@ -59,7 +59,7 @@ export function MagazineList({
           </div>
           <div className="grid max-w-64 grid-cols-1 items-baseline gap-8 min-[460px]:max-w-none min-[460px]:grid-cols-2 min-[660px]:grid-cols-3 lg:grid-cols-4">
             {issuesByYear[year]
-              .sort(
+              ?.sort(
                 (a, b) =>
                   Number((a.issue as MagazineIssue).issueNumber) -
                   Number((b.issue as MagazineIssue).issueNumber),
