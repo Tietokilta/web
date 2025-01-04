@@ -3363,6 +3363,7 @@ type BoardMember {
 }
 
 enum BoardMember_guildYear {
+  _2025
   _2024
   _2023
   _2022
@@ -3442,6 +3443,7 @@ input BoardMember_guildYear_operator {
 }
 
 enum BoardMember_guildYear_Input {
+  _2025
   _2024
   _2023
   _2022
@@ -3869,6 +3871,7 @@ type Board {
 }
 
 enum Board_year {
+  _2025
   _2024
   _2023
   _2022
@@ -3950,6 +3953,7 @@ input Board_year_operator {
 }
 
 enum Board_year_Input {
+  _2025
   _2024
   _2023
   _2022
@@ -4299,6 +4303,7 @@ type CommitteeMember {
 }
 
 enum CommitteeMember_guildYear {
+  _2025
   _2024
   _2023
   _2022
@@ -4390,6 +4395,7 @@ input CommitteeMember_guildYear_operator {
 }
 
 enum CommitteeMember_guildYear_Input {
+  _2025
   _2024
   _2023
   _2022
@@ -4838,6 +4844,7 @@ type Committee {
 }
 
 enum Committee_year {
+  _2025
   _2024
   _2023
   _2022
@@ -4919,6 +4926,7 @@ input Committee_year_operator {
 }
 
 enum Committee_year_Input {
+  _2025
   _2024
   _2023
   _2022
@@ -5268,6 +5276,7 @@ type MagazineIssue {
 }
 
 enum MagazineIssue_year {
+  _2025
   _2024
   _2023
   _2022
@@ -5358,6 +5367,7 @@ input MagazineIssue_year_operator {
 }
 
 enum MagazineIssue_year_Input {
+  _2025
   _2024
   _2023
   _2022
@@ -7750,6 +7760,7 @@ type AwardedHonor {
 }
 
 enum AwardedHonor_guildYear {
+  _2025
   _2024
   _2023
   _2022
@@ -8130,6 +8141,7 @@ input AwardedHonor_guildYear_operator {
 }
 
 enum AwardedHonor_guildYear_Input {
+  _2025
   _2024
   _2023
   _2022
@@ -15358,6 +15370,7 @@ input mutationBoardMemberInput {
 }
 
 enum BoardMember_guildYear_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15412,6 +15425,7 @@ input mutationBoardMemberUpdateInput {
 }
 
 enum BoardMemberUpdate_guildYear_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15462,6 +15476,7 @@ input mutationBoardInput {
 }
 
 enum Board_year_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15517,6 +15532,7 @@ input mutationBoardUpdateInput {
 }
 
 enum BoardUpdate_year_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15577,6 +15593,7 @@ input mutationCommitteeMemberInput {
 }
 
 enum CommitteeMember_guildYear_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15632,6 +15649,7 @@ input mutationCommitteeMemberUpdateInput {
 }
 
 enum CommitteeMemberUpdate_guildYear_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15682,6 +15700,7 @@ input mutationCommitteeInput {
 }
 
 enum Committee_year_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15737,6 +15756,7 @@ input mutationCommitteeUpdateInput {
 }
 
 enum CommitteeUpdate_year_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15796,6 +15816,7 @@ input mutationMagazineIssueInput {
 }
 
 enum MagazineIssue_year_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -15850,6 +15871,7 @@ input mutationMagazineIssueUpdateInput {
 }
 
 enum MagazineIssueUpdate_year_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -16079,6 +16101,7 @@ input mutationAwardedHonorInput {
 }
 
 enum AwardedHonor_guildYear_MutationInput {
+  _2025
   _2024
   _2023
   _2022
@@ -16130,6 +16153,7 @@ input mutationAwardedHonorUpdateInput {
 }
 
 enum AwardedHonorUpdate_guildYear_MutationInput {
+  _2025
   _2024
   _2023
   _2022
