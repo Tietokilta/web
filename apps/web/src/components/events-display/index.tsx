@@ -1,7 +1,7 @@
 import { Button, ClockIcon, MapPinIcon } from "@tietokilta/ui";
 import Link from "next/link";
 import { Suspense } from "react";
-import _ from "lodash";
+import { chunk } from "remeda";
 import { notFound } from "next/navigation";
 import {
   Pagination,
@@ -112,7 +112,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
     return null;
   }
 
-  const paginatedEvents = _.chunk(eventsList, 5);
+  const paginatedEvents = chunk(eventsList, 5);
   const pageCount = paginatedEvents.length;
 
   if (pageCount !== 0 && (currentPage < 1 || currentPage > pageCount)) {
