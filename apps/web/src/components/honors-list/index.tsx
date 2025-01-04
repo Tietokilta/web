@@ -1,7 +1,7 @@
 import type { AwardedHonor, Honor } from "@tietokilta/cms-types/payload";
 import { ChevronDownIcon } from "@tietokilta/ui";
-import _ from "lodash";
 import type { JSX } from "react";
+import { unique } from "remeda";
 import { cn } from "../../lib/utils";
 
 function AwardedPersonDropdown({
@@ -58,11 +58,11 @@ export function HonorsList({ honor }: { honor: Honor }): JSX.Element {
   const awardedPersons = honor.awardedHonors.map(
     (item) => item.awardedHonor as AwardedHonor,
   );
-  const awardsByYear = _.groupBy(
+  const awardsByYear = Object.groupBy(
     awardedPersons,
     (awardedPerson) => awardedPerson.guildYear,
   );
-  const years = _.uniq(
+  const years = unique(
     awardedPersons.map((awardedPerson) => awardedPerson.guildYear),
   ).sort((a, b) => Number(b) - Number(a));
 
@@ -71,7 +71,7 @@ export function HonorsList({ honor }: { honor: Honor }): JSX.Element {
       {Object.entries(years).map((awardYear) => (
         <YearGroup
           year={parseInt(awardYear[1], 10)}
-          awardedPersons={awardsByYear[awardYear[1]]}
+          awardedPersons={awardsByYear[awardYear[1]] ?? []}
           key={awardYear[1]}
         />
       ))}
