@@ -127,7 +127,7 @@ const useActiveHeading = ({ topLevelOnly = false } = {}) => {
   const headingElementsRef: MutableRefObject<
     Record<string, IntersectionObserverEntry>
   > = useRef({});
-  const articleRef = useRef<IntersectionObserverEntry>();
+  const articleRef = useRef<IntersectionObserverEntry>(undefined);
   useEffect(() => {
     const callback: IntersectionObserverCallback = (entries) => {
       const leadParagraph = entries.at(0);
