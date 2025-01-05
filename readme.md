@@ -13,6 +13,7 @@ Prerequisites:
 - [Node.js](https://nodejs.org/en/), usage of [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm) recommended
 - [Docker](https://www.docker.com/) and docker-compose
 - [MongoDB Database Tools](https://www.mongodb.com/docs/database-tools/installation/installation/) (for seeding the dev-db).
+- [bun](https://bun.sh/) (for scripts that seed the dev-db & fetch uploads from prod).
 
   NOTE: make sure you are installing MongoDB Database Tools, not something else, the documentation for Linux is quite wonky.
 
@@ -40,6 +41,13 @@ In case you run into issues when changing branches etc. Try re-seeding your loca
 
 ```sh
 pnpm db:reset
+```
+
+To clear your local image storage so that `pnpm db:populate` (and `pnpm db:reset`)
+attempts to fetch all images from production, run:
+
+```sh
+pnpm uploads:clear
 ```
 
 ### Recommended VSCode settings

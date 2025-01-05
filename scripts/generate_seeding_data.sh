@@ -31,6 +31,10 @@ for COLLECTION_NAME in $COLLECTIONS; do
     echo "Skipping empty collection $COLLECTION_NAME"
   fi
 done
-
-echo "Copying uploads from apps/cms/uploads to db_data/gen/uploads..."
-cp -r apps/cms/uploads data/gen
+echo "cleaning up excess versions from versioned collections..."
+if ! [ -x "$(command -v bun)" ]; then
+  echo "bun is not installed, running with node with --experimental-strip-types..."
+  node --experimental-strip-types apps/cms/src/scripts/import-uploads.ts
+else
+  bun run scripts/remove_excess_versions.ts
+fi
