@@ -1,4 +1,3 @@
-import { Button } from "@tietokilta/ui";
 import * as React from "react";
 
 const getIdFromUrl = (): string => {
@@ -63,7 +62,7 @@ const NewsletterButton = (): React.ReactElement => {
         margin: "0 auto",
       }}
     >
-      <Button
+      <button
         style={buttonStyle}
         onMouseOver={(e) =>
           ((e.target as HTMLElement).style.backgroundColor =
@@ -76,7 +75,7 @@ const NewsletterButton = (): React.ReactElement => {
         onClick={() => void handleButtonClick()}
       >
         Send email
-      </Button>
+      </button>
       <a
         href={`/api/weekly-newsletters/mail/${newsletterId}`}
         style={buttonStyle}
@@ -91,7 +90,7 @@ const NewsletterButton = (): React.ReactElement => {
       >
         Download HTML
       </a>
-      <Button
+      <button
         style={buttonStyle}
         onMouseOver={(e) =>
           ((e.target as HTMLElement).style.backgroundColor =
@@ -104,8 +103,8 @@ const NewsletterButton = (): React.ReactElement => {
         onClick={() => void copyTelegramMessage("fi")}
       >
         Copy finnish tg
-      </Button>
-      <Button
+      </button>
+      <button
         style={buttonStyle}
         onMouseOver={(e) =>
           ((e.target as HTMLElement).style.backgroundColor =
@@ -118,7 +117,7 @@ const NewsletterButton = (): React.ReactElement => {
         onClick={() => void copyTelegramMessage("en")}
       >
         Copy english tg
-      </Button>
+      </button>
     </div>
   );
 };
