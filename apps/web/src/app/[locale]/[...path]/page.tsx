@@ -16,7 +16,7 @@ import WeeklyNewslettersListPage from "../../../custom-pages/weekly-newsletters-
 import { openGraphImage } from "../../shared-metadata";
 
 interface NextPage<Params extends Record<string, unknown>> {
-  params: Params;
+  params: Promise<Params>;
   searchParams: Record<string, string | string[] | undefined>;
 }
 
@@ -71,9 +71,10 @@ const getPage = async (path: string[], locale: Locale) => {
   return page;
 };
 
-export const generateMetadata = async ({
-  params: { path },
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params;
+  const { path } = params;
+
   const locale = await getCurrentLocale();
   const page = await getPage(path, locale);
 
@@ -99,7 +100,10 @@ function Content({ content }: { content?: EditorState }) {
   );
 }
 
-async function Page({ params: { path } }: Props) {
+async function Page(props: Props) {
+  const params = await props.params;
+  const { path } = params;
+
   const locale = await getCurrentLocale();
   const page = await getPage(path, locale);
 
