@@ -31,6 +31,5 @@ for COLLECTION_NAME in $COLLECTIONS; do
     echo "Skipping empty collection $COLLECTION_NAME"
   fi
 done
-
-echo "Copying uploads from apps/cms/uploads to db_data/gen/uploads..."
-cp -r apps/cms/uploads data/gen
+echo "cleaning up excess versions from versioned collections..."
+bun run scripts/remove_excess_versions.ts

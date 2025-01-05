@@ -25,6 +25,7 @@
     "uploads:clear": "rm -rf apps/cms/uploads"
   },
   "devDependencies": {
+    "@types/node": "^22.10.5",
     "dotenv-cli": "^7.4.4",
     "prettier": "^3.4.2",
     "prettier-plugin-packagejson": "^2.5.6",
