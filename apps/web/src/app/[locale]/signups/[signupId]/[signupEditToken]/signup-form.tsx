@@ -176,9 +176,8 @@ function ConfirmDeletePopover({
       </p>
       <input
         type="button"
-        // @ts-expect-error -- this is a valid attribute
-        popovertarget={id}
-        popovertargetaction="hide"
+        popoverTarget={id}
+        popoverTargetAction="hide"
         className={cn(
           buttonVariants({ variant: "outline" }),
           "w-full max-w-sm cursor-pointer",
@@ -378,8 +377,7 @@ function Form({
         <input
           type="button"
           disabled={isSignupPeriodEnded}
-          // @ts-expect-error -- this is a valid attribute
-          popovertarget="confirm-delete"
+          popoverTarget="confirm-delete"
           className={cn(
             buttonVariants({ variant: "outline" }),
             "w-full max-w-sm cursor-pointer",
