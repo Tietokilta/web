@@ -5,7 +5,7 @@
     "build": "turbo run build --cache-dir=.turbo",
     "clean": "turbo run clean --cache-dir=.turbo",
     "codegen": "dotenv -- turbo run codegen --cache-dir=.turbo",
-    "db:clear": "docker compose down -v && rm -rf apps/cms/uploads",
+    "db:clear": "docker compose down -v",
     "db:export": "dotenv -- ./scripts/generate_seeding_data.sh",
     "db:populate": "dotenv -- ./scripts/import_seeding_data.sh --all",
     "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
@@ -21,7 +21,8 @@
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
-    "typecheck": "turbo run typecheck --cache-dir=.turbo"
+    "typecheck": "turbo run typecheck --cache-dir=.turbo",
+    "uploads:clear": "rm -rf apps/cms/uploads"
   },
   "devDependencies": {
     "dotenv-cli": "^7.4.4",
