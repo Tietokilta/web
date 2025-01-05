@@ -1,4 +1,5 @@
-#!/bin/bash -e
+#!/bin/bash
+set -eo pipefail
 
 # Define MongoDB URI
 if [ -z "$PAYLOAD_MONGO_CONNECTION_STRING" ]; then
@@ -44,9 +45,6 @@ if [ "$UPSERT_FLAG" = true ] ; then
 else
   UPSERT_FLAG=""
 fi
-# Copy data/gen/uploads to apps/cms/uploads
-# TODO: change this implementation when using cloud storage plugin
-cp -r data/gen/uploads apps/cms/
 
 # if argument is passed, only import that collection
 if [ -n "$1" ]; then
@@ -57,10 +55,8 @@ if [ -n "$1" ]; then
   COLLECTION_NAME="$1"
   echo "Importing $COLLECTION_NAME collection..."
   mongoimport --uri="$PAYLOAD_MONGO_CONNECTION_STRING" --collection="$COLLECTION_NAME" --file="data/gen/db/$COLLECTION_NAME.json" --jsonArray $UPSERT_FLAG
-  exit 0
-fi
 # Loop to import each JSON file into a MongoDB collection
-if [ "$ALL_FLAG" = true ] ; then
+elif [ "$ALL_FLAG" = true ] ; then
   echo "Importing all collections..."
   for file_path in data/gen/db/*.json; do
     filename=$(basename "$file_path")
@@ -68,5 +64,12 @@ if [ "$ALL_FLAG" = true ] ; then
     echo "Importing $COLLECTION_NAME collection..."
     mongoimport --uri="$PAYLOAD_MONGO_CONNECTION_STRING" --collection="$COLLECTION_NAME" --file="$file_path" --jsonArray $UPSERT_FLAG
   done
-  exit 0
 fi
+# import images from production cuz ya yeet
+echo "starting image import from main site"
+mkdir -p apps/cms/uploads/media
+mkdir -p apps/cms/uploads/documents
+bun apps/cms/src/scripts/import-uploads.ts media
+echo "NOTE: only media collection imported by default to save space"
+echo "If you want to import documents, run:"
+echo "bun apps/cms/src/scripts/import-uploads.ts documents"
