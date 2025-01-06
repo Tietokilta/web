@@ -121,8 +121,8 @@ importers:
         specifier: ^4.0.1
         version: 4.0.1
       mailgun.js:
-        specifier: ^10.2.4
-        version: 10.2.4
+        specifier: ^10.4.0
+        version: 10.4.0
       nanoid:
         specifier: ^3.3.8
         version: 3.3.8
@@ -5798,8 +5798,8 @@ packages:
     resolution: {integrity: sha512-rh+Zjr6DNfUYR3bPwJEnuwDdqMbxZW7LOQfUN4B54+Cl+0o5zaU9RJ6bcidfDtC1cWCZXQ+nvX8bf6bAji37QQ==}
     engines: {node: '>=12'}
 
-  mailgun.js@10.2.4:
-    resolution: {integrity: sha512-l1Nth1YWGrUdRIahxsUIzVGoP7waLctS0MKFpd1QPzE8NEZqZ1PafYgw+c4ThombwJFyhF18SN1htOE78Kfv+w==}
+  mailgun.js@10.4.0:
+    resolution: {integrity: sha512-YrdaZEAJwwjXGBTfZTNQ1LM7tmkdUaz2NpZEu7+zULcG4Wrlhd7cWSNZW0bxT3bP48k5N0mZWz8C2f9gc2+Geg==}
     engines: {node: '>=18.0.0'}
 
   markdown-table@3.0.4:
@@ -14623,7 +14623,7 @@ snapshots:
 
   luxon@3.5.0: {}
 
-  mailgun.js@10.2.4:
+  mailgun.js@10.4.0:
     dependencies:
       axios: 1.7.7
       base-64: 1.0.0
