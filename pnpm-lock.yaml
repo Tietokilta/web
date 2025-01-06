@@ -230,8 +230,8 @@ importers:
         specifier: catalog:react19
         version: 19.0.0(react@19.0.0)
       react-markdown:
-        specifier: ^9.0.1
-        version: 9.0.1(react@19.0.0)(types-react@19.0.0-rc.1)
+        specifier: ^9.0.3
+        version: 9.0.3(react@19.0.0)(types-react@19.0.0-rc.1)
       remark:
         specifier: ^15.0.1
         version: 15.0.1
@@ -7097,8 +7097,8 @@ packages:
   react-lifecycles-compat@3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
 
-  react-markdown@9.0.1:
-    resolution: {integrity: sha512-186Gw/vF1uRkydbsOIkcGXw7aHq0sZOCRFFjGrr7b9+nVZg4UfA4enXCaxm4fUzecU38sWfrNDitGhshuU7rdg==}
+  react-markdown@9.0.3:
+    resolution: {integrity: sha512-Yk7Z94dbgYTOrdk41Z74GoKA7rThnsbbqBTRYuxoe08qvfQ9tJVhmAKw6BJS/ZORG7kTy/s1QvYzSuaoBA1qfw==}
     peerDependencies:
       '@types/react': npm:types-react@19.0.0-rc.1
       react: '>=18'
@@ -16283,7 +16283,7 @@ snapshots:
 
   react-lifecycles-compat@3.0.4: {}
 
-  react-markdown@9.0.1(react@19.0.0)(types-react@19.0.0-rc.1):
+  react-markdown@9.0.3(react@19.0.0)(types-react@19.0.0-rc.1):
     dependencies:
       '@types/hast': 3.0.4
       '@types/react': types-react@19.0.0-rc.1
