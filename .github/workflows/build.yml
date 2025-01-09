@@ -29,25 +29,25 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 9.12.1
+          version: 9.15.3
 
       - name: Use Node.js 22
         uses: actions/setup-node@v4
         with:
-          node-version: 22.8.0
+          node-version: 22.12.0
           cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Generate Payload types (to ensure that they are up to date)
+        run: pnpm codegen && git diff --exit-code
 
       - name: Format (to ensure that code has been formatted)
         run: pnpm format && git diff --exit-code
 
       - name: Lint
         run: pnpm lint
-
-      - name: Generate Payload types (to ensure that they are up to date)
-        run: pnpm codegen && git diff --exit-code
 
       - name: Typecheck
         run: pnpm typecheck

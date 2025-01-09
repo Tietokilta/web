@@ -1,5 +1,6 @@
 "use client";
 
+import Form from "next/form";
 import { Button, type ButtonProps } from "@tietokilta/ui";
 import { useFormStatus } from "react-dom";
 import type { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
@@ -21,11 +22,11 @@ export function SignUpButton({
   signUpAction: typeof signUp;
 }>) {
   return (
-    <form action={signUpAction} className="contents">
+    <Form action={signUpAction} className="contents">
       <input type="hidden" name="quotaId" value={quotaId} />
       <StatusButton type="submit" disabled={isDisabled} variant="secondary">
         {children}
       </StatusButton>
-    </form>
+    </Form>
   );
 }

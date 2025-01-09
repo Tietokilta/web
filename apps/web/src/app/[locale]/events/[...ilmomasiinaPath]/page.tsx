@@ -1,9 +1,9 @@
 import { redirect } from "next/navigation";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     ilmomasiinaPath: string[];
-  };
+  }>;
 }
 
 const ilmomasiinaBaseUrl =
@@ -22,7 +22,11 @@ const getReplacement = (key: string) => {
 
 type Key = keyof typeof languageMappings;
 
-export default function Page({ params: { ilmomasiinaPath } }: PageProps) {
+export default async function Page(props: PageProps) {
+  const params = await props.params;
+
+  const { ilmomasiinaPath } = params;
+
   const url = new URL(
     ilmomasiinaPath
       .map((segment) => getReplacement(segment) ?? segment)

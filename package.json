@@ -5,7 +5,7 @@
     "build": "turbo run build --cache-dir=.turbo",
     "clean": "turbo run clean --cache-dir=.turbo",
     "codegen": "dotenv -- turbo run codegen --cache-dir=.turbo",
-    "db:clear": "docker compose down -v && rm -rf apps/cms/uploads",
+    "db:clear": "docker compose down -v",
     "db:export": "dotenv -- ./scripts/generate_seeding_data.sh",
     "db:populate": "dotenv -- ./scripts/import_seeding_data.sh --all",
     "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
@@ -21,20 +21,26 @@
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
-    "typecheck": "turbo run typecheck --cache-dir=.turbo"
+    "typecheck": "turbo run typecheck --cache-dir=.turbo",
+    "uploads:clear": "rm -rf apps/cms/uploads"
   },
   "devDependencies": {
-    "dotenv-cli": "^7.4.2",
-    "prettier": "^3.3.3",
-    "prettier-plugin-packagejson": "^2.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.8",
-    "turbo": "^2.2.3"
+    "@types/node": "^22.10.5",
+    "dotenv-cli": "^8.0.0",
+    "prettier": "^3.4.2",
+    "prettier-plugin-packagejson": "^2.5.6",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "turbo": "^2.3.3"
   },
-  "packageManager": "pnpm@9.12.1",
+  "packageManager": "pnpm@9.15.3",
   "engines": {
-    "node": "22.8.0"
+    "node": "22.12.0"
   },
   "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@19.0.0-rc.1",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    },
     "patchedDependencies": {
       "@vercel/style-guide": "patches/@vercel__style-guide.patch",
       "next-international": "patches/next-international.patch"

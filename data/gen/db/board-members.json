@@ -357,10 +357,11 @@
 		"$date": "2024-02-03T15:50:20.751Z"
 	},
 	"updatedAt": {
-		"$date": "2024-07-21T20:12:28.713Z"
+		"$date": "2024-08-19T14:56:50.186Z"
 	},
 	"__v": 0,
-	"photo": "669d6aa472c05c20acfa8ce4"
+	"photo": "669d6aa472c05c20acfa8ce4",
+	"phoneNumber": "+358408532855"
 },
 {
 	"_id": {
@@ -1245,6 +1246,187 @@
 	},
 	"updatedAt": {
 		"$date": "2024-05-21T20:08:11.531Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67756d2d57a70efcbfb61604"
+	},
+	"guildYear": "1986",
+	"name": "Mikko Juusti",
+	"title": {
+		"fi": "Puheenjohtaja"
+	},
+	"email": "puheenjohtaja@tietokilta.fi",
+	"telegram": "Tietokila",
+	"phoneNumber": "0408532855",
+	"createdAt": {
+		"$date": "2025-01-01T16:28:29.012Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-01T16:28:29.012Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "6777264954418ba39e304ff7"
+	},
+	"guildYear": "2025",
+	"name": "Mikko Juusti",
+	"title": {
+		"fi": "Puheenjohtaja",
+		"en": "Chair"
+	},
+	"email": "mikko.juusti@tietokilta.fi",
+	"telegram": "Tietokila",
+	"phoneNumber": "0408532855",
+	"createdAt": {
+		"$date": "2025-01-02T23:50:33.469Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-03T00:49:29.062Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67772d3a54418ba39e30507b"
+	},
+	"guildYear": "2025",
+	"name": "Sami Porio",
+	"title": {
+		"fi": "Varapuheenjohtaja",
+		"en": "Vice Chair"
+	},
+	"email": "varapuheenjohtaja@tietokilta.fi",
+	"telegram": "herculeporiot",
+	"createdAt": {
+		"$date": "2025-01-03T00:20:10.84Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-03T00:47:58.337Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67772d7b54418ba39e305085"
+	},
+	"guildYear": "2025",
+	"name": "Veeti Koivisto",
+	"title": {
+		"fi": "Rahastonhoitaja",
+		"en": "Treasurer"
+	},
+	"email": "rahastonhoitaja@tietokilta.fi",
+	"telegram": "KoivistoVeeti",
+	"createdAt": {
+		"$date": "2025-01-03T00:21:15.226Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-03T00:48:57.646Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67772db054418ba39e30508f"
+	},
+	"guildYear": "2025",
+	"name": "Niko Kataja",
+	"title": {
+		"fi": "Yrityssuhdevastaava",
+		"en": "Head of Corporate Relations"
+	},
+	"email": "yrityssuhdevastaava@tietokilta.fi",
+	"telegram": "nikokataja",
+	"createdAt": {
+		"$date": "2025-01-03T00:22:08.159Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-03T00:49:47.912Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67772de454418ba39e305096"
+	},
+	"guildYear": "2025",
+	"name": "Samuli Yli-Salomäki",
+	"title": {
+		"fi": "Opintovastaava",
+		"en": "Head of Academic Affairs"
+	},
+	"email": "opintovastaava@tietokilta.fi",
+	"telegram": "YliSamuli",
+	"createdAt": {
+		"$date": "2025-01-03T00:23:00.469Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-04T18:50:10.58Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67772e1c54418ba39e30509d"
+	},
+	"guildYear": "2025",
+	"name": "Julia Raiko",
+	"title": {
+		"fi": "Viestintävastaava",
+		"en": "Head of Communications"
+	},
+	"email": "viestintavastaava@tietokilta.fi",
+	"telegram": "juliaraiko",
+	"createdAt": {
+		"$date": "2025-01-03T00:23:56.806Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-03T00:47:22.866Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67772e4754418ba39e3050a4"
+	},
+	"guildYear": "2025",
+	"name": "Arto Paasiviita",
+	"title": {
+		"fi": "Ulkosuhdevastaava",
+		"en": "Head of External Relations"
+	},
+	"email": "ulkosuhdevastaava@tietokilta.fi",
+	"telegram": "artopv",
+	"createdAt": {
+		"$date": "2025-01-03T00:24:39.106Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-03T00:48:31.285Z"
+	},
+	"__v": 0
+},
+{
+	"_id": {
+		"$oid": "67772e8d54418ba39e3050a8"
+	},
+	"guildYear": "2025",
+	"name": "Joonatan Korpela",
+	"title": {
+		"fi": "Fuksikapteeni",
+		"en": "Fuksi Captain"
+	},
+	"email": "fuksikapteeni@tietokilta.fi",
+	"telegram": "@joonatanaatos",
+	"createdAt": {
+		"$date": "2025-01-03T00:25:49.51Z"
+	},
+	"updatedAt": {
+		"$date": "2025-01-03T00:46:56.834Z"
 	},
 	"__v": 0
 }]

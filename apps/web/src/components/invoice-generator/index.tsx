@@ -3,13 +3,15 @@
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
 import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import {
   type InputHTMLAttributes,
   type ReactNode,
+  useActionState,
   useEffect,
   useState,
 } from "react";
+import Form from "next/form";
 import {
   I18nProviderClient,
   useCurrentLocale,
@@ -246,7 +248,9 @@ function InvoiceItem({
               name="rows.quantity"
               id={`rows[${index.toString()}].quantity`}
               type="number"
-              onInput={(e) => setQuantity(Number(e.currentTarget.value))}
+              onInput={(e) => {
+                setQuantity(Number(e.currentTarget.value));
+              }}
               required
             />
           </ErrorMessageBlock>
@@ -278,7 +282,9 @@ function InvoiceItem({
               type="number"
               name="rows.unit_price"
               id={`rows[${index.toString()}].unit_price`}
-              onInput={(e) => setUnitPrice(Number(e.currentTarget.value))}
+              onInput={(e) => {
+                setUnitPrice(Number(e.currentTarget.value));
+              }}
               required
               step={0.01}
               min={0}
@@ -294,7 +300,7 @@ function InvoiceItem({
             value={totalPrice.toFixed(2)}
             id={`rows[${index.toString()}].total_price`}
             unit="€"
-            disabled={true}
+            disabled
           />
         </span>
       </fieldset>
@@ -342,7 +348,7 @@ function AttachmentRow({
 }
 
 function InvoiceGeneratorForm() {
-  const [state, formAction] = useFormState(SaveAction, null);
+  const [state, formAction] = useActionState(SaveAction, null);
   const t = useScopedI18n("invoicegenerator");
 
   useEffect(() => {
@@ -359,7 +365,7 @@ function InvoiceGeneratorForm() {
   }, [state]);
 
   return (
-    <form
+    <Form
       className="shadow-solid w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 md:px-6 md:py-8"
       action={formAction}
     >
@@ -486,7 +492,7 @@ function InvoiceGeneratorForm() {
       <fieldset>
         <SubmitButton formState={state} />
       </fieldset>
-    </form>
+    </Form>
   );
 }
 
