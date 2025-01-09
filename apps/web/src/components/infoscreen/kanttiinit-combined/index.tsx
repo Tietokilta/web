@@ -27,7 +27,7 @@ export function KanttiinitCombined({ menus }: { menus: RestaurantMenu[] }) {
               </li>
               {menu.menus.map((dayMenu) =>
                 dayMenu.foods.map((food: Food, _) => (
-                  <li className={`${className}`} key={food.title}>
+                  <li className={className} key={food.title}>
                     {food.title}
                   </li>
                 )),

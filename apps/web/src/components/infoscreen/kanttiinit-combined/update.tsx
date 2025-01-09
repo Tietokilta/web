@@ -61,7 +61,6 @@ export const fetchMenus = async (
         };
       });
       setMenus(newMenus);
-    } else {
     }
   } catch (_err: unknown) {
     // Error handling can be added here
