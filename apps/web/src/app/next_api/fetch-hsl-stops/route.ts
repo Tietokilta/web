@@ -162,7 +162,6 @@ const getData = async (stop: string): Promise<Stop | null> => {
     },
   });
   let data: StopFromApi | null = null;
-  //console.log(process.env.DIGITRANSIT_SUBSCRIPTION_KEY)
   await client
     .query({
       query: GetStopSchedule(stop),
@@ -170,7 +169,6 @@ const getData = async (stop: string): Promise<Stop | null> => {
     .then((result: ApolloQueryResult<Data>) => {
       data = result.data.stop;
     });
-  //console.log(data)
   return data;
 };
 

@@ -6,14 +6,6 @@ import type {
 } from "../../../lib/types/kanttiinit-types.ts";
 
 export function KanttiinitCombined({ menus }: { menus: RestaurantMenu[] }) {
-  /*const [error, setError] = useState("");
-  if (error !== "") {
-    return (
-      <div className="flex w-full justify-center">
-        <h1 className="flex justify-center pt-4 text-3xl font-bold">{error}</h1>
-      </div>
-    );
-  }*/
   const className = `shadow-solid shadow-black font-bold text-l rounded-md border-2 border-black p-3 font-mono text-gray-900 md:items-center`;
 
   return (

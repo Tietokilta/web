@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-//import Clock from "react-live-clock";
 import dynamic from "next/dynamic";
 import { InfoScreenHeaderLogo } from "../infoscreen-header-logo";
 

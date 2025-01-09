@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { HSLcombinedSchedule } from "../hsl-schedules-combined";
-import { Foods } from "../../foods";
 import Eventslist from "../events-list";
 import { type RenderableStop } from "../../../lib/types/hsl-helper-types.ts";
 import type { RestaurantMenu } from "../../../lib/types/kanttiinit-types.ts";
@@ -32,7 +31,7 @@ export function InfoScreenContents() {
   useEffect(() => {
     // Call fetchData immediately and then set up the interval
     fetchMenus(setMenus).catch((_err: unknown) => {
-      //setError(err.message);
+      // Error handling can be added later
     });
     const intervalId = setInterval(fetchMenus, 3600000, setMenus); // timeout n milliseconds
 

@@ -7,7 +7,6 @@ import type {
 
 export const fetchMenus = async (
   setMenus: React.Dispatch<React.SetStateAction<RestaurantMenu[]>>,
-  //setError: React.Dispatch<React.SetStateAction<string>>
 ): Promise<void> => {
   try {
     const restaurantResults: {
@@ -20,7 +19,6 @@ export const fetchMenus = async (
         [2, 7, 52],
       );
     if (restaurantResults.status === 200 && menuResults.status === 200) {
-      //setError("");
       const newMenus: RestaurantMenu[] = (
         restaurantResults.result ? restaurantResults.result : []
       ).map((restaurant: Restaurant) => {
@@ -36,7 +34,6 @@ export const fetchMenus = async (
                   date: dayMenu.date,
                   foods: dayMenu.foods
                     .map((food) => {
-                      console.log(food.title);
                       if (
                         !/chef´s Kitchen|erikoisannos|jälkiruoka|wicked rabbit/i.test(
                           food.title,
@@ -65,9 +62,8 @@ export const fetchMenus = async (
       });
       setMenus(newMenus);
     } else {
-      //setError("Error fetching data");
     }
   } catch (_err: unknown) {
-    //setError(err.message);
+    // Error handling can be added here
   }
 };
