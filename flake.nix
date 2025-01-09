@@ -36,10 +36,10 @@
             {
               packages = with pkgs; [bash mongodb-tools docker bun];
 
-              env = {
-                LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib/";
-                PATH = "/usr/local/bin";
-              };
+              enterShell= ''
+                  export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:$LD_LIBRARY_PATH"
+                  export PATH="$PATH:/usr/local/bin"
+                  '';
 
               languages.javascript = {
                 enable = true;
