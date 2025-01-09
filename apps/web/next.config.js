@@ -5,7 +5,7 @@ const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 module.exports = {
   reactStrictMode: true,
   env: {
-    NEXT_PUBLIC_FRONTEND_URL: process.env.NEXT_PUBLIC_FRONTEND_URL,
+    PUBLIC_FRONTEND_URL: process.env.PUBLIC_FRONTEND_URL,
   },
   images: {
     // TODO: only for dev:

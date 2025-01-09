@@ -1,8 +1,8 @@
 import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 
 export const newsletterPreviewProps = {
-  NEXT_PUBLIC_LEGACY_URL: "http://localhost:3000",
-  NEXT_PUBLIC_FRONTEND_URL: "http://localhost:3000",
+  PUBLIC_LEGACY_URL: "http://localhost:3000",
+  PUBLIC_FRONTEND_URL: "http://localhost:3000",
   finnishNewsletter: {
     id: "66cdc999522bb229d1b98aa6",
     title: "Tietokillan viikkotiedote 20/2024",

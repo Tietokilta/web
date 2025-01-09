@@ -160,7 +160,7 @@ function Greetings({ content }: { content?: EditorState }) {
 }
 
 export const legacyUrl =
-  process.env.NEXT_PUBLIC_LEGACY_URL ?? "https://tietokilta.fi";
+  process.env.PUBLIC_LEGACY_URL ?? "https://tietokilta.fi";
 
 export default async function Page({ slug }: { slug?: string }) {
   const locale = await getCurrentLocale();

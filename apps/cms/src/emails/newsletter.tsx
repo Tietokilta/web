@@ -15,15 +15,15 @@ import {
 interface NewsletterEmailProps {
   newsletter: WeeklyNewsletter;
   locale: "en" | "fi";
-  NEXT_PUBLIC_LEGACY_URL: string;
-  NEXT_PUBLIC_FRONTEND_URL: string;
+  PUBLIC_LEGACY_URL: string;
+  PUBLIC_FRONTEND_URL: string;
 }
 
 export const Newsletter = ({
   newsletter,
   locale,
-  NEXT_PUBLIC_LEGACY_URL,
-  NEXT_PUBLIC_FRONTEND_URL,
+  PUBLIC_LEGACY_URL,
+  PUBLIC_FRONTEND_URL,
 }: NewsletterEmailProps): React.ReactElement => {
   const t = {
     en: {
@@ -159,7 +159,7 @@ export const Newsletter = ({
 
       <p>
         {t[locale].read}{" "}
-        <a href={`${NEXT_PUBLIC_FRONTEND_URL}/${locale}/${t[locale].path}`}>
+        <a href={`${PUBLIC_FRONTEND_URL}/${locale}/${t[locale].path}`}>
           {t[locale]["old-link"]}
         </a>
       </p>
@@ -169,8 +169,8 @@ export const Newsletter = ({
           target="_blank"
           href={
             locale === "fi"
-              ? `${NEXT_PUBLIC_LEGACY_URL}/arkisto/viikkomailit/`
-              : `${NEXT_PUBLIC_LEGACY_URL}/arkisto/weekly_mails/`
+              ? `${PUBLIC_LEGACY_URL}/arkisto/viikkomailit/`
+              : `${PUBLIC_LEGACY_URL}/arkisto/weekly_mails/`
           }
           rel="noopener"
         >

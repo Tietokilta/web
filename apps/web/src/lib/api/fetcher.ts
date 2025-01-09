@@ -64,7 +64,7 @@ export function getAllCollectionItems<
       draft,
       fetchOptions,
     ): Promise<TResponse | undefined> => {
-      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_URL ?? ""}/api/${collectionSlug}?${qsStringify(
+      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/${collectionSlug}?${qsStringify(
         {
           ...req,
           ...(draft ? { draft: "true" } : {}),
@@ -112,7 +112,7 @@ export function getGlobal<TResponse>(
       draft,
       fetchOptions,
     ): Promise<TResponse | undefined> => {
-      const fetchUrl = `${process.env.NEXT_PUBLIC_SERVER_URL ?? ""}/api/globals/${globalSlug}?${qsStringify(
+      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/globals/${globalSlug}?${qsStringify(
         {
           locale: globalOpts.locale,
           depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL

@@ -26,7 +26,7 @@ export async function GET(
 
   // validate the Payload token
   const userReq = await fetch(
-    `${process.env.NEXT_PUBLIC_SERVER_URL ?? ""}/api/users/me`,
+    `${process.env.PUBLIC_SERVER_URL ?? ""}/api/users/me`,
     {
       headers: {
         Authorization: `JWT ${payloadToken}`,

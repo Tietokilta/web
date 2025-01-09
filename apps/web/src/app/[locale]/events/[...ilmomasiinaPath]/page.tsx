@@ -7,7 +7,7 @@ interface PageProps {
 }
 
 const ilmomasiinaBaseUrl =
-  process.env.NEXT_PUBLIC_ILMOMASIINA_URL ?? "https://ilmo.tietokilta.fi";
+  process.env.PUBLIC_ILMOMASIINA_URL ?? "https://ilmo.tietokilta.fi";
 
 /** workaround some ilmomasiina purkka */
 const languageMappings = {

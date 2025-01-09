@@ -58,7 +58,7 @@ const icons = {
   ],
 };
 
-const mainUrl = process.env.NEXT_PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
+const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
 
 export const generateMetadata = ({
   params: { locale },
