@@ -18,10 +18,6 @@ export async function hslFetcher(): Promise<{
   status: number;
   result: RenderableStop[] | null;
 }> {
-  //console.log(process.env.PUBLIC_FRONTEND_URL)
-  if (!process.env.PUBLIC_FRONTEND_URL) {
-    return { status: 500, result: null };
-  }
   const response: Response = await fetch("/next_api/fetch-hsl-stops", {
     headers: { "cache-control": "no-cache" },
   });

@@ -38,7 +38,7 @@ export async function GET() {
     type: "Data",
     data: dataFromHsl,
   };
-  if (dataFromHsl.length == 0) {
+  if (dataFromHsl.length === 0) {
     return Response.json(
       { type: "Data", data: "Failed Fetch" },
       {

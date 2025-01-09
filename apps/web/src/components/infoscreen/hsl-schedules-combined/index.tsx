@@ -21,7 +21,7 @@ export function HSLcombinedSchedule({
       try {
         const result: { status: number; result: RenderableStop[] | null } =
           await hslFetcher();
-        //console.log("Fetched data", result.status)
+        console.log("Fetched data", result.status)
         if (result.status === 200) {
           setError("");
           setStopData(result.result ? result.result : []);
