@@ -34,7 +34,7 @@
           inherit inputs pkgs;
           modules = [
             {
-              packages = with pkgs; [bash mongodb-tools docker];
+              packages = with pkgs; [bash mongodb-tools docker bun];
 
               env = {
                 LD_LIBRARY_PATH = "${pkgs.stdenv.cc.cc.lib}/lib/";
@@ -46,8 +46,6 @@
                 package = pkgs.nodejs-slim_22;
                 pnpm.enable = true;
                 pnpm.install.enable = true;
-                bun.enable = true;
-                bun.install.enable = true;
               };
             }
           ];
