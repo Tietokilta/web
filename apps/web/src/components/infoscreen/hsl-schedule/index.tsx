@@ -3,7 +3,7 @@ import type {
   ArrivalAttribute,
   RenderableStop,
   StopType,
-} from "../../../lib/types/hsl-helper-types.ts";
+} from "../types/hsl-helper-types.ts";
 
 export function HSLSchedule(props: {
   result: RenderableStop;

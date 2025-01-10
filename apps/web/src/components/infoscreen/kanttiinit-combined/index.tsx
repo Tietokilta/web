@@ -1,9 +1,6 @@
 "use client";
 
-import type {
-  Food,
-  RestaurantMenu,
-} from "../../../lib/types/kanttiinit-types.ts";
+import type { Food, RestaurantMenu } from "../types/kanttiinit-types.ts";
 
 export function KanttiinitCombined({ menus }: { menus: RestaurantMenu[] }) {
   const className = `shadow-solid shadow-black font-bold text-l rounded-md border-2 border-black p-3 font-mono text-gray-900 md:items-center`;

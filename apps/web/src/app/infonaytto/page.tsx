@@ -5,6 +5,7 @@ import { Inter, Roboto_Mono } from "next/font/google";
 import { cn } from "../../lib/utils.ts";
 import "../globals.css";
 import { InfoScreenHeader } from "../../components/infoscreen/infoscreen-header";
+import { InfoScreenContents } from "../../components/infoscreen/info-screen-contents/index.tsx";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -15,11 +16,7 @@ const robotoMono = Roboto_Mono({
   variable: "--font-roboto-mono",
 });
 
-export default function ScreenLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function InfoScreen() {
   return (
     <html lang="fi">
       <body
@@ -30,7 +27,9 @@ export default function ScreenLayout({
         )}
       >
         <InfoScreenHeader />
-        <div className="size-full p-4">{children}</div>
+        <div className="size-full p-4">
+          <InfoScreenContents />
+        </div>
       </body>
     </html>
   );

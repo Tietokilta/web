@@ -1,7 +1,7 @@
 import type {
   OpeningHour,
   Restaurant,
-} from "../../../lib/types/kanttiinit-types";
+} from "../../../components/infoscreen/types/kanttiinit-types";
 
 interface RestaurantResponse {
   openingHours: OpeningHour[];

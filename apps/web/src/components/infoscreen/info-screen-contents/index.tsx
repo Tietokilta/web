@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { HSLcombinedSchedule } from "../hsl-schedules-combined";
 import Eventslist from "../events-list";
-import { type RenderableStop } from "../../../lib/types/hsl-helper-types.ts";
-import type { RestaurantMenu } from "../../../lib/types/kanttiinit-types.ts";
+import { type RenderableStop } from "../types/hsl-helper-types.ts";
+import type { RestaurantMenu } from "../types/kanttiinit-types.ts";
 import { type IlmomasiinaEvent } from "../../../lib/api/external/ilmomasiina";
 import { KanttiinitCombined } from "../kanttiinit-combined";
-import { fetchMenus } from "../kanttiinit-combined/update.tsx";
+import { fetchMenus } from "../kanttiinit-combined/update.ts";
 
 export function InfoScreenContents() {
   const [current, setCurrent] = useState(0);

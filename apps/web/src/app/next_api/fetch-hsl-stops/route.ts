@@ -14,7 +14,7 @@ import type {
   StopOutData,
   StopTime,
   StopType,
-} from "../../../lib/types/hsl-helper-types.ts";
+} from "../../../components/infoscreen/types/hsl-helper-types.ts";
 
 const STOPS = [
   // Metro east and west
@@ -198,7 +198,6 @@ function makePrintTime(arrival: Arrival): string {
 
 const getStop = async (
   stops: readonly [string, string],
-  n = N_ARRIVALS,
 ): Promise<RenderableStop | null> => {
   const [result1, result2] = await Promise.all(
     stops.map((stop) => getData(stop).then(toOutData)),
@@ -213,7 +212,7 @@ const getStop = async (
       .map((arr) => arr)
       .concat(result2.arrival.map((arr) => arr))
       .sort((arr1, arr2) => arr1.realTimeArrival - arr2.realTimeArrival)
-      .slice(0, n),
+      .slice(0, N_ARRIVALS),
   };
   const ArrivalsFormatted: ArrivalAttribute[] = result.arrival
     .map((arr: Arrival) => {

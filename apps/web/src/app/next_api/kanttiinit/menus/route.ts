@@ -4,7 +4,7 @@ import type {
   DayMenu,
   Food,
   RestaurantMenuLite,
-} from "../../../../lib/types/kanttiinit-types";
+} from "../../../../components/infoscreen/types/kanttiinit-types";
 
 // Single day of meals in Kanttiinit API, key is date
 type DayMenuResponse = Record<string, Food[]>;

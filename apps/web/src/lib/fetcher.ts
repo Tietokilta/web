@@ -1,8 +1,8 @@
-import type { RenderableStop } from "./types/hsl-helper-types.ts";
+import type { RenderableStop } from "../components/infoscreen/types/hsl-helper-types.ts";
 import type {
   Restaurant,
   RestaurantMenuLite,
-} from "./types/kanttiinit-types.ts";
+} from "../components/infoscreen/types/kanttiinit-types.ts";
 
 async function wait(s: number): Promise<void> {
   await new Promise((resolve) => {

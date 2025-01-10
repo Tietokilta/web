@@ -3,7 +3,7 @@ import type {
   Restaurant,
   RestaurantMenu,
   RestaurantMenuLite,
-} from "../../../lib/types/kanttiinit-types";
+} from "../types/kanttiinit-types";
 
 export const fetchMenus = async (
   setMenus: React.Dispatch<React.SetStateAction<RestaurantMenu[]>>,

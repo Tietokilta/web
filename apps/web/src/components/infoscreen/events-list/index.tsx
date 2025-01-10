@@ -193,7 +193,10 @@ function groupEventsByWeek(
           event.registrationStartDate ? event.registrationStartDate : "",
         );
     const weekNumber = getWeek(eventDate);
-
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- Removing this causes error
+    if (!acc[weekNumber]) {
+      acc[weekNumber] = [];
+    }
     acc[weekNumber].push(event);
     return acc;
   }, {});
