@@ -102,11 +102,8 @@ function removeSubstring(fullString: string): string {
   ];
   let str = fullString;
   for (const subString of subStrings) {
-    // hsl sometimes has a bug where HEadSign is null so this handles case string in is null :D
     if (str) {
       str = str.replace(subString, "");
-    } else {
-      return "Null";
     }
   }
   return str;
@@ -216,13 +213,13 @@ const getStop = async (
       .map((arr) => arr)
       .concat(result2.arrival.map((arr) => arr))
       .sort((arr1, arr2) => arr1.realTimeArrival - arr2.realTimeArrival)
-      .slice(0, N_ARRIVALS),
+      .slice(0, n),
   };
   const ArrivalsFormatted: ArrivalAttribute[] = result.arrival
     .map((arr: Arrival) => {
       return {
         route: arr.route ? arr.route.replace(" ", "") : "Null",
-        headSign: removeSubstring(arr.headSign),
+        headSign: arr.headSign ? removeSubstring(arr.headSign) : "Null",
         hours:
           Math.floor((arr.realTimeArrival - arr.serviceDay) / 60 / 60) % 24,
         minutes: Math.floor(((arr.realTimeArrival - arr.serviceDay) / 60) % 60),

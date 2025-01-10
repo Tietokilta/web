@@ -119,7 +119,7 @@ function EventCard({
   event: IlmomasiinaEvent;
   showSignup: boolean;
 }) {
-  var showSignupQuotas = true;
+  let showSignupQuotas = true;
   const signupStartDate = event.registrationStartDate;
   const signupEndDate = event.registrationEndDate;
   const eventDate = event.date ? new Date(event.date) : new Date();
@@ -129,7 +129,6 @@ function EventCard({
   }
 
   return (
-    //eslint-disable-next-line tailwindcss/no-custom-classname -- custom classnames is needed
     <li className="shadow-solid relative flex max-w-3xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4">
       <div className="flex flex-row justify-between">
         <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
@@ -194,9 +193,6 @@ function groupEventsByWeek(
           event.registrationStartDate ? event.registrationStartDate : "",
         );
     const weekNumber = getWeek(eventDate);
-    if (!acc[weekNumber]) {
-      acc[weekNumber] = [];
-    }
 
     acc[weekNumber].push(event);
     return acc;

@@ -42,7 +42,7 @@ export const fetchMenus = async (
                         if (food.title.includes(":")) {
                           return {
                             id: food.id,
-                            title: food.title.replace(/^(.*?): /, ""),
+                            title: food.title.replace(/^(?:.*?): /, ""),
                             properties: food.properties,
                           };
                         }

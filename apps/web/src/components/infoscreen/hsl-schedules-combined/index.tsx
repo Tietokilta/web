@@ -28,16 +28,27 @@ export function HSLcombinedSchedule({
           setError("Error fetching data");
           router.push("/infonaytto/naytto");
         }
-      } catch (err: any) {
-        setError(err.message);
-        router.push("/infonaytto/naytto");
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message);
+          router.push("/infonaytto/naytto");
+        }
       }
     };
     // Call fetchData immediately and then set up the interval
-    fetchData().catch((err: Error) => {
-      setError(err.message);
+    fetchData().catch((err: unknown) => {
+      if (err instanceof Error) {
+        setError(err.message);
+      }
     });
-    const intervalId = setInterval(fetchData, 4000); // timeout n milliseconds
+
+    const intervalId = setInterval(() => {
+      fetchData().catch((err: unknown) => {
+        if (err instanceof Error) {
+          setError(err.message);
+        }
+      });
+    }, 4000); // timeout n milliseconds
 
     // Clear the interval when the component unmounts
     return () => {

@@ -24,8 +24,9 @@ export async function hslFetcher(): Promise<{
   if (response.status !== 200) {
     return { status: response.status, result: null };
   }
-  const responseBody: { retData: { data: RenderableStop[] } } =
-    await response.json();
+  const responseBody = (await response.json()) as {
+    retData: { data: RenderableStop[] };
+  };
   return { status: 200, result: responseBody.retData.data };
 }
 

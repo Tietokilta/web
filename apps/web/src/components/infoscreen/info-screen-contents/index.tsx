@@ -33,7 +33,9 @@ export function InfoScreenContents() {
     fetchMenus(setMenus).catch((_err: unknown) => {
       // Error handling can be added later
     });
-    const intervalId = setInterval(fetchMenus, 3600000, setMenus); // timeout n milliseconds
+    const intervalId = setInterval(() => {
+      void fetchMenus(setMenus);
+    }, 3600000); // timeout n milliseconds
 
     // Clear the interval when the component unmounts
     return () => {
