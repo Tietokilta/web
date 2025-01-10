@@ -1,10 +1,8 @@
-//import type { NextApiRequest } from "next";
-import type { NextRequest } from "next/server";
 import type {
   DayMenu,
   Food,
   RestaurantMenuLite,
-} from "../../../../components/infoscreen/types/kanttiinit-types";
+} from "../types/kanttiinit-types";
 
 // Single day of meals in Kanttiinit API, key is date
 type DayMenuResponse = Record<string, Food[]>;
@@ -12,10 +10,11 @@ type DayMenuResponse = Record<string, Food[]>;
 // Single restaurant menu in Kanttiinit API, key is restaurant id
 type RestaurantMenuResponse = Record<string, DayMenuResponse>;
 
-export async function GET(req: NextRequest) {
-  const query = req.nextUrl.searchParams.toString();
+export async function KanttiinitMenus() {
+  const ids = [2, 7, 52];
+  const today = new Date().toISOString().split("T")[0];
   const response: Response = await fetch(
-    `https://kitchen.kanttiinit.fi/menus?${query}`,
+    `https://kitchen.kanttiinit.fi/menus?${ids.join(",")}&days=${today}`,
   );
 
   const responseBody = (await response.json()) as RestaurantMenuResponse;
@@ -43,5 +42,5 @@ export async function GET(req: NextRequest) {
     },
   );
 
-  return Response.json(data);
+  return data;
 }

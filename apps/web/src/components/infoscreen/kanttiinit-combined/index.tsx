@@ -1,9 +1,11 @@
-"use client";
+import type { Food } from "../types/kanttiinit-types";
+import { fetchMenus } from "./update";
 
-import type { Food, RestaurantMenu } from "../types/kanttiinit-types.ts";
+export const revalidate = 3600 * 4; // 4 hours
 
-export function KanttiinitCombined({ menus }: { menus: RestaurantMenu[] }) {
+export async function KanttiinitCombined() {
   const className = `shadow-solid shadow-black font-bold text-l rounded-md border-2 border-black p-3 font-mono text-gray-900 md:items-center`;
+  const menus = await fetchMenus();
 
   return (
     <div className="w-full flex-row justify-center">

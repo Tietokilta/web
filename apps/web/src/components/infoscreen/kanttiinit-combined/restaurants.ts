@@ -1,7 +1,4 @@
-import type {
-  OpeningHour,
-  Restaurant,
-} from "../../../components/infoscreen/types/kanttiinit-types";
+import type { OpeningHour, Restaurant } from "../types/kanttiinit-types";
 
 interface RestaurantResponse {
   openingHours: OpeningHour[];
@@ -15,13 +12,13 @@ interface RestaurantResponse {
   name: string;
 }
 
-export async function GET() {
+export async function KanttiinitRestaurants() {
   const response: Response = await fetch(
     "https://kitchen.kanttiinit.fi/restaurants?lang=fi&ids=2,7,52&priceCategories=student",
   );
 
   if (response.status !== 200) {
-    return Response.error();
+    return [];
   }
   const responseBody = (await response.json()) as RestaurantResponse[];
 
@@ -37,5 +34,5 @@ export async function GET() {
     },
   );
 
-  return Response.json(data);
+  return data;
 }

@@ -1,60 +1,13 @@
-"use client";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { HSLSchedule } from "../hsl-schedule";
-import { type RenderableStop } from "../types/hsl-helper-types.ts";
-import { hslFetcher } from "../../../lib/fetcher.ts";
+import { HSLschedules } from "./fetcher.ts";
 
-export function HSLcombinedSchedule({
-  stopData,
-  setStopData,
-}: {
-  stopData: RenderableStop[];
-  setStopData: React.Dispatch<React.SetStateAction<RenderableStop[]>>;
-}) {
-  const [error, setError] = useState("");
-  const router = useRouter();
+export const revalidate = 30; // 30 seconds
 
-  useEffect(() => {
-    // This use effect updates the times displayed on the info screen
-    const fetchData = async (): Promise<void> => {
-      try {
-        const result: { status: number; result: RenderableStop[] | null } =
-          await hslFetcher();
-        if (result.status === 200) {
-          setError("");
-          setStopData(result.result ? result.result : []);
-        } else {
-          setError("Error fetching data");
-          router.push("/infonaytto/naytto");
-        }
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          setError(err.message);
-          router.push("/infonaytto/naytto");
-        }
-      }
-    };
-    // Call fetchData immediately and then set up the interval
-    fetchData().catch((err: unknown) => {
-      if (err instanceof Error) {
-        setError(err.message);
-      }
-    });
+export async function HSLcombinedSchedule() {
+  // Call fetchData immediately and then set up the interval
+  const stopData = await HSLschedules();
 
-    const intervalId = setInterval(() => {
-      fetchData().catch((err: unknown) => {
-        if (err instanceof Error) {
-          setError(err.message);
-        }
-      });
-    }, 4000); // timeout n milliseconds
-
-    // Clear the interval when the component unmounts
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [router, setStopData]);
+  const error = stopData.length === 0 ? "Failed to fetch data" : "";
 
   if (error !== "") {
     return (

@@ -14,7 +14,7 @@ import type {
   StopOutData,
   StopTime,
   StopType,
-} from "../../../components/infoscreen/types/hsl-helper-types.ts";
+} from "../types/hsl-helper-types.ts";
 
 const STOPS = [
   // Metro east and west
@@ -28,41 +28,13 @@ const N_ARRIVALS = 10;
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
+export async function HSLschedules() {
   const stops = await Promise.all(STOPS.map(getStop));
   const dataFromHsl: RenderableStop[] = stops.filter(
     <T>(stop: T | null): stop is T => stop !== null,
   );
 
-  const retData = {
-    type: "Data",
-    data: dataFromHsl,
-  };
-  if (dataFromHsl.length === 0) {
-    return Response.json(
-      { type: "Data", data: "Failed Fetch" },
-      {
-        status: 500,
-        headers: {
-          "Cache-Control": "no-cache, no-store, must-revalidate",
-          Pragma: "no-cache, no-store",
-          Expires: "0",
-        },
-      },
-    );
-  }
-
-  return Response.json(
-    { retData },
-    {
-      status: 200,
-      headers: {
-        "Cache-Control": "no-cache, no-store, must-revalidate",
-        Pragma: "no-cache, no-store",
-        Expires: "0",
-      },
-    },
-  );
+  return dataFromHsl;
 }
 
 const GetStopSchedule = (StopId: string): DocumentNode =>
@@ -102,8 +74,11 @@ function removeSubstring(fullString: string): string {
   ];
   let str = fullString;
   for (const subString of subStrings) {
+    // hsl sometimes has a bug where HEadSign is null so this handles case string in is null :D
     if (str) {
       str = str.replace(subString, "");
+    } else {
+      return "Null";
     }
   }
   return str;
@@ -198,6 +173,7 @@ function makePrintTime(arrival: Arrival): string {
 
 const getStop = async (
   stops: readonly [string, string],
+  n = N_ARRIVALS,
 ): Promise<RenderableStop | null> => {
   const [result1, result2] = await Promise.all(
     stops.map((stop) => getData(stop).then(toOutData)),
@@ -218,7 +194,7 @@ const getStop = async (
     .map((arr: Arrival) => {
       return {
         route: arr.route ? arr.route.replace(" ", "") : "Null",
-        headSign: arr.headSign ? removeSubstring(arr.headSign) : "Null",
+        headSign: removeSubstring(arr.headSign),
         hours:
           Math.floor((arr.realTimeArrival - arr.serviceDay) / 60 / 60) % 24,
         minutes: Math.floor(((arr.realTimeArrival - arr.serviceDay) / 60) % 60),

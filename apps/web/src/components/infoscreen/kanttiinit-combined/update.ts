@@ -1,30 +1,20 @@
-import { kanttiinitFetcher, kanttiinitMenuFetcher } from "../../../lib/fetcher";
 import type {
   Restaurant,
   RestaurantMenu,
   RestaurantMenuLite,
 } from "../types/kanttiinit-types";
+import { KanttiinitMenus } from "./menus";
+import { KanttiinitRestaurants } from "./restaurants";
 
-export const fetchMenus = async (
-  setMenus: React.Dispatch<React.SetStateAction<RestaurantMenu[]>>,
-): Promise<void> => {
+export const fetchMenus = async (): Promise<RestaurantMenu[]> => {
   try {
-    const restaurantResults: {
-      status: number;
-      result: Restaurant[] | null;
-    } = await kanttiinitFetcher("/next_api/kanttiinit");
-    const menuResults: { status: number; result: RestaurantMenuLite[] | null } =
-      await kanttiinitMenuFetcher(
-        "/next_api/kanttiinit/menus?restaurants=",
-        [2, 7, 52],
-      );
-    if (restaurantResults.status === 200 && menuResults.status === 200) {
-      const newMenus: RestaurantMenu[] = (
-        restaurantResults.result ? restaurantResults.result : []
-      ).map((restaurant: Restaurant) => {
+    const restaurants = await KanttiinitRestaurants();
+    const menus = await KanttiinitMenus();
+    const newMenus: RestaurantMenu[] = restaurants.map(
+      (restaurant: Restaurant) => {
         return {
           restaurant,
-          menus: (menuResults.result ? menuResults.result : [])
+          menus: menus
             .filter(
               (menu: RestaurantMenuLite) => menu.restaurantID === restaurant.id,
             )
@@ -59,10 +49,11 @@ export const fetchMenus = async (
               }),
             ),
         };
-      });
-      setMenus(newMenus);
-    }
+      },
+    );
+    return newMenus;
   } catch (_err: unknown) {
     // Error handling can be added here
   }
+  return [];
 };
