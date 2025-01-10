@@ -29,6 +29,16 @@
       forEachSystem
       (system: let
         pkgs = nixpkgs.legacyPackages.${system};
+        bun = pkgs.bun.overrideAttrs (oldAttrs: {
+          buildInputs = oldAttrs.buildInputs or [] ++ [pkgs.makeWrapper];
+          postInstall =
+            oldAttrs.postInstall
+            or ""
+            + ''
+              wrapProgram $out/bin/bun \
+                --set LD_LIBRARY_PATH "${pkgs.stdenv.cc.cc.lib}/lib/:$LD_LIBRARY_PATH"
+            '';
+        });
       in {
         default = devenv.lib.mkShell {
           inherit inputs pkgs;
@@ -36,10 +46,10 @@
             {
               packages = with pkgs; [bash mongodb-tools docker bun];
 
-              enterShell= ''
-                  export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib/:$LD_LIBRARY_PATH"
-                  export PATH="$PATH:/usr/local/bin"
-                  '';
+              # FIXME: this is only required within the dev container
+              enterShell = ''
+                export PATH="$PATH:/usr/local/bin"
+              '';
 
               languages.javascript = {
                 enable = true;
