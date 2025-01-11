@@ -15,6 +15,7 @@ interface RestaurantResponse {
 export async function KanttiinitRestaurants() {
   const response: Response = await fetch(
     "https://kitchen.kanttiinit.fi/restaurants?lang=fi&ids=2,7,52&priceCategories=student",
+    { next: { revalidate: 3600 } }, // fetch only once per hour
   );
 
   if (response.status !== 200) {

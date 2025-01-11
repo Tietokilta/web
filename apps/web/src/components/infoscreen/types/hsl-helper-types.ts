@@ -19,7 +19,7 @@ export type StopType = "metro" | "tram" | "bus";
 export interface Arrival {
   route: string;
   headSign: string;
-  arrivalTimeLocalUnix: number;
+  arrivalTimeUnix: number;
   serviceDay: number;
   hours: number;
   minutes: number;

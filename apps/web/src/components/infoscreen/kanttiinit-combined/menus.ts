@@ -15,6 +15,7 @@ export async function KanttiinitMenus() {
   const today = new Date().toISOString().split("T")[0];
   const response: Response = await fetch(
     `https://kitchen.kanttiinit.fi/menus?${ids.join(",")}&days=${today}`,
+    { next: { revalidate: 3600 } }, // fetch only once per hour
   );
 
   const responseBody = (await response.json()) as RestaurantMenuResponse;
