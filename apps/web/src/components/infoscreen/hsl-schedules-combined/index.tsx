@@ -1,20 +1,11 @@
 import { HSLSchedule } from "../hsl-schedule";
-import { HSLschedules } from "./fetcher.ts";
-
-export const revalidate = 30; // 30 seconds
+import { HSLSchedules } from "./fetcher.ts";
 
 export async function HSLcombinedSchedule() {
-  // Call fetchData immediately and then set up the interval
-  const stopData = await HSLschedules();
+  const stopData = await HSLSchedules();
 
-  const error = stopData.length === 0 ? "Failed to fetch data" : "";
-
-  if (error !== "") {
-    return (
-      <div className="flex w-full justify-center">
-        <h1 className="flex justify-center pt-4 text-3xl font-bold">{error}</h1>
-      </div>
-    );
+  if (stopData.length === 0) {
+    return null;
   }
   return (
     <div className="w-full flex-row justify-center">
@@ -24,12 +15,10 @@ export async function HSLcombinedSchedule() {
         </h1>
       </div>
       <div className="flex w-full justify-between gap-4 p-8 pt-0">
-        {stopData.map((res) => (
+        {stopData.map((stop) => (
           <HSLSchedule
-            key={
-              res.arrivals[0].headSign ? res.arrivals[0].headSign : "Unknown"
-            }
-            result={res}
+            key={stop.name + stop.type}
+            stop={stop}
             className="flex flex-col gap-4"
           />
         ))}

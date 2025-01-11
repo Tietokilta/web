@@ -1,59 +1,97 @@
-import type {
-  ApolloQueryResult,
-  DefaultOptions,
-  DocumentNode,
+import {
+  ApolloClient,
+  createHttpLink,
+  gql,
+  InMemoryCache,
 } from "@apollo/client";
-import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
+import { TZDate } from "@date-fns/tz";
 import type {
-  Arrival,
-  ArrivalAttribute,
-  Data,
-  RenderableStop,
+  HSLResponse,
+  StopHSL,
   Stop,
-  StopFromApi,
-  StopOutData,
-  StopTime,
+  HSLStopTime,
   StopType,
 } from "../types/hsl-helper-types.ts";
 
+interface StopConfig {
+  stopType: StopType;
+  stops: [string, string];
+}
 const STOPS = [
   // Metro east and west
-  ["HSL:2222603", "HSL:2222604"],
+  { stopType: "metro", stops: ["HSL:2222603", "HSL:2222604"] },
   // Raide jokeri east and west
-  ["HSL:2222406", "HSL:2222405"],
+  { stopType: "tram", stops: ["HSL:2222406", "HSL:2222405"] },
   // Aalto Yliopisto bus stop "east" and "west"
-  ["HSL:2222234", "HSL:2222212"],
-] as const;
+  { stopType: "bus", stops: ["HSL:2222234", "HSL:2222212"] },
+] as const satisfies StopConfig[];
+
+// count of arrivals to render
 const N_ARRIVALS = 10;
 
-export const dynamic = "force-dynamic";
+const client = new ApolloClient({
+  link: createHttpLink({
+    uri: "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1",
+    headers: {
+      "Content-Type": "application/json",
+      "digitransit-subscription-key":
+        process.env.DIGITRANSIT_SUBSCRIPTION_KEY ?? "",
+    },
+    // TODO: figure out how next cache works, the revalidate doesn't seem to be working
+    // fetchOptions: {
+    //   cache: "force-cache",
+    //   next: {
+    //     // revalidate: 0,
+    //   },
+    // },
+  }),
+  defaultOptions: {
+    query: {
+      fetchPolicy: "no-cache",
+    },
+  },
+  cache: new InMemoryCache({
+    resultCaching: false,
+  }),
+  ssrMode: true,
+});
 
-export async function HSLschedules() {
-  const stops = await Promise.all(STOPS.map(getStop));
-  const dataFromHsl: RenderableStop[] = stops.filter(
-    <T>(stop: T | null): stop is T => stop !== null,
-  );
-
-  return dataFromHsl;
-}
-
-const GetStopSchedule = (StopId: string): DocumentNode =>
-  gql(`
-  {
-    stop(id: "${StopId}") {
-      name
-        stoptimesWithoutPatterns {
-        realtimeArrival
-        realtimeArrival
-        serviceDay
-        headsign
-        trip{
-          routeShortName
+const getData = async (stop: string) => {
+  try {
+    const data = await client
+      .query<HSLResponse>({
+        // https://api.digitransit.fi/graphiql/hsl/v2/gtfs/v1?query=%257B%250A%2520%2520stop%28id%253A%2520%2522HSL%253A2222234%2522%29%2520%257B%250A%2520%2520%2520%2520name%250A%2520%2520%2520%2520stoptimesWithoutPatterns%2520%257B%250A%2520%2520%2520%2520%2520%2520realtimeArrival%250A%2520%2520%2520%2520%2520%2520serviceDay%250A%2520%2520%2520%2520%2520%2520trip%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520tripHeadsign%250A%2520%2520%2520%2520%2520%2520%2520%2520routeShortName%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%257D
+        query: gql(`
+        {
+          stop(id: "${stop}") {
+            name
+              stoptimesWithoutPatterns {
+              realtimeArrival
+              serviceDay
+              trip{
+                tripHeadsign
+                routeShortName
+              }
+            }
+          }
         }
-      }
-    }
+`),
+      })
+      .then((result) => {
+        return mapStop(result.data.stop);
+      });
+    return data;
+  } catch (e) {
+    // eslint-disable-next-line no-console -- TODO: add actual logger
+    console.error(e);
+    return null;
   }
-`);
+};
+
+export async function HSLSchedules() {
+  const stops = await Promise.all(STOPS.map(getStop));
+  return stops.filter((f) => f !== null);
+}
 
 function pad(number: number, size: number) {
   let s = String(number);
@@ -63,149 +101,70 @@ function pad(number: number, size: number) {
   return s;
 }
 
-function removeSubstring(fullString: string): string {
-  const subStrings: string[] = [
-    " via Leppävaara",
-    " via Rautatientori",
-    " via Tapiola (M)",
-    " via Huopalahti as.",
-    " via Tapiola",
-    " via Pasila as.",
-  ];
-  let str = fullString;
-  for (const subString of subStrings) {
-    // hsl sometimes has a bug where HEadSign is null so this handles case string in is null :D
-    if (str) {
-      str = str.replace(subString, "");
-    } else {
-      return "Null";
-    }
-  }
-  return str;
-}
-
-function isTram(arrival: Arrival): boolean {
-  return arrival.route.includes("15");
-}
-function isMetro(arrival: Arrival): boolean {
-  return arrival.route.includes("M");
-}
-function getType(arrivals: Arrival[]): StopType {
-  if (arrivals.length === 0) return null;
-  const arrival = arrivals[0];
-  if (isMetro(arrival)) {
-    return "metro";
-  } else if (isTram(arrival)) {
-    return "tram";
-  }
-  return "bus";
-}
-function toOutData(stop: Stop | null): StopOutData | null {
-  if (!stop) return null;
+function mapStop(stop: StopHSL): Omit<Stop, "type"> {
   return {
     name: stop.name,
-    type: stop.type,
-    arrival: stop.stoptimesWithoutPatterns.map((arr: StopTime) => ({
-      route: arr.trip.routeShortName,
-      headSign: arr.headsign,
-      realTimeArrival: arr.realtimeArrival + arr.serviceDay,
-      serviceDay: arr.serviceDay,
-    })),
+    arrivals: stop.stoptimesWithoutPatterns
+      .map((arr: HSLStopTime) => {
+        const route = arr.trip.routeShortName;
+        const headSign = arr.trip.tripHeadsign;
+        const arrivalTimeLocal = arr.realtimeArrival + arr.serviceDay;
+        const serviceDay = arr.serviceDay;
+        const fullTime = makePrintTime(arrivalTimeLocal, serviceDay);
+        if (!fullTime) {
+          return null;
+        }
+        return {
+          arrivalTimeUnix: arrivalTimeLocal,
+          serviceDay,
+          route: route ? route.replace(" ", "") : "Null",
+          headSign: headSign || "Null",
+          hours: Math.floor((arrivalTimeLocal - arr.serviceDay) / 60 / 60) % 24,
+          minutes: Math.floor(((arrivalTimeLocal - arr.serviceDay) / 60) % 60),
+          realtimeArrival: arrivalTimeLocal,
+          fullTime,
+        };
+      })
+      .filter((arr) => arr !== null),
   };
 }
 
-const getData = async (stop: string): Promise<Stop | null> => {
-  const defaultOptions: DefaultOptions = {
-    query: {
-      fetchPolicy: "no-cache",
-    },
-  };
-
-  const client = new ApolloClient<object>({
-    uri: "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql",
-    cache: new InMemoryCache({
-      resultCaching: false,
-    }),
-    defaultOptions,
-    headers: {
-      "Content-Type": "application/json",
-      "digitransit-subscription-key":
-        process.env.DIGITRANSIT_SUBSCRIPTION_KEY ?? "",
-    },
-  });
-  let data: StopFromApi | null = null;
-  await client
-    .query({
-      query: GetStopSchedule(stop),
-    })
-    .then((result: ApolloQueryResult<Data>) => {
-      data = result.data.stop;
-    });
-  return data;
-};
-
-function makePrintTime(arrival: Arrival): string {
-  const date = new Date();
+function makePrintTime(
+  arrivalTimeUnix: number,
+  serviceDay: number,
+): string | null {
+  const date = new TZDate(new Date(), "Europe/Helsinki");
   const hour = date.getHours();
   const min = date.getMinutes();
   const sec = date.getSeconds();
-  const currentTSM = (hour * 60 + min) * 60 + sec;
-  let arrivalTime = arrival.realTimeArrival - arrival.serviceDay;
-  if (arrivalTime / 3600 >= 24) {
-    arrivalTime -= 24 * 3600;
-  }
-  if (arrivalTime - currentTSM > 600) {
+  const secondsFromMidnight = (hour * 60 + min) * 60 + sec;
+  const arrivalTime = arrivalTimeUnix - serviceDay;
+  if (arrivalTime - secondsFromMidnight > 600) {
     return `${pad(
-      Math.floor((arrival.realTimeArrival - arrival.serviceDay) / 60 / 60) % 24,
+      Math.floor((arrivalTimeUnix - serviceDay) / 60 / 60) % 24,
       2,
-    )}:${pad(
-      Math.floor(((arrival.realTimeArrival - arrival.serviceDay) / 60) % 60),
-      2,
-    )}`;
+    )}:${pad(Math.floor(((arrivalTimeUnix - serviceDay) / 60) % 60), 2)}`;
   }
-  const t1 = Math.floor(arrivalTime - currentTSM);
+  const t1 = Math.floor(arrivalTime - secondsFromMidnight);
   if (t1 < -60) {
-    return "NaN";
+    return null;
   }
   const t = Math.floor(Math.max(t1, 0) / 60);
   return t <= 1 ? "~0" : String(t);
 }
 
-const getStop = async (
-  stops: readonly [string, string],
-  n = N_ARRIVALS,
-): Promise<RenderableStop | null> => {
-  const [result1, result2] = await Promise.all(
-    stops.map((stop) => getData(stop).then(toOutData)),
-  );
+const getStop = async ({ stopType, stops }: StopConfig) => {
+  const [result1, result2] = await Promise.all(stops.map(getData));
 
   if (!result1 || !result2) return null;
 
-  const result: StopOutData = {
+  const result: Stop = {
     name: result1.name,
-    type: getType(result1.arrival),
-    arrival: result1.arrival
-      .map((arr) => arr)
-      .concat(result2.arrival.map((arr) => arr))
-      .sort((arr1, arr2) => arr1.realTimeArrival - arr2.realTimeArrival)
+    type: stopType,
+    arrivals: result1.arrivals
+      .concat(result2.arrivals)
+      .sort((arr1, arr2) => arr1.arrivalTimeUnix - arr2.arrivalTimeUnix)
       .slice(0, N_ARRIVALS),
   };
-  const ArrivalsFormatted: ArrivalAttribute[] = result.arrival
-    .map((arr: Arrival) => {
-      return {
-        route: arr.route ? arr.route.replace(" ", "") : "Null",
-        headSign: removeSubstring(arr.headSign),
-        hours:
-          Math.floor((arr.realTimeArrival - arr.serviceDay) / 60 / 60) % 24,
-        minutes: Math.floor(((arr.realTimeArrival - arr.serviceDay) / 60) % 60),
-        realtimeArrival: arr.realTimeArrival,
-        fullTime: makePrintTime(arr),
-      };
-    })
-    .filter((arr) => arr.fullTime !== "NaN");
-  return {
-    name: result.name,
-    type: result.type,
-    arrivals: ArrivalsFormatted,
-  };
+  return result;
 };

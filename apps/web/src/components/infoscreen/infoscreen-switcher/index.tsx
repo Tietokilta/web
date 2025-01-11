@@ -9,8 +9,8 @@ export default function InfoScreenSwitcher({
   children: React.ReactNode;
 }) {
   const [current, setCurrent] = useState(0);
-  const count = React.Children.count(children);
-  const childrenArray = React.Children.toArray(children);
+  const childrenArray = React.Children.toArray(children).filter(Boolean);
+  const count = childrenArray.length;
   const router = useRouter();
 
   useEffect(() => {
@@ -26,6 +26,13 @@ export default function InfoScreenSwitcher({
       clearInterval(intervalId);
     };
   }, [count, router]);
+  if (childrenArray.length === 0) {
+    return (
+      <div className="flex h-full flex-col">
+        error, no info screen components functional
+      </div>
+    );
+  }
 
   return <div className="flex h-full flex-col">{childrenArray[current]}</div>;
 }

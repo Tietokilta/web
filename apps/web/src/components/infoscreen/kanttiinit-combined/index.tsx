@@ -1,11 +1,12 @@
 import type { Food } from "../types/kanttiinit-types";
 import { fetchMenus } from "./update";
 
-export const revalidate = 3600 * 4; // 4 hours
-
 export async function KanttiinitCombined() {
   const className = `shadow-solid shadow-black font-bold text-l rounded-md border-2 border-black p-3 font-mono text-gray-900 md:items-center`;
   const menus = await fetchMenus();
+  if (menus.length === 0) {
+    return null;
+  }
 
   return (
     <div className="w-full flex-row justify-center">
