@@ -25,6 +25,8 @@
           "typescript",
           "typescriptreact"
         ],
+        "eslint.runtime": "node_modules/.bin/eslint",
+        "typescript.tsdk": "node_modules/typescript/lib",
         "eslint.workingDirectories": [
           {
             "mode": "auto"
