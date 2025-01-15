@@ -1,0 +1,48 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mkhl.direnv",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "yoavbls.pretty-ts-errors",
+        "github.vscode-github-actions",
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "settings": {
+        "editor.tabSize": 2,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit",
+          "source.fixAll.eslint": "explicit",
+          "source.fixAll.stylelint": "explicit"
+        },
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
+        "eslint.runtime": "node_modules/.bin/eslint",
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "eslint.workingDirectories": [
+          {
+            "mode": "auto"
+          }
+        ],
+        "tailwindCSS.experimental.classRegex": [
+          ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+        ]
+      }
+    }
+  },
+  "image": "ghcr.io/cachix/devenv:latest",
+  "overrideCommand": false,
+  "updateContentCommand": "direnv reload",
+  "remoteEnv": { "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}" },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  }
+}
