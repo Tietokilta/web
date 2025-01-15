@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "^3.12.3",
+    "@apollo/client": "^3.12.6",
     "@date-fns/tz": "^1.2.0",
     "@tietokilta/ui": "workspace:*",
     "autoprefixer": "catalog:",
@@ -26,10 +26,10 @@
     "react": "catalog:react19",
     "react-big-calendar": "^1.17.0",
     "react-dom": "catalog:react19",
-    "react-markdown": "^9.0.1",
+    "react-markdown": "^9.0.3",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.0",
-    "remeda": "^2.19.0",
+    "remeda": "^2.19.1",
     "server-only": "^0.0.1",
     "sharp": "^0.33.5",
     "strip-markdown": "^6.0.0",
