@@ -3,7 +3,7 @@
 import Form from "next/form";
 import { Button, type ButtonProps } from "@tietokilta/ui";
 import { useFormStatus } from "react-dom";
-import type { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
+import type { signUp } from "../../../../../lib/api/external/ilmomasiina/actions";
 
 function StatusButton({ disabled, ...props }: ButtonProps) {
   const { pending } = useFormStatus();

@@ -14,8 +14,8 @@ import {
   type EventQuestion,
   type QuotaSignup,
   type QuestionAnswer,
-} from "../../../../lib/api/external/ilmomasiina";
-import { signUp } from "../../../../lib/api/external/ilmomasiina/actions";
+} from "../../../../../lib/api/external/ilmomasiina";
+import { signUp } from "../../../../../lib/api/external/ilmomasiina/actions";
 import {
   cn,
   formatDateTimeSeconds,
@@ -24,12 +24,12 @@ import {
   formatDatetimeYearOptions,
   getLocalizedEventTitle,
   getQuotasWithOpenAndQueue,
-} from "../../../../lib/utils";
-import { BackButton } from "../../../../components/back-button";
-import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
-import { DateTime } from "../../../../components/datetime";
-import { openGraphImage } from "../../../shared-metadata";
-import { remarkI18n } from "../../../../lib/plugins/remark-i18n";
+} from "../../../../../lib/utils";
+import { BackButton } from "../../../../../components/back-button";
+import { getCurrentLocale, getScopedI18n } from "../../../../../locales/server";
+import { DateTime } from "../../../../../components/datetime";
+import { openGraphImage } from "../../../../shared-metadata";
+import { remarkI18n } from "../../../../../lib/plugins/remark-i18n";
 import { SignUpButton } from "./signup-button";
 
 async function SignUpText({

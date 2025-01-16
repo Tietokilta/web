@@ -20,17 +20,17 @@ import {
   ilmomasiinaFieldErrors,
   type IlmomasiinaEvent,
   type IlmomasiinaSignupInfo,
-} from "../../../../../lib/api/external/ilmomasiina";
+} from "../../../../../../lib/api/external/ilmomasiina";
 import type {
   deleteSignUpAction,
   saveSignUpAction,
-} from "../../../../../lib/api/external/ilmomasiina/actions";
+} from "../../../../../../lib/api/external/ilmomasiina/actions";
 import {
   I18nProviderClient,
   useCurrentLocale,
   useScopedI18n,
-} from "../../../../../locales/client";
-import { cn, getLocalizedEventTitle } from "../../../../../lib/utils";
+} from "../../../../../../locales/client";
+import { cn, getLocalizedEventTitle } from "../../../../../../lib/utils";
 
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
 

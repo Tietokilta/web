@@ -1,13 +1,13 @@
 import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload";
 import { type Metadata } from "next";
-import { EventsDisplay } from "../../components/events-display";
-import { Hero, type ImageWithPhotographer } from "../../components/hero";
-import { LexicalSerializer } from "../../components/lexical/lexical-serializer";
-import { fetchLandingPage } from "../../lib/api/landing-page";
-import { AnnouncementCard } from "../../components/announcement-card";
-import { getCurrentLocale } from "../../locales/server";
-import { openGraphImage } from "../shared-metadata";
+import { EventsDisplay } from "../../../components/events-display";
+import { Hero, type ImageWithPhotographer } from "../../../components/hero";
+import { LexicalSerializer } from "../../../components/lexical/lexical-serializer";
+import { fetchLandingPage } from "../../../lib/api/landing-page";
+import { AnnouncementCard } from "../../../components/announcement-card";
+import { getCurrentLocale } from "../../../locales/server";
+import { openGraphImage } from "../../shared-metadata";
 
 function Content({ content }: { content?: EditorState }) {
   if (!content) return null;

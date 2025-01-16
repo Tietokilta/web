@@ -17,20 +17,16 @@ function Page() {
     >
       <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 text-gray-100 md:h-[25svh]">
         <h1 className="font-mono text-4xl md:text-5xl">
-          404 - {t("Ilmoittautumista ei löytynyt")}
+          404 - {t("Sivua ei löytynyt")}
         </h1>
       </header>
 
       <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
         <Card className="max-w-prose">
-          <p>
-            {t(
-              "Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.",
-            )}
-          </p>
+          <p>{t("Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.")}</p>
         </Card>
         <Button asChild variant="link">
-          <Link href="/">{t("Tapahtumalistaukseen")}</Link>
+          <Link href="/">{t("Etusivulle")}</Link>
         </Button>
         <DinoGame />
       </div>

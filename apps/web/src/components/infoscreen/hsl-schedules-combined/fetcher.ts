@@ -38,12 +38,12 @@ const client = new ApolloClient({
         process.env.DIGITRANSIT_SUBSCRIPTION_KEY ?? "",
     },
     // TODO: figure out how next cache works, the revalidate doesn't seem to be working
-    // fetchOptions: {
-    //   cache: "force-cache",
-    //   next: {
-    //     // revalidate: 0,
-    //   },
-    // },
+    fetchOptions: {
+      //cache: "force-cache",
+      next: {
+        revalidate: 30,
+      },
+    },
   }),
   defaultOptions: {
     query: {
