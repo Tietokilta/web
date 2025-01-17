@@ -1,3 +1,4 @@
+import { getCurrentLocale } from "../../../locales/server";
 import type {
   Restaurant,
   RestaurantMenu,
@@ -8,8 +9,9 @@ import { KanttiinitRestaurants } from "./restaurants";
 
 export const fetchMenus = async (): Promise<RestaurantMenu[]> => {
   try {
-    const restaurants = await KanttiinitRestaurants();
-    const menus = await KanttiinitMenus();
+    const locale = await getCurrentLocale();
+    const restaurants = await KanttiinitRestaurants(locale);
+    const menus = await KanttiinitMenus(locale);
     const newMenus: RestaurantMenu[] = restaurants.map(
       (restaurant: Restaurant) => {
         return {

@@ -1,3 +1,4 @@
+import type { Locale } from "../../../locales/server";
 import type {
   DayMenu,
   Food,
@@ -10,11 +11,11 @@ type DayMenuResponse = Record<string, Food[]>;
 // Single restaurant menu in Kanttiinit API, key is restaurant id
 type RestaurantMenuResponse = Record<string, DayMenuResponse>;
 
-export async function KanttiinitMenus() {
+export async function KanttiinitMenus(locale?: Locale) {
   const ids = [2, 7, 52];
   const today = new Date().toISOString().split("T")[0];
   const response: Response = await fetch(
-    `https://kitchen.kanttiinit.fi/menus?${ids.join(",")}&days=${today}`,
+    `https://kitchen.kanttiinit.fi/menus?lang=${locale ?? "fi"}&${ids.join(",")}&days=${today}`,
     { next: { revalidate: 3600 } }, // fetch only once per hour
   );
 

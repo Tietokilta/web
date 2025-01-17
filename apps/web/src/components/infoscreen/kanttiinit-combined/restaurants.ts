@@ -1,3 +1,4 @@
+import type { Locale } from "../../../locales/server";
 import type { OpeningHour, Restaurant } from "../types/kanttiinit-types";
 
 interface RestaurantResponse {
@@ -12,9 +13,9 @@ interface RestaurantResponse {
   name: string;
 }
 
-export async function KanttiinitRestaurants() {
+export async function KanttiinitRestaurants(locale?: Locale) {
   const response: Response = await fetch(
-    "https://kitchen.kanttiinit.fi/restaurants?lang=fi&ids=2,7,52&priceCategories=student",
+    `https://kitchen.kanttiinit.fi/restaurants?lang=${locale ?? "fi"}&ids=2,7,52&priceCategories=student`,
     { next: { revalidate: 3600 } }, // fetch only once per hour
   );
 
