@@ -1,3 +1,4 @@
+import { getScopedI18n } from "../../../locales/server.ts";
 import type { Stop, StopType } from "../types/hsl-helper-types.ts";
 
 const getColor = (type: StopType): string => {
@@ -11,14 +12,15 @@ const getColor = (type: StopType): string => {
   }
 };
 
-const stopName = (type: StopType) => {
+const stopName = async (type: StopType) => {
+  const t = await getScopedI18n("infoscreen");
   switch (type) {
     case "metro":
-      return "Metro";
+      return t("Metro");
     case "tram":
-      return "Raide-Jokeri";
+      return t("Raide-Jokeri");
     case "bus":
-      return "Bussit";
+      return t("Bussit");
   }
 };
 interface HSLScheduleProps {

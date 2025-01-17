@@ -2,6 +2,7 @@ import {
   fetchUpcomingEvents,
   type IlmomasiinaEvent,
 } from "../../../lib/api/external/ilmomasiina";
+import { getI18n, getScopedI18n } from "../../../locales/server.ts";
 import { EventCardCompact } from "../../event-card/index.tsx";
 
 function getWeek(date: Date) {
@@ -53,6 +54,7 @@ export default async function EventListInfoscreen({
 }: {
   showIlmostatus?: boolean;
 }) {
+  const t = await getI18n();
   const eventsResponse = await fetchUpcomingEvents();
   const events = Array.isArray(eventsResponse.data) ? eventsResponse.data : [];
 
@@ -61,7 +63,7 @@ export default async function EventListInfoscreen({
   return (
     <main id="main" className="flex flex-col align-top">
       <h1 className="my-6 text-center font-mono text-5xl font-bold">
-        Tapahtumat
+        {t("ilmomasiina.Tapahtumat")}
       </h1>
       <ul className="flex flex-row flex-wrap">
         {Object.entries(upcomingEventsDataByWeek)
@@ -71,7 +73,7 @@ export default async function EventListInfoscreen({
             return (
               <div key={entry[0]} className="flex w-1/2 flex-col p-2 xl:w-1/3">
                 <span className="text-pretty py-2 text-center text-3xl font-bold">
-                  Week {entry[0]}
+                  {t("calendar.Week")} {entry[0]}
                 </span>
                 <div className="flex flex-col gap-3">
                   {eventsInWeek.map((event) => {

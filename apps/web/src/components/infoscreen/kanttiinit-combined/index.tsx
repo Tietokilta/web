@@ -1,3 +1,4 @@
+import { getScopedI18n } from "../../../locales/server";
 import type { Food } from "../types/kanttiinit-types";
 import { fetchMenus } from "./update";
 
@@ -7,12 +8,13 @@ export async function KanttiinitCombined() {
   if (menus.length === 0) {
     return null;
   }
+  const t = await getScopedI18n("infoscreen");
 
   return (
     <div className="w-full flex-row justify-center">
       <div className="flex w-full justify-center">
-        <h1 className="flex justify-center pt-4 text-3xl font-bold">
-          Ruokalistat
+        <h1 className="my-6 text-center font-mono text-5xl font-bold">
+          {t("Ruokalistat")}
         </h1>
       </div>
       <div className="top-3 flex w-full justify-between gap-4 p-8 pt-0">
