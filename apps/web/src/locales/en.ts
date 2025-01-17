@@ -127,8 +127,10 @@ const en = {
   "ilmomasiina.all-events.Kaikki tapahtumat": "All events",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
   "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign ups start on {startDate}",
+  "ilmomasiina.status.Ilmo alkaa": "Sign ups start on {startDate}",
   "ilmomasiina.status.Ilmoittautuminen auki":
     "Open for sign ups until {endDate}",
+  "ilmomasiina.status.Ilmo auki": "Open for sign ups until {endDate}",
   "ilmomasiina.status.Ilmoittautuminen on päättynyt": "Sign ups have ended",
   "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
     "Sign up information is not public",
