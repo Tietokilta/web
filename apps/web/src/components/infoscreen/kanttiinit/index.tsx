@@ -1,10 +1,11 @@
-import { getScopedI18n } from "../../../locales/server";
+import { getCurrentLocale, getScopedI18n } from "../../../locales/server";
 import type { Food } from "../types/kanttiinit-types";
-import { fetchMenus } from "./update";
+import { fetchMenus } from "./fetcher";
 
 export async function KanttiinitCombined() {
+  const locale = await getCurrentLocale();
   const className = `shadow-solid shadow-black font-bold text-l rounded-md border-2 border-black p-3 font-mono text-gray-900 md:items-center`;
-  const menus = await fetchMenus();
+  const menus = await fetchMenus(locale);
   if (menus.length === 0) {
     return null;
   }

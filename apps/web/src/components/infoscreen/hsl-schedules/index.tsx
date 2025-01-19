@@ -1,5 +1,6 @@
 import { getScopedI18n } from "../../../locales/server.ts";
 import type { Stop, StopType } from "../types/hsl-helper-types.ts";
+import { HSLSchedules } from "./fetcher.ts";
 
 const getColor = (type: StopType): string => {
   switch (type) {
@@ -28,7 +29,7 @@ interface HSLScheduleProps {
   className: string;
 }
 
-export function HSLSchedule({ stop }: HSLScheduleProps) {
+function HSLSchedule({ stop }: HSLScheduleProps) {
   return (
     <div
       className="size-full items-center gap-4"
@@ -53,6 +54,32 @@ export function HSLSchedule({ stop }: HSLScheduleProps) {
           </li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+export async function HSLcombinedSchedule() {
+  const stopData = await HSLSchedules();
+
+  if (stopData.length === 0) {
+    return null;
+  }
+  return (
+    <div className="w-full flex-row justify-center">
+      <div className="flex w-full justify-center">
+        <h1 className="flex justify-center pt-4 text-3xl font-bold">
+          Aalto-yliopisto (M)
+        </h1>
+      </div>
+      <div className="flex w-full justify-between gap-4 p-8 pt-0">
+        {stopData.map((stop) => (
+          <HSLSchedule
+            key={stop.name + stop.type}
+            stop={stop}
+            className="flex flex-col gap-4"
+          />
+        ))}
+      </div>
     </div>
   );
 }
