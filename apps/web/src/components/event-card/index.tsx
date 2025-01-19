@@ -5,6 +5,8 @@ import type {
 } from "../../lib/api/external/ilmomasiina";
 import {
   cn,
+  formatDateTime,
+  formatDateTimeOptions,
   formatDateYear,
   formatDateYearOptions,
   formatDatetimeYear,
@@ -17,10 +19,12 @@ async function SignUpText({
   startDate,
   endDate,
   className,
+  compact = false,
 }: {
   startDate?: string | null;
   endDate?: string | null;
   className?: string;
+  compact?: boolean;
 }) {
   const locale = await getCurrentLocale();
   const t = await getScopedI18n("ilmomasiina.status");
@@ -36,6 +40,26 @@ async function SignUpText({
   if (hasStarted && hasEnded) {
     return (
       <span className={className}>{t("Ilmoittautuminen on päättynyt")}</span>
+    );
+  }
+
+  if (compact) {
+    if (hasStarted && !hasEnded) {
+      return (
+        <span className={className}>
+          {t("Ilmo auki", {
+            endDate: formatDatetimeYear(endDate, locale),
+          })}
+        </span>
+      );
+    }
+
+    return (
+      <span className={className}>
+        {t("Ilmo alkaa", {
+          startDate: formatDatetimeYear(startDate, locale),
+        })}
+      </span>
     );
   }
 
@@ -61,9 +85,11 @@ async function SignUpText({
 async function SignupQuotas({
   quotas,
   className,
+  compact = false,
 }: {
   quotas: EventQuota[];
   className?: string;
+  compact?: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
   const totalSignupCount = quotas.reduce(
@@ -73,6 +99,32 @@ async function SignupQuotas({
   const totalSize = quotas.reduce((acc, quota) => acc + (quota.size ?? 0), 0);
 
   const isSingleQuota = quotas.length === 1;
+
+  // Compact Mode is used on infoscreen
+  if (compact) {
+    return (
+      <ul className={cn(className)}>
+        <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
+          <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+        </li>
+        {quotas.map((quota) => (
+          <li
+            className="flex w-full justify-between gap-4 whitespace-nowrap"
+            key={quota.id}
+          >
+            <span className="w-1/2 truncate">{quota.title}</span>{" "}
+            {typeof quota.size === "number" ? (
+              <span className="w-1/2 text-right">
+                {quota.signupCount} / {quota.size}
+              </span>
+            ) : (
+              <span className="w-1/4 text-right">{quota.signupCount}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   if (isSingleQuota) {
     return (
@@ -111,6 +163,67 @@ async function SignupQuotas({
         </li>
       ))}
     </ul>
+  );
+}
+
+export async function EventCardCompact({
+  event,
+  showSignup = true,
+}: {
+  event: IlmomasiinaEvent;
+  showSignup: boolean;
+}) {
+  let showSignupQuotas = true;
+  const signupStartDate = event.registrationStartDate;
+  const signupEndDate = event.registrationEndDate;
+
+  if (event.registrationClosed === true || !signupEndDate || !signupStartDate) {
+    showSignupQuotas = false;
+  }
+
+  const t = await getScopedI18n("ilmomasiina.path");
+
+  const locale = await getCurrentLocale();
+  return (
+    <li className="shadow-solid relative flex max-w-3xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4">
+      <div className="flex flex-row justify-between">
+        <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
+          <Link
+            href={`/${locale}/${t("events")}/${event.slug}`}
+            className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline"
+          >
+            <h2>
+              {getLocalizedEventTitle(event.title, locale)}
+              {event.date ? (
+                <>
+                  {", "}
+                  <DateTime
+                    rawDate={event.date}
+                    defaultFormattedDate={formatDateTime(event.date, locale)}
+                    formatOptions={formatDateTimeOptions}
+                  />
+                </>
+              ) : null}
+            </h2>
+          </Link>
+
+          {showSignupQuotas ? (
+            <SignUpText
+              endDate={event.registrationEndDate}
+              startDate={event.registrationStartDate}
+              compact
+            />
+          ) : null}
+        </div>
+        {event.quotas.length > 0 && showSignup ? (
+          <SignupQuotas
+            className="ml-5 w-1/3 shrink-0"
+            quotas={event.quotas}
+            compact
+          />
+        ) : null}
+      </div>
+    </li>
   );
 }
 

@@ -41,6 +41,10 @@ const en = {
   "generic.Version": "Version",
   "heading.Main navigation": "Main navigation",
   "heading.Upcoming events": "Upcoming events",
+  "infoscreen.Ruokalistat": "Menus",
+  "infoscreen.Bussit": "Buses",
+  "infoscreen.Raide-Jokeri": "Raide-Jokeri (Tram)",
+  "infoscreen.Metro": "Metro",
   "invoicegenerator.Invoicer name": "Invoicer name",
   "invoicegenerator.Invoicer email": "Invoicer email",
   "invoicegenerator.Phone number": "Phone number",
@@ -127,8 +131,10 @@ const en = {
   "ilmomasiina.all-events.Kaikki tapahtumat": "All events",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
   "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign ups start on {startDate}",
+  "ilmomasiina.status.Ilmo alkaa": "Sign ups start on {startDate}",
   "ilmomasiina.status.Ilmoittautuminen auki":
     "Open for sign ups until {endDate}",
+  "ilmomasiina.status.Ilmo auki": "Open for sign ups until {endDate}",
   "ilmomasiina.status.Ilmoittautuminen on päättynyt": "Sign ups have ended",
   "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
     "Sign up information is not public",
