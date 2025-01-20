@@ -44,7 +44,7 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
         {stop.arrivals.map((arr) => (
           <li
             key={arr.route + arr.headSign + arr.fullTime}
-            className="shadow-solid flex flex-col items-center justify-between rounded-md border-2 border-[var(--infonayttoHSLcolor)] p-3 font-mono text-gray-900 shadow-[var(--infonayttoHSLcolor)] md:flex-row md:items-center"
+            className="shadow-solid grid grid-cols-[1fr_2fr_1fr] items-center rounded-md border-2 border-[var(--infonayttoHSLcolor)] p-3 font-mono text-gray-900 shadow-[var(--infonayttoHSLcolor)] md:items-center"
           >
             <div className="text-left text-2xl text-[var(--infonayttoHSLcolor)]">
               {arr.route}
