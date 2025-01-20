@@ -60,7 +60,7 @@ export function DigiCommitteeRecruitmentAlert() {
       // eslint-disable-next-line no-console -- use console for recruiting new members
       console.log(
         `%c${recruitmentText}`,
-        "font-family: ui-monospace, monospace; color: #ff0000;",
+        "font-family: ui-monospace, monospace; color: #3185C5;",
       );
     }
   }, [pathname, isFinnish]);
