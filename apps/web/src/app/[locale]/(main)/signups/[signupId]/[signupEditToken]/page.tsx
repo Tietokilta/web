@@ -1,16 +1,13 @@
 /* eslint-disable no-nested-ternary -- I like */
 import { notFound } from "next/navigation";
-import { getSignup } from "../../../../../../lib/api/external/ilmomasiina";
-import { openGraphImage } from "../../../../../shared-metadata";
+import { getSignup } from "@lib/api/external/ilmomasiina";
 import {
   deleteSignUpAction,
   saveSignUpAction,
-} from "../../../../../../lib/api/external/ilmomasiina/actions";
-import {
-  getCurrentLocale,
-  getScopedI18n,
-} from "../../../../../../locales/server";
-import { getLocalizedEventTitle } from "../../../../../../lib/utils";
+} from "@lib/api/external/ilmomasiina/actions";
+import { getCurrentLocale, getScopedI18n } from "@locales/server";
+import { getLocalizedEventTitle } from "@lib/utils";
+import { openGraphImage } from "../../../../../shared-metadata";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
