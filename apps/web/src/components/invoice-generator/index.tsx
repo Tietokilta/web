@@ -15,6 +15,7 @@ import {
   useRef,
 } from "react";
 import Form from "next/form";
+import { toast } from "sonner";
 import {
   I18nProviderClient,
   useCurrentLocale,
@@ -22,8 +23,6 @@ import {
 } from "../../locales/client";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
-
-import { Toaster, toast } from "sonner";
 
 interface GenericFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
@@ -94,16 +93,14 @@ function SubmitButton({
 
   useEffect(() => {
     if (formState?.success === true) toast.success(t("Sent invoice"));
-  }, [formState]);
+  }, [formState, t]);
 
   return (
     <div>
       <Button className="w-full max-w-sm" type="submit" disabled={pending}>
         {t("Submit")}
       </Button>
-      {formState?.success ? (
-        <Toaster richColors />
-      ) : formState?.success === false && errorKeys.length === 0 ? (
+      {formState?.success === false && errorKeys.length === 0 ? (
         <p data-form-status aria-live="polite" className="block text-red-600">
           {formState.errorText}
         </p>
