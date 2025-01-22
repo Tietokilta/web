@@ -2,11 +2,12 @@ import type { Metadata, Viewport } from "next";
 // eslint-disable-next-line camelcase -- next/font/google
 import { Inter, Roboto_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import { Footer } from "@components/footer";
-import { MainNav } from "@components/main-nav";
-import { MobileNav } from "@components/mobile-nav";
-import { SkipLink } from "@components/skip-link";
-import { cn } from "@lib/utils";
+import { Toaster } from "sonner";
+import { Footer } from "../../components/footer";
+import { MainNav } from "../../components/main-nav";
+import { MobileNav } from "../../components/mobile-nav";
+import { SkipLink } from "../../components/skip-link";
+import { cn } from "../../lib/utils";
 import "@tietokilta/ui/global.css";
 import "../globals.css";
 import { type Locale } from "@locales/server";
@@ -100,6 +101,7 @@ export default async function RootLayout(
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
           <MainNav className="sticky top-0 z-50 hidden lg:block" />
           <div className="min-h-screen flex-1">{children}</div>
+          <Toaster richColors />
           <Footer />
         </div>
       </body>
