@@ -2,15 +2,15 @@ import type { Metadata, Viewport } from "next";
 // eslint-disable-next-line camelcase -- next/font/google
 import { Inter, Roboto_Mono } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
-import { Footer } from "../../../components/footer";
-import { MainNav } from "../../../components/main-nav";
-import { MobileNav } from "../../../components/mobile-nav";
-import { SkipLink } from "../../../components/skip-link";
-import { cn } from "../../../lib/utils";
+import { Footer } from "@components/footer";
+import { MainNav } from "@components/main-nav";
+import { MobileNav } from "@components/mobile-nav";
+import { SkipLink } from "@components/skip-link";
+import { cn } from "@lib/utils";
 import "@tietokilta/ui/global.css";
 import "../globals.css";
-import { type Locale } from "../../../locales/server";
-import { DigiCommitteeRecruitmentAlert } from "../../../components/digi-committee-recruitment-alert";
+import { type Locale } from "@locales/server";
+import { DigiCommitteeRecruitmentAlert } from "@components/digi-committee-recruitment-alert";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({

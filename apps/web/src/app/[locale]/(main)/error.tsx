@@ -5,7 +5,7 @@ import {
   I18nProviderClient,
   useCurrentLocale,
   useScopedI18n,
-} from "../../../locales/client";
+} from "@locales/client";
 
 function Error({
   error,
