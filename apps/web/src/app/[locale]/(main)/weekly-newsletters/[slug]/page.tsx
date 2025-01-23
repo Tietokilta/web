@@ -1,4 +1,4 @@
-import WeeklyNewsletterPage from "../../../../../custom-pages/weekly-newsletter-page";
+import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
 
 interface PageProps {
   params: Promise<{

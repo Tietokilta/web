@@ -3,16 +3,16 @@ import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 import type { Page as CMSPage } from "@tietokilta/cms-types/payload";
 import { Card } from "@tietokilta/ui";
-import { AdminBar } from "../../../../components/admin-bar";
-import { LexicalSerializer } from "../../../../components/lexical/lexical-serializer";
-import { TableOfContents } from "../../../../components/table-of-contents";
-import { fetchPage } from "../../../../lib/api/pages";
-import { getCurrentLocale, type Locale } from "../../../../locales/server";
-import EventsPage from "../../../../custom-pages/events-page";
-import AllEventsPage from "../../../../custom-pages/all-events-page";
-import WeeklyNewsletterPage from "../../../../custom-pages/weekly-newsletter-page";
-import { generateTocFromRichText } from "../../../../lib/utils";
-import WeeklyNewslettersListPage from "../../../../custom-pages/weekly-newsletters-list-page";
+import WeeklyNewslettersListPage from "@custom-pages/weekly-newsletters-list-page";
+import EventsPage from "@custom-pages/events-page";
+import AllEventsPage from "@custom-pages/all-events-page";
+import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
+import { AdminBar } from "@components/admin-bar";
+import { LexicalSerializer } from "@components/lexical/lexical-serializer";
+import { TableOfContents } from "@components/table-of-contents";
+import { fetchPage } from "@lib/api/pages";
+import { getCurrentLocale, type Locale } from "@locales/server";
+import { generateTocFromRichText } from "@lib/utils";
 import { openGraphImage } from "../../../shared-metadata";
 
 interface NextPage<Params extends Record<string, unknown>> {

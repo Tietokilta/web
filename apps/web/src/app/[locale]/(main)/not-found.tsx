@@ -1,12 +1,12 @@
 "use client";
 import { Button, Card } from "@tietokilta/ui";
 import Link from "next/link";
-import { DinoGame } from "../../../components/dino-game";
+import { DinoGame } from "@components/dino-game";
 import {
   I18nProviderClient,
   useCurrentLocale,
   useScopedI18n,
-} from "../../../locales/client";
+} from "@locales/client";
 
 function Page() {
   const t = useScopedI18n("not-found");
