@@ -310,3 +310,7 @@ export function getLocalizedEventTitle(eventTitle: string, locale: Locale) {
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/naming-convention -- used for type assertion
 export function assertType<_T>(_val: _T) {}
+
+export function assertUnreachable(_never: never) {
+  throw Error("we should never go here");
+}

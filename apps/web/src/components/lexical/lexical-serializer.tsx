@@ -332,7 +332,11 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "partners": {
       return (
-        <PartnerLogos statuses={node.fields.types} size={node.fields.size} />
+        <PartnerLogos
+          style={node.fields.style}
+          partnerStatus={node.fields.types}
+          size={node.fields.size}
+        />
       );
     }
     default: {

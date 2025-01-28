@@ -209,6 +209,7 @@ export type PartnersBlockNode = BaseBlockNode & {
     blockType: "partners";
     size: "small" | "medium" | "large";
     types: Exclude<Partner["status"], "inactive">[];
+    style: "row" | "grid";
   };
 };
 

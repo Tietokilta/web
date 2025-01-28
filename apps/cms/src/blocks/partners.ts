@@ -10,6 +10,12 @@ export const PartnersBlock = {
       options: ["small", "medium", "large"],
     },
     {
+      name: "style",
+      type: "select",
+      defaultValue: "grid",
+      options: ["row", "grid"],
+    },
+    {
       name: "types",
       type: "select",
       hasMany: true,
