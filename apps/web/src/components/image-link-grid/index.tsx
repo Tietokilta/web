@@ -36,7 +36,7 @@ export function ImageLinkGrid({
   size,
   images,
 }: {
-  size: ImageLinkGridBlockNode["fields"]["size"];
+  size: "small" | "medium" | "large";
   images: ImageLinkGridBlockNode["fields"]["images"];
 }) {
   return (

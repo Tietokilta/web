@@ -52,6 +52,8 @@ import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { GoogleForm } from "./blocks/google-form";
 import { EditorInChief } from "./blocks/editor-in-chief";
 import { InvoiceGenerator } from "./blocks/invoice-generator";
+import { Partners } from "./collections/partners";
+import { PartnersBlock } from "./blocks/partners";
 
 const {
   GOOGLE_OAUTH_CLIENT_ID,
@@ -112,6 +114,7 @@ export default buildConfig({
     NewsItems,
     Honors,
     AwardedHonors,
+    Partners,
   ],
   globals: [Footer, LandingPage, MainNavigation],
   localization: {
@@ -177,6 +180,7 @@ export default buildConfig({
           GoogleForm,
           EditorInChief,
           InvoiceGenerator,
+          PartnersBlock,
         ],
       }),
       UploadFeature({
