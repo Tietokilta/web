@@ -93,6 +93,7 @@ export interface Config {
     'news-items': NewsItem;
     honors: Honor;
     'awarded-honors': AwardedHonor;
+    partners: Partner;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
@@ -757,6 +758,19 @@ export interface AwardedHonor {
     | '1986';
   name: string;
   description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: string;
+  name: string;
+  logo: string | Media;
+  status: 'partner' | 'mainPartner' | 'inactive';
+  externalLink: string;
   updatedAt: string;
   createdAt: string;
 }

@@ -10,6 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Media } from "@tietokilta/cms-types/payload";
 import type { JSX } from "react";
+import { PartnerLogos } from "@components/partner-logos";
 import {
   cn,
   insertSoftHyphens,
@@ -328,6 +329,11 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "invoice-generator": {
       return <InvoiceGenerator />;
+    }
+    case "partners": {
+      return (
+        <PartnerLogos statuses={node.fields.types} size={node.fields.size} />
+      );
     }
     default: {
       // @ts-expect-error -- Extra safety for unknown blockType since we're casting types and there may be some bogus blocks

@@ -6,6 +6,7 @@ import type {
   Honor,
   Media,
   Page,
+  Partner,
 } from "./payload";
 
 type BaseNode = {
@@ -203,12 +204,21 @@ export type InvoiceGeneratorBlockNode = BaseBlockNode & {
   };
 };
 
+export type PartnersBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "partners";
+    size: "small" | "medium" | "large";
+    types: Exclude<Partner["status"], "inactive">[];
+  };
+};
+
 export type BlockNode =
   | CommitteesYearBlockNode
   | ImageLinkGridBlockNode
   | GoogleFormBlockNode
   | EditorInChiefBlockNode
-  | InvoiceGeneratorBlockNode;
+  | InvoiceGeneratorBlockNode
+  | PartnersBlockNode;
 
 export type Node =
   | TextNode
