@@ -69,6 +69,10 @@ type Query {
   AwardedHonors(where: AwardedHonor_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): AwardedHonors
   countAwardedHonors(where: AwardedHonor_where, locale: LocaleInputType): countAwardedHonors
   docAccessAwardedHonor(id: String!): awarded_honorsDocAccess
+  Partner(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): Partner
+  Partners(where: Partner_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): Partners
+  countPartners(where: Partner_where, locale: LocaleInputType): countPartners
+  docAccessPartner(id: String!): partnersDocAccess
   PayloadPreference(id: String!, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): PayloadPreference
   PayloadPreferences(where: PayloadPreference_where, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType, limit: Int, page: Int, sort: String): PayloadPreferences
   countPayloadPreferences(where: PayloadPreference_where, locale: LocaleInputType): countPayloadPreferences
@@ -8437,6 +8441,326 @@ type AwardedHonorsDeleteDocAccess {
   where: JSONObject
 }
 
+type Partner {
+  id: String
+  name: String!
+  logo(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media!
+  status: Partner_status!
+  externalLink: String!
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+enum Partner_status {
+  partner
+  mainPartner
+  inactive
+}
+
+type Partners {
+  docs: [Partner]
+  hasNextPage: Boolean
+  hasPrevPage: Boolean
+  limit: Int
+  nextPage: Int
+  offset: Int
+  page: Int
+  pagingCounter: Int
+  prevPage: Int
+  totalDocs: Int
+  totalPages: Int
+}
+
+input Partner_where {
+  name: Partner_name_operator
+  logo: Partner_logo_operator
+  status: Partner_status_operator
+  externalLink: Partner_externalLink_operator
+  updatedAt: Partner_updatedAt_operator
+  createdAt: Partner_createdAt_operator
+  id: Partner_id_operator
+  AND: [Partner_where_and]
+  OR: [Partner_where_or]
+}
+
+input Partner_name_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Partner_logo_operator {
+  equals: JSON
+  not_equals: JSON
+  in: [JSON]
+  not_in: [JSON]
+  all: [JSON]
+}
+
+input Partner_status_operator {
+  equals: Partner_status_Input
+  not_equals: Partner_status_Input
+  in: [Partner_status_Input]
+  not_in: [Partner_status_Input]
+  all: [Partner_status_Input]
+}
+
+enum Partner_status_Input {
+  partner
+  mainPartner
+  inactive
+}
+
+input Partner_externalLink_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+}
+
+input Partner_updatedAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Partner_createdAt_operator {
+  equals: DateTime
+  not_equals: DateTime
+  greater_than_equal: DateTime
+  greater_than: DateTime
+  less_than_equal: DateTime
+  less_than: DateTime
+  like: DateTime
+  exists: Boolean
+}
+
+input Partner_id_operator {
+  equals: String
+  not_equals: String
+  like: String
+  contains: String
+  in: [String]
+  not_in: [String]
+  all: [String]
+  exists: Boolean
+}
+
+input Partner_where_and {
+  name: Partner_name_operator
+  logo: Partner_logo_operator
+  status: Partner_status_operator
+  externalLink: Partner_externalLink_operator
+  updatedAt: Partner_updatedAt_operator
+  createdAt: Partner_createdAt_operator
+  id: Partner_id_operator
+  AND: [Partner_where_and]
+  OR: [Partner_where_or]
+}
+
+input Partner_where_or {
+  name: Partner_name_operator
+  logo: Partner_logo_operator
+  status: Partner_status_operator
+  externalLink: Partner_externalLink_operator
+  updatedAt: Partner_updatedAt_operator
+  createdAt: Partner_createdAt_operator
+  id: Partner_id_operator
+  AND: [Partner_where_and]
+  OR: [Partner_where_or]
+}
+
+type countPartners {
+  totalDocs: Int
+}
+
+type partnersDocAccess {
+  fields: PartnersDocAccessFields
+  create: PartnersCreateDocAccess
+  read: PartnersReadDocAccess
+  update: PartnersUpdateDocAccess
+  delete: PartnersDeleteDocAccess
+}
+
+type PartnersDocAccessFields {
+  name: PartnersDocAccessFields_name
+  logo: PartnersDocAccessFields_logo
+  status: PartnersDocAccessFields_status
+  externalLink: PartnersDocAccessFields_externalLink
+  updatedAt: PartnersDocAccessFields_updatedAt
+  createdAt: PartnersDocAccessFields_createdAt
+}
+
+type PartnersDocAccessFields_name {
+  create: PartnersDocAccessFields_name_Create
+  read: PartnersDocAccessFields_name_Read
+  update: PartnersDocAccessFields_name_Update
+  delete: PartnersDocAccessFields_name_Delete
+}
+
+type PartnersDocAccessFields_name_Create {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_name_Read {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_name_Update {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_logo {
+  create: PartnersDocAccessFields_logo_Create
+  read: PartnersDocAccessFields_logo_Read
+  update: PartnersDocAccessFields_logo_Update
+  delete: PartnersDocAccessFields_logo_Delete
+}
+
+type PartnersDocAccessFields_logo_Create {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_logo_Read {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_logo_Update {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_logo_Delete {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_status {
+  create: PartnersDocAccessFields_status_Create
+  read: PartnersDocAccessFields_status_Read
+  update: PartnersDocAccessFields_status_Update
+  delete: PartnersDocAccessFields_status_Delete
+}
+
+type PartnersDocAccessFields_status_Create {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_status_Read {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_status_Update {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_status_Delete {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_externalLink {
+  create: PartnersDocAccessFields_externalLink_Create
+  read: PartnersDocAccessFields_externalLink_Read
+  update: PartnersDocAccessFields_externalLink_Update
+  delete: PartnersDocAccessFields_externalLink_Delete
+}
+
+type PartnersDocAccessFields_externalLink_Create {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_externalLink_Read {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_externalLink_Update {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_externalLink_Delete {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_updatedAt {
+  create: PartnersDocAccessFields_updatedAt_Create
+  read: PartnersDocAccessFields_updatedAt_Read
+  update: PartnersDocAccessFields_updatedAt_Update
+  delete: PartnersDocAccessFields_updatedAt_Delete
+}
+
+type PartnersDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_createdAt {
+  create: PartnersDocAccessFields_createdAt_Create
+  read: PartnersDocAccessFields_createdAt_Read
+  update: PartnersDocAccessFields_createdAt_Update
+  delete: PartnersDocAccessFields_createdAt_Delete
+}
+
+type PartnersDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type PartnersDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type PartnersCreateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PartnersReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PartnersUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PartnersDeleteDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type PayloadPreference {
   id: String
   user(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): PayloadPreference_User_Relationship!
@@ -9870,6 +10194,7 @@ type Access {
   news_items: news_itemsAccess
   honors: honorsAccess
   awarded_honors: awarded_honorsAccess
+  partners: partnersAccess
   payload_preferences: payload_preferencesAccess
   footer: footerAccess
   landing_page: landing_pageAccess
@@ -13794,6 +14119,181 @@ type AwardedHonorsDeleteAccess {
   where: JSONObject
 }
 
+type partnersAccess {
+  fields: PartnersFields
+  create: PartnersCreateAccess
+  read: PartnersReadAccess
+  update: PartnersUpdateAccess
+  delete: PartnersDeleteAccess
+}
+
+type PartnersFields {
+  name: PartnersFields_name
+  logo: PartnersFields_logo
+  status: PartnersFields_status
+  externalLink: PartnersFields_externalLink
+  updatedAt: PartnersFields_updatedAt
+  createdAt: PartnersFields_createdAt
+}
+
+type PartnersFields_name {
+  create: PartnersFields_name_Create
+  read: PartnersFields_name_Read
+  update: PartnersFields_name_Update
+  delete: PartnersFields_name_Delete
+}
+
+type PartnersFields_name_Create {
+  permission: Boolean!
+}
+
+type PartnersFields_name_Read {
+  permission: Boolean!
+}
+
+type PartnersFields_name_Update {
+  permission: Boolean!
+}
+
+type PartnersFields_name_Delete {
+  permission: Boolean!
+}
+
+type PartnersFields_logo {
+  create: PartnersFields_logo_Create
+  read: PartnersFields_logo_Read
+  update: PartnersFields_logo_Update
+  delete: PartnersFields_logo_Delete
+}
+
+type PartnersFields_logo_Create {
+  permission: Boolean!
+}
+
+type PartnersFields_logo_Read {
+  permission: Boolean!
+}
+
+type PartnersFields_logo_Update {
+  permission: Boolean!
+}
+
+type PartnersFields_logo_Delete {
+  permission: Boolean!
+}
+
+type PartnersFields_status {
+  create: PartnersFields_status_Create
+  read: PartnersFields_status_Read
+  update: PartnersFields_status_Update
+  delete: PartnersFields_status_Delete
+}
+
+type PartnersFields_status_Create {
+  permission: Boolean!
+}
+
+type PartnersFields_status_Read {
+  permission: Boolean!
+}
+
+type PartnersFields_status_Update {
+  permission: Boolean!
+}
+
+type PartnersFields_status_Delete {
+  permission: Boolean!
+}
+
+type PartnersFields_externalLink {
+  create: PartnersFields_externalLink_Create
+  read: PartnersFields_externalLink_Read
+  update: PartnersFields_externalLink_Update
+  delete: PartnersFields_externalLink_Delete
+}
+
+type PartnersFields_externalLink_Create {
+  permission: Boolean!
+}
+
+type PartnersFields_externalLink_Read {
+  permission: Boolean!
+}
+
+type PartnersFields_externalLink_Update {
+  permission: Boolean!
+}
+
+type PartnersFields_externalLink_Delete {
+  permission: Boolean!
+}
+
+type PartnersFields_updatedAt {
+  create: PartnersFields_updatedAt_Create
+  read: PartnersFields_updatedAt_Read
+  update: PartnersFields_updatedAt_Update
+  delete: PartnersFields_updatedAt_Delete
+}
+
+type PartnersFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type PartnersFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type PartnersFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type PartnersFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type PartnersFields_createdAt {
+  create: PartnersFields_createdAt_Create
+  read: PartnersFields_createdAt_Read
+  update: PartnersFields_createdAt_Update
+  delete: PartnersFields_createdAt_Delete
+}
+
+type PartnersFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type PartnersFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type PartnersFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type PartnersFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type PartnersCreateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PartnersReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PartnersUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type PartnersDeleteAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type payload_preferencesAccess {
   fields: PayloadPreferencesFields
   create: PayloadPreferencesCreateAccess
@@ -14932,6 +15432,9 @@ type Mutation {
   createAwardedHonor(data: mutationAwardedHonorInput!, locale: LocaleInputType): AwardedHonor
   updateAwardedHonor(id: String!, autosave: Boolean, data: mutationAwardedHonorUpdateInput!, locale: LocaleInputType): AwardedHonor
   deleteAwardedHonor(id: String!): AwardedHonor
+  createPartner(data: mutationPartnerInput!, locale: LocaleInputType): Partner
+  updatePartner(id: String!, autosave: Boolean, data: mutationPartnerUpdateInput!, locale: LocaleInputType): Partner
+  deletePartner(id: String!): Partner
   createPayloadPreference(data: mutationPayloadPreferenceInput!, locale: LocaleInputType): PayloadPreference
   updatePayloadPreference(id: String!, autosave: Boolean, data: mutationPayloadPreferenceUpdateInput!, locale: LocaleInputType): PayloadPreference
   deletePayloadPreference(id: String!): PayloadPreference
@@ -16193,6 +16696,36 @@ enum AwardedHonorUpdate_guildYear_MutationInput {
   _1988
   _1987
   _1986
+}
+
+input mutationPartnerInput {
+  name: String!
+  logo: String
+  status: Partner_status_MutationInput!
+  externalLink: String!
+  updatedAt: String
+  createdAt: String
+}
+
+enum Partner_status_MutationInput {
+  partner
+  mainPartner
+  inactive
+}
+
+input mutationPartnerUpdateInput {
+  name: String
+  logo: String
+  status: PartnerUpdate_status_MutationInput
+  externalLink: String
+  updatedAt: String
+  createdAt: String
+}
+
+enum PartnerUpdate_status_MutationInput {
+  partner
+  mainPartner
+  inactive
 }
 
 input mutationPayloadPreferenceInput {
