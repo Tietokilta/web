@@ -1,7 +1,7 @@
 import type {
   LinkRowBlock,
   Media,
-  SponsorLogoRowBlock,
+  PartnersRowBlock,
 } from "@tietokilta/cms-types/payload";
 import {
   Button,
@@ -42,8 +42,9 @@ export async function MobileNav({
   const footerLinks = footer.layout.filter(
     (block): block is LinkRowBlock => block.blockType === "link-row",
   );
+
   const footerSponsors = footer.layout.filter(
-    (block): block is SponsorLogoRowBlock => block.blockType === "logo-row",
+    (block): block is PartnersRowBlock => block.blockType === "partners-row",
   );
   const navLogo = mainNav.logo as Media;
 

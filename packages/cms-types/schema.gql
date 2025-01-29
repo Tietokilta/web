@@ -9052,7 +9052,7 @@ type Footer {
   createdAt: DateTime
 }
 
-union Footer_Layout = LinkRowBlock | SponsorLogoRowBlock
+union Footer_Layout = LinkRowBlock | SponsorLogoRowBlock | PartnersRowBlock
 
 type LinkRowBlock {
   showLabel: Boolean!
@@ -9133,6 +9133,26 @@ type SponsorLogoRowBlock_Logos {
   image(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
   link: String
   id: String
+}
+
+type PartnersRowBlock {
+  title: String
+  size: PartnersRowBlock_size
+  types: [PartnersRowBlock_types!]
+  id: String
+  blockName: String
+  blockType: String
+}
+
+enum PartnersRowBlock_size {
+  small
+  medium
+  large
+}
+
+enum PartnersRowBlock_types {
+  partner
+  mainPartner
 }
 
 type footerDocAccess {

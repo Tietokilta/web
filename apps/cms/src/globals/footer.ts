@@ -1,6 +1,7 @@
 import type { LinkRowBlockLink } from "@tietokilta/cms-types/payload";
 import type { Block, GlobalConfig } from "payload/types";
 import { iconField } from "../fields/icon-field";
+import { PartnerStatusField } from "../collections/partners";
 
 const LinkRowBlock: Block = {
   slug: "link-row",
@@ -96,6 +97,32 @@ const LogoRowBlock: Block = {
   ],
 };
 
+const PartnersRowBlock = {
+  slug: "partners-row",
+  interfaceName: "PartnersRowBlock",
+  fields: [
+    {
+      name: "title",
+      type: "text",
+      required: true,
+      localized: true,
+    },
+    {
+      name: "size",
+      type: "select",
+      options: ["small", "medium", "large"],
+    },
+    {
+      name: "types",
+      type: "select",
+      hasMany: true,
+      options: PartnerStatusField.options.filter(
+        (option) => option.value !== "inactive",
+      ),
+    },
+  ],
+} satisfies Block;
+
 export const Footer: GlobalConfig = {
   slug: "footer",
   access: {
@@ -107,7 +134,7 @@ export const Footer: GlobalConfig = {
       type: "blocks",
       required: true,
       minRows: 1,
-      blocks: [LinkRowBlock, LogoRowBlock],
+      blocks: [LinkRowBlock, LogoRowBlock, PartnersRowBlock],
     },
   ],
 };
