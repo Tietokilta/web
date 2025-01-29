@@ -1,12 +1,11 @@
 import type {
   LinkRowBlock,
-  Media,
   Page,
-  SponsorLogoRowBlock,
+  PartnersRowBlock,
 } from "@tietokilta/cms-types/payload";
 import { RenderIcon } from "@tietokilta/ui";
-import Image from "next/image";
 import Link from "next/link";
+import { PartnerLogos } from "@components/partner-logos";
 import { fetchFooter } from "../../lib/api/footer";
 import { cn } from "../../lib/utils";
 import { getCurrentLocale } from "../../locales/server";
@@ -20,8 +19,9 @@ export async function Footer() {
   const footerLinks = footer.layout.filter(
     (block): block is LinkRowBlock => block.blockType === "link-row",
   );
+
   const footerSponsors = footer.layout.filter(
-    (block): block is SponsorLogoRowBlock => block.blockType === "logo-row",
+    (block): block is PartnersRowBlock => block.blockType === "partners-row",
   );
 
   return (
@@ -29,22 +29,11 @@ export async function Footer() {
       {footerSponsors.map((sponsorRow) => (
         <div className="space-y-4" key={sponsorRow.id}>
           <h2 className="text-center">{sponsorRow.title}</h2>
-          <ul className="flex flex-wrap items-center justify-center gap-4">
-            {sponsorRow.logos?.map((logo) => (
-              <li className="relative w-60" key={logo.id}>
-                <Link href={logo.link}>
-                  {/* TODO: actually check image color and invert / modify according to contrast or something */}
-                  <Image
-                    alt={(logo.image as Media).alt}
-                    className="h-auto w-full object-contain invert"
-                    height={(logo.image as Media).height ?? 0}
-                    src={(logo.image as Media).url ?? ""}
-                    width={(logo.image as Media).width ?? 0}
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <PartnerLogos
+            statuses={sponsorRow.types ?? ["mainPartner"]}
+            size="medium"
+            type="row"
+          />
         </div>
       ))}
       {footerLinks.map((linkRow) => (

@@ -815,7 +815,7 @@ export interface PayloadMigration {
  */
 export interface Footer {
   id: string;
-  layout: (LinkRowBlock | SponsorLogoRowBlock)[];
+  layout: (LinkRowBlock | SponsorLogoRowBlock | PartnersRowBlock)[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -846,6 +846,18 @@ export interface SponsorLogoRowBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'logo-row';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PartnersRowBlock".
+ */
+export interface PartnersRowBlock {
+  title: string;
+  size?: ('small' | 'medium' | 'large') | null;
+  types?: ('partner' | 'mainPartner')[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'partners-row';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
