@@ -190,7 +190,7 @@ async function createCommittees(
     pagination: false,
   });
 
-  if (existingCommittees.docs.length > 0 || existingBoards.docs.length > 0) {
+  if (existingCommittees.docs.length > 0) {
     throw new Error("A committee already exists for this year");
   }
 
@@ -204,9 +204,11 @@ async function createCommittees(
   const committeesToBeCreated: Promise<void>[] = [];
   for (const [committeeName, members] of Object.entries(committees)) {
     if (committeeName.toLocaleLowerCase() === "hallitus") {
-      committeesToBeCreated.push(
-        createBoard(members, year.toString() as Board["year"], transactionID),
-      );
+      if (existingBoards.docs.length === 0) {
+        committeesToBeCreated.push(
+          createBoard(members, year.toString() as Board["year"], transactionID),
+        );
+      }
     } else {
       committeesToBeCreated.push(
         createCommittee(
