@@ -230,6 +230,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
               <Link
                 href={node.value.url ?? "#broken-url"}
                 key={index}
+                prefetch={false}
                 target="_blank"
                 className="not-prose shadow-solid my-4 flex w-fit max-w-full items-center gap-4 text-clip rounded-md border-2 border-gray-900 p-4 hover:border-gray-800 hover:bg-gray-300/90"
               >
