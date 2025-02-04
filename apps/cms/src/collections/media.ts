@@ -22,6 +22,8 @@ export const Media = {
     staticDir: !useCloudStorage()
       ? path.resolve(__dirname, "../../uploads/media")
       : undefined,
+    // For audio and _especially_ video, please redirect to using something like YouTube
+    mimeTypes: ["image/*"],
   },
   fields: [
     {
