@@ -42,8 +42,8 @@ function CommitteeMemberCard({
           {insertSoftHyphens(committeeMember.title)}
         </span>
         <span className="flex items-center justify-center space-x-2">
-          <span className="m-1 text-sm">
-            {committeeMember.email ? (
+          {committeeMember.email ? (
+            <span className="m-1 text-sm">
               <a
                 className="flex items-center gap-1"
                 href={`mailto:${committeeMember.email}`}
@@ -53,10 +53,10 @@ function CommitteeMemberCard({
                 </span>
                 <GmailIcon className="size-6 shrink-0" />
               </a>
-            ) : null}
-          </span>
-          <span className="m-1 text-sm">
-            {committeeMember.telegramUsername ? (
+            </span>
+          ) : null}
+          {committeeMember.telegramUsername ? (
+            <span className="m-1 text-sm">
               <a
                 className="flex items-center gap-1"
                 href={`https://t.me/${parseTG(committeeMember.telegramUsername)}`}
@@ -69,8 +69,8 @@ function CommitteeMemberCard({
                 </span>
                 <TelegramIcon className="size-6 shrink-0" />
               </a>
-            ) : null}
-          </span>
+            </span>
+          ) : null}
         </span>
       </p>
     </li>
