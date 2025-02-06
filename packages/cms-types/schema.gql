@@ -4842,6 +4842,7 @@ type Committee {
   id: String
   year: Committee_year!
   name: String
+  hidden: Boolean!
   committeeMembers: [Committee_CommitteeMembers!]!
   updatedAt: DateTime
   createdAt: DateTime
@@ -4912,6 +4913,7 @@ type Committees {
 input Committee_where {
   year: Committee_year_operator
   name: Committee_name_operator
+  hidden: Committee_hidden_operator
   committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
   committeeMembers__id: Committee_committeeMembers__id_operator
   updatedAt: Committee_updatedAt_operator
@@ -4982,6 +4984,11 @@ input Committee_name_operator {
   all: [String]
 }
 
+input Committee_hidden_operator {
+  equals: Boolean
+  not_equals: Boolean
+}
+
 input Committee_committeeMembers__committeeMember_operator {
   equals: JSON
   not_equals: JSON
@@ -5038,6 +5045,7 @@ input Committee_id_operator {
 input Committee_where_and {
   year: Committee_year_operator
   name: Committee_name_operator
+  hidden: Committee_hidden_operator
   committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
   committeeMembers__id: Committee_committeeMembers__id_operator
   updatedAt: Committee_updatedAt_operator
@@ -5050,6 +5058,7 @@ input Committee_where_and {
 input Committee_where_or {
   year: Committee_year_operator
   name: Committee_name_operator
+  hidden: Committee_hidden_operator
   committeeMembers__committeeMember: Committee_committeeMembers__committeeMember_operator
   committeeMembers__id: Committee_committeeMembers__id_operator
   updatedAt: Committee_updatedAt_operator
@@ -5074,6 +5083,7 @@ type committeesDocAccess {
 type CommitteesDocAccessFields {
   year: CommitteesDocAccessFields_year
   name: CommitteesDocAccessFields_name
+  hidden: CommitteesDocAccessFields_hidden
   committeeMembers: CommitteesDocAccessFields_committeeMembers
   updatedAt: CommitteesDocAccessFields_updatedAt
   createdAt: CommitteesDocAccessFields_createdAt
@@ -5122,6 +5132,29 @@ type CommitteesDocAccessFields_name_Update {
 }
 
 type CommitteesDocAccessFields_name_Delete {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_hidden {
+  create: CommitteesDocAccessFields_hidden_Create
+  read: CommitteesDocAccessFields_hidden_Read
+  update: CommitteesDocAccessFields_hidden_Update
+  delete: CommitteesDocAccessFields_hidden_Delete
+}
+
+type CommitteesDocAccessFields_hidden_Create {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_hidden_Read {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_hidden_Update {
+  permission: Boolean!
+}
+
+type CommitteesDocAccessFields_hidden_Delete {
   permission: Boolean!
 }
 
@@ -12324,6 +12357,7 @@ type committeesAccess {
 type CommitteesFields {
   year: CommitteesFields_year
   name: CommitteesFields_name
+  hidden: CommitteesFields_hidden
   committeeMembers: CommitteesFields_committeeMembers
   updatedAt: CommitteesFields_updatedAt
   createdAt: CommitteesFields_createdAt
@@ -12372,6 +12406,29 @@ type CommitteesFields_name_Update {
 }
 
 type CommitteesFields_name_Delete {
+  permission: Boolean!
+}
+
+type CommitteesFields_hidden {
+  create: CommitteesFields_hidden_Create
+  read: CommitteesFields_hidden_Read
+  update: CommitteesFields_hidden_Update
+  delete: CommitteesFields_hidden_Delete
+}
+
+type CommitteesFields_hidden_Create {
+  permission: Boolean!
+}
+
+type CommitteesFields_hidden_Read {
+  permission: Boolean!
+}
+
+type CommitteesFields_hidden_Update {
+  permission: Boolean!
+}
+
+type CommitteesFields_hidden_Delete {
   permission: Boolean!
 }
 
@@ -16197,6 +16254,7 @@ enum CommitteeMemberUpdate_guildYear_MutationInput {
 input mutationCommitteeInput {
   year: Committee_year_MutationInput!
   name: String
+  hidden: Boolean
   committeeMembers: [mutationCommittee_CommitteeMembersInput!]
   updatedAt: String
   createdAt: String
@@ -16253,6 +16311,7 @@ input mutationCommittee_CommitteeMembersInput {
 input mutationCommitteeUpdateInput {
   year: CommitteeUpdate_year_MutationInput
   name: String
+  hidden: Boolean
   committeeMembers: [mutationCommitteeUpdate_CommitteeMembersInput]
   updatedAt: String
   createdAt: String

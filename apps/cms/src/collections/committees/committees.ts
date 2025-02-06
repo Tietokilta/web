@@ -37,6 +37,12 @@ export const Committees = {
       localized: true,
     },
     {
+      name: "hidden",
+      type: "checkbox",
+      defaultValue: false,
+      required: true,
+    },
+    {
       name: "committeeMembers",
       type: "array",
       required: true,

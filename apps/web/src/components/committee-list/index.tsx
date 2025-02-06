@@ -11,7 +11,7 @@ export async function CommitteeList({
 }): Promise<JSX.Element | null> {
   const locale = await getCurrentLocale();
   const committees = await fetchCommittees({
-    where: { year: { equals: year } },
+    where: { year: { equals: year }, hidden: { not_equals: true } },
     locale,
   });
 
