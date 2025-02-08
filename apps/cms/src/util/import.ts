@@ -111,6 +111,7 @@ async function createCommittee(
       year: guildYear,
       name: committeeName,
       committeeMembers,
+      hidden: false,
     },
     locale: "fi",
     req: transactionID

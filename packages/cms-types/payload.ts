@@ -519,6 +519,7 @@ export interface Committee {
     | '1987'
     | '1986';
   name: string;
+  hidden: boolean;
   committeeMembers: {
     committeeMember?: (string | null) | CommitteeMember;
     id?: string | null;
