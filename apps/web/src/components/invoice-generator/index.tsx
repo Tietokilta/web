@@ -12,6 +12,7 @@ import {
   useState,
 } from "react";
 import Form from "next/form";
+import { toast } from "sonner";
 import {
   I18nProviderClient,
   useCurrentLocale,
@@ -86,20 +87,17 @@ function SubmitButton({
   const t = useScopedI18n("invoicegenerator");
   const { pending } = useFormStatus();
   const errorKeys = formState?.errors ? Object.keys(formState.errors) : [];
+
+  useEffect(() => {
+    if (formState?.success === true) toast.success(t("Sent invoice"));
+  }, [formState, t]);
+
   return (
     <div>
       <Button className="w-full max-w-sm" type="submit" disabled={pending}>
         {t("Submit")}
       </Button>
-      {formState?.success ? (
-        <p
-          data-form-status
-          className="w-full max-w-sm text-green-600"
-          aria-live="polite"
-        >
-          {t("Sent invoice")}
-        </p>
-      ) : formState?.success === false && errorKeys.length === 0 ? (
+      {formState?.success === false && errorKeys.length === 0 ? (
         <p data-form-status aria-live="polite" className="block text-red-600">
           {formState.errorText}
         </p>
