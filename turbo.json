@@ -25,7 +25,8 @@
     "MAILGUN_RECEIVER",
     "MAILGUN_API_KEY",
     "MAILGUN_DOMAIN",
-    "MAILGUN_URL"
+    "MAILGUN_URL",
+    "CI"
   ],
   "tasks": {
     "build": {
@@ -50,10 +51,11 @@
       "persistent": true
     },
     "start": {
-      "dependsOn": ["^build", "codegen", "^codegen"],
+      "dependsOn": ["build", "^build", "codegen", "^codegen"],
       "cache": false,
       "persistent": true
     },
+    "test": {},
     "clean": {
       "cache": false,
       "persistent": false
