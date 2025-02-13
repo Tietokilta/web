@@ -40,6 +40,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@swc/core",
+      "esbuild",
       "sharp"
     ],
     "overrides": {
