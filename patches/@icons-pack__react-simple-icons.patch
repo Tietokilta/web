@@ -1,0 +1,145 @@
+diff --git a/icons/SiLinkedin.cjs b/icons/SiLinkedin.cjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..eac283ffdbb65546dafa2326ae1bd9cead539923
+--- /dev/null
++++ b/icons/SiLinkedin.cjs
+@@ -0,0 +1,51 @@
++'use strict';
++
++Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: 'Module' } });
++
++const jsxRuntime = require('react/jsx-runtime');
++const React = require('react');
++
++function _interopNamespaceDefault(e) {
++  const n = Object.create(null, { [Symbol.toStringTag]: { value: 'Module' } });
++  if (e) {
++    for (const k in e) {
++      if (k !== 'default') {
++        const d = Object.getOwnPropertyDescriptor(e, k);
++        Object.defineProperty(n, k, d.get ? d : {
++          enumerable: true,
++          get: () => e[k]
++        });
++      }
++    }
++  }
++  n.default = e;
++  return Object.freeze(n);
++}
++
++const React__namespace = /*#__PURE__*/_interopNamespaceDefault(React);
++
++const defaultColor = "#0A66C2";
++const SiLinkedin = React__namespace.forwardRef(function SiLinkedin({ title = "LinkedIn", color = "currentColor", size = 24, ...others }, ref) {
++  if (color === "default") {
++    color = defaultColor;
++  }
++  return /* @__PURE__ */ jsxRuntime.jsxs(
++    "svg",
++    {
++      xmlns: "http://www.w3.org/2000/svg",
++      width: size,
++      height: size,
++      fill: color,
++      viewBox: "0 0 24 24",
++      ref,
++      ...others,
++      children: [
++        /* @__PURE__ */ jsxRuntime.jsx("title", { children: title }),
++        /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" })
++      ]
++    }
++  );
++});
++
++exports.default = SiLinkedin;
++exports.defaultColor = defaultColor;
+diff --git a/icons/SiLinkedin.d.ts b/icons/SiLinkedin.d.ts
+new file mode 100644
+index 0000000000000000000000000000000000000000..996e98cd4d5607b65189e9403aff24d3b2476881
+--- /dev/null
++++ b/icons/SiLinkedin.d.ts
+@@ -0,0 +1,4 @@
++import { IconType } from '../types';
++declare const defaultColor = "#0A66C2";
++declare const SiLinkedin: IconType;
++export { SiLinkedin as default, defaultColor };
+diff --git a/icons/SiLinkedin.mjs b/icons/SiLinkedin.mjs
+new file mode 100644
+index 0000000000000000000000000000000000000000..f984fba16f62f896e76878f1a3736b4db803a72e
+--- /dev/null
++++ b/icons/SiLinkedin.mjs
+@@ -0,0 +1,27 @@
++import { jsxs, jsx } from 'react/jsx-runtime';
++import * as React from 'react';
++
++const defaultColor = "#0A66C2";
++const SiLinkedin = React.forwardRef(function SiLinkedin({ title = "LinkedIn", color = "currentColor", size = 24, ...others }, ref) {
++  if (color === "default") {
++    color = defaultColor;
++  }
++  return /* @__PURE__ */ jsxs(
++    "svg",
++    {
++      xmlns: "http://www.w3.org/2000/svg",
++      width: size,
++      height: size,
++      fill: color,
++      viewBox: "0 0 24 24",
++      ref,
++      ...others,
++      children: [
++        /* @__PURE__ */ jsx("title", { children: title }),
++        /* @__PURE__ */ jsx("path", { d: "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" })
++      ]
++    }
++  );
++});
++
++export { SiLinkedin as default, defaultColor };
+diff --git a/index.cjs b/index.cjs
+index e31dfc8487957bfe59431cac7743bb4f7e8af847..3862b4700d31e56315f9c372e5911d507a36d702 100644
+--- a/index.cjs
++++ b/index.cjs
+@@ -1618,6 +1618,7 @@ const SiLimesurvey = require('./icons/SiLimesurvey.cjs');
+ const SiLine = require('./icons/SiLine.cjs');
+ const SiLineageos = require('./icons/SiLineageos.cjs');
+ const SiLinear = require('./icons/SiLinear.cjs');
++const SiLinkedin = require('./icons/SiLinkedin.cjs');
+ const SiLinkerd = require('./icons/SiLinkerd.cjs');
+ const SiLinkfire = require('./icons/SiLinkfire.cjs');
+ const SiLinksys = require('./icons/SiLinksys.cjs');
+@@ -6498,6 +6499,8 @@ exports.SiLineageos = SiLineageos.default;
+ exports.SiLineageosHex = SiLineageos.defaultColor;
+ exports.SiLinear = SiLinear.default;
+ exports.SiLinearHex = SiLinear.defaultColor;
++exports.SiLinkedin = SiLinkedin.default;
++exports.SiLinkedinHex = SiLinkedin.defaultColor;
+ exports.SiLinkerd = SiLinkerd.default;
+ exports.SiLinkerdHex = SiLinkerd.defaultColor;
+ exports.SiLinkfire = SiLinkfire.default;
+diff --git a/index.d.ts b/index.d.ts
+index 20d4a58fc5a8b0c472e32fbb0af1d4714506613d..2e10cd626f69ce94a9f8e7a697a76b48c3d55310 100644
+--- a/index.d.ts
++++ b/index.d.ts
+@@ -1614,6 +1614,7 @@ export { default as SiLimesurvey, defaultColor as SiLimesurveyHex } from './icon
+ export { default as SiLine, defaultColor as SiLineHex } from './icons/SiLine';
+ export { default as SiLineageos, defaultColor as SiLineageosHex } from './icons/SiLineageos';
+ export { default as SiLinear, defaultColor as SiLinearHex } from './icons/SiLinear';
++export { default as SiLinkedin, defaultColor as SiLinkedinHex } from './icons/SiLinkedin';
+ export { default as SiLinkerd, defaultColor as SiLinkerdHex } from './icons/SiLinkerd';
+ export { default as SiLinkfire, defaultColor as SiLinkfireHex } from './icons/SiLinkfire';
+ export { default as SiLinksys, defaultColor as SiLinksysHex } from './icons/SiLinksys';
+diff --git a/index.mjs b/index.mjs
+index d29bd9ffa383fba17112cf0058642dfd2439584e..5aa644136f97b2b0550cf7d186e26869f52d57ac 100644
+--- a/index.mjs
++++ b/index.mjs
+@@ -1614,6 +1614,7 @@ export { default as SiLimesurvey, defaultColor as SiLimesurveyHex } from './icon
+ export { default as SiLine, defaultColor as SiLineHex } from './icons/SiLine.mjs';
+ export { default as SiLineageos, defaultColor as SiLineageosHex } from './icons/SiLineageos.mjs';
+ export { default as SiLinear, defaultColor as SiLinearHex } from './icons/SiLinear.mjs';
++export { default as SiLinkedin, defaultColor as SiLinkedinHex } from './icons/SiLinkedin.mjs';
+ export { default as SiLinkerd, defaultColor as SiLinkerdHex } from './icons/SiLinkerd.mjs';
+ export { default as SiLinkfire, defaultColor as SiLinkfireHex } from './icons/SiLinkfire.mjs';
+ export { default as SiLinksys, defaultColor as SiLinksysHex } from './icons/SiLinksys.mjs';
