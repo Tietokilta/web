@@ -4,8 +4,6 @@ ARG NODE_VERSION=22.14.0
 FROM node:${NODE_VERSION}-alpine AS base
 # Update the package list and install libc6-compat. This package is often required for binary Node.js modules.
 RUN apk add --no-cache libc6-compat
-# Install jq for turborepo hacks
-RUN apk add --no-cache jq
 
 # Setup pnpm and turbo
 # Start a new stage based on the base image for setting up pnpm (a package manager) and turbo (for monorepo management).
@@ -37,16 +35,6 @@ RUN pnpm install --frozen-lockfile
 FROM dependencies AS pruner
 COPY apps/${PROJECT} ./apps/${PROJECT}
 RUN turbo prune --scope=${PROJECT} --docker
-# Workaround for https://github.com/vercel/turborepo/issues/9120
-# TODO: Remove this once the issue is resolved
-# Ensure patches are available
-RUN cp -r patches/ /app/out/json/patches/
-RUN cp -r patches/ /app/out/full/patches/
-# Update pruned package.json to include patch information
-RUN jq --slurpfile src <(jq '.pnpm.patchedDependencies' package.json) \
-  '.pnpm.patchedDependencies = $src[0]' \
-  /app/out/json/package.json > /app/out/json/package.json.tmp && \
-  mv /app/out/json/package.json.tmp /app/out/json/package.json
 # Remove all empty node_modules folders. This is a cleanup step to remove unnecessary directories and reduce image size.
 RUN rm -rf /app/out/full/*/*/node_modules
 
