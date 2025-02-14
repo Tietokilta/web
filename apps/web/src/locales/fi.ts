@@ -129,6 +129,8 @@ const fi = {
   "ilmomasiina.path.events": "tapahtumat",
   "ilmomasiina.path.all-events": "kaikki-tapahtumat",
   "ilmomasiina.all-events.Kaikki tapahtumat": "Kaikki tapahtumat",
+  "ilmomasiina.countdown.Starting in {seconds} seconds":
+    "Alkaa {seconds} sekunnin kuluttua",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "Ei ilmoittautuneita vielä.",
   "ilmomasiina.status.Ilmoittautuminen alkaa":
     "Ilmoittautuminen alkaa {startDate}",

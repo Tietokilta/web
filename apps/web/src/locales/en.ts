@@ -129,6 +129,8 @@ const en = {
   "ilmomasiina.path.events": "events",
   "ilmomasiina.path.all-events": "all-events",
   "ilmomasiina.all-events.Kaikki tapahtumat": "All events",
+  "ilmomasiina.countdown.Starting in {seconds} seconds":
+    "Starting in {seconds} seconds",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
   "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign ups start on {startDate}",
   "ilmomasiina.status.Ilmo alkaa": "Sign ups start on {startDate}",
