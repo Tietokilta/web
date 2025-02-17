@@ -180,6 +180,9 @@ const fi = {
   "calendar.Day": "Päivä",
   "calendar.Month": "Kuukausi",
   "calendar.Today": "Tänään",
+  "metadata.title": "Tietokilta",
+  "metadata.template": "%s - Tietokilta",
+  "metadata.description": "Tietokilta ry:n kotisivut",
 } as const;
 
 type EnKey = keyof typeof en;

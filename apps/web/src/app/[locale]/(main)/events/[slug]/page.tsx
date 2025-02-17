@@ -29,7 +29,6 @@ import { BackButton } from "@components/back-button";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
 import { DateTime } from "@components/datetime";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
-import { openGraphImage } from "../../../../shared-metadata";
 import { SignUpButton } from "./signup-button";
 
 async function SignUpText({
@@ -430,9 +429,6 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   return {
     title: getLocalizedEventTitle(event.data.title, locale),
     description: event.data.description,
-    openGraph: {
-      ...openGraphImage,
-    },
   };
 };
 

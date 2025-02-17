@@ -7,7 +7,6 @@ import {
 } from "@lib/api/external/ilmomasiina/actions";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
 import { getLocalizedEventTitle } from "@lib/utils";
-import { openGraphImage } from "../../../../../shared-metadata";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
@@ -32,9 +31,6 @@ export const generateMetadata = async (props: PageProps) => {
   return {
     title: `${t("Edit sign up")} - ${signupInfo.data.event.title}`,
     description: signupInfo.data.event.description,
-    openGraph: {
-      ...openGraphImage,
-    },
   };
 };
 

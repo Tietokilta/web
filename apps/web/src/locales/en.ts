@@ -177,6 +177,9 @@ const en = {
   "calendar.Day": "Day",
   "calendar.Month": "Month",
   "calendar.Today": "Today",
+  "metadata.title": "Tietokilta",
+  "metadata.template": "%s - Tietokilta",
+  "metadata.description": "Homepage of the Computer Science Guild",
 } as const;
 
 // assert types equal at typescript level
