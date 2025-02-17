@@ -13,8 +13,8 @@ catalogs:
       specifier: ^0.5.16
       version: 0.5.16
     '@types/node':
-      specifier: ^22.13.2
-      version: 22.13.2
+      specifier: ^22.13.4
+      version: 22.13.4
     '@typescript-eslint/eslint-plugin':
       specifier: ^8.24.0
       version: 8.24.0
@@ -83,7 +83,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: 'catalog:'
-        version: 22.13.2
+        version: 22.13.4
       dotenv-cli:
         specifier: ^8.0.0
         version: 8.0.0
@@ -307,7 +307,7 @@ importers:
         version: 4.0.4
       '@types/node':
         specifier: 'catalog:'
-        version: 22.13.2
+        version: 22.13.4
       '@types/qs':
         specifier: ^6.9.18
         version: 6.9.18
@@ -450,7 +450,7 @@ importers:
         version: link:../config-eslint
       '@types/node':
         specifier: 'catalog:'
-        version: 22.13.2
+        version: 22.13.4
       '@types/react':
         specifier: npm:types-react@19.0.0-rc.1
         version: types-react@19.0.0-rc.1
@@ -3084,6 +3084,9 @@ packages:
 
   '@types/node@22.13.2':
     resolution: {integrity: sha512-Z+r8y3XL9ZpI2EY52YYygAFmo2/oWfNSj4BCpAXE2McAexDk8VcnBMGC9Djn9gTKt4d2T/hhXqmPzo4hfIXtTg==}
+
+  '@types/node@22.13.4':
+    resolution: {integrity: sha512-ywP2X0DYtX3y08eFVx5fNIw7/uIv8hYUKgXoK8oayJlLnKcRfEYCxWMVE1XagUdVtCJlZT1AU4LXEABW+L1Peg==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -11371,6 +11374,10 @@ snapshots:
       undici-types: 6.20.0
 
   '@types/node@22.13.2':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@types/node@22.13.4':
     dependencies:
       undici-types: 6.20.0
 
