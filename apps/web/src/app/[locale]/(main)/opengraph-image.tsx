@@ -24,19 +24,16 @@ export async function generateImageMetadata() {
 export default async function Image() {
   const t = await getScopedI18n("metadata");
   const interRegular = await readFile(
-    join(
-      process.cwd(),
-      "src/assets/og/fonts/Inter/static/Inter_18pt-Regular.ttf",
-    ),
+    join(process.cwd(), "public/og/fonts/Inter/static/Inter_18pt-Regular.ttf"),
   );
   const robotoMonoBold = await readFile(
     join(
       process.cwd(),
-      "src/assets/og/fonts/Roboto_Mono/static/RobotoMono-Bold.ttf",
+      "public/og/fonts/Roboto_Mono/static/RobotoMono-Bold.ttf",
     ),
   );
   const tikLogoData = await readFile(
-    join(process.cwd(), "src/assets/TiK-logo.png"),
+    join(process.cwd(), "public/og/TiK-logo.png"),
   );
   const tikLogoSrc = Uint8Array.from(tikLogoData).buffer;
 
