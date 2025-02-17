@@ -75,6 +75,9 @@ export async function GET(req: NextRequest) {
                 fontFamily: "Roboto Mono",
                 fontSize: "1.25em",
                 fontWeight: 700,
+                overflow: "hidden",
+                display: "block",
+                lineClamp: 2,
               }}
             >
               {title}
