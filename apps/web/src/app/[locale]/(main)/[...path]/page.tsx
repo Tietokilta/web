@@ -13,7 +13,6 @@ import { TableOfContents } from "@components/table-of-contents";
 import { fetchPage } from "@lib/api/pages";
 import { getCurrentLocale, type Locale } from "@locales/server";
 import { generateTocFromRichText } from "@lib/utils";
-import { openGraphImage } from "../../../shared-metadata";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Promise<Params>;
@@ -85,7 +84,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
       type: "article",
       publishedTime: page.createdAt,
       modifiedTime: page.updatedAt,
-      ...openGraphImage,
+      images: `/next_api/og/cms-page?title=${encodeURIComponent(page.title)}&description=${encodeURIComponent(page.description)}`,
     },
   };
 };

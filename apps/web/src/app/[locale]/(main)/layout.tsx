@@ -9,7 +9,7 @@ import { SkipLink } from "@components/skip-link";
 import { cn } from "@lib/utils";
 import "@tietokilta/ui/global.css";
 import "../globals.css";
-import { type Locale } from "@locales/server";
+import { getScopedI18n, type Locale } from "@locales/server";
 import { DigiCommitteeRecruitmentAlert } from "@components/digi-committee-recruitment-alert";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -23,23 +23,6 @@ export interface LayoutProps {
     locale: Locale;
   }>;
 }
-
-const localizedMetadata = {
-  fi: {
-    title: {
-      template: "%s - Tietokilta",
-      default: "Tietokilta",
-    },
-    description: "Tietokilta ry:n kotisivut",
-  },
-  en: {
-    title: {
-      template: "%s - Computer Science Guild",
-      default: "Computer Science Guild",
-    },
-    description: "Homepage of the Computer Science Guild",
-  },
-} as const;
 
 const icons = {
   icon: [
@@ -60,14 +43,14 @@ const icons = {
 
 const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
 
-export const generateMetadata = async (
-  props: LayoutProps,
-): Promise<Metadata> => {
-  const { locale } = await props.params;
+export const generateMetadata = async (): Promise<Metadata> => {
+  const t = await getScopedI18n("metadata");
   return {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
-    ...(localizedMetadata[locale] || localizedMetadata.fi),
-
+    title: {
+      template: t("template"),
+      default: t("title"),
+    },
+    description: t("description"),
     metadataBase: new URL(mainUrl),
     generator: "Next.js",
     creator: "Tietokilta ry",
