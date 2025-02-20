@@ -31,6 +31,9 @@ export const generateMetadata = async (props: PageProps) => {
   return {
     title: `${t("Edit sign up")} - ${signupInfo.data.event.title}`,
     description: signupInfo.data.event.description,
+    robots: {
+      index: false,
+    },
   };
 };
 
