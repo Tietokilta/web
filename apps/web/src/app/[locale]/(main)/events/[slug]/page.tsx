@@ -429,6 +429,9 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   return {
     title: getLocalizedEventTitle(event.data.title, locale),
     description: event.data.description,
+    robots: {
+      index: false,
+    },
   };
 };
 
