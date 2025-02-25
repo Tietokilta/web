@@ -7,6 +7,74 @@
  */
 
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkRowBlockLink".
+ */
+export type LinkRowBlockLink =
+  | {
+      icon:
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'Mail'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'PaperAirplane'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake';
+      label: string;
+      linkType?: ('external' | 'internal') | null;
+      url?: string | null;
+      page?: (string | null) | Page;
+      id?: string | null;
+    }[]
+  | null;
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainNavigationItem".
+ */
+export type MainNavigationItem = {
+  type?: ('page' | 'topic') | null;
+  pageConfig?: {
+    page: string | Page;
+  };
+  topicConfig?: MainNavigationTopicConfig;
+  id?: string | null;
+}[];
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -67,6 +135,20 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    pages: Page;
+    topics: Topic;
+    'board-members': BoardMember;
+    boards: Board;
+    'committee-members': CommitteeMember;
+    committees: Committee;
+    'magazine-issues': MagazineIssue;
+    magazines: Magazine;
+    news: News;
+    'weekly-newsletters': WeeklyNewsletter;
+    'news-items': NewsItem;
+    honors: Honor;
+    'awarded-honors': AwardedHonor;
+    partners: Partner;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -74,6 +156,20 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    topics: TopicsSelect<false> | TopicsSelect<true>;
+    'board-members': BoardMembersSelect<false> | BoardMembersSelect<true>;
+    boards: BoardsSelect<false> | BoardsSelect<true>;
+    'committee-members': CommitteeMembersSelect<false> | CommitteeMembersSelect<true>;
+    committees: CommitteesSelect<false> | CommitteesSelect<true>;
+    'magazine-issues': MagazineIssuesSelect<false> | MagazineIssuesSelect<true>;
+    magazines: MagazinesSelect<false> | MagazinesSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
+    'weekly-newsletters': WeeklyNewslettersSelect<false> | WeeklyNewslettersSelect<true>;
+    'news-items': NewsItemsSelect<false> | NewsItemsSelect<true>;
+    honors: HonorsSelect<false> | HonorsSelect<true>;
+    'awarded-honors': AwardedHonorsSelect<false> | AwardedHonorsSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -81,9 +177,17 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
-  locale: null;
+  globals: {
+    footer: Footer;
+    'landing-page': LandingPage;
+    'main-navigation': MainNavigation;
+  };
+  globalsSelect: {
+    footer: FooterSelect<false> | FooterSelect<true>;
+    'landing-page': LandingPageSelect<false> | LandingPageSelect<true>;
+    'main-navigation': MainNavigationSelect<false> | MainNavigationSelect<true>;
+  };
+  locale: 'fi' | 'en';
   user: User & {
     collection: 'users';
   };
@@ -132,14 +236,683 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  title: string;
+  description: string;
+  type: 'standard' | 'redirect' | 'events-list' | 'all-events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
+  icon?:
+    | (
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'Mail'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'PaperAirplane'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake'
+      )
+    | null;
+  tableOfContents?: ('all' | 'top-level' | 'none') | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  redirectToPage?: (string | null) | Page;
+  path?: string | null;
+  topic?: {
+    relationTo: 'topics';
+    value: string | Topic;
+  } | null;
+  slug: string;
+  hidden: boolean;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "topics".
+ */
+export interface Topic {
+  id: string;
+  title: string;
+  slug: string;
+  icon?:
+    | (
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'Mail'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'PaperAirplane'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake'
+      )
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "board-members".
+ */
+export interface BoardMember {
+  id: string;
+  guildYear:
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  name: string;
+  title: string;
+  email?: string | null;
+  telegram?: string | null;
+  phoneNumber?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "boards".
+ */
+export interface Board {
+  id: string;
+  year:
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  boardMembers: {
+    boardMember?: (string | null) | BoardMember;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "committee-members".
+ */
+export interface CommitteeMember {
+  id: string;
+  displayTitle?: string | null;
+  guildYear:
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  name: string;
+  title: string;
+  chair?: boolean | null;
+  email?: string | null;
+  telegramUsername?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "committees".
+ */
+export interface Committee {
+  id: string;
+  year:
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  name: string;
+  hidden: boolean;
+  committeeMembers: {
+    committeeMember?: (string | null) | CommitteeMember;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "magazine-issues".
+ */
+export interface MagazineIssue {
+  id: string;
+  title?: string | null;
+  year:
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  issueNumber: number;
+  /**
+   * Optional name to be displayed after issue number and year. Mainly used for older Alkorytmi issues.
+   */
+  name?: string | null;
+  /**
+   * Optional text to be displayed instead of numerical issue number. Order of issues is still determined by numerical issueNumber.
+   */
+  textIssueNumber?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "magazines".
+ */
+export interface Magazine {
+  id: string;
+  type: 'Alkorytmi' | 'Rekrylehti';
+  issues?:
+    | {
+        issue?: (string | null) | MagazineIssue;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  ctaType: 'none' | 'news' | 'page' | 'external';
+  pageLink?: (string | null) | Page;
+  externalLink?: string | null;
+  type?: ('announcement' | 'warning' | 'danger') | null;
+  author: string | User;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weekly-newsletters".
+ */
+export interface WeeklyNewsletter {
+  id: string;
+  title: string;
+  greetings: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  newsItems?:
+    | {
+        newsItem: string | NewsItem;
+        id?: string | null;
+      }[]
+    | null;
+  slug?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news-items".
+ */
+export interface NewsItem {
+  id: string;
+  displayTitle?: string | null;
+  title: string;
+  newsItemCategory: 'guild' | 'ayy-aalto' | 'other' | 'bottom-corner';
+  date?: string | null;
+  signupStartDate?: string | null;
+  signupEndDate?: string | null;
+  linkToSignUp?: string | null;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "honors".
+ */
+export interface Honor {
+  id: string;
+  name: string;
+  awardedHonors: {
+    awardedHonor?: (string | null) | AwardedHonor;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "awarded-honors".
+ */
+export interface AwardedHonor {
+  id: string;
+  displayTitle?: string | null;
+  guildYear:
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
+  name: string;
+  description?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: string;
+  name: string;
+  status: 'partner' | 'mainPartner' | 'inactive';
+  externalLink: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
   id: string;
-  document?: {
-    relationTo: 'users';
-    value: string | User;
-  } | null;
+  document?:
+    | ({
+        relationTo: 'users';
+        value: string | User;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
+      } | null)
+    | ({
+        relationTo: 'topics';
+        value: string | Topic;
+      } | null)
+    | ({
+        relationTo: 'board-members';
+        value: string | BoardMember;
+      } | null)
+    | ({
+        relationTo: 'boards';
+        value: string | Board;
+      } | null)
+    | ({
+        relationTo: 'committee-members';
+        value: string | CommitteeMember;
+      } | null)
+    | ({
+        relationTo: 'committees';
+        value: string | Committee;
+      } | null)
+    | ({
+        relationTo: 'magazine-issues';
+        value: string | MagazineIssue;
+      } | null)
+    | ({
+        relationTo: 'magazines';
+        value: string | Magazine;
+      } | null)
+    | ({
+        relationTo: 'news';
+        value: string | News;
+      } | null)
+    | ({
+        relationTo: 'weekly-newsletters';
+        value: string | WeeklyNewsletter;
+      } | null)
+    | ({
+        relationTo: 'news-items';
+        value: string | NewsItem;
+      } | null)
+    | ({
+        relationTo: 'honors';
+        value: string | Honor;
+      } | null)
+    | ({
+        relationTo: 'awarded-honors';
+        value: string | AwardedHonor;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: string | Partner;
+      } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
@@ -202,6 +975,215 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  type?: T;
+  icon?: T;
+  tableOfContents?: T;
+  content?: T;
+  redirectToPage?: T;
+  path?: T;
+  topic?: T;
+  slug?: T;
+  hidden?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "topics_select".
+ */
+export interface TopicsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  icon?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "board-members_select".
+ */
+export interface BoardMembersSelect<T extends boolean = true> {
+  guildYear?: T;
+  name?: T;
+  title?: T;
+  email?: T;
+  telegram?: T;
+  phoneNumber?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "boards_select".
+ */
+export interface BoardsSelect<T extends boolean = true> {
+  year?: T;
+  boardMembers?:
+    | T
+    | {
+        boardMember?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "committee-members_select".
+ */
+export interface CommitteeMembersSelect<T extends boolean = true> {
+  displayTitle?: T;
+  guildYear?: T;
+  name?: T;
+  title?: T;
+  chair?: T;
+  email?: T;
+  telegramUsername?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "committees_select".
+ */
+export interface CommitteesSelect<T extends boolean = true> {
+  year?: T;
+  name?: T;
+  hidden?: T;
+  committeeMembers?:
+    | T
+    | {
+        committeeMember?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "magazine-issues_select".
+ */
+export interface MagazineIssuesSelect<T extends boolean = true> {
+  title?: T;
+  year?: T;
+  issueNumber?: T;
+  name?: T;
+  textIssueNumber?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "magazines_select".
+ */
+export interface MagazinesSelect<T extends boolean = true> {
+  type?: T;
+  issues?:
+    | T
+    | {
+        issue?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  ctaType?: T;
+  pageLink?: T;
+  externalLink?: T;
+  type?: T;
+  author?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "weekly-newsletters_select".
+ */
+export interface WeeklyNewslettersSelect<T extends boolean = true> {
+  title?: T;
+  greetings?: T;
+  newsItems?:
+    | T
+    | {
+        newsItem?: T;
+        id?: T;
+      };
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news-items_select".
+ */
+export interface NewsItemsSelect<T extends boolean = true> {
+  displayTitle?: T;
+  title?: T;
+  newsItemCategory?: T;
+  date?: T;
+  signupStartDate?: T;
+  signupEndDate?: T;
+  linkToSignUp?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "honors_select".
+ */
+export interface HonorsSelect<T extends boolean = true> {
+  name?: T;
+  awardedHonors?:
+    | T
+    | {
+        awardedHonor?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "awarded-honors_select".
+ */
+export interface AwardedHonorsSelect<T extends boolean = true> {
+  displayTitle?: T;
+  guildYear?: T;
+  name?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  status?: T;
+  externalLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -234,13 +1216,283 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: string;
+  layout: (LinkRowBlock | SponsorLogoRowBlock)[];
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkRowBlock".
+ */
+export interface LinkRowBlock {
+  showLabel: boolean;
+  links?: LinkRowBlockLink;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'link-row';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SponsorLogoRowBlock".
+ */
+export interface SponsorLogoRowBlock {
+  title: string;
+  logos?:
+    | {
+        link: string;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'logo-row';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-page".
+ */
+export interface LandingPage {
+  id: string;
+  heroTexts: {
+    text?: string | null;
+    id?: string | null;
+  }[];
+  heroImages: {
+    id?: string | null;
+  }[];
+  eventsListPage: string | Page;
+  announcement?: (string | null) | News;
+  body: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "main-navigation".
+ */
+export interface MainNavigation {
+  id: string;
+  items: MainNavigationItem;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainNavigationTopicConfig".
+ */
+export interface MainNavigationTopicConfig {
+  topic: string | Topic;
+  categories?:
+    | {
+        title: string;
+        pages?:
+          | {
+              page: string | Page;
+              id?: string | null;
+            }[]
+          | null;
+        externalLinks?:
+          | {
+              title: string;
+              href: string;
+              icon:
+                | 'AlertOctagon'
+                | 'AlertTriangle'
+                | 'AtSign'
+                | 'Banknote'
+                | 'BookMarked'
+                | 'BriefcaseBusiness'
+                | 'ChevronDown'
+                | 'Chevronleft'
+                | 'ChevronRight'
+                | 'ChevronsUpDown'
+                | 'ChevronUp'
+                | 'Circle'
+                | 'Clock'
+                | 'ExternalLink'
+                | 'Facebook'
+                | 'File'
+                | 'Gavel'
+                | 'Github'
+                | 'Gmail'
+                | 'HelpCircle'
+                | 'Image'
+                | 'Inbox'
+                | 'Instagram'
+                | 'Languages'
+                | 'Linkedin'
+                | 'Mail'
+                | 'MapPin'
+                | 'Megaphone'
+                | 'Menu'
+                | 'MoreHorizontal'
+                | 'PaperAirplane'
+                | 'Phone'
+                | 'Telegram'
+                | 'TikLogo'
+                | 'Tiktok'
+                | 'X'
+                | 'NavGuild'
+                | 'NavFuksis'
+                | 'NavCompanies'
+                | 'NavEvents'
+                | 'NavApplicants'
+                | 'Handshake';
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  layout?:
+    | T
+    | {
+        'link-row'?: T | LinkRowBlockSelect<T>;
+        'logo-row'?: T | SponsorLogoRowBlockSelect<T>;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkRowBlock_select".
+ */
+export interface LinkRowBlockSelect<T extends boolean = true> {
+  showLabel?: T;
+  links?: T | LinkRowBlockLinkSelect<T>;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LinkRowBlockLink_select".
+ */
+export interface LinkRowBlockLinkSelect<T extends boolean = true> {
+  icon?: T;
+  label?: T;
+  linkType?: T;
+  url?: T;
+  page?: T;
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SponsorLogoRowBlock_select".
+ */
+export interface SponsorLogoRowBlockSelect<T extends boolean = true> {
+  title?: T;
+  logos?:
+    | T
+    | {
+        link?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "landing-page_select".
+ */
+export interface LandingPageSelect<T extends boolean = true> {
+  heroTexts?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  heroImages?:
+    | T
+    | {
+        id?: T;
+      };
+  eventsListPage?: T;
+  announcement?: T;
+  body?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "main-navigation_select".
+ */
+export interface MainNavigationSelect<T extends boolean = true> {
+  items?: T | MainNavigationItemSelect<T>;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainNavigationItem_select".
+ */
+export interface MainNavigationItemSelect<T extends boolean = true> {
+  type?: T;
+  pageConfig?:
+    | T
+    | {
+        page?: T;
+      };
+  topicConfig?: T | MainNavigationTopicConfigSelect<T>;
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "MainNavigationTopicConfig_select".
+ */
+export interface MainNavigationTopicConfigSelect<T extends boolean = true> {
+  topic?: T;
+  categories?:
+    | T
+    | {
+        title?: T;
+        pages?:
+          | T
+          | {
+              page?: T;
+              id?: T;
+            };
+        externalLinks?:
+          | T
+          | {
+              title?: T;
+              href?: T;
+              icon?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "auth".
  */
 export interface Auth {
   [k: string]: unknown;
-}
-
-
-declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
 }
