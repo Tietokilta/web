@@ -54,6 +54,7 @@ export function fetcher<TRequest, TResponse>({
 }
 
 export function getAllCollectionItems<
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- naive typed wrapper
   TRequest extends Record<string, unknown>,
   TResponse extends unknown[],
 >(collectionSlug: CollectionSlug, globalOpts: { sort?: string } = {}) {
@@ -91,6 +92,7 @@ export function getAllCollectionItems<
 }
 
 export function getOneCollectionItem<
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-parameters -- naive typed wrapper
   TRequest extends Record<string, unknown>,
   TResponse,
 >(collectionSlug: CollectionSlug, globalOpts: { sort?: string } = {}) {

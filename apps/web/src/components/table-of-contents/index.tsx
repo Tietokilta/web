@@ -2,7 +2,7 @@
 
 import { ChevronDownIcon } from "@tietokilta/ui";
 import Link from "next/link";
-import { useEffect, useRef, useState, type MutableRefObject } from "react";
+import { useEffect, useRef, useState, type RefObject } from "react";
 import {
   cn,
   insertSoftHyphens,
@@ -124,7 +124,7 @@ function Mobile({
 const useActiveHeading = ({ topLevelOnly = false } = {}) => {
   const [activeId, setActiveId] = useState<string>();
 
-  const headingElementsRef: MutableRefObject<
+  const headingElementsRef: RefObject<
     Record<string, IntersectionObserverEntry>
   > = useRef({});
   const articleRef = useRef<IntersectionObserverEntry>(undefined);
