@@ -182,7 +182,6 @@ export const parseToc = (
       });
     }
   });
-  ``;
   tgString += `\n----\n${t[locale].ending} (${PUBLIC_FRONTEND_URL ?? ""}/${locale}/${t[locale].path})!`;
   return tgString;
 };

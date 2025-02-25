@@ -164,6 +164,9 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
               </a>
             );
           }
+          case "relationship":
+          case "block":
+          case "upload":
           default:
             // eslint-disable-next-line no-console -- Nice to know if something is missing
             console.warn("Unknown node:", node);

@@ -67,6 +67,14 @@ export default ts.config(
           caughtErrorsIgnorePattern: "^_",
         },
       ],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+        },
+      ],
     },
   },
 );

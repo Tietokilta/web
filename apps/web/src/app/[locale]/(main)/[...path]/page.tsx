@@ -16,7 +16,6 @@ import { generateTocFromRichText } from "@lib/utils";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Promise<Params>;
-  searchParams: Record<string, string | string[] | undefined>;
 }
 
 type Props = NextPage<{ path: string[] }>;
