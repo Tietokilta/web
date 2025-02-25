@@ -1,8 +1,10 @@
+import { withPayload } from "@payloadcms/next/withPayload";
+
 const isProd = process.env.NODE_ENV === "production";
 const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 
 /** @type {import("next").NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
   images: {
     // TODO: only for dev:
@@ -44,3 +46,5 @@ module.exports = {
     },
   },
 };
+
+export default withPayload(nextConfig);

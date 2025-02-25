@@ -1,6 +1,6 @@
 "use client";
 
-import { PayloadAdminBar } from "payload-admin-bar";
+// import { PayloadAdminBar } from "payload-admin-bar";
 
 export function AdminBarClient({
   isPreviewMode,
@@ -23,7 +23,7 @@ export function AdminBarClient({
           This is a draft preview
         </div>
       ) : null}
-      <PayloadAdminBar
+      {/* <PayloadAdminBar
         className="bottom-0"
         cmsURL={process.env.PUBLIC_SERVER_URL ?? window.location.origin}
         collection={collection}
@@ -33,7 +33,7 @@ export function AdminBarClient({
         style={{
           top: "auto",
         }}
-      />
+      /> */}
     </>
   );
 }

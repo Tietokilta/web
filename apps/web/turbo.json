@@ -3,6 +3,9 @@
   "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "codegen": {
+      "outputs": ["src/app/*/payload/**", "payload-types.ts"]
     }
   }
 }
