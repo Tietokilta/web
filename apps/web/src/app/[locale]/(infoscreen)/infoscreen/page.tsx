@@ -9,8 +9,12 @@ export default function InfoScreenContents() {
   return (
     <InfoScreenSwitcher>
       <HSLcombinedSchedule />
-      <KanttiinitCombined />
-      <EventListInfoscreen />
     </InfoScreenSwitcher>
   );
 }
+
+/*
+      <HSLcombinedSchedule />
+      <KanttiinitCombined />
+      <EventListInfoscreen />
+*/

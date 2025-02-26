@@ -8,10 +8,10 @@ const Clock = dynamic(() => import("react-live-clock"), { ssr: false });
 
 export function InfoScreenHeader() {
   return (
-    <div className="flex h-[6.0rem] space-y-2 bg-black text-white">
+    <div className="flex h-[8.0rem] space-y-3 bg-black text-white">
       <Image
         alt="Tietokilta"
-        className="size-[6.0rem] p-2"
+        className="size-[7.0rem] p-2"
         priority
         src={TiKLogo}
       />
@@ -20,8 +20,8 @@ export function InfoScreenHeader() {
           format="HH:mm:ss"
           style={{
             color: "white",
-            fontSize: "2.0rem",
-            paddingLeft: "1rem",
+            fontSize: "2.5rem",
+            paddingLeft: "1.5rem",
             alignItems: "center",
           }}
           timezone="EET"
@@ -31,8 +31,8 @@ export function InfoScreenHeader() {
           format="Do MMMM"
           style={{
             color: "white",
-            fontSize: "1.2rem",
-            paddingLeft: "1rem",
+            fontSize: "1.5rem",
+            paddingLeft: "2rem",
             alignItems: "center",
           }}
           ticking

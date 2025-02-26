@@ -20,6 +20,9 @@ export default async function EventListInfoscreen({
     ({ date, registrationStartDate, registrationEndDate }) => {
       const dateToUse =
         date ?? registrationStartDate ?? registrationEndDate ?? "";
+      if (getISOWeek(dateToUse) >= getISOWeek(new Date()) + 2) {
+        return "";
+      }
       return `${getISOWeekYear(dateToUse).toFixed()}-${getISOWeek(dateToUse).toFixed().padStart(2, "0")}`; // YYYY-VV
     },
   );
@@ -36,10 +39,11 @@ export default async function EventListInfoscreen({
               e: [string, IlmomasiinaEvent[] | undefined],
             ): e is [string, IlmomasiinaEvent[]] => !!e[1],
           )
+          .filter(([weekYear]) => weekYear !== "")
           .sort((a, b) => a[0].localeCompare(b[0]))
           .map(([weekYear, eventsInWeek]) => {
             return (
-              <div key={weekYear} className="flex w-1/2 flex-col p-2 xl:w-1/3">
+              <div key={weekYear} className="flex w-1/2 flex-col p-2">
                 <span className="text-pretty py-2 text-center text-3xl font-bold">
                   {t("calendar.Week")} {Number(weekYear.split("-")[1])}
                 </span>

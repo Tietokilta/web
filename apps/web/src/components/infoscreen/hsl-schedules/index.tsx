@@ -37,7 +37,7 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
         { "--infonayttoHSLcolor": getColor(stop.type) } as React.CSSProperties
       }
     >
-      <h1 className="flex h-12 w-full justify-center p-2 font-mono text-2xl font-bold text-[var(--infonayttoHSLcolor)]">
+      <h1 className="flex h-12 w-full justify-center p-2 font-mono text-3xl font-bold text-[var(--infonayttoHSLcolor)]">
         {stopName(stop.type)}
       </h1>
       <ul className="space-y-4 font-bold">
@@ -46,11 +46,11 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
             key={arr.route + arr.headSign + arr.fullTime}
             className="shadow-solid grid grid-cols-[1fr_2fr_1fr] items-center rounded-md border-2 border-[var(--infonayttoHSLcolor)] p-3 font-mono text-gray-900 shadow-[var(--infonayttoHSLcolor)] md:items-center"
           >
-            <div className="text-left text-2xl text-[var(--infonayttoHSLcolor)]">
+            <div className="text-left text-3xl text-[var(--infonayttoHSLcolor)]">
               {arr.route}
             </div>
-            <div className="text-center text-xl">{arr.headSign}</div>
-            <div className="text-right text-2xl">{arr.fullTime}</div>
+            <div className="text-center text-2xl">{arr.headSign}</div>
+            <div className="text-right text-3xl">{arr.fullTime}</div>
           </li>
         ))}
       </ul>
@@ -67,7 +67,7 @@ export async function HSLcombinedSchedule() {
   return (
     <div className="w-full flex-row justify-center">
       <div className="flex w-full justify-center">
-        <h1 className="flex justify-center pt-4 text-3xl font-bold">
+        <h1 className="flex justify-center pt-4 text-4xl font-bold">
           Aalto-yliopisto (M)
         </h1>
       </div>
