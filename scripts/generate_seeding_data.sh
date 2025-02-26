@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env bash -e
 
 # Define MongoDB URI
 if [ -z "$PAYLOAD_MONGO_CONNECTION_STRING" ]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Define the URL and file to upload
 URL="http://localhost:3000/api/media/upload"
