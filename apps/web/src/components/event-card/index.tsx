@@ -103,7 +103,7 @@ async function SignupQuotas({
   // Compact Mode is used on infoscreen
   if (compact) {
     return (
-      <ul className={cn(className)}>
+      <ul className={cn(className + " text-xl")}>
         <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
           <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
         </li>
@@ -185,30 +185,30 @@ export async function EventCardCompact({
 
   const locale = await getCurrentLocale();
   return (
-    <li className="shadow-solid relative flex max-w-3xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4">
+    <li className="shadow-solid relative flex flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4">
       <div className="flex flex-row justify-between">
         <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
           <Link
             href={`/${locale}/${t("events")}/${event.slug}`}
             className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline"
           >
-            <h2>
+            <h2 className="text-2xl">
               {getLocalizedEventTitle(event.title, locale)}
+              <br/>
               {event.date ? (
-                <>
-                  {", "}
-                  <DateTime
-                    rawDate={event.date}
-                    defaultFormattedDate={formatDateTime(event.date, locale)}
-                    formatOptions={formatDateTimeOptions}
-                  />
-                </>
+                <DateTime
+                  rawDate={event.date}
+                  defaultFormattedDate={formatDateTime(event.date, locale)}
+                  formatOptions={formatDateTimeOptions}
+                  className="font-normal text-l"
+                />
               ) : null}
             </h2>
           </Link>
 
           {showSignupQuotas ? (
             <SignUpText
+              className="text-xl"
               endDate={event.registrationEndDate}
               startDate={event.registrationStartDate}
               compact
