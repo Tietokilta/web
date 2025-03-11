@@ -3,13 +3,16 @@
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
 import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
-import { useFormStatus } from "react-dom";
+import { useFormStatus, requestFormReset } from "react-dom";
 import {
   type InputHTMLAttributes,
   type ReactNode,
   useActionState,
   useEffect,
   useState,
+  startTransition,
+  type FormEvent,
+  useRef,
 } from "react";
 import Form from "next/form";
 import {
@@ -350,6 +353,20 @@ function AttachmentRow({
 function InvoiceGeneratorForm() {
   const [state, formAction] = useActionState(SaveAction, null);
   const t = useScopedI18n("invoicegenerator");
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Form submission handler that doesn't reset the form
+  // https://github.com/facebook/react/issues/29034#issuecomment-2143595195
+  const handleSubmit = (event: FormEvent) => {
+    if (!(event.target instanceof HTMLFormElement))
+      throw new Error("Form submission event target is not a form element");
+
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    startTransition(() => {
+      formAction(formData);
+    });
+  };
 
   useEffect(() => {
     const errorFields = state?.errors ? Object.keys(state.errors) : [];
@@ -362,12 +379,21 @@ function InvoiceGeneratorForm() {
     } else {
       document.querySelector("[data-form-status]")?.scrollIntoView();
     }
+
+    // Reset form on success (because it is not done automatically with handleSubmit)
+    if (state?.success && formRef.current) {
+      requestFormReset(formRef.current);
+    }
   }, [state]);
 
   return (
     <Form
       className="shadow-solid w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 md:px-6 md:py-8"
-      action={formAction}
+      ref={formRef}
+      // Use `onSubmit` instead of `action` to prevent form reset
+      onSubmit={handleSubmit}
+      // `action` is a required prop anyway
+      action={() => undefined}
     >
       <label htmlFor="recipient-info">
         <h2>{t("Invoicer information")}</h2>
