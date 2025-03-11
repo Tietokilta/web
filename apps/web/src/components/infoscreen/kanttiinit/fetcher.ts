@@ -97,30 +97,24 @@ export const fetchMenus = async (locale: Locale): Promise<RestaurantMenu[]> => {
         return {
           restaurant,
           menus: menus
-            .filter(
-              (menu: RestaurantMenuLite) => menu.restaurantID === restaurant.id,
-            )
+            .filter((menu: RestaurantMenuLite) => menu.restaurantID === restaurant.id,)
             .flatMap((menu) =>
               menu.menus.map((dayMenu) => {
                 return {
                   date: dayMenu.date,
-                  foods: dayMenu.foods
-                    .map((food) => {
-
-                      if ( !/chef´s Kitchen|erikoisannos|jälkiruoka|wicked rabbit/i.test(food.title,) ) {
+                  foods: dayMenu.foods.filter((food: Food) =>
+                      !/chef´s Kitchen|erikoisannos|jälkiruoka|wicked rabbit/i.test(food.title)
+                  ).map((food) => {
                         if (food.title.includes(":")) {
                           return {
                             id: food.id,
-                            title: food.title.replace(/^(?:.*?): /, ""),
+                            title: food.title.replace(/^.*?: /, ""),
                             properties: food.properties,
                           };
                         }
                         return { ...food };
                       }
-                      return undefined;
-                    })
-                    .filter((food) => food !== undefined),
-                };
+                )};
               }),
             ),
         };
