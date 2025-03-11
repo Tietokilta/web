@@ -106,11 +106,8 @@ export const fetchMenus = async (locale: Locale): Promise<RestaurantMenu[]> => {
                   date: dayMenu.date,
                   foods: dayMenu.foods
                     .map((food) => {
-                      if (
-                        !/chef´s Kitchen|erikoisannos|jälkiruoka|wicked rabbit/i.test(
-                          food.title,
-                        )
-                      ) {
+
+                      if ( !/chef´s Kitchen|erikoisannos|jälkiruoka|wicked rabbit/i.test(food.title,) ) {
                         if (food.title.includes(":")) {
                           return {
                             id: food.id,
@@ -118,11 +115,7 @@ export const fetchMenus = async (locale: Locale): Promise<RestaurantMenu[]> => {
                             properties: food.properties,
                           };
                         }
-                        return {
-                          id: food.id,
-                          title: food.title,
-                          properties: food.properties,
-                        };
+                        return { ...food };
                       }
                       return undefined;
                     })

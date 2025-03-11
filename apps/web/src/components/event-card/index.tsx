@@ -194,13 +194,13 @@ export async function EventCardCompact({
           >
             <h2 className="text-2xl">
               {getLocalizedEventTitle(event.title, locale)}
-              <br/>
+              <br />
               {event.date ? (
                 <DateTime
                   rawDate={event.date}
                   defaultFormattedDate={formatDateTime(event.date, locale)}
                   formatOptions={formatDateTimeOptions}
-                  className="font-normal text-l"
+                  className="text-l font-normal"
                 />
               ) : null}
             </h2>
