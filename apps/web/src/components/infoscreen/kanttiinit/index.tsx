@@ -68,7 +68,7 @@ export async function KanttiinitCombined() {
       <div className="absolute bottom-0 z-10 h-[5%] w-full content-center text-center align-text-bottom">
         A+ = Sisältää Allergeenejä | L = Laktoositon | VL = Vähälaktoosinen | G
         = Gluteeniton | M = Maidoton | V = Vegaaninen | O+ = Sisältää
-        valkosipulia | VV = Veganinen
+        valkosipulia | VV = Vegaaninen
       </div>
     </div>
   );
