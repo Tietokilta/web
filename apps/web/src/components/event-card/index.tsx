@@ -113,14 +113,13 @@ async function HandleQuota(props: QuotaProps) {
         </span>
       </>
     );
-  } else {
-    return (
-      <>
-        <span className="w-1/2 truncate">{quota.title}</span>
-        <span className="w-1/4 text-right">{quota.signupCount}</span>
-      </>
-    );
   }
+  return (
+    <>
+      <span className="w-1/2 truncate">{quota.title}</span>
+      <span className="w-1/4 text-right">{quota.signupCount}</span>
+    </>
+  );
 }
 
 async function SignupQuotas({
