@@ -42,7 +42,8 @@ const en = {
   "heading.Main navigation": "Main navigation",
   "heading.Upcoming events": "Upcoming events",
   "infoscreen.Ruokalistat": "Menus",
-  "infoscreen.allergeenit": "A+ = Contains Allergens | L = Lactosefree | VL = low-lactose | G" +
+  "infoscreen.allergeenit":
+    "A+ = Contains Allergens | L = Lactosefree | VL = low-lactose | G" +
     " = Glutenfree | M = Milkfree | O+ = Contains" +
     " garlic | VV = Vegan",
   "infoscreen.Bussit": "Buses",
