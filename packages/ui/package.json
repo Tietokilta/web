@@ -34,6 +34,7 @@
     "clean": "rm -rf dist",
     "dev": "tsup lib/index.tsx --format esm,cjs --watch --dts --external react",
     "lint": "eslint lib/",
+    "lint:fix": "eslint --fix lib/",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

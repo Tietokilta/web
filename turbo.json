@@ -40,6 +40,11 @@
       "dependsOn": ["^build", "codegen", "^codegen"],
       "persistent": false
     },
+    "lint:fix": {
+      "dependsOn": ["^build", "codegen", "^codegen"],
+      "persistent": false,
+      "cache": false
+    },
     "typecheck": {
       "dependsOn": ["^build", "codegen", "^codegen"],
       "persistent": false

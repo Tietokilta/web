@@ -20,6 +20,7 @@
     "docker:start:web": "docker run -p 3000:3000 web",
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
+    "lint:fix": "turbo run lint:fix",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/cms/uploads"
