@@ -56,7 +56,7 @@ async function KanttiinitRestaurants(locale?: Locale) {
 
 async function KanttiinitMenus(locale?: Locale) {
   const ids = [2, 7, 52];
-  const today = new Date("2025-03-13T03:24:00").toISOString().split("T")[0];
+  const today = new Date().toISOString().split("T")[0];
   const response: Response = await fetch(
     `https://kitchen.kanttiinit.fi/menus?lang=${locale ?? "fi"}&${ids.join(",")}&days=${today}`,
     { next: { revalidate: 3600 } }, // fetch only once per hour
