@@ -42,9 +42,13 @@ const fi = {
   "heading.Main navigation": "Päävalikko",
   "heading.Upcoming events": "Tulevat tapahtumat",
   "infoscreen.Ruokalistat": "Ruokalistat",
+  "infoscreen.allergeenit": "A+ = Sisältää Allergeenejä | L = Laktoositon | VL = Vähälaktoosinen | G" +
+    "        = Gluteeniton | M = Maidoton | O+ = Sisältää" +
+    "        valkosipulia | VV = Vegaaninen",
   "infoscreen.Bussit": "Bussit",
   "infoscreen.Raide-Jokeri": "Raide-Jokeri",
   "infoscreen.Metro": "Metro",
+  "infoscreen.Aalto-yliopisto": "Aalto-yliopisto",
   "invoicegenerator.Invoicer name": "Laskuttajan nimi",
   "invoicegenerator.Invoicer email": "Laskuttajan sähköpostiosoite",
   "invoicegenerator.Phone number": "Puhelinnumero",

@@ -60,6 +60,7 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
 
 export async function HSLcombinedSchedule() {
   const stopData = await HSLSchedules();
+  const t = await getScopedI18n("infoscreen");
 
   if (stopData.length === 0) {
     return null;
@@ -68,7 +69,7 @@ export async function HSLcombinedSchedule() {
     <div className="w-full flex-row justify-center">
       <div className="flex w-full justify-center">
         <h1 className="flex justify-center pt-4 text-4xl font-bold">
-          Aalto-yliopisto (M)
+          {t("Aalto-yliopisto")}
         </h1>
       </div>
       <div className="flex w-full justify-between gap-4 p-8 pt-0">
