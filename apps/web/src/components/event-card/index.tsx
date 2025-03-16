@@ -52,6 +52,14 @@ async function SignUpText({
           })}
         </span>
       );
+    } else if (!hasStarted && startDate) {
+      return (
+        <span className={className}>
+          {t("Ilmo alkaa", {
+            startDate: formatDatetimeYear(startDate, locale),
+          })}
+        </span>
+      );
     }
 
     return (
@@ -81,6 +89,39 @@ async function SignUpText({
     </span>
   );
 }
+interface QuotaProps {
+  quota: EventQuota;
+  isQuota: boolean;
+}
+
+async function HandleQuota(props: QuotaProps) {
+  const { quota, isQuota } = props;
+  const t = await getScopedI18n("ilmomasiina");
+
+  if (!isQuota) {
+    return (
+      <>
+        <span className="w-full">{t("Ei Ilmoittautumista")}</span>{" "}
+      </>
+    );
+  } else if (typeof quota.size === "number") {
+    return (
+      <>
+        <span className="w-1/2 truncate">{quota.title}</span>
+        <span className="w-1/2 text-right">
+          {quota.signupCount} / {quota.size}
+        </span>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <span className="w-1/2 truncate">{quota.title}</span>
+        <span className="w-1/4 text-right">{quota.signupCount}</span>
+      </>
+    );
+  }
+}
 
 async function SignupQuotas({
   quotas,
@@ -100,6 +141,12 @@ async function SignupQuotas({
 
   const isSingleQuota = quotas.length === 1;
 
+  const isQuota = !(
+    quotas.length === 1 &&
+    quotas[0].size === 20 &&
+    quotas[0].signupCount === 0
+  );
+
   // Compact Mode is used on infoscreen
   if (compact) {
     return (
@@ -112,14 +159,7 @@ async function SignupQuotas({
             className="flex w-full justify-between gap-4 whitespace-nowrap"
             key={quota.id}
           >
-            <span className="w-1/2 truncate">{quota.title}</span>{" "}
-            {typeof quota.size === "number" ? (
-              <span className="w-1/2 text-right">
-                {quota.signupCount} / {quota.size}
-              </span>
-            ) : (
-              <span className="w-1/4 text-right">{quota.signupCount}</span>
-            )}
+            <HandleQuota quota={quota} isQuota={isQuota} />
           </li>
         ))}
       </ul>
@@ -127,6 +167,16 @@ async function SignupQuotas({
   }
 
   if (isSingleQuota) {
+    if (!isQuota) {
+      return (
+        <div className={className}>
+          <span className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
+            <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+            <span className="w-1/4 text-left">Ei kiintiötä</span>
+          </span>
+        </div>
+      );
+    }
     return (
       <div className={className}>
         <span className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
@@ -185,7 +235,7 @@ export async function EventCardCompact({
 
   const locale = await getCurrentLocale();
   return (
-    <li className="shadow-solid relative flex flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4">
+    <li className="shadow-solid relative flex flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 px-3 py-1">
       <div className="flex flex-row justify-between">
         <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
           <Link
@@ -218,7 +268,14 @@ export async function EventCardCompact({
         {event.quotas.length > 0 && showSignup ? (
           <SignupQuotas
             className="ml-5 w-1/3 shrink-0"
-            quotas={event.quotas}
+            quotas={event.quotas.filter(
+              (quota) =>
+                // Filter out quotas that are not meant for signups
+                !(
+                  /järkkä|häry|häirintäyhdyshenkilö|lukka/i.test(quota.title) ||
+                  (quota.size && quota.size <= 5)
+                ),
+            )}
             compact
           />
         ) : null}

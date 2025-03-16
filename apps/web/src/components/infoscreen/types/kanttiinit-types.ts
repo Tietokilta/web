@@ -14,6 +14,7 @@ export type OpeningHour = string | Date | null;
 export interface Food {
   id: number;
   title: string;
+  description: string;
   properties: string[];
 }
 

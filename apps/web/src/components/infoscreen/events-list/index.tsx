@@ -20,7 +20,7 @@ export default async function EventListInfoscreen({
     ({ date, registrationStartDate, registrationEndDate }) => {
       const dateToUse =
         date ?? registrationStartDate ?? registrationEndDate ?? "";
-      if (getISOWeek(dateToUse) >= getISOWeek(new Date()) + 2) {
+      if (getISOWeek(dateToUse) >= getISOWeek(new Date()) + 4) {
         return "";
       }
       return `${getISOWeekYear(dateToUse).toFixed()}-${getISOWeek(dateToUse).toFixed().padStart(2, "0")}`; // YYYY-VV
@@ -29,11 +29,12 @@ export default async function EventListInfoscreen({
 
   return (
     <main id="main" className="flex flex-col align-top">
-      <h1 className="my-6 text-center font-mono text-5xl font-bold">
+      <h1 className="mb-2 mt-4 text-center font-mono text-5xl font-bold">
         {t("ilmomasiina.Tapahtumat")}
       </h1>
       <ul className="flex flex-row flex-wrap">
         {Object.entries(upcomingEventsDataByWeek)
+          .filter(([key, value]) => value && value.length > 0)
           .filter(
             (
               e: [string, IlmomasiinaEvent[] | undefined],
@@ -43,11 +44,11 @@ export default async function EventListInfoscreen({
           .sort((a, b) => a[0].localeCompare(b[0]))
           .map(([weekYear, eventsInWeek]) => {
             return (
-              <div key={weekYear} className="flex w-1/2 flex-col p-2">
-                <span className="text-pretty py-2 text-center text-3xl font-bold">
+              <div key={weekYear} className="flex w-1/2 flex-col p-1">
+                <span className="text-pretty py-1 text-center text-3xl font-bold">
                   {t("calendar.Week")} {Number(weekYear.split("-")[1])}
                 </span>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2">
                   {eventsInWeek.map((event) => {
                     return (
                       <EventCardCompact

@@ -122,6 +122,7 @@ const fi = {
   "ilmomasiina.Ilmoittautuminen": "Ilmoittautuminen",
   "ilmomasiina.Ilmoittautuneet": "Ilmoittautuneet",
   "ilmomasiina.Ilmoittautuneita": "Ilmoittautuneita",
+  "ilmomasiina.Ei Ilmoittautumista": "Ei Ilmoittautumista",
   "ilmomasiina.Piilotettu": "Piilotettu",
   "ilmomasiina.Vahvistamaton": "Vahvistamaton",
   "ilmomasiina.Avoin kiintiö": "Avoin kiintiö",

@@ -8,13 +8,9 @@ export const dynamic = "force-dynamic";
 export default function InfoScreenContents() {
   return (
     <InfoScreenSwitcher>
-      <KanttiinitCombined />
-    </InfoScreenSwitcher>
-  );
-}
-
-/*
       <HSLcombinedSchedule />
       <KanttiinitCombined />
       <EventListInfoscreen />
-*/
+    </InfoScreenSwitcher>
+  );
+}

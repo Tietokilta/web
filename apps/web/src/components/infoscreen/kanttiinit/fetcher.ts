@@ -1,4 +1,4 @@
-import type { Locale } from "../../../locales/server";
+import type { Locale } from "@locales/server.ts";
 import type {
   DayMenu,
   Food,
@@ -7,6 +7,8 @@ import type {
   RestaurantMenu,
   RestaurantMenuLite,
 } from "../types/kanttiinit-types";
+import * as console from "node:console";
+import { string } from "zod";
 
 interface RestaurantResponse {
   openingHours: OpeningHour[];
@@ -54,7 +56,7 @@ async function KanttiinitRestaurants(locale?: Locale) {
 
 async function KanttiinitMenus(locale?: Locale) {
   const ids = [2, 7, 52];
-  const today = new Date().toISOString().split("T")[0];
+  const today = new Date("2025-03-13T03:24:00").toISOString().split("T")[0];
   const response: Response = await fetch(
     `https://kitchen.kanttiinit.fi/menus?lang=${locale ?? "fi"}&${ids.join(",")}&days=${today}`,
     { next: { revalidate: 3600 } }, // fetch only once per hour
@@ -96,27 +98,11 @@ export const fetchMenus = async (locale: Locale): Promise<RestaurantMenu[]> => {
       (restaurant: Restaurant) => {
         return {
           restaurant,
-          menus: menus
-            .filter((menu: RestaurantMenuLite) => menu.restaurantID === restaurant.id,)
-            .flatMap((menu) =>
-              menu.menus.map((dayMenu) => {
-                return {
-                  date: dayMenu.date,
-                  foods: dayMenu.foods.filter((food: Food) =>
-                      !/chef´s Kitchen|erikoisannos|jälkiruoka|wicked rabbit/i.test(food.title)
-                  ).map((food) => {
-                        if (food.title.includes(":")) {
-                          return {
-                            id: food.id,
-                            title: food.title.replace(/^.*?: /, ""),
-                            properties: food.properties,
-                          };
-                        }
-                        return { ...food };
-                      }
-                )};
-              }),
+          menus: formatMenus(
+            menus.filter(
+              (menu: RestaurantMenuLite) => menu.restaurantID === restaurant.id,
             ),
+          ).flatMap((menu) => menu.menus),
         };
       },
     );
@@ -125,4 +111,70 @@ export const fetchMenus = async (locale: Locale): Promise<RestaurantMenu[]> => {
     // Error handling can be added here
   }
   return [];
+};
+
+const formatFoods = (foods: Food[]): string => {
+  return foods
+    .map((food) => food.title.split(":")[1])
+    .join(", ")
+    .replace(" ,", ",");
+};
+const removeDups = (arr: string[]): string[] => {
+  let unique: string[] = [];
+  arr.forEach((element) => {
+    if (!unique.includes(element)) {
+      unique.push(element);
+    }
+  });
+  return unique;
+};
+
+const formatMenus = (menus: RestaurantMenuLite[]): RestaurantMenuLite[] => {
+  // Regroup menus by the portion of their title before the first colon
+  /* Example:
+   *  beginning Foods: [{title: "kasvislounas: herneitä", properties: ["L", "G"]}, {title: "kasvislounas: perunoita", properties: ["L", "G"]}]
+   *  end result Foods: [{title: "kasvislounas: herneitä, perunoita", properties: ["L", "G", "L", "G"]}]
+   * */
+  const groupedMenus: RestaurantMenuLite[] = [];
+  menus.forEach((menu) => {
+    const newMenus: DayMenu[] = [];
+    menu.menus.forEach((dayMenu) => {
+      const newFoods: Food[] = [];
+      const foodGroups: Record<string, Food[]> = {};
+      dayMenu.foods.forEach((food) => {
+        const title = food.title.split(":")[0].trim();
+        if (foodGroups[title]) {
+          foodGroups[title].push(food);
+        } else {
+          foodGroups[title] = [food];
+        }
+      });
+      Object.entries(foodGroups).forEach(([title, foods]) => {
+        if (foods.length === 1) {
+          newFoods.push({
+            id: foods[0].id,
+            title: "",
+            description: foods[0].title,
+            properties: removeDups(foods.flatMap((food) => food.properties)),
+          });
+          return;
+        }
+        newFoods.push({
+          id: foods[0].id,
+          title: title,
+          description: formatFoods(foods),
+          properties: removeDups(foods.flatMap((food) => food.properties)),
+        });
+      });
+      newMenus.push({
+        date: dayMenu.date,
+        foods: newFoods,
+      });
+    });
+    groupedMenus.push({
+      restaurantID: menu.restaurantID,
+      menus: newMenus,
+    });
+  });
+  return groupedMenus;
 };
