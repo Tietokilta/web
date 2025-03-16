@@ -52,16 +52,7 @@ async function SignUpText({
           })}
         </span>
       );
-    } else if (!hasStarted && startDate) {
-      return (
-        <span className={className}>
-          {t("Ilmo alkaa", {
-            startDate: formatDatetimeYear(startDate, locale),
-          })}
-        </span>
-      );
     }
-
     return (
       <span className={className}>
         {t("Ilmo alkaa", {
@@ -225,12 +216,13 @@ export async function EventCardCompact({
   let showSignupQuotas = true;
   const signupStartDate = event.registrationStartDate;
   const signupEndDate = event.registrationEndDate;
+  const hasSignup = event.registrationStartDate && event.registrationEndDate;
 
   if (event.registrationClosed === true || !signupEndDate || !signupStartDate) {
     showSignupQuotas = false;
   }
 
-  const t = await getScopedI18n("ilmomasiina.path");
+  const t = await getScopedI18n("ilmomasiina");
 
   const locale = await getCurrentLocale();
   return (
@@ -238,7 +230,7 @@ export async function EventCardCompact({
       <div className="flex flex-row justify-between">
         <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
           <Link
-            href={`/${locale}/${t("events")}/${event.slug}`}
+            href={`/${locale}/${t("path.events")}/${event.slug}`}
             className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline"
           >
             <h2 className="text-2xl">
@@ -264,7 +256,7 @@ export async function EventCardCompact({
             />
           ) : null}
         </div>
-        {event.quotas.length > 0 && showSignup ? (
+        {event.quotas.length > 0 && showSignup && hasSignup ? (
           <SignupQuotas
             className="ml-5 w-1/3 shrink-0"
             quotas={event.quotas.filter(
@@ -277,7 +269,12 @@ export async function EventCardCompact({
             )}
             compact
           />
-        ) : null}
+        ) :
+          (
+            <span>
+              <h3 className="text-xl text-right font-medium">{t("Ei Ilmoittautumista")}</h3>
+            </span>
+          )}
       </div>
     </li>
   );
