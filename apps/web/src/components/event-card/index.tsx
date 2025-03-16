@@ -80,38 +80,6 @@ async function SignUpText({
     </span>
   );
 }
-interface QuotaProps {
-  quota: EventQuota;
-  isQuota: boolean;
-}
-
-async function HandleQuota(props: QuotaProps) {
-  const { quota, isQuota } = props;
-  const t = await getScopedI18n("ilmomasiina");
-
-  if (!isQuota) {
-    return (
-      <>
-        <span className="w-full">{t("Ei Ilmoittautumista")}</span>{" "}
-      </>
-    );
-  } else if (typeof quota.size === "number") {
-    return (
-      <>
-        <span className="w-1/2 truncate">{quota.title}</span>
-        <span className="w-1/2 text-right">
-          {quota.signupCount} / {quota.size}
-        </span>
-      </>
-    );
-  }
-  return (
-    <>
-      <span className="w-1/2 truncate">{quota.title}</span>
-      <span className="w-1/4 text-right">{quota.signupCount}</span>
-    </>
-  );
-}
 
 async function SignupQuotas({
   quotas,
@@ -149,7 +117,14 @@ async function SignupQuotas({
             className="flex w-full justify-between gap-4 whitespace-nowrap"
             key={quota.id}
           >
-            <HandleQuota quota={quota} isQuota={isQuota} />
+            <span className="w-1/2 truncate">{quota.title}</span>{" "}
+            {typeof quota.size === "number" ? (
+              <span className="w-1/2 text-right">
+                {quota.signupCount} / {quota.size}
+              </span>
+            ) : (
+              <span className="w-1/4 text-right">{quota.signupCount}</span>
+            )}
           </li>
         ))}
       </ul>
@@ -261,7 +236,7 @@ export async function EventCardCompact({
             className="ml-5 w-1/3 shrink-0"
             quotas={event.quotas.filter(
               (quota) =>
-                // Filter out quotas that are not meant for signups
+                // Filter out quotas that are not meant for general signups
                 !(
                   /järkkä|häry|häirintäyhdyshenkilö|lukka/i.test(quota.title) ||
                   (quota.size && quota.size <= 5)
