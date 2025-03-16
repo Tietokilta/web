@@ -247,7 +247,7 @@ export async function EventCardCompact({
         ) : (
           <span>
             <h3 className="text-right text-xl font-medium">
-              {t("Ei Ilmoittautumista")}
+              {t("Ei ilmoittautumista")}
             </h3>
           </span>
         )}

@@ -122,7 +122,7 @@ const en = {
   "ilmomasiina.Ilmoittautuminen": "Sign up",
   "ilmomasiina.Ilmoittautuneet": "Signed up",
   "ilmomasiina.Ilmoittautuneita": "Signed up",
-  "ilmomasiina.Ei Ilmoittautumista": "No Signup",
+  "ilmomasiina.Ei ilmoittautumista": "No Signup",
   "ilmomasiina.Piilotettu": "Hidden",
   "ilmomasiina.Vahvistamaton": "Unconfirmed",
   "ilmomasiina.Avoin kiintiö": "Open quota",
