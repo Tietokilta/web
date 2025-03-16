@@ -1,8 +1,6 @@
 import { getCurrentLocale, getScopedI18n } from "../../../locales/server";
 import type { RestaurantMenu, Food } from "../types/kanttiinit-types";
 import { fetchMenus } from "./fetcher";
-import type { Stop } from "@components/infoscreen/types/hsl-helper-types.ts";
-import { prop } from "remeda";
 
 interface MenuProps {
   menu: RestaurantMenu;
@@ -21,9 +19,7 @@ function MenuItem(menuProp: MenuProps) {
             <h3 className="text-xl font-bold">
               {food.title ? food.title : "Annos"}:
             </h3>
-            <p className="text-m">
-              {food.properties.map((property) => property + " ")}
-            </p>
+            <p className="text-m">{food.properties.join(" ")}</p>
             <div>
               <p className="ml-3 text-lg font-normal">{food.description}</p>
             </div>
@@ -36,7 +32,6 @@ function MenuItem(menuProp: MenuProps) {
 
 export async function KanttiinitCombined() {
   const locale = await getCurrentLocale();
-  const className = `shadow-solid shadow-black font-bold text-l rounded-md border-2 border-black p-3 font-mono text-gray-900 md:items-center`;
   const menus = await fetchMenus(locale);
   if (menus.length === 0) {
     return null;

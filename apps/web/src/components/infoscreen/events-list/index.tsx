@@ -20,9 +20,6 @@ export default async function EventListInfoscreen({
     ({ date, registrationStartDate, registrationEndDate }) => {
       const dateToUse =
         date ?? registrationStartDate ?? registrationEndDate ?? "";
-      if (getISOWeek(dateToUse) >= getISOWeek(new Date()) + 4) {
-        return "";
-      }
       return `${getISOWeekYear(dateToUse).toFixed()}-${getISOWeek(dateToUse).toFixed().padStart(2, "0")}`; // YYYY-VV
     },
   );
@@ -34,14 +31,13 @@ export default async function EventListInfoscreen({
       </h1>
       <ul className="flex flex-row flex-wrap">
         {Object.entries(upcomingEventsDataByWeek)
-          .filter(([key, value]) => value && value.length > 0)
           .filter(
             (
               e: [string, IlmomasiinaEvent[] | undefined],
             ): e is [string, IlmomasiinaEvent[]] => !!e[1],
           )
-          .filter(([weekYear]) => weekYear !== "")
           .sort((a, b) => a[0].localeCompare(b[0]))
+          .slice(0, 2)
           .map(([weekYear, eventsInWeek]) => {
             return (
               <div key={weekYear} className="flex w-1/2 flex-col p-1">

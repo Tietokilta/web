@@ -149,7 +149,7 @@ async function SignupQuotas({
   // Compact Mode is used on infoscreen
   if (compact) {
     return (
-      <ul className={cn(className + " text-xl")}>
+      <ul className={cn(className, "text-xl")}>
         <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
           <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
         </li>
