@@ -244,12 +244,13 @@ export async function EventCardCompact({
             )}
             compact
           />
-        ) :
-          (
-            <span>
-              <h3 className="text-xl text-right font-medium">{t("Ei Ilmoittautumista")}</h3>
-            </span>
-          )}
+        ) : (
+          <span>
+            <h3 className="text-right text-xl font-medium">
+              {t("Ei Ilmoittautumista")}
+            </h3>
+          </span>
+        )}
       </div>
     </li>
   );
