@@ -2,11 +2,14 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useCurrentLocale } from "@locales/client";
 import TiKLogo from "../../../assets/TiK-logo-white.png";
 
 const Clock = dynamic(() => import("react-live-clock"), { ssr: false });
 
 export function InfoScreenHeader() {
+  const locale = useCurrentLocale();
+
   return (
     <div className="flex h-[8.0rem] space-y-3 bg-black text-white">
       <Image
@@ -17,6 +20,7 @@ export function InfoScreenHeader() {
       />
       <div className="flex h-full flex-col">
         <Clock
+          locale={locale}
           format="HH:mm:ss"
           style={{
             color: "white",
@@ -28,6 +32,7 @@ export function InfoScreenHeader() {
           ticking
         />
         <Clock
+          locale={locale}
           format="Do MMMM"
           style={{
             color: "white",
