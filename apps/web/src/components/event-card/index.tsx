@@ -99,12 +99,6 @@ async function SignupQuotas({
 
   const isSingleQuota = quotas.length === 1;
 
-  const isQuota = !(
-    quotas.length === 1 &&
-    quotas[0].size === 20 &&
-    quotas[0].signupCount === 0
-  );
-
   // Compact Mode is used on infoscreen
   if (compact) {
     return (
