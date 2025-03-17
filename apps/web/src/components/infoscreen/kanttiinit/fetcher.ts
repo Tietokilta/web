@@ -85,17 +85,19 @@ const mapMenus = (restaurantMenus: DayMenuResponse): DayMenu[] => {
           return;
         }
         const foodDescription = formatFoods(foods);
-        return foodDescription === "" ? {
-            title: "",
-            id: foods[0].id,
-            properties: unique(foods.flatMap(({ properties }) => properties)),
-            description: prefix,
-        } : {
-            title: prefix,
-            id: foods[0].id,
-            properties: unique(foods.flatMap(({ properties }) => properties)),
-            description: foodDescription,
-          }
+        return foodDescription === ""
+          ? {
+              title: "",
+              id: foods[0].id,
+              properties: unique(foods.flatMap(({ properties }) => properties)),
+              description: prefix,
+            }
+          : {
+              title: prefix,
+              id: foods[0].id,
+              properties: unique(foods.flatMap(({ properties }) => properties)),
+              description: foodDescription,
+            };
       })
       .filter(isDefined)
       .sort((a, b) => -a.title.localeCompare(b.title));
