@@ -1,4 +1,4 @@
-import { getScopedI18n } from "../../../locales/server.ts";
+import { getScopedI18n } from "@locales/server.ts";
 import type { Stop, StopType } from "../types/hsl-helper-types.ts";
 import { HSLSchedules } from "./fetcher.ts";
 

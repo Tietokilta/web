@@ -1,4 +1,4 @@
-import { getCurrentLocale, getScopedI18n } from "../../../locales/server";
+import { getCurrentLocale, getScopedI18n } from "@locales/server.ts";
 import type { RestaurantMenu, Food } from "../types/kanttiinit-types";
 import { fetchMenus } from "./fetcher";
 

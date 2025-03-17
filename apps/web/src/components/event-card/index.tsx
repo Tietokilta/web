@@ -2,7 +2,7 @@ import Link from "next/link";
 import type {
   EventQuota,
   IlmomasiinaEvent,
-} from "../../lib/api/external/ilmomasiina";
+} from "@lib/api/external/ilmomasiina";
 import {
   cn,
   formatDateTime,
@@ -11,8 +11,8 @@ import {
   formatDateYearOptions,
   formatDatetimeYear,
   getLocalizedEventTitle,
-} from "../../lib/utils";
-import { getCurrentLocale, getScopedI18n } from "../../locales/server";
+} from "@lib/utils.ts";
+import { getCurrentLocale, getScopedI18n } from "@locales/server.ts";
 import { DateTime } from "../datetime";
 
 async function SignUpText({
