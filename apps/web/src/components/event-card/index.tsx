@@ -222,7 +222,9 @@ export async function EventCardCompact({
               (quota) =>
                 // Filter out quotas that are not meant for general signups
                 !(
-                  /järkkä|häry|häirintäyhdyshenkilö|lukka/i.test(quota.title) ||
+                  /järkkä|järjestä|häry|häirintäyhdyshenkilö|lukka/i.test(
+                    quota.title,
+                  ) ||
                   (quota.size && quota.size <= 5)
                 ),
             )}
