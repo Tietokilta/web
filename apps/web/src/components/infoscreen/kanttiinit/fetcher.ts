@@ -84,14 +84,21 @@ const mapMenus = (restaurantMenus: DayMenuResponse): DayMenu[] => {
         if (!foods?.length) {
           return;
         }
-        return {
-          title: prefix,
-          id: foods[0].id,
-          properties: unique(foods.flatMap(({ properties }) => properties)),
-          description: formatFoods(foods),
-        };
+        const foodDescription = formatFoods(foods);
+        return foodDescription === "" ? {
+            title: "",
+            id: foods[0].id,
+            properties: unique(foods.flatMap(({ properties }) => properties)),
+            description: prefix,
+        } : {
+            title: prefix,
+            id: foods[0].id,
+            properties: unique(foods.flatMap(({ properties }) => properties)),
+            description: foodDescription,
+          }
       })
-      .filter(isDefined);
+      .filter(isDefined)
+      .sort((a, b) => -a.title.localeCompare(b.title));
     return {
       date,
       foods: mappedFoods,
