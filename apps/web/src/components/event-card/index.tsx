@@ -126,16 +126,6 @@ async function SignupQuotas({
   }
 
   if (isSingleQuota) {
-    if (!isQuota) {
-      return (
-        <div className={className}>
-          <span className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
-            <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
-            <span className="w-1/4 text-left">Ei kiintiötä</span>
-          </span>
-        </div>
-      );
-    }
     return (
       <div className={className}>
         <span className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
