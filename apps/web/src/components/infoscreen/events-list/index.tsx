@@ -26,7 +26,7 @@ export default async function EventListInfoscreen({
 
   return (
     <main id="main" className="flex flex-col align-top">
-      <h1 className="my-6 text-center font-mono text-5xl font-bold">
+      <h1 className="mb-2 mt-4 text-center font-mono text-5xl font-bold">
         {t("ilmomasiina.Tapahtumat")}
       </h1>
       <ul className="flex flex-row flex-wrap">
@@ -37,13 +37,14 @@ export default async function EventListInfoscreen({
             ): e is [string, IlmomasiinaEvent[]] => !!e[1],
           )
           .sort((a, b) => a[0].localeCompare(b[0]))
+          .slice(0, 2)
           .map(([weekYear, eventsInWeek]) => {
             return (
-              <div key={weekYear} className="flex w-1/2 flex-col p-2 xl:w-1/3">
-                <span className="text-pretty py-2 text-center text-3xl font-bold">
+              <div key={weekYear} className="flex w-1/2 flex-col p-1">
+                <span className="text-pretty py-1 text-center text-3xl font-bold">
                   {t("calendar.Week")} {Number(weekYear.split("-")[1])}
                 </span>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-2">
                   {eventsInWeek.map((event) => {
                     return (
                       <EventCardCompact

@@ -1,6 +1,7 @@
 "use client";
 
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
+/* eslint-disable react/no-unknown-property -- there is a mismatch with eslint rule and TS */
 
 import {
   Button,

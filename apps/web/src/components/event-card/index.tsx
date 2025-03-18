@@ -2,7 +2,7 @@ import Link from "next/link";
 import type {
   EventQuota,
   IlmomasiinaEvent,
-} from "../../lib/api/external/ilmomasiina";
+} from "@lib/api/external/ilmomasiina";
 import {
   cn,
   formatDateTime,
@@ -11,8 +11,8 @@ import {
   formatDateYearOptions,
   formatDatetimeYear,
   getLocalizedEventTitle,
-} from "../../lib/utils";
-import { getCurrentLocale, getScopedI18n } from "../../locales/server";
+} from "@lib/utils.ts";
+import { getCurrentLocale, getScopedI18n } from "@locales/server.ts";
 import { DateTime } from "../datetime";
 
 async function SignUpText({
@@ -53,7 +53,6 @@ async function SignUpText({
         </span>
       );
     }
-
     return (
       <span className={className}>
         {t("Ilmo alkaa", {
@@ -103,7 +102,7 @@ async function SignupQuotas({
   // Compact Mode is used on infoscreen
   if (compact) {
     return (
-      <ul className={cn(className)}>
+      <ul className={cn(className, "text-xl")}>
         <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
           <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
         </li>
@@ -176,52 +175,66 @@ export async function EventCardCompact({
   let showSignupQuotas = true;
   const signupStartDate = event.registrationStartDate;
   const signupEndDate = event.registrationEndDate;
+  const hasSignup = event.registrationStartDate && event.registrationEndDate;
 
   if (event.registrationClosed === true || !signupEndDate || !signupStartDate) {
     showSignupQuotas = false;
   }
 
-  const t = await getScopedI18n("ilmomasiina.path");
+  const t = await getScopedI18n("ilmomasiina");
 
   const locale = await getCurrentLocale();
   return (
-    <li className="shadow-solid relative flex max-w-3xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4">
+    <li className="shadow-solid relative flex flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 px-3 py-1">
       <div className="flex flex-row justify-between">
         <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
           <Link
-            href={`/${locale}/${t("events")}/${event.slug}`}
+            href={`/${locale}/${t("path.events")}/${event.slug}`}
             className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline"
           >
-            <h2>
+            <h2 className="text-2xl">
               {getLocalizedEventTitle(event.title, locale)}
+              <br />
               {event.date ? (
-                <>
-                  {", "}
-                  <DateTime
-                    rawDate={event.date}
-                    defaultFormattedDate={formatDateTime(event.date, locale)}
-                    formatOptions={formatDateTimeOptions}
-                  />
-                </>
+                <DateTime
+                  rawDate={event.date}
+                  defaultFormattedDate={formatDateTime(event.date, locale)}
+                  formatOptions={formatDateTimeOptions}
+                  className="text-l font-normal"
+                />
               ) : null}
             </h2>
           </Link>
 
           {showSignupQuotas ? (
             <SignUpText
+              className="text-xl"
               endDate={event.registrationEndDate}
               startDate={event.registrationStartDate}
               compact
             />
           ) : null}
         </div>
-        {event.quotas.length > 0 && showSignup ? (
+        {event.quotas.length > 0 && showSignup && hasSignup ? (
           <SignupQuotas
             className="ml-5 w-1/3 shrink-0"
-            quotas={event.quotas}
+            quotas={event.quotas.filter(
+              (quota) =>
+                // Filter out quotas that are not meant for general signups
+                !(
+                  /järkkä|järjestä|häry|häirintäyhdyshenkilö|lukka/i.test(
+                    quota.title,
+                  ) ||
+                  (quota.size && quota.size <= 5)
+                ),
+            )}
             compact
           />
-        ) : null}
+        ) : (
+          <span>
+            <h3 className="text-xl font-medium">{t("Ei ilmoittautumista")}</h3>
+          </span>
+        )}
       </div>
     </li>
   );

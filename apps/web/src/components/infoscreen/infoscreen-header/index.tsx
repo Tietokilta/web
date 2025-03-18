@@ -2,37 +2,42 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { useCurrentLocale } from "@locales/client";
 import TiKLogo from "../../../assets/TiK-logo-white.png";
 
 const Clock = dynamic(() => import("react-live-clock"), { ssr: false });
 
 export function InfoScreenHeader() {
+  const locale = useCurrentLocale();
+
   return (
-    <div className="flex h-[6.0rem] space-y-2 bg-black text-white">
+    <div className="flex h-[8.0rem] space-y-3 bg-black text-white">
       <Image
         alt="Tietokilta"
-        className="size-[6.0rem] p-2"
+        className="size-[7.0rem] p-2"
         priority
         src={TiKLogo}
       />
       <div className="flex h-full flex-col">
         <Clock
+          locale={locale}
           format="HH:mm:ss"
           style={{
             color: "white",
-            fontSize: "2.0rem",
-            paddingLeft: "1rem",
+            fontSize: "2.5rem",
+            paddingLeft: "1.5rem",
             alignItems: "center",
           }}
           timezone="EET"
           ticking
         />
         <Clock
+          locale={locale}
           format="Do MMMM"
           style={{
             color: "white",
-            fontSize: "1.2rem",
-            paddingLeft: "1rem",
+            fontSize: "1.5rem",
+            paddingLeft: "2rem",
             alignItems: "center",
           }}
           ticking

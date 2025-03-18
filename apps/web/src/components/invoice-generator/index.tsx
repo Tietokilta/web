@@ -1,7 +1,5 @@
 "use client";
 
-/* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
-
 import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
 import { useFormStatus, requestFormReset } from "react-dom";
 import {

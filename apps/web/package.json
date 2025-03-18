@@ -7,6 +7,7 @@
     "clean": "rm -rf .next",
     "dev": "next dev --turbopack",
     "lint": "eslint  \"./src/**/*.{js,ts,jsx,tsx}\"",
+    "lint:fix": "eslint --fix  \"./src/**/*.{js,ts,jsx,tsx}\"",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },

@@ -42,9 +42,14 @@ const en = {
   "heading.Main navigation": "Main navigation",
   "heading.Upcoming events": "Upcoming events",
   "infoscreen.Ruokalistat": "Menus",
+  "infoscreen.allergeenit":
+    "A+ = Contains Allergens | L = Lactosefree | VL = low-lactose | G" +
+    " = Glutenfree | M = Milkfree | O+ = Contains" +
+    " garlic | VV = Vegan",
   "infoscreen.Bussit": "Buses",
   "infoscreen.Raide-Jokeri": "Raide-Jokeri (Tram)",
   "infoscreen.Metro": "Metro",
+  "infoscreen.Aalto-yliopisto": "Aalto-university",
   "invoicegenerator.Invoicer name": "Invoicer name",
   "invoicegenerator.Invoicer email": "Invoicer email",
   "invoicegenerator.Phone number": "Phone number",
@@ -122,6 +127,7 @@ const en = {
   "ilmomasiina.Ilmoittautuminen": "Sign up",
   "ilmomasiina.Ilmoittautuneet": "Signed up",
   "ilmomasiina.Ilmoittautuneita": "Signed up",
+  "ilmomasiina.Ei ilmoittautumista": "No Signup",
   "ilmomasiina.Piilotettu": "Hidden",
   "ilmomasiina.Vahvistamaton": "Unconfirmed",
   "ilmomasiina.Avoin kiintiö": "Open quota",
@@ -130,17 +136,17 @@ const en = {
   "ilmomasiina.path.all-events": "all-events",
   "ilmomasiina.all-events.Kaikki tapahtumat": "All events",
   "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
-  "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign ups start on {startDate}",
-  "ilmomasiina.status.Ilmo alkaa": "Sign ups start on {startDate}",
+  "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign up starts on {startDate}",
+  "ilmomasiina.status.Ilmo alkaa": "Sign up starts {startDate}",
   "ilmomasiina.status.Ilmoittautuminen auki":
     "Open for sign ups until {endDate}",
-  "ilmomasiina.status.Ilmo auki": "Open for sign ups until {endDate}",
-  "ilmomasiina.status.Ilmoittautuminen on päättynyt": "Sign ups have ended",
+  "ilmomasiina.status.Ilmo auki": "Sign up until {endDate}",
+  "ilmomasiina.status.Ilmoittautuminen on päättynyt": "Sign up has ended",
   "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
-    "Sign up information is not public",
-  "ilmomasiina.status.Jonossa": "{queueCount} in queue",
+    "Sign ups are not public",
+  "ilmomasiina.status.Jonossa": "{queueCount} in the queue",
   "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
-    "Event does not have sign ups",
+    "This event does not have sign ups",
   "ilmomasiina.Tapahtumat": "Events",
   "ilmomasiina.Tilaa kalenteri": "Subscribe to calendar",
   "ilmomasiina.Kopioidaan leikepöydälle": "Copying to clipboard",
