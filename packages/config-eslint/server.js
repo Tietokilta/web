@@ -1,15 +1,11 @@
 import js from "@eslint/js";
 import ts from "typescript-eslint";
-import { FlatCompat } from "@eslint/eslintrc";
-import vercelNode from "@vercel/style-guide/eslint/node";
-import vercelTypescript from "@vercel/style-guide/eslint/typescript";
-import { fixupConfigRules, fixupPluginRules } from "@eslint/compat";
+import { fixupPluginRules } from "@eslint/compat";
 import globals from "globals";
 import onlyWarn from "eslint-plugin-only-warn";
 import turbo from "eslint-plugin-turbo";
-import importPlugin from "eslint-plugin-import";
-
-const compat = new FlatCompat({ recommendedConfig: js.configs.recommended });
+import vercelNode from "./configs/node.js";
+import vercelTypescript from "./configs/typescript.js";
 
 /*
  * This is a custom ESLint configuration for use server side
@@ -19,10 +15,10 @@ const compat = new FlatCompat({ recommendedConfig: js.configs.recommended });
  * For more information, see https://github.com/vercel/style-guide
  */
 export default ts.config(
-  importPlugin.flatConfigs.recommended,
-  importPlugin.flatConfigs.typescript,
-  ...fixupConfigRules(compat.config(vercelNode)),
-  ...fixupConfigRules(compat.config(vercelTypescript)),
+  js.configs.recommended,
+  turbo.configs["flat/recommended"],
+  vercelNode,
+  vercelTypescript,
   {
     languageOptions: {
       globals: {
@@ -35,15 +31,7 @@ export default ts.config(
       },
     },
     plugins: {
-      turbo: fixupPluginRules(turbo),
       "only-warn": fixupPluginRules(onlyWarn),
-    },
-    settings: {
-      "import/resolver": {
-        typescript: {
-          project: true,
-        },
-      },
     },
   },
   {
@@ -51,7 +39,7 @@ export default ts.config(
   },
   {
     rules: {
-      "import/no-default-export": "off",
+      "import-x/no-default-export": "off",
       "no-unused-vars": [
         "warn",
         {
