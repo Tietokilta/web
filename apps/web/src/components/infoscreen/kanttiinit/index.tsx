@@ -65,7 +65,7 @@ export async function KanttiinitCombined() {
           ))}
         </div>
       </div>
-      <div className="absolute bottom-0 z-10 h-[5%] w-full content-center text-center align-text-bottom">
+      <div className="absolute inset-x-0 bottom-0 z-10 h-[5%] content-center text-center align-text-bottom">
         {t("allergeenit")}
       </div>
     </div>
