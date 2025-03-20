@@ -50,7 +50,6 @@
       "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
     },
     "patchedDependencies": {
-      "@vercel/style-guide": "patches/@vercel__style-guide.patch",
       "next-international": "patches/next-international.patch"
     },
     "packageExtensions": {
