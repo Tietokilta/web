@@ -11,20 +11,22 @@ function MenuItem(menuProp: MenuProps) {
   return (
     <div>
       {menuProp.menu.menus.map((dayMenu) =>
-        dayMenu.foods.map((food: Food, _) => (
-          <li
-            className={menuProp.className}
-            key={food.title + food.description}
-          >
-            <h3 className="text-xl font-bold">
-              {food.title ? food.title : "Annos"}:
-            </h3>
-            <p className="text-m">{food.properties.join(" ")}</p>
-            <div>
-              <p className="ml-3 text-lg font-normal">{food.description}</p>
-            </div>
-          </li>
-        )),
+        dayMenu.foods
+          .map((food: Food, _) => (
+            <li
+              className={menuProp.className}
+              key={food.title + food.description}
+            >
+              <h3 className="text-xl font-bold">
+                {food.title ? food.title : "Annos"}:
+              </h3>
+              <p className="text-m">{food.properties.join(" ")}</p>
+              <div>
+                <p className="ml-3 text-lg font-normal">{food.description}</p>
+              </div>
+            </li>
+          ))
+          .slice(0, 5),
       )}
     </div>
   );
