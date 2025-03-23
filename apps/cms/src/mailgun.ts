@@ -1,7 +1,8 @@
 // mailgun.ts
 
 import FormData from "form-data";
-import Mailgun, { type MessagesSendResult } from "mailgun.js";
+import Mailgun from "mailgun.js";
+import { type MessagesSendResult } from "mailgun.js/definitions";
 
 interface SendEmailOptions {
   subject: string;
