@@ -123,6 +123,7 @@ const fi = {
   "ilmomasiina.headers.Loppuu": "Loppuu",
   "ilmomasiina.headers.Nimi": "Nimi",
   "ilmomasiina.headers.Paikka": "Paikka",
+  "ilmomasiina.headers.Hinta": "Hinta",
   "ilmomasiina.headers.Sija": "Sija",
   "ilmomasiina.Ilmoittautuminen": "Ilmoittautuminen",
   "ilmomasiina.Ilmoittautuneet": "Ilmoittautuneet",
