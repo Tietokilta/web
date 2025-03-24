@@ -327,6 +327,12 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
           />
         </span>
       ) : null}
+      {event.location ? (
+        <span className="block">
+          <span className="font-medium">{t("Hinta")}:</span>{" "}
+          <span>{event.price}</span>
+        </span>
+      ) : null}
     </div>
   );
 }
