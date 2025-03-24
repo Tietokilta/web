@@ -123,6 +123,7 @@ const en = {
   "ilmomasiina.headers.Loppuu": "Ends",
   "ilmomasiina.headers.Nimi": "Name",
   "ilmomasiina.headers.Paikka": "Location",
+  "ilmomasiina.headers.Hinta": "Price",
   "ilmomasiina.headers.Sija": "Place",
   "ilmomasiina.Ilmoittautuminen": "Sign up",
   "ilmomasiina.Ilmoittautuneet": "Signed up",
