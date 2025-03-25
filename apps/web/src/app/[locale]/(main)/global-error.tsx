@@ -24,7 +24,7 @@ function GlobalError({
         >
           <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 text-gray-100 md:h-[25svh]">
             <h1 className="font-mono text-4xl md:text-5xl">
-              {t("Jotain meni pieleen")}
+              {t("Something went wrong")}
             </h1>
           </header>
 
@@ -32,13 +32,13 @@ function GlobalError({
             <Card className="max-w-prose">
               <p>
                 {t(
-                  "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
+                  "Oops, something went terribly wrong. Contact the site administrator. The error ID is",
                 )}{" "}
                 <code className="font-mono">{error.digest}</code>.
               </p>
             </Card>
             <Button onClick={reset} type="button">
-              {t("Yritä uudelleen")}
+              {t("Try again")}
             </Button>
           </div>
         </main>

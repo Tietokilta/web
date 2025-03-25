@@ -17,20 +17,18 @@ function Page() {
     >
       <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 text-gray-100 md:h-[25svh]">
         <h1 className="font-mono text-4xl md:text-5xl">
-          404 - {t("Tapahtumaa ei löytynyt")}
+          404 - {t("Event not found")}
         </h1>
       </header>
 
       <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
         <Card className="max-w-prose">
           <p>
-            {t(
-              "Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.",
-            )}
+            {t("Event not found. Check the URL or return to the event list")}
           </p>
         </Card>
         <Button asChild variant="link">
-          <Link href="/">{t("Tapahtumalistaukseen")}</Link>
+          <Link href="/">{t("To event list")}</Link>
         </Button>
         <DinoGame />
       </div>

@@ -17,7 +17,7 @@ function Page() {
     >
       <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 text-gray-100 md:h-[25svh]">
         <h1 className="font-mono text-4xl md:text-5xl">
-          404 - {t("Ilmoittautumista ei löytynyt")}
+          404 - {t("Sign up not found")}
         </h1>
       </header>
 
@@ -25,12 +25,12 @@ function Page() {
         <Card className="max-w-prose">
           <p>
             {t(
-              "Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.",
+              "Sign up not found or the edit token was invalid. Check the URL or return to the event list",
             )}
           </p>
         </Card>
         <Button asChild variant="link">
-          <Link href="/">{t("Tapahtumalistaukseen")}</Link>
+          <Link href="/">{t("To event list")}</Link>
         </Button>
         <DinoGame />
       </div>

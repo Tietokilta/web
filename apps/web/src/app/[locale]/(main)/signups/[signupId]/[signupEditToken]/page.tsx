@@ -44,7 +44,10 @@ export default async function Page(props: PageProps) {
 
   const signupInfo = await getSignup(signupId, signupEditToken);
 
-  if (!signupInfo.ok && signupInfo.error === "ilmomasiina-signup-not-found") {
+  if (
+    !signupInfo.ok &&
+    signupInfo.error === "Sign up not found. Please check the URL"
+  ) {
     notFound();
   }
 

@@ -140,13 +140,17 @@ export const fetchEvents = async (
       },
     });
     if (!response.ok) {
-      return err("ilmomasiina-fetch-fail");
+      return err(
+        "Failed to fetch events from Ilmomasiina. Please try again later",
+      );
     }
     const data = (await response.json()) as IlmomasiinaResponse;
 
     return ok(data);
   } catch (_) {
-    return err("ilmomasiina-fetch-fail");
+    return err(
+      "Failed to fetch events from Ilmomasiina. Please try again later",
+    );
   }
 };
 
@@ -186,16 +190,20 @@ export const fetchEvent = async (
     });
     if (!response.ok) {
       if (response.status === 404) {
-        return err("ilmomasiina-event-not-found");
+        return err("Event not found. Please check the URL");
       }
 
-      return err("ilmomasiina-fetch-fail");
+      return err(
+        "Failed to fetch events from Ilmomasiina. Please try again later",
+      );
     }
     const data = (await response.json()) as IlmomasiinaEvent;
 
     return ok(data);
   } catch (_) {
-    return err("ilmomasiina-fetch-fail");
+    return err(
+      "Failed to fetch events from Ilmomasiina. Please try again later",
+    );
   }
 };
 
@@ -216,22 +224,26 @@ export const getSignup = async (
 
     if (!response.ok) {
       if (response.status === 404) {
-        return err("ilmomasiina-signup-not-found");
+        return err("Sign up not found. Please check the URL");
       }
 
       if (response.status === 403) {
         // invalid edit token
-        return err("ilmomasiina-signup-not-found");
+        return err("Sign up not found. Please check the URL");
       }
 
-      return err("ilmomasiina-fetch-fail");
+      return err(
+        "Failed to fetch events from Ilmomasiina. Please try again later",
+      );
     }
 
     const data = (await response.json()) as IlmomasiinaSignupInfoResponse;
 
     return ok(data);
   } catch (_) {
-    return err("ilmomasiina-fetch-fail");
+    return err(
+      "Failed to fetch events from Ilmomasiina. Please try again later",
+    );
   }
 };
 
@@ -249,15 +261,19 @@ export const deleteSignUp = async (
 
     if (!response.ok) {
       if (response.status === 404) {
-        return err("ilmomasiina-signup-not-found");
+        return err("Sign up not found. Please check the URL");
       }
 
-      return err("ilmomasiina-fetch-fail");
+      return err(
+        "Failed to fetch events from Ilmomasiina. Please try again later",
+      );
     }
 
     return ok("ok");
   } catch (_) {
-    return err("ilmomasiina-fetch-fail");
+    return err(
+      "Failed to fetch events from Ilmomasiina. Please try again later",
+    );
   }
 };
 
@@ -286,7 +302,7 @@ export const patchSignUp = async (
 
     if (!response.ok) {
       if (response.status === 404) {
-        return err("ilmomasiina-signup-not-found");
+        return err("Sign up not found. Please check the URL");
       }
 
       const errorData = (await response.json()) as IlmomasiinaErrorResponse;
@@ -298,18 +314,22 @@ export const patchSignUp = async (
         errorData.message.startsWith("Invalid answer") ||
         errorData.message.startsWith("Missing answer")
       ) {
-        return err("ilmomasiina-validation-failed", {
+        return err("Validation failed. Please check the form", {
           originalError: errorData,
         });
       }
 
-      return err("ilmomasiina-fetch-fail");
+      return err(
+        "Failed to fetch events from Ilmomasiina. Please try again later",
+      );
     }
 
     const data = (await response.json()) as { id: string };
 
     return ok(data);
   } catch (_) {
-    return err("ilmomasiina-fetch-fail");
+    return err(
+      "Failed to fetch events from Ilmomasiina. Please try again later",
+    );
   }
 };

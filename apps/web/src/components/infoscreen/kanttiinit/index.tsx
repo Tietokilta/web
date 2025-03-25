@@ -45,7 +45,7 @@ export async function KanttiinitCombined() {
       <div className="h-[95%] w-full flex-row justify-center">
         <div className="flex w-full justify-center">
           <h1 className="mb-1 mt-2 text-center font-mono text-5xl font-bold">
-            {t("Ruokalistat")}
+            {t("Menus")}
           </h1>
         </div>
         <div className="top-3 flex w-full justify-between gap-x-4 gap-y-2 p-3 pt-0">
@@ -68,7 +68,7 @@ export async function KanttiinitCombined() {
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 z-10 h-[5%] content-center text-center align-text-bottom">
-        {t("allergeenit")}
+        {t("Allergen information")}
       </div>
     </div>
   );

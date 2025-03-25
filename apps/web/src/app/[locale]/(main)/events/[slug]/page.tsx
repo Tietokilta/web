@@ -44,7 +44,9 @@ async function SignUpText({
   const t = await getScopedI18n("ilmomasiina.status");
   if (!startDate || !endDate) {
     return (
-      <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
+      <span className={className}>
+        {t("This event does not have sign ups")}
+      </span>
     );
   }
 
@@ -52,15 +54,13 @@ async function SignUpText({
   const hasEnded = new Date(endDate) < new Date();
 
   if (hasStarted && hasEnded) {
-    return (
-      <span className={className}>{t("Ilmoittautuminen on päättynyt")}</span>
-    );
+    return <span className={className}>{t("Sign up has ended")}</span>;
   }
 
   if (hasStarted && !hasEnded) {
     return (
       <span className={className}>
-        {t("Ilmoittautuminen auki", {
+        {t("Open for sign ups until", {
           endDate: formatDatetimeYear(endDate, locale),
         })}
       </span>
@@ -69,7 +69,7 @@ async function SignUpText({
 
   return (
     <span className={className}>
-      {t("Ilmoittautuminen alkaa", {
+      {t("Sign up starts on date", {
         startDate: formatDatetimeYear(startDate, locale),
       })}
     </span>
@@ -148,7 +148,7 @@ async function SignUpRow({
           </span>
         ) : (
           <span className="italic">
-            {signup.confirmed ? t("Piilotettu") : t("Vahvistamaton")}
+            {signup.confirmed ? t("Hidden") : t("Unconfirmed")}
           </span>
         )}
       </td>
@@ -195,12 +195,12 @@ async function SignUpTable({
   const t = await getScopedI18n("ilmomasiina");
 
   if (!signupsPublic) {
-    return <p>{t("status.Ilmoittautumistiedot eivät ole julkisia")}</p>;
+    return <p>{t("status.Sign ups are not public")}</p>;
   }
 
   const signups = quota.signups ?? [];
   if (signups.length === 0) {
-    return <p>{t("status.Ei ilmoittautuneita vielä")}</p>;
+    return <p>{t("status.No sign ups yet")}</p>;
   }
 
   const isOpenQuota = quota.id === OPEN_QUOTA_ID;
@@ -213,10 +213,10 @@ async function SignUpTable({
         <thead>
           <tr className="bg-gray-200">
             <th className="rounded-tl-md border-b border-gray-900 p-2">
-              {t("headers.Sija")}
+              {t("headers.Place")}
             </th>
             <th className="border-b border-gray-900 p-2">
-              {t("headers.Nimi")}
+              {t("headers.Name")}
             </th>
             {publicQuestions.map((question) => (
               <th key={question.id} className="border-b border-gray-900 p-2">
@@ -225,11 +225,11 @@ async function SignUpTable({
             ))}
             {isGeneratedQuota ? (
               <th className="border-b border-gray-900 p-2">
-                {t("headers.Kiintiö")}
+                {t("headers.Quota")}
               </th>
             ) : null}
             <th className="rounded-tr-md border-b border-gray-900 p-2">
-              {t("headers.Ilmoittautumisaika")}
+              {t("headers.Sign up time")}
             </th>
           </tr>
         </thead>
@@ -270,7 +270,7 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
   return (
     <div className="space-y-4">
       <h2 className="font-mono text-xl font-semibold text-gray-900">
-        {t("Ilmoittautuneet")}
+        {t("Signed up participants")}
       </h2>
       <ul className="space-y-16">
         {quotasWithOpenAndQueue.map((quota) => (
@@ -297,19 +297,19 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
     <div className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
       {event.category ? (
         <span className="block">
-          <span className="font-medium">{t("Kategoria")}:</span>{" "}
+          <span className="font-medium">{t("Category")}:</span>{" "}
           <span>{event.category}</span>
         </span>
       ) : null}
       {event.location ? (
         <span className="block">
-          <span className="font-medium">{t("Paikka")}:</span>{" "}
+          <span className="font-medium">{t("Location")}:</span>{" "}
           <span>{event.location}</span>
         </span>
       ) : null}
       {event.date ? (
         <span className="block">
-          <span className="font-medium">{t("Alkaa")}:</span>{" "}
+          <span className="font-medium">{t("Starts")}:</span>{" "}
           <DateTime
             rawDate={event.date}
             defaultFormattedDate={formatDatetimeYear(event.date, locale)}
@@ -319,7 +319,7 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
       ) : null}
       {event.endDate ? (
         <span className="block">
-          <span className="font-medium">{t("Loppuu")}:</span>{" "}
+          <span className="font-medium">{t("Ends")}:</span>{" "}
           <DateTime
             rawDate={event.endDate}
             defaultFormattedDate={formatDatetimeYear(event.endDate, locale)}
@@ -329,7 +329,7 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
       ) : null}
       {event.price ? (
         <span className="block">
-          <span className="font-medium">{t("Hinta")}:</span>{" "}
+          <span className="font-medium">{t("Price")}:</span>{" "}
           <span>{event.price}</span>
         </span>
       ) : null}
@@ -345,21 +345,21 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina");
 
   const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize, {
-    openQuotaName: t("Avoin kiintiö"),
-    queueQuotaName: t("Jonossa"),
+    openQuotaName: t("Open quota"),
+    queueQuotaName: t("In queue"),
   });
 
   return (
     <Card className="max-w-prose space-y-4">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
-        {t("Ilmoittautuneet")}
+        {t("Signed up participants")}
       </h2>
       <ul className="flex flex-col gap-2">
         {quotas.map((quota) => (
           <li key={quota.id} className="contents">
             {quota.id === QUEUE_QUOTA_ID ? (
               <span>
-                {t("status.Jonossa", {
+                {t("status.Queue count", {
                   queueCount: quota.signupCount,
                 })}
               </span>
@@ -401,7 +401,7 @@ async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
   return (
     <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
-        {t("Ilmoittautuminen")}
+        {t("Sign up")}
       </h2>
       <SignUpText
         className="block"
@@ -449,7 +449,7 @@ export default async function Page(props: PageProps) {
 
   const event = await fetchEvent(slug);
   const t = await getScopedI18n("action");
-  if (!event.ok && event.error === "ilmomasiina-event-not-found") {
+  if (!event.ok && event.error === "Event not found. Please check the URL") {
     notFound();
   }
 

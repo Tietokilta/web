@@ -21,7 +21,7 @@ const stopName = async (type: StopType) => {
     case "tram":
       return t("Raide-Jokeri");
     case "bus":
-      return t("Bussit");
+      return t("Buses");
   }
 };
 interface HSLScheduleProps {
@@ -69,7 +69,7 @@ export async function HSLcombinedSchedule() {
     <div className="w-full flex-row justify-center">
       <div className="flex w-full justify-center">
         <h1 className="flex justify-center pt-4 text-4xl font-bold">
-          {t("Aalto-yliopisto")}
+          {t("Aalto University")}
         </h1>
       </div>
       <div className="flex w-full justify-between gap-4 p-8 pt-0">

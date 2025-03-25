@@ -18,38 +18,38 @@ const fi = {
   "action.Sign up": "Ilmoittaudu",
   "action.Skip to main content": "Siirry pääsisältöön",
   "action.Toggle menu": "Avaa valikko",
-  "error.Hups, jotain meni pieleen.": "Hups, jotain meni pieleen.",
-  "error.Jotain meni pieleen": "Jotain meni pieleen",
-  "error.Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
+  "error.Oops, something went wrong": "Hups, jotain meni pieleen.",
+  "error.Something went wrong": "Jotain meni pieleen",
+  "error.Oops, something went terribly wrong. Contact the site administrator. The error ID is":
     "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
-  "error.Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
+  "error.Oops, something went wrong. Contact the site administrator. The error ID is":
     "Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
-  "error.Yritä uudelleen": "Yritä uudelleen",
-  "errors.ilmomasiina-event-not-found":
+  "error.Try again": "Yritä uudelleen",
+  "errors.Event not found. Please check the URL":
     "Tapahtumaa ei löytynyt, tarkista osoite.",
-  "errors.ilmomasiina-fetch-fail":
+  "errors.Failed to fetch events from Ilmomasiina. Please try again later":
     "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
-  "errors.ilmomasiina-ilmo-missing-quota-id":
+  "errors.Invalid request. Please try again":
     "Virheellinen pyyntö, yritä uudelleen.",
-  "errors.ilmomasiina-signup-not-found":
+  "errors.Sign up not found. Please check the URL":
     "Ilmoittautumista ei löytynyt, tarkista osoite.",
-  "errors.ilmomasiina-unknown-error":
+  "errors.An unknown error occurred. Please try again later":
     "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
-  "errors.ilmomasiina-validation-failed":
+  "errors.Validation failed. Please check the form":
     "Validointi epäonnistui. Tarkista lomake.",
   "generic.Page": "Sivu",
   "generic.Version": "Versio",
   "heading.Main navigation": "Päävalikko",
   "heading.Upcoming events": "Tulevat tapahtumat",
-  "infoscreen.Ruokalistat": "Ruokalistat",
-  "infoscreen.allergeenit":
+  "infoscreen.Menus": "Ruokalistat",
+  "infoscreen.Allergen information":
     "A+ = Sisältää Allergeenejä | L = Laktoositon | VL = Vähälaktoosinen | G" +
     "        = Gluteeniton | M = Maidoton | O+ = Sisältää" +
     "        valkosipulia | VV = Vegaaninen",
-  "infoscreen.Bussit": "Bussit",
+  "infoscreen.Buses": "Bussit",
   "infoscreen.Raide-Jokeri": "Raide-Jokeri",
   "infoscreen.Metro": "Metro",
-  "infoscreen.Aalto-yliopisto": "Aalto-yliopisto",
+  "infoscreen.Aalto University": "Aalto-yliopisto",
   "invoicegenerator.Invoicer name": "Laskuttajan nimi",
   "invoicegenerator.Invoicer email": "Laskuttajan sähköpostiosoite",
   "invoicegenerator.Phone number": "Puhelinnumero",
@@ -116,55 +116,54 @@ const fi = {
   "ilmomasiina.form.This action cannot be undone.":
     "Tätä toimintoa ei voi perua.",
   "ilmomasiina.form.Cancel": "Peruuta",
-  "ilmomasiina.headers.Alkaa": "Alkaa",
-  "ilmomasiina.headers.Ilmoittautumisaika": "Ilmoittautumisaika",
-  "ilmomasiina.headers.Kategoria": "Kategoria",
-  "ilmomasiina.headers.Kiintiö": "Kiintiö",
-  "ilmomasiina.headers.Loppuu": "Loppuu",
-  "ilmomasiina.headers.Nimi": "Nimi",
-  "ilmomasiina.headers.Paikka": "Paikka",
-  "ilmomasiina.headers.Hinta": "Hinta",
-  "ilmomasiina.headers.Sija": "Sija",
-  "ilmomasiina.Ilmoittautuminen": "Ilmoittautuminen",
-  "ilmomasiina.Ilmoittautuneet": "Ilmoittautuneet",
-  "ilmomasiina.Ilmoittautuneita": "Ilmoittautuneita",
-  "ilmomasiina.Ei ilmoittautumista": "Ei ilmoittautumista",
-  "ilmomasiina.Piilotettu": "Piilotettu",
-  "ilmomasiina.Vahvistamaton": "Vahvistamaton",
-  "ilmomasiina.Avoin kiintiö": "Avoin kiintiö",
-  "ilmomasiina.Jonossa": "Jonossa",
+  "ilmomasiina.headers.Starts": "Alkaa",
+  "ilmomasiina.headers.Sign up time": "Ilmoittautumisaika",
+  "ilmomasiina.headers.Category": "Kategoria",
+  "ilmomasiina.headers.Quota": "Kiintiö",
+  "ilmomasiina.headers.Ends": "Loppuu",
+  "ilmomasiina.headers.Name": "Nimi",
+  "ilmomasiina.headers.Location": "Paikka",
+  "ilmomasiina.headers.Price": "Hinta",
+  "ilmomasiina.headers.Place": "Sija",
+  "ilmomasiina.Sign up": "Ilmoittautuminen",
+  "ilmomasiina.Signed up participants": "Ilmoittautuneet",
+  "ilmomasiina.Number of signups": "Ilmoittautuneita",
+  "ilmomasiina.No signup": "Ei ilmoittautumista",
+  "ilmomasiina.Hidden": "Piilotettu",
+  "ilmomasiina.Unconfirmed": "Vahvistamaton",
+  "ilmomasiina.Open quota": "Avoin kiintiö",
+  "ilmomasiina.In queue": "Jonossa",
   "ilmomasiina.path.events": "tapahtumat",
   "ilmomasiina.path.all-events": "kaikki-tapahtumat",
-  "ilmomasiina.all-events.Kaikki tapahtumat": "Kaikki tapahtumat",
-  "ilmomasiina.status.Ei ilmoittautuneita vielä": "Ei ilmoittautuneita vielä.",
-  "ilmomasiina.status.Ilmoittautuminen alkaa":
+  "ilmomasiina.all-events.All events": "Kaikki tapahtumat",
+  "ilmomasiina.status.No sign ups yet": "Ei ilmoittautuneita vielä.",
+  "ilmomasiina.status.Sign up starts on date":
     "Ilmoittautuminen alkaa {startDate}",
-  "ilmomasiina.status.Ilmo alkaa": "Ilmo alkaa {startDate}",
-  "ilmomasiina.status.Ilmoittautuminen auki":
+  "ilmomasiina.status.Sign up starts": "Ilmo alkaa {startDate}",
+  "ilmomasiina.status.Open for sign ups until":
     "Ilmoittautuminen auki {endDate} asti",
-  "ilmomasiina.status.Ilmo auki": "Ilmo auki {endDate} asti",
-  "ilmomasiina.status.Ilmoittautuminen on päättynyt":
-    "Ilmoittautuminen on päättynyt",
-  "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
+  "ilmomasiina.status.Sign up until": "Ilmo auki {endDate} asti",
+  "ilmomasiina.status.Sign up has ended": "Ilmoittautuminen on päättynyt",
+  "ilmomasiina.status.Sign ups are not public":
     "Ilmoittautumistiedot eivät ole julkisia.",
-  "ilmomasiina.status.Jonossa": "Jonossa {queueCount}",
-  "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
+  "ilmomasiina.status.Queue count": "Jonossa {queueCount}",
+  "ilmomasiina.status.This event does not have sign ups":
     "Tapahtumaan ei voi ilmoittautua",
-  "ilmomasiina.Tapahtumat": "Tapahtumat",
-  "ilmomasiina.Tilaa kalenteri": "Tilaa kalenteri",
-  "ilmomasiina.Kopioidaan leikepöydälle": "Kopioidaan leikepöydälle",
-  "ilmomasiina.Kopioitu leikepöydälle": "Kopioitu leikepöydälle",
-  "ilmomasiina.Selaa vanhoja tapahtumia": "Selaa vanhoja tapahtumia",
-  "not-found.Etusivulle": "Etusivulle",
-  "not-found.Tapahtumalistaukseen": "Tapahtumalistaukseen",
-  "not-found.Sivua ei löytynyt": "Sivua ei löytynyt",
-  "not-found.Tapahtumaa ei löytynyt": "Tapahtumaa ei löytynyt",
-  "not-found.Ilmoittautumista ei löytynyt": "Ilmoit­tau­tumista ei löytynyt",
-  "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
+  "ilmomasiina.Events": "Tapahtumat",
+  "ilmomasiina.Subscribe to calendar": "Tilaa kalenteri",
+  "ilmomasiina.Copying to clipboard": "Kopioidaan leikepöydälle",
+  "ilmomasiina.Copied to clipboard": "Kopioitu leikepöydälle",
+  "ilmomasiina.Browse old events": "Selaa vanhoja tapahtumia",
+  "not-found.To front page": "Etusivulle",
+  "not-found.To event list": "Tapahtumalistaukseen",
+  "not-found.Page not found": "Sivua ei löytynyt",
+  "not-found.Event not found": "Tapahtumaa ei löytynyt",
+  "not-found.Sign up not found": "Ilmoit­tau­tumista ei löytynyt",
+  "not-found.Page not found. Check the URL or return to the front page":
     "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.",
-  "not-found.Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.":
+  "not-found.Event not found. Check the URL or return to the event list":
     "Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.",
-  "not-found.Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.":
+  "not-found.Sign up not found or the edit token was invalid. Check the URL or return to the event list":
     "Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.",
   "weeklyNewsletter.ayy-aalto": "AYY & Aalto",
   "weeklyNewsletter.bottom-corner": "Pohjanurkkaus",
