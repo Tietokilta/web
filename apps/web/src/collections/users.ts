@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-export const Users: CollectionConfig = {
+export const Users = {
   slug: "users",
   auth: {
     useAPIKey: true,
@@ -9,4 +9,4 @@ export const Users: CollectionConfig = {
     useAsTitle: "email",
   },
   fields: [],
-};
+} as const satisfies CollectionConfig;

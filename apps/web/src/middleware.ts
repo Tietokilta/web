@@ -14,10 +14,10 @@ const i18nMiddleware = createI18nMiddleware({
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
   const pathnameHasCMSPath =
-    pathname.startsWith("/admin") ||
+    // pathname.startsWith("/admin") ||
     pathname.startsWith("/media") ||
     pathname.startsWith("/documents") ||
-    pathname.startsWith("/api") ||
+    // pathname.startsWith("/api") ||
     pathname.startsWith("/oauth2");
   if (pathnameHasCMSPath) {
     const destination = new URL(process.env.PUBLIC_SERVER_URL ?? "");
@@ -33,6 +33,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next|next_api|static|favicon.ico|icon.svg|icon_dark.png|icon_light.png|og-image.png|robots.txt|payload).*)",
+    "/((?!_next|next_api|static|favicon.ico|icon.svg|icon_dark.png|icon_light.png|og-image.png|robots.txt|payload|admin|api).*)",
   ],
 };
