@@ -10,6 +10,7 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { buildConfig } from "payload";
 import { azureStorage } from "@payloadcms/storage-azure";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
+import { isDefined } from "remeda";
 import type { Config } from "@payload-types";
 import { Users } from "./collections/users";
 import { Pages } from "./collections/pages";
@@ -50,7 +51,6 @@ declare module "payload" {
 const {
   GOOGLE_OAUTH_CLIENT_ID,
   GOOGLE_OAUTH_CLIENT_SECRET,
-  MONGODB_URI,
   PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
   AZURE_MEDIA_STORAGE_CONTAINER_NAME,
@@ -67,6 +67,13 @@ export default buildConfig({
     autoLogin: {
       // email: "root@tietokilta.fi",
       // password: "root",
+    },
+    components: {
+      beforeLogin: [
+        isGoogleAuthEnabled()
+          ? "/src/components/admin-sign-up-button#OAuthButton"
+          : undefined,
+      ].filter(isDefined),
     },
   },
   collections: [
@@ -141,8 +148,8 @@ export default buildConfig({
       serverURL: PUBLIC_FRONTEND_URL ?? "",
       clientId: GOOGLE_OAUTH_CLIENT_ID ?? "",
       clientSecret: GOOGLE_OAUTH_CLIENT_SECRET ?? "",
-      authorizePath: "/api/oauth/google/authorize",
-      callbackPath: "/api/oauth/google/callback",
+      authorizePath: "/oauth/google/authorize",
+      callbackPath: "/oauth/google/callback",
       authCollection: Users.slug,
       tokenEndpoint: "https://oauth2.googleapis.com/token",
       providerAuthorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth",
@@ -153,7 +160,7 @@ export default buildConfig({
       ],
       getUserInfo: async (accessToken, _req) => {
         const response = await fetch(
-          "https://www.googleapis.com/oauth2/v4/userinfo",
+          "https://www.googleapis.com/oauth2/v3/userinfo",
           { headers: { Authorization: `Bearer ${accessToken}` } },
         );
         const user = await response.json();
