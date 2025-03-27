@@ -22,6 +22,13 @@ export const Media = {
       : undefined,
     // For audio and _especially_ video, please redirect to using something like YouTube
     mimeTypes: ["image/*"],
+    // workaround for https://github.com/payloadcms/payload/issues/7624
+    modifyResponseHeaders({ headers }) {
+      if (headers.get("content-type") === "application/xml") {
+        headers.set("content-type", "image/svg+xml; charset=utf-8");
+      }
+      return headers;
+    },
   },
   fields: [
     {
