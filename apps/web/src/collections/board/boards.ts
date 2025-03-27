@@ -27,11 +27,11 @@ export const Boards = {
       name: "year",
       required: true,
     }),
-    // {
-    //   name: "groupPhoto",
-    //   type: "relationship",
-    //   relationTo: "media",
-    // },
+    {
+      name: "groupPhoto",
+      type: "relationship",
+      relationTo: "media",
+    },
     {
       name: "boardMembers",
       type: "array",

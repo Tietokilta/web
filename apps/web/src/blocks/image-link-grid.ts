@@ -12,13 +12,13 @@ export const ImageLinkGrid = {
       name: "images",
       type: "array",
       fields: [
-        // {
-        //   name: "image",
-        //   type: "upload",
-        //   relationTo: "media",
-        //   required: true,
-        //   displayPreview: true,
-        // },
+        {
+          name: "image",
+          type: "upload",
+          relationTo: "media",
+          required: true,
+          displayPreview: true,
+        },
         {
           name: "caption",
           type: "text",

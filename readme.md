@@ -13,7 +13,6 @@ Prerequisites:
 - [Node.js](https://nodejs.org/en/), usage of [fnm](https://github.com/Schniz/fnm) or [nvm](https://github.com/nvm-sh/nvm) recommended
 - [Docker](https://www.docker.com/) and docker-compose
 - [MongoDB Database Tools](https://www.mongodb.com/docs/database-tools/installation/installation/) (for seeding the dev-db).
-- [bun](https://bun.sh/) (for scripts that seed the dev-db & fetch uploads from prod).
 
   NOTE: make sure you are installing MongoDB Database Tools, not something else, the documentation for Linux is quite wonky.
 

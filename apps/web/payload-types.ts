@@ -447,6 +447,7 @@ export interface BoardMember {
     | '1988'
     | '1987'
     | '1986';
+  photo?: (string | null) | Media;
   name: string;
   title: string;
   email?: string | null;
@@ -502,6 +503,7 @@ export interface Board {
     | '1988'
     | '1987'
     | '1986';
+  groupPhoto?: (string | null) | Media;
   boardMembers: {
     boardMember?: (string | null) | BoardMember;
     id?: string | null;
@@ -557,6 +559,7 @@ export interface CommitteeMember {
     | '1988'
     | '1987'
     | '1986';
+  photo?: (string | null) | Media;
   name: string;
   title: string;
   chair?: boolean | null;
@@ -670,6 +673,8 @@ export interface MagazineIssue {
     | '1987'
     | '1986';
   issueNumber: number;
+  file: string | Document;
+  thumbnail: string | Media;
   /**
    * Optional name to be displayed after issue number and year. Mainly used for older Alkorytmi issues.
    */
@@ -736,19 +741,12 @@ export interface News {
 export interface User {
   id: string;
   sub?: string | null;
+  email: string;
   updatedAt: string;
   createdAt: string;
   enableAPIKey?: boolean | null;
   apiKey?: string | null;
   apiKeyIndex?: string | null;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  password?: string | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -888,6 +886,7 @@ export interface AwardedHonor {
 export interface Partner {
   id: string;
   name: string;
+  logo: string | Media;
   status: 'partner' | 'mainPartner' | 'inactive';
   externalLink: string;
   updatedAt: string;
@@ -1086,6 +1085,7 @@ export interface TopicsSelect<T extends boolean = true> {
  */
 export interface BoardMembersSelect<T extends boolean = true> {
   guildYear?: T;
+  photo?: T;
   name?: T;
   title?: T;
   email?: T;
@@ -1100,6 +1100,7 @@ export interface BoardMembersSelect<T extends boolean = true> {
  */
 export interface BoardsSelect<T extends boolean = true> {
   year?: T;
+  groupPhoto?: T;
   boardMembers?:
     | T
     | {
@@ -1116,6 +1117,7 @@ export interface BoardsSelect<T extends boolean = true> {
 export interface CommitteeMembersSelect<T extends boolean = true> {
   displayTitle?: T;
   guildYear?: T;
+  photo?: T;
   name?: T;
   title?: T;
   chair?: T;
@@ -1149,6 +1151,8 @@ export interface MagazineIssuesSelect<T extends boolean = true> {
   title?: T;
   year?: T;
   issueNumber?: T;
+  file?: T;
+  thumbnail?: T;
   name?: T;
   textIssueNumber?: T;
   updatedAt?: T;
@@ -1253,6 +1257,7 @@ export interface AwardedHonorsSelect<T extends boolean = true> {
  */
 export interface PartnersSelect<T extends boolean = true> {
   name?: T;
+  logo?: T;
   status?: T;
   externalLink?: T;
   updatedAt?: T;
@@ -1264,18 +1269,12 @@ export interface PartnersSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   sub?: T;
+  email?: T;
   updatedAt?: T;
   createdAt?: T;
   enableAPIKey?: T;
   apiKey?: T;
   apiKeyIndex?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1338,6 +1337,7 @@ export interface SponsorLogoRowBlock {
   title: string;
   logos?:
     | {
+        image: string | Media;
         link: string;
         id?: string | null;
       }[]
@@ -1357,6 +1357,7 @@ export interface LandingPage {
     id?: string | null;
   }[];
   heroImages: {
+    image?: (string | null) | Media;
     id?: string | null;
   }[];
   eventsListPage: string | Page;
@@ -1385,6 +1386,7 @@ export interface LandingPage {
  */
 export interface MainNavigation {
   id: string;
+  logo: string | Media;
   items: MainNavigationItem;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -1504,6 +1506,7 @@ export interface SponsorLogoRowBlockSelect<T extends boolean = true> {
   logos?:
     | T
     | {
+        image?: T;
         link?: T;
         id?: T;
       };
@@ -1524,6 +1527,7 @@ export interface LandingPageSelect<T extends boolean = true> {
   heroImages?:
     | T
     | {
+        image?: T;
         id?: T;
       };
   eventsListPage?: T;
@@ -1538,6 +1542,7 @@ export interface LandingPageSelect<T extends boolean = true> {
  * via the `definition` "main-navigation_select".
  */
 export interface MainNavigationSelect<T extends boolean = true> {
+  logo?: T;
   items?: T | MainNavigationItemSelect<T>;
   updatedAt?: T;
   createdAt?: T;

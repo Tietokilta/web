@@ -1,6 +1,5 @@
-import type { CollectionConfig, FieldHook } from "payload";
+import type { CollectionConfig, FieldHook, type PayloadHandler  } from "payload";
 import type { CommitteeMember } from "@tietokilta/cms-types/payload";
-import { type PayloadHandler } from "payload";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
@@ -47,11 +46,11 @@ export const CommitteeMembers = {
       name: "guildYear",
       required: true,
     }),
-    // {
-    //   name: "photo",
-    //   type: "relationship",
-    //   relationTo: "media",
-    // },
+    {
+      name: "photo",
+      type: "relationship",
+      relationTo: "media",
+    },
     {
       name: "name",
       type: "text",

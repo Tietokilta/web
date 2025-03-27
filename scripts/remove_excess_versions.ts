@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node --experimental-strip-types
 import assert from "assert";
 import { readdirSync, readFileSync, writeFileSync } from "fs";
 import path from "path";

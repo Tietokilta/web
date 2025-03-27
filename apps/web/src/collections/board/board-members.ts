@@ -20,11 +20,11 @@ export const BoardMembers = {
       name: "guildYear",
       required: true,
     }),
-    // {
-    //   name: "photo",
-    //   type: "relationship",
-    //   relationTo: "media",
-    // },
+    {
+      name: "photo",
+      type: "relationship",
+      relationTo: "media",
+    },
     {
       name: "name",
       type: "text",

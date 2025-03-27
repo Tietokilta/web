@@ -49,18 +49,18 @@ export const MagazineIssues: CollectionConfig = {
       type: "number",
       required: true,
     },
-    // {
-    //   name: "file",
-    //   type: "relationship",
-    //   relationTo: "documents",
-    //   required: true,
-    // },
-    // {
-    //   name: "thumbnail",
-    //   type: "relationship",
-    //   relationTo: "media",
-    //   required: true,
-    // },
+    {
+      name: "file",
+      type: "relationship",
+      relationTo: "documents",
+      required: true,
+    },
+    {
+      name: "thumbnail",
+      type: "relationship",
+      relationTo: "media",
+      required: true,
+    },
     {
       name: "name",
       type: "text",

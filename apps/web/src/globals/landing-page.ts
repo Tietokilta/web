@@ -37,11 +37,11 @@ export const LandingPage: GlobalConfig = {
       required: true,
       minRows: 1,
       fields: [
-        // {
-        //   name: "image",
-        //   type: "relationship",
-        //   relationTo: "media",
-        // },
+        {
+          name: "image",
+          type: "relationship",
+          relationTo: "media",
+        },
       ],
     },
     {

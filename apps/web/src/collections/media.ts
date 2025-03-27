@@ -17,9 +17,8 @@ export const Media = {
     group: "Other",
   },
   upload: {
-    // staticURL: "/media",
     staticDir: !isCloudStorageEnabled()
-      ? "media" // new URL("../../uploads/media", import.meta.url).pathname
+      ? "uploads/api/media/file" // new URL("../../uploads/media", import.meta.url).pathname
       : undefined,
     // For audio and _especially_ video, please redirect to using something like YouTube
     mimeTypes: ["image/*"],

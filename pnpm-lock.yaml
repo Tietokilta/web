@@ -92,6 +92,9 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
         version: 0.6.11(prettier@3.5.3)
+      tsx:
+        specifier: ^4.19.3
+        version: 4.19.3
       turbo:
         specifier: ^2.4.4
         version: 2.4.4
@@ -246,6 +249,9 @@ importers:
       '@types/react-dom':
         specifier: npm:types-react-dom@19.0.0-rc.1
         version: types-react-dom@19.0.0-rc.1
+      dotenv:
+        specifier: ^16.4.7
+        version: 16.4.7
       eslint:
         specifier: 'catalog:'
         version: 9.23.0(jiti@1.21.7)
@@ -11446,7 +11452,6 @@ snapshots:
       get-tsconfig: 4.10.0
     optionalDependencies:
       fsevents: 2.3.3
-    optional: true
 
   turbo-darwin-64@2.4.4:
     optional: true
