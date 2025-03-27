@@ -110,6 +110,9 @@ importers:
       '@date-fns/tz':
         specifier: ^1.2.0
         version: 1.2.0
+      '@payloadcms/admin-bar':
+        specifier: ^3.31.0
+        version: 3.31.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@payloadcms/db-mongodb':
         specifier: ^3.30.0
         version: 3.30.0(@aws-sdk/credential-providers@3.768.0)(payload@3.30.0(graphql@16.9.0)(typescript@5.8.2))(socks@2.8.4)
@@ -1452,6 +1455,12 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@payloadcms/admin-bar@3.31.0':
+    resolution: {integrity: sha512-XmrlTj58Y0BhlU0am3vCGe8rlcRHMamxHVcte7l4NpnLP/YiQkV8uFPsC+COqrHf0RH+FSQdNihwWYdccx7u6Q==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@payloadcms/db-mongodb@3.30.0':
     resolution: {integrity: sha512-cQKu/9uaB6W0digavMjbHYbqh324wMH1crZrHkTqGXk/7bW8yJBjXd0Dg3wTrFYLUlM/s5/o5u8ESBQbDVWxdw==}
@@ -6827,6 +6836,11 @@ snapshots:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
+
+  '@payloadcms/admin-bar@3.31.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   '@payloadcms/db-mongodb@3.30.0(@aws-sdk/credential-providers@3.768.0)(payload@3.30.0(graphql@16.9.0)(typescript@5.8.2))(socks@2.8.4)':
     dependencies:
