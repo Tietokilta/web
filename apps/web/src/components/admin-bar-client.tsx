@@ -1,6 +1,6 @@
 "use client";
 
-// import { PayloadAdminBar } from "payload-admin-bar";
+import { PayloadAdminBar } from "@payloadcms/admin-bar";
 
 export function AdminBarClient({
   isPreviewMode,
@@ -17,23 +17,16 @@ export function AdminBarClient({
   };
 
   return (
-    <>
-      {isPreviewMode ? (
-        <div className="fixed top-20 z-20 w-full bg-red-500 p-2 text-center text-white">
-          This is a draft preview
-        </div>
-      ) : null}
-      {/* <PayloadAdminBar
-        className="bottom-0"
-        cmsURL={process.env.PUBLIC_SERVER_URL ?? window.location.origin}
-        collection={collection}
-        id={id}
-        onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:
-        preview={isPreviewMode}
-        style={{
-          top: "auto",
-        }}
-      /> */}
-    </>
+    <PayloadAdminBar
+      className="bottom-0"
+      cmsURL={process.env.PUBLIC_SERVER_URL ?? window.location.origin}
+      collectionSlug={collection}
+      id={id}
+      onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:
+      preview={isPreviewMode}
+      style={{
+        top: "auto",
+      }}
+    />
   );
 }

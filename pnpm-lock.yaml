@@ -110,6 +110,9 @@ importers:
       '@date-fns/tz':
         specifier: ^1.2.0
         version: 1.2.0
+      '@payloadcms/admin-bar':
+        specifier: ^3.45.0
+        version: 3.45.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@payloadcms/db-mongodb':
         specifier: ^3.45.0
         version: 3.45.0(@aws-sdk/credential-providers@3.768.0)(payload@3.45.0(graphql@16.9.0)(typescript@5.8.3))(socks@2.8.4)
@@ -1647,6 +1650,12 @@ packages:
   '@nodelib/fs.walk@1.2.8':
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
+
+  '@payloadcms/admin-bar@3.45.0':
+    resolution: {integrity: sha512-nBcm+1NR8iYAfpu+3UAEAb1rW6Umd+AREAce608EwhZ2CzQfi8+QkOroo4ouPgWhewzhWkac5mfk2VI6Gt794A==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@payloadcms/db-mongodb@3.45.0':
     resolution: {integrity: sha512-Oahk6LJatrQW2+DG0OoSoaWnXSiJ2iBL+2l5WLD2xvRHOlJ3Ls1gUZCrsDItDe8veqwVGSLrMc7gxDwDaMICvg==}
@@ -7223,6 +7232,11 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
+  '@payloadcms/admin-bar@3.45.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
   '@payloadcms/db-mongodb@3.45.0(@aws-sdk/credential-providers@3.768.0)(payload@3.45.0(graphql@16.9.0)(typescript@5.8.3))(socks@2.8.4)':
     dependencies:
       mongoose: 8.15.1(@aws-sdk/credential-providers@3.768.0)(socks@2.8.4)
@@ -9823,7 +9837,7 @@ snapshots:
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.3
-      debug: 4.4.0
+      debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
 
@@ -9832,7 +9846,7 @@ snapshots:
   https-proxy-agent@7.0.6:
     dependencies:
       agent-base: 7.1.3
-      debug: 4.4.0
+      debug: 4.4.1
     transitivePeerDependencies:
       - supports-color
 
