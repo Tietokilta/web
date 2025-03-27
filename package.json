@@ -21,6 +21,7 @@
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
     "lint:fix": "turbo run lint:fix",
+    "payload": "dotenv -- pnpm -F web payload",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/cms/uploads"
@@ -32,6 +33,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-packagejson": "^2.5.10",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "tsx": "^4.19.3",
     "turbo": "^2.4.4",
     "typescript": "catalog:"
   },

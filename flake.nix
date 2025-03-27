@@ -11,55 +11,54 @@
     extra-substituters = "https://devenv.cachix.org";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    devenv,
-    systems,
-    ...
-  } @ inputs: let
-    forEachSystem = nixpkgs.lib.genAttrs (import systems);
-  in {
-    packages = forEachSystem (system: {
-      devenv-up = self.devShells.${system}.default.config.procfileScript;
-      devenv-test = self.devShells.${system}.default.config.test;
-    });
-
-    devShells =
-      forEachSystem
-      (system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-        bun = pkgs.bun.overrideAttrs (oldAttrs: {
-          buildInputs = oldAttrs.buildInputs or [] ++ [pkgs.makeWrapper];
-          postInstall =
-            oldAttrs.postInstall
-            or ""
-            + ''
-              wrapProgram $out/bin/bun \
-                --set LD_LIBRARY_PATH "${pkgs.stdenv.cc.cc.lib}/lib/:$LD_LIBRARY_PATH"
-            '';
-        });
-      in {
-        default = devenv.lib.mkShell {
-          inherit inputs pkgs;
-          modules = [
-            {
-              packages = with pkgs; [bash mongodb-tools docker bun];
-
-              # FIXME: this is only required within the dev container
-              enterShell = ''
-                export PATH="$PATH:/usr/local/bin"
-              '';
-
-              languages.javascript = {
-                enable = true;
-                package = pkgs.nodejs-slim_22;
-                pnpm.enable = true;
-                pnpm.install.enable = true;
-              };
-            }
-          ];
-        };
+  outputs =
+    {
+      self,
+      nixpkgs,
+      devenv,
+      systems,
+      ...
+    }@inputs:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+    in
+    {
+      packages = forEachSystem (system: {
+        devenv-up = self.devShells.${system}.default.config.procfileScript;
+        devenv-test = self.devShells.${system}.default.config.test;
       });
-  };
+
+      devShells = forEachSystem (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          default = devenv.lib.mkShell {
+            inherit inputs pkgs;
+            modules = [
+              {
+                packages = with pkgs; [
+                  bash
+                  mongodb-tools
+                  docker
+                ];
+
+                # FIXME: this is only required within the dev container
+                enterShell = ''
+                  export PATH="$PATH:/usr/local/bin"
+                '';
+
+                languages.javascript = {
+                  enable = true;
+                  package = pkgs.nodejs-slim_22;
+                  pnpm.enable = true;
+                  pnpm.install.enable = true;
+                };
+              }
+            ];
+          };
+        }
+      );
+    };
 }
