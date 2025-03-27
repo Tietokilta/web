@@ -2,6 +2,7 @@
 // notice that the hook itself is not async and we are not awaiting `revalidate`
 
 import type { GlobalAfterChangeHook } from "payload";
+import { SELF_URL } from "../util";
 
 // only revalidate existing docs that are published (not drafts)
 export const revalidateGlobal: GlobalAfterChangeHook = ({
@@ -19,7 +20,7 @@ export const revalidateGlobal: GlobalAfterChangeHook = ({
     }
     try {
       const fetchUrl = `${
-        process.env.PUBLIC_FRONTEND_URL ?? ""
+        SELF_URL
       }/next_api/revalidate-global?${new URLSearchParams({
         secret: encodeURIComponent(revalidationKey),
         globalSlug: encodeURIComponent(global.slug),

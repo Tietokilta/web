@@ -1,5 +1,8 @@
 import type { PayloadRequest } from "payload";
 
+// for internal requests
+export const SELF_URL = `http://localhost:${process.env.PORT ?? String(3000)}`;
+
 export const isCloudStorageEnabled = (): boolean => {
   return (
     typeof process.env.AZURE_STORAGE_CONNECTION_STRING === "string" &&
