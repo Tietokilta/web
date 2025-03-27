@@ -1,5 +1,6 @@
 import type { Config } from "@tietokilta/cms-types/payload";
 import type { CollectionAfterChangeHook, TypeWithID } from "payload";
+import { SELF_URL } from "../util";
 
 type CollectionSlug = keyof Config["collections"];
 
@@ -33,7 +34,7 @@ export function revalidateCollection<T extends TypeWithID>(
 
     const revalidate = async (): Promise<void> => {
       try {
-        const fetchUrl = `${process.env.PUBLIC_FRONTEND_URL ?? ""}/next_api/revalidate-collection?${new URLSearchParams(
+        const fetchUrl = `${SELF_URL}/next_api/revalidate-collection?${new URLSearchParams(
           {
             secret: encodeURIComponent(revalidationKey),
             collectionSlug: encodeURIComponent(collectionSlug),

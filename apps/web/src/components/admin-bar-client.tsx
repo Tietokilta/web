@@ -19,7 +19,7 @@ export function AdminBarClient({
   return (
     <PayloadAdminBar
       className="bottom-0"
-      cmsURL={process.env.PUBLIC_SERVER_URL ?? window.location.origin}
+      cmsURL={process.env.PUBLIC_FRONTEND_URL ?? window.location.origin}
       collectionSlug={collection}
       id={id}
       onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:

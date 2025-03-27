@@ -56,17 +56,23 @@ const {
   AZURE_MEDIA_STORAGE_CONTAINER_NAME,
   AZURE_STORAGE_ACCOUNT_BASEURL,
   AZURE_STORAGE_ALLOW_CONTAINER_CREATE,
+  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL,
+  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD,
   PAYLOAD_SECRET,
 } = process.env;
-
+const autoLogin =
+  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL &&
+  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD
+    ? {
+        email: PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL,
+        password: PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD,
+      }
+    : undefined;
 export default buildConfig({
   telemetry: false,
   admin: {
     user: Users.slug,
-    autoLogin: {
-      // email: "root@tietokilta.fi",
-      // password: "root",
-    },
+    autoLogin,
     components: {
       beforeLogin: [
         isGoogleAuthEnabled()
@@ -249,5 +255,57 @@ export default buildConfig({
     MissingFile: "trace",
     QueryError: "trace",
     ValidationError: "trace",
+  },
+  onInit: async (payloadInstance) => {
+    payloadInstance.logger.info(
+      `Payload Admin URL: ${payloadInstance.getAdminURL()}`,
+    );
+    if (isCloudStorageEnabled()) {
+      payloadInstance.logger.info("Using Azure Blob Storage");
+    }
+    if (isGoogleAuthEnabled()) {
+      payloadInstance.logger.info("Using Google OAuth2");
+    }
+    const { PAYLOAD_DEFAULT_USER_EMAIL, PAYLOAD_DEFAULT_USER_PASSWORD } =
+      process.env;
+    if (PAYLOAD_DEFAULT_USER_EMAIL && PAYLOAD_DEFAULT_USER_PASSWORD) {
+      const email = PAYLOAD_DEFAULT_USER_EMAIL;
+      const password = PAYLOAD_DEFAULT_USER_PASSWORD;
+      if (!email || !password) {
+        payloadInstance.logger.warn(
+          `PAYLOAD_DEFAULT_USER_EMAIL and PAYLOAD_DEFAULT_USER_PASSWORD are not set, first user has to be created manually through the admin panel`,
+        );
+      }
+      // check if the user exists, if not, create it
+      const user = await payloadInstance.find({
+        collection: "users",
+        where: { email: { equals: email } },
+      });
+      if (user.totalDocs === 0) {
+        payloadInstance.logger.warn(`user ${email} not found, creating...`);
+        if (process.env.NODE_ENV !== "production") {
+          payloadInstance.logger.warn(
+            "NOTE that it is recommended to use the seeding scripts (`pnpm db:reset`) to a get filled database for local development",
+          );
+        }
+        await payloadInstance.create({
+          collection: "users",
+          data: {
+            email,
+            password,
+          },
+        });
+      } else {
+        payloadInstance.logger.info(
+          `user ${email} found, resetting password...`,
+        );
+        const defaultUser = user.docs[0];
+        await payloadInstance.update({
+          collection: "users",
+          id: defaultUser.id,
+          data: { password },
+        });
+      }
+    }
   },
 });

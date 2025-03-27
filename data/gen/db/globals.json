@@ -106,10 +106,6 @@
 								"id": "6649f37d37278626f9ad0ade"
 							},
 							{
-								"page": "66d5761df4b4aa2302c4d4d1",
-								"id": "66d57a85889699faab48d566"
-							},
-							{
 								"page": "6548f21ed7febb86e2235f5f",
 								"id": "6649fa58ba32ea9e030583e1"
 							},
@@ -120,6 +116,24 @@
 						],
 						"externalLinks": [],
 						"id": "6649ea3437278626f9ad0ad9"
+					},
+					{
+						"title": {
+							"fi": "Vapaa-aika",
+							"en": "Free Time"
+						},
+						"pages": [
+							{
+								"page": "6838c7eb39007240c65825aa",
+								"id": "6839a42591ff012032b0d34a"
+							},
+							{
+								"page": "66d5761df4b4aa2302c4d4d1",
+								"id": "6839ace91d045ade4ded0223"
+							}
+						],
+						"externalLinks": [],
+						"id": "6839a40191ff012032b0d349"
 					},
 					{
 						"title": {
@@ -260,9 +274,9 @@
 									"fi": "Anonyymi lomake",
 									"en": "Anonymous Form"
 								},
-								"href": "https://tietokilta.fi/fi/yhdenvertaisuus/hairintalomake",
+								"href": "https://tietokilta.fi/yhdenvertaisuus/hairintalomake",
 								"icon": "Megaphone",
-								"id": "68017a2b8ed4fd66732b69fc"
+								"id": "681906eb1fb1f9774b46df7f"
 							}
 						],
 						"id": "680177cf8ed4fd66732b69f1"
@@ -277,16 +291,29 @@
 		"$date": "2023-11-06T14:05:51.452Z"
 	},
 	"updatedAt": {
-		"$date": "2025-04-19T00:28:11.706Z"
+		"$date": "2025-06-14T13:15:02.647Z"
 	},
 	"__v": 0,
-	"logo": "6648fdcf7bcfaaff24ed661e"
+	"logo": "684d75d3caa653b36b8325fe"
 },
 {
 	"_id": {
 		"$oid": "6548f4ab88334626ab27fb53"
 	},
 	"layout": [
+		{
+			"title": {
+				"fi": "Pääyhteistyökumppanit",
+				"en": "Main Partners"
+			},
+			"size": "large",
+			"types": [
+				"mainPartner"
+			],
+			"id": "68081c83ddea3747c428e51d",
+			"blockName": "Main Partners",
+			"blockType": "partners-row"
+		},
 		{
 			"showLabel": true,
 			"links": [
@@ -382,22 +409,6 @@
 			"id": "6548f48f854a99217b8fbd38",
 			"blockName": "Social Media",
 			"blockType": "link-row"
-		},
-		{
-			"title": {
-				"fi": "Pääyhteistyökumppanit",
-				"en": "Main Partners"
-			},
-			"logos": [
-				{
-					"image": "66f1906d5a8ded0f0198d8b0",
-					"link": "https://www.smartly.io/",
-					"id": "659b007aca4e3224a4f5750d"
-				}
-			],
-			"id": "659afc2cf080efa8fb14e6a2",
-			"blockName": "Sponsor Logos",
-			"blockType": "logo-row"
 		}
 	],
 	"globalType": "footer",
@@ -405,7 +416,7 @@
 		"$date": "2023-11-06T14:14:03.116Z"
 	},
 	"updatedAt": {
-		"$date": "2025-04-18T23:35:10.292Z"
+		"$date": "2025-04-22T22:48:09.341Z"
 	},
 	"__v": 0
 },
@@ -938,6 +949,54 @@
 			{
 				"text": "@Helppovoitto",
 				"id": "67f26535b581ce782231a957"
+			},
+			{
+				"text": "Tietokilta on wapun virallinen ykköskilta!",
+				"id": "681754c42df2cab8921a5f2c"
+			},
+			{
+				"text": "BROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+				"id": "6817552b2df2cab8921a5f2d"
+			},
+			{
+				"text": "Tietokilta trallalla!",
+				"id": "6817553a2df2cab8921a5f2e"
+			},
+			{
+				"text": "Touhukasta touhupäivää!",
+				"id": "681755632df2cab8921a5f2f"
+			},
+			{
+				"text": "error: higher-ranked lifetime error",
+				"id": "68186b09b6090803b189bd39"
+			},
+			{
+				"text": "git commit -am \"temp :D\"",
+				"id": "68186b4bb6090803b189bd3a"
+			},
+			{
+				"text": "Barendregtin λ-kuutio",
+				"id": "68186b6eb6090803b189bd3b"
+			},
+			{
+				"text": "Ootko kuullu Nixistä?",
+				"id": "68188f7470132f65b3281bdf"
+			},
+			{
+				"text": "tung tung tung SAHUR!",
+				"id": "6836164812f7f27a696f646f"
+			},
+			{
+				"text": "Trallalero trallala",
+				"id": "6836172612f7f27a696f6470"
+			},
+			{
+				"text": "Lirili Larila",
+				"id": "6836173312f7f27a696f6471"
+			},
+			{
+				"text": "Mikko Juusti Turbo Buusti",
+				"id": "6836173b12f7f27a696f6472"
 			}
 		],
 		"en": [
@@ -1184,6 +1243,18 @@
 			{
 				"text": "Join System Seven!",
 				"id": "66d35dc0f229ab45aa8dc5e0"
+			},
+			{
+				"text": "git commit -am \"temp :D\"",
+				"id": "68186c6cb6090803b189bd3c"
+			},
+			{
+				"text": "error: higher-ranked lifetime error",
+				"id": "68186c76b6090803b189bd3d"
+			},
+			{
+				"text": "Have you heard about Nix?",
+				"id": "68188f4670132f65b3281bde"
 			}
 		]
 	},
@@ -1315,7 +1386,7 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://kide.app/memberships/1af614ae-8333-48b6-83bf-bcc935c676b2",
+									"url": "https://kide.app/memberships/d02a0158-0410-455b-a187-a110b893bd28",
 									"newTab": true,
 									"linkType": "custom"
 								}
@@ -1471,7 +1542,7 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://kide.app/memberships/1af614ae-8333-48b6-83bf-bcc935c676b2",
+									"url": "https://kide.app/memberships/d02a0158-0410-455b-a187-a110b893bd28",
 									"newTab": true,
 									"linkType": "custom"
 								}
@@ -1547,10 +1618,34 @@
 		"$date": "2024-01-16T09:27:53.776Z"
 	},
 	"updatedAt": {
-		"$date": "2025-04-06T11:28:36.59Z"
+		"$date": "2025-05-31T18:20:14.742Z"
 	},
 	"__v": 0,
-	"announcement": "67d6a86f9f25f672bc8e17d0",
+	"announcement": "664880df217a8925c3715f29",
 	"eventsListPage": "663cda58864517dbe569a395"
+},
+{
+	"_id": {
+		"$oid": "68081c50b6f824ce1d67c691"
+	},
+	"showKanttiinit": true,
+	"showEvents": true,
+	"showHSL": true,
+	"additionalIframes": [
+		{
+			"IframeUrl": "https://wappupixel.paitsiossa.net/benchwarmer",
+			"IframeTitle": "Wappu Pixel",
+			"enabled": false,
+			"id": "68081c54ddea3747c428e51c"
+		}
+	],
+	"globalType": "info-screen",
+	"createdAt": {
+		"$date": "2025-04-22T22:46:40.383Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-30T13:34:05.005Z"
+	},
+	"__v": 0
 }]
 

@@ -21,6 +21,7 @@
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
     "lint:fix": "turbo run lint:fix",
+    "payload": "dotenv -- pnpm -F web payload",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/cms/uploads"
@@ -53,13 +54,6 @@
     },
     "patchedDependencies": {
       "next-international": "patches/next-international.patch"
-    },
-    "packageExtensions": {
-      "payload-plugin-oauth@2.2.0": {
-        "peerDependencies": {
-          "@types/passport-oauth2": "^1.4.17"
-        }
-      }
     }
   }
 }

@@ -1,23 +1,11 @@
 import { withPayload } from "@payloadcms/next/withPayload";
 
-const isProd = process.env.NODE_ENV === "production";
 const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    // TODO: only for dev:
-    remotePatterns: !isProd
-      ? [
-          {
-            protocol: "http",
-            hostname: "localhost",
-            port: process.env.PAYLOAD_PORT,
-            pathname: "/media/**",
-          },
-        ]
-      : undefined,
     minimumCacheTTL: 3600,
     contentDispositionType: "inline",
   },

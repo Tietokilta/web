@@ -4,7 +4,6 @@ import path from "node:path";
 import fs from "node:fs";
 import payloadInit from "payload";
 import dotenv from "dotenv";
-import config from "../payload.config";
 
 const __dirname = import.meta.dirname;
 
@@ -54,7 +53,7 @@ if (collectionsToImport.length === 0) {
 const importUploads = async (): Promise<void> => {
   // stupid hack because of stupidness https://github.com/payloadcms/payload/issues/5282
   const payload = await payloadInit.init({
-    config,
+    config: (await import("../payload.config")).default,
   });
   async function syncUploadCollectionUploads(
     collection: "media" | "documents",
@@ -69,7 +68,10 @@ const importUploads = async (): Promise<void> => {
     for (const item of items.docs) {
       console.log(item.filename);
       if (item.url) {
-        const itemPath = path.resolve(__dirname, `../../uploads/${item.url}`);
+        const itemPath = path.resolve(
+          __dirname,
+          `../../uploads/${decodeURI(item.url)}`,
+        );
         if (!fs.existsSync(itemPath)) {
           console.log(`${itemType} missing!`);
           const itemWebsiteUrl = prodUrl + item.url;

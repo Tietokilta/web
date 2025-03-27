@@ -1,12 +1,12 @@
 import type { CollectionConfig } from "payload";
+import { isGoogleAuthEnabled } from "../util";
 
 export const Users = {
   slug: "users",
   auth: {
     useAPIKey: true,
-    // Google OAuth
     loginWithUsername: false,
-    disableLocalStrategy: true,
+    disableLocalStrategy: isGoogleAuthEnabled() ? true : undefined,
   },
   admin: {
     useAsTitle: "email",
