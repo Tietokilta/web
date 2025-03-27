@@ -69,7 +69,10 @@ const importUploads = async (): Promise<void> => {
     for (const item of items.docs) {
       console.log(item.filename);
       if (item.url) {
-        const itemPath = path.resolve(__dirname, `../../uploads/${item.url}`);
+        const itemPath = path.resolve(
+          __dirname,
+          `../../uploads/${decodeURI(item.url)}`,
+        );
         if (!fs.existsSync(itemPath)) {
           console.log(`${itemType} missing!`);
           const itemWebsiteUrl = prodUrl + item.url;

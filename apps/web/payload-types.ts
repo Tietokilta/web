@@ -13,50 +13,50 @@
 export type LinkRowBlockLink =
   | {
       icon:
-        | "AlertOctagon"
-        | "AlertTriangle"
-        | "AtSign"
-        | "Banknote"
-        | "BookMarked"
-        | "BriefcaseBusiness"
-        | "ChevronDown"
-        | "Chevronleft"
-        | "ChevronRight"
-        | "ChevronsUpDown"
-        | "ChevronUp"
-        | "Circle"
-        | "Clock"
-        | "ExternalLink"
-        | "Facebook"
-        | "File"
-        | "Gavel"
-        | "Github"
-        | "Gmail"
-        | "HelpCircle"
-        | "Image"
-        | "Inbox"
-        | "Instagram"
-        | "Languages"
-        | "Linkedin"
-        | "Mail"
-        | "MapPin"
-        | "Megaphone"
-        | "Menu"
-        | "MoreHorizontal"
-        | "PaperAirplane"
-        | "Phone"
-        | "Telegram"
-        | "TikLogo"
-        | "Tiktok"
-        | "X"
-        | "NavGuild"
-        | "NavFuksis"
-        | "NavCompanies"
-        | "NavEvents"
-        | "NavApplicants"
-        | "Handshake";
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'Mail'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'PaperAirplane'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake';
       label: string;
-      linkType?: ("external" | "internal") | null;
+      linkType?: ('external' | 'internal') | null;
       url?: string | null;
       page?: (string | null) | Page;
       id?: string | null;
@@ -67,7 +67,7 @@ export type LinkRowBlockLink =
  * via the `definition` "MainNavigationItem".
  */
 export type MainNavigationItem = {
-  type?: ("page" | "topic") | null;
+  type?: ('page' | 'topic') | null;
   pageConfig?: {
     page: string | Page;
   };
@@ -81,53 +81,53 @@ export type MainNavigationItem = {
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-  | "Pacific/Midway"
-  | "Pacific/Niue"
-  | "Pacific/Honolulu"
-  | "Pacific/Rarotonga"
-  | "America/Anchorage"
-  | "Pacific/Gambier"
-  | "America/Los_Angeles"
-  | "America/Tijuana"
-  | "America/Denver"
-  | "America/Phoenix"
-  | "America/Chicago"
-  | "America/Guatemala"
-  | "America/New_York"
-  | "America/Bogota"
-  | "America/Caracas"
-  | "America/Santiago"
-  | "America/Buenos_Aires"
-  | "America/Sao_Paulo"
-  | "Atlantic/South_Georgia"
-  | "Atlantic/Azores"
-  | "Atlantic/Cape_Verde"
-  | "Europe/London"
-  | "Europe/Berlin"
-  | "Africa/Lagos"
-  | "Europe/Athens"
-  | "Africa/Cairo"
-  | "Europe/Moscow"
-  | "Asia/Riyadh"
-  | "Asia/Dubai"
-  | "Asia/Baku"
-  | "Asia/Karachi"
-  | "Asia/Tashkent"
-  | "Asia/Calcutta"
-  | "Asia/Dhaka"
-  | "Asia/Almaty"
-  | "Asia/Jakarta"
-  | "Asia/Bangkok"
-  | "Asia/Shanghai"
-  | "Asia/Singapore"
-  | "Asia/Tokyo"
-  | "Asia/Seoul"
-  | "Australia/Brisbane"
-  | "Australia/Sydney"
-  | "Pacific/Guam"
-  | "Pacific/Noumea"
-  | "Pacific/Auckland"
-  | "Pacific/Fiji";
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
 
 export interface Config {
   auth: {
@@ -139,22 +139,22 @@ export interface Config {
     media: Media;
     documents: Document;
     topics: Topic;
-    "board-members": BoardMember;
+    'board-members': BoardMember;
     boards: Board;
-    "committee-members": CommitteeMember;
+    'committee-members': CommitteeMember;
     committees: Committee;
-    "magazine-issues": MagazineIssue;
+    'magazine-issues': MagazineIssue;
     magazines: Magazine;
     news: News;
-    "weekly-newsletters": WeeklyNewsletter;
-    "news-items": NewsItem;
+    'weekly-newsletters': WeeklyNewsletter;
+    'news-items': NewsItem;
     honors: Honor;
-    "awarded-honors": AwardedHonor;
+    'awarded-honors': AwardedHonor;
     partners: Partner;
     users: User;
-    "payload-locked-documents": PayloadLockedDocument;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
@@ -162,49 +162,39 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     documents: DocumentsSelect<false> | DocumentsSelect<true>;
     topics: TopicsSelect<false> | TopicsSelect<true>;
-    "board-members": BoardMembersSelect<false> | BoardMembersSelect<true>;
+    'board-members': BoardMembersSelect<false> | BoardMembersSelect<true>;
     boards: BoardsSelect<false> | BoardsSelect<true>;
-    "committee-members":
-      | CommitteeMembersSelect<false>
-      | CommitteeMembersSelect<true>;
+    'committee-members': CommitteeMembersSelect<false> | CommitteeMembersSelect<true>;
     committees: CommitteesSelect<false> | CommitteesSelect<true>;
-    "magazine-issues": MagazineIssuesSelect<false> | MagazineIssuesSelect<true>;
+    'magazine-issues': MagazineIssuesSelect<false> | MagazineIssuesSelect<true>;
     magazines: MagazinesSelect<false> | MagazinesSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
-    "weekly-newsletters":
-      | WeeklyNewslettersSelect<false>
-      | WeeklyNewslettersSelect<true>;
-    "news-items": NewsItemsSelect<false> | NewsItemsSelect<true>;
+    'weekly-newsletters': WeeklyNewslettersSelect<false> | WeeklyNewslettersSelect<true>;
+    'news-items': NewsItemsSelect<false> | NewsItemsSelect<true>;
     honors: HonorsSelect<false> | HonorsSelect<true>;
-    "awarded-honors": AwardedHonorsSelect<false> | AwardedHonorsSelect<true>;
+    'awarded-honors': AwardedHonorsSelect<false> | AwardedHonorsSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
-    "payload-locked-documents":
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    "payload-preferences":
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    "payload-migrations":
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: string;
   };
   globals: {
     footer: Footer;
-    "landing-page": LandingPage;
-    "main-navigation": MainNavigation;
+    'landing-page': LandingPage;
+    'main-navigation': MainNavigation;
   };
   globalsSelect: {
     footer: FooterSelect<false> | FooterSelect<true>;
-    "landing-page": LandingPageSelect<false> | LandingPageSelect<true>;
-    "main-navigation": MainNavigationSelect<false> | MainNavigationSelect<true>;
+    'landing-page': LandingPageSelect<false> | LandingPageSelect<true>;
+    'main-navigation': MainNavigationSelect<false> | MainNavigationSelect<true>;
   };
-  locale: "fi" | "en";
+  locale: 'fi' | 'en';
   user: User & {
-    collection: "users";
+    collection: 'users';
   };
   jobs: {
     tasks: unknown;
@@ -237,60 +227,54 @@ export interface Page {
   id: string;
   title: string;
   description: string;
-  type:
-    | "standard"
-    | "redirect"
-    | "events-list"
-    | "all-events-list"
-    | "weekly-newsletter"
-    | "weekly-newsletters-list";
+  type: 'standard' | 'redirect' | 'events-list' | 'all-events-list' | 'weekly-newsletter' | 'weekly-newsletters-list';
   icon?:
     | (
-        | "AlertOctagon"
-        | "AlertTriangle"
-        | "AtSign"
-        | "Banknote"
-        | "BookMarked"
-        | "BriefcaseBusiness"
-        | "ChevronDown"
-        | "Chevronleft"
-        | "ChevronRight"
-        | "ChevronsUpDown"
-        | "ChevronUp"
-        | "Circle"
-        | "Clock"
-        | "ExternalLink"
-        | "Facebook"
-        | "File"
-        | "Gavel"
-        | "Github"
-        | "Gmail"
-        | "HelpCircle"
-        | "Image"
-        | "Inbox"
-        | "Instagram"
-        | "Languages"
-        | "Linkedin"
-        | "Mail"
-        | "MapPin"
-        | "Megaphone"
-        | "Menu"
-        | "MoreHorizontal"
-        | "PaperAirplane"
-        | "Phone"
-        | "Telegram"
-        | "TikLogo"
-        | "Tiktok"
-        | "X"
-        | "NavGuild"
-        | "NavFuksis"
-        | "NavCompanies"
-        | "NavEvents"
-        | "NavApplicants"
-        | "Handshake"
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'Mail'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'PaperAirplane'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake'
       )
     | null;
-  tableOfContents?: ("all" | "top-level" | "none") | null;
+  tableOfContents?: ('all' | 'top-level' | 'none') | null;
   content?: {
     root: {
       type: string;
@@ -299,8 +283,8 @@ export interface Page {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -309,14 +293,14 @@ export interface Page {
   redirectToPage?: (string | null) | Page;
   path?: string | null;
   topic?: {
-    relationTo: "topics";
+    relationTo: 'topics';
     value: string | Topic;
   } | null;
   slug: string;
   hidden: boolean;
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -328,48 +312,48 @@ export interface Topic {
   slug: string;
   icon?:
     | (
-        | "AlertOctagon"
-        | "AlertTriangle"
-        | "AtSign"
-        | "Banknote"
-        | "BookMarked"
-        | "BriefcaseBusiness"
-        | "ChevronDown"
-        | "Chevronleft"
-        | "ChevronRight"
-        | "ChevronsUpDown"
-        | "ChevronUp"
-        | "Circle"
-        | "Clock"
-        | "ExternalLink"
-        | "Facebook"
-        | "File"
-        | "Gavel"
-        | "Github"
-        | "Gmail"
-        | "HelpCircle"
-        | "Image"
-        | "Inbox"
-        | "Instagram"
-        | "Languages"
-        | "Linkedin"
-        | "Mail"
-        | "MapPin"
-        | "Megaphone"
-        | "Menu"
-        | "MoreHorizontal"
-        | "PaperAirplane"
-        | "Phone"
-        | "Telegram"
-        | "TikLogo"
-        | "Tiktok"
-        | "X"
-        | "NavGuild"
-        | "NavFuksis"
-        | "NavCompanies"
-        | "NavEvents"
-        | "NavApplicants"
-        | "Handshake"
+        | 'AlertOctagon'
+        | 'AlertTriangle'
+        | 'AtSign'
+        | 'Banknote'
+        | 'BookMarked'
+        | 'BriefcaseBusiness'
+        | 'ChevronDown'
+        | 'Chevronleft'
+        | 'ChevronRight'
+        | 'ChevronsUpDown'
+        | 'ChevronUp'
+        | 'Circle'
+        | 'Clock'
+        | 'ExternalLink'
+        | 'Facebook'
+        | 'File'
+        | 'Gavel'
+        | 'Github'
+        | 'Gmail'
+        | 'HelpCircle'
+        | 'Image'
+        | 'Inbox'
+        | 'Instagram'
+        | 'Languages'
+        | 'Linkedin'
+        | 'Mail'
+        | 'MapPin'
+        | 'Megaphone'
+        | 'Menu'
+        | 'MoreHorizontal'
+        | 'PaperAirplane'
+        | 'Phone'
+        | 'Telegram'
+        | 'TikLogo'
+        | 'Tiktok'
+        | 'X'
+        | 'NavGuild'
+        | 'NavFuksis'
+        | 'NavCompanies'
+        | 'NavEvents'
+        | 'NavApplicants'
+        | 'Handshake'
       )
     | null;
   updatedAt: string;
@@ -383,7 +367,7 @@ export interface Media {
   id: string;
   alt: string;
   photographer?: string | null;
-  mediaType?: ("image" | "logo") | null;
+  mediaType?: ('image' | 'logo') | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -423,46 +407,46 @@ export interface Document {
 export interface BoardMember {
   id: string;
   guildYear:
-    | "2025"
-    | "2024"
-    | "2023"
-    | "2022"
-    | "2021"
-    | "2020"
-    | "2019"
-    | "2018"
-    | "2017"
-    | "2016"
-    | "2015"
-    | "2014"
-    | "2013"
-    | "2012"
-    | "2011"
-    | "2010"
-    | "2009"
-    | "2008"
-    | "2007"
-    | "2006"
-    | "2005"
-    | "2004"
-    | "2003"
-    | "2002"
-    | "2001"
-    | "2000"
-    | "1999"
-    | "1998"
-    | "1997"
-    | "1996"
-    | "1995"
-    | "1994"
-    | "1993"
-    | "1992"
-    | "1991"
-    | "1990"
-    | "1989"
-    | "1988"
-    | "1987"
-    | "1986";
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
   photo?: (string | null) | Media;
   name: string;
   title: string;
@@ -479,46 +463,46 @@ export interface BoardMember {
 export interface Board {
   id: string;
   year:
-    | "2025"
-    | "2024"
-    | "2023"
-    | "2022"
-    | "2021"
-    | "2020"
-    | "2019"
-    | "2018"
-    | "2017"
-    | "2016"
-    | "2015"
-    | "2014"
-    | "2013"
-    | "2012"
-    | "2011"
-    | "2010"
-    | "2009"
-    | "2008"
-    | "2007"
-    | "2006"
-    | "2005"
-    | "2004"
-    | "2003"
-    | "2002"
-    | "2001"
-    | "2000"
-    | "1999"
-    | "1998"
-    | "1997"
-    | "1996"
-    | "1995"
-    | "1994"
-    | "1993"
-    | "1992"
-    | "1991"
-    | "1990"
-    | "1989"
-    | "1988"
-    | "1987"
-    | "1986";
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
   groupPhoto?: (string | null) | Media;
   boardMembers: {
     boardMember?: (string | null) | BoardMember;
@@ -535,46 +519,46 @@ export interface CommitteeMember {
   id: string;
   displayTitle?: string | null;
   guildYear:
-    | "2025"
-    | "2024"
-    | "2023"
-    | "2022"
-    | "2021"
-    | "2020"
-    | "2019"
-    | "2018"
-    | "2017"
-    | "2016"
-    | "2015"
-    | "2014"
-    | "2013"
-    | "2012"
-    | "2011"
-    | "2010"
-    | "2009"
-    | "2008"
-    | "2007"
-    | "2006"
-    | "2005"
-    | "2004"
-    | "2003"
-    | "2002"
-    | "2001"
-    | "2000"
-    | "1999"
-    | "1998"
-    | "1997"
-    | "1996"
-    | "1995"
-    | "1994"
-    | "1993"
-    | "1992"
-    | "1991"
-    | "1990"
-    | "1989"
-    | "1988"
-    | "1987"
-    | "1986";
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
   photo?: (string | null) | Media;
   name: string;
   title: string;
@@ -591,46 +575,46 @@ export interface CommitteeMember {
 export interface Committee {
   id: string;
   year:
-    | "2025"
-    | "2024"
-    | "2023"
-    | "2022"
-    | "2021"
-    | "2020"
-    | "2019"
-    | "2018"
-    | "2017"
-    | "2016"
-    | "2015"
-    | "2014"
-    | "2013"
-    | "2012"
-    | "2011"
-    | "2010"
-    | "2009"
-    | "2008"
-    | "2007"
-    | "2006"
-    | "2005"
-    | "2004"
-    | "2003"
-    | "2002"
-    | "2001"
-    | "2000"
-    | "1999"
-    | "1998"
-    | "1997"
-    | "1996"
-    | "1995"
-    | "1994"
-    | "1993"
-    | "1992"
-    | "1991"
-    | "1990"
-    | "1989"
-    | "1988"
-    | "1987"
-    | "1986";
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
   name: string;
   hidden: boolean;
   committeeMembers: {
@@ -648,46 +632,46 @@ export interface MagazineIssue {
   id: string;
   title?: string | null;
   year:
-    | "2025"
-    | "2024"
-    | "2023"
-    | "2022"
-    | "2021"
-    | "2020"
-    | "2019"
-    | "2018"
-    | "2017"
-    | "2016"
-    | "2015"
-    | "2014"
-    | "2013"
-    | "2012"
-    | "2011"
-    | "2010"
-    | "2009"
-    | "2008"
-    | "2007"
-    | "2006"
-    | "2005"
-    | "2004"
-    | "2003"
-    | "2002"
-    | "2001"
-    | "2000"
-    | "1999"
-    | "1998"
-    | "1997"
-    | "1996"
-    | "1995"
-    | "1994"
-    | "1993"
-    | "1992"
-    | "1991"
-    | "1990"
-    | "1989"
-    | "1988"
-    | "1987"
-    | "1986";
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
   issueNumber: number;
   file: string | Document;
   thumbnail: string | Media;
@@ -708,7 +692,7 @@ export interface MagazineIssue {
  */
 export interface Magazine {
   id: string;
-  type: "Alkorytmi" | "Rekrylehti";
+  type: 'Alkorytmi' | 'Rekrylehti';
   issues?:
     | {
         issue?: (string | null) | MagazineIssue;
@@ -727,10 +711,10 @@ export interface News {
   title: string;
   slug: string;
   excerpt: string;
-  ctaType: "none" | "news" | "page" | "external";
+  ctaType: 'none' | 'news' | 'page' | 'external';
   pageLink?: (string | null) | Page;
   externalLink?: string | null;
-  type?: ("announcement" | "warning" | "danger") | null;
+  type?: ('announcement' | 'warning' | 'danger') | null;
   author: string | User;
   content: {
     root: {
@@ -740,8 +724,8 @@ export interface News {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -779,8 +763,8 @@ export interface WeeklyNewsletter {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -795,7 +779,7 @@ export interface WeeklyNewsletter {
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
-  _status?: ("draft" | "published") | null;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -805,7 +789,7 @@ export interface NewsItem {
   id: string;
   displayTitle?: string | null;
   title: string;
-  newsItemCategory: "guild" | "ayy-aalto" | "other" | "bottom-corner";
+  newsItemCategory: 'guild' | 'ayy-aalto' | 'other' | 'bottom-corner';
   date?: string | null;
   signupStartDate?: string | null;
   signupEndDate?: string | null;
@@ -818,8 +802,8 @@ export interface NewsItem {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -850,46 +834,46 @@ export interface AwardedHonor {
   id: string;
   displayTitle?: string | null;
   guildYear:
-    | "2025"
-    | "2024"
-    | "2023"
-    | "2022"
-    | "2021"
-    | "2020"
-    | "2019"
-    | "2018"
-    | "2017"
-    | "2016"
-    | "2015"
-    | "2014"
-    | "2013"
-    | "2012"
-    | "2011"
-    | "2010"
-    | "2009"
-    | "2008"
-    | "2007"
-    | "2006"
-    | "2005"
-    | "2004"
-    | "2003"
-    | "2002"
-    | "2001"
-    | "2000"
-    | "1999"
-    | "1998"
-    | "1997"
-    | "1996"
-    | "1995"
-    | "1994"
-    | "1993"
-    | "1992"
-    | "1991"
-    | "1990"
-    | "1989"
-    | "1988"
-    | "1987"
-    | "1986";
+    | '2025'
+    | '2024'
+    | '2023'
+    | '2022'
+    | '2021'
+    | '2020'
+    | '2019'
+    | '2018'
+    | '2017'
+    | '2016'
+    | '2015'
+    | '2014'
+    | '2013'
+    | '2012'
+    | '2011'
+    | '2010'
+    | '2009'
+    | '2008'
+    | '2007'
+    | '2006'
+    | '2005'
+    | '2004'
+    | '2003'
+    | '2002'
+    | '2001'
+    | '2000'
+    | '1999'
+    | '1998'
+    | '1997'
+    | '1996'
+    | '1995'
+    | '1994'
+    | '1993'
+    | '1992'
+    | '1991'
+    | '1990'
+    | '1989'
+    | '1988'
+    | '1987'
+    | '1986';
   name: string;
   description?: string | null;
   updatedAt: string;
@@ -903,7 +887,7 @@ export interface Partner {
   id: string;
   name: string;
   logo: string | Media;
-  status: "partner" | "mainPartner" | "inactive";
+  status: 'partner' | 'mainPartner' | 'inactive';
   externalLink: string;
   updatedAt: string;
   createdAt: string;
@@ -916,76 +900,76 @@ export interface PayloadLockedDocument {
   id: string;
   document?:
     | ({
-        relationTo: "pages";
+        relationTo: 'pages';
         value: string | Page;
       } | null)
     | ({
-        relationTo: "media";
+        relationTo: 'media';
         value: string | Media;
       } | null)
     | ({
-        relationTo: "documents";
+        relationTo: 'documents';
         value: string | Document;
       } | null)
     | ({
-        relationTo: "topics";
+        relationTo: 'topics';
         value: string | Topic;
       } | null)
     | ({
-        relationTo: "board-members";
+        relationTo: 'board-members';
         value: string | BoardMember;
       } | null)
     | ({
-        relationTo: "boards";
+        relationTo: 'boards';
         value: string | Board;
       } | null)
     | ({
-        relationTo: "committee-members";
+        relationTo: 'committee-members';
         value: string | CommitteeMember;
       } | null)
     | ({
-        relationTo: "committees";
+        relationTo: 'committees';
         value: string | Committee;
       } | null)
     | ({
-        relationTo: "magazine-issues";
+        relationTo: 'magazine-issues';
         value: string | MagazineIssue;
       } | null)
     | ({
-        relationTo: "magazines";
+        relationTo: 'magazines';
         value: string | Magazine;
       } | null)
     | ({
-        relationTo: "news";
+        relationTo: 'news';
         value: string | News;
       } | null)
     | ({
-        relationTo: "weekly-newsletters";
+        relationTo: 'weekly-newsletters';
         value: string | WeeklyNewsletter;
       } | null)
     | ({
-        relationTo: "news-items";
+        relationTo: 'news-items';
         value: string | NewsItem;
       } | null)
     | ({
-        relationTo: "honors";
+        relationTo: 'honors';
         value: string | Honor;
       } | null)
     | ({
-        relationTo: "awarded-honors";
+        relationTo: 'awarded-honors';
         value: string | AwardedHonor;
       } | null)
     | ({
-        relationTo: "partners";
+        relationTo: 'partners';
         value: string | Partner;
       } | null)
     | ({
-        relationTo: "users";
+        relationTo: 'users';
         value: string | User;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   updatedAt: string;
@@ -998,7 +982,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
@@ -1343,7 +1327,7 @@ export interface LinkRowBlock {
   links?: LinkRowBlockLink;
   id?: string | null;
   blockName?: string | null;
-  blockType: "link-row";
+  blockType: 'link-row';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1360,7 +1344,7 @@ export interface SponsorLogoRowBlock {
     | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: "logo-row";
+  blockType: 'logo-row';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1386,8 +1370,8 @@ export interface LandingPage {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -1427,48 +1411,48 @@ export interface MainNavigationTopicConfig {
               title: string;
               href: string;
               icon:
-                | "AlertOctagon"
-                | "AlertTriangle"
-                | "AtSign"
-                | "Banknote"
-                | "BookMarked"
-                | "BriefcaseBusiness"
-                | "ChevronDown"
-                | "Chevronleft"
-                | "ChevronRight"
-                | "ChevronsUpDown"
-                | "ChevronUp"
-                | "Circle"
-                | "Clock"
-                | "ExternalLink"
-                | "Facebook"
-                | "File"
-                | "Gavel"
-                | "Github"
-                | "Gmail"
-                | "HelpCircle"
-                | "Image"
-                | "Inbox"
-                | "Instagram"
-                | "Languages"
-                | "Linkedin"
-                | "Mail"
-                | "MapPin"
-                | "Megaphone"
-                | "Menu"
-                | "MoreHorizontal"
-                | "PaperAirplane"
-                | "Phone"
-                | "Telegram"
-                | "TikLogo"
-                | "Tiktok"
-                | "X"
-                | "NavGuild"
-                | "NavFuksis"
-                | "NavCompanies"
-                | "NavEvents"
-                | "NavApplicants"
-                | "Handshake";
+                | 'AlertOctagon'
+                | 'AlertTriangle'
+                | 'AtSign'
+                | 'Banknote'
+                | 'BookMarked'
+                | 'BriefcaseBusiness'
+                | 'ChevronDown'
+                | 'Chevronleft'
+                | 'ChevronRight'
+                | 'ChevronsUpDown'
+                | 'ChevronUp'
+                | 'Circle'
+                | 'Clock'
+                | 'ExternalLink'
+                | 'Facebook'
+                | 'File'
+                | 'Gavel'
+                | 'Github'
+                | 'Gmail'
+                | 'HelpCircle'
+                | 'Image'
+                | 'Inbox'
+                | 'Instagram'
+                | 'Languages'
+                | 'Linkedin'
+                | 'Mail'
+                | 'MapPin'
+                | 'Megaphone'
+                | 'Menu'
+                | 'MoreHorizontal'
+                | 'PaperAirplane'
+                | 'Phone'
+                | 'Telegram'
+                | 'TikLogo'
+                | 'Tiktok'
+                | 'X'
+                | 'NavGuild'
+                | 'NavFuksis'
+                | 'NavCompanies'
+                | 'NavEvents'
+                | 'NavApplicants'
+                | 'Handshake';
               id?: string | null;
             }[]
           | null;
@@ -1484,8 +1468,8 @@ export interface FooterSelect<T extends boolean = true> {
   layout?:
     | T
     | {
-        "link-row"?: T | LinkRowBlockSelect<T>;
-        "logo-row"?: T | SponsorLogoRowBlockSelect<T>;
+        'link-row'?: T | LinkRowBlockSelect<T>;
+        'logo-row'?: T | SponsorLogoRowBlockSelect<T>;
       };
   updatedAt?: T;
   createdAt?: T;
