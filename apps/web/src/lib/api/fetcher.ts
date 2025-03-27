@@ -105,7 +105,7 @@ export function getOneCollectionItem<
 
 export function getGlobal<TResponse>(
   globalSlug: GlobalSlug,
-  globalOpts: { locale: string; sort?: string },
+  globalOpts: { locale: string; sort?: string; depth?: number },
 ) {
   return fetcher<Record<string, never>, TResponse>({
     tags: [`global-${globalSlug}`],
@@ -117,7 +117,7 @@ export function getGlobal<TResponse>(
       const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/globals/${globalSlug}?${qsStringify(
         {
           locale: globalOpts.locale,
-          depth: 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+          depth: globalOpts.depth ?? 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
           // Needs to be bigger than 1 to get media / images
           ...(draft ? { draft: "true" } : {}),
         },
