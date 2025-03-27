@@ -81,12 +81,12 @@ const LogoRowBlock: Block = {
       name: "logos",
       type: "array",
       fields: [
-        // {
-        //   name: "image",
-        //   type: "relationship",
-        //   relationTo: "media",
-        //   required: true,
-        // },
+        {
+          name: "image",
+          type: "relationship",
+          relationTo: "media",
+          required: true,
+        },
         {
           name: "link",
           type: "text",

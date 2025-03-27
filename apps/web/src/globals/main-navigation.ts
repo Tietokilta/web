@@ -4,8 +4,7 @@ import type {
   MainNavigation as MainNavigationType,
   Media,
 } from "@tietokilta/cms-types/payload";
-import type { FilterOptions } from "payload/";
-import type { GlobalConfig } from "payload";
+import type { FilterOptions, GlobalConfig } from "payload/";
 import { iconField } from "../fields/icon-field";
 
 const filterPagesOfTopic: FilterOptions<MainNavigationType> = ({
@@ -40,13 +39,13 @@ export const MainNavigation: GlobalConfig = {
     read: () => true,
   },
   fields: [
-    // {
-    //   name: "logo",
-    //   type: "relationship",
-    //   relationTo: "media",
-    //   required: true,
-    //   filterOptions: filterLogos,
-    // },
+    {
+      name: "logo",
+      type: "relationship",
+      relationTo: "media",
+      required: true,
+      filterOptions: filterLogos,
+    },
     {
       name: "items",
       type: "array",

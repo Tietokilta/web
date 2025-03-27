@@ -31,12 +31,12 @@ export const Partners = {
       type: "text",
       required: true,
     },
-    // {
-    //   name: "logo",
-    //   type: "relationship",
-    //   relationTo: "media",
-    //   required: true,
-    // },
+    {
+      name: "logo",
+      type: "relationship",
+      relationTo: "media",
+      required: true,
+    },
     PartnerStatusField,
     {
       name: "externalLink",

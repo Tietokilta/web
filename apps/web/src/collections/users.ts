@@ -4,6 +4,9 @@ export const Users = {
   slug: "users",
   auth: {
     useAPIKey: true,
+    // Google OAuth
+    loginWithUsername: false,
+    disableLocalStrategy: true,
   },
   admin: {
     useAsTitle: "email",

@@ -16,9 +16,8 @@ export const Documents = {
     group: "Other",
   },
   upload: {
-    // staticURL: "/documents",
     staticDir: !isCloudStorageEnabled()
-      ? "documents" // new URL("../../uploads/documents", import.meta.url).pathname
+      ? "uploads/api/documents/file" // new URL("../../uploads/media", import.meta.url).pathname
       : undefined,
   },
   fields: [

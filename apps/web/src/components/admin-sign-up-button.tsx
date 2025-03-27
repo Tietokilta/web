@@ -1,5 +1,4 @@
 import { Button } from "@tietokilta/ui";
-import React from "react";
 
 export function OAuthButton() {
   return (

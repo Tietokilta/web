@@ -54,7 +54,6 @@ const {
   PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
   AZURE_MEDIA_STORAGE_CONTAINER_NAME,
-  AZURE_DOCUMENTS_STORAGE_CONTAINER_NAME,
   AZURE_STORAGE_ACCOUNT_BASEURL,
   AZURE_STORAGE_ALLOW_CONTAINER_CREATE,
   PAYLOAD_SECRET,
@@ -206,12 +205,10 @@ export default buildConfig({
       baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
       collections: {
         [Media.slug]: {
-          disableLocalStorage: true,
-          prefix: "",
+          prefix: Media.slug,
         },
         [Documents.slug]: {
-          disableLocalStorage: true,
-          prefix: "",
+          prefix: Documents.slug,
         },
       },
     }),
