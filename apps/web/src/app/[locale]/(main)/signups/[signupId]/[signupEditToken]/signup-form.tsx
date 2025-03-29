@@ -1,7 +1,6 @@
 "use client";
 
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
-/* eslint-disable react/no-unknown-property -- there is a mismatch with eslint rule and TS */
 
 import {
   Button,
@@ -22,9 +21,9 @@ import {
   type IlmomasiinaEvent,
   type IlmomasiinaSignupInfo,
 } from "@lib/api/external/ilmomasiina";
-import type {
-  deleteSignUpAction,
-  saveSignUpAction,
+import {
+  useDeleteSignUpAction,
+  useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
 import {
   I18nProviderClient,
@@ -156,7 +155,7 @@ function ConfirmDeletePopover({
 }: {
   id: string;
   eventTitle: string;
-  deleteAction: typeof deleteSignUpAction;
+  deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
   const t = useScopedI18n("ilmomasiina.form");
   return (
@@ -189,7 +188,7 @@ function ConfirmDeletePopover({
       <StatusButton
         type="submit"
         formNoValidate
-        formAction={deleteAction}
+        formAction={void deleteAction}
         variant="destructive"
         className="w-full max-w-sm"
       >
@@ -211,8 +210,8 @@ function Form({
   signupEditToken: string;
   event: IlmomasiinaEvent;
   signup: IlmomasiinaSignupInfo;
-  saveAction: typeof saveSignUpAction;
-  deleteAction: typeof deleteSignUpAction;
+  saveAction: ReturnType<typeof useSaveSignUpAction>["saveSignUpAction"];
+  deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
   const locale = useCurrentLocale();
   const t = useScopedI18n("ilmomasiina.form");
@@ -399,12 +398,17 @@ function Form({
   );
 }
 
-export function SignupForm(props: React.ComponentProps<typeof Form>) {
-  const locale = useCurrentLocale();
+export function SignupForm(
+  props: Omit<React.ComponentProps<typeof Form>, "saveAction" | "deleteAction">,
+) {
+  const { deleteSignUpAction } = useDeleteSignUpAction();
+  const { saveSignUpAction } = useSaveSignUpAction();
 
   return (
-    <I18nProviderClient locale={locale}>
-      <Form {...props} />
-    </I18nProviderClient>
+    <Form
+      {...props}
+      saveAction={saveSignUpAction}
+      deleteAction={deleteSignUpAction}
+    />
   );
 }

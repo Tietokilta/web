@@ -1,12 +1,9 @@
 /* eslint-disable no-nested-ternary -- I like */
 import { notFound } from "next/navigation";
 import { getSignup } from "@lib/api/external/ilmomasiina";
-import {
-  deleteSignUpAction,
-  saveSignUpAction,
-} from "@lib/api/external/ilmomasiina/actions";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
 import { getLocalizedEventTitle } from "@lib/utils";
+import { I18nProviderClient } from "@locales/client";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
@@ -86,14 +83,14 @@ export default async function Page(props: PageProps) {
                   })}
           </p>
         </hgroup>
-        <SignupForm
-          signupId={signupId}
-          signupEditToken={signupEditToken}
-          signup={signupInfo.data.signup}
-          event={signupInfo.data.event}
-          saveAction={saveSignUpAction}
-          deleteAction={deleteSignUpAction}
-        />
+        <I18nProviderClient locale={locale}>
+          <SignupForm
+            signupId={signupId}
+            signupEditToken={signupEditToken}
+            signup={signupInfo.data.signup}
+            event={signupInfo.data.event}
+          />
+        </I18nProviderClient>
       </div>
     </main>
   );
