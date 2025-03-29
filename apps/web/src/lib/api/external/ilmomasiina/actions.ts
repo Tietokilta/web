@@ -125,7 +125,9 @@ export async function saveSignUpAction(
   });
 
   if (!updatedSignupResult.ok) {
-    if (updatedSignupResult.error === "ilmomasiina-validation-failed") {
+    if (
+      updatedSignupResult.error === "Validation failed. Please check the form"
+    ) {
       const fieldErrors = updatedSignupResult.originalError?.errors?.answers
         ? Object.fromEntries(
             Object.entries(

@@ -27,7 +27,7 @@ export default async function EventListInfoscreen({
   return (
     <main id="main" className="flex flex-col align-top">
       <h1 className="mb-2 mt-4 text-center font-mono text-5xl font-bold">
-        {t("ilmomasiina.Tapahtumat")}
+        {t("ilmomasiina.Events")}
       </h1>
       <ul className="flex flex-row flex-wrap">
         {Object.entries(upcomingEventsDataByWeek)

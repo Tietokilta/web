@@ -17,7 +17,7 @@ export default async function Page() {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{ta("Back")}</BackButton>
-          <h1 className="font-mono text-4xl">{t("Kaikki tapahtumat")}</h1>
+          <h1 className="font-mono text-4xl">{t("All events")}</h1>
           <ul className="space-y-8">
             {events.data
               ?.reverse()

@@ -30,7 +30,9 @@ async function SignUpText({
   const t = await getScopedI18n("ilmomasiina.status");
   if (!startDate || !endDate) {
     return (
-      <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
+      <span className={className}>
+        {t("This event does not have sign ups")}
+      </span>
     );
   }
 
@@ -38,16 +40,14 @@ async function SignUpText({
   const hasEnded = new Date(endDate) < new Date();
 
   if (hasStarted && hasEnded) {
-    return (
-      <span className={className}>{t("Ilmoittautuminen on päättynyt")}</span>
-    );
+    return <span className={className}>{t("Sign up has ended")}</span>;
   }
 
   if (compact) {
     if (hasStarted && !hasEnded) {
       return (
         <span className={className}>
-          {t("Ilmo auki", {
+          {t("Sign up until", {
             endDate: formatDatetimeYear(endDate, locale),
           })}
         </span>
@@ -55,7 +55,7 @@ async function SignUpText({
     }
     return (
       <span className={className}>
-        {t("Ilmo alkaa", {
+        {t("Sign up starts", {
           startDate: formatDatetimeYear(startDate, locale),
         })}
       </span>
@@ -65,7 +65,7 @@ async function SignUpText({
   if (hasStarted && !hasEnded) {
     return (
       <span className={className}>
-        {t("Ilmoittautuminen auki", {
+        {t("Open for sign ups until", {
           endDate: formatDatetimeYear(endDate, locale),
         })}
       </span>
@@ -74,7 +74,7 @@ async function SignUpText({
 
   return (
     <span className={className}>
-      {t("Ilmoittautuminen alkaa", {
+      {t("Sign up starts on date", {
         startDate: formatDatetimeYear(startDate, locale),
       })}
     </span>
@@ -104,7 +104,7 @@ async function SignupQuotas({
     return (
       <ul className={cn(className, "text-xl")}>
         <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
-          <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+          <span className="w-3/4">{t("Number of signups")}</span>{" "}
         </li>
         {quotas.map((quota) => (
           <li
@@ -129,7 +129,7 @@ async function SignupQuotas({
     return (
       <div className={className}>
         <span className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
-          <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+          <span className="w-3/4">{t("Number of signups")}</span>{" "}
           <span className="w-1/4 text-left">
             {totalSignupCount} / {totalSize}
           </span>
@@ -141,7 +141,7 @@ async function SignupQuotas({
   return (
     <ul className={cn(className)}>
       <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
-        <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+        <span className="w-3/4">{t("Number of signups")}</span>{" "}
         <span className="w-1/4 text-left">
           {totalSignupCount} / {totalSize}
         </span>
@@ -232,7 +232,7 @@ export async function EventCardCompact({
           />
         ) : (
           <span>
-            <h3 className="text-xl font-medium">{t("Ei ilmoittautumista")}</h3>
+            <h3 className="text-xl font-medium">{t("No signup")}</h3>
           </span>
         )}
       </div>
