@@ -218,11 +218,9 @@ function InvoiceItem({
 }) {
   const t = useScopedI18n("invoicegenerator");
 
-  const [unitPrice, setUnitPrice] = useState(0);
-
   return (
     <fieldset className="flex">
-      <span className="mr-1 w-[60%] grow">
+      <span className="mr-1 w-3/5 grow">
         <ErrorMessageBlock
           elementName={`rows[${index.toString()}].product`}
           formState={state}
@@ -237,7 +235,7 @@ function InvoiceItem({
           />
         </ErrorMessageBlock>
       </span>
-      <span className="mr-1 w-[40%] grow">
+      <span className="mr-1 w-2/5 grow">
         <ErrorMessageBlock
           elementName={`rows[${index.toString()}].unit_price`}
           formState={state}
@@ -247,9 +245,6 @@ function InvoiceItem({
             type="number"
             name="rows.unit_price"
             id={`rows[${index.toString()}].unit_price`}
-            onInput={(e) => {
-              setUnitPrice(Number(e.currentTarget.value));
-            }}
             required
             step={0.01}
             min={0}
