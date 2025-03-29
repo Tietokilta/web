@@ -3,6 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
+import { Suspense } from "react";
 import {
   type IlmomasiinaEvent,
   fetchEvent,
@@ -15,7 +16,7 @@ import {
   type QuotaSignup,
   type QuestionAnswer,
 } from "@lib/api/external/ilmomasiina";
-import { signUp } from "@lib/api/external/ilmomasiina/actions";
+import { useSignUp } from "@lib/api/external/ilmomasiina/actions";
 import {
   cn,
   formatDateTimeSeconds,
@@ -27,9 +28,10 @@ import {
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
+import { I18nProviderClient, useScopedI18n } from "@locales/client";
 import { DateTime } from "@components/datetime";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
-import { SignUpButton } from "./signup-button";
+import { SignupButtons } from "./signup-buttons";
 
 async function SignUpText({
   startDate,
@@ -73,39 +75,6 @@ async function SignUpText({
         startDate: formatDatetimeYear(startDate, locale),
       })}
     </span>
-  );
-}
-
-async function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
-  if (!event.registrationStartDate || !event.registrationEndDate) {
-    return null;
-  }
-
-  const t = await getScopedI18n("action");
-
-  const hasStarted = new Date(event.registrationStartDate) < new Date();
-  const hasEnded = new Date(event.registrationEndDate) < new Date();
-
-  return (
-    <ul className="flex flex-col gap-2">
-      {event.quotas.map((quota) => (
-        <li key={quota.id} className="contents">
-          <SignUpButton
-            quotaId={quota.id}
-            isDisabled={!hasStarted || hasEnded}
-            signUpAction={signUp}
-          >
-            <span>
-              <span className={cn(event.quotas.length > 1 && "sr-only")}>
-                {t("Sign up")}
-                {event.quotas.length === 1 ? "" : `: `}
-              </span>
-              {event.quotas.length > 1 ? <span>{quota.title}</span> : null}
-            </span>
-          </SignUpButton>
-        </li>
-      ))}
-    </ul>
   );
 }
 
@@ -408,7 +377,9 @@ async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
         startDate={event.registrationStartDate}
         endDate={event.registrationEndDate}
       />
-      <SignupButtons event={event} />
+      <I18nProviderClient locale={await getCurrentLocale()}>
+        <SignupButtons event={event} />
+      </I18nProviderClient>
     </div>
   );
 }
