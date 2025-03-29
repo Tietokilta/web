@@ -69,6 +69,7 @@ const fi = {
   "invoicegenerator.Attachment": "Liite",
   "invoicegenerator.Attachments": "Liitteet",
   "invoicegenerator.Items": "Erittely",
+  "invoicegenerator.Receipt/Product": "Kuitti/Tuote",
   "invoicegenerator.Sent invoice": "Lasku lähetetty",
   "invoicegenerator.Remove": "Poista",
   "invoicegenerator.Add": "Lisää",

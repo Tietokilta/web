@@ -31,13 +31,11 @@ export async function SaveAction(
   formData: FormData,
 ): Promise<InvoiceGeneratorFormState> {
   const product = formData.getAll("rows.product");
-  const quantity = formData.getAll("rows.quantity");
-  const unit = formData.getAll("rows.unit");
   const unitPrice = formData.getAll("rows.unit_price");
 
-  const rows = zip(product, quantity, unit, unitPrice).map((row) => {
+  const rows = zip(product, unitPrice).map((row) => {
     // Safe conversion to cents without floating-point arithmetic
-    const unitPriceString = row[3] as string;
+    const unitPriceString = row[1] as string;
     const decimalSeparator = unitPriceString.includes(".") ? "." : ",";
     const unitPriceStringParts = unitPriceString.split(decimalSeparator, 2);
 
@@ -61,8 +59,6 @@ export async function SaveAction(
 
     return {
       product: row[0] as string,
-      quantity: Number(row[1]),
-      unit: row[2] as string,
       unit_price: Number(bigIntUnitPrice),
     };
   });

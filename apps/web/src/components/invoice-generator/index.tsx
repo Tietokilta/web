@@ -218,91 +218,45 @@ function InvoiceItem({
 }) {
   const t = useScopedI18n("invoicegenerator");
 
-  const [quantity, setQuantity] = useState(0);
   const [unitPrice, setUnitPrice] = useState(0);
-  const totalPrice = quantity * unitPrice;
 
   return (
-    <fieldset>
-      <ErrorMessageBlock
-        elementName={`rows[${index.toString()}].product`}
-        formState={state}
-      >
-        <InputRow
-          label={t("Product")}
-          name="rows.product"
-          id={`rows[${index.toString()}].product`}
-          maxLength={128}
-          required
-        />
-      </ErrorMessageBlock>
-      <fieldset className="flex">
-        <span className="mr-1 grow">
-          <ErrorMessageBlock
-            elementName={`rows[${index.toString()}].quantity`}
-            formState={state}
-          >
-            <InputRow
-              label={t("Quantity")}
-              name="rows.quantity"
-              id={`rows[${index.toString()}].quantity`}
-              type="number"
-              onInput={(e) => {
-                setQuantity(Number(e.currentTarget.value));
-              }}
-              required
-            />
-          </ErrorMessageBlock>
-        </span>
-        <span className="ml-1 grow">
-          <ErrorMessageBlock
-            elementName={`rows[${index.toString()}].unit`}
-            formState={state}
-          >
-            <InputRow
-              label={t("Unit")}
-              name="rows.unit"
-              id={`rows[${index.toString()}].unit`}
-              defaultValue="kpl"
-              maxLength={128}
-              required
-            />
-          </ErrorMessageBlock>
-        </span>
-      </fieldset>
-      <fieldset className="flex">
-        <span className="mr-1 grow">
-          <ErrorMessageBlock
-            elementName={`rows[${index.toString()}].unit_price`}
-            formState={state}
-          >
-            <InputRow
-              label={t("Unit price")}
-              type="number"
-              name="rows.unit_price"
-              id={`rows[${index.toString()}].unit_price`}
-              onInput={(e) => {
-                setUnitPrice(Number(e.currentTarget.value));
-              }}
-              required
-              step={0.01}
-              min={0}
-              unit="€"
-            />
-          </ErrorMessageBlock>
-        </span>
-        <span className="ml-1 grow">
+    <fieldset className="flex">
+      <span className="mr-1 w-[60%] grow">
+        <ErrorMessageBlock
+          elementName={`rows[${index.toString()}].product`}
+          formState={state}
+        >
           <InputRow
-            label={t("Total price")}
-            type="text"
-            name="rows.total_price"
-            value={totalPrice.toFixed(2)}
-            id={`rows[${index.toString()}].total_price`}
-            unit="€"
-            disabled
+            label={t("Product")}
+            name="rows.product"
+            placeholder="Alepa-kuitti"
+            id={`rows[${index.toString()}].product`}
+            maxLength={128}
+            required
           />
-        </span>
-      </fieldset>
+        </ErrorMessageBlock>
+      </span>
+      <span className="mr-1 w-[40%] grow">
+        <ErrorMessageBlock
+          elementName={`rows[${index.toString()}].unit_price`}
+          formState={state}
+        >
+          <InputRow
+            label={t("Unit price")}
+            type="number"
+            name="rows.unit_price"
+            id={`rows[${index.toString()}].unit_price`}
+            onInput={(e) => {
+              setUnitPrice(Number(e.currentTarget.value));
+            }}
+            required
+            step={0.01}
+            min={0}
+            unit="€"
+          />
+        </ErrorMessageBlock>
+      </span>
     </fieldset>
   );
 }
@@ -481,7 +435,6 @@ function InvoiceGeneratorForm() {
         <InputRow
           label={t("Bank account number")}
           name="bank_account_number"
-          autoComplete="cc-number"
           placeholder="FI2112345600000785"
           maxLength={128}
           required
@@ -493,7 +446,7 @@ function InvoiceGeneratorForm() {
       <ErrorMessageBlock elementName="rows" formState={state}>
         <InputRowArray
           label={t("Items")}
-          itemLabel={t("Product")}
+          itemLabel={t("Receipt/Product")}
           name="rows"
           state={state}
           Row={InvoiceItem}

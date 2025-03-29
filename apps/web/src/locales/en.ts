@@ -69,6 +69,7 @@ const en = {
   "invoicegenerator.Attachment": "Attachment",
   "invoicegenerator.Attachments": "Attachments",
   "invoicegenerator.Items": "Items",
+  "invoicegenerator.Receipt/Product": "Receipt/Product",
   "invoicegenerator.Sent invoice": "Sent invoice",
   "invoicegenerator.Remove": "Remove",
   "invoicegenerator.Add": "Add",
