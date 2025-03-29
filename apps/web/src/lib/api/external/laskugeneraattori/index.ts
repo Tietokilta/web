@@ -6,8 +6,6 @@ export interface InvoiceGeneratorFormState {
 
 export interface LaskugeneraattoriRow {
   product: string;
-  quantity: number;
-  unit: string;
   unit_price: number;
 }
 
