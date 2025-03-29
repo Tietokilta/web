@@ -32,6 +32,7 @@ import {
   useScopedI18n,
 } from "@locales/client";
 import { cn, getLocalizedEventTitle } from "@lib/utils";
+import Link from "next/link";
 
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
 
@@ -215,6 +216,8 @@ function Form({
 }) {
   const locale = useCurrentLocale();
   const t = useScopedI18n("ilmomasiina.form");
+  const tp = useScopedI18n("ilmomasiina.path");
+  const ta = useScopedI18n("action");
   const [state, formAction] = useActionState(saveAction, null);
   const isSignupPeriodEnded =
     !!event.registrationEndDate &&
@@ -248,13 +251,14 @@ function Form({
 
       <div className="flex flex-col items-center gap-4 *:scroll-mt-24">
         {state?.success ? (
-          <p
-            data-form-status
-            className="w-full max-w-sm text-green-600"
-            aria-live="polite"
-          >
-            {t("Sign up saved")}
-          </p>
+          <>
+            <p data-form-status className="w-full max-w-sm" aria-live="polite">
+              <p className="text-green-600">{t("Sign up saved")}</p>
+              <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
+                <Button variant="backLink">{ta("Back")}</Button>
+              </Link>
+            </p>
+          </>
         ) : null}
 
         {state?.errors?._form ? (
