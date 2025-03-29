@@ -252,21 +252,12 @@ function Form({
       <div className="flex flex-col items-center gap-4 *:scroll-mt-24">
         {state?.success ? (
           <>
-            <p
-              data-form-status
-              className="w-full max-w-sm"
-              aria-live="polite"
-            >
-              <p className="text-green-600">
-                {t("Sign up saved")}
-              </p>
+            <p data-form-status className="w-full max-w-sm" aria-live="polite">
+              <p className="text-green-600">{t("Sign up saved")}</p>
               <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
-                <Button variant="backLink">
-                  {ta("Back")}
-                </Button>
+                <Button variant="backLink">{ta("Back")}</Button>
               </Link>
             </p>
-
           </>
         ) : null}
 
