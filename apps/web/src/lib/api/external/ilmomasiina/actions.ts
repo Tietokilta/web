@@ -1,9 +1,8 @@
-"use server";
+"use client";
 
-import { redirect } from "next/navigation";
-import { revalidateTag } from "next/cache";
 import * as z from "zod";
-import { getCurrentLocale, getScopedI18n } from "../../../../locales/server";
+import { useRouter } from "next/navigation";
+import { useCurrentLocale, useScopedI18n } from "../../../../locales/client";
 import {
   baseUrl,
   deleteSignUp,
@@ -12,37 +11,39 @@ import {
   type IlmomasiinaSignupResponse,
 } from ".";
 
-// TODO: check if this makes any sense to introduce extra steps for signing up
-// perhaps it's much better to fetch on client side directly and then redirect
-export async function signUp(formData: FormData): Promise<void> {
-  "use server";
-  const locale = await getCurrentLocale();
+export function useSignUp() {
+  const router = useRouter();
+  const locale = useCurrentLocale();
 
-  const quotaId = formData.get("quotaId");
-  if (!quotaId) {
-    return;
+  async function signUp(formData: FormData): Promise<void> {
+    const quotaId = formData.get("quotaId");
+    if (!quotaId) {
+      return;
+    }
+    const response = await fetch(`${baseUrl}/api/signups`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quotaId }),
+    });
+
+    if (!response.ok) {
+      return;
+    }
+
+    const data = (await response.json()) as IlmomasiinaSignupResponse;
+
+    if ("statusCode" in data) {
+      return;
+    }
+
+    router.push(`/${locale}/signups/${data.id}/${data.editToken}`);
   }
 
-  const response = await fetch(`${baseUrl}/api/signups`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ quotaId }),
-  });
-
-  if (!response.ok) {
-    return;
-  }
-
-  const data = (await response.json()) as IlmomasiinaSignupResponse;
-
-  if ("statusCode" in data) {
-    return;
-  }
-
-  revalidateTag("ilmomasiina-events");
-  redirect(`/${locale}/signups/${data.id}/${data.editToken}`);
+  return {
+    signUp,
+  };
 }
 
 const saveSignUpSchema = z
@@ -56,107 +57,112 @@ const saveSignUpSchema = z
   })
   .and(z.record(z.string().or(z.string().array())));
 
-export async function saveSignUpAction(
-  currentState: unknown,
-  formData: FormData,
-): Promise<{
-  success?: true;
-  errors?: Partial<Record<string, string[]>>;
-} | null> {
-  "use server";
+export function useSaveSignUpAction() {
+  const locale = useCurrentLocale();
+  const t = useScopedI18n("errors");
 
-  const locale = await getCurrentLocale();
+  async function saveSignUpAction(
+    currentState: unknown,
+    formData: FormData,
+  ): Promise<{
+    success?: true;
+    errors?: Partial<Record<string, string[]>>;
+  } | null> {
+    const formEntries = [...formData.entries()].reduce<
+      Record<string, string | string[]>
+    >((acc, [key, value]) => {
+      if (
+        value instanceof File ||
+        value === "" ||
+        value.startsWith("$ACTION")
+      ) {
+        return acc;
+      }
 
-  const formEntries = [...formData.entries()].reduce<
-    Record<string, string | string[]>
-  >((acc, [key, value]) => {
-    if (value instanceof File || value === "" || value.startsWith("$ACTION")) {
+      if (key in acc) {
+        acc[key] = [value].concat(acc[key]);
+      } else {
+        acc[key] = value;
+      }
+
       return acc;
+    }, {});
+    const data = saveSignUpSchema.safeParse(formEntries);
+
+    if (!data.success) {
+      return {
+        // TODO: i18n for zod validation errors
+        errors: data.error.flatten().fieldErrors,
+      };
     }
 
-    if (key in acc) {
-      acc[key] = [value].concat(acc[key]);
-    } else {
-      acc[key] = value;
-    }
+    const {
+      signupId,
+      signupEditToken,
+      firstName,
+      lastName,
+      email,
+      namePublic,
+      ...otherAnswers
+    } = data.data;
 
-    return acc;
-  }, {});
-  const data = saveSignUpSchema.safeParse(formEntries);
+    const signupResult = await getSignup(signupId, signupEditToken);
+    const multipleChoiceQuestions = signupResult.data?.event.questions
+      .filter((question) => question.type === "checkbox")
+      .map((question) => question.id);
 
-  if (!data.success) {
-    return {
-      // TODO: i18n for zod validation errors
-      errors: data.error.flatten().fieldErrors,
-    };
-  }
+    const updatedSignupResult = await patchSignUp(signupId, signupEditToken, {
+      id: signupId,
+      answers: Object.entries(otherAnswers).map(([questionId, answer]) => ({
+        questionId,
+        answer:
+          multipleChoiceQuestions?.includes(questionId) &&
+          !Array.isArray(answer)
+            ? [answer]
+            : answer,
+      })),
+      language: locale,
+      firstName,
+      lastName,
+      email,
+      namePublic: namePublic === "on",
+    });
 
-  const {
-    signupId,
-    signupEditToken,
-    firstName,
-    lastName,
-    email,
-    namePublic,
-    ...otherAnswers
-  } = data.data;
+    if (!updatedSignupResult.ok) {
+      if (updatedSignupResult.error === "ilmomasiina-validation-failed") {
+        const fieldErrors = updatedSignupResult.originalError?.errors?.answers
+          ? Object.fromEntries(
+              Object.entries(
+                updatedSignupResult.originalError.errors.answers,
+              ).map(([questionId, error]) => [questionId, [error]]),
+            )
+          : {};
 
-  const t = await getScopedI18n("errors");
-
-  const signupResult = await getSignup(signupId, signupEditToken);
-  const multipleChoiceQuestions = signupResult.data?.event.questions
-    .filter((question) => question.type === "checkbox")
-    .map((question) => question.id);
-
-  const updatedSignupResult = await patchSignUp(signupId, signupEditToken, {
-    id: signupId,
-    answers: Object.entries(otherAnswers).map(([questionId, answer]) => ({
-      questionId,
-      answer:
-        multipleChoiceQuestions?.includes(questionId) && !Array.isArray(answer)
-          ? [answer]
-          : answer,
-    })),
-    language: locale,
-    firstName,
-    lastName,
-    email,
-    namePublic: namePublic === "on",
-  });
-
-  if (!updatedSignupResult.ok) {
-    if (updatedSignupResult.error === "ilmomasiina-validation-failed") {
-      const fieldErrors = updatedSignupResult.originalError?.errors?.answers
-        ? Object.fromEntries(
-            Object.entries(
-              updatedSignupResult.originalError.errors.answers,
-            ).map(([questionId, error]) => [questionId, [error]]),
-          )
-        : {};
+        return {
+          errors: {
+            _form: [
+              t(updatedSignupResult.error),
+              updatedSignupResult.originalError?.message,
+            ].filter((x): x is string => !!x),
+            ...fieldErrors,
+          },
+        };
+      }
 
       return {
         errors: {
-          _form: [
-            t(updatedSignupResult.error),
-            updatedSignupResult.originalError?.message,
-          ].filter((x): x is string => !!x),
-          ...fieldErrors,
+          _form: [t(updatedSignupResult.error)],
         },
       };
     }
 
     return {
-      errors: {
-        _form: [t(updatedSignupResult.error)],
-      },
+      success: true,
     };
   }
 
-  revalidateTag("ilmomasiina-events");
-  revalidateTag("ilmomasiina-signup");
-
   return {
-    success: true,
+    saveSignUpAction,
   };
 }
 
@@ -165,33 +171,42 @@ const deleteSignUpSchema = z.object({
   signupEditToken: z.string(),
 });
 
-export async function deleteSignUpAction(formData: FormData): Promise<void> {
-  "use server";
-  const locale = await getCurrentLocale();
-  const tp = await getScopedI18n("ilmomasiina.path");
-  const data = deleteSignUpSchema.safeParse(
-    Object.fromEntries(formData.entries()),
-  );
+export function useDeleteSignUpAction() {
+  const router = useRouter();
 
-  if (!data.success) {
-    return;
+  const locale = useCurrentLocale();
+  const tp = useScopedI18n("ilmomasiina.path");
+
+  async function deleteSignUpAction(formData: FormData): Promise<void> {
+    const data = deleteSignUpSchema.safeParse(
+      Object.fromEntries(formData.entries()),
+    );
+
+    if (!data.success) {
+      return;
+    }
+
+    const { signupId, signupEditToken } = data.data;
+
+    const signupResult = await getSignup(signupId, signupEditToken);
+    const deleteResult = await deleteSignUp(signupId, signupEditToken);
+
+    if (!deleteResult.ok) {
+      return;
+    }
+
+    if (!signupResult.ok) {
+      router.push(`/${locale}/${tp("events")}`);
+    }
+
+    if (signupResult.data === null) {
+      return;
+    }
+
+    router.push(`/${locale}/${tp("events")}/${signupResult.data.event.slug}`);
   }
 
-  const { signupId, signupEditToken } = data.data;
-
-  const signupResult = await getSignup(signupId, signupEditToken);
-  const deleteResult = await deleteSignUp(signupId, signupEditToken);
-
-  if (!deleteResult.ok) {
-    return;
-  }
-
-  revalidateTag("ilmomasiina-events");
-  revalidateTag("ilmomasiina-signup");
-
-  if (!signupResult.ok) {
-    redirect(`/${locale}/${tp("events")}`);
-  }
-
-  redirect(`/${locale}/${tp("events")}/${signupResult.data.event.slug}`);
+  return {
+    deleteSignUpAction,
+  };
 }

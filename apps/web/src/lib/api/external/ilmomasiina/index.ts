@@ -121,8 +121,10 @@ export interface IlmomasiinaSignupInfoResponse {
 }
 
 // TODO: better env handling since next.js doesn't have that built-in
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- ideally would throw during build, but let's at least throw here if it's missing
-export const baseUrl = process.env.PUBLIC_ILMOMASIINA_URL!;
+export const baseUrl =
+  process.env.NEXT_PUBLIC_ILMOMASIINA_URL ?? "https://ilmo.tietokilta.fi";
+// In prod, the NEXT_PUBLIC_ILMOMASIINA_URL is empty probably because
+// it needs to be set when building the docker image.
 
 export const fetchEvents = async (
   maxAge?: number,
@@ -181,7 +183,7 @@ export const fetchEvent = async (
     const response = await fetch(`${baseUrl}/api/events/${slug}`, {
       next: {
         tags: ["ilmomasiina-events"],
-        revalidate: 120, // 2 minutes
+        revalidate: 30, // 30 seconds
       },
     });
     if (!response.ok) {

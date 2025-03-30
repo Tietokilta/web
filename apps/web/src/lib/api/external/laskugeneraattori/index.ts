@@ -21,7 +21,6 @@ export interface LaskugeneraattoriRequest {
   subject: string;
   description: string;
   bank_account_number: string;
-  due_date: string;
   rows: LaskugeneraattoriRow[];
   attachment_descriptions: string[];
 }

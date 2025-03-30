@@ -77,7 +77,6 @@ export async function SaveAction(
     subject: formData.get("subject") as string,
     description: formData.get("description") as string,
     bank_account_number: formData.get("bank_account_number") as string,
-    due_date: formData.get("due_date") as string,
     rows,
     attachment_descriptions: formData.getAll(
       "attachment_descriptions",
