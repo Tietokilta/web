@@ -181,7 +181,7 @@ export const fetchEvent = async (
     const response = await fetch(`${baseUrl}/api/events/${slug}`, {
       next: {
         tags: ["ilmomasiina-events"],
-        revalidate: 120, // 2 minutes
+        revalidate: 30, // 30 seconds
       },
     });
     if (!response.ok) {
