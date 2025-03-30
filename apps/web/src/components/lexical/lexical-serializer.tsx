@@ -11,6 +11,7 @@ import Link from "next/link";
 import { type Media } from "@tietokilta/cms-types/payload";
 import type { JSX } from "react";
 import { PartnerLogos } from "@components/partner-logos";
+import { HighlightCard } from "@components/highlight-card";
 import {
   cn,
   insertSoftHyphens,
@@ -130,11 +131,11 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             const Tag = node.tag as Heading;
 
             return (
-              <Link href={`#${stringToId(lexicalNodeToTextContent(node))}`}>
-                <Tag
-                  id={stringToId(lexicalNodeToTextContent(node))}
-                  key={index}
-                >
+              <Link
+                href={`#${stringToId(lexicalNodeToTextContent(node))}`}
+                key={index}
+              >
+                <Tag id={stringToId(lexicalNodeToTextContent(node))}>
                   {serializedChildren}
                 </Tag>
               </Link>
@@ -324,6 +325,14 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "google-form": {
       return <GoogleForm link={node.fields.link} />;
+    }
+    case "highlight-card": {
+      return (
+        <HighlightCard
+          content={node.fields.content}
+          Renderer={LexicalSerializer}
+        />
+      );
     }
     case "editor-in-chief": {
       return <EditorInChief name={node.fields.name} type={node.fields.type} />;
