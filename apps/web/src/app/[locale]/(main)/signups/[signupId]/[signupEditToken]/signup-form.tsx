@@ -246,14 +246,14 @@ function Form({
       <input type="hidden" name="signupEditToken" value={signupEditToken} />
 
       <div className="flex flex-col items-center gap-4 *:scroll-mt-24">
-        {state?.success ? (
-          <div data-form-status className="w-full max-w-sm" aria-live="polite">
+        <p data-form-status className="w-full max-w-sm" aria-live="polite">
+          <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
+            <Button variant="backLink">{ta("Back")}</Button>
+          </Link>
+          {state?.success ? (
             <p className="text-green-600">{t("Sign up saved")}</p>
-            <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
-              <Button variant="backLink">{ta("Back")}</Button>
-            </Link>
-          </div>
-        ) : null}
+          ) : null}
+        </p>
 
         {state?.errors?._form ? (
           <p
