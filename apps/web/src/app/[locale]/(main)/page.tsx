@@ -7,6 +7,7 @@ import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import { fetchLandingPage } from "@lib/api/landing-page";
 import { AnnouncementCard } from "@components/announcement-card";
 import { getCurrentLocale } from "@locales/server";
+import AprilFoolsAlert from "@components/april-fools/april-fools-alert";
 
 function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
@@ -88,6 +89,7 @@ export default async function Home(props: {
           currentPage={!isNaN(pageInt) ? pageInt : undefined}
         />
       </div>
+      <AprilFoolsAlert />
     </main>
   );
 }
