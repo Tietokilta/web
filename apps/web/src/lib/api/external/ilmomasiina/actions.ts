@@ -17,11 +17,9 @@ export function useSignUp() {
 
   async function signUp(formData: FormData): Promise<void> {
     const quotaId = formData.get("quotaId");
-    console.log("quotaId", quotaId);
     if (!quotaId) {
       return;
     }
-    console.log("baseUrl", baseUrl);
     const response = await fetch(`${baseUrl}/api/signups`, {
       method: "POST",
       headers: {
