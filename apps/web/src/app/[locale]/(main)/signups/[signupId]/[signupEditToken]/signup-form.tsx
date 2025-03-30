@@ -15,6 +15,7 @@ import {
 import { useFormStatus } from "react-dom";
 import { useActionState, useEffect } from "react";
 import NextForm from "next/form";
+import Link from "next/link";
 import {
   type IlmomasiinaFieldError,
   ilmomasiinaFieldErrors,
@@ -25,13 +26,8 @@ import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
-import {
-  I18nProviderClient,
-  useCurrentLocale,
-  useScopedI18n,
-} from "@locales/client";
+import { useCurrentLocale, useScopedI18n } from "@locales/client";
 import { cn, getLocalizedEventTitle } from "@lib/utils";
-import Link from "next/link";
 
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
 
@@ -188,7 +184,8 @@ function ConfirmDeletePopover({
       <StatusButton
         type="submit"
         formNoValidate
-        formAction={void deleteAction}
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises -- If you add void here, the delete action doesn't work
+        formAction={deleteAction}
         variant="destructive"
         className="w-full max-w-sm"
       >
@@ -250,14 +247,12 @@ function Form({
 
       <div className="flex flex-col items-center gap-4 *:scroll-mt-24">
         {state?.success ? (
-          <>
-            <p data-form-status className="w-full max-w-sm" aria-live="polite">
-              <p className="text-green-600">{t("Sign up saved")}</p>
-              <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
-                <Button variant="backLink">{ta("Back")}</Button>
-              </Link>
-            </p>
-          </>
+          <div data-form-status className="w-full max-w-sm" aria-live="polite">
+            <p className="text-green-600">{t("Sign up saved")}</p>
+            <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
+              <Button variant="backLink">{ta("Back")}</Button>
+            </Link>
+          </div>
         ) : null}
 
         {state?.errors?._form ? (
