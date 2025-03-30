@@ -50,6 +50,7 @@ import { NewsItems } from "./collections/weekly-newsletters/news-items";
 import { ActionsLink, ActionsView } from "./views/actions-view";
 import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { GoogleForm } from "./blocks/google-form";
+import { HighlightCard } from "./blocks/highlight-card";
 import { EditorInChief } from "./blocks/editor-in-chief";
 import { InvoiceGenerator } from "./blocks/invoice-generator";
 import { Partners } from "./collections/partners";
@@ -179,6 +180,7 @@ export default buildConfig({
           CommitteesInYear,
           ImageLinkGrid,
           GoogleForm,
+          HighlightCard,
           EditorInChief,
           InvoiceGenerator,
           PartnersBlock,
