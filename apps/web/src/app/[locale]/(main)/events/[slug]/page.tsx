@@ -3,7 +3,6 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
-import { Suspense } from "react";
 import {
   type IlmomasiinaEvent,
   fetchEvent,
@@ -16,9 +15,7 @@ import {
   type QuotaSignup,
   type QuestionAnswer,
 } from "@lib/api/external/ilmomasiina";
-import { useSignUp } from "@lib/api/external/ilmomasiina/actions";
 import {
-  cn,
   formatDateTimeSeconds,
   formatDateTimeSecondsOptions,
   formatDatetimeYear,
@@ -28,7 +25,7 @@ import {
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
-import { I18nProviderClient, useScopedI18n } from "@locales/client";
+import { I18nProviderClient } from "@locales/client";
 import { DateTime } from "@components/datetime";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
 import { SignupButtons } from "./signup-buttons";
