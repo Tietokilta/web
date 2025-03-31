@@ -101,12 +101,21 @@ export function CommitteeCard({
           <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
         </summary>
         <ul className="my-6 grid w-full grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-2 md:grid-cols-[repeat(auto-fill,minmax(160px,1fr))] md:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(160px,1fr))] lg:gap-6 xl:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] xl:gap-8">
-          {committee.committeeMembers.map(({ committeeMember }) => (
-            <CommitteeMemberCard
-              committeeMember={committeeMember as CommitteeMember}
-              key={(committeeMember as CommitteeMember).id}
-            />
-          ))}
+          {committee.committeeMembers.map(({ committeeMember }) => {
+            if (!committeeMember) {
+              // eslint-disable-next-line no-console -- For debugging
+              console.error(
+                `Committee ${committee.name} contains an committee member with no value`,
+              );
+              return null;
+            }
+            return (
+              <CommitteeMemberCard
+                committeeMember={committeeMember as CommitteeMember}
+                key={(committeeMember as CommitteeMember).id}
+              />
+            );
+          })}
         </ul>
       </details>
     </section>
