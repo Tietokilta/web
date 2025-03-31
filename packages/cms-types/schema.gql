@@ -4995,7 +4995,6 @@ input Committee_committeeMembers__committeeMember_operator {
   in: [JSON]
   not_in: [JSON]
   all: [JSON]
-  exists: Boolean
 }
 
 input Committee_committeeMembers__id_operator {

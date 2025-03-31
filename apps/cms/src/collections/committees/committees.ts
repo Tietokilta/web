@@ -50,6 +50,7 @@ export const Committees = {
       fields: [
         {
           name: "committeeMember",
+          required: true,
           type: "relationship",
           relationTo: "committee-members",
           filterOptions: filterCurrentYear,
