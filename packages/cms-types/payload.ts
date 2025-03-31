@@ -521,7 +521,7 @@ export interface Committee {
   name: string;
   hidden: boolean;
   committeeMembers: {
-    committeeMember?: (string | null) | CommitteeMember;
+    committeeMember: string | CommitteeMember;
     id?: string | null;
   }[];
   updatedAt: string;
