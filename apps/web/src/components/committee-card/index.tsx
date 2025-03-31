@@ -105,7 +105,7 @@ export function CommitteeCard({
             if (!committeeMember) {
               // eslint-disable-next-line no-console -- For debugging
               console.error(
-                `Committee ${committee.name} contains an committee member with no value`,
+                `Committee ${committee.name} contains a committee member with no value`,
               );
               return null;
             }
