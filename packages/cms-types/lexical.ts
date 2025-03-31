@@ -190,6 +190,14 @@ export type GoogleFormBlockNode = BaseBlockNode & {
   };
 };
 
+export type HighlightCardBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "highlight-card";
+    content: EditorState;
+    another: number;
+  };
+};
+
 export type EditorInChiefBlockNode = BaseBlockNode & {
   fields: BaseBlockFields & {
     blockType: "editor-in-chief";
@@ -216,6 +224,7 @@ export type BlockNode =
   | CommitteesYearBlockNode
   | ImageLinkGridBlockNode
   | GoogleFormBlockNode
+  | HighlightCardBlockNode
   | EditorInChiefBlockNode
   | InvoiceGeneratorBlockNode
   | PartnersBlockNode;
