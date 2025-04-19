@@ -372,6 +372,14 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   };
 };
 
+function MarkdownAlert({ children }: { children?: React.ReactNode }) {
+  return (
+    <section className="relative z-20 my-6 rounded-md border-2 border-gray-900 px-4 shadow-solid md:px-6">
+      {children}
+    </section>
+  );
+}
+
 export default async function Page(props: PageProps) {
   const locale = await setLocaleFromParams(props.params);
   const { slug } = await props.params;
@@ -406,6 +414,9 @@ export default async function Page(props: PageProps) {
                   <div className="prose">
                     <Markdown
                       remarkPlugins={[[remarkI18n, { locale }], remarkGfm]}
+                      components={{
+                        blockquote: MarkdownAlert,
+                      }}
                     >
                       {event.data.description}
                     </Markdown>
