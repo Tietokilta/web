@@ -77,7 +77,7 @@ for (const versionedCollectionName of versionedCollections) {
   );
   const versionsToSave = [];
   for (const collectionItem of actualCollection) {
-    console.log("parsing ", collectionItem.title.fi);
+    console.log("parsing ", collectionItem?.title?.fi ?? "Unknown title");
     const collectionVersions =
       versionsGrouped[collectionItem._id.$oid]?.toSorted((a, b) => {
         if (a.latest) {
