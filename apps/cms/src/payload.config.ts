@@ -54,6 +54,7 @@ import { EditorInChief } from "./blocks/editor-in-chief";
 import { InvoiceGenerator } from "./blocks/invoice-generator";
 import { Partners } from "./collections/partners";
 import { PartnersBlock } from "./blocks/partners";
+import { InfoScreen } from "./globals/info-screen";
 
 const {
   GOOGLE_OAUTH_CLIENT_ID,
@@ -116,7 +117,7 @@ export default buildConfig({
     AwardedHonors,
     Partners,
   ],
-  globals: [Footer, LandingPage, MainNavigation],
+  globals: [Footer, LandingPage, MainNavigation, InfoScreen],
   localization: {
     locales: ["fi", "en"],
     defaultLocale: "fi",

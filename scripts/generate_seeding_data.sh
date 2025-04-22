@@ -1,4 +1,5 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+set -eo pipefail 
 
 # Define MongoDB URI
 if [ -z "$PAYLOAD_MONGO_CONNECTION_STRING" ]; then

@@ -101,6 +101,7 @@ export interface Config {
     footer: Footer;
     'landing-page': LandingPage;
     'main-navigation': MainNavigation;
+    'info-screen': InfoScreen;
   };
 }
 /**
@@ -815,7 +816,7 @@ export interface PayloadMigration {
  */
 export interface Footer {
   id: string;
-  layout: (LinkRowBlock | SponsorLogoRowBlock)[];
+  layout: (LinkRowBlock | SponsorLogoRowBlock | PartnersRowBlock)[];
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -846,6 +847,18 @@ export interface SponsorLogoRowBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'logo-row';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PartnersRowBlock".
+ */
+export interface PartnersRowBlock {
+  title: string;
+  size?: ('small' | 'medium' | 'large') | null;
+  types?: ('partner' | 'mainPartner')[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'partners-row';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -960,4 +973,24 @@ export interface MainNavigationTopicConfig {
         id?: string | null;
       }[]
     | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "info-screen".
+ */
+export interface InfoScreen {
+  id: string;
+  showKanttiinit?: boolean | null;
+  showEvents?: boolean | null;
+  showHSL?: boolean | null;
+  additionalIframes?:
+    | {
+        IframeUrl: string;
+        IframeTitle: string;
+        enabled?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }

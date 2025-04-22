@@ -83,6 +83,8 @@ type Query {
   docAccessLandingPage: landing_pageDocAccess
   MainNavigation(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): MainNavigation
   docAccessMainNavigation: main_navigationDocAccess
+  InfoScreen(draft: Boolean, fallbackLocale: FallbackLocaleInputType, locale: LocaleInputType): InfoScreen
+  docAccessInfoScreen: info_screenDocAccess
   Access: Access
 }
 
@@ -9084,7 +9086,7 @@ type Footer {
   createdAt: DateTime
 }
 
-union Footer_Layout = LinkRowBlock | SponsorLogoRowBlock
+union Footer_Layout = LinkRowBlock | SponsorLogoRowBlock | PartnersRowBlock
 
 type LinkRowBlock {
   showLabel: Boolean!
@@ -9165,6 +9167,26 @@ type SponsorLogoRowBlock_Logos {
   image(locale: LocaleInputType, fallbackLocale: FallbackLocaleInputType): Media
   link: String
   id: String
+}
+
+type PartnersRowBlock {
+  title: String
+  size: PartnersRowBlock_size
+  types: [PartnersRowBlock_types!]
+  id: String
+  blockName: String
+  blockType: String
+}
+
+enum PartnersRowBlock_size {
+  small
+  medium
+  large
+}
+
+enum PartnersRowBlock_types {
+  partner
+  mainPartner
 }
 
 type footerDocAccess {
@@ -10208,6 +10230,285 @@ type MainNavigationUpdateDocAccess {
   where: JSONObject
 }
 
+type InfoScreen {
+  showKanttiinit: Boolean
+  showEvents: Boolean
+  showHSL: Boolean
+  additionalIframes: [InfoScreen_AdditionalIframes!]
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type InfoScreen_AdditionalIframes {
+  IframeUrl: String
+  IframeTitle: String
+  enabled: Boolean
+  id: String
+}
+
+type info_screenDocAccess {
+  fields: InfoScreenDocAccessFields
+  read: InfoScreenReadDocAccess
+  update: InfoScreenUpdateDocAccess
+}
+
+type InfoScreenDocAccessFields {
+  showKanttiinit: InfoScreenDocAccessFields_showKanttiinit
+  showEvents: InfoScreenDocAccessFields_showEvents
+  showHSL: InfoScreenDocAccessFields_showHSL
+  additionalIframes: InfoScreenDocAccessFields_additionalIframes
+  updatedAt: InfoScreenDocAccessFields_updatedAt
+  createdAt: InfoScreenDocAccessFields_createdAt
+}
+
+type InfoScreenDocAccessFields_showKanttiinit {
+  create: InfoScreenDocAccessFields_showKanttiinit_Create
+  read: InfoScreenDocAccessFields_showKanttiinit_Read
+  update: InfoScreenDocAccessFields_showKanttiinit_Update
+  delete: InfoScreenDocAccessFields_showKanttiinit_Delete
+}
+
+type InfoScreenDocAccessFields_showKanttiinit_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showKanttiinit_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showKanttiinit_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showKanttiinit_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showEvents {
+  create: InfoScreenDocAccessFields_showEvents_Create
+  read: InfoScreenDocAccessFields_showEvents_Read
+  update: InfoScreenDocAccessFields_showEvents_Update
+  delete: InfoScreenDocAccessFields_showEvents_Delete
+}
+
+type InfoScreenDocAccessFields_showEvents_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showEvents_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showEvents_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showEvents_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showHSL {
+  create: InfoScreenDocAccessFields_showHSL_Create
+  read: InfoScreenDocAccessFields_showHSL_Read
+  update: InfoScreenDocAccessFields_showHSL_Update
+  delete: InfoScreenDocAccessFields_showHSL_Delete
+}
+
+type InfoScreenDocAccessFields_showHSL_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showHSL_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showHSL_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_showHSL_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes {
+  create: InfoScreenDocAccessFields_additionalIframes_Create
+  read: InfoScreenDocAccessFields_additionalIframes_Read
+  update: InfoScreenDocAccessFields_additionalIframes_Update
+  delete: InfoScreenDocAccessFields_additionalIframes_Delete
+  fields: InfoScreenDocAccessFields_additionalIframes_Fields
+}
+
+type InfoScreenDocAccessFields_additionalIframes_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_Fields {
+  IframeUrl: InfoScreenDocAccessFields_additionalIframes_IframeUrl
+  IframeTitle: InfoScreenDocAccessFields_additionalIframes_IframeTitle
+  enabled: InfoScreenDocAccessFields_additionalIframes_enabled
+  id: InfoScreenDocAccessFields_additionalIframes_id
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeUrl {
+  create: InfoScreenDocAccessFields_additionalIframes_IframeUrl_Create
+  read: InfoScreenDocAccessFields_additionalIframes_IframeUrl_Read
+  update: InfoScreenDocAccessFields_additionalIframes_IframeUrl_Update
+  delete: InfoScreenDocAccessFields_additionalIframes_IframeUrl_Delete
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeUrl_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeUrl_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeUrl_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeUrl_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeTitle {
+  create: InfoScreenDocAccessFields_additionalIframes_IframeTitle_Create
+  read: InfoScreenDocAccessFields_additionalIframes_IframeTitle_Read
+  update: InfoScreenDocAccessFields_additionalIframes_IframeTitle_Update
+  delete: InfoScreenDocAccessFields_additionalIframes_IframeTitle_Delete
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeTitle_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeTitle_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeTitle_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_IframeTitle_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_enabled {
+  create: InfoScreenDocAccessFields_additionalIframes_enabled_Create
+  read: InfoScreenDocAccessFields_additionalIframes_enabled_Read
+  update: InfoScreenDocAccessFields_additionalIframes_enabled_Update
+  delete: InfoScreenDocAccessFields_additionalIframes_enabled_Delete
+}
+
+type InfoScreenDocAccessFields_additionalIframes_enabled_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_enabled_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_enabled_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_enabled_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_id {
+  create: InfoScreenDocAccessFields_additionalIframes_id_Create
+  read: InfoScreenDocAccessFields_additionalIframes_id_Read
+  update: InfoScreenDocAccessFields_additionalIframes_id_Update
+  delete: InfoScreenDocAccessFields_additionalIframes_id_Delete
+}
+
+type InfoScreenDocAccessFields_additionalIframes_id_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_id_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_id_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_additionalIframes_id_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_updatedAt {
+  create: InfoScreenDocAccessFields_updatedAt_Create
+  read: InfoScreenDocAccessFields_updatedAt_Read
+  update: InfoScreenDocAccessFields_updatedAt_Update
+  delete: InfoScreenDocAccessFields_updatedAt_Delete
+}
+
+type InfoScreenDocAccessFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_createdAt {
+  create: InfoScreenDocAccessFields_createdAt_Create
+  read: InfoScreenDocAccessFields_createdAt_Read
+  update: InfoScreenDocAccessFields_createdAt_Update
+  delete: InfoScreenDocAccessFields_createdAt_Delete
+}
+
+type InfoScreenDocAccessFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type InfoScreenDocAccessFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenReadDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type InfoScreenUpdateDocAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type Access {
   canAccessAdmin: Boolean!
   users: usersAccess
@@ -10231,6 +10532,7 @@ type Access {
   footer: footerAccess
   landing_page: landing_pageAccess
   main_navigation: main_navigationAccess
+  info_screen: info_screenAccess
 }
 
 type usersAccess {
@@ -15430,6 +15732,269 @@ type MainNavigationUpdateAccess {
   where: JSONObject
 }
 
+type info_screenAccess {
+  fields: InfoScreenFields
+  read: InfoScreenReadAccess
+  update: InfoScreenUpdateAccess
+}
+
+type InfoScreenFields {
+  showKanttiinit: InfoScreenFields_showKanttiinit
+  showEvents: InfoScreenFields_showEvents
+  showHSL: InfoScreenFields_showHSL
+  additionalIframes: InfoScreenFields_additionalIframes
+  updatedAt: InfoScreenFields_updatedAt
+  createdAt: InfoScreenFields_createdAt
+}
+
+type InfoScreenFields_showKanttiinit {
+  create: InfoScreenFields_showKanttiinit_Create
+  read: InfoScreenFields_showKanttiinit_Read
+  update: InfoScreenFields_showKanttiinit_Update
+  delete: InfoScreenFields_showKanttiinit_Delete
+}
+
+type InfoScreenFields_showKanttiinit_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showKanttiinit_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showKanttiinit_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showKanttiinit_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showEvents {
+  create: InfoScreenFields_showEvents_Create
+  read: InfoScreenFields_showEvents_Read
+  update: InfoScreenFields_showEvents_Update
+  delete: InfoScreenFields_showEvents_Delete
+}
+
+type InfoScreenFields_showEvents_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showEvents_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showEvents_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showEvents_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showHSL {
+  create: InfoScreenFields_showHSL_Create
+  read: InfoScreenFields_showHSL_Read
+  update: InfoScreenFields_showHSL_Update
+  delete: InfoScreenFields_showHSL_Delete
+}
+
+type InfoScreenFields_showHSL_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showHSL_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showHSL_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_showHSL_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes {
+  create: InfoScreenFields_additionalIframes_Create
+  read: InfoScreenFields_additionalIframes_Read
+  update: InfoScreenFields_additionalIframes_Update
+  delete: InfoScreenFields_additionalIframes_Delete
+  fields: InfoScreenFields_additionalIframes_Fields
+}
+
+type InfoScreenFields_additionalIframes_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_Fields {
+  IframeUrl: InfoScreenFields_additionalIframes_IframeUrl
+  IframeTitle: InfoScreenFields_additionalIframes_IframeTitle
+  enabled: InfoScreenFields_additionalIframes_enabled
+  id: InfoScreenFields_additionalIframes_id
+}
+
+type InfoScreenFields_additionalIframes_IframeUrl {
+  create: InfoScreenFields_additionalIframes_IframeUrl_Create
+  read: InfoScreenFields_additionalIframes_IframeUrl_Read
+  update: InfoScreenFields_additionalIframes_IframeUrl_Update
+  delete: InfoScreenFields_additionalIframes_IframeUrl_Delete
+}
+
+type InfoScreenFields_additionalIframes_IframeUrl_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_IframeUrl_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_IframeUrl_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_IframeUrl_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_IframeTitle {
+  create: InfoScreenFields_additionalIframes_IframeTitle_Create
+  read: InfoScreenFields_additionalIframes_IframeTitle_Read
+  update: InfoScreenFields_additionalIframes_IframeTitle_Update
+  delete: InfoScreenFields_additionalIframes_IframeTitle_Delete
+}
+
+type InfoScreenFields_additionalIframes_IframeTitle_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_IframeTitle_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_IframeTitle_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_IframeTitle_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_enabled {
+  create: InfoScreenFields_additionalIframes_enabled_Create
+  read: InfoScreenFields_additionalIframes_enabled_Read
+  update: InfoScreenFields_additionalIframes_enabled_Update
+  delete: InfoScreenFields_additionalIframes_enabled_Delete
+}
+
+type InfoScreenFields_additionalIframes_enabled_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_enabled_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_enabled_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_enabled_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_id {
+  create: InfoScreenFields_additionalIframes_id_Create
+  read: InfoScreenFields_additionalIframes_id_Read
+  update: InfoScreenFields_additionalIframes_id_Update
+  delete: InfoScreenFields_additionalIframes_id_Delete
+}
+
+type InfoScreenFields_additionalIframes_id_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_id_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_id_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_additionalIframes_id_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_updatedAt {
+  create: InfoScreenFields_updatedAt_Create
+  read: InfoScreenFields_updatedAt_Read
+  update: InfoScreenFields_updatedAt_Update
+  delete: InfoScreenFields_updatedAt_Delete
+}
+
+type InfoScreenFields_updatedAt_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_updatedAt_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_updatedAt_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_updatedAt_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenFields_createdAt {
+  create: InfoScreenFields_createdAt_Create
+  read: InfoScreenFields_createdAt_Read
+  update: InfoScreenFields_createdAt_Update
+  delete: InfoScreenFields_createdAt_Delete
+}
+
+type InfoScreenFields_createdAt_Create {
+  permission: Boolean!
+}
+
+type InfoScreenFields_createdAt_Read {
+  permission: Boolean!
+}
+
+type InfoScreenFields_createdAt_Update {
+  permission: Boolean!
+}
+
+type InfoScreenFields_createdAt_Delete {
+  permission: Boolean!
+}
+
+type InfoScreenReadAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
+type InfoScreenUpdateAccess {
+  permission: Boolean!
+  where: JSONObject
+}
+
 type Mutation {
   createUser(data: mutationUserInput!, locale: LocaleInputType): User
   updateUser(id: String!, autosave: Boolean, data: mutationUserUpdateInput!, locale: LocaleInputType): User
@@ -15497,6 +16062,7 @@ type Mutation {
   updateFooter(data: mutationFooterInput!, draft: Boolean, locale: LocaleInputType): Footer
   updateLandingPage(data: mutationLandingPageInput!, draft: Boolean, locale: LocaleInputType): LandingPage
   updateMainNavigation(data: mutationMainNavigationInput!, draft: Boolean, locale: LocaleInputType): MainNavigation
+  updateInfoScreen(data: mutationInfoScreenInput!, draft: Boolean, locale: LocaleInputType): InfoScreen
 }
 
 input mutationUserInput {
@@ -16931,4 +17497,20 @@ enum MainNavigation_Items_TopicConfig_Categories_ExternalLinks_icon_MutationInpu
   NavEvents
   NavApplicants
   Handshake
+}
+
+input mutationInfoScreenInput {
+  showKanttiinit: Boolean
+  showEvents: Boolean
+  showHSL: Boolean
+  additionalIframes: [mutationInfoScreen_AdditionalIframesInput]
+  updatedAt: String
+  createdAt: String
+}
+
+input mutationInfoScreen_AdditionalIframesInput {
+  IframeUrl: String!
+  IframeTitle: String!
+  enabled: Boolean
+  id: String
 }

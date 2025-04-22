@@ -1,9 +1,8 @@
 import type {
   LinkRowBlock,
   MainNavigationItem,
-  Media,
   Page,
-  SponsorLogoRowBlock,
+  PartnersRowBlock,
   Topic,
 } from "@tietokilta/cms-types/payload";
 import {
@@ -17,7 +16,7 @@ import {
   CollapsibleTrigger,
   ExternalLinkIcon,
 } from "@tietokilta/ui";
-import Image from "next/image";
+import { PartnerLogos } from "@components/partner-logos";
 import { cn } from "../../lib/utils";
 import { getScopedI18n } from "../../locales/server";
 import { Link } from "./link";
@@ -101,7 +100,7 @@ export function LinkList({
 }: {
   links: MainNavigationItem;
   footerLinks: LinkRowBlock[];
-  footerSponsors: SponsorLogoRowBlock[];
+  footerSponsors: PartnersRowBlock[];
 }) {
   return (
     <div className="overflow-y-auto font-mono text-xl font-semibold text-gray-900">
@@ -160,22 +159,11 @@ export function LinkList({
         {footerSponsors.map((sponsorRow) => (
           <ul className="space-y-4" key={sponsorRow.id}>
             <h2 className="text-center">{sponsorRow.title}</h2>
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              {sponsorRow.logos?.map((logo) => (
-                <li className="relative w-60" key={logo.id}>
-                  <Link href={logo.link}>
-                    {/* TODO: actually check image color and invert / modify according to contrast or something */}
-                    <Image
-                      alt={(logo.image as Media).alt}
-                      className="h-auto w-full object-contain"
-                      height={(logo.image as Media).height ?? 0}
-                      src={(logo.image as Media).url ?? ""}
-                      width={(logo.image as Media).width ?? 0}
-                    />
-                  </Link>
-                </li>
-              ))}
-            </div>
+            <PartnerLogos
+              statuses={sponsorRow.types ?? ["mainPartner"]}
+              size="medium"
+              type="mobileRow"
+            />
           </ul>
         ))}
       </footer>
