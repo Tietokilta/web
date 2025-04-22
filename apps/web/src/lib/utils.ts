@@ -305,6 +305,10 @@ export function getLocalizedEventTitle(eventTitle: string, locale: Locale) {
   return fiTitle;
 }
 
+export function assertUnreachable(value: never) {
+  throw new Error("Didn't expect to get here", { cause: { value } });
+}
+
 /**
  * Typescript gymnastics
  */
