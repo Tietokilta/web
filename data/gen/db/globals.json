@@ -40,6 +40,14 @@
 							{
 								"page": "6648ff73e1b71004f16ca1c9",
 								"id": "6648fee794d27b3ea4e83595"
+							},
+							{
+								"page": "677d317bb77f1d6a01369609",
+								"id": "678f97a2be98c6d0ac9ee668"
+							},
+							{
+								"page": "67877de5b77f1d6a01376c7b",
+								"id": "67b60caff92fc35c5f2e4ec8"
 							}
 						],
 						"externalLinks": [],
@@ -66,6 +74,10 @@
 							{
 								"page": "664a02de33b015537cf07f95",
 								"id": "664a0316930e1c031db16040"
+							},
+							{
+								"page": "67883d282372bf945ba8ceeb",
+								"id": "678847f5a811d2700165081d"
 							},
 							{
 								"page": "6747734ce822b916c8062217",
@@ -116,15 +128,6 @@
 						},
 						"pages": [],
 						"externalLinks": [
-							{
-								"title": {
-									"fi": "Vaalifoorumi",
-									"en": "Election Forum"
-								},
-								"href": "https://vaalit.tietokilta.fi",
-								"icon": "Gavel",
-								"id": "66fe4635be57814d0932997a"
-							},
 							{
 								"title": {
 									"fi": "Kuvagalleria",
@@ -199,14 +202,74 @@
 			"id": "6548f2b5611be65a813f88a7"
 		},
 		{
-			"type": "page",
-			"pageConfig": {
-				"page": "663cdabd864517dbe569a506"
-			},
+			"type": "topic",
+			"pageConfig": {},
 			"topicConfig": {
-				"categories": []
+				"topic": "680177c41213ad7fb27bcfc2",
+				"categories": [
+					{
+						"title": {
+							"fi": "Yhdenvertaisuus",
+							"en": "Equity"
+						},
+						"pages": [
+							{
+								"page": "663cdabd864517dbe569a506",
+								"id": "680177f88ed4fd66732b69f8"
+							},
+							{
+								"page": "680179951213ad7fb27bd420",
+								"id": "680179e68ed4fd66732b69fb"
+							}
+						],
+						"externalLinks": [],
+						"id": "680177f38ed4fd66732b69f7"
+					},
+					{
+						"title": {
+							"fi": "Ohjeita",
+							"en": "Information"
+						},
+						"pages": [
+							{
+								"page": "680198701213ad7fb27c00ad",
+								"id": "6801a0285e67fc547fcaa2c0"
+							},
+							{
+								"page": "67e2a0bb1ae2001516a4d3a5",
+								"id": "680177ec8ed4fd66732b69f6"
+							}
+						],
+						"externalLinks": [],
+						"id": "680177e08ed4fd66732b69f4"
+					},
+					{
+						"title": {
+							"fi": "Ota yhteyttä",
+							"en": "Contact"
+						},
+						"pages": [
+							{
+								"page": "67a7e6bfbc1fd6ed3e47c110",
+								"id": "6801a06c5e67fc547fcaa2c1"
+							}
+						],
+						"externalLinks": [
+							{
+								"title": {
+									"fi": "Anonyymi lomake",
+									"en": "Anonymous Form"
+								},
+								"href": "https://tietokilta.fi/fi/yhdenvertaisuus/hairintalomake",
+								"icon": "Megaphone",
+								"id": "68017a2b8ed4fd66732b69fc"
+							}
+						],
+						"id": "680177cf8ed4fd66732b69f1"
+					}
+				]
 			},
-			"id": "663cdbb0c60c820289dbf7b3"
+			"id": "680177b88ed4fd66732b69f0"
 		}
 	],
 	"globalType": "main-navigation",
@@ -214,7 +277,7 @@
 		"$date": "2023-11-06T14:05:51.452Z"
 	},
 	"updatedAt": {
-		"$date": "2024-12-06T14:43:28.758Z"
+		"$date": "2025-04-19T00:28:11.706Z"
 	},
 	"__v": 0,
 	"logo": "6648fdcf7bcfaaff24ed661e"
@@ -342,7 +405,7 @@
 		"$date": "2023-11-06T14:14:03.116Z"
 	},
 	"updatedAt": {
-		"$date": "2024-09-23T15:59:50.464Z"
+		"$date": "2025-04-18T23:35:10.292Z"
 	},
 	"__v": 0
 },
@@ -855,6 +918,26 @@
 			{
 				"text": "Tehääs sivut uusiks rustilla",
 				"id": "66f0925d5bcda488b63db8e0"
+			},
+			{
+				"text": "Hups :D",
+				"id": "67da9f2aa3db2c02e358c65e"
+			},
+			{
+				"text": "Mun masu on kipee",
+				"id": "67e2b12afc0b4b01c8bd8bf5"
+			},
+			{
+				"text": "Full zip housut",
+				"id": "67e2b136fc0b4b01c8bd8bf6"
+			},
+			{
+				"text": "Tääl kahvis on matoja",
+				"id": "67f2651bb581ce782231a956"
+			},
+			{
+				"text": "@Helppovoitto",
+				"id": "67f26535b581ce782231a957"
 			}
 		],
 		"en": [
@@ -1144,6 +1227,14 @@
 		{
 			"image": "6648e7735138eca5076b6091",
 			"id": "6648e756917b8b0075957e8f"
+		},
+		{
+			"image": "67d6f8259f25f672bc8e1e42",
+			"id": "67d6f80c1c403a63411c7f2e"
+		},
+		{
+			"image": "67e2b1581ae2001516a4fa5b",
+			"id": "67e2b145fc0b4b01c8bd8bf7"
 		}
 	],
 	"body": {
@@ -1456,10 +1547,10 @@
 		"$date": "2024-01-16T09:27:53.776Z"
 	},
 	"updatedAt": {
-		"$date": "2024-12-10T13:16:00.021Z"
+		"$date": "2025-04-06T11:28:36.59Z"
 	},
 	"__v": 0,
-	"announcement": "67583e0b85ab23be128a7a8e",
+	"announcement": "67d6a86f9f25f672bc8e17d0",
 	"eventsListPage": "663cda58864517dbe569a395"
 }]
 
