@@ -101,6 +101,7 @@ export interface Config {
     footer: Footer;
     'landing-page': LandingPage;
     'main-navigation': MainNavigation;
+    'info-screen': InfoScreen;
   };
 }
 /**
@@ -972,4 +973,24 @@ export interface MainNavigationTopicConfig {
         id?: string | null;
       }[]
     | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "info-screen".
+ */
+export interface InfoScreen {
+  id: string;
+  showKanttiinit?: boolean | null;
+  showEvents?: boolean | null;
+  showHSL?: boolean | null;
+  additionalIframes?:
+    | {
+        IframeUrl: string;
+        IframeTitle: string;
+        enabled?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }

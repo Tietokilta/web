@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { isTruthy } from "remeda";
 
 export default function InfoScreenSwitcher({
   children,
@@ -9,7 +10,7 @@ export default function InfoScreenSwitcher({
   children: React.ReactNode;
 }) {
   const [current, setCurrent] = useState(0);
-  const childrenArray = React.Children.toArray(children).filter(Boolean);
+  const childrenArray = React.Children.toArray(children).filter(isTruthy);
   const count = childrenArray.length;
   const router = useRouter();
 
@@ -34,5 +35,5 @@ export default function InfoScreenSwitcher({
     );
   }
 
-  return <div className="flex h-full flex-col">{childrenArray[current]}</div>;
+  return <>{childrenArray[current]}</>;
 }

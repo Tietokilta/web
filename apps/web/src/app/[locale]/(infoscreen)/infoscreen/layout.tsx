@@ -20,16 +20,12 @@ export default function ScreenLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fi">
-      <body
-        className={cn(
-          inter.variable,
-          robotoMono.variable,
-          "flex h-full flex-col bg-gray-200 font-mono",
-        )}
-      >
-        <InfoScreenHeader />
-        <div className="size-full p-4">{children}</div>
+    <html lang="fi" className="h-full">
+      <body className={cn(inter.variable, robotoMono.variable, "h-full")}>
+        <div className="flex h-full flex-col bg-gray-200 font-mono">
+          <InfoScreenHeader />
+          <div className="size-full">{children}</div>
+        </div>
       </body>
     </html>
   );

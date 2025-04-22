@@ -25,7 +25,7 @@ export default async function EventListInfoscreen({
   );
 
   return (
-    <main id="main" className="flex flex-col align-top">
+    <main id="main" className="flex flex-col p-4 align-top">
       <h1 className="mb-2 mt-4 text-center font-mono text-5xl font-bold">
         {t("ilmomasiina.Tapahtumat")}
       </h1>
