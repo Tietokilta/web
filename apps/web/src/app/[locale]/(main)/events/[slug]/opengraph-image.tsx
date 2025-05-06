@@ -3,6 +3,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
+import stripMarkdown from "strip-markdown";
+import { remark } from "remark";
 import { getCurrentLocale } from "@locales/server";
 import { fetchEvent } from "@lib/api/external/ilmomasiina";
 import { formatDateTime, getLocalizedEventTitle } from "@lib/utils";
@@ -69,7 +71,9 @@ export default async function Image(props: PageProps) {
   const tikLogoSrc = Uint8Array.from(tikLogoData).buffer;
 
   const title = getLocalizedEventTitle(event.data.title, locale);
-  const description = event.data.description;
+  const description = (
+    await remark().use(stripMarkdown).process(event.data.description)
+  ).toString();
 
   return new ImageResponse(
     (
