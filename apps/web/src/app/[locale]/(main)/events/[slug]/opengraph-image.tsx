@@ -71,7 +71,9 @@ export default async function Image(props: PageProps) {
   const tikLogoSrc = Uint8Array.from(tikLogoData).buffer;
 
   const title = getLocalizedEventTitle(event.data.title, locale);
-  const description =  (await remark().use(stripMarkdown).process(event.data.description)).toString()
+  const description = (
+    await remark().use(stripMarkdown).process(event.data.description)
+  ).toString();
 
   return new ImageResponse(
     (
