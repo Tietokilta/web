@@ -156,7 +156,7 @@ export default buildConfig({
       InlineCodeTextFeature(),
       ParagraphFeature(),
       HeadingFeature({
-        enabledHeadingSizes: ["h2", "h3"],
+        enabledHeadingSizes: ["h2", "h3", "h4"],
       }),
       AlignFeature(),
       IndentFeature(),
