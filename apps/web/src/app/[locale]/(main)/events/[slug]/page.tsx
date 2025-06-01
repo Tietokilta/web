@@ -3,6 +3,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
+import remarkDirective from "remark-directive";
 import {
   type IlmomasiinaEvent,
   fetchEvent,
@@ -29,6 +30,7 @@ import { I18nProviderClient } from "@locales/client";
 import { DateTime } from "@components/datetime";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
 import { SignupButtons } from "./signup-buttons";
+import { telegramDirective } from "./directives/telegram-directive";
 
 async function SignUpText({
   startDate,
@@ -409,6 +411,14 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   };
 };
 
+export function MarkdownAlert({ children }: { children?: React.ReactNode }) {
+  return (
+    <section className="shadow-solid relative z-20 my-6 rounded-md border-2 border-gray-900 px-4 md:px-6">
+      {children}
+    </section>
+  );
+}
+
 export default async function Page(props: PageProps) {
   const params = await props.params;
   const { slug } = params;
@@ -444,7 +454,15 @@ export default async function Page(props: PageProps) {
                 {event.data.description ? (
                   <div className="prose">
                     <Markdown
-                      remarkPlugins={[[remarkI18n, { locale }], remarkGfm]}
+                      remarkPlugins={[
+                        [remarkI18n, { locale }],
+                        remarkGfm,
+                        remarkDirective,
+                        telegramDirective,
+                      ]}
+                      components={{
+                        blockquote: MarkdownAlert,
+                      }}
                     >
                       {event.data.description}
                     </Markdown>
