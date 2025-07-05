@@ -19,9 +19,9 @@ export default async function Page() {
           <BackButton>{ta("Back")}</BackButton>
           <h1 className="font-mono text-4xl">{t("Kaikki tapahtumat")}</h1>
           <ul className="space-y-8">
-            {events.data
-              ?.reverse()
-              .map((event) => <EventCard event={event} key={event.id} />)}
+            {events.data?.reverse().map((event) => (
+              <EventCard event={event} key={event.id} />
+            ))}
           </ul>
         </div>
       </div>
