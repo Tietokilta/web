@@ -1,15 +1,13 @@
 import type { CollectionConfig, FieldHook } from "payload";
 import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
-import { type PayloadHandler } from "payload";
 import { signedIn } from "../../access/signed-in";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
 import { publishedOrSignedIn } from "../../access/published-or-signed-in";
-// import {
-//   getEmailController,
-//   getTelegramMessageController,
-//   newsletterSenderController,
-// } from "../../controllers/newsletter-controller";
-import NewsletterButton from "./newsletter-button";
+import {
+  getEmailController,
+  getTelegramMessageController,
+  newsletterSenderController,
+} from "../../controllers/newsletter-controller";
 
 const formatSlug: FieldHook<WeeklyNewsletter, WeeklyNewsletter["slug"]> = ({
   data,
@@ -81,7 +79,8 @@ export const WeeklyNewsletters: CollectionConfig = {
       type: "ui",
       admin: {
         components: {
-          //Field: NewsletterButton,
+          Field:
+            "/src/collections/weekly-newsletters/newsletter-button#NewsletterButton",
         },
         position: "sidebar",
       },
@@ -90,23 +89,23 @@ export const WeeklyNewsletters: CollectionConfig = {
   hooks: {
     afterChange: [revalidateCollection<WeeklyNewsletter>("weekly-newsletters")],
   },
-  // endpoints: [
-  //   {
-  //     path: "/mail/:newsletterId",
-  //     method: "post",
-  //     handler: newsletterSenderController as PayloadHandler,
-  //   },
-  //   {
-  //     path: "/mail/:newsletterId",
-  //     method: "get",
-  //     handler: getEmailController as PayloadHandler,
-  //   },
-  //   {
-  //     path: "/telegram/:newsletterId",
-  //     method: "get",
-  //     handler: getTelegramMessageController as PayloadHandler,
-  //   },
-  // ],
+  endpoints: [
+    {
+      path: "/mail/:newsletterId",
+      method: "post",
+      handler: newsletterSenderController,
+    },
+    {
+      path: "/mail/:newsletterId",
+      method: "get",
+      handler: getEmailController,
+    },
+    {
+      path: "/telegram/:newsletterId",
+      method: "get",
+      handler: getTelegramMessageController,
+    },
+  ],
   versions: {
     drafts: true,
   },

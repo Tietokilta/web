@@ -1,6 +1,6 @@
 import payload from "payload";
 import type { Board, Committee } from "@tietokilta/cms-types/payload";
-import { parse } from "papaparse";
+import * as Papa from "papaparse";
 import type { PayloadRequest } from "payload";
 import { CommitteeMembers } from "../collections/committees/committee-members";
 import { BoardMembers } from "../collections/board/board-members";
@@ -13,7 +13,7 @@ interface CommitteeMember {
 }
 
 function parseCSV(rawCsv: string): string[][] {
-  const result = parse(rawCsv);
+  const result = Papa.parse(rawCsv);
   return result.data as string[][];
 }
 

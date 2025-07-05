@@ -79,6 +79,13 @@ export default buildConfig({
           ? "/src/components/admin-sign-up-button#OAuthButton"
           : undefined,
       ].filter(isDefined),
+      views: {
+        CustomActions: {
+          Component: "/src/views/actions-view#ActionsView",
+          path: "/actions",
+        },
+      },
+      actions: ["/src/views/actions-view#ActionsLink"],
     },
   },
   collections: [

@@ -1,4 +1,3 @@
-import type { Page, Topic, Page as PageType } from "@payload-types";
 import type {
   CollectionConfig,
   Field,
@@ -6,9 +5,10 @@ import type {
   FieldHookArgs,
   FilterOptions,
   PayloadRequest,
+  Locale,
 } from "payload";
-import { type Locale } from "payload";
 import { customAlphabet } from "nanoid";
+import type { Page, Topic, Page as PageType } from "@payload-types";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
 import { revalidateCollection } from "../hooks/revalidate-collection";
@@ -33,8 +33,8 @@ const getFormattedPath = async (
   }
 
   const availableLocales = req.payload.config.localization.localeCodes;
-  const reqLocale = getLocale(req) ?? "fi";
-  const requestedAllLocales = reqLocale === "all" || reqLocale === "*";
+  const reqLocale = getLocale(req);
+  const requestedAllLocales = reqLocale === "all";
 
   if (!data.topic) {
     if (!requestedAllLocales) {

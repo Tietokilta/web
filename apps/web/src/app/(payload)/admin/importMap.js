@@ -22,7 +22,11 @@ import { StrikethroughFeatureClient as StrikethroughFeatureClient_e70f5e05f09f93
 import { UnderlineFeatureClient as UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
+import { NewsletterButton as NewsletterButton_a197335bc71d3729f8a25f1784e01911 } from '../../../../src/collections/weekly-newsletters/newsletter-button'
+import { ActionsLink as ActionsLink_86608735ec280265d7bd55dfdf381db4 } from '../../../../src/views/actions-view'
+import { OAuthButton as OAuthButton_c8e03f4512c32570e57acd2027fdf5e3 } from '../../../../src/components/admin-sign-up-button'
 import { AzureClientUploadHandler as AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104 } from '@payloadcms/storage-azure/client'
+import { ActionsView as ActionsView_86608735ec280265d7bd55dfdf381db4 } from '../../../../src/views/actions-view'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -49,5 +53,9 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#UnderlineFeatureClient": UnderlineFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#BoldFeatureClient": BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
-  "@payloadcms/storage-azure/client#AzureClientUploadHandler": AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104
+  "/src/collections/weekly-newsletters/newsletter-button#NewsletterButton": NewsletterButton_a197335bc71d3729f8a25f1784e01911,
+  "/src/views/actions-view#ActionsLink": ActionsLink_86608735ec280265d7bd55dfdf381db4,
+  "/src/components/admin-sign-up-button#OAuthButton": OAuthButton_c8e03f4512c32570e57acd2027fdf5e3,
+  "@payloadcms/storage-azure/client#AzureClientUploadHandler": AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104,
+  "/src/views/actions-view#ActionsView": ActionsView_86608735ec280265d7bd55dfdf381db4
 }

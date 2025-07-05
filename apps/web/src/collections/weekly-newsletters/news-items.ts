@@ -14,7 +14,7 @@ const formatDisplayTitle: FieldHook<NewsItem> = ({ data: newsItem, req }) => {
     return newsItem.title;
   }
 
-  const locale = getLocale(req) ?? "fi";
+  const locale = getLocale(req);
   const date = new Date(newsItem.date).toLocaleDateString(`${locale}-FI`);
 
   return `${newsItem.title} - ${date}`;

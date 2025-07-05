@@ -1,29 +1,39 @@
-import * as React from "react";
+"use client";
 
-const getIdFromUrl = (): string => {
-  const pathArray = window.location.pathname.split("/");
-  const id = pathArray[pathArray.length - 1];
-  return id;
-};
+import * as React from "react";
+import { useDocumentInfo } from "@payloadcms/ui";
 
 const getTelegramMessage = async (
   locale: string,
+  newsletterId: string,
 ): Promise<{
   message: string;
 }> => {
-  const newsletterId = getIdFromUrl();
   const response = await fetch(
     `/api/weekly-newsletters/telegram/${newsletterId}?locale=${locale}`,
   );
   return (await response.json()) as { message: string };
 };
 
-const copyTelegramMessage = async (locale: string): Promise<void> => {
-  const textToCopy = await getTelegramMessage(locale);
+const copyTelegramMessage = async (
+  locale: string,
+  newsletterId: string,
+): Promise<void> => {
+  const textToCopy = await getTelegramMessage(locale, newsletterId);
   void navigator.clipboard.writeText(textToCopy.message);
 };
 
-const NewsletterButton = (): React.ReactElement => {
+export function NewsletterButton(): React.ReactElement {
+  const { id: newsletterId } = useDocumentInfo();
+
+  if (!newsletterId) {
+    return <div>Loading...</div>;
+  }
+
+  if (typeof newsletterId !== "string") {
+    return <div>Invalid newsletter ID, how tf?</div>;
+  }
+
   const handleButtonClick = async (): Promise<void> => {
     // eslint-disable-next-line no-alert -- Good to have confirmation
     const confirmed = confirm(
@@ -50,7 +60,6 @@ const NewsletterButton = (): React.ReactElement => {
   const buttonHoverStyle = {
     backgroundColor: "#333333",
   };
-  const newsletterId = getIdFromUrl();
 
   return (
     <div
@@ -100,7 +109,7 @@ const NewsletterButton = (): React.ReactElement => {
           ((e.target as HTMLElement).style.backgroundColor =
             buttonStyle.backgroundColor)
         }
-        onClick={() => void copyTelegramMessage("fi")}
+        onClick={() => void copyTelegramMessage("fi", newsletterId)}
       >
         Copy finnish tg
       </button>
@@ -114,12 +123,10 @@ const NewsletterButton = (): React.ReactElement => {
           ((e.target as HTMLElement).style.backgroundColor =
             buttonStyle.backgroundColor)
         }
-        onClick={() => void copyTelegramMessage("en")}
+        onClick={() => void copyTelegramMessage("en", newsletterId)}
       >
         Copy english tg
       </button>
     </div>
   );
-};
-
-export default NewsletterButton;
+}

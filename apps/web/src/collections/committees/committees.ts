@@ -1,9 +1,9 @@
 import type { Committee } from "@tietokilta/cms-types/payload";
 import type { CollectionConfig, FilterOptions } from "payload";
-import { type PayloadHandler } from "payload";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
+import { committeesImportController } from "../../controllers/committees-import-controller";
 
 const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({
   guildYear: {
@@ -60,13 +60,13 @@ export const Committees = {
   hooks: {
     afterChange: [revalidateCollection<Committee>("committees")],
   },
-  // endpoints: [
-  //   {
-  //     path: "/import",
-  //     method: "post",
-  //     handler: committeesImportController as PayloadHandler,
-  //   },
-  // ],
+  endpoints: [
+    {
+      path: "/import",
+      method: "post",
+      handler: committeesImportController,
+    },
+  ],
 } as const satisfies CollectionConfig;
 
 export type CommitteesSlug = (typeof Committees)["slug"];

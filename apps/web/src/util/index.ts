@@ -1,4 +1,5 @@
 import type { PayloadRequest } from "payload";
+import { type Locale } from "@locales/server";
 
 // for internal requests
 export const SELF_URL = `http://localhost:${process.env.PORT ?? String(3000)}`;
@@ -17,7 +18,8 @@ export const isGoogleAuthEnabled = (): boolean => {
     typeof process.env.GOOGLE_OAUTH_CLIENT_SECRET === "string"
   );
 };
-export function getLocale(req: PayloadRequest): string | undefined {
+
+export function getLocale(req: PayloadRequest): Locale | "all" {
   const res =
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- query may be undefined, payload types are scuffed
     typeof req.query?.locale === "string" ? req.query.locale : req.locale;
@@ -26,7 +28,7 @@ export function getLocale(req: PayloadRequest): string | undefined {
       `locale not set for ${req.pathname}, defaulting to fi`,
     );
   }
-  return res ?? undefined;
+  return (res as Locale | "all" | undefined) ?? "fi";
 }
 
 export function appendToStringOrLocalizedString(
