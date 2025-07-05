@@ -48,6 +48,9 @@ export default ts.config(
     ignores: ["node_modules/", "dist/"],
   },
   {
+    plugins: {
+      "@typescript-eslint": ts.plugin,
+    },
     rules: {
       "import-x/no-default-export": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
