@@ -10,7 +10,6 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { buildConfig } from "payload";
 import { azureStorage } from "@payloadcms/storage-azure";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
-import { isDefined } from "remeda";
 import type { Config } from "@payload-types";
 import { Users } from "./collections/users";
 import { Pages } from "./collections/pages";
@@ -75,10 +74,12 @@ export default buildConfig({
     autoLogin,
     components: {
       beforeLogin: [
-        isGoogleAuthEnabled()
-          ? "/src/components/admin-sign-up-button#OAuthButton"
-          : undefined,
-      ].filter(isDefined),
+        {
+          path: "/src/components/admin-sign-up-button",
+          exportName: "OAuthButton",
+          serverProps: { enabled: isGoogleAuthEnabled() },
+        },
+      ],
       views: {
         CustomActions: {
           Component: "/src/views/actions-view#ActionsView",
