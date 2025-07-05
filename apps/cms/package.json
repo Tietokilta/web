@@ -23,9 +23,9 @@
   "dependencies": {
     "@azure/storage-blob": "^12.27.0",
     "@payloadcms/bundler-webpack": "^1.0.7",
-    "@payloadcms/db-mongodb": "^1.7.5",
-    "@payloadcms/plugin-cloud-storage": "^1.2.2",
-    "@payloadcms/richtext-lexical": "^0.11.4",
+    "@payloadcms/db-mongodb": "^3.45.0",
+    "@payloadcms/plugin-cloud-storage": "^3.45.0",
+    "@payloadcms/richtext-lexical": "^3.45.0",
     "@react-email/components": "0.1.1",
     "dotenv": "^17.0.1",
     "express": "^4.21.2",
@@ -33,7 +33,7 @@
     "mailgun.js": "^12.0.3",
     "nanoid": "^3.3.11",
     "papaparse": "^5.5.3",
-    "payload": "^2.32.3",
+    "payload": "^3.45.0",
     "payload-plugin-oauth": "^2.2.0"
   },
   "devDependencies": {
