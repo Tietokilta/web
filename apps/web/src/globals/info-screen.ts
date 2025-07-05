@@ -1,6 +1,6 @@
-import type { GlobalConfig } from "payload/types";
+import type { GlobalConfig } from "payload";
 
-export const InfoScreen: GlobalConfig = {
+export const InfoScreen = {
   slug: "info-screen",
   access: {
     read: () => true,
@@ -39,4 +39,4 @@ export const InfoScreen: GlobalConfig = {
       ],
     },
   ],
-};
+} satisfies GlobalConfig;

@@ -1,4 +1,4 @@
-import type { CollectionConfig, FieldHook, type PayloadHandler } from "payload";
+import type { CollectionConfig, FieldHook } from "payload";
 import type { CommitteeMember } from "@tietokilta/cms-types/payload";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
