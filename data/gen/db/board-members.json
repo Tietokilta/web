@@ -18,7 +18,9 @@
 	},
 	"__v": 0,
 	"phoneNumber": "+358445515224",
-	"photo": "669d6b2c72c05c20acfa8d91"
+	"photo": {
+		"$oid": "669d6b2c72c05c20acfa8d91"
+	}
 },
 {
 	"_id": {
@@ -39,7 +41,9 @@
 		"$date": "2024-07-21T20:07:42.235Z"
 	},
 	"__v": 0,
-	"photo": "669d6a8872c05c20acfa8cd7"
+	"photo": {
+		"$oid": "669d6a8872c05c20acfa8cd7"
+	}
 },
 {
 	"_id": {
@@ -99,7 +103,9 @@
 		"$date": "2024-02-03T15:36:21.03Z"
 	},
 	"__v": 0,
-	"photo": "65be5d50ab82e7fecfd1cef2"
+	"photo": {
+		"$oid": "65be5d50ab82e7fecfd1cef2"
+	}
 },
 {
 	"_id": {
@@ -119,7 +125,9 @@
 		"$date": "2024-02-03T15:37:39.305Z"
 	},
 	"__v": 0,
-	"photo": "65be5d89ab82e7fecfd1d125"
+	"photo": {
+		"$oid": "65be5d89ab82e7fecfd1d125"
+	}
 },
 {
 	"_id": {
@@ -139,14 +147,18 @@
 		"$date": "2024-02-03T15:37:58.941Z"
 	},
 	"__v": 0,
-	"photo": "65be5dd4ab82e7fecfd1d18d"
+	"photo": {
+		"$oid": "65be5dd4ab82e7fecfd1d18d"
+	}
 },
 {
 	"_id": {
 		"$oid": "65bc0e0b70b726420fa64a72"
 	},
 	"guildYear": "2023",
-	"photo": "65bc0e0570b726420fa64a6e",
+	"photo": {
+		"$oid": "65bc0e0570b726420fa64a6e"
+	},
 	"name": "Mikael Siidorow",
 	"title": {
 		"fi": "Opintovastaava"
@@ -166,7 +178,9 @@
 		"$oid": "65be5d2eab82e7fecfd1cee8"
 	},
 	"guildYear": "2023",
-	"photo": "65be5d2bab82e7fecfd1cee4",
+	"photo": {
+		"$oid": "65be5d2bab82e7fecfd1cee4"
+	},
 	"name": "Noora Puhakka",
 	"title": {
 		"fi": "Sihteeri"
@@ -186,7 +200,9 @@
 		"$oid": "65be5f2bab82e7fecfd1d710"
 	},
 	"guildYear": "2023",
-	"photo": "65be5f1dab82e7fecfd1d70c",
+	"photo": {
+		"$oid": "65be5f1dab82e7fecfd1d70c"
+	},
 	"name": "Elsa Schumacher",
 	"title": {
 		"fi": "Tiedottaja"
@@ -206,7 +222,9 @@
 		"$oid": "65be5f66ab82e7fecfd1d723"
 	},
 	"guildYear": "2023",
-	"photo": "65be5f52ab82e7fecfd1d71f",
+	"photo": {
+		"$oid": "65be5f52ab82e7fecfd1d71f"
+	},
 	"name": "Eemeli Vähäpassi",
 	"title": {
 		"fi": "Yrityssuhdevastaava"
@@ -226,7 +244,9 @@
 		"$oid": "65be5f8dab82e7fecfd1d737"
 	},
 	"guildYear": "2023",
-	"photo": "65be5f7dab82e7fecfd1d733",
+	"photo": {
+		"$oid": "65be5f7dab82e7fecfd1d733"
+	},
 	"name": "Emma Astikainen",
 	"title": {
 		"fi": "Fuksikapteeni"
@@ -246,7 +266,9 @@
 		"$oid": "65be5fb3ab82e7fecfd1d74c"
 	},
 	"guildYear": "2023",
-	"photo": "65be5fa5ab82e7fecfd1d748",
+	"photo": {
+		"$oid": "65be5fa5ab82e7fecfd1d748"
+	},
 	"name": "Leo Immonen",
 	"title": {
 		"fi": "Pakuvastaava"
@@ -266,7 +288,9 @@
 		"$oid": "65be5feaab82e7fecfd1d762"
 	},
 	"guildYear": "2023",
-	"photo": "65be5fd4ab82e7fecfd1d75e",
+	"photo": {
+		"$oid": "65be5fd4ab82e7fecfd1d75e"
+	},
 	"name": "Daniel Kaluski",
 	"title": {
 		"fi": "Kansainvälisyysvastaava"
@@ -286,7 +310,9 @@
 		"$oid": "65be601aab82e7fecfd1d76e"
 	},
 	"guildYear": "2023",
-	"photo": "65be6003ab82e7fecfd1d76a",
+	"photo": {
+		"$oid": "65be6003ab82e7fecfd1d76a"
+	},
 	"name": "Antti-Jussi Ikonen",
 	"title": {
 		"fi": "Isäntä"
@@ -306,7 +332,9 @@
 		"$oid": "65be604eab82e7fecfd1d777"
 	},
 	"guildYear": "2023",
-	"photo": "65be6037ab82e7fecfd1d773",
+	"photo": {
+		"$oid": "65be6037ab82e7fecfd1d773"
+	},
 	"name": "Emilia Repo",
 	"title": {
 		"fi": "Abimarkkinointivastaava"
@@ -360,7 +388,9 @@
 		"$date": "2024-08-19T14:56:50.186Z"
 	},
 	"__v": 0,
-	"photo": "669d6aa472c05c20acfa8ce4",
+	"photo": {
+		"$oid": "669d6aa472c05c20acfa8ce4"
+	},
 	"phoneNumber": "+358408532855"
 },
 {
@@ -382,7 +412,9 @@
 		"$date": "2024-07-21T20:12:51.885Z"
 	},
 	"__v": 0,
-	"photo": "669d6aba72c05c20acfa8cee"
+	"photo": {
+		"$oid": "669d6aba72c05c20acfa8cee"
+	}
 },
 {
 	"_id": {
@@ -403,7 +435,9 @@
 		"$date": "2024-07-21T20:13:02.447Z"
 	},
 	"__v": 0,
-	"photo": "669d6ace72c05c20acfa8cf8"
+	"photo": {
+		"$oid": "669d6ace72c05c20acfa8cf8"
+	}
 },
 {
 	"_id": {
@@ -424,7 +458,9 @@
 		"$date": "2024-07-21T20:13:11.846Z"
 	},
 	"__v": 0,
-	"photo": "669d6ae372c05c20acfa8d05"
+	"photo": {
+		"$oid": "669d6ae372c05c20acfa8d05"
+	}
 },
 {
 	"_id": {
@@ -1289,7 +1325,9 @@
 		"$date": "2025-05-18T15:28:08.331Z"
 	},
 	"__v": 0,
-	"photo": "6829f29fc3aaaa2ebb315a57"
+	"photo": {
+		"$oid": "6829f29fc3aaaa2ebb315a57"
+	}
 },
 {
 	"_id": {
@@ -1310,7 +1348,9 @@
 		"$date": "2025-05-18T15:27:43.324Z"
 	},
 	"__v": 0,
-	"photo": "6829f32bc3aaaa2ebb315bb9"
+	"photo": {
+		"$oid": "6829f32bc3aaaa2ebb315bb9"
+	}
 },
 {
 	"_id": {
@@ -1331,7 +1371,9 @@
 		"$date": "2025-05-18T15:27:59.903Z"
 	},
 	"__v": 0,
-	"photo": "6829f3a8c3aaaa2ebb315c88"
+	"photo": {
+		"$oid": "6829f3a8c3aaaa2ebb315c88"
+	}
 },
 {
 	"_id": {
@@ -1352,7 +1394,9 @@
 		"$date": "2025-05-18T15:27:08.855Z"
 	},
 	"__v": 0,
-	"photo": "6829f2b7c3aaaa2ebb315a9f"
+	"photo": {
+		"$oid": "6829f2b7c3aaaa2ebb315a9f"
+	}
 },
 {
 	"_id": {
@@ -1373,7 +1417,9 @@
 		"$date": "2025-05-18T15:27:02.071Z"
 	},
 	"__v": 0,
-	"photo": "6829f389c3aaaa2ebb315c2e"
+	"photo": {
+		"$oid": "6829f389c3aaaa2ebb315c2e"
+	}
 },
 {
 	"_id": {
@@ -1394,7 +1440,9 @@
 		"$date": "2025-05-18T15:27:27.485Z"
 	},
 	"__v": 0,
-	"photo": "6829f1a5c3aaaa2ebb315886"
+	"photo": {
+		"$oid": "6829f1a5c3aaaa2ebb315886"
+	}
 },
 {
 	"_id": {
@@ -1415,7 +1463,9 @@
 		"$date": "2025-05-18T15:27:52.596Z"
 	},
 	"__v": 0,
-	"photo": "6829f057c3aaaa2ebb315646"
+	"photo": {
+		"$oid": "6829f057c3aaaa2ebb315646"
+	}
 },
 {
 	"_id": {
@@ -1437,6 +1487,8 @@
 	},
 	"__v": 0,
 	"phoneNumber": "0449698380",
-	"photo": "6829f19fc3aaaa2ebb315874"
+	"photo": {
+		"$oid": "6829f19fc3aaaa2ebb315874"
+	}
 }]
 
