@@ -1,10 +1,5 @@
 "use client";
 
-import type {
-  MainNavigationItem,
-  Page,
-  Topic,
-} from "@tietokilta/cms-types/payload";
 import {
   Button,
   ExternalLinkIcon,
@@ -18,6 +13,7 @@ import {
 import NextLink, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import type { HTMLProps } from "react";
+import type { MainNavigationItem, Page, Topic } from "@payload-types";
 
 function Link({
   href,

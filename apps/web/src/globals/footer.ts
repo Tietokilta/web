@@ -1,5 +1,5 @@
-import type { LinkRowBlockLink } from "@tietokilta/cms-types/payload";
 import type { Block, GlobalConfig } from "payload";
+import type { LinkRowBlockLink } from "@payload-types";
 import { iconField } from "../fields/icon-field";
 import { PartnerStatusField } from "../collections/partners";
 

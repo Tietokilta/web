@@ -1,5 +1,5 @@
-import type { Node } from "@tietokilta/cms-types/lexical";
 import type { JSX } from "react";
+import type { Node } from "@lexical-types";
 
 export type Locale = (typeof locales)[number];
 

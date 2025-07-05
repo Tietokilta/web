@@ -1,11 +1,6 @@
-import type {
-  Document,
-  Magazine,
-  MagazineIssue,
-  Media,
-} from "@tietokilta/cms-types/payload";
 import Image from "next/image";
 import { unique } from "remeda";
+import type { Document, Magazine, MagazineIssue, Media } from "@payload-types";
 import TikLogo from "../../assets/TiK-logo.png";
 
 function IssueCard({ issue }: { issue: MagazineIssue }) {

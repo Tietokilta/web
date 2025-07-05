@@ -1,7 +1,7 @@
-import type { EditorState, Node } from "@tietokilta/cms-types/lexical";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { JSX } from "react";
+import type { EditorState, Node } from "@lexical-types";
 import { type Locale } from "../locales/server";
 import {
   type EventQuotaWithSignups,

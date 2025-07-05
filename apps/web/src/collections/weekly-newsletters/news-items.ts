@@ -1,5 +1,5 @@
 import type { CollectionConfig, FieldHook } from "payload";
-import type { NewsItem } from "@tietokilta/cms-types/payload";
+import type { NewsItem } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
 import { newsItemCategoryField } from "../../fields/news-item-category";
 import { getLocale } from "../../util";

@@ -1,7 +1,7 @@
-import type { Media, Partner } from "@tietokilta/cms-types/payload";
-import type { PartnersBlockNode } from "@tietokilta/cms-types/lexical";
 import Image from "next/image";
 import Link from "next/link";
+import type { Media, Partner } from "@payload-types";
+import type { PartnersBlockNode } from "@lexical-types";
 import { ImageLinkGrid } from "@components/image-link-grid";
 import { fetchPartners } from "@lib/api/partners";
 import { getCurrentLocale } from "@locales/server";

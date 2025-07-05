@@ -1,8 +1,8 @@
 "use client";
 
-import { type EditorInChiefBlockNode } from "@tietokilta/cms-types/lexical";
 import { DvdScreensaver } from "react-dvd-screensaver";
 import { useEffect, useState } from "react";
+import { type EditorInChiefBlockNode } from "@lexical-types";
 
 export function EditorInChief({
   name,

@@ -1,7 +1,7 @@
 import { render } from "@react-email/components";
-import { type Node } from "@tietokilta/cms-types/lexical";
-import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 import { type PayloadHandler } from "payload";
+import { type Node } from "@lexical-types";
+import { type WeeklyNewsletter } from "@payload-types";
 import { signedIn } from "../access/signed-in";
 import { sendEmail } from "../mailgun";
 import { NewsletterEmail } from "../emails/newsletter-email";

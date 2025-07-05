@@ -1,5 +1,5 @@
-import type { LandingPage as LandingPageType } from "@tietokilta/cms-types/payload";
 import type { FilterOptions, GlobalConfig } from "payload";
+import type { LandingPage as LandingPageType } from "@payload-types";
 
 const filterEventsListPages: FilterOptions<LandingPageType> = () =>
   ({

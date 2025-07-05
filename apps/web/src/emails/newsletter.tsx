@@ -1,9 +1,6 @@
 import * as React from "react";
-import {
-  type NewsItem,
-  type WeeklyNewsletter,
-} from "@tietokilta/cms-types/payload";
-import { type EditorState } from "@tietokilta/cms-types/lexical";
+import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
+import { type EditorState } from "@lexical-types";
 import { formatDateYear, isThisWeek, type TocItem } from "./utils/utils";
 import {
   Calendar,

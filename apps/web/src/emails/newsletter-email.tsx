@@ -1,6 +1,6 @@
 import * as React from "react";
-import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
 import { Head, Html, Font } from "@react-email/components";
+import { type WeeklyNewsletter } from "@payload-types";
 import { newsletterPreviewProps } from "./newsletter-example";
 import { Newsletter } from "./newsletter";
 

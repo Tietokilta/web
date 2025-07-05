@@ -1,6 +1,6 @@
-import type { EditorState } from "@tietokilta/cms-types/lexical";
-import type { News, Page as CMSPage } from "@tietokilta/cms-types/payload";
 import { type Metadata } from "next";
+import type { EditorState } from "@lexical-types";
+import type { News, Page as CMSPage } from "@payload-types";
 import { EventsDisplay } from "@components/events-display";
 import { Hero, type ImageWithPhotographer } from "@components/hero";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";

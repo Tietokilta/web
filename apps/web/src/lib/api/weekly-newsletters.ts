@@ -1,4 +1,4 @@
-import type { WeeklyNewsletter } from "@tietokilta/cms-types/payload";
+import type { WeeklyNewsletter } from "@payload-types";
 import { getAllCollectionItems, getOneCollectionItem } from "./fetcher";
 
 export const fetchWeeklyNewsletters = getAllCollectionItems<

@@ -1,7 +1,7 @@
-import { type Config } from "@tietokilta/cms-types/payload";
 import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { cookies, draftMode } from "next/headers";
 import { stringify as qsStringify } from "qs";
+import { type Config } from "@payload-types";
 import { SELF_URL } from "../../util";
 
 export type CollectionSlug = keyof Config["collections"];

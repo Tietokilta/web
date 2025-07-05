@@ -1,4 +1,3 @@
-import type { News, Page } from "@tietokilta/cms-types/payload";
 import {
   AlertOctagonIcon,
   AlertTriangleIcon,
@@ -7,6 +6,7 @@ import {
   MegaphoneIcon,
 } from "@tietokilta/ui";
 import Link from "next/link";
+import type { News, Page } from "@payload-types";
 import { cn } from "../../lib/utils";
 import { getScopedI18n } from "../../locales/server";
 

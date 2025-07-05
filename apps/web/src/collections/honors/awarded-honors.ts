@@ -1,5 +1,5 @@
 import type { CollectionConfig, FieldHook } from "payload";
-import type { AwardedHonor } from "@tietokilta/cms-types/payload";
+import type { AwardedHonor } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 

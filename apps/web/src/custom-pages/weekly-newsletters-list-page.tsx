@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { FileIcon } from "@tietokilta/ui";
-import { type Node } from "@tietokilta/cms-types/lexical";
+import { type Node } from "@lexical-types";
 import { fetchWeeklyNewsletters } from "../lib/api/weekly-newsletters";
 import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { lexicalNodeToTextContent } from "../lib/utils";

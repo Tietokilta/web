@@ -1,4 +1,4 @@
-import type { Page } from "@tietokilta/cms-types/payload";
+import type { Page } from "@payload-types";
 import { getOneCollectionItem } from "./fetcher";
 
 export const fetchPage = getOneCollectionItem<

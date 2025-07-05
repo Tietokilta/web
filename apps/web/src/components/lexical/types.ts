@@ -1,20 +1,20 @@
-import type {
-  Board,
-  Committee,
-  Document,
-  Magazine,
-  Honor,
-  Media,
-  Page,
-  Partner,
-} from "./payload";
+import {
+  type Board,
+  type Committee,
+  type Honor,
+  type Magazine,
+  type Media,
+  type Partner,
+  type Page,
+  type Document,
+} from "@payload-types";
 
-type BaseNode = {
+interface BaseNode {
   version: number;
   type: string;
   children?: Node[];
   [k: string]: unknown;
-};
+}
 
 type BaseTextNode = BaseNode & {
   indent: number;
@@ -112,10 +112,10 @@ export type AutoLinkNode = BaseTextNode & {
   };
 };
 
-export type LinebreakNode = {
+export interface LinebreakNode {
   type: "linebreak";
   version: number;
-};
+}
 
 export type PageRelationshipNode = BaseNode & {
   type: "relationship";
@@ -154,15 +154,15 @@ export type RelationshipNode =
   | MagazineRelationshipNode
   | HonorsRelationshipNode;
 
-export type BaseBlockFields = {
+export interface BaseBlockFields {
   id: string;
   blockName: string;
-};
+}
 
-export type BaseBlockNode = {
+export interface BaseBlockNode {
   format: NonNullable<Page["content"]>["root"]["format"];
   type: "block";
-};
+}
 
 export type CommitteesYearBlockNode = BaseBlockNode & {
   fields: BaseBlockFields & {
@@ -243,14 +243,14 @@ export type Node =
   | LinebreakNode
   | BlockNode;
 
-export type RootNode = {
+export interface RootNode {
   type: "root";
   format: NonNullable<Page["content"]>["root"]["format"];
   indent: NonNullable<Page["content"]>["root"]["indent"];
   version: NonNullable<Page["content"]>["root"]["version"];
   children: Node[];
-};
+}
 
-export type EditorState = {
+export interface EditorState {
   root: RootNode;
-};
+}

@@ -1,15 +1,11 @@
 /* eslint-disable react/no-array-index-key -- okay here */
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise */
-import type {
-  BlockNode,
-  Node,
-  RelationshipNode,
-} from "@tietokilta/cms-types/lexical";
 import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
-import { type Media } from "@tietokilta/cms-types/payload";
 import type { JSX } from "react";
+import type { BlockNode, Node, RelationshipNode } from "@lexical-types";
+import { type Media } from "@payload-types";
 import { PartnerLogos } from "@components/partner-logos";
 import { HighlightCard } from "@components/highlight-card";
 import {

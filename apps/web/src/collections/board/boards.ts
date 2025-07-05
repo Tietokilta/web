@@ -1,5 +1,5 @@
-import type { Board } from "@tietokilta/cms-types/payload";
 import type { CollectionConfig, FilterOptions } from "payload";
+import type { Board } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
 

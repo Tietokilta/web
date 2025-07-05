@@ -1,9 +1,6 @@
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise*/
-import { type Node } from "@tietokilta/cms-types/lexical";
-import {
-  type NewsItem,
-  type WeeklyNewsletter,
-} from "@tietokilta/cms-types/payload";
+import { type Node } from "@lexical-types";
+import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
 import {
   IS_BOLD,
   IS_ITALIC,

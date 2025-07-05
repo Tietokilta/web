@@ -1,8 +1,8 @@
-import type { EditorState } from "@tietokilta/cms-types/lexical";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import type { Page as CMSPage } from "@tietokilta/cms-types/payload";
 import { Card } from "@tietokilta/ui";
+import type { Page as CMSPage } from "@payload-types";
+import type { EditorState } from "@lexical-types";
 import WeeklyNewslettersListPage from "@custom-pages/weekly-newsletters-list-page";
 import EventsPage from "@custom-pages/events-page";
 import AllEventsPage from "@custom-pages/all-events-page";

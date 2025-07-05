@@ -1,5 +1,5 @@
 import type { CollectionConfig, FieldHook } from "payload";
-import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
+import { type WeeklyNewsletter } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
 import { publishedOrSignedIn } from "../../access/published-or-signed-in";

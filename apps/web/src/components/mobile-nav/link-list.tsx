@@ -1,10 +1,3 @@
-import type {
-  LinkRowBlock,
-  MainNavigationItem,
-  Page,
-  PartnersRowBlock,
-  Topic,
-} from "@tietokilta/cms-types/payload";
 import {
   RenderIcon,
   Separator,
@@ -16,6 +9,13 @@ import {
   CollapsibleTrigger,
   ExternalLinkIcon,
 } from "@tietokilta/ui";
+import type {
+  LinkRowBlock,
+  MainNavigationItem,
+  Page,
+  PartnersRowBlock,
+  Topic,
+} from "@payload-types";
 import { PartnerLogos } from "@components/partner-logos";
 import { cn } from "../../lib/utils";
 import { getScopedI18n } from "../../locales/server";

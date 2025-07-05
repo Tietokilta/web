@@ -1,4 +1,4 @@
-import { type WeeklyNewsletter } from "@tietokilta/cms-types/payload";
+import { type WeeklyNewsletter } from "@payload-types";
 
 export const newsletterPreviewProps = {
   PUBLIC_LEGACY_URL: "http://localhost:3000",

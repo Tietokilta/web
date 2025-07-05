@@ -1,10 +1,10 @@
+import type { FilterOptions, GlobalConfig } from "payload/";
 import type {
   MainNavigationItem,
   MainNavigationTopicConfig,
   MainNavigation as MainNavigationType,
   Media,
-} from "@tietokilta/cms-types/payload";
-import type { FilterOptions, GlobalConfig } from "payload/";
+} from "@payload-types";
 import { iconField } from "../fields/icon-field";
 
 const filterPagesOfTopic: FilterOptions<MainNavigationType> = ({

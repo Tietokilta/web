@@ -1,5 +1,5 @@
-import type { Config } from "@tietokilta/cms-types/payload";
 import type { CollectionAfterChangeHook, TypeWithID } from "payload";
+import type { Config } from "@payload-types";
 import { SELF_URL } from "../util";
 
 type CollectionSlug = keyof Config["collections"];

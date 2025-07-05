@@ -1,4 +1,4 @@
-import type { LandingPage } from "@tietokilta/cms-types/payload";
+import type { LandingPage } from "@payload-types";
 import { getGlobal } from "./fetcher";
 
 export const fetchLandingPage = (locale: string) =>

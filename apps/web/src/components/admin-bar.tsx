@@ -1,5 +1,5 @@
-import type { Config } from "@tietokilta/cms-types/payload";
 import { draftMode } from "next/headers";
+import type { Config } from "@payload-types";
 import { AdminBarClient } from "./admin-bar-client";
 
 export async function AdminBar({
