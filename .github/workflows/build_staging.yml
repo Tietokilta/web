@@ -1,0 +1,121 @@
+name: CI deploy staging from payload-3
+on:
+  push:
+    branches:
+      - "payload-3"
+
+permissions:
+  id-token: write
+  contents: read
+env:
+  # Change this to upload the built image to your own organization.
+  docker_tag_prefix: ghcr.io/tietokilta
+jobs:
+  build:
+    name: Format, Lint, Check types & Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup turborepo cache
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate Payload types (to ensure that they are up to date)
+        run: pnpm codegen && git diff --exit-code
+
+      - name: Format (to ensure that code has been formatted)
+        run: pnpm format && git diff --exit-code
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Build all
+        run: pnpm build
+
+  docker-build-and-push:
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/payload-3') || (github.event_name == 'release' && github.event.action == 'published')
+    needs: build
+    strategy:
+      matrix:
+        project: [web, cms]
+    name: Push Docker image to GitHub Packages
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{env.docker_tag_prefix}}/${{matrix.project}}
+          tags: |
+            type=semver,pattern={{version}},enable=${{ github.ref_type == 'tag' }}
+            type=semver,pattern={{major}}.{{minor}},enable=${{ github.ref_type == 'tag' }}
+            type=raw,value=sha-${{github.sha}}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Push to GitHub Packages
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            PROJECT=${{matrix.project}}
+            GIT_COMMIT_SHA=${{github.sha}}
+          cache-from: type=gha
+          cache-to: type=gha,mode=min
+
+  deploy:
+    # only run on published releases, enable this when we release
+    #if: github.event_name == 'release' && github.event.action == 'published'
+    name: Deploy to Azure
+    runs-on: ubuntu-latest
+    needs: docker-build-and-push
+    strategy:
+      matrix:
+        project: [web, cms]
+    steps:
+      - name: Login via Azure CLI
+        uses: azure/login@v2
+        with:
+          client-id: ${{secrets.AZURE_CLIENT_ID}}
+          subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
+          tenant-id: ${{secrets.AZURE_TENANT_ID}}
+      - uses: azure/webapps-deploy@v3
+        with:
+          app-name: tikweb-${{matrix.project}}-staging # TODO: if we ever setup more envs than prod, make this variable customizable
+          images: "${{ env.docker_tag_prefix }}/${{matrix.project}}:sha-${{ github.sha }}"
