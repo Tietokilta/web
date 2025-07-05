@@ -1,6 +1,7 @@
 {
   "name": "tietokilta.fi",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build --cache-dir=.turbo",
     "clean": "turbo run clean --cache-dir=.turbo",
