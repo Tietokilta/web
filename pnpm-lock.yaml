@@ -53,8 +53,8 @@ catalogs:
       version: 8.35.1
   react18:
     react:
-      specifier: ^18.3.1
-      version: 18.3.1
+      specifier: ^19.1.0
+      version: 19.1.0
   react19:
     react:
       specifier: ^19.1.0
@@ -119,10 +119,10 @@ importers:
         version: 1.2.2(@azure/abort-controller@1.1.0)(@azure/storage-blob@12.27.0)(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))
       '@payloadcms/richtext-lexical':
         specifier: ^0.11.4
-        version: 0.11.4(@lexical/clipboard@0.13.1(lexical@0.13.1))(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)(yjs@13.6.19)
+        version: 0.11.4(@lexical/clipboard@0.13.1(lexical@0.13.1))(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(typescript@5.8.3)(yjs@13.6.19)
       '@react-email/components':
         specifier: 0.1.1
-        version: 0.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        version: 0.1.1(react-dom@18.3.1(react@19.1.0))(react@19.1.0)
       dotenv:
         specifier: ^17.0.1
         version: 17.0.1
@@ -146,7 +146,7 @@ importers:
         version: 2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0)
       payload-plugin-oauth:
         specifier: ^2.2.0
-        version: 2.2.0(@types/passport-oauth2@1.4.17)(mongodb@6.9.0(@aws-sdk/credential-providers@3.768.0)(socks@2.8.4))(node-fetch@3.3.2)(passport@0.7.0)(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react@18.3.1)
+        version: 2.2.0(@types/passport-oauth2@1.4.17)(mongodb@6.9.0(@aws-sdk/credential-providers@3.768.0)(socks@2.8.4))(node-fetch@3.3.2)(passport@0.7.0)(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react@19.1.0)
     devDependencies:
       '@tietokilta/cms-types':
         specifier: workspace:*
@@ -180,10 +180,10 @@ importers:
         version: 9.30.1(jiti@1.21.7)
       react:
         specifier: catalog:react18
-        version: 18.3.1
+        version: 19.1.0
       react-email:
         specifier: 4.0.17
-        version: 4.0.17(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.79.3)
+        version: 4.0.17(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(sass@1.79.3)
       tsx:
         specifier: ^4.20.3
         version: 4.20.3
@@ -443,7 +443,7 @@ importers:
         version: 0.5.16(tailwindcss@3.4.17)
       autoprefixer:
         specifier: 'catalog:'
-        version: 10.4.21(postcss@8.5.3)
+        version: 10.4.21(postcss@8.5.6)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -6062,6 +6062,7 @@ packages:
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
+    deprecated: Use your platform's native DOMException instead
 
   node-fetch@2.7.0:
     resolution: {integrity: sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==}
@@ -6665,10 +6666,6 @@ packages:
 
   postcss@8.4.31:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
-    engines: {node: ^10 || ^12 || >=14}
-
-  postcss@8.5.3:
-    resolution: {integrity: sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==}
     engines: {node: ^10 || ^12 || >=14}
 
   postcss@8.5.6:
@@ -9189,22 +9186,22 @@ snapshots:
 
   '@discoveryjs/json-ext@0.5.7': {}
 
-  '@dnd-kit/accessibility@3.1.0(react@18.3.1)':
+  '@dnd-kit/accessibility@3.1.0(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
       tslib: 2.8.1
 
-  '@dnd-kit/core@6.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@dnd-kit/core@6.0.8(react-dom@18.3.1(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@dnd-kit/accessibility': 3.1.0(react@18.3.1)
-      '@dnd-kit/utilities': 3.2.2(react@18.3.1)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      '@dnd-kit/accessibility': 3.1.0(react@19.1.0)
+      '@dnd-kit/utilities': 3.2.2(react@19.1.0)
+      react: 19.1.0
+      react-dom: 18.3.1(react@19.1.0)
       tslib: 2.8.1
 
   '@dnd-kit/sortable@7.0.2(@dnd-kit/core@6.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@dnd-kit/core': 6.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/core': 6.0.8(react-dom@18.3.1(react@19.1.0))(react@19.1.0)
       '@dnd-kit/utilities': 3.2.2(react@18.3.1)
       react: 18.3.1
       tslib: 2.8.1
@@ -9212,6 +9209,11 @@ snapshots:
   '@dnd-kit/utilities@3.2.2(react@18.3.1)':
     dependencies:
       react: 18.3.1
+      tslib: 2.8.1
+
+  '@dnd-kit/utilities@3.2.2(react@19.1.0)':
+    dependencies:
+      react: 19.1.0
       tslib: 2.8.1
 
   '@emnapi/core@1.4.3':
@@ -9526,18 +9528,27 @@ snapshots:
       focus-trap: 6.9.4
       qs: 6.11.2
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
       react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+
+  '@faceless-ui/modal@2.0.2(react-dom@18.3.1(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      body-scroll-lock: 3.1.5
+      focus-trap: 6.9.4
+      qs: 6.11.2
+      react: 19.1.0
+      react-dom: 18.3.1(react@19.1.0)
+      react-transition-group: 4.4.5(react-dom@18.3.1(react@19.1.0))(react@19.1.0)
 
   '@faceless-ui/scroll-info@1.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
 
   '@faceless-ui/window-info@2.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
 
   '@floating-ui/core@1.6.8':
     dependencies:
@@ -9790,7 +9801,7 @@ snapshots:
       '@lexical/utils': 0.13.1(lexical@0.13.1)
       lexical: 0.13.1
 
-  '@lexical/react@0.13.1(lexical@0.13.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(yjs@13.6.19)':
+  '@lexical/react@0.13.1(lexical@0.13.1)(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(yjs@13.6.19)':
     dependencies:
       '@lexical/clipboard': 0.13.1(lexical@0.13.1)
       '@lexical/code': 0.13.1(lexical@0.13.1)
@@ -9810,9 +9821,9 @@ snapshots:
       '@lexical/utils': 0.13.1(lexical@0.13.1)
       '@lexical/yjs': 0.13.1(lexical@0.13.1)(yjs@13.6.19)
       lexical: 0.13.1
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-error-boundary: 3.1.4(react@18.3.1)
+      react: 19.1.0
+      react-dom: 18.3.1(react@19.1.0)
+      react-error-boundary: 3.1.4(react@19.1.0)
     transitivePeerDependencies:
       - yjs
 
@@ -9868,7 +9879,7 @@ snapshots:
       '@monaco-editor/loader': 1.4.0(monaco-editor@0.38.0)
       monaco-editor: 0.38.0
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
 
   '@mongodb-js/saslprep@1.2.0':
     dependencies:
@@ -9997,15 +10008,15 @@ snapshots:
       '@azure/abort-controller': 1.1.0
       '@azure/storage-blob': 12.27.0
 
-  '@payloadcms/richtext-lexical@0.11.4(@lexical/clipboard@0.13.1(lexical@0.13.1))(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)(yjs@13.6.19)':
+  '@payloadcms/richtext-lexical@0.11.4(@lexical/clipboard@0.13.1(lexical@0.13.1))(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(typescript@5.8.3)(yjs@13.6.19)':
     dependencies:
-      '@faceless-ui/modal': 2.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@faceless-ui/modal': 2.0.2(react-dom@18.3.1(react@19.1.0))(react@19.1.0)
       '@lexical/headless': 0.13.1(lexical@0.13.1)
       '@lexical/link': 0.13.1(lexical@0.13.1)
       '@lexical/list': 0.13.1(lexical@0.13.1)
       '@lexical/mark': 0.13.1(lexical@0.13.1)
       '@lexical/markdown': 0.13.1(@lexical/clipboard@0.13.1(lexical@0.13.1))(@lexical/selection@0.13.1(lexical@0.13.1))(lexical@0.13.1)
-      '@lexical/react': 0.13.1(lexical@0.13.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(yjs@13.6.19)
+      '@lexical/react': 0.13.1(lexical@0.13.1)(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(yjs@13.6.19)
       '@lexical/rich-text': 0.13.1(@lexical/clipboard@0.13.1(lexical@0.13.1))(@lexical/selection@0.13.1(lexical@0.13.1))(@lexical/utils@0.13.1(lexical@0.13.1))(lexical@0.13.1)
       '@lexical/selection': 0.13.1(lexical@0.13.1)
       '@lexical/utils': 0.13.1(lexical@0.13.1)
@@ -10017,10 +10028,10 @@ snapshots:
       lexical: 0.13.1
       lodash: 4.17.21
       payload: 2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0)
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-error-boundary: 4.0.13(react@18.3.1)
-      react-i18next: 11.18.6(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 19.1.0
+      react-dom: 18.3.1(react@19.1.0)
+      react-error-boundary: 4.0.13(react@19.1.0)
+      react-i18next: 11.18.6(i18next@22.5.1)(react-dom@18.3.1(react@19.1.0))(react@19.1.0)
       ts-essentials: 7.0.3(typescript@5.8.3)
     transitivePeerDependencies:
       - '@lexical/clipboard'
@@ -10322,117 +10333,117 @@ snapshots:
       '@types/react': types-react@19.0.0-rc.1
       '@types/react-dom': types-react-dom@19.0.0-rc.1
 
-  '@react-email/body@0.0.11(react@18.3.1)':
+  '@react-email/body@0.0.11(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/button@0.1.0(react@18.3.1)':
+  '@react-email/button@0.1.0(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/code-block@0.1.0(react@18.3.1)':
+  '@react-email/code-block@0.1.0(react@19.1.0)':
     dependencies:
       prismjs: 1.30.0
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/code-inline@0.0.5(react@18.3.1)':
+  '@react-email/code-inline@0.0.5(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/column@0.0.13(react@18.3.1)':
+  '@react-email/column@0.0.13(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/components@0.1.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@react-email/components@0.1.1(react-dom@18.3.1(react@19.1.0))(react@19.1.0)':
     dependencies:
-      '@react-email/body': 0.0.11(react@18.3.1)
-      '@react-email/button': 0.1.0(react@18.3.1)
-      '@react-email/code-block': 0.1.0(react@18.3.1)
-      '@react-email/code-inline': 0.0.5(react@18.3.1)
-      '@react-email/column': 0.0.13(react@18.3.1)
-      '@react-email/container': 0.0.15(react@18.3.1)
-      '@react-email/font': 0.0.9(react@18.3.1)
-      '@react-email/head': 0.0.12(react@18.3.1)
-      '@react-email/heading': 0.0.15(react@18.3.1)
-      '@react-email/hr': 0.0.11(react@18.3.1)
-      '@react-email/html': 0.0.11(react@18.3.1)
-      '@react-email/img': 0.0.11(react@18.3.1)
-      '@react-email/link': 0.0.12(react@18.3.1)
-      '@react-email/markdown': 0.0.15(react@18.3.1)
-      '@react-email/preview': 0.0.13(react@18.3.1)
-      '@react-email/render': 1.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@react-email/row': 0.0.12(react@18.3.1)
-      '@react-email/section': 0.0.16(react@18.3.1)
-      '@react-email/tailwind': 1.0.5(react@18.3.1)
-      '@react-email/text': 0.1.5(react@18.3.1)
-      react: 18.3.1
+      '@react-email/body': 0.0.11(react@19.1.0)
+      '@react-email/button': 0.1.0(react@19.1.0)
+      '@react-email/code-block': 0.1.0(react@19.1.0)
+      '@react-email/code-inline': 0.0.5(react@19.1.0)
+      '@react-email/column': 0.0.13(react@19.1.0)
+      '@react-email/container': 0.0.15(react@19.1.0)
+      '@react-email/font': 0.0.9(react@19.1.0)
+      '@react-email/head': 0.0.12(react@19.1.0)
+      '@react-email/heading': 0.0.15(react@19.1.0)
+      '@react-email/hr': 0.0.11(react@19.1.0)
+      '@react-email/html': 0.0.11(react@19.1.0)
+      '@react-email/img': 0.0.11(react@19.1.0)
+      '@react-email/link': 0.0.12(react@19.1.0)
+      '@react-email/markdown': 0.0.15(react@19.1.0)
+      '@react-email/preview': 0.0.13(react@19.1.0)
+      '@react-email/render': 1.1.3(react-dom@18.3.1(react@19.1.0))(react@19.1.0)
+      '@react-email/row': 0.0.12(react@19.1.0)
+      '@react-email/section': 0.0.16(react@19.1.0)
+      '@react-email/tailwind': 1.0.5(react@19.1.0)
+      '@react-email/text': 0.1.5(react@19.1.0)
+      react: 19.1.0
     transitivePeerDependencies:
       - react-dom
 
-  '@react-email/container@0.0.15(react@18.3.1)':
+  '@react-email/container@0.0.15(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/font@0.0.9(react@18.3.1)':
+  '@react-email/font@0.0.9(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/head@0.0.12(react@18.3.1)':
+  '@react-email/head@0.0.12(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/heading@0.0.15(react@18.3.1)':
+  '@react-email/heading@0.0.15(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/hr@0.0.11(react@18.3.1)':
+  '@react-email/hr@0.0.11(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/html@0.0.11(react@18.3.1)':
+  '@react-email/html@0.0.11(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/img@0.0.11(react@18.3.1)':
+  '@react-email/img@0.0.11(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/link@0.0.12(react@18.3.1)':
+  '@react-email/link@0.0.12(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/markdown@0.0.15(react@18.3.1)':
+  '@react-email/markdown@0.0.15(react@19.1.0)':
     dependencies:
-      md-to-react-email: 5.0.5(react@18.3.1)
-      react: 18.3.1
+      md-to-react-email: 5.0.5(react@19.1.0)
+      react: 19.1.0
 
-  '@react-email/preview@0.0.13(react@18.3.1)':
+  '@react-email/preview@0.0.13(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/render@1.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@react-email/render@1.1.3(react-dom@18.3.1(react@19.1.0))(react@19.1.0)':
     dependencies:
       html-to-text: 9.0.5
       prettier: 3.6.2
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react: 19.1.0
+      react-dom: 18.3.1(react@19.1.0)
       react-promise-suspense: 0.3.4
 
-  '@react-email/row@0.0.12(react@18.3.1)':
+  '@react-email/row@0.0.12(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/section@0.0.16(react@18.3.1)':
+  '@react-email/section@0.0.16(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/tailwind@1.0.5(react@18.3.1)':
+  '@react-email/tailwind@1.0.5(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
-  '@react-email/text@0.1.5(react@18.3.1)':
+  '@react-email/text@0.1.5(react@19.1.0)':
     dependencies:
-      react: 18.3.1
+      react: 19.1.0
 
   '@restart/hooks@0.4.16(react@19.1.0)':
     dependencies:
@@ -11586,16 +11597,6 @@ snapshots:
       normalize-range: 0.1.2
       picocolors: 1.1.1
       postcss: 8.4.31
-      postcss-value-parser: 4.2.0
-
-  autoprefixer@10.4.21(postcss@8.5.3):
-    dependencies:
-      browserslist: 4.24.4
-      caniuse-lite: 1.0.30001703
-      fraction.js: 4.3.7
-      normalize-range: 0.1.2
-      picocolors: 1.1.1
-      postcss: 8.5.3
       postcss-value-parser: 4.2.0
 
   autoprefixer@10.4.21(postcss@8.5.6):
@@ -14223,10 +14224,10 @@ snapshots:
 
   math-intrinsics@1.1.0: {}
 
-  md-to-react-email@5.0.5(react@18.3.1):
+  md-to-react-email@5.0.5(react@19.1.0):
     dependencies:
       marked: 7.0.4
-      react: 18.3.1
+      react: 19.1.0
 
   md5@2.3.0:
     dependencies:
@@ -14796,7 +14797,7 @@ snapshots:
 
   next-tick@1.1.0: {}
 
-  next@15.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.79.3):
+  next@15.3.5(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(sass@1.79.3):
     dependencies:
       '@next/env': 15.3.5
       '@swc/counter': 0.1.3
@@ -14804,9 +14805,9 @@ snapshots:
       busboy: 1.6.0
       caniuse-lite: 1.0.30001707
       postcss: 8.4.31
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      styled-jsx: 5.1.6(react@18.3.1)
+      react: 19.1.0
+      react-dom: 18.3.1(react@19.1.0)
+      styled-jsx: 5.1.6(react@19.1.0)
     optionalDependencies:
       '@next/swc-darwin-arm64': 15.3.5
       '@next/swc-darwin-x64': 15.3.5
@@ -15167,7 +15168,7 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  payload-plugin-oauth@2.2.0(@types/passport-oauth2@1.4.17)(mongodb@6.9.0(@aws-sdk/credential-providers@3.768.0)(socks@2.8.4))(node-fetch@3.3.2)(passport@0.7.0)(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react@18.3.1):
+  payload-plugin-oauth@2.2.0(@types/passport-oauth2@1.4.17)(mongodb@6.9.0(@aws-sdk/credential-providers@3.768.0)(socks@2.8.4))(node-fetch@3.3.2)(passport@0.7.0)(payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0))(react@19.1.0):
     dependencies:
       '@bothrs/util': 3.1.3(node-fetch@3.3.2)
       '@types/passport-oauth2': 1.4.17
@@ -15177,7 +15178,7 @@ snapshots:
       passport: 0.7.0
       passport-oauth2: 1.8.0
       payload: 2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0)
-      react: 18.3.1
+      react: 19.1.0
     transitivePeerDependencies:
       - mongodb
       - node-fetch
@@ -15186,7 +15187,7 @@ snapshots:
   payload@2.32.3(@swc/helpers@0.5.15)(types-react@19.0.0-rc.1)(typescript@5.8.3)(webpack@5.94.0):
     dependencies:
       '@date-io/date-fns': 2.16.0(date-fns@2.30.0)
-      '@dnd-kit/core': 6.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@dnd-kit/core': 6.0.8(react-dom@18.3.1(react@19.1.0))(react@19.1.0)
       '@dnd-kit/sortable': 7.0.2(@dnd-kit/core@6.0.8(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@faceless-ui/modal': 2.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@faceless-ui/scroll-info': 1.3.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -15254,11 +15255,11 @@ snapshots:
       react-animate-height: 2.1.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-datepicker: 4.16.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-diff-viewer-continued: 3.2.6(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
       react-helmet: 6.1.0(react@18.3.1)
       react-i18next: 11.18.6(i18next@22.5.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-image-crop: 10.1.8(react@18.3.1)
-      react-router-dom: 5.3.4(react@18.3.1)
+      react-router-dom: 5.3.4(react@19.1.0)
       react-router-navigation-prompt: 1.9.6(react-router-dom@5.3.4(react@18.3.1))(react@18.3.1)
       react-select: 5.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(types-react@19.0.0-rc.1)
       react-toastify: 10.0.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -15647,12 +15648,6 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  postcss@8.5.3:
-    dependencies:
-      nanoid: 3.3.11
-      picocolors: 1.1.1
-      source-map-js: 1.2.1
-
   postcss@8.5.6:
     dependencies:
       nanoid: 3.3.11
@@ -15784,7 +15779,7 @@ snapshots:
       classnames: 2.5.1
       prop-types: 15.8.1
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
 
   react-big-calendar@1.19.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
@@ -15814,7 +15809,7 @@ snapshots:
       date-fns: 2.30.0
       prop-types: 15.8.1
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
       react-onclickoutside: 6.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
 
@@ -15826,14 +15821,14 @@ snapshots:
       memoize-one: 6.0.0
       prop-types: 15.8.1
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
     transitivePeerDependencies:
       - supports-color
 
-  react-dom@18.3.1(react@18.3.1):
+  react-dom@18.3.1(react@19.1.0):
     dependencies:
       loose-envify: 1.4.0
-      react: 18.3.1
+      react: 19.1.0
       scheduler: 0.23.2
 
   react-dom@19.1.0(react@19.1.0):
@@ -15846,7 +15841,7 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  react-email@4.0.17(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.79.3):
+  react-email@4.0.17(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(sass@1.79.3):
     dependencies:
       '@babel/parser': 7.28.0
       '@babel/traverse': 7.28.0
@@ -15858,7 +15853,7 @@ snapshots:
       glob: 11.0.3
       log-symbols: 7.0.1
       mime-types: 3.0.1
-      next: 15.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.79.3)
+      next: 15.3.5(react-dom@18.3.1(react@19.1.0))(react@19.1.0)(sass@1.79.3)
       normalize-path: 3.0.0
       ora: 8.2.0
       socket.io: 4.8.1
@@ -15876,15 +15871,15 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  react-error-boundary@3.1.4(react@18.3.1):
+  react-error-boundary@3.1.4(react@19.1.0):
     dependencies:
       '@babel/runtime': 7.26.0
-      react: 18.3.1
+      react: 19.1.0
 
-  react-error-boundary@4.0.13(react@18.3.1):
+  react-error-boundary@4.0.13(react@19.1.0):
     dependencies:
       '@babel/runtime': 7.25.9
-      react: 18.3.1
+      react: 19.1.0
 
   react-fast-compare@3.2.2: {}
 
@@ -15903,7 +15898,16 @@ snapshots:
       i18next: 22.5.1
       react: 18.3.1
     optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
+
+  react-i18next@11.18.6(i18next@22.5.1)(react-dom@18.3.1(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@babel/runtime': 7.25.9
+      html-parse-stringify: 3.0.1
+      i18next: 22.5.1
+      react: 19.1.0
+    optionalDependencies:
+      react-dom: 18.3.1(react@19.1.0)
 
   react-image-crop@10.1.8(react@18.3.1):
     dependencies:
@@ -15947,7 +15951,7 @@ snapshots:
   react-onclickoutside@6.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
 
   react-overlays@5.2.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
@@ -15966,7 +15970,7 @@ snapshots:
     dependencies:
       '@popperjs/core': 2.11.8
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
       react-fast-compare: 3.2.2
       warning: 4.0.3
 
@@ -15993,23 +15997,23 @@ snapshots:
     optionalDependencies:
       '@types/react': types-react@19.0.0-rc.1
 
-  react-router-dom@5.3.4(react@18.3.1):
+  react-router-dom@5.3.4(react@19.1.0):
     dependencies:
       '@babel/runtime': 7.25.9
       history: 4.10.1
       loose-envify: 1.4.0
       prop-types: 15.8.1
-      react: 18.3.1
-      react-router: 5.3.4(react@18.3.1)
+      react: 19.1.0
+      react-router: 5.3.4(react@19.1.0)
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
 
   react-router-navigation-prompt@1.9.6(react-router-dom@5.3.4(react@18.3.1))(react@18.3.1):
     dependencies:
       react: 18.3.1
-      react-router-dom: 5.3.4(react@18.3.1)
+      react-router-dom: 5.3.4(react@19.1.0)
 
-  react-router@5.3.4(react@18.3.1):
+  react-router@5.3.4(react@19.1.0):
     dependencies:
       '@babel/runtime': 7.25.9
       history: 4.10.1
@@ -16017,7 +16021,7 @@ snapshots:
       loose-envify: 1.4.0
       path-to-regexp: 1.9.0
       prop-types: 15.8.1
-      react: 18.3.1
+      react: 19.1.0
       react-is: 16.13.1
       tiny-invariant: 1.3.3
       tiny-warning: 1.0.3
@@ -16032,7 +16036,7 @@ snapshots:
       memoize-one: 6.0.0
       prop-types: 15.8.1
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
       react-transition-group: 4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       use-isomorphic-layout-effect: 1.1.2(react@18.3.1)(types-react@19.0.0-rc.1)
     transitivePeerDependencies:
@@ -16055,7 +16059,7 @@ snapshots:
     dependencies:
       clsx: 2.1.1
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
 
   react-transition-group@4.4.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -16064,7 +16068,16 @@ snapshots:
       loose-envify: 1.4.0
       prop-types: 15.8.1
       react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
+
+  react-transition-group@4.4.5(react-dom@18.3.1(react@19.1.0))(react@19.1.0):
+    dependencies:
+      '@babel/runtime': 7.26.0
+      dom-helpers: 5.2.1
+      loose-envify: 1.4.0
+      prop-types: 15.8.1
+      react: 19.1.0
+      react-dom: 18.3.1(react@19.1.0)
 
   react@18.3.1:
     dependencies:
@@ -16822,11 +16835,6 @@ snapshots:
     dependencies:
       inline-style-parser: 0.2.4
 
-  styled-jsx@5.1.6(react@18.3.1):
-    dependencies:
-      client-only: 0.0.1
-      react: 18.3.1
-
   styled-jsx@5.1.6(react@19.1.0):
     dependencies:
       client-only: 0.0.1
@@ -17370,7 +17378,7 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
     optionalDependencies:
-      react-dom: 18.3.1(react@18.3.1)
+      react-dom: 18.3.1(react@19.1.0)
 
   use-isomorphic-layout-effect@1.1.2(react@18.3.1)(types-react@19.0.0-rc.1):
     dependencies:
