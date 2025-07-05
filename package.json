@@ -13,11 +13,9 @@
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
     "dev": "pnpm db:start && dotenv -- turbo run dev --cache-dir=.turbo",
-    "docker:build:cms": "docker build . --tag web-cms --build-arg PROJECT=cms",
     "docker:build:web": "docker build . --tag web-web --build-arg PROJECT=web",
     "docker:compose:build": "docker compose -f docker-compose.prod.yml up --build",
     "docker:compose:start": "docker compose -f docker-compose.prod.yml up",
-    "docker:start:cms": "docker run -p 3001:3001 cms",
     "docker:start:web": "docker run -p 3000:3000 web",
     "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
     "lint": "turbo run lint --cache-dir=.turbo",
@@ -25,7 +23,7 @@
     "payload": "dotenv -- pnpm -F web payload",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
-    "uploads:clear": "rm -rf apps/cms/uploads"
+    "uploads:clear": "rm -rf apps/web/uploads"
   },
   "devDependencies": {
     "@types/node": "catalog:",
