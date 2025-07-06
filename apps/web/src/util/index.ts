@@ -7,8 +7,7 @@ export const SELF_URL = `http://localhost:${process.env.PORT ?? String(3000)}`;
 export const isCloudStorageEnabled = (): boolean => {
   return (
     typeof process.env.AZURE_STORAGE_CONNECTION_STRING === "string" &&
-    typeof process.env.AZURE_MEDIA_STORAGE_CONTAINER_NAME === "string" &&
-    typeof process.env.AZURE_DOCUMENTS_STORAGE_CONTAINER_NAME === "string" &&
+    typeof process.env.AZURE_STORAGE_CONTAINER_NAME === "string" &&
     typeof process.env.AZURE_STORAGE_ACCOUNT_BASEURL === "string"
   );
 };

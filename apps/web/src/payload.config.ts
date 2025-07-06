@@ -52,7 +52,7 @@ const {
   GOOGLE_OAUTH_CLIENT_SECRET,
   PUBLIC_FRONTEND_URL,
   AZURE_STORAGE_CONNECTION_STRING,
-  AZURE_MEDIA_STORAGE_CONTAINER_NAME,
+  AZURE_STORAGE_CONTAINER_NAME,
   AZURE_STORAGE_ACCOUNT_BASEURL,
   AZURE_STORAGE_ALLOW_CONTAINER_CREATE,
   PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL,
@@ -213,15 +213,17 @@ export default buildConfig({
     azureStorage({
       enabled: isCloudStorageEnabled(),
       connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
-      containerName: AZURE_MEDIA_STORAGE_CONTAINER_NAME ?? "",
+      containerName: AZURE_STORAGE_CONTAINER_NAME ?? "",
       // TODO: what with different container names?
       allowContainerCreate: AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
       baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
       collections: {
         [Media.slug]: {
+          disableLocalStorage: true,
           prefix: Media.slug,
         },
         [Documents.slug]: {
+          disableLocalStorage: true,
           prefix: Documents.slug,
         },
       },
