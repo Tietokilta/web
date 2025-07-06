@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:cachix/devenv-nixpkgs/rolling";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
     devenv.url = "github:cachix/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
@@ -51,7 +51,7 @@
 
                 languages.javascript = {
                   enable = true;
-                  package = pkgs.nodejs-slim_22;
+                  package = pkgs.nodejs-slim_24;
                   pnpm.enable = true;
                   pnpm.install.enable = true;
                 };
