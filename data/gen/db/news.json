@@ -43,7 +43,9 @@
 		}
 	},
 	"type": "warning",
-	"author": "6509af23590d33984d2cdc5e",
+	"author": {
+		"$oid": "6509af23590d33984d2cdc5e"
+	},
 	"createdAt": {
 		"$date": "2024-02-09T17:53:52.177Z"
 	},
@@ -70,9 +72,13 @@
 		"en": "Tervetuloa Tietokillan sivuille, mahtavaa että olet löytänyt tänne! Tietokilta on Aalto-yliopiston tietotekniikan opiskelijoiden ainejärjestö, ja järjestämme jäsenillemme kaikenlaista toimintaa, sekä huolehdimme jäsentemme edunvalvonnasta. Luethan lisää toiminnastamme sekä tietotekniikan opinnoista alla olevan linkin kautta!"
 	},
 	"ctaType": "page",
-	"pageLink": "6548f141d7febb86e2235c4d",
+	"pageLink": {
+		"$oid": "6548f141d7febb86e2235c4d"
+	},
 	"type": "announcement",
-	"author": "6509af23590d33984d2cdc5e",
+	"author": {
+		"$oid": "6509af23590d33984d2cdc5e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -190,12 +196,14 @@
 		"en": "newstudent2024"
 	},
 	"excerpt": {
-		"fi": "Tervetuloa Tietokillan sivuille, mahtavaa että olet löytänyt tänne! Orientaatioviikko kolkuttelee jo kulman takana, käythän siis lukemassa fuksioppaan ja muut tärkeät inffot alla olevan linkin takaa. Muista ilmottautua myös Varaslähtöön tapahtumat-välilehdeltä. Nähdään siellä!",
-		"en": "Welcome to the Tietokilta website, great that you found your way here! Tietokilta is an association of computer science students at Aalto University, and we organise all kinds of activities for our members, as well as looking after their interests. For more information relevant to new students, please see the link below. See you at Orientation Week!"
+		"fi": "Tervetuloa Tietokillan sivuille, mahtavaa että olet löytänyt tänne! Onneksi olkoon uudesta opiskelupaikasta ja tervetuloa Tietokiltaan! Käythän lukemassa fuksioppaan ja muut tärkeät inffot alla olevan linkin takaa. Muista ilmottautua myös Varaslähtöön tapahtumat-välilehdeltä. Nähdään siellä!",
+		"en": "Welcome to the Tietokilta website, great that you found your way here! Tietokilta is the association of computer science students at Aalto University, and we organise all kinds of activities for our members, as well as looking after their interests. For more information relevant to new students, please see the link below. See you at Orientation Week!"
 	},
 	"ctaType": "page",
 	"type": "announcement",
-	"author": "6648cf00a8fd2463f8d3064e",
+	"author": {
+		"$oid": "6648cb71a8fd2463f8d30430"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -260,10 +268,12 @@
 		"$date": "2024-05-18T10:20:15.121Z"
 	},
 	"updatedAt": {
-		"$date": "2024-08-03T09:52:42.884Z"
+		"$date": "2025-05-22T16:22:13.34Z"
 	},
 	"__v": 0,
-	"pageLink": "6548f179d7febb86e2235cf2"
+	"pageLink": {
+		"$oid": "6548f179d7febb86e2235cf2"
+	}
 },
 {
 	"_id": {
@@ -283,7 +293,9 @@
 	},
 	"ctaType": "none",
 	"type": "announcement",
-	"author": "6509af23590d33984d2cdc5e",
+	"author": {
+		"$oid": "6509af23590d33984d2cdc5e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -370,7 +382,9 @@
 	},
 	"ctaType": "external",
 	"type": "warning",
-	"author": "6648bbe31915538b4bd2b81e",
+	"author": {
+		"$oid": "6648bbe31915538b4bd2b81e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -459,7 +473,9 @@
 	"ctaType": "external",
 	"externalLink": "https://kide.app/memberships/1af614ae-8333-48b6-83bf-bcc935c676b2",
 	"type": "danger",
-	"author": "6648bbe31915538b4bd2b81e",
+	"author": {
+		"$oid": "6648bbe31915538b4bd2b81e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -547,7 +563,9 @@
 	"ctaType": "external",
 	"externalLink": "https://vaalit.tietokilta.fi",
 	"type": "announcement",
-	"author": "6648bbe31915538b4bd2b81e",
+	"author": {
+		"$oid": "6648bbe31915538b4bd2b81e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -632,7 +650,9 @@
 	"ctaType": "external",
 	"externalLink": "https://tietokilta.fi/system-seven",
 	"type": "danger",
-	"author": "6509af23590d33984d2cdc5e",
+	"author": {
+		"$oid": "6509af23590d33984d2cdc5e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -689,9 +709,13 @@
 		"en": "Hi guild member! Do you wish to organize events for the guild, or write articles to the guild's magazine Alkorytmi? Maybe you are interested in striking deals with companies or taking fellow guild members to try some new sport? Now is the chance to fulfill your dreams, as the guild is recruiting for new committee members!"
 	},
 	"ctaType": "page",
-	"pageLink": "6751daa085ab23be128a01f5",
+	"pageLink": {
+		"$oid": "6751daa085ab23be128a01f5"
+	},
 	"type": "announcement",
-	"author": "6648cf00a8fd2463f8d3064e",
+	"author": {
+		"$oid": "6648cf00a8fd2463f8d3064e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -778,7 +802,9 @@
 	},
 	"ctaType": "none",
 	"type": "danger",
-	"author": "6509af23590d33984d2cdc5e",
+	"author": {
+		"$oid": "6509af23590d33984d2cdc5e"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -862,7 +888,9 @@
 	},
 	"ctaType": "none",
 	"type": "danger",
-	"author": "6648cb71a8fd2463f8d30430",
+	"author": {
+		"$oid": "6648cb71a8fd2463f8d30430"
+	},
 	"content": {
 		"fi": {
 			"root": {
@@ -916,9 +944,13 @@
 		"fi": "Tiesitkö, että killalla on upea valikoima erilaisia kiltatuotteita? 🤩 Käy ostamassa omasi vaikka heti, sillä niitä ei ole hinnalla pilattu! Valikoimasta löytyy muun muassa haalarimerkkejä, 🪡 college-paitoja, 👕 korvakoruja, 💍 sekä kylpytakkeja! 👘"
 	},
 	"ctaType": "page",
-	"pageLink": "6548f1fad7febb86e2235ec9",
+	"pageLink": {
+		"$oid": "6548f1fad7febb86e2235ec9"
+	},
 	"type": "announcement",
-	"author": "6648cb71a8fd2463f8d30430",
+	"author": {
+		"$oid": "6648cb71a8fd2463f8d30430"
+	},
 	"content": {
 		"fi": {
 			"root": {

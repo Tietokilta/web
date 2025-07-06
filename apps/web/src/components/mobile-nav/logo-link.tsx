@@ -1,9 +1,9 @@
 "use client";
 
-import type { Media } from "@tietokilta/cms-types/payload";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import type { Media } from "@payload-types";
 import TiKLogo from "../../assets/TiK-logo-white.png";
 
 export function LogoLink({

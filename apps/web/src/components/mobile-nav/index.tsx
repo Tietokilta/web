@@ -1,8 +1,3 @@
-import type {
-  LinkRowBlock,
-  Media,
-  PartnersRowBlock,
-} from "@tietokilta/cms-types/payload";
 import {
   Button,
   MenuIcon,
@@ -13,6 +8,7 @@ import {
   SheetTrigger,
 } from "@tietokilta/ui";
 import Link from "next/link";
+import type { LinkRowBlock, Media, PartnersRowBlock } from "@payload-types";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";

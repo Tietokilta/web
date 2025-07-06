@@ -12,7 +12,10 @@
       "@components/*": ["./src/components/*"],
       "@lib/*": ["./src/lib/*"],
       "@locales/*": ["./src/locales/*"],
-      "@custom-pages/*": ["./src/custom-pages/*"]
+      "@custom-pages/*": ["./src/custom-pages/*"],
+      "@payload-config": ["./src/payload.config.ts"],
+      "@payload-types": ["./payload-types.ts"],
+      "@lexical-types": ["./src/components/lexical/types.ts"]
     }
   },
   "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"]

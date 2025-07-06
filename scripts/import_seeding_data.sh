@@ -67,9 +67,7 @@ elif [ "$ALL_FLAG" = true ] ; then
 fi
 # import images from production cuz ya yeet
 echo "starting image import from main site"
-mkdir -p apps/cms/uploads/media
-mkdir -p apps/cms/uploads/documents
-bun apps/cms/src/scripts/import-uploads.ts media
+pnpx tsx apps/web/src/scripts/import-uploads.ts media
 echo "NOTE: only media collection imported by default to save space"
 echo "If you want to import documents, run:"
-echo "bun apps/cms/src/scripts/import-uploads.ts documents"
+echo "pnpx tsx apps/web/src/scripts/import-uploads.ts documents"

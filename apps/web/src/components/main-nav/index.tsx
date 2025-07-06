@@ -1,5 +1,5 @@
-import type { Media } from "@tietokilta/cms-types/payload";
 import { NavigationMenu, NavigationMenuList } from "@tietokilta/ui";
+import type { Media } from "@payload-types";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
 import { getCurrentLocale } from "../../locales/server";

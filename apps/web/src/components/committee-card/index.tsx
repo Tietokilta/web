@@ -1,8 +1,3 @@
-import type {
-  Committee,
-  CommitteeMember,
-  Media,
-} from "@tietokilta/cms-types/payload";
 import Image from "next/image";
 import type { JSX } from "react";
 import {
@@ -11,6 +6,7 @@ import {
   GmailIcon,
   TelegramIcon,
 } from "@tietokilta/ui";
+import type { Committee, CommitteeMember, Media } from "@payload-types";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
 

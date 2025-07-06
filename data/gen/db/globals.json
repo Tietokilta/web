@@ -6,7 +6,9 @@
 		{
 			"type": "page",
 			"pageConfig": {
-				"page": "663cda58864517dbe569a395"
+				"page": {
+					"$oid": "663cda58864517dbe569a395"
+				}
 			},
 			"topicConfig": {
 				"categories": []
@@ -17,7 +19,9 @@
 			"type": "topic",
 			"pageConfig": {},
 			"topicConfig": {
-				"topic": "6548f0f4d7febb86e2235b89",
+				"topic": {
+					"$oid": "6548f0f4d7febb86e2235b89"
+				},
 				"categories": [
 					{
 						"title": {
@@ -26,27 +30,39 @@
 						},
 						"pages": [
 							{
-								"page": "664aecc3f5cc95ecc394cebd",
+								"page": {
+									"$oid": "664aecc3f5cc95ecc394cebd"
+								},
 								"id": "664af0cd9ac64d6b32f4fe3f"
 							},
 							{
-								"page": "66488d4112729ad2cf17903d",
+								"page": {
+									"$oid": "66488d4112729ad2cf17903d"
+								},
 								"id": "660ec54f07e0ae4b83d556e1"
 							},
 							{
-								"page": "6548f1fad7febb86e2235ec9",
+								"page": {
+									"$oid": "6548f1fad7febb86e2235ec9"
+								},
 								"id": "6548f244611be65a813f889d"
 							},
 							{
-								"page": "6648ff73e1b71004f16ca1c9",
+								"page": {
+									"$oid": "6648ff73e1b71004f16ca1c9"
+								},
 								"id": "6648fee794d27b3ea4e83595"
 							},
 							{
-								"page": "677d317bb77f1d6a01369609",
+								"page": {
+									"$oid": "677d317bb77f1d6a01369609"
+								},
 								"id": "678f97a2be98c6d0ac9ee668"
 							},
 							{
-								"page": "67877de5b77f1d6a01376c7b",
+								"page": {
+									"$oid": "67877de5b77f1d6a01376c7b"
+								},
 								"id": "67b60caff92fc35c5f2e4ec8"
 							}
 						],
@@ -60,27 +76,39 @@
 						},
 						"pages": [
 							{
-								"page": "6751daa085ab23be128a01f5",
+								"page": {
+									"$oid": "6751daa085ab23be128a01f5"
+								},
 								"id": "65ce76af70070b9b93e19463"
 							},
 							{
-								"page": "65be5086e56e440d594ddd26",
+								"page": {
+									"$oid": "65be5086e56e440d594ddd26"
+								},
 								"id": "65be56dfd1a66bf6e3ebe4ab"
 							},
 							{
-								"page": "65be65d4153050fbf6aaedee",
+								"page": {
+									"$oid": "65be65d4153050fbf6aaedee"
+								},
 								"id": "65be6621852e316d00b3d3ad"
 							},
 							{
-								"page": "664a02de33b015537cf07f95",
+								"page": {
+									"$oid": "664a02de33b015537cf07f95"
+								},
 								"id": "664a0316930e1c031db16040"
 							},
 							{
-								"page": "67883d282372bf945ba8ceeb",
+								"page": {
+									"$oid": "67883d282372bf945ba8ceeb"
+								},
 								"id": "678847f5a811d2700165081d"
 							},
 							{
-								"page": "6747734ce822b916c8062217",
+								"page": {
+									"$oid": "6747734ce822b916c8062217"
+								},
 								"id": "6747754531e4990a17404f7c"
 							}
 						],
@@ -94,32 +122,60 @@
 						},
 						"pages": [
 							{
-								"page": "65a2d95d598aa16e52bc885a",
+								"page": {
+									"$oid": "65a2d95d598aa16e52bc885a"
+								},
 								"id": "6649ea3b37278626f9ad0ada"
 							},
 							{
-								"page": "6649ee77e83c943b36c8c1b4",
+								"page": {
+									"$oid": "6649ee77e83c943b36c8c1b4"
+								},
 								"id": "6649f13137278626f9ad0adc"
 							},
 							{
-								"page": "6649f316e83c943b36c8d0bb",
+								"page": {
+									"$oid": "6649f316e83c943b36c8d0bb"
+								},
 								"id": "6649f37d37278626f9ad0ade"
 							},
 							{
-								"page": "66d5761df4b4aa2302c4d4d1",
-								"id": "66d57a85889699faab48d566"
-							},
-							{
-								"page": "6548f21ed7febb86e2235f5f",
+								"page": {
+									"$oid": "6548f21ed7febb86e2235f5f"
+								},
 								"id": "6649fa58ba32ea9e030583e1"
 							},
 							{
-								"page": "66ffab364d5fdcbd57b6bede",
+								"page": {
+									"$oid": "66ffab364d5fdcbd57b6bede"
+								},
 								"id": "66ffc643eba86521f4a90945"
 							}
 						],
 						"externalLinks": [],
 						"id": "6649ea3437278626f9ad0ad9"
+					},
+					{
+						"title": {
+							"fi": "Vapaa-aika",
+							"en": "Free Time"
+						},
+						"pages": [
+							{
+								"page": {
+									"$oid": "6838c7eb39007240c65825aa"
+								},
+								"id": "6839a42591ff012032b0d34a"
+							},
+							{
+								"page": {
+									"$oid": "66d5761df4b4aa2302c4d4d1"
+								},
+								"id": "6839ace91d045ade4ded0223"
+							}
+						],
+						"externalLinks": [],
+						"id": "6839a40191ff012032b0d349"
 					},
 					{
 						"title": {
@@ -174,7 +230,9 @@
 		{
 			"type": "page",
 			"pageConfig": {
-				"page": "6548f179d7febb86e2235cf2"
+				"page": {
+					"$oid": "6548f179d7febb86e2235cf2"
+				}
 			},
 			"topicConfig": {
 				"categories": []
@@ -184,7 +242,9 @@
 		{
 			"type": "page",
 			"pageConfig": {
-				"page": "6548f141d7febb86e2235c4d"
+				"page": {
+					"$oid": "6548f141d7febb86e2235c4d"
+				}
 			},
 			"topicConfig": {
 				"categories": []
@@ -194,7 +254,9 @@
 		{
 			"type": "page",
 			"pageConfig": {
-				"page": "6548f1a7d7febb86e2235d7c"
+				"page": {
+					"$oid": "6548f1a7d7febb86e2235d7c"
+				}
 			},
 			"topicConfig": {
 				"categories": []
@@ -205,7 +267,9 @@
 			"type": "topic",
 			"pageConfig": {},
 			"topicConfig": {
-				"topic": "680177c41213ad7fb27bcfc2",
+				"topic": {
+					"$oid": "680177c41213ad7fb27bcfc2"
+				},
 				"categories": [
 					{
 						"title": {
@@ -214,11 +278,15 @@
 						},
 						"pages": [
 							{
-								"page": "663cdabd864517dbe569a506",
+								"page": {
+									"$oid": "663cdabd864517dbe569a506"
+								},
 								"id": "680177f88ed4fd66732b69f8"
 							},
 							{
-								"page": "680179951213ad7fb27bd420",
+								"page": {
+									"$oid": "680179951213ad7fb27bd420"
+								},
 								"id": "680179e68ed4fd66732b69fb"
 							}
 						],
@@ -232,11 +300,15 @@
 						},
 						"pages": [
 							{
-								"page": "680198701213ad7fb27c00ad",
+								"page": {
+									"$oid": "680198701213ad7fb27c00ad"
+								},
 								"id": "6801a0285e67fc547fcaa2c0"
 							},
 							{
-								"page": "67e2a0bb1ae2001516a4d3a5",
+								"page": {
+									"$oid": "67e2a0bb1ae2001516a4d3a5"
+								},
 								"id": "680177ec8ed4fd66732b69f6"
 							}
 						],
@@ -250,7 +322,9 @@
 						},
 						"pages": [
 							{
-								"page": "67a7e6bfbc1fd6ed3e47c110",
+								"page": {
+									"$oid": "67a7e6bfbc1fd6ed3e47c110"
+								},
 								"id": "6801a06c5e67fc547fcaa2c1"
 							}
 						],
@@ -260,9 +334,9 @@
 									"fi": "Anonyymi lomake",
 									"en": "Anonymous Form"
 								},
-								"href": "https://tietokilta.fi/fi/yhdenvertaisuus/hairintalomake",
+								"href": "https://tietokilta.fi/yhdenvertaisuus/hairintalomake",
 								"icon": "Megaphone",
-								"id": "68017a2b8ed4fd66732b69fc"
+								"id": "681906eb1fb1f9774b46df7f"
 							}
 						],
 						"id": "680177cf8ed4fd66732b69f1"
@@ -277,16 +351,31 @@
 		"$date": "2023-11-06T14:05:51.452Z"
 	},
 	"updatedAt": {
-		"$date": "2025-04-19T00:28:11.706Z"
+		"$date": "2025-06-14T13:15:02.647Z"
 	},
 	"__v": 0,
-	"logo": "6648fdcf7bcfaaff24ed661e"
+	"logo": {
+		"$oid": "684d75d3caa653b36b8325fe"
+	}
 },
 {
 	"_id": {
 		"$oid": "6548f4ab88334626ab27fb53"
 	},
 	"layout": [
+		{
+			"title": {
+				"fi": "Pääyhteistyökumppanit",
+				"en": "Main Partners"
+			},
+			"size": "large",
+			"types": [
+				"mainPartner"
+			],
+			"id": "68081c83ddea3747c428e51d",
+			"blockName": "Main Partners",
+			"blockType": "partners-row"
+		},
 		{
 			"showLabel": true,
 			"links": [
@@ -297,7 +386,9 @@
 						"en": "Contact"
 					},
 					"linkType": "internal",
-					"page": "6548f21ed7febb86e2235f5f",
+					"page": {
+						"$oid": "6548f21ed7febb86e2235f5f"
+					},
 					"id": "6548f51e854a99217b8fbd3f"
 				},
 				{
@@ -307,7 +398,9 @@
 						"en": "Feedback"
 					},
 					"linkType": "internal",
-					"page": "664a00fb33b015537cf07ade",
+					"page": {
+						"$oid": "664a00fb33b015537cf07ade"
+					},
 					"id": "664a1d4c4d76b4f6278138c8"
 				},
 				{
@@ -317,7 +410,9 @@
 						"en": "Thanks"
 					},
 					"linkType": "internal",
-					"page": "664a3058535bd11c1b1c59bd",
+					"page": {
+						"$oid": "664a3058535bd11c1b1c59bd"
+					},
 					"id": "664a36f32f200a500d7a005d"
 				},
 				{
@@ -327,7 +422,9 @@
 						"en": "Report a bug"
 					},
 					"linkType": "internal",
-					"page": "664aecc3f5cc95ecc394cebd",
+					"page": {
+						"$oid": "664aecc3f5cc95ecc394cebd"
+					},
 					"id": "664af0439ac64d6b32f4fe3d"
 				}
 			],
@@ -382,22 +479,6 @@
 			"id": "6548f48f854a99217b8fbd38",
 			"blockName": "Social Media",
 			"blockType": "link-row"
-		},
-		{
-			"title": {
-				"fi": "Pääyhteistyökumppanit",
-				"en": "Main Partners"
-			},
-			"logos": [
-				{
-					"image": "66f1906d5a8ded0f0198d8b0",
-					"link": "https://www.smartly.io/",
-					"id": "659b007aca4e3224a4f5750d"
-				}
-			],
-			"id": "659afc2cf080efa8fb14e6a2",
-			"blockName": "Sponsor Logos",
-			"blockType": "logo-row"
 		}
 	],
 	"globalType": "footer",
@@ -405,7 +486,7 @@
 		"$date": "2023-11-06T14:14:03.116Z"
 	},
 	"updatedAt": {
-		"$date": "2025-04-18T23:35:10.292Z"
+		"$date": "2025-04-22T22:48:09.341Z"
 	},
 	"__v": 0
 },
@@ -938,6 +1019,54 @@
 			{
 				"text": "@Helppovoitto",
 				"id": "67f26535b581ce782231a957"
+			},
+			{
+				"text": "Tietokilta on wapun virallinen ykköskilta!",
+				"id": "681754c42df2cab8921a5f2c"
+			},
+			{
+				"text": "BROOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO",
+				"id": "6817552b2df2cab8921a5f2d"
+			},
+			{
+				"text": "Tietokilta trallalla!",
+				"id": "6817553a2df2cab8921a5f2e"
+			},
+			{
+				"text": "Touhukasta touhupäivää!",
+				"id": "681755632df2cab8921a5f2f"
+			},
+			{
+				"text": "error: higher-ranked lifetime error",
+				"id": "68186b09b6090803b189bd39"
+			},
+			{
+				"text": "git commit -am \"temp :D\"",
+				"id": "68186b4bb6090803b189bd3a"
+			},
+			{
+				"text": "Barendregtin λ-kuutio",
+				"id": "68186b6eb6090803b189bd3b"
+			},
+			{
+				"text": "Ootko kuullu Nixistä?",
+				"id": "68188f7470132f65b3281bdf"
+			},
+			{
+				"text": "tung tung tung SAHUR!",
+				"id": "6836164812f7f27a696f646f"
+			},
+			{
+				"text": "Trallalero trallala",
+				"id": "6836172612f7f27a696f6470"
+			},
+			{
+				"text": "Lirili Larila",
+				"id": "6836173312f7f27a696f6471"
+			},
+			{
+				"text": "Mikko Juusti Turbo Buusti",
+				"id": "6836173b12f7f27a696f6472"
 			}
 		],
 		"en": [
@@ -1184,56 +1313,92 @@
 			{
 				"text": "Join System Seven!",
 				"id": "66d35dc0f229ab45aa8dc5e0"
+			},
+			{
+				"text": "git commit -am \"temp :D\"",
+				"id": "68186c6cb6090803b189bd3c"
+			},
+			{
+				"text": "error: higher-ranked lifetime error",
+				"id": "68186c76b6090803b189bd3d"
+			},
+			{
+				"text": "Have you heard about Nix?",
+				"id": "68188f4670132f65b3281bde"
 			}
 		]
 	},
 	"heroImages": [
 		{
-			"image": "65a64bb22b2f140ed06d71f0",
+			"image": {
+				"$oid": "65a64bb22b2f140ed06d71f0"
+			},
 			"id": "65a64b5471769f33eb3992e5"
 		},
 		{
-			"image": "65a64bf62b2f140ed06d71f5",
+			"image": {
+				"$oid": "65a64bf62b2f140ed06d71f5"
+			},
 			"id": "65a64bbb71769f33eb3992e6"
 		},
 		{
-			"image": "6648e6165138eca5076b5ff2",
+			"image": {
+				"$oid": "6648e6165138eca5076b5ff2"
+			},
 			"id": "6648e606917b8b0075957e88"
 		},
 		{
-			"image": "6648e64f5138eca5076b6002",
+			"image": {
+				"$oid": "6648e64f5138eca5076b6002"
+			},
 			"id": "6648e61d917b8b0075957e89"
 		},
 		{
-			"image": "6648e69d5138eca5076b600c",
+			"image": {
+				"$oid": "6648e69d5138eca5076b600c"
+			},
 			"id": "6648e67d917b8b0075957e8a"
 		},
 		{
-			"image": "6648e6c65138eca5076b6031",
+			"image": {
+				"$oid": "6648e6c65138eca5076b6031"
+			},
 			"id": "6648e6a5917b8b0075957e8b"
 		},
 		{
-			"image": "6648e6f25138eca5076b6056",
+			"image": {
+				"$oid": "6648e6f25138eca5076b6056"
+			},
 			"id": "6648e6cc917b8b0075957e8c"
 		},
 		{
-			"image": "6648e7265138eca5076b606f",
+			"image": {
+				"$oid": "6648e7265138eca5076b606f"
+			},
 			"id": "6648e6fa917b8b0075957e8d"
 		},
 		{
-			"image": "6648e74f5138eca5076b6080",
+			"image": {
+				"$oid": "6648e74f5138eca5076b6080"
+			},
 			"id": "6648e730917b8b0075957e8e"
 		},
 		{
-			"image": "6648e7735138eca5076b6091",
+			"image": {
+				"$oid": "6648e7735138eca5076b6091"
+			},
 			"id": "6648e756917b8b0075957e8f"
 		},
 		{
-			"image": "67d6f8259f25f672bc8e1e42",
+			"image": {
+				"$oid": "67d6f8259f25f672bc8e1e42"
+			},
 			"id": "67d6f80c1c403a63411c7f2e"
 		},
 		{
-			"image": "67e2b1581ae2001516a4fa5b",
+			"image": {
+				"$oid": "67e2b1581ae2001516a4fa5b"
+			},
 			"id": "67e2b145fc0b4b01c8bd8bf7"
 		}
 	],
@@ -1315,7 +1480,7 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://kide.app/memberships/1af614ae-8333-48b6-83bf-bcc935c676b2",
+									"url": "https://kide.app/memberships/d02a0158-0410-455b-a187-a110b893bd28",
 									"newTab": true,
 									"linkType": "custom"
 								}
@@ -1471,7 +1636,7 @@
 								"type": "link",
 								"version": 2,
 								"fields": {
-									"url": "https://kide.app/memberships/1af614ae-8333-48b6-83bf-bcc935c676b2",
+									"url": "https://kide.app/memberships/d02a0158-0410-455b-a187-a110b893bd28",
 									"newTab": true,
 									"linkType": "custom"
 								}
@@ -1547,10 +1712,38 @@
 		"$date": "2024-01-16T09:27:53.776Z"
 	},
 	"updatedAt": {
-		"$date": "2025-04-06T11:28:36.59Z"
+		"$date": "2025-05-31T18:20:14.742Z"
 	},
 	"__v": 0,
-	"announcement": "67d6a86f9f25f672bc8e17d0",
-	"eventsListPage": "663cda58864517dbe569a395"
+	"announcement": {
+		"$oid": "664880df217a8925c3715f29"
+	},
+	"eventsListPage": {
+		"$oid": "663cda58864517dbe569a395"
+	}
+},
+{
+	"_id": {
+		"$oid": "68081c50b6f824ce1d67c691"
+	},
+	"showKanttiinit": true,
+	"showEvents": true,
+	"showHSL": true,
+	"additionalIframes": [
+		{
+			"IframeUrl": "https://wappupixel.paitsiossa.net/benchwarmer",
+			"IframeTitle": "Wappu Pixel",
+			"enabled": false,
+			"id": "68081c54ddea3747c428e51c"
+		}
+	],
+	"globalType": "info-screen",
+	"createdAt": {
+		"$date": "2025-04-22T22:46:40.383Z"
+	},
+	"updatedAt": {
+		"$date": "2025-05-30T13:34:05.005Z"
+	},
+	"__v": 0
 }]
 

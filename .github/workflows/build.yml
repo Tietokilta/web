@@ -29,8 +29,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
 
-      - name: Use Node.js 22
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
           cache: "pnpm"
@@ -38,11 +37,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Generate Payload types (to ensure that they are up to date)
-        run: pnpm codegen && git diff --exit-code
-
       - name: Format (to ensure that code has been formatted)
         run: pnpm format && git diff --exit-code
+
+      - name: Generate Payload types
+        run: pnpm codegen
 
       - name: Lint
         run: pnpm lint
@@ -56,9 +55,6 @@ jobs:
   docker-build-and-push:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
     needs: build
-    strategy:
-      matrix:
-        project: [web, cms]
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
     permissions:
@@ -79,7 +75,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{env.docker_tag_prefix}}/${{matrix.project}}
+          images: ${{env.docker_tag_prefix}}/web
           tags: |
             type=semver,pattern={{version}},enable=${{ github.ref_type == 'tag' }}
             type=semver,pattern={{major}}.{{minor}},enable=${{ github.ref_type == 'tag' }}
@@ -94,10 +90,9 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            PROJECT=${{matrix.project}}
             GIT_COMMIT_SHA=${{github.sha}}
           cache-from: type=gha
-          cache-to: type=gha,mode=min
+          cache-to: type=gha,mode=max
 
   deploy:
     # only run on published releases, enable this when we release
@@ -105,9 +100,6 @@ jobs:
     name: Deploy to Azure
     runs-on: ubuntu-latest
     needs: docker-build-and-push
-    strategy:
-      matrix:
-        project: [web, cms]
     steps:
       - name: Login via Azure CLI
         uses: azure/login@v2
@@ -117,5 +109,5 @@ jobs:
           tenant-id: ${{secrets.AZURE_TENANT_ID}}
       - uses: azure/webapps-deploy@v3
         with:
-          app-name: tikweb-${{matrix.project}}-prod # TODO: if we ever setup more envs than prod, make this variable customizable
-          images: "${{ env.docker_tag_prefix }}/${{matrix.project}}:sha-${{ github.sha }}"
+          app-name: tikweb-web-prod # TODO: if we ever setup more envs than prod, make this variable customizable
+          images: "${{ env.docker_tag_prefix }}/web:sha-${{ github.sha }}"

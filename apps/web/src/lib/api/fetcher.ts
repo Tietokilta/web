@@ -1,7 +1,8 @@
-import { type Config } from "@tietokilta/cms-types/payload";
 import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
 import { cookies, draftMode } from "next/headers";
 import { stringify as qsStringify } from "qs";
+import { type Config } from "@payload-types";
+import { SELF_URL } from "../../util";
 
 export type CollectionSlug = keyof Config["collections"];
 export type GlobalSlug = keyof Config["globals"];
@@ -65,16 +66,14 @@ export function getAllCollectionItems<
       draft,
       fetchOptions,
     ): Promise<TResponse | undefined> => {
-      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/${collectionSlug}?${qsStringify(
-        {
-          ...req,
-          ...(draft ? { draft: "true" } : {}),
-          depth: req.depth ?? 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
-          // Needs to be bigger than 1 to get media / images
-          limit: req.limit ?? 100,
-          sort: globalOpts.sort,
-        },
-      ).toString()}`;
+      const fetchUrl = `${SELF_URL}/api/${collectionSlug}?${qsStringify({
+        ...req,
+        ...(draft ? { draft: "true" } : {}),
+        depth: req.depth ?? 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+        // Needs to be bigger than 1 to get media / images
+        limit: req.limit ?? 100,
+        sort: globalOpts.sort,
+      }).toString()}`;
 
       // eslint-disable-next-line no-console -- for debugging purposes
       console.log("getAll", collectionSlug, "req", req, "fetchUrl", fetchUrl);
@@ -114,14 +113,12 @@ export function getGlobal<TResponse>(
       draft,
       fetchOptions,
     ): Promise<TResponse | undefined> => {
-      const fetchUrl = `${process.env.PUBLIC_SERVER_URL ?? ""}/api/globals/${globalSlug}?${qsStringify(
-        {
-          locale: globalOpts.locale,
-          depth: globalOpts.depth ?? 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
-          // Needs to be bigger than 1 to get media / images
-          ...(draft ? { draft: "true" } : {}),
-        },
-      ).toString()}`;
+      const fetchUrl = `${SELF_URL}/api/globals/${globalSlug}?${qsStringify({
+        locale: globalOpts.locale,
+        depth: globalOpts.depth ?? 10, // TODO: remove this when we have a better way to handle depth for example with GraphQL
+        // Needs to be bigger than 1 to get media / images
+        ...(draft ? { draft: "true" } : {}),
+      }).toString()}`;
 
       // eslint-disable-next-line no-console -- for debugging purposes
       console.log("getGlobal", "path", "fetchUrl", fetchUrl);

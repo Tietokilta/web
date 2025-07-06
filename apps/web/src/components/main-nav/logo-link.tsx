@@ -1,10 +1,10 @@
 "use client";
 
 import { NavigationMenuItem, NavigationMenuLink } from "@tietokilta/ui";
-import type { Media } from "@tietokilta/cms-types/payload";
 import NextLink from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import type { Media } from "@payload-types";
 import { useCurrentLocale } from "../../locales/client";
 import TiKLogo from "../../assets/TiK-logo-white.png";
 

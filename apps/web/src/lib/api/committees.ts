@@ -1,4 +1,4 @@
-import type { Committee } from "@tietokilta/cms-types/payload";
+import type { Committee } from "@payload-types";
 import { getAllCollectionItems } from "./fetcher";
 
 export const fetchCommittees = getAllCollectionItems<

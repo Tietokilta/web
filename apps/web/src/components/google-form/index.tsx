@@ -1,4 +1,4 @@
-import { type GoogleFormBlockNode } from "@tietokilta/cms-types/lexical";
+import { type GoogleFormBlockNode } from "@lexical-types";
 
 export function GoogleForm({
   link,

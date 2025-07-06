@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { type EditorState } from "@tietokilta/cms-types/lexical";
-import { type NewsItem } from "@tietokilta/cms-types/payload";
+import { type EditorState } from "@lexical-types";
+import { type NewsItem } from "@payload-types";
 import {
   fetchWeeklyNewsletter,
   fetchWeeklyNewsletterBySlug,

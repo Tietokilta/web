@@ -1,9 +1,6 @@
-import {
-  type Node,
-  type HighlightCardBlockNode,
-} from "@tietokilta/cms-types/lexical";
 import { Card } from "@tietokilta/ui";
 import React from "react";
+import { type Node, type HighlightCardBlockNode } from "@lexical-types";
 
 interface RendererProps {
   nodes: Node[];

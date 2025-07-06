@@ -1,4 +1,4 @@
-import type { Partner } from "@tietokilta/cms-types/payload";
+import type { Partner } from "@payload-types";
 import { getAllCollectionItems } from "./fetcher";
 
 export const fetchPartners = getAllCollectionItems<

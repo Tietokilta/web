@@ -33,9 +33,4 @@ for COLLECTION_NAME in $COLLECTIONS; do
   fi
 done
 echo "cleaning up excess versions from versioned collections..."
-if ! [ -x "$(command -v bun)" ]; then
-  echo "bun is not installed, running with node with --experimental-strip-types..."
-  node --experimental-strip-types apps/cms/src/scripts/import-uploads.ts
-else
-  bun run scripts/remove_excess_versions.ts
-fi
+node --experimental-strip-types scripts/remove_excess_versions.ts

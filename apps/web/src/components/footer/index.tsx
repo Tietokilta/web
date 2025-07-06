@@ -1,13 +1,13 @@
+import Image from "next/image";
+import { RenderIcon } from "@tietokilta/ui";
+import Link from "next/link";
 import type {
   LinkRowBlock,
   Media,
   Page,
   PartnersRowBlock,
   SponsorLogoRowBlock,
-} from "@tietokilta/cms-types/payload";
-import Image from "next/image";
-import { RenderIcon } from "@tietokilta/ui";
-import Link from "next/link";
+} from "@payload-types";
 import { PartnerLogos } from "@components/partner-logos";
 import { fetchFooter } from "../../lib/api/footer";
 import { assertUnreachable, cn } from "../../lib/utils";
