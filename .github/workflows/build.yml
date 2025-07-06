@@ -53,8 +53,7 @@ jobs:
         run: pnpm build
 
   docker-build-and-push:
-    # TODO: change back to 'main' before merge
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/payload-3') || (github.event_name == 'release' && github.event.action == 'published')
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
     needs: build
     name: Push Docker image to GitHub Packages
     runs-on: ubuntu-latest
@@ -110,6 +109,5 @@ jobs:
           tenant-id: ${{secrets.AZURE_TENANT_ID}}
       - uses: azure/webapps-deploy@v3
         with:
-          # TODO: change back to prod before merge
-          app-name: tikweb-web-staging # TODO: if we ever setup more envs than prod, make this variable customizable
+          app-name: tikweb-web-prod # TODO: if we ever setup more envs than prod, make this variable customizable
           images: "${{ env.docker_tag_prefix }}/web:sha-${{ github.sha }}"
