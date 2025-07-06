@@ -56,8 +56,8 @@ export default async function Page() {
             ))}
           </ul>
           <div className="flex justify-center">
-            <Button>
-              <Link href={t("path.all-events")}>
+            <Button asChild>
+              <Link href={t("path.all-events")} className="block">
                 {t("Selaa vanhoja tapahtumia")}
               </Link>
             </Button>
