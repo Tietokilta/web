@@ -2,51 +2,17 @@
 // notice that the hook itself is not async and we are not awaiting `revalidate`
 
 import type { GlobalAfterChangeHook } from "payload";
-import { SELF_URL } from "../util";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 // only revalidate existing docs that are published (not drafts)
 export const revalidateGlobal: GlobalAfterChangeHook = ({
   doc,
-  req,
   global,
+  req,
 }) => {
-  const revalidate = async (): Promise<void> => {
-    const revalidationKey = process.env.PAYLOAD_REVALIDATION_KEY;
-    if (!revalidationKey) {
-      req.payload.logger.error(
-        "PAYLOAD_REVALIDATION_KEY not set, cannot revalidate",
-      );
-      return;
-    }
-    try {
-      const fetchUrl = `${
-        SELF_URL
-      }/next_api/revalidate-global?${new URLSearchParams({
-        secret: encodeURIComponent(revalidationKey),
-        globalSlug: encodeURIComponent(global.slug),
-      }).toString()}`;
-      req.payload.logger.info(
-        `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
-      );
-      const res = await fetch(fetchUrl, { method: "POST" });
-      if (res.ok) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- is ok trust me bro
-        const thing = await res.json();
-        req.payload.logger.info(`revalidate response ${JSON.stringify(thing)}`);
-        req.payload.logger.info(`Revalidated global ${global.slug}`);
-      } else {
-        req.payload.logger.error(
-          `Error revalidating collection ${global.slug}`,
-        );
-      }
-    } catch (_) {
-      req.payload.logger.error(
-        `Error hitting revalidate collection ${global.slug}`,
-      );
-    }
-  };
-
-  void revalidate();
+  req.payload.logger.info(`revalidating ${global.slug}`);
+  revalidateTag(`global-${global.slug}`);
+  revalidatePath("/[locale]", "layout");
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- ¯\_(ツ)_/¯
   return doc;

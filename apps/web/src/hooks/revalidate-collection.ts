@@ -1,6 +1,6 @@
 import type { CollectionAfterChangeHook, TypeWithID } from "payload";
+import { revalidatePath, revalidateTag } from "next/cache";
 import type { Config } from "@payload-types";
-import { SELF_URL } from "../util";
 
 type CollectionSlug = keyof Config["collections"];
 
@@ -24,47 +24,13 @@ export function revalidateCollection<T extends TypeWithID>(
       return doc;
     }
 
-    const revalidationKey = process.env.PAYLOAD_REVALIDATION_KEY;
-    if (!revalidationKey) {
-      req.payload.logger.error(
-        "PAYLOAD_REVALIDATION_KEY not set, cannot revalidate",
-      );
-      return doc;
+    req.payload.logger.info(`revalidating ${collectionSlug}`);
+    revalidateTag(`collection-${collectionSlug}`);
+    if (collectionSlug !== "pages") {
+      req.payload.logger.info(`revalidating pages`);
+      revalidateTag("collection-pages");
     }
-
-    const revalidate = async (): Promise<void> => {
-      try {
-        const fetchUrl = `${SELF_URL}/next_api/revalidate-collection?${new URLSearchParams(
-          {
-            secret: encodeURIComponent(revalidationKey),
-            collectionSlug: encodeURIComponent(collectionSlug),
-          },
-        ).toString()}`;
-        req.payload.logger.info(
-          `sending revalidate request ${fetchUrl.replace(revalidationKey, "REDACTED")}`,
-        );
-        const res = await fetch(fetchUrl, { method: "POST" });
-        if (res.ok) {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- is ok
-          const thing = await res.json();
-          req.payload.logger.info(
-            `revalidate response ${JSON.stringify(thing)}`,
-          );
-          req.payload.logger.info(`Revalidated collection ${collectionSlug}`);
-        } else {
-          req.payload.logger.error(
-            `Error revalidating collection ${collectionSlug}`,
-          );
-        }
-      } catch (err: unknown) {
-        req.payload.logger.error(
-          `Error hitting revalidate collection ${collectionSlug}`,
-        );
-        req.payload.logger.error(err);
-      }
-    };
-
-    void revalidate();
+    revalidatePath("/[locale]/[...path]", "page");
 
     return doc;
   };
