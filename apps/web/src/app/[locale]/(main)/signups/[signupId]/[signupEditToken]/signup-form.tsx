@@ -184,7 +184,6 @@ function ConfirmDeletePopover({
       <StatusButton
         type="submit"
         formNoValidate
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises -- If you add void here, the delete action doesn't work
         formAction={deleteAction}
         variant="destructive"
         className="w-full max-w-sm"
