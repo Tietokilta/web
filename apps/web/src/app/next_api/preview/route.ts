@@ -1,7 +1,6 @@
 import { draftMode, headers as nextHeaders } from "next/headers";
 import { redirect } from "next/navigation";
-import { getPayload } from "payload";
-import config from "@payload-config";
+import { getPayloadClient } from "@lib/api/payload";
 
 export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
@@ -11,7 +10,7 @@ export async function GET(req: Request): Promise<Response> {
     return new Response("No URL provided", { status: 404 });
   }
   const headers = await nextHeaders();
-  const payload = await getPayload({ config });
+  const payload = await getPayloadClient();
   const userRes = await payload.auth({ headers });
 
   if (!userRes.user) {
