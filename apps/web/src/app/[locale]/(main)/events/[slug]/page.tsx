@@ -174,7 +174,7 @@ async function SignUpTable({
   const isGeneratedQuota = !!isOpenQuota || !!isQueueQuota;
 
   return (
-    <div className="shadow-solid block w-full overflow-x-auto rounded-md border-2 border-gray-900">
+    <div className="block w-full overflow-x-auto rounded-md border-2 border-gray-900 shadow-solid">
       <table className="w-full table-auto border-separate border-spacing-0">
         <thead>
           <tr className="bg-gray-200">
@@ -260,7 +260,7 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina.headers");
   const locale = await getCurrentLocale();
   return (
-    <div className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
+    <div className="rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       {event.category ? (
         <span className="block">
           <span className="font-medium">{t("Kategoria")}:</span>{" "}
@@ -365,7 +365,7 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
 async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
   const t = await getScopedI18n("ilmomasiina");
   return (
-    <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
+    <div className="max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
         {t("Ilmoittautuminen")}
       </h2>
@@ -439,7 +439,7 @@ export default async function Page(props: PageProps) {
           </h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
-              <div className="flex max-w-xl grow-[2] flex-col gap-8">
+              <div className="grow-2 flex max-w-xl flex-col gap-8">
                 <Tldr event={event.data} />
                 {event.data.description ? (
                   <div className="prose">

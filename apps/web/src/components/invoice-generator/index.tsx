@@ -333,7 +333,7 @@ function InvoiceGeneratorForm() {
 
   return (
     <Form
-      className="shadow-solid w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 md:px-6 md:py-8"
+      className="w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 shadow-solid md:px-6 md:py-8"
       ref={formRef}
       // Use `onSubmit` instead of `action` to prevent form reset
       onSubmit={handleSubmit}

@@ -37,16 +37,16 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
         { "--infonayttoHSLcolor": getColor(stop.type) } as React.CSSProperties
       }
     >
-      <h1 className="flex h-12 w-full justify-center p-2 font-mono text-3xl font-bold text-[var(--infonayttoHSLcolor)]">
+      <h1 className="text-(--infonayttoHSLcolor) flex h-12 w-full justify-center p-2 font-mono text-3xl font-bold">
         {stopName(stop.type)}
       </h1>
       <ul className="space-y-4 font-bold">
         {stop.arrivals.map((arr) => (
           <li
             key={arr.route + arr.headSign + arr.fullTime}
-            className="shadow-solid grid grid-cols-[1fr_2fr_1fr] items-center rounded-md border-2 border-[var(--infonayttoHSLcolor)] p-3 font-mono text-gray-900 shadow-[var(--infonayttoHSLcolor)] md:items-center"
+            className="border-(--infonayttoHSLcolor) shadow-(--infonayttoHSLcolor) grid grid-cols-[1fr_2fr_1fr] items-center rounded-md border-2 p-3 font-mono text-gray-900 shadow-solid md:items-center"
           >
-            <div className="text-left text-3xl text-[var(--infonayttoHSLcolor)]">
+            <div className="text-(--infonayttoHSLcolor) text-left text-3xl">
               {arr.route}
             </div>
             <div className="text-center text-2xl">{arr.headSign}</div>

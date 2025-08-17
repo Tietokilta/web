@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
-  "sideEffects": false,
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -66,8 +68,8 @@
     "typescript-eslint": "catalog:"
   },
   "peerDependencies": {
+    "@tailwindcss/postcss": "catalog:",
     "@tailwindcss/typography": "catalog:",
-    "autoprefixer": "catalog:",
     "postcss": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",

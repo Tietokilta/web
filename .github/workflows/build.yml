@@ -37,6 +37,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: "Build ui package"
+        run: pnpm turbo run build --filter=@tietokilta/ui --force
+
       - name: Format (to ensure that code has been formatted)
         run: pnpm format && git diff --exit-code
 

@@ -4,7 +4,6 @@ import { fixupPluginRules } from "@eslint/compat";
 import onlyWarn from "eslint-plugin-only-warn";
 import turbo from "eslint-plugin-turbo";
 import globals from "globals";
-import tailwindcss from "eslint-plugin-tailwindcss";
 import vercelNode from "./configs/node.js";
 import vercelTypescript from "./configs/typescript.js";
 import vercelBrowser from "./configs/browser.js";
@@ -26,7 +25,6 @@ export default ts.config(
   vercelBrowser,
   vercelReact,
   vercelNext,
-  tailwindcss.configs["flat/recommended"],
   {
     languageOptions: {
       globals: {
@@ -55,14 +53,6 @@ export default ts.config(
       "import-x/no-default-export": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "no-implicit-coercion": ["error", { allow: ["!!"] }],
-      "tailwindcss/classnames-order": "off",
-      "tailwindcss/no-custom-classname": [
-        "warn",
-        {
-          // react-dvd-screensaver uses custom classnames to detect parent container
-          whitelist: ["screensaver-container"],
-        },
-      ],
       "no-unused-vars": [
         "warn",
         {

@@ -1,8 +1,15 @@
-const path = require("path");
-const defaultTheme = require("tailwindcss/defaultTheme");
+import path from "node:path";
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+import defaultTheme from "tailwindcss/defaultTheme.js";
+import tailwindcssAnimate from "tailwindcss-animate";
+import tietokiltaUI from "@tietokilta/ui";
+import tailwindcssTypography from "@tailwindcss/typography";
 
+const sans = ["var(--font-inter)", ...defaultTheme.fontFamily.sans];
+const mono = ["var(--font-roboto-mono)", ...defaultTheme.fontFamily.mono];
 /** @type {import("tailwindcss").Config} */
-module.exports = {
+export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     path.join(path.dirname(require.resolve("@tietokilta/ui")), "**/*.js"),
@@ -10,8 +17,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
-        mono: ["var(--font-roboto-mono)", ...defaultTheme.fontFamily.mono],
+        sans,
+        mono,
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -49,7 +56,7 @@ module.exports = {
             "--tw-prose-invert-th-borders": theme("colors.gray[600]"),
             "--tw-prose-invert-td-borders": theme("colors.gray[700]"),
             "h1, h2, h3, h4, h5, h6": {
-              fontFamily: theme("fontFamily.mono").join(", "),
+              fontFamily: mono.join(", "),
             },
             "h2, h3": {
               "&::before": {
@@ -111,7 +118,7 @@ module.exports = {
               "&::before": {
                 // zero width space because open comment breaks something internally
                 content: "'/\u200b*'/''",
-                fontFamily: theme("fontFamily.mono").join(", "),
+                fontFamily: mono.join(", "),
                 fontStyle: "normal",
                 position: "absolute",
                 top: "-1.6em",
@@ -119,7 +126,7 @@ module.exports = {
               },
               "&::after": {
                 content: "'*/'/''",
-                fontFamily: theme("fontFamily.mono").join(", "),
+                fontFamily: mono.join(", "),
                 fontStyle: "normal",
                 position: "absolute",
                 bottom: "-1.6em",
@@ -157,9 +164,8 @@ module.exports = {
               borderWidth: "2px",
               borderColor: theme("colors.gray.900"),
               padding: "1rem",
-
               "& figcaption": {
-                fontFamily: theme("fontFamily.mono").join(", "),
+                fontFamily: mono.join(", "),
                 fontWeight: theme("fontWeight.bold"),
                 color: theme("colors.gray.900"),
               },
@@ -171,14 +177,7 @@ module.exports = {
           },
         },
       }),
-      aspectRatio: {
-        "2/3": "2 / 3",
-      },
     },
   },
-  plugins: [
-    require("@tietokilta/ui"),
-    require("tailwindcss-animate"),
-    require("@tailwindcss/typography"),
-  ],
+  plugins: [tietokiltaUI, tailwindcssAnimate, tailwindcssTypography],
 };

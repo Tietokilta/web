@@ -20,21 +20,21 @@ function AnnouncementIcon({
   if (type === "announcement") {
     return (
       <MegaphoneIcon
-        className={cn("fill-success-500 mt-2 h-8 w-8 shrink-0", className)}
+        className={cn("mt-2 h-8 w-8 shrink-0 fill-success-500", className)}
       />
     );
   }
   if (type === "warning") {
     return (
       <AlertTriangleIcon
-        className={cn("fill-warning-500 mt-2 h-8 w-8 shrink-0", className)}
+        className={cn("mt-2 h-8 w-8 shrink-0 fill-warning-500", className)}
       />
     );
   }
   if (type === "danger") {
     return (
       <AlertOctagonIcon
-        className={cn("fill-danger-500 mt-2 h-8 w-8 shrink-0", className)}
+        className={cn("mt-2 h-8 w-8 shrink-0 fill-danger-500", className)}
       />
     );
   }
@@ -46,7 +46,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
   const t = await getScopedI18n("action");
 
   return (
-    <section className="shadow-solid relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pb-6 pt-12 font-mono md:px-6 lg:-mt-48">
+    <section className="relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pb-6 pt-12 font-mono shadow-solid md:px-6 lg:-mt-48">
       <div
         className={cn(
           "absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2",
@@ -58,7 +58,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
         <div className="flex w-5 gap-1">
           <span
             className={cn(
-              "bg-secondary-600 h-2 w-2 rounded-full border border-gray-900",
+              "h-2 w-2 rounded-full border border-gray-900 bg-secondary-600",
               news.type === "announcement" && "bg-success-700",
               news.type === "warning" && "bg-warning-700",
               news.type === "danger" && "bg-danger-700",
@@ -66,7 +66,7 @@ export async function AnnouncementCard({ news }: { news: News }) {
           />
           <span
             className={cn(
-              "bg-primary-600 h-2 w-2 rounded-full border border-gray-900",
+              "h-2 w-2 rounded-full border border-gray-900 bg-primary-600",
               news.type === "announcement" && "bg-success-700",
               news.type === "warning" && "bg-warning-700",
               news.type === "danger" && "bg-danger-700",
