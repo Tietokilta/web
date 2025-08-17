@@ -8,11 +8,11 @@ import { cn, insertSoftHyphens } from "../../lib/utils";
 function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
   const photo = boardMember.photo as Media | undefined;
   return (
-    <li className="shadow-solid relative flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6">
+    <li className="relative flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono shadow-solid md:px-6">
       <div className="absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
         <div className="flex gap-1">
-          <span className="bg-secondary-600 size-2 rounded-full border border-gray-900" />
-          <span className="bg-primary-600 size-2 rounded-full border border-gray-900" />
+          <span className="size-2 rounded-full border border-gray-900 bg-secondary-600" />
+          <span className="size-2 rounded-full border border-gray-900 bg-primary-600" />
         </div>
       </div>
       <Image

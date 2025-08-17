@@ -19,7 +19,7 @@ function ImageLink({
         size === "large" && "w-64",
       )}
       src={image.image.url ?? TikLogo}
-      alt={image.image.alt}
+      alt={image.image.alt || ""}
       width={image.image.width ?? undefined}
       height={image.image.height ?? undefined}
     />
@@ -40,7 +40,7 @@ export function ImageLinkGrid({
   images: ImageLinkGridBlockNode["fields"]["images"];
 }) {
   return (
-    <div className="not-prose shadow-solid relative my-8 flex flex-wrap items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono md:px-6">
+    <div className="not-prose relative my-8 flex flex-wrap items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pb-6 pt-12 font-mono shadow-solid md:px-6">
       {images.map((image, index) => (
         <ImageLink
           key={image.image.id + String(index)}

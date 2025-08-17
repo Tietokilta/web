@@ -10,7 +10,7 @@ function AwardedPersonDropdown({
   awardedPerson: AwardedHonor;
 }) {
   return (
-    <div className="not-prose shadow-solid relative my-4 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono md:px-3">
+    <div className="not-prose relative my-4 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono shadow-solid md:px-3">
       <details className="group contents">
         <summary
           className={cn(

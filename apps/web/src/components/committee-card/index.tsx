@@ -83,15 +83,15 @@ export function CommitteeCard({
   return (
     <section
       className={cn(
-        "not-prose shadow-solid relative my-6 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono md:my-8 md:px-4 lg:px-6",
+        "not-prose relative my-6 flex overflow-hidden rounded-md border-2 border-gray-900 px-2 pt-11 font-mono shadow-solid md:my-8 md:px-4 lg:px-6",
         !isTightLayout && "md:-mx-8 lg:-mx-32 xl:-mx-48 2xl:-mx-64",
       )}
     >
       <details open className="group w-full">
         <summary className="absolute left-0 top-0 flex w-full cursor-pointer justify-between border-b-2 border-gray-900 bg-gray-100 p-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
           <span className="flex w-5 gap-1 sm:w-8">
-            <span className="bg-secondary-600 size-2 rounded-full border border-gray-900 sm:size-3" />
-            <span className="bg-primary-600 size-2 rounded-full border border-gray-900 sm:size-3" />
+            <span className="size-2 rounded-full border border-gray-900 bg-secondary-600 sm:size-3" />
+            <span className="size-2 rounded-full border border-gray-900 bg-primary-600 sm:size-3" />
           </span>
           <h2 className="self-center truncate font-medium">{committee.name}</h2>
           <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />

@@ -43,7 +43,7 @@ async function NavigationLink({
 
   return (
     <Collapsible>
-      <CollapsibleTrigger className="group flex items-center gap-2">
+      <CollapsibleTrigger className="group flex cursor-pointer items-center gap-2">
         <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
         <ChevronDownIcon className="block size-6 group-data-[state=open]:hidden" />
         <span className="sr-only block group-data-[state=open]:hidden">

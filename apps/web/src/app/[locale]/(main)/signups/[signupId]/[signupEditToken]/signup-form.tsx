@@ -158,7 +158,7 @@ function ConfirmDeletePopover({
     <Card
       id={id}
       popover="auto"
-      className="[&:popover-open]:flex [&:popover-open]:w-full [&:popover-open]:max-w-sm [&:popover-open]:flex-col [&:popover-open]:gap-2"
+      className="[&:popover-open]:inset-0 [&:popover-open]:m-auto [&:popover-open]:flex [&:popover-open]:h-fit [&:popover-open]:w-full [&:popover-open]:max-w-sm [&:popover-open]:flex-col [&:popover-open]:gap-2"
     >
       <p>
         {t(
@@ -239,7 +239,7 @@ function Form({
   return (
     <NextForm
       action={formAction}
-      className="shadow-solid w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 md:px-6 md:py-8"
+      className="w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 shadow-solid md:px-6 md:py-8"
     >
       <input type="hidden" name="signupId" value={signupId} />
       <input type="hidden" name="signupEditToken" value={signupEditToken} />

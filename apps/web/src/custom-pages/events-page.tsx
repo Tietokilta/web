@@ -16,7 +16,7 @@ async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="h-[40rem]">
+      <div className="h-160">
         <EventCalendar events={events} />
       </div>
       <CalendarSubButton

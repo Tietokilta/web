@@ -38,7 +38,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
   const eventUrl = `/${locale}/${t("ilmomasiina.path.events")}/${event.slug}`;
 
   return (
-    <li className="shadow-solid flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 md:flex-row md:items-center">
+    <li className="flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 shadow-solid md:flex-row md:items-center">
       <div className="flex-1 shrink-0">
         <span className="block text-pretty text-lg font-bold">
           {getLocalizedEventTitle(event.title, locale)}

@@ -4,7 +4,6 @@ import { fixupPluginRules } from "@eslint/compat";
 import onlyWarn from "eslint-plugin-only-warn";
 import turbo from "eslint-plugin-turbo";
 import globals from "globals";
-import tailwindcss from "eslint-plugin-tailwindcss";
 import vercelTypescript from "./configs/typescript.js";
 import vercelBrowser from "./configs/browser.js";
 import vercelReact from "./configs/react.js";
@@ -22,7 +21,6 @@ export default ts.config(
   vercelBrowser,
   vercelTypescript,
   vercelReact,
-  tailwindcss.configs["flat/recommended"],
   {
     languageOptions: {
       globals: {
@@ -45,7 +43,6 @@ export default ts.config(
   {
     rules: {
       "import-x/no-default-export": "off",
-      "tailwindcss/classnames-order": "off", // handled by prettier
       "no-unused-vars": [
         "warn",
         {
