@@ -9,6 +9,7 @@
     "AZURE_STORAGE_ALLOW_CONTAINER_CREATE",
     "AZURE_STORAGE_CONNECTION_STRING",
     "AZURE_STORAGE_CONTAINER_NAME",
+    "CI",
     "DIGITRANSIT_SUBSCRIPTION_KEY",
     "GIT_COMMIT_SHA",
     "GOOGLE_OAUTH_CLIENT_ID",
@@ -19,6 +20,7 @@
     "MAILGUN_SENDER",
     "MAILGUN_URL",
     "MONGODB_URI",
+    "NEXT_PUBLIC_ILMOMASIINA_URL",
     "NEXT_PUBLIC_LASKUGENERAATTORI_URL",
     "NODE_ENV",
     "PAYLOAD_DEFAULT_USER_EMAIL",
@@ -30,11 +32,10 @@
     "PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD",
     "PAYLOAD_PUBLIC_LOCAL_DEVELOPMENT",
     "PAYLOAD_SECRET",
+    "PORT",
     "PUBLIC_FRONTEND_URL",
-    "NEXT_PUBLIC_ILMOMASIINA_URL",
     "PUBLIC_LEGACY_URL",
-    "PUBLIC_PRODUCTION_URL",
-    "PORT"
+    "PUBLIC_PRODUCTION_URL"
   ],
   "tasks": {
     "build": {
@@ -64,10 +65,11 @@
       "persistent": true
     },
     "start": {
-      "dependsOn": ["^build", "codegen", "^codegen"],
+      "dependsOn": ["build", "^build", "codegen", "^codegen"],
       "cache": false,
       "persistent": true
     },
+    "test": {},
     "clean": {
       "cache": false,
       "persistent": false

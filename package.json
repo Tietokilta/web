@@ -22,10 +22,12 @@
     "lint:fix": "turbo run lint:fix",
     "payload": "dotenv -- pnpm -F web payload",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
+    "test": "turbo run test --cache-dir=.turbo",
     "typecheck": "turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/web/uploads"
   },
   "devDependencies": {
+    "@playwright/test": "catalog:",
     "@types/node": "catalog:",
     "dotenv-cli": "^10.0.0",
     "eslint": "catalog:",
