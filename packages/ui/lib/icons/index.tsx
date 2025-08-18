@@ -1,13 +1,12 @@
-import type { IconType } from "@icons-pack/react-simple-icons";
+import type { IconProps } from "@phosphor-icons/react";
 import {
-  SiFacebook as FacebookIcon,
-  SiGithub as GithubIcon,
-  SiGmail as GmailIcon,
-  SiInstagram as InstagramIcon,
-  SiLinkedin as LinkedinIcon,
-  SiTelegram as TelegramIcon,
-  SiTiktok as TiktokIcon,
-} from "@icons-pack/react-simple-icons";
+  FacebookLogoIcon as FacebookIcon,
+  GithubLogoIcon as GithubIcon,
+  InstagramLogoIcon as InstagramIcon,
+  LinkedinLogoIcon as LinkedinIcon,
+  TelegramLogoIcon as TelegramIcon,
+  TiktokLogoIcon as TiktokIcon,
+} from "@phosphor-icons/react/ssr";
 import {
   type LucideProps,
   type LucideIcon,
@@ -41,7 +40,6 @@ import {
   XIcon,
   HandshakeIcon,
 } from "lucide-react";
-import React from "react";
 import type { JSX } from "react";
 import { default as TikLogo } from "./tik-logo";
 import NavGuildIcon from "./nav/guild";
@@ -58,7 +56,9 @@ export const icons = {
   BookMarked: BookMarkedIcon,
   BriefcaseBusiness: BriefcaseBusinessIcon,
   ChevronDown: ChevronDownIcon,
+  /** @deprecated use `ChevronLeft` */
   Chevronleft: ChevronLeftIcon,
+  ChevronLeft: ChevronLeftIcon,
   ChevronRight: ChevronRightIcon,
   ChevronsUpDown: ChevronsUpDownIcon,
   ChevronUp: ChevronUpIcon,
@@ -69,7 +69,8 @@ export const icons = {
   File: FileIcon,
   Gavel: GavelIcon,
   Github: GithubIcon,
-  Gmail: GmailIcon,
+  /** @deprecated use `Mail` */
+  Gmail: MailIcon,
   HelpCircle: HelpCircleIcon,
   Image: ImageIcon,
   Inbox: InboxIcon,
@@ -114,7 +115,8 @@ export {
   FileIcon,
   GavelIcon,
   GithubIcon,
-  GmailIcon,
+  /** @deprecated use `MailIcon` */
+  MailIcon as GmailIcon,
   HelpCircleIcon,
   ImageIcon,
   InboxIcon,
@@ -146,7 +148,7 @@ export type IconName = keyof typeof icons;
 
 type RenderIconProps = {
   name: IconName;
-} & (LucideProps | React.ComponentProps<IconType>);
+} & (LucideProps | IconProps);
 
 export function RenderIcon({ name, ...props }: RenderIconProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- false positive
