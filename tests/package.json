@@ -1,0 +1,13 @@
+{
+  "name": "tests",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "catalog:",
+    "@tietokilta/config-typescript": "workspace:*",
+    "@types/node": "catalog:"
+  }
+}
