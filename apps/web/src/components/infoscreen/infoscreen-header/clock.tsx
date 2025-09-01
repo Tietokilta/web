@@ -21,7 +21,7 @@ export function InfoscreenClock() {
         ticking
       />
       <Clock
-        format="Do MMMM"
+        format="LL"
         style={{
           color: "white",
           fontSize: "1.2rem",
