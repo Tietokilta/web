@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound, redirect, permanentRedirect } from "next/navigation";
 import { Card } from "@tietokilta/ui";
 import type { Page as CMSPage } from "@payload-types";
 import type { EditorState } from "@lexical-types";
@@ -130,6 +130,19 @@ async function Page(props: Props) {
     }
 
     return redirect(redirectToPage.path);
+  }
+
+  if (page.type === "external-redirect") {
+    const urlField = page.redirectToUrl as string | Record<Locale, string>
+    const url = typeof urlField === "string" ? urlField : urlField[locale]
+    if (!url) {
+      return notFound();
+    }
+    if (!/^https?:\/\//i.test(url)) {
+      return notFound();
+    }
+    const isPermanent = page.redirectIsPermanent
+    return isPermanent ? permanentRedirect(url) : redirect(url);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety just in case

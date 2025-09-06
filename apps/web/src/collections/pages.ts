@@ -169,6 +169,26 @@ const redirectFields = [
     filterOptions: filterCyclicPages,
   },
 ] satisfies Field[];
+const externalRedirectFields = [
+  {
+    name: "redirectToUrl",
+    type: "text",
+    required: true,
+    localized: true, // allow per-locale target
+    admin: { description: "Must start with http:// or https://"},
+    validate: (val: unknown) => {
+      if (typeof val !== "string") return "Provide a URL";
+      return /^https?:\/\//i.test(val) ? true : "URL must start with http(s)://";
+    },
+  },
+  {
+    name: "redirectIsPermanent",
+    type: "checkbox",
+    defaultValue: false,
+    label: "Permanent (308) redirect",
+    admin: { position: "sidebar" },
+  },
+] satisfies Field[];
 
 export const Pages = {
   slug: "pages",
@@ -223,6 +243,10 @@ export const Pages = {
           value: "redirect",
         },
         {
+          label: "Redirect to External URL",
+          value: "external-redirect",
+        },
+        {
           label: "Special: Events List",
           value: "events-list",
         },
@@ -253,6 +277,12 @@ export const Pages = {
       admin: {
         condition: (data: Partial<Page>) => data.type === "redirect",
       },
+    })),
+    ...externalRedirectFields.map((field) => ({
+      ...field,
+      admin: {
+        condition: (data: Partial<Page>) => data.type === "external-redirect",
+      }
     })),
     {
       name: "path",
