@@ -175,10 +175,12 @@ const externalRedirectFields = [
     type: "text",
     required: true,
     localized: true, // allow per-locale target
-    admin: { description: "Must start with http:// or https://"},
+    admin: { description: "Must start with http:// or https://" },
     validate: (val: unknown) => {
       if (typeof val !== "string") return "Provide a URL";
-      return /^https?:\/\//i.test(val) ? true : "URL must start with http(s)://";
+      return /^https?:\/\//i.test(val)
+        ? true
+        : "URL must start with http(s)://";
     },
   },
   {
@@ -282,7 +284,7 @@ export const Pages = {
       ...field,
       admin: {
         condition: (data: Partial<Page>) => data.type === "external-redirect",
-      }
+      },
     })),
     {
       name: "path",

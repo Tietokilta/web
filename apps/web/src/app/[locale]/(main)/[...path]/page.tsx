@@ -133,15 +133,15 @@ async function Page(props: Props) {
   }
 
   if (page.type === "external-redirect") {
-    const urlField = page.redirectToUrl as string | Record<Locale, string>
-    const url = typeof urlField === "string" ? urlField : urlField[locale]
+    const urlField = page.redirectToUrl as string | Record<Locale, string>;
+    const url = typeof urlField === "string" ? urlField : urlField[locale];
     if (!url) {
       return notFound();
     }
     if (!/^https?:\/\//i.test(url)) {
       return notFound();
     }
-    const isPermanent = page.redirectIsPermanent
+    const isPermanent = page.redirectIsPermanent;
     return isPermanent ? permanentRedirect(url) : redirect(url);
   }
 
