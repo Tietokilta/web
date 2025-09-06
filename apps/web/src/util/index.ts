@@ -47,3 +47,6 @@ export function appendToStringOrLocalizedString(
   }
   return res;
 }
+export function checkUrlValidity(url: string): boolean {
+  return /^https?:\/\//i.test(url);
+}

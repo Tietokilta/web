@@ -14,7 +14,11 @@ import { signedIn } from "../access/signed-in";
 import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../util/preview";
 import { iconField } from "../fields/icon-field";
-import { appendToStringOrLocalizedString, getLocale } from "../util";
+import {
+  appendToStringOrLocalizedString,
+  checkUrlValidity,
+  getLocale,
+} from "../util";
 
 const nanoid = customAlphabet("abcdefghjklmnpqrstuvwxyz23456789", 6);
 
@@ -169,6 +173,26 @@ const redirectFields = [
     filterOptions: filterCyclicPages,
   },
 ] satisfies Field[];
+const externalRedirectFields = [
+  {
+    name: "redirectToUrl",
+    type: "text",
+    required: true,
+    localized: true, // allow per-locale target
+    admin: { description: "Must start with http:// or https://" },
+    validate: (val: unknown) => {
+      if (typeof val !== "string") return "Provide a URL";
+      return checkUrlValidity(val) ? true : "Invalid URL";
+    },
+  },
+  {
+    name: "redirectIsPermanent",
+    type: "checkbox",
+    defaultValue: false,
+    label: "Permanent (308) redirect",
+    admin: { position: "sidebar" },
+  },
+] satisfies Field[];
 
 export const Pages = {
   slug: "pages",
@@ -223,6 +247,10 @@ export const Pages = {
           value: "redirect",
         },
         {
+          label: "Redirect to External URL",
+          value: "external-redirect",
+        },
+        {
           label: "Special: Events List",
           value: "events-list",
         },
@@ -252,6 +280,12 @@ export const Pages = {
       ...field,
       admin: {
         condition: (data: Partial<Page>) => data.type === "redirect",
+      },
+    })),
+    ...externalRedirectFields.map((field) => ({
+      ...field,
+      admin: {
+        condition: (data: Partial<Page>) => data.type === "external-redirect",
       },
     })),
     {
