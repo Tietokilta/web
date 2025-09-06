@@ -170,6 +170,24 @@ const redirectFields = [
   },
 ] satisfies Field[];
 
+const externalRedirectFields = [
+  {
+    name: "externalLink",
+    type: "text",
+    required: true,
+    validate: (value: unknown) => {
+      try {
+        // eslint-disable-next-line no-new -- we want to throw an error if the URL is invalid
+        new URL(value as string);
+      } catch {
+        return "Invalid URL";
+      }
+
+      return true;
+    },
+  },
+] satisfies Field[];
+
 export const Pages = {
   slug: "pages",
   admin: {
@@ -223,6 +241,10 @@ export const Pages = {
           value: "redirect",
         },
         {
+          label: "Redirect to External URL",
+          value: "external-redirect",
+        },
+        {
           label: "Special: Events List",
           value: "events-list",
         },
@@ -252,6 +274,12 @@ export const Pages = {
       ...field,
       admin: {
         condition: (data: Partial<Page>) => data.type === "redirect",
+      },
+    })),
+    ...externalRedirectFields.map((field) => ({
+      ...field,
+      admin: {
+        condition: (data: Partial<Page>) => data.type === "external-redirect",
       },
     })),
     {

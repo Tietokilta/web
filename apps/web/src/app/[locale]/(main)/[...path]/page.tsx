@@ -132,6 +132,16 @@ async function Page(props: Props) {
     return redirect(redirectToPage.path);
   }
 
+  if (page.type === "external-redirect") {
+    const href = page.externalLink as string | undefined;
+    if (!href) {
+      // eslint-disable-next-line no-console -- nice to know
+      console.error("External redirect page missing URL", page);
+      return notFound();
+    }
+    return redirect(href);
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety just in case
   if (page.type !== "standard") {
     // eslint-disable-next-line no-console -- nice to know
