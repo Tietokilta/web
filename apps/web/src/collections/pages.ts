@@ -14,7 +14,11 @@ import { signedIn } from "../access/signed-in";
 import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../util/preview";
 import { iconField } from "../fields/icon-field";
-import { appendToStringOrLocalizedString, getLocale } from "../util";
+import {
+  appendToStringOrLocalizedString,
+  checkUrlValidity,
+  getLocale,
+} from "../util";
 
 const nanoid = customAlphabet("abcdefghjklmnpqrstuvwxyz23456789", 6);
 
@@ -178,9 +182,7 @@ const externalRedirectFields = [
     admin: { description: "Must start with http:// or https://" },
     validate: (val: unknown) => {
       if (typeof val !== "string") return "Provide a URL";
-      return /^https?:\/\//i.test(val)
-        ? true
-        : "URL must start with http(s)://";
+      return checkUrlValidity(val) ? true : "Invalid URL";
     },
   },
   {

@@ -13,6 +13,7 @@ import { TableOfContents } from "@components/table-of-contents";
 import { fetchPage } from "@lib/api/pages";
 import { getCurrentLocale, type Locale } from "@locales/server";
 import { generateTocFromRichText } from "@lib/utils";
+import { checkUrlValidity } from "../../../../util";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Promise<Params>;
@@ -138,7 +139,7 @@ async function Page(props: Props) {
     if (!url) {
       return notFound();
     }
-    if (!/^https?:\/\//i.test(url)) {
+    if (!checkUrlValidity(url)) {
       return notFound();
     }
     const isPermanent = page.redirectIsPermanent;
