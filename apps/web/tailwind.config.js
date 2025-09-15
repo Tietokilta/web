@@ -174,6 +174,36 @@ export default {
               borderColor: theme("colors.gray.900"),
               borderWidth: "2px",
             },
+            ul: {
+              listStyleType: "disc",
+            },
+            "ul ul": {
+              listStyleType: "circle",
+            },
+            "ul ul ul": {
+              listStyleType: "square",
+            },
+            "ul ul ul ul": {
+              listStyleType: "disc",
+            },
+            ol: {
+              listStyleType: "decimal",
+            },
+            "ol ol": {
+              listStyleType: "upper-alpha",
+            },
+            "ol ol ol": {
+              listStyleType: "lower-alpha",
+            },
+            "ol ol ol ol": {
+              listStyleType: "upper-roman",
+            },
+            "ol ol ol ol ol": {
+              listStyleType: "lower-roman",
+            },
+            "ol ol ol ol ol ol": {
+              listStyleType: "decimal",
+            },
           },
         },
       }),
