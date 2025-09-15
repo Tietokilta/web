@@ -146,7 +146,14 @@ function LexicalNodeSerializer({
       );
     }
     case "listitem": {
-      return <li value={node.value}>{serializedChildren}</li>;
+      const nestedList =
+        node.children.length === 1 && node.children[0].type === "list";
+
+      return (
+        <li className={cn(nestedList && "list-none")} value={node.value}>
+          {serializedChildren}
+        </li>
+      );
     }
     case "quote": {
       return <blockquote>{serializedChildren}</blockquote>;
