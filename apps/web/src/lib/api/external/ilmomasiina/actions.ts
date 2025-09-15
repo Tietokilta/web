@@ -55,7 +55,7 @@ const saveSignUpSchema = z
     namePublic: z.literal("on").optional(),
     email: z.string().email().optional(),
   })
-  .and(z.record(z.string().or(z.string().array())));
+  .and(z.record(z.string(), z.string().or(z.string().array())));
 
 export function useSaveSignUpAction() {
   const locale = useCurrentLocale();
