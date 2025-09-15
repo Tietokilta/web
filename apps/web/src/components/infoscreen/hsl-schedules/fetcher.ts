@@ -1,9 +1,5 @@
-import {
-  ApolloClient,
-  createHttpLink,
-  gql,
-  InMemoryCache,
-} from "@apollo/client";
+import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
+import { HttpLink } from "@apollo/client/link/http";
 import { TZDate } from "@date-fns/tz";
 import type {
   HSLResponse,
@@ -30,7 +26,7 @@ const STOPS = [
 const N_ARRIVALS = 10;
 
 const client = new ApolloClient({
-  link: createHttpLink({
+  link: new HttpLink({
     uri: "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1",
     headers: {
       "Content-Type": "application/json",
@@ -76,6 +72,7 @@ const getData = async (stop: string) => {
 `),
       })
       .then((result) => {
+        if (!result.data) return null;
         return mapStop(result.data.stop);
       });
     return data;
