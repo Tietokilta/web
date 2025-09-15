@@ -110,3 +110,41 @@ This repo includes the following packages and apps:
 - `@tietokilta/eslint-config`: eslintconfigs used throughout the monorepo
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/)!
+
+## llms.txt Markdown Variants
+
+Lightweight Markdown representations of pages are exposed to aid LLM-based indexing (early `llms.txt` style experiment).
+
+### How it works
+
+Append `/llms.txt` to any localized page URL:
+
+| Original              | Markdown variant               |
+| --------------------- | ------------------------------ |
+| `/fi/some-page`       | `/fi/some-page/llms.txt`       |
+| `/fi/topic/page-slug` | `/fi/topic/page-slug/llms.txt` |
+| `/fi` (landing)       | `/fi/llms.txt`                 |
+| `/en` (landing)       | `/en/llms.txt`                 |
+
+Internally all variants are rewritten (middleware) to a single API route (`/next_api/llms`). No extra page-level route segments are added to the file system, avoiding App Router catch‑all conflicts.
+
+### Response format
+
+`text/plain; charset=utf-8`:
+
+```
+# <Page Title>
+<Page description>
+
+<Markdown converted body>
+```
+
+Currently headings, paragraphs and (flat) lists are supported. Other rich blocks are reduced to plain text when possible.
+
+### Limitations
+
+- Only `standard` page types are serialized (redirects, events list, newsletters, etc. return 404 for now).
+- Advanced components (grids, media, embeds) are flattened to textual content.
+- No global index yet; use your sitemap or crawl page URLs then append `/llms.txt`.
+
+Extend serialization logic in `apps/web/src/app/next_api/llms/route.ts` as needed (e.g., images -> `![alt](url)`, tables, links, relationship previews).
