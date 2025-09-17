@@ -246,6 +246,7 @@ export default async function EventCard({
   event: IlmomasiinaEvent;
 }) {
   const t = await getScopedI18n("ilmomasiina.path");
+  const hasSignup = event.registrationStartDate && event.registrationEndDate;
 
   const locale = await getCurrentLocale();
   return (
@@ -272,7 +273,7 @@ export default async function EventCard({
         endDate={event.registrationEndDate}
         startDate={event.registrationStartDate}
       />
-      {event.quotas.length > 0 ? (
+      {event.quotas.length > 0 && hasSignup ? (
         <SignupQuotas className="md:w-1/4" quotas={event.quotas} />
       ) : null}
     </li>
