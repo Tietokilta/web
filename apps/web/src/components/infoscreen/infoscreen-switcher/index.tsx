@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { isTruthy } from "remeda";
@@ -19,14 +18,13 @@ export default function InfoScreenSwitcher({
       setCurrent((prev) => (prev + 1) % count);
       router.refresh();
     };
-
     const intervalId = setInterval(setNextChild, 15000); // Change screen every x seconds
 
-    // Clear the interval when the component unmounts
     return () => {
       clearInterval(intervalId);
     };
   }, [count, router]);
+
   if (childrenArray.length === 0) {
     return (
       <div className="flex h-full flex-col">
@@ -35,5 +33,20 @@ export default function InfoScreenSwitcher({
     );
   }
 
-  return <>{childrenArray[current]}</>;
+  return (
+    <>
+      {childrenArray.map((child, index) => (
+        <div
+          key={index}
+          style={{
+            display: index === current ? "block" : "none",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          {child}
+        </div>
+      ))}
+    </>
+  );
 }
