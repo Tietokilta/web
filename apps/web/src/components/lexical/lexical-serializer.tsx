@@ -23,6 +23,7 @@ import { ImageLinkGrid } from "../image-link-grid";
 import { GoogleForm } from "../google-form";
 import { EditorInChief } from "../editor-in-chief";
 import { InvoiceGenerator } from "../invoice-generator";
+import { CollapsibleBlock } from "../collapsible-block";
 import {
   IS_BOLD,
   IS_CODE,
@@ -330,6 +331,15 @@ function Block({ node }: { node: BlockNode }) {
     case "partners": {
       return (
         <PartnerLogos statuses={node.fields.types} size={node.fields.size} />
+      );
+    }
+    case "collapsible": {
+      return (
+        <CollapsibleBlock
+          header={node.fields.header}
+          content={node.fields.content.root.children}
+          Renderer={LexicalSerializer}
+        />
       );
     }
     default: {
