@@ -3,12 +3,7 @@
 import { ChevronDownIcon } from "@tietokilta/ui";
 import Link from "next/link";
 import { useEffect, useRef, useState, type RefObject } from "react";
-import {
-  cn,
-  insertSoftHyphens,
-  stringToId,
-  type TocItem,
-} from "../../lib/utils";
+import { cn, insertSoftHyphens, type TocItem } from "../../lib/utils";
 
 function HeadingList({
   toc,
@@ -30,15 +25,14 @@ function HeadingList({
             item.level === 3 &&
               "mb-1 ms-[3ch] text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'] before:content-alt-empty last:mb-0",
           )}
-          key={`${item.level.toFixed()}-${item.text}`}
+          key={item.id}
         >
           <Link
             className={cn(
               "underline-offset-2 hover:underline focus-visible:font-bold focus-visible:outline-2 focus-visible:outline-offset-8",
-              stringToId(item.text) === activeHeadingId &&
-                "font-bold underline",
+              item.id === activeHeadingId && "font-bold underline",
             )}
-            href={`#${stringToId(item.text)}`}
+            href={`#${item.id}`}
             onClick={() => onHeadingClick?.(item)}
           >
             {insertSoftHyphens(item.text)}
@@ -81,9 +75,7 @@ function Mobile({
   toc: TocItem[];
   className?: string;
 }) {
-  const activeHeading = toc.find(
-    (item) => stringToId(item.text) === activeHeadingId,
-  );
+  const activeHeading = toc.find((item) => item.id === activeHeadingId);
   const detailsRef = useRef<HTMLDetailsElement>(null);
 
   if (!activeHeading) return null;

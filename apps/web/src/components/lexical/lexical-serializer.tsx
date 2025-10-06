@@ -12,6 +12,7 @@ import {
   cn,
   insertSoftHyphens,
   lexicalNodeToTextContent,
+  makeUniqueId,
   stringToId,
 } from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
@@ -38,10 +39,11 @@ export function LexicalSerializer({
 }: {
   nodes: Node[];
 }): React.ReactNode {
+  const seenIds = new Map<string, number>();
   return (
     <>
       {nodes.map((node, index): JSX.Element | null => (
-        <LexicalNodeSerializer key={index} node={node} />
+        <LexicalNodeSerializer key={index} node={node} seenIds={seenIds} />
       ))}
     </>
   );
@@ -49,8 +51,10 @@ export function LexicalSerializer({
 
 function LexicalNodeSerializer({
   node,
+  seenIds,
 }: {
   node: Node | undefined | null;
+  seenIds: Map<string, number>;
 }): React.ReactNode {
   if (node === null || node === undefined) {
     return null;
@@ -129,12 +133,12 @@ function LexicalNodeSerializer({
         "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
       >;
       const Tag = node.tag as Heading;
+      const baseId = stringToId(lexicalNodeToTextContent(node));
+      const uniqueId = makeUniqueId(baseId, seenIds);
 
       return (
-        <Link href={`#${stringToId(lexicalNodeToTextContent(node))}`}>
-          <Tag id={stringToId(lexicalNodeToTextContent(node))}>
-            {serializedChildren}
-          </Tag>
+        <Link href={`#${uniqueId}`}>
+          <Tag id={uniqueId}>{serializedChildren}</Tag>
         </Link>
       );
     }
