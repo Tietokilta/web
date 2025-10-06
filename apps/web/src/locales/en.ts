@@ -146,7 +146,8 @@ const en = {
   "ilmomasiina.status.Ilmoittautuminen on päättynyt": "Sign up has ended",
   "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
     "Sign ups are not public",
-  "ilmomasiina.status.Jonossa": "{queueCount} in the queue",
+  "ilmomasiina.status.Jonossa":
+    "{queueCount} in the queue ({confirmedCount} confirmed)",
   "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
     "This event does not have sign ups",
   "ilmomasiina.Tapahtumat": "Events",

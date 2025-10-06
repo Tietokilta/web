@@ -148,7 +148,8 @@ const fi = {
     "Ilmoittautuminen on päättynyt",
   "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
     "Ilmoittautumistiedot eivät ole julkisia.",
-  "ilmomasiina.status.Jonossa": "Jonossa {queueCount}",
+  "ilmomasiina.status.Jonossa":
+    "Jonossa {queueCount} ({confirmedCount} vahvistettu)",
   "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
     "Tapahtumaan ei voi ilmoittautua",
   "ilmomasiina.Tapahtumat": "Tapahtumat",

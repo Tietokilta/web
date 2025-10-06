@@ -327,6 +327,8 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
               <span>
                 {t("status.Jonossa", {
                   queueCount: quota.signupCount,
+                  confirmedCount:
+                    quota.signups?.filter((s) => s.confirmed).length ?? 0,
                 })}
               </span>
             ) : (
