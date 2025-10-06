@@ -36,6 +36,7 @@ import { HighlightCard } from "./blocks/highlight-card";
 import { EditorInChief } from "./blocks/editor-in-chief";
 import { InvoiceGenerator } from "./blocks/invoice-generator";
 import { PartnersBlock } from "./blocks/partners-block";
+import { Collapsible } from "./blocks/collapsible";
 import { Media } from "./collections/media";
 import { Documents } from "./collections/documents";
 import { isCloudStorageEnabled, isGoogleAuthEnabled } from "./util";
@@ -148,6 +149,7 @@ export default buildConfig({
           EditorInChief,
           InvoiceGenerator,
           PartnersBlock,
+          Collapsible,
         ],
       }),
       // UploadFeature({})

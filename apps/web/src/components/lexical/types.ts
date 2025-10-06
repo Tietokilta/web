@@ -220,6 +220,14 @@ export type PartnersBlockNode = BaseBlockNode & {
   };
 };
 
+export type CollapsibleBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "collapsible";
+    header: string;
+    content: EditorState;
+  };
+};
+
 export type BlockNode =
   | CommitteesYearBlockNode
   | ImageLinkGridBlockNode
@@ -227,7 +235,8 @@ export type BlockNode =
   | HighlightCardBlockNode
   | EditorInChiefBlockNode
   | InvoiceGeneratorBlockNode
-  | PartnersBlockNode;
+  | PartnersBlockNode
+  | CollapsibleBlockNode;
 
 export type Node =
   | TextNode
