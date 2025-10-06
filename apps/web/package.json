@@ -18,7 +18,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@apollo/client": "^4.0.5",
+    "@apollo/client": "^4.0.7",
     "@date-fns/tz": "^1.4.1",
     "@payloadcms/admin-bar": "^3.55.1",
     "@payloadcms/db-mongodb": "^3.55.1",
@@ -26,7 +26,7 @@
     "@payloadcms/richtext-lexical": "^3.55.1",
     "@payloadcms/storage-azure": "^3.55.1",
     "@payloadcms/ui": "^3.55.1",
-    "@react-email/components": "^0.5.3",
+    "@react-email/components": "^0.5.5",
     "@tailwindcss/postcss": "catalog:",
     "@tietokilta/ui": "workspace:*",
     "clsx": "catalog:",
@@ -44,13 +44,13 @@
     "react": "catalog:",
     "react-big-calendar": "^1.19.4",
     "react-dom": "catalog:",
-    "react-email": "^4.2.11",
+    "react-email": "^4.2.12",
     "react-live-clock": "^6.1.25",
     "react-markdown": "^10.1.0",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
     "remeda": "^2.31.1",
-    "sharp": "^0.34.3",
+    "sharp": "^0.34.4",
     "sonner": "^2.0.7",
     "strip-markdown": "^6.0.0",
     "tailwind-merge": "catalog:",
@@ -58,7 +58,7 @@
     "tailwindcss-animate": "catalog:",
     "unist-util-visit": "^5.0.0",
     "use-scramble": "^2.2.15",
-    "zod": "^4.1.8"
+    "zod": "^4.1.11"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^15.5.3",
@@ -72,7 +72,7 @@
     "@types/react": "catalog:",
     "@types/react-big-calendar": "^1.16.3",
     "@types/react-dom": "catalog:",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.3",
     "eslint": "catalog:",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
