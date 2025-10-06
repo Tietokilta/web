@@ -50,9 +50,19 @@ export const stringToId = (string: string): string =>
     .replace(/[^a-z0-9 -]/g, "")
     .replace(/\s/g, "-");
 
+export const makeUniqueId = (
+  baseId: string,
+  seenIds: Map<string, number>,
+): string => {
+  const count = seenIds.get(baseId) ?? 0;
+  seenIds.set(baseId, count + 1);
+  return count === 0 ? baseId : `${baseId}-${count}`;
+};
+
 export interface TocItem {
   text: string;
   level: 2 | 3;
+  id: string;
 }
 
 export const generateTocFromRichText = (
@@ -61,6 +71,7 @@ export const generateTocFromRichText = (
 ): TocItem[] => {
   if (!content) return [];
   const toc: TocItem[] = [];
+  const seenIds = new Map<string, number>();
 
   for (const node of content.root.children) {
     // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
@@ -71,10 +82,13 @@ export const generateTocFromRichText = (
       if (onlyTopLevel && level === 3) continue;
 
       const text = lexicalNodeToTextContent(node);
+      const baseId = stringToId(text);
+      const id = makeUniqueId(baseId, seenIds);
 
       toc.push({
         text,
         level,
+        id,
       });
     }
   }
