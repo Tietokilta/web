@@ -21,6 +21,7 @@ import {
 } from "../../locales/client";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
+
 const MAX_PAYLOAD_SIZE = 24 * 1024 * 1024; // 24MB in bytes
 
 interface GenericFieldProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -311,9 +312,11 @@ function InvoiceGeneratorForm() {
     const formData = new FormData(event.target);
 
     const payloadSize = calculateFormDataSize(formData);
-    
-    if(payloadSize > MAX_PAYLOAD_SIZE){
-      toast.error("Total form size exceeds 24MB limit. Please remove some files.");
+
+    if (payloadSize > MAX_PAYLOAD_SIZE) {
+      toast.error(
+        "Total form size exceeds 24MB limit. Please remove some files.",
+      );
       return;
     }
 
@@ -322,11 +325,11 @@ function InvoiceGeneratorForm() {
     });
   };
 
-  const calculateFormDataSize = (formData: FormData):number => {
+  const calculateFormDataSize = (formData: FormData): number => {
     let totalSize = 0;
 
     formData.forEach((value, key) => {
-    // Add size of the key
+      // Add size of the key
       totalSize += new Blob([key]).size;
 
       if (value instanceof File) {
@@ -338,8 +341,7 @@ function InvoiceGeneratorForm() {
       }
     });
     return totalSize;
-  }
-
+  };
 
   useEffect(() => {
     const errorFields = state?.errors ? Object.keys(state.errors) : [];
