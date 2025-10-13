@@ -2,12 +2,13 @@ import { type Metadata } from "next";
 import type { EditorState } from "@lexical-types";
 import type { News, Page as CMSPage } from "@payload-types";
 import { EventsDisplay } from "@components/events-display";
-import { Hero, type ImageWithPhotographer } from "@components/hero";
+import { Hero } from "@components/hero";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import { fetchLandingPage } from "@lib/api/landing-page";
 import { AnnouncementCard } from "@components/announcement-card";
 import { getCurrentLocale } from "@locales/server";
 import AprilFoolsAlert from "@components/april-fools/april-fools-alert";
+import { type NonNullableKeys } from "@lib/utils";
 
 function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
@@ -52,7 +53,10 @@ export default async function Home(props: {
               ? null
               : { url: image?.url, photographer: image?.photographer },
           )
-          .filter((url): url is ImageWithPhotographer => Boolean(url))}
+          .filter(
+            (img): img is NonNullableKeys<NonNullable<typeof img>, "url"> =>
+              Boolean(img?.url),
+          )}
         texts={landingPageData.heroTexts
           .map(({ text }) => (typeof text === "string" ? text : null))
           .filter((url): url is string => Boolean(url))}

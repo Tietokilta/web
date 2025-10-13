@@ -8,7 +8,7 @@ import {
   SheetTrigger,
 } from "@tietokilta/ui";
 import Link from "next/link";
-import type { LinkRowBlock, Media, PartnersRowBlock } from "@payload-types";
+import type { Media } from "@payload-types";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
@@ -36,11 +36,13 @@ export async function MobileNav({
 
   const links = mainNav.items;
   const footerLinks = footer.layout.filter(
-    (block): block is LinkRowBlock => block.blockType === "link-row",
+    (block): block is Extract<typeof block, { blockType: "link-row" }> =>
+      block.blockType === "link-row",
   );
 
   const footerSponsors = footer.layout.filter(
-    (block): block is PartnersRowBlock => block.blockType === "partners-row",
+    (block): block is Extract<typeof block, { blockType: "partners-row" }> =>
+      block.blockType === "partners-row",
   );
   const navLogo = mainNav.logo as Media;
 
