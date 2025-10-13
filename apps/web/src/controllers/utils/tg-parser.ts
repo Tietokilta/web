@@ -168,7 +168,9 @@ export const parseToc = (
           })),
         }
       : null,
-  ].filter((itemOrNull): itemOrNull is TocItem => Boolean(itemOrNull));
+  ].filter((itemOrNull): itemOrNull is NonNullable<typeof itemOrNull> =>
+    Boolean(itemOrNull),
+  );
   toc.forEach((item, index) => {
     const parentOrder = `${(index + 1).toString()}.`;
     tgString += `${parentOrder} ${item.text}\n`;

@@ -328,3 +328,7 @@ export function assertUnreachable(value: never) {
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/naming-convention, @typescript-eslint/no-unnecessary-type-parameters -- used for type assertion
 export function assertType<_T>(_val: _T) {}
+
+export type NonNullableKeys<T, K extends keyof T> = T & {
+  [P in K]-?: NonNullable<T[P]>;
+};
