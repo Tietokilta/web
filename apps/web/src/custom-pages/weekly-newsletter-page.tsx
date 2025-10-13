@@ -12,6 +12,7 @@ import {
   formatDateYear,
   formatDateYearOptions,
   isThisWeek,
+  makeUniqueId,
   stringToId,
   type TocItem,
 } from "../lib/utils";
@@ -207,35 +208,69 @@ export default async function Page({ slug }: { slug?: string }) {
       newsItem.signupStartDate && isThisWeek(newsItem.signupStartDate),
   );
 
+  const seenIds = new Map<string, number>();
+
   const toc: TocItem[] = [
     eventsThisWeek.length > 0 ||
     eventsNextWeek.length > 0 ||
     signupsThisWeek.length > 0
-      ? { level: 2, text: t("calendar") }
+      ? {
+          id: makeUniqueId(stringToId(t("calendar")), seenIds),
+          level: 2 as const,
+          text: t("calendar"),
+        }
       : null,
-    guildNewsItems.length > 0 ? { level: 2, text: t("guild") } : null,
+    guildNewsItems.length > 0
+      ? {
+          id: makeUniqueId(stringToId(t("guild")), seenIds),
+          level: 2 as const,
+          text: t("guild"),
+        }
+      : null,
     ...guildNewsItems.map((newsItem) => ({
-      level: 3,
+      id: makeUniqueId(stringToId(newsItem.title), seenIds),
+      level: 3 as const,
       text: newsItem.title,
     })),
-    ayyAaltoNewsItems.length > 0 ? { level: 2, text: t("ayy-aalto") } : null,
+    ayyAaltoNewsItems.length > 0
+      ? {
+          id: makeUniqueId(stringToId(t("ayy-aalto")), seenIds),
+          level: 2 as const,
+          text: t("ayy-aalto"),
+        }
+      : null,
     ...ayyAaltoNewsItems.map((newsItem) => ({
-      level: 3,
+      id: makeUniqueId(stringToId(newsItem.title), seenIds),
+      level: 3 as const,
       text: newsItem.title,
     })),
-    otherNewsItems.length > 0 ? { level: 2, text: t("other") } : null,
+    otherNewsItems.length > 0
+      ? {
+          id: makeUniqueId(stringToId(t("other")), seenIds),
+          level: 2 as const,
+          text: t("other"),
+        }
+      : null,
     ...otherNewsItems.map((newsItem) => ({
-      level: 3,
+      id: makeUniqueId(stringToId(newsItem.title), seenIds),
+      level: 3 as const,
       text: newsItem.title,
     })),
     bottomCornerNewsItems.length > 0
-      ? { level: 2, text: t("bottom-corner") }
+      ? {
+          id: makeUniqueId(stringToId(t("bottom-corner")), seenIds),
+          level: 2 as const,
+          text: t("bottom-corner"),
+        }
       : null,
     ...bottomCornerNewsItems.map((newsItem) => ({
-      level: 3,
+      id: makeUniqueId(stringToId(newsItem.title), seenIds),
+      level: 3 as const,
       text: newsItem.title,
     })),
-  ].filter((itemOrNull): itemOrNull is TocItem => Boolean(itemOrNull));
+  ].filter((itemOrNull): itemOrNull is NonNullable<typeof itemOrNull> =>
+    Boolean(itemOrNull),
+  );
 
   return (
     <main
