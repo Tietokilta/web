@@ -21,7 +21,6 @@ import {
   formatDateTimeSecondsOptions,
   formatDatetimeYear,
   formatDatetimeYearOptions,
-  getLocalizedEventTitle,
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
@@ -394,16 +393,16 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 
   const { slug } = params;
 
-  const event = await fetchEvent(slug);
+  const locale = await getCurrentLocale();
+  const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn("Failed to fetch event from Ilmomasiina", event.error);
     return {};
   }
-  const locale = await getCurrentLocale();
 
   return {
-    title: getLocalizedEventTitle(event.data.title, locale),
+    title: event.data.title,
     description: event.data.description,
     robots: {
       index: false,
@@ -417,7 +416,7 @@ export default async function Page(props: PageProps) {
 
   const locale = await getCurrentLocale();
 
-  const event = await fetchEvent(slug);
+  const event = await fetchEvent(slug, locale);
   const t = await getScopedI18n("action");
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
     notFound();
@@ -436,9 +435,7 @@ export default async function Page(props: PageProps) {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{t("Back")}</BackButton>
-          <h1 className="font-mono text-2xl md:text-4xl">
-            {getLocalizedEventTitle(event.data.title, locale)}
-          </h1>
+          <h1 className="font-mono text-2xl md:text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
               <div className="grow-2 flex max-w-xl flex-col gap-8">

@@ -104,7 +104,7 @@ export function useSaveSignUpAction() {
       ...otherAnswers
     } = data.data;
 
-    const signupResult = await getSignup(signupId, signupEditToken);
+    const signupResult = await getSignup(signupId, signupEditToken, locale);
     const multipleChoiceQuestions = signupResult.data?.event.questions
       .filter((question) => question.type === QuestionType.CHECKBOX)
       .map((question) => question.id);
@@ -185,7 +185,7 @@ export function useDeleteSignUpAction() {
 
     const { signupId, signupEditToken } = data.data;
 
-    const signupResult = await getSignup(signupId, signupEditToken);
+    const signupResult = await getSignup(signupId, signupEditToken, locale);
     const deleteResult = await deleteSignUp(signupId, signupEditToken);
 
     if (!deleteResult.ok) {

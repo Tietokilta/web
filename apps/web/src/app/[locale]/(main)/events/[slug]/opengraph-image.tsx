@@ -7,7 +7,7 @@ import stripMarkdown from "strip-markdown";
 import { remark } from "remark";
 import { getCurrentLocale } from "@locales/server";
 import { fetchEvent } from "@lib/api/external/ilmomasiina";
-import { formatDateTime, getLocalizedEventTitle } from "@lib/utils";
+import { formatDateTime } from "@lib/utils";
 
 const size = {
   width: 1200,
@@ -24,17 +24,16 @@ export async function generateImageMetadata(props: PageProps) {
   const params = await props.params;
   const { slug } = params;
   const locale = await getCurrentLocale();
-  const event = await fetchEvent(slug);
+  const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     return notFound();
   }
-  const localizedEventTitle = getLocalizedEventTitle(event.data.title, locale);
 
   return [
     {
       id: 1,
       size,
-      alt: localizedEventTitle,
+      alt: event.data.title,
       contentType: "image/png",
     },
   ];
@@ -44,7 +43,7 @@ export default async function Image(props: PageProps) {
   const params = await props.params;
   const { slug } = params;
   const locale = await getCurrentLocale();
-  const event = await fetchEvent(slug);
+  const event = await fetchEvent(slug, locale);
 
   if (!event.ok) {
     return notFound();
@@ -70,7 +69,6 @@ export default async function Image(props: PageProps) {
   );
   const tikLogoSrc = Uint8Array.from(tikLogoData).buffer;
 
-  const title = getLocalizedEventTitle(event.data.title, locale);
   const description = (
     await remark()
       .use(stripMarkdown)
@@ -116,7 +114,7 @@ export default async function Image(props: PageProps) {
                 lineClamp: 2,
               }}
             >
-              {title}
+              {event.data.title}
             </div>
             <div
               style={{
