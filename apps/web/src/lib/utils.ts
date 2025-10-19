@@ -1,14 +1,13 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { JSX } from "react";
+import {
+  type PublicSignupSchema,
+  SignupStatus,
+  type UserQuotaWithSignups,
+} from "@tietokilta/ilmomasiina-models";
 import type { EditorState, Node } from "@lexical-types";
 import { type Locale } from "../locales/server";
-import {
-  type EventQuotaWithSignups,
-  type EventQuota,
-  OPEN_QUOTA_ID,
-  QUEUE_QUOTA_ID,
-} from "./api/external/ilmomasiina";
 
 export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
 
@@ -233,8 +232,19 @@ export const isNextWeek = (date: string): boolean => {
   return currentWeek + 1 === eventWeek;
 };
 
+export interface SignupWithQuotaTitle extends PublicSignupSchema {
+  quotaTitle: string;
+}
+
+export interface QuotaWithAugmentedSignups extends UserQuotaWithSignups {
+  signups: SignupWithQuotaTitle[];
+}
+
+export const OPEN_QUOTA_ID = "open";
+export const QUEUE_QUOTA_ID = "queue";
+
 export const getQuotasWithOpenAndQueue = (
-  quotas: EventQuota[],
+  quotas: UserQuotaWithSignups[],
   openQuotaSize: number,
   options: {
     includeOpen?: boolean;
@@ -249,18 +259,18 @@ export const getQuotasWithOpenAndQueue = (
     openQuotaName = "Avoin kiintiö",
     queueQuotaName = "Jonossa",
   } = options;
-  const openQuota = quotas.reduce<EventQuotaWithSignups>(
+  const openQuota = quotas.reduce<QuotaWithAugmentedSignups>(
     (openQ, quota) => {
-      const quotaSignups = quota.signups ?? [];
+      const quotaSignups = quota.signups;
       const openSignups = quotaSignups
-        .filter((signup) => signup.status === "in-open")
+        .filter((signup) => signup.status === SignupStatus.IN_OPEN_QUOTA)
         .map((signup) => ({
           ...signup,
           quotaTitle: quota.title,
         }));
       return {
         ...openQ,
-        signupCount: (openQ.signupCount ?? 0) + openSignups.length,
+        signupCount: openQ.signupCount + openSignups.length,
         signups: [...openQ.signups, ...openSignups],
       };
     },
@@ -273,18 +283,18 @@ export const getQuotasWithOpenAndQueue = (
     },
   );
 
-  const queuedQuota = quotas.reduce<EventQuotaWithSignups>(
+  const queuedQuota = quotas.reduce<QuotaWithAugmentedSignups>(
     (queuedQ, quota) => {
-      const quotaSignups = quota.signups ?? [];
+      const quotaSignups = quota.signups;
       const queuedSignups = quotaSignups
-        .filter((signup) => signup.status === "in-queue")
+        .filter((signup) => signup.status === SignupStatus.IN_QUEUE)
         .map((signup) => ({
           ...signup,
           quotaTitle: quota.title,
         }));
       return {
         ...queuedQ,
-        signupCount: (queuedQ.signupCount ?? 0) + queuedSignups.length,
+        signupCount: queuedQ.signupCount + queuedSignups.length,
         signups: [...queuedQ.signups, ...queuedSignups],
       };
     },
@@ -300,9 +310,7 @@ export const getQuotasWithOpenAndQueue = (
   const quotasWithOpenAndQueue = [
     ...quotas,
     ...(includeOpen && openQuotaSize > 0 ? [openQuota] : []),
-    ...(includeQueue && (queuedQuota.signupCount ?? 0) > 0
-      ? [queuedQuota]
-      : []),
+    ...(includeQueue && queuedQuota.signupCount > 0 ? [queuedQuota] : []),
   ];
 
   return quotasWithOpenAndQueue;

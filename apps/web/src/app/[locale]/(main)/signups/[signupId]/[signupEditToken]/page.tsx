@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary -- I like */
 import { notFound } from "next/navigation";
+import { SignupStatus } from "@tietokilta/ilmomasiina-models";
 import { getSignup } from "@lib/api/external/ilmomasiina";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
 import { getLocalizedEventTitle } from "@lib/utils";
@@ -64,23 +65,34 @@ export default async function Page(props: PageProps) {
             {getLocalizedEventTitle(signupInfo.data.event.title, locale)}
           </h1>
           <p>
-            {signupInfo.data.signup.status === "in-queue"
+            {signupInfo.data.signup.status === SignupStatus.IN_QUEUE
               ? t("You are in queue at position {position}", {
                   position: signupInfo.data.signup.position,
                 })
-              : typeof signupInfo.data.signup.quota.size === "number"
+              : signupInfo.data.signup.status === SignupStatus.IN_OPEN_QUOTA
                 ? t(
-                    "You are in the quota {quotaName} at position {position}/{quotaSize}",
+                    "You are in the open quota at position {position}/{quotaSize}",
                     {
-                      quotaName: signupInfo.data.signup.quota.title,
                       position: signupInfo.data.signup.position,
-                      quotaSize: signupInfo.data.signup.quota.size,
+                      quotaSize: signupInfo.data.event.openQuotaSize,
                     },
                   )
-                : t("You are in the quota {quotaName} at position {position}", {
-                    quotaName: signupInfo.data.signup.quota.title,
-                    position: signupInfo.data.signup.position,
-                  })}
+                : signupInfo.data.signup.status === SignupStatus.IN_QUOTA
+                  ? t(
+                      "You are in the quota {quotaName} at position {position}/{quotaSize}",
+                      {
+                        quotaName: signupInfo.data.signup.quota.title,
+                        position: signupInfo.data.signup.position,
+                        quotaSize: signupInfo.data.signup.quota.size,
+                      },
+                    )
+                  : t(
+                      "You are in the quota {quotaName} at position {position}",
+                      {
+                        quotaName: signupInfo.data.signup.quota.title,
+                        position: signupInfo.data.signup.position,
+                      },
+                    )}
           </p>
         </hgroup>
         <I18nProviderClient locale={locale}>

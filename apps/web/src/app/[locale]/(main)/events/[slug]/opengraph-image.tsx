@@ -72,7 +72,9 @@ export default async function Image(props: PageProps) {
 
   const title = getLocalizedEventTitle(event.data.title, locale);
   const description = (
-    await remark().use(stripMarkdown).process(event.data.description)
+    await remark()
+      .use(stripMarkdown)
+      .process(event.data.description ?? "")
   ).toString();
 
   return new ImageResponse(

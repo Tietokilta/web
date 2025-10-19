@@ -3,6 +3,12 @@
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
 import {
+  QuestionType,
+  SignupFieldError,
+  type UserEventResponse,
+  type SignupForEditResponse,
+} from "@tietokilta/ilmomasiina-models";
+import {
   Button,
   Checkbox,
   Input,
@@ -17,12 +23,6 @@ import { useActionState, useEffect } from "react";
 import NextForm from "next/form";
 import Link from "next/link";
 import {
-  type IlmomasiinaFieldError,
-  ilmomasiinaFieldErrors,
-  type IlmomasiinaEvent,
-  type IlmomasiinaSignupInfo,
-} from "@lib/api/external/ilmomasiina";
-import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
@@ -32,12 +32,10 @@ import { cn, getLocalizedEventTitle } from "@lib/utils";
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
 
 function renderError(error: string, t: FieldErrorI18n) {
-  const isFieldError = ilmomasiinaFieldErrors.includes(
-    error as IlmomasiinaFieldError,
-  );
+  const isFieldError = error in SignupFieldError;
 
   if (isFieldError) {
-    return t(error as IlmomasiinaFieldError);
+    return t(error as SignupFieldError);
   }
 
   return error;
@@ -52,7 +50,7 @@ function InputRow({
   defaultValue,
   errors,
 }: {
-  question: IlmomasiinaEvent["questions"][number];
+  question: UserEventResponse["questions"][number];
   defaultValue?: string[] | string;
   errors?: string[];
 }) {
@@ -62,13 +60,14 @@ function InputRow({
   const sharedInputProps = {
     id: `question-${question.id}`,
     name: question.id,
-    required: question.required ?? false,
+    required: question.required,
     defaultValue,
     "aria-invalid": !!errors?.length,
   };
 
   const isMultiLabel =
-    question.type === "checkbox" || question.type === "select";
+    question.type === QuestionType.CHECKBOX ||
+    question.type === QuestionType.SELECT;
 
   const Label = isMultiLabel ? "legend" : "label";
   const Container = isMultiLabel ? "fieldset" : "p";
@@ -84,7 +83,7 @@ function InputRow({
           <span className="text-gray-700"> ({t("optional")})</span>
         )}
       </Label>
-      {question.type === "checkbox" ? (
+      {question.type === QuestionType.CHECKBOX ? (
         <div className="grid gap-2">
           {(question.options ?? []).map((option) => (
             <p key={option} className="w-full max-w-sm space-x-2">
@@ -100,14 +99,14 @@ function InputRow({
             </p>
           ))}
         </div>
-      ) : question.type === "select" ? (
+      ) : question.type === QuestionType.SELECT ? (
         <div className="grid gap-2">
           {(question.options ?? []).map((option) => (
             <p key={option} className="flex items-center space-x-2">
               <Radio
                 id={`radio-${question.id}-option-${option}`}
                 value={option}
-                required={question.required ?? false}
+                required={question.required}
                 defaultChecked={defaultValue === option}
                 name={question.id}
               />
@@ -117,10 +116,12 @@ function InputRow({
             </p>
           ))}
         </div>
-      ) : question.type === "textarea" ? (
+      ) : question.type === QuestionType.TEXT_AREA ? (
         <Textarea {...sharedInputProps} />
+      ) : question.type === QuestionType.NUMBER ? (
+        <Input type="number" {...sharedInputProps} />
       ) : (
-        <Input type={question.type ?? "text"} {...sharedInputProps} />
+        <Input type="text" {...sharedInputProps} />
       )}
 
       {question.public ? (
@@ -204,8 +205,8 @@ function Form({
 }: {
   signupId: string;
   signupEditToken: string;
-  event: IlmomasiinaEvent;
-  signup: IlmomasiinaSignupInfo;
+  event: SignupForEditResponse["event"];
+  signup: SignupForEditResponse["signup"];
   saveAction: ReturnType<typeof useSaveSignUpAction>["saveSignUpAction"];
   deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
@@ -264,7 +265,7 @@ function Form({
           </p>
         ) : null}
 
-        {!!event.nameQuestion && (
+        {event.nameQuestion ? (
           <>
             <p className="w-full max-w-sm space-y-2">
               <label className="block" htmlFor="firstName">
@@ -317,8 +318,8 @@ function Form({
               </label>
             </p>
           </>
-        )}
-        {!!event.emailQuestion && (
+        ) : null}
+        {event.emailQuestion ? (
           <p className="w-full max-w-sm space-y-2">
             <label className="block" htmlFor="email">
               {t("Email")}
@@ -339,7 +340,7 @@ function Form({
               </span>
             ) : null}
           </p>
-        )}
+        ) : null}
         {event.questions.map((question) => (
           <InputRow
             key={question.id}

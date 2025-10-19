@@ -4,17 +4,13 @@ import remarkGfm from "remark-gfm";
 import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import {
-  type IlmomasiinaEvent,
-  fetchEvent,
-  type EventQuota,
-  type EventQuotaWithSignups,
-  type QuotaSignupWithQuotaTitle,
-  OPEN_QUOTA_ID,
-  QUEUE_QUOTA_ID,
-  type EventQuestion,
-  type QuotaSignup,
-  type QuestionAnswer,
-} from "@lib/api/external/ilmomasiina";
+  type UserQuotaWithSignups,
+  type PublicSignupSchema,
+  type Question,
+  type UserEventResponse,
+  SignupStatus,
+} from "@tietokilta/ilmomasiina-models";
+import { fetchEvent } from "@lib/api/external/ilmomasiina";
 import {
   formatDateTimeSeconds,
   formatDateTimeSecondsOptions,
@@ -22,6 +18,10 @@ import {
   formatDatetimeYearOptions,
   getLocalizedEventTitle,
   getQuotasWithOpenAndQueue,
+  OPEN_QUOTA_ID,
+  QUEUE_QUOTA_ID,
+  type QuotaWithAugmentedSignups,
+  type SignupWithQuotaTitle,
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
@@ -76,8 +76,8 @@ async function SignUpText({
 }
 
 function getFormattedAnswer(
-  question: EventQuestion,
-  answers: QuestionAnswer[],
+  question: Question,
+  answers: PublicSignupSchema["answers"],
 ) {
   const answer = answers.find((a) => a.questionId === question.id)?.answer;
 
@@ -97,8 +97,8 @@ async function SignUpRow({
   publicQuestions,
   isGeneratedQuota,
 }: {
-  signup: QuotaSignup | QuotaSignupWithQuotaTitle;
-  publicQuestions: EventQuestion[];
+  signup: PublicSignupSchema | SignupWithQuotaTitle;
+  publicQuestions: Question[];
   isGeneratedQuota: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
@@ -154,8 +154,8 @@ async function SignUpTable({
   publicQuestions,
   signupsPublic,
 }: {
-  quota: EventQuota | EventQuotaWithSignups;
-  publicQuestions: EventQuestion[];
+  quota: UserQuotaWithSignups | QuotaWithAugmentedSignups;
+  publicQuestions: Question[];
   signupsPublic?: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
@@ -164,14 +164,14 @@ async function SignUpTable({
     return <p>{t("status.Ilmoittautumistiedot eivät ole julkisia")}</p>;
   }
 
-  const signups = quota.signups ?? [];
+  const signups = quota.signups;
   if (signups.length === 0) {
     return <p>{t("status.Ei ilmoittautuneita vielä")}</p>;
   }
 
   const isOpenQuota = quota.id === OPEN_QUOTA_ID;
   const isQueueQuota = quota.id === QUEUE_QUOTA_ID;
-  const isGeneratedQuota = !!isOpenQuota || !!isQueueQuota;
+  const isGeneratedQuota = isOpenQuota || isQueueQuota;
 
   return (
     <div className="block w-full overflow-x-auto rounded-md border-2 border-gray-900 shadow-solid">
@@ -202,9 +202,12 @@ async function SignUpTable({
         <tbody>
           {signups
             .filter(
-              (signup) => isGeneratedQuota || signup.status === "in-quota",
+              (signup) =>
+                isGeneratedQuota || signup.status === SignupStatus.IN_QUOTA,
             )
-            .toSorted((a, b) => a.position - b.position)
+            .toSorted(
+              (a, b) => (a.position ?? Infinity) - (b.position ?? Infinity),
+            )
             .map((signup) => (
               <SignUpRow
                 key={signup.position}
@@ -219,7 +222,7 @@ async function SignUpTable({
   );
 }
 
-async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpList({ event }: { event: UserEventResponse }) {
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
   }
@@ -256,7 +259,7 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-async function Tldr({ event }: { event: IlmomasiinaEvent }) {
+async function Tldr({ event }: { event: UserEventResponse }) {
   const t = await getScopedI18n("ilmomasiina.headers");
   const locale = await getCurrentLocale();
   return (
@@ -303,7 +306,7 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpQuotas({ event }: { event: UserEventResponse }) {
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
   }
@@ -327,8 +330,8 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
               <span>
                 {t("status.Jonossa", {
                   queueCount: quota.signupCount,
-                  confirmedCount:
-                    quota.signups?.filter((s) => s.confirmed).length ?? 0,
+                  confirmedCount: quota.signups.filter((s) => s.confirmed)
+                    .length,
                 })}
               </span>
             ) : (
@@ -338,13 +341,12 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
                   <div className="relative">
                     <Progress
                       value={Math.min(
-                        ((quota.signupCount ?? 0) / quota.size) * 100,
+                        (quota.signupCount / quota.size) * 100,
                         100,
                       )}
                     />
                     <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
-                      {Math.min(quota.signupCount ?? 0, quota.size)} /{" "}
-                      {quota.size}
+                      {Math.min(quota.signupCount, quota.size)} / {quota.size}
                     </span>
                   </div>
                 ) : (
@@ -364,7 +366,7 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpActions({ event }: { event: UserEventResponse }) {
   const t = await getScopedI18n("ilmomasiina");
   return (
     <div className="max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">

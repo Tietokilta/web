@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { chunk } from "remeda";
 import { notFound } from "next/navigation";
+import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
 import {
   Pagination,
   PaginationContent,
@@ -11,7 +12,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../pagination";
-import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
 import { getCurrentLocale, getI18n } from "../../locales/server";
 import {
@@ -31,7 +31,7 @@ function EventListSkeleton() {
   );
 }
 
-async function EventItem({ event }: { event: IlmomasiinaEvent }) {
+async function EventItem({ event }: { event: UserEventListItem }) {
   const locale = await getCurrentLocale();
   const t = await getI18n();
 
