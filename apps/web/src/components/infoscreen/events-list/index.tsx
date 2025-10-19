@@ -1,8 +1,6 @@
 import { getISOWeek, getISOWeekYear } from "date-fns";
-import {
-  fetchUpcomingEvents,
-  type IlmomasiinaEvent,
-} from "../../../lib/api/external/ilmomasiina";
+import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
+import { fetchUpcomingEvents } from "../../../lib/api/external/ilmomasiina";
 import { getI18n } from "../../../locales/server.ts";
 import { EventCardCompact } from "../../event-card/index.tsx";
 
@@ -33,8 +31,8 @@ export default async function EventListInfoscreen({
         {Object.entries(upcomingEventsDataByWeek)
           .filter(
             (
-              e: [string, IlmomasiinaEvent[] | undefined],
-            ): e is [string, IlmomasiinaEvent[]] => !!e[1],
+              e: [string, UserEventListItem[] | undefined],
+            ): e is [string, UserEventListItem[]] => !!e[1],
           )
           .sort((a, b) => a[0].localeCompare(b[0]))
           .slice(0, 2)

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@tietokilta/ui";
-import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
+import { type UserEventListResponse } from "@tietokilta/ilmomasiina-models";
 import {
   fetchEvents,
   fetchUpcomingEvents,
@@ -11,7 +11,7 @@ import { CalendarSubButton } from "../components/calendar-sub-button";
 import EventCard from "../components/event-card";
 import EventCalendar from "./event-calendar";
 
-async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+async function Calendar({ events }: { events: UserEventListResponse }) {
   const t = await getScopedI18n("ilmomasiina");
 
   return (

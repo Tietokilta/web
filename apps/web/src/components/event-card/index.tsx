@@ -1,8 +1,8 @@
 import Link from "next/link";
-import type {
-  EventQuota,
-  IlmomasiinaEvent,
-} from "@lib/api/external/ilmomasiina";
+import {
+  type QuotaWithSignupCount,
+  type UserEventListItem,
+} from "@tietokilta/ilmomasiina-models";
 import {
   cn,
   formatDateTime,
@@ -86,13 +86,13 @@ async function SignupQuotas({
   className,
   compact = false,
 }: {
-  quotas: EventQuota[];
+  quotas: QuotaWithSignupCount[];
   className?: string;
   compact?: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
   const totalSignupCount = quotas.reduce(
-    (acc, quota) => acc + (quota.signupCount ?? 0),
+    (acc, quota) => acc + quota.signupCount,
     0,
   );
   const totalSize = quotas.reduce((acc, quota) => acc + (quota.size ?? 0), 0);
@@ -169,7 +169,7 @@ export async function EventCardCompact({
   event,
   showSignup = true,
 }: {
-  event: IlmomasiinaEvent;
+  event: UserEventListItem;
   showSignup: boolean;
 }) {
   let showSignupQuotas = true;
@@ -177,7 +177,7 @@ export async function EventCardCompact({
   const signupEndDate = event.registrationEndDate;
   const hasSignup = event.registrationStartDate && event.registrationEndDate;
 
-  if (event.registrationClosed === true || !signupEndDate || !signupStartDate) {
+  if (!signupEndDate || !signupStartDate) {
     showSignupQuotas = false;
   }
 
@@ -243,7 +243,7 @@ export async function EventCardCompact({
 export default async function EventCard({
   event,
 }: {
-  event: IlmomasiinaEvent;
+  event: UserEventListItem;
 }) {
   const t = await getScopedI18n("ilmomasiina.path");
   const hasSignup = event.registrationStartDate && event.registrationEndDate;

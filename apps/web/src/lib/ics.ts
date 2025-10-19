@@ -1,9 +1,12 @@
 import { remark } from "remark";
 import strip from "strip-markdown";
-import { type IlmomasiinaEvent } from "./api/external/ilmomasiina";
+import {
+  type UserEventListItem,
+  type UserEventListResponse,
+} from "@tietokilta/ilmomasiina-models";
 
 export function createEvents(
-  events: IlmomasiinaEvent[],
+  events: UserEventListResponse,
   {
     host,
     origin,
@@ -92,7 +95,7 @@ END:VCALENDAR`;
 }
 
 function createEvent(
-  event: IlmomasiinaEvent,
+  event: UserEventListItem,
   {
     host,
     origin,
@@ -108,11 +111,11 @@ function createEvent(
   return `BEGIN:VEVENT\r
 UID:${event.id}@${host}\r
 SUMMARY:${event.title}\r
-LOCATION:${event.location}\r
+LOCATION:${event.location ?? ""}\r
 URL:${foldICSText(`${origin}/events/${event.slug}`)}\r
 CATEGORIES:${event.category}\r
 DESCRIPTION:
- ${formatDescription(event.description)}
+ ${formatDescription(event.description ?? "")}
  ${foldICSText(`\\n\\n---\\nLue lisää: ${origin}/fi/tapahtumat/${event.slug}\\nRead more: ${origin}/en/events/${event.slug}`)}
 ${formatDates(event.date, event.endDate)}
 END:VEVENT`;

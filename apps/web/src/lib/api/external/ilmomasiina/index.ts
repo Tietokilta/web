@@ -1,124 +1,16 @@
+import {
+  EDIT_TOKEN_HEADER,
+  ErrorCode,
+  type SignupValidationError,
+  type ErrorResponse,
+  type SignupForEditResponse,
+  type SignupUpdateBody,
+  type SignupUpdateResponse,
+  type UserEventListResponse,
+  type UserEventResponse,
+} from "@tietokilta/ilmomasiina-models";
 import type { ApiResponse } from "../helpers";
 import { err, ok } from "../helpers";
-
-export const OPEN_QUOTA_ID = "open";
-export const QUEUE_QUOTA_ID = "queue";
-
-export type IlmomasiinaResponse = IlmomasiinaEvent[];
-
-export interface IlmomasiinaEvent {
-  id: string;
-  questions: EventQuestion[];
-  title: string;
-  slug: string;
-  date?: string | null;
-  endDate?: string | null;
-  registrationStartDate?: string | null;
-  registrationEndDate?: string | null;
-  openQuotaSize: number;
-  category: string;
-  description: string;
-  /**
-   * Can be empty string
-   */
-  price: string;
-  location: string;
-  /**
-   * Can be empty string
-   */
-  webpageUrl: string;
-  /**
-   * Can be empty string
-   */
-  facebookUrl: string;
-  signupsPublic: boolean;
-  quotas: EventQuota[];
-  millisTillOpening?: number | null;
-  registrationClosed?: boolean | null;
-  nameQuestion?: boolean;
-  emailQuestion?: boolean;
-}
-
-export interface EventQuestion {
-  id: string;
-  question: string;
-  public: boolean;
-  type?: "text" | "textarea" | "number" | "select" | "checkbox";
-  options?: string[] | null;
-  required?: boolean | null;
-}
-
-export interface EventQuota {
-  id: string;
-  title: string;
-  size?: number | null;
-  signupCount?: number;
-  signups?: QuotaSignup[] | null;
-}
-
-export interface EventQuotaWithSignups extends EventQuota {
-  signups: QuotaSignupWithQuotaTitle[];
-}
-
-export interface QuotaSignup {
-  firstName?: string | null;
-  lastName?: string | null;
-  email?: string | null;
-  namePublic: boolean;
-  answers: QuestionAnswer[];
-  status: "in-quota" | "in-open" | "in-queue";
-  position: number;
-  createdAt: string;
-  confirmed: boolean;
-}
-
-export interface QuestionAnswer {
-  questionId: string;
-  answer: string | string[];
-}
-
-export interface QuotaSignupWithQuotaTitle extends QuotaSignup {
-  quotaTitle: string;
-}
-
-export interface IlmomasiinaSignupSuccessResponse {
-  id: string;
-  editToken: string;
-}
-
-export const ilmomasiinaFieldErrors = [
-  "missing",
-  "wrongType",
-  "tooLong",
-  "invalidEmail",
-  "notANumber",
-  "notAnOption",
-] as const;
-
-export type IlmomasiinaFieldError = (typeof ilmomasiinaFieldErrors)[number];
-
-export interface IlmomasiinaErrorResponse {
-  statusCode: number;
-  message: string;
-  errors?: {
-    answers?: Record<string, IlmomasiinaFieldError>;
-  };
-  code?: string;
-}
-
-export type IlmomasiinaSignupResponse =
-  | IlmomasiinaSignupSuccessResponse
-  | IlmomasiinaErrorResponse;
-
-export interface IlmomasiinaSignupInfo extends QuotaSignup {
-  id: string;
-  quota: EventQuota;
-}
-
-export interface IlmomasiinaSignupInfoResponse {
-  signup: IlmomasiinaSignupInfo;
-  event: IlmomasiinaEvent;
-}
 
 // TODO: better env handling since next.js doesn't have that built-in
 export const baseUrl =
@@ -128,7 +20,7 @@ export const baseUrl =
 
 export const fetchEvents = async (
   maxAge?: number,
-): Promise<ApiResponse<IlmomasiinaEvent[]>> => {
+): Promise<ApiResponse<UserEventListResponse>> => {
   try {
     let url = `${baseUrl}/api/events`;
     if (maxAge !== undefined) {
@@ -144,7 +36,7 @@ export const fetchEvents = async (
     if (!response.ok) {
       return err("ilmomasiina-fetch-fail");
     }
-    const data = (await response.json()) as IlmomasiinaResponse;
+    const data = (await response.json()) as UserEventListResponse;
 
     return ok(data);
   } catch (_) {
@@ -153,7 +45,7 @@ export const fetchEvents = async (
 };
 
 export const fetchUpcomingEvents = async (): Promise<
-  ApiResponse<IlmomasiinaEvent[]>
+  ApiResponse<UserEventListResponse>
 > => {
   const events = await fetchEvents();
   if (!events.ok) {
@@ -178,7 +70,7 @@ export const fetchUpcomingEvents = async (): Promise<
 
 export const fetchEvent = async (
   slug: string,
-): Promise<ApiResponse<IlmomasiinaEvent>> => {
+): Promise<ApiResponse<UserEventResponse>> => {
   try {
     const response = await fetch(`${baseUrl}/api/events/${slug}`, {
       next: {
@@ -193,7 +85,7 @@ export const fetchEvent = async (
 
       return err("ilmomasiina-fetch-fail");
     }
-    const data = (await response.json()) as IlmomasiinaEvent;
+    const data = (await response.json()) as UserEventResponse;
 
     return ok(data);
   } catch (_) {
@@ -204,7 +96,7 @@ export const fetchEvent = async (
 export const getSignup = async (
   signupId: string,
   signupEditToken: string,
-): Promise<ApiResponse<IlmomasiinaSignupInfoResponse>> => {
+): Promise<ApiResponse<SignupForEditResponse>> => {
   try {
     const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
       headers: {
@@ -229,7 +121,7 @@ export const getSignup = async (
       return err("ilmomasiina-fetch-fail");
     }
 
-    const data = (await response.json()) as IlmomasiinaSignupInfoResponse;
+    const data = (await response.json()) as SignupForEditResponse;
 
     return ok(data);
   } catch (_) {
@@ -245,7 +137,7 @@ export const deleteSignUp = async (
     const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
       method: "DELETE",
       headers: {
-        "x-edit-token": signupEditToken,
+        [EDIT_TOKEN_HEADER]: signupEditToken,
       },
     });
 
@@ -266,21 +158,13 @@ export const deleteSignUp = async (
 export const patchSignUp = async (
   signupId: string,
   signupEditToken: string,
-  request: {
-    id: string;
-    answers: QuestionAnswer[];
-    language: "en" | "fi";
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    namePublic?: boolean;
-  },
-): Promise<ApiResponse<{ id: string }, IlmomasiinaErrorResponse>> => {
+  request: SignupUpdateBody,
+): Promise<ApiResponse<SignupUpdateResponse, SignupValidationError>> => {
   try {
     const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
       method: "PATCH",
       headers: {
-        "x-edit-token": signupEditToken,
+        [EDIT_TOKEN_HEADER]: signupEditToken,
         "content-type": "application/json",
       },
       body: JSON.stringify(request),
@@ -291,24 +175,18 @@ export const patchSignUp = async (
         return err("ilmomasiina-signup-not-found");
       }
 
-      const errorData = (await response.json()) as IlmomasiinaErrorResponse;
+      const errorData = (await response.json()) as ErrorResponse;
 
-      if (
-        errorData.code === "SignupValidationError" ||
-        errorData.message.startsWith("Errors validating signup") ||
-        errorData.message.startsWith("Validation error") ||
-        errorData.message.startsWith("Invalid answer") ||
-        errorData.message.startsWith("Missing answer")
-      ) {
+      if (errorData.code === ErrorCode.SIGNUP_VALIDATION_ERROR) {
         return err("ilmomasiina-validation-failed", {
-          originalError: errorData,
+          originalError: errorData as SignupValidationError,
         });
       }
 
       return err("ilmomasiina-fetch-fail");
     }
 
-    const data = (await response.json()) as { id: string };
+    const data = (await response.json()) as SignupUpdateResponse;
 
     return ok(data);
   } catch (_) {
