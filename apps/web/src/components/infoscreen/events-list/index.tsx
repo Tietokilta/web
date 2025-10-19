@@ -1,7 +1,7 @@
 import { getISOWeek, getISOWeekYear } from "date-fns";
 import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
 import { fetchUpcomingEvents } from "../../../lib/api/external/ilmomasiina";
-import { getI18n } from "../../../locales/server.ts";
+import { getCurrentLocale, getI18n } from "../../../locales/server.ts";
 import { EventCardCompact } from "../../event-card/index.tsx";
 
 export default async function EventListInfoscreen({
@@ -10,7 +10,8 @@ export default async function EventListInfoscreen({
   showIlmostatus?: boolean;
 }) {
   const t = await getI18n();
-  const eventsResponse = await fetchUpcomingEvents();
+  const locale = await getCurrentLocale();
+  const eventsResponse = await fetchUpcomingEvents(locale);
   const events = Array.isArray(eventsResponse.data) ? eventsResponse.data : [];
 
   const upcomingEventsDataByWeek = Object.groupBy(

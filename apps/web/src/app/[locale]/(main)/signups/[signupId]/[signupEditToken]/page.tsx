@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { SignupStatus } from "@tietokilta/ilmomasiina-models";
 import { getSignup } from "@lib/api/external/ilmomasiina";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
-import { getLocalizedEventTitle } from "@lib/utils";
 import { I18nProviderClient } from "@locales/client";
 import { SignupForm } from "./signup-form";
 
@@ -18,8 +17,9 @@ export const generateMetadata = async (props: PageProps) => {
   const params = await props.params;
 
   const { signupId, signupEditToken } = params;
+  const locale = await getCurrentLocale();
 
-  const signupInfo = await getSignup(signupId, signupEditToken);
+  const signupInfo = await getSignup(signupId, signupEditToken, locale);
   const t = await getScopedI18n("ilmomasiina.form");
 
   if (!signupInfo.ok) {
@@ -39,8 +39,9 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
 
   const { signupId, signupEditToken } = params;
+  const locale = await getCurrentLocale();
 
-  const signupInfo = await getSignup(signupId, signupEditToken);
+  const signupInfo = await getSignup(signupId, signupEditToken, locale);
 
   if (!signupInfo.ok && signupInfo.error === "ilmomasiina-signup-not-found") {
     notFound();
@@ -50,7 +51,6 @@ export default async function Page(props: PageProps) {
     throw new Error("Failed to fetch signup info");
   }
 
-  const locale = await getCurrentLocale();
   const t = await getScopedI18n("ilmomasiina.form");
 
   return (
@@ -61,8 +61,7 @@ export default async function Page(props: PageProps) {
       <div className="relative flex max-w-4xl flex-col items-center gap-8 p-4 md:p-6">
         <hgroup className="space-y-4 text-pretty">
           <h1 className="font-mono text-2xl md:text-4xl">
-            {t("Edit sign up")} -{" "}
-            {getLocalizedEventTitle(signupInfo.data.event.title, locale)}
+            {t("Edit sign up")} - {signupInfo.data.event.title}
           </h1>
           <p>
             {signupInfo.data.signup.status === SignupStatus.IN_QUEUE

@@ -134,11 +134,11 @@ importers:
         specifier: 'catalog:'
         version: 4.1.13
       '@tietokilta/ilmomasiina-client':
-        specifier: 2.0.0-alpha42
-        version: 2.0.0-alpha42(react@19.1.1)
+        specifier: 2.0.0-alpha45
+        version: 2.0.0-alpha45(react@19.1.1)
       '@tietokilta/ilmomasiina-models':
-        specifier: 2.0.0-alpha42
-        version: 2.0.0-alpha42
+        specifier: 2.0.0-alpha45
+        version: 2.0.0-alpha45
       '@tietokilta/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2903,16 +2903,16 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
-  '@tietokilta/ilmomasiina-client@2.0.0-alpha42':
-    resolution: {integrity: sha512-9QVKcNgpZs4QrznxaxeuDD+9WAWInZud/jBIb9T2+MEnBL+KyMyfzr6gdp7YKv3qokHlpNdc8JacA4MnGdvg/Q==}
+  '@tietokilta/ilmomasiina-client@2.0.0-alpha45':
+    resolution: {integrity: sha512-6fSeEiPbRxTnKNR9tWGZzdeGAL5ALrUm//3606WASPxOI0oBzQJ7nDGAPmdcHX/ao2KhR83dHzTb7baCswM5zg==}
     peerDependencies:
       react: ^17 || ^18
     peerDependenciesMeta:
       react:
         optional: true
 
-  '@tietokilta/ilmomasiina-models@2.0.0-alpha42':
-    resolution: {integrity: sha512-mh7eLaYE3ur4CanOxrq6zPhuafAWuOXktmyps3OeUtzKKkpu2Iv6V2owEjev/zihtZfGkoRke9hiKMqat/b6nA==}
+  '@tietokilta/ilmomasiina-models@2.0.0-alpha45':
+    resolution: {integrity: sha512-HCA1AmVRpXdIkUS6z06lm0BDcX/hbP7jkD+6PLRk7eDIBxIEhlGM0avNxPDtjpTt0w3blHZDeYQp4wgq6lu6HQ==}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -9402,14 +9402,14 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.13
 
-  '@tietokilta/ilmomasiina-client@2.0.0-alpha42(react@19.1.1)':
+  '@tietokilta/ilmomasiina-client@2.0.0-alpha45(react@19.1.1)':
     dependencies:
-      '@tietokilta/ilmomasiina-models': 2.0.0-alpha42
+      '@tietokilta/ilmomasiina-models': 2.0.0-alpha45
       lodash-es: 4.17.21
     optionalDependencies:
       react: 19.1.1
 
-  '@tietokilta/ilmomasiina-models@2.0.0-alpha42':
+  '@tietokilta/ilmomasiina-models@2.0.0-alpha45':
     dependencies:
       '@sinclair/typebox': 0.32.35
 

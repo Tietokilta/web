@@ -27,7 +27,7 @@ import {
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
 import { useCurrentLocale, useScopedI18n } from "@locales/client";
-import { cn, getLocalizedEventTitle } from "@lib/utils";
+import { cn } from "@lib/utils";
 
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
 
@@ -385,7 +385,7 @@ function Form({
         />
         <ConfirmDeletePopover
           id="confirm-delete"
-          eventTitle={getLocalizedEventTitle(event.title, locale)}
+          eventTitle={event.title}
           deleteAction={deleteAction}
         />
       </div>

@@ -23,7 +23,6 @@ import {
   useCurrentLocale,
   I18nProviderClient,
 } from "../locales/client";
-import { getLocalizedEventTitle } from "../lib/utils";
 import type { Locale } from "../locales/server";
 
 type EventWithDate = UserEventListItem & { date: string };
@@ -68,7 +67,7 @@ function EventCalendar({
     return {
       start: startDate,
       end: endDate,
-      title: getLocalizedEventTitle(event.title, locale),
+      title: event.title,
       resource: {
         url: eventUrl,
       },

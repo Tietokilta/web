@@ -1,11 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { JSX } from "react";
-import {
-  type PublicSignupSchema,
-  SignupStatus,
-  type UserQuotaWithSignups,
-} from "@tietokilta/ilmomasiina-models";
 import type { EditorState, Node } from "@lexical-types";
 import { type Locale } from "../locales/server";
 
@@ -231,17 +226,6 @@ export const isNextWeek = (date: string): boolean => {
 
   return currentWeek + 1 === eventWeek;
 };
-
-export function getLocalizedEventTitle(eventTitle: string, locale: Locale) {
-  const titleLocaleSeparator = " // ";
-  const [fiTitle, enTitle] = eventTitle.split(titleLocaleSeparator);
-
-  if (locale === "en") {
-    return enTitle || fiTitle;
-  }
-
-  return fiTitle;
-}
 
 export function assertUnreachable(value: never) {
   throw new Error("Didn't expect to get here", { cause: { value } });

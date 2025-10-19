@@ -1,4 +1,9 @@
 import {
+  getLocalizedEvent,
+  getLocalizedEventListItem,
+  getLocalizedSignup,
+} from "@tietokilta/ilmomasiina-client/dist/utils/localizedEvent";
+import {
   EDIT_TOKEN_HEADER,
   ErrorCode,
   type SignupValidationError,
@@ -19,6 +24,7 @@ export const baseUrl =
 // it needs to be set when building the docker image.
 
 export const fetchEvents = async (
+  locale: string,
   maxAge?: number,
 ): Promise<ApiResponse<UserEventListResponse>> => {
   try {
@@ -38,16 +44,20 @@ export const fetchEvents = async (
     }
     const data = (await response.json()) as UserEventListResponse;
 
-    return ok(data);
+    const localized = data.map((event) =>
+      getLocalizedEventListItem(event, locale),
+    );
+
+    return ok(localized);
   } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
 };
 
-export const fetchUpcomingEvents = async (): Promise<
-  ApiResponse<UserEventListResponse>
-> => {
-  const events = await fetchEvents();
+export const fetchUpcomingEvents = async (
+  locale: string,
+): Promise<ApiResponse<UserEventListResponse>> => {
+  const events = await fetchEvents(locale);
   if (!events.ok) {
     return events;
   }
@@ -70,6 +80,7 @@ export const fetchUpcomingEvents = async (): Promise<
 
 export const fetchEvent = async (
   slug: string,
+  locale: string,
 ): Promise<ApiResponse<UserEventResponse>> => {
   try {
     const response = await fetch(`${baseUrl}/api/events/${slug}`, {
@@ -87,7 +98,9 @@ export const fetchEvent = async (
     }
     const data = (await response.json()) as UserEventResponse;
 
-    return ok(data);
+    const localized = getLocalizedEvent(data, locale);
+
+    return ok(localized);
   } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
@@ -96,6 +109,7 @@ export const fetchEvent = async (
 export const getSignup = async (
   signupId: string,
   signupEditToken: string,
+  locale: string,
 ): Promise<ApiResponse<SignupForEditResponse>> => {
   try {
     const response = await fetch(`${baseUrl}/api/signups/${signupId}`, {
@@ -123,7 +137,12 @@ export const getSignup = async (
 
     const data = (await response.json()) as SignupForEditResponse;
 
-    return ok(data);
+    const localized: typeof data = {
+      event: getLocalizedEvent(data.event, locale),
+      signup: getLocalizedSignup(data, locale),
+    };
+
+    return ok(localized);
   } catch (_) {
     return err("ilmomasiina-fetch-fail");
   }
