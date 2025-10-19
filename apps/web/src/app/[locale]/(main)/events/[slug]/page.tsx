@@ -1,10 +1,15 @@
+/* eslint-disable no-nested-ternary -- much uglier without */
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import {
-  type UserQuotaWithSignups,
+  getSignupsByQuota,
+  type SignupWithQuota,
+  type QuotaSignups,
+} from "@tietokilta/ilmomasiina-client/dist/utils/signupUtils";
+import {
   type PublicSignupSchema,
   type Question,
   type UserEventResponse,
@@ -17,11 +22,6 @@ import {
   formatDatetimeYear,
   formatDatetimeYearOptions,
   getLocalizedEventTitle,
-  getQuotasWithOpenAndQueue,
-  OPEN_QUOTA_ID,
-  QUEUE_QUOTA_ID,
-  type QuotaWithAugmentedSignups,
-  type SignupWithQuotaTitle,
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
@@ -97,7 +97,7 @@ async function SignUpRow({
   publicQuestions,
   isGeneratedQuota,
 }: {
-  signup: PublicSignupSchema | SignupWithQuotaTitle;
+  signup: SignupWithQuota;
   publicQuestions: Question[];
   isGeneratedQuota: boolean;
 }) {
@@ -125,7 +125,7 @@ async function SignUpRow({
       ))}
       {isGeneratedQuota ? (
         <td className="border-b border-gray-900 px-2 py-1">
-          {"quotaTitle" in signup ? signup.quotaTitle : ""}
+          {signup.quota.title}
         </td>
       ) : null}
       <td className="border-b border-gray-900 px-2 py-1">
@@ -154,7 +154,7 @@ async function SignUpTable({
   publicQuestions,
   signupsPublic,
 }: {
-  quota: UserQuotaWithSignups | QuotaWithAugmentedSignups;
+  quota: QuotaSignups;
   publicQuestions: Question[];
   signupsPublic?: boolean;
 }) {
@@ -169,8 +169,8 @@ async function SignUpTable({
     return <p>{t("status.Ei ilmoittautuneita vielä")}</p>;
   }
 
-  const isOpenQuota = quota.id === OPEN_QUOTA_ID;
-  const isQueueQuota = quota.id === QUEUE_QUOTA_ID;
+  const isOpenQuota = quota.type === SignupStatus.IN_OPEN_QUOTA;
+  const isQueueQuota = quota.type === SignupStatus.IN_QUEUE;
   const isGeneratedQuota = isOpenQuota || isQueueQuota;
 
   return (
@@ -229,10 +229,7 @@ async function SignUpList({ event }: { event: UserEventResponse }) {
 
   const t = await getScopedI18n("ilmomasiina");
 
-  const quotasWithOpenAndQueue = getQuotasWithOpenAndQueue(
-    event.quotas,
-    event.openQuotaSize,
-  );
+  const signupsByQuota = getSignupsByQuota(event);
 
   const publicQuestions = event.questions.filter((question) => question.public);
 
@@ -242,10 +239,14 @@ async function SignUpList({ event }: { event: UserEventResponse }) {
         {t("Ilmoittautuneet")}
       </h2>
       <ul className="space-y-16">
-        {quotasWithOpenAndQueue.map((quota) => (
-          <li key={quota.id} className="space-y-2">
+        {signupsByQuota.map((quota) => (
+          <li key={quota.id ?? quota.type} className="space-y-2">
             <h3 className="font-mono text-lg font-semibold text-gray-900">
-              {quota.title}
+              {quota.type === SignupStatus.IN_OPEN_QUOTA
+                ? t("Avoin kiintiö")
+                : quota.type === SignupStatus.IN_QUEUE
+                  ? t("Jonossa")
+                  : quota.title}
             </h3>
             <SignUpTable
               signupsPublic={event.signupsPublic}
@@ -313,10 +314,7 @@ async function SignUpQuotas({ event }: { event: UserEventResponse }) {
 
   const t = await getScopedI18n("ilmomasiina");
 
-  const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize, {
-    openQuotaName: t("Avoin kiintiö"),
-    queueQuotaName: t("Jonossa"),
-  });
+  const signupsByQuota = getSignupsByQuota(event);
 
   return (
     <Card className="max-w-prose space-y-4">
@@ -324,9 +322,9 @@ async function SignUpQuotas({ event }: { event: UserEventResponse }) {
         {t("Ilmoittautuneet")}
       </h2>
       <ul className="flex flex-col gap-2">
-        {quotas.map((quota) => (
-          <li key={quota.id} className="contents">
-            {quota.id === QUEUE_QUOTA_ID ? (
+        {signupsByQuota.map((quota) => (
+          <li key={quota.id ?? quota.type} className="contents">
+            {quota.type === SignupStatus.IN_QUEUE ? (
               <span>
                 {t("status.Jonossa", {
                   queueCount: quota.signupCount,
