@@ -8,7 +8,9 @@ export const revalidate = 3600; // 1 hour
  * Return all events in ICS format
  */
 export async function GET(request: NextRequest) {
-  const locale = request.nextUrl.searchParams.get("lang") ?? "fi";
+  // For invalid or missing language versions such as "", event localization gracefully
+  // falls back to the default language version.
+  const locale = request.nextUrl.searchParams.get("lang") ?? "";
   const events = await fetchEvents(locale);
 
   // Set the host to the one in the request headers
