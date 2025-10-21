@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { chunk } from "remeda";
 import { notFound } from "next/navigation";
+import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
 import {
   Pagination,
   PaginationContent,
@@ -11,14 +12,9 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../pagination";
-import type { IlmomasiinaEvent } from "../../lib/api/external/ilmomasiina";
 import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
 import { getCurrentLocale, getI18n } from "../../locales/server";
-import {
-  formatDateTime,
-  formatDateTimeOptions,
-  getLocalizedEventTitle,
-} from "../../lib/utils";
+import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
 import { DateTime } from "../datetime";
 
 function EventListSkeleton() {
@@ -31,7 +27,7 @@ function EventListSkeleton() {
   );
 }
 
-async function EventItem({ event }: { event: IlmomasiinaEvent }) {
+async function EventItem({ event }: { event: UserEventListItem }) {
   const locale = await getCurrentLocale();
   const t = await getI18n();
 
@@ -41,14 +37,14 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
     <li className="flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 shadow-solid md:flex-row md:items-center">
       <div className="flex-1 shrink-0">
         <span className="block text-pretty text-lg font-bold">
-          {getLocalizedEventTitle(event.title, locale)}
+          {event.title}
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
           <Link href={eventUrl}>
             <span aria-hidden="true">{t("action.Read more")}</span>
             <span className="sr-only">
               {t("action.Read more about {something}", {
-                something: getLocalizedEventTitle(event.title, locale),
+                something: event.title,
               })}
             </span>
           </Link>
@@ -85,7 +81,7 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
           <span aria-hidden="true">{t("action.Read more")}</span>
           <span className="sr-only">
             {t("action.Read more about {something}", {
-              something: getLocalizedEventTitle(event.title, locale),
+              something: event.title,
             })}
           </span>
         </Link>
@@ -95,8 +91,8 @@ async function EventItem({ event }: { event: IlmomasiinaEvent }) {
 }
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
-  const upcomingEvents = await fetchUpcomingEvents();
   const locale = await getCurrentLocale();
+  const upcomingEvents = await fetchUpcomingEvents(locale);
   const t = await getI18n();
   if (!upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong

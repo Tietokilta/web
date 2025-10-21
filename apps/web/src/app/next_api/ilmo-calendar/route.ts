@@ -8,7 +8,10 @@ export const revalidate = 3600; // 1 hour
  * Return all events in ICS format
  */
 export async function GET(request: NextRequest) {
-  const events = await fetchEvents();
+  // For invalid or missing language versions such as "", event localization gracefully
+  // falls back to the default language version.
+  const locale = request.nextUrl.searchParams.get("lang") ?? "";
+  const events = await fetchEvents(locale);
 
   // Set the host to the one in the request headers
   // We trust the middleware to set the host header correctly in Azure
@@ -25,7 +28,7 @@ export async function GET(request: NextRequest) {
     return new Response("Failed to fetch events", { status: 500 });
   }
 
-  const icsEvents = createEvents(events.data, { host, origin });
+  const icsEvents = createEvents(events.data, { host, origin, locale });
 
   return new Response(icsEvents, {
     headers: {

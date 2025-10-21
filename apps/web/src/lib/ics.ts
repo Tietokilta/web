@@ -1,15 +1,16 @@
 import { remark } from "remark";
 import strip from "strip-markdown";
-import { type IlmomasiinaEvent } from "./api/external/ilmomasiina";
+import {
+  type UserEventListItem,
+  type UserEventListResponse,
+} from "@tietokilta/ilmomasiina-models";
 
 export function createEvents(
-  events: IlmomasiinaEvent[],
-  {
-    host,
-    origin,
-  }: {
+  events: UserEventListResponse,
+  options: {
     host: string;
     origin: string;
+    locale: string;
   },
 ): string {
   return `BEGIN:VCALENDAR\r
@@ -85,35 +86,42 @@ RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r
 END:STANDARD\r
 END:VTIMEZONE
 ${events
-  .map((event) => createEvent(event, { host, origin }))
+  .map((event) => createEvent(event, options))
   .filter(Boolean)
   .join("\r\n")}
 END:VCALENDAR`;
 }
 
 function createEvent(
-  event: IlmomasiinaEvent,
+  event: UserEventListItem,
   {
     host,
     origin,
+    locale,
   }: {
     host: string;
     origin: string;
+    locale: string;
   },
 ): string {
   if (!event.date) {
     return "";
   }
 
+  const link =
+    locale === "en"
+      ? `${origin}/en/events/${event.slug}`
+      : `${origin}/fi/tapahtumat/${event.slug}`;
+
   return `BEGIN:VEVENT\r
 UID:${event.id}@${host}\r
 SUMMARY:${event.title}\r
-LOCATION:${event.location}\r
+LOCATION:${event.location ?? ""}\r
 URL:${foldICSText(`${origin}/events/${event.slug}`)}\r
 CATEGORIES:${event.category}\r
 DESCRIPTION:
- ${formatDescription(event.description)}
- ${foldICSText(`\\n\\n---\\nLue lisää: ${origin}/fi/tapahtumat/${event.slug}\\nRead more: ${origin}/en/events/${event.slug}`)}
+ ${formatDescription(event.description ?? "")}
+ ${foldICSText(`\\n\\n---\\n${locale === "en" ? "Read more:" : "Lue lisää:"} ${link}`)}
 ${formatDates(event.date, event.endDate)}
 END:VEVENT`;
 }

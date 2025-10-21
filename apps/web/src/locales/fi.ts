@@ -79,6 +79,8 @@ const fi = {
   "invoicegenerator.Invoicer information": "Laskuttajan tiedot",
   "ilmomasiina.form.You are in queue at position {position}":
     "Olet jonossa sijalla {position}.",
+  "ilmomasiina.form.You are in the open quota at position {position}/{quotaSize}":
+    "Olet avoimessa kiintiössä sijalla {position}/{quotaSize}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}":
     "Olet kiintiössä {quotaName} sijalla {position}.",
   "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":

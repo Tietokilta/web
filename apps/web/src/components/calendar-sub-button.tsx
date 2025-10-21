@@ -5,10 +5,12 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function CalendarSubButton({
+  locale,
   ctaText,
   copyingText,
   copiedText,
 }: {
+  locale: string;
   ctaText: string;
   copyingText: string;
   copiedText: string;
@@ -16,7 +18,7 @@ export function CalendarSubButton({
   const [copying, setCopying] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const calendarIcsUrl = "/next_api/ilmo-calendar";
+  const calendarIcsUrl = `/next_api/ilmo-calendar?lang=${locale}`;
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

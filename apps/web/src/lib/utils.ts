@@ -3,12 +3,6 @@ import { twMerge } from "tailwind-merge";
 import type { JSX } from "react";
 import type { EditorState, Node } from "@lexical-types";
 import { type Locale } from "../locales/server";
-import {
-  type EventQuotaWithSignups,
-  type EventQuota,
-  OPEN_QUOTA_ID,
-  QUEUE_QUOTA_ID,
-} from "./api/external/ilmomasiina";
 
 export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
 
@@ -232,92 +226,6 @@ export const isNextWeek = (date: string): boolean => {
 
   return currentWeek + 1 === eventWeek;
 };
-
-export const getQuotasWithOpenAndQueue = (
-  quotas: EventQuota[],
-  openQuotaSize: number,
-  options: {
-    includeOpen?: boolean;
-    includeQueue?: boolean;
-    openQuotaName?: string;
-    queueQuotaName?: string;
-  } = {},
-) => {
-  const {
-    includeOpen = true,
-    includeQueue = true,
-    openQuotaName = "Avoin kiintiö",
-    queueQuotaName = "Jonossa",
-  } = options;
-  const openQuota = quotas.reduce<EventQuotaWithSignups>(
-    (openQ, quota) => {
-      const quotaSignups = quota.signups ?? [];
-      const openSignups = quotaSignups
-        .filter((signup) => signup.status === "in-open")
-        .map((signup) => ({
-          ...signup,
-          quotaTitle: quota.title,
-        }));
-      return {
-        ...openQ,
-        signupCount: (openQ.signupCount ?? 0) + openSignups.length,
-        signups: [...openQ.signups, ...openSignups],
-      };
-    },
-    {
-      id: OPEN_QUOTA_ID,
-      title: openQuotaName,
-      size: openQuotaSize,
-      signupCount: 0,
-      signups: [],
-    },
-  );
-
-  const queuedQuota = quotas.reduce<EventQuotaWithSignups>(
-    (queuedQ, quota) => {
-      const quotaSignups = quota.signups ?? [];
-      const queuedSignups = quotaSignups
-        .filter((signup) => signup.status === "in-queue")
-        .map((signup) => ({
-          ...signup,
-          quotaTitle: quota.title,
-        }));
-      return {
-        ...queuedQ,
-        signupCount: (queuedQ.signupCount ?? 0) + queuedSignups.length,
-        signups: [...queuedQ.signups, ...queuedSignups],
-      };
-    },
-    {
-      id: QUEUE_QUOTA_ID,
-      title: queueQuotaName,
-      size: 0,
-      signupCount: 0,
-      signups: [],
-    },
-  );
-
-  const quotasWithOpenAndQueue = [
-    ...quotas,
-    ...(includeOpen && openQuotaSize > 0 ? [openQuota] : []),
-    ...(includeQueue && (queuedQuota.signupCount ?? 0) > 0
-      ? [queuedQuota]
-      : []),
-  ];
-
-  return quotasWithOpenAndQueue;
-};
-
-export function getLocalizedEventTitle(eventTitle: string, locale: Locale) {
-  const titleLocaleSeparator = " // ";
-  const [fiTitle, enTitle] = eventTitle.split(titleLocaleSeparator);
-
-  if (locale === "en") {
-    return enTitle || fiTitle;
-  }
-
-  return fiTitle;
-}
 
 export function assertUnreachable(value: never) {
   throw new Error("Didn't expect to get here", { cause: { value } });

@@ -14,16 +14,18 @@ import { tz } from "@date-fns/tz";
 import { enUS } from "date-fns/locale/en-US";
 import { fi as fin } from "date-fns/locale/fi";
 import Link from "next/link";
-import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
+import {
+  type UserEventListResponse,
+  type UserEventListItem,
+} from "@tietokilta/ilmomasiina-models";
 import {
   useScopedI18n,
   useCurrentLocale,
   I18nProviderClient,
 } from "../locales/client";
-import { getLocalizedEventTitle } from "../lib/utils";
 import type { Locale } from "../locales/server";
 
-type IlmomasiinEventWithDate = IlmomasiinaEvent & { date: string };
+type EventWithDate = UserEventListItem & { date: string };
 type CalendarEvent = Omit<Event, "resource"> & { resource: { url: string } };
 
 // Make calendar events into clickable links.
@@ -40,7 +42,7 @@ function EventCalendar({
   eventsUrl,
   locale,
 }: {
-  events: IlmomasiinaEvent[];
+  events: UserEventListResponse;
   eventsUrl: string;
   locale: Locale;
 }) {
@@ -49,7 +51,7 @@ function EventCalendar({
 
   // Filter events without a start date.
   const filteredEvents = events.filter(
-    (event): event is IlmomasiinEventWithDate => !!event.date,
+    (event): event is EventWithDate => !!event.date,
   );
 
   const parsedEvents: CalendarEvent[] = filteredEvents.map((event) => {
@@ -65,7 +67,7 @@ function EventCalendar({
     return {
       start: startDate,
       end: endDate,
-      title: getLocalizedEventTitle(event.title, locale),
+      title: event.title,
       resource: {
         url: eventUrl,
       },
@@ -143,7 +145,7 @@ function EventCalendar({
   );
 }
 
-function CalendarWrapper({ events }: { events: IlmomasiinaEvent[] }) {
+function CalendarWrapper({ events }: { events: UserEventListResponse }) {
   const locale = useCurrentLocale();
   const eventsUrl = `/${locale}/events/`;
   return (
