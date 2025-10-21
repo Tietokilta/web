@@ -119,7 +119,12 @@ function InputRow({
       ) : question.type === QuestionType.TEXT_AREA ? (
         <Textarea {...sharedInputProps} />
       ) : question.type === QuestionType.NUMBER ? (
-        <Input type="number" {...sharedInputProps} />
+        <Input
+          type="text"
+          inputMode="numeric"
+          pattern="\d*"
+          {...sharedInputProps}
+        />
       ) : (
         <Input type="text" {...sharedInputProps} />
       )}
