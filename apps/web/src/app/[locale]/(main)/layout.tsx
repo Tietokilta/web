@@ -12,7 +12,7 @@ import "@tietokilta/ui/global.css";
 import "../globals.css";
 import { getScopedI18n, type Locale } from "@locales/server";
 import { DigiCommitteeRecruitmentAlert } from "@components/digi-committee-recruitment-alert";
-import "./globals.css";
+// import "./globals.css";
 import "./system-seven/system-seven.css";
 import "./system-seven/glitch.css";
 

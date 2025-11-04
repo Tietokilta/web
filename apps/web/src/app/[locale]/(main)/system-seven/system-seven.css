@@ -8,14 +8,15 @@
 
 .header {
   font-size: 1.5rem;
-  color: theme("colors.red.600");
-  text-shadow: 0 0 1rem theme("colors.red.600");
+  color: #dc2626;
+  text-shadow: 0 0 1rem #dc2626;
   text-align: center;
 
-  @media screen(sm) {
+  @media (min-width: 640px) {
     font-size: 3rem;
   }
-  @media screen(lg) {
+
+  @media (min-width: 1024px) {
     font-size: 4rem;
   }
 }
@@ -23,13 +24,14 @@
 .time {
   margin: 0rem;
   font-size: 3rem;
-  color: theme("colors.red.600");
-  text-shadow: 0 0 1rem theme("colors.red.600");
+  color: #dc2626;
+  text-shadow: 0 0 1rem #dc2626;
 
-  @media screen(sm) {
+  @media (min-width: 640px) {
     font-size: 6rem;
   }
-  @media screen(lg) {
+
+  @media (min-width: 1024px) {
     font-size: 8rem;
   }
 }
@@ -66,7 +68,7 @@
 
 .video {
   max-width: calc(100vw - 4rem);
-  box-shadow: 0 0 2rem 0.5rem theme("colors.red.600");
+  box-shadow: 0 0 2rem 0.5rem #dc2626;
 }
 
 a,
@@ -76,13 +78,23 @@ h2,
 p,
 li,
 span {
-  color: theme("colors.red.600");
+  color: #dc2626;
 }
 
 img {
   /* Filter that turns white to red */
   filter: invert(8%) sepia(96%) saturate(5343%) hue-rotate(354deg)
     brightness(108%) contrast(103%) !important;
+}
+
+/* Do NOT hue-shift partner logos */
+.partner-logos img {
+  filter: none !important;
+}
+
+/* But keep footer partner logos white on dark background */
+footer .partner-logos img {
+  filter: grayscale(1) invert(1) !important;
 }
 
 img[alt~="Tietokilta"] {
@@ -136,21 +148,25 @@ a::before {
     left: 0;
     opacity: 1;
   }
+
   20% {
     top: 0;
     left: -4px;
     opacity: 0.7;
   }
+
   40% {
     top: 3px;
     left: 0;
     opacity: 0.2;
   }
+
   60% {
     top: 0;
     left: 4px;
     opacity: 0.3;
   }
+
   80% {
     top: 0;
     left: 0;
@@ -162,30 +178,39 @@ a::before {
   0% {
     transform: translate(3px, -1px);
   }
+
   3% {
     transform: translate(-2px, 1px);
   }
+
   4% {
     transform: translate(0, 0);
   }
+
   30% {
     transform: skewX(-5deg);
   }
+
   31% {
     transform: skewX(5deg);
   }
+
   32% {
     transform: skewX(-5deg);
   }
+
   33% {
     transform: skewX(0deg);
   }
+
   60% {
     transform: translate(4px, 2px);
   }
+
   75% {
     transform: translate(-3px, -1px);
   }
+
   80% {
     transform: translate(0, 0);
   }
@@ -195,15 +220,19 @@ a::before {
   0% {
     transform: translateX(0);
   }
+
   25% {
     transform: translateX(3px);
   }
+
   50% {
     transform: translateX(-3px);
   }
+
   75% {
     transform: translateX(3px);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -211,6 +240,7 @@ a::before {
 
 section {
   opacity: 1;
+
   :hover {
     opacity: 0;
     transition: opacity 5s;
