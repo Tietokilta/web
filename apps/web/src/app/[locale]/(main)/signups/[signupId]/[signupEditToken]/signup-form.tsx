@@ -253,7 +253,9 @@ function Form({
       <div className="flex flex-col items-center gap-4 *:scroll-mt-24">
         <p data-form-status className="w-full max-w-sm" aria-live="polite">
           <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
-            <Button variant="backLink">{ta("Back")}</Button>
+            <Button type="button" variant="backLink">
+              {ta("Back")}
+            </Button>
           </Link>
           {state?.success ? (
             <p className="text-green-600">{t("Sign up saved")}</p>
