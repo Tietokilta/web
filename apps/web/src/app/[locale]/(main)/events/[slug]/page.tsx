@@ -1,27 +1,26 @@
+/* eslint-disable no-nested-ternary -- much uglier without */
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Card, Progress } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import {
-  type IlmomasiinaEvent,
-  fetchEvent,
-  type EventQuota,
-  type EventQuotaWithSignups,
-  type QuotaSignupWithQuotaTitle,
-  OPEN_QUOTA_ID,
-  QUEUE_QUOTA_ID,
-  type EventQuestion,
-  type QuotaSignup,
-  type QuestionAnswer,
-} from "@lib/api/external/ilmomasiina";
+  getSignupsByQuota,
+  type SignupWithQuota,
+  type QuotaSignups,
+} from "@tietokilta/ilmomasiina-client/dist/utils/signupUtils";
+import {
+  type PublicSignupSchema,
+  type Question,
+  type UserEventResponse,
+  SignupStatus,
+} from "@tietokilta/ilmomasiina-models";
+import { fetchEvent } from "@lib/api/external/ilmomasiina";
 import {
   formatDateTimeSeconds,
   formatDateTimeSecondsOptions,
   formatDatetimeYear,
   formatDatetimeYearOptions,
-  getLocalizedEventTitle,
-  getQuotasWithOpenAndQueue,
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
@@ -76,8 +75,8 @@ async function SignUpText({
 }
 
 function getFormattedAnswer(
-  question: EventQuestion,
-  answers: QuestionAnswer[],
+  question: Question,
+  answers: PublicSignupSchema["answers"],
 ) {
   const answer = answers.find((a) => a.questionId === question.id)?.answer;
 
@@ -97,8 +96,8 @@ async function SignUpRow({
   publicQuestions,
   isGeneratedQuota,
 }: {
-  signup: QuotaSignup | QuotaSignupWithQuotaTitle;
-  publicQuestions: EventQuestion[];
+  signup: SignupWithQuota;
+  publicQuestions: Question[];
   isGeneratedQuota: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
@@ -125,7 +124,7 @@ async function SignUpRow({
       ))}
       {isGeneratedQuota ? (
         <td className="border-b border-gray-900 px-2 py-1">
-          {"quotaTitle" in signup ? signup.quotaTitle : ""}
+          {signup.quota.title}
         </td>
       ) : null}
       <td className="border-b border-gray-900 px-2 py-1">
@@ -154,8 +153,8 @@ async function SignUpTable({
   publicQuestions,
   signupsPublic,
 }: {
-  quota: EventQuota | EventQuotaWithSignups;
-  publicQuestions: EventQuestion[];
+  quota: QuotaSignups;
+  publicQuestions: Question[];
   signupsPublic?: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
@@ -164,14 +163,14 @@ async function SignUpTable({
     return <p>{t("status.Ilmoittautumistiedot eivät ole julkisia")}</p>;
   }
 
-  const signups = quota.signups ?? [];
+  const signups = quota.signups;
   if (signups.length === 0) {
     return <p>{t("status.Ei ilmoittautuneita vielä")}</p>;
   }
 
-  const isOpenQuota = quota.id === OPEN_QUOTA_ID;
-  const isQueueQuota = quota.id === QUEUE_QUOTA_ID;
-  const isGeneratedQuota = !!isOpenQuota || !!isQueueQuota;
+  const isOpenQuota = quota.type === SignupStatus.IN_OPEN_QUOTA;
+  const isQueueQuota = quota.type === SignupStatus.IN_QUEUE;
+  const isGeneratedQuota = isOpenQuota || isQueueQuota;
 
   return (
     <div className="block w-full overflow-x-auto rounded-md border-2 border-gray-900 shadow-solid">
@@ -202,9 +201,12 @@ async function SignUpTable({
         <tbody>
           {signups
             .filter(
-              (signup) => isGeneratedQuota || signup.status === "in-quota",
+              (signup) =>
+                isGeneratedQuota || signup.status === SignupStatus.IN_QUOTA,
             )
-            .toSorted((a, b) => a.position - b.position)
+            .toSorted(
+              (a, b) => (a.position ?? Infinity) - (b.position ?? Infinity),
+            )
             .map((signup) => (
               <SignUpRow
                 key={signup.position}
@@ -219,17 +221,14 @@ async function SignUpTable({
   );
 }
 
-async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpList({ event }: { event: UserEventResponse }) {
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
   }
 
   const t = await getScopedI18n("ilmomasiina");
 
-  const quotasWithOpenAndQueue = getQuotasWithOpenAndQueue(
-    event.quotas,
-    event.openQuotaSize,
-  );
+  const signupsByQuota = getSignupsByQuota(event);
 
   const publicQuestions = event.questions.filter((question) => question.public);
 
@@ -239,10 +238,14 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
         {t("Ilmoittautuneet")}
       </h2>
       <ul className="space-y-16">
-        {quotasWithOpenAndQueue.map((quota) => (
-          <li key={quota.id} className="space-y-2">
+        {signupsByQuota.map((quota) => (
+          <li key={quota.id ?? quota.type} className="space-y-2">
             <h3 className="font-mono text-lg font-semibold text-gray-900">
-              {quota.title}
+              {quota.type === SignupStatus.IN_OPEN_QUOTA
+                ? t("Avoin kiintiö")
+                : quota.type === SignupStatus.IN_QUEUE
+                  ? t("Jonossa")
+                  : quota.title}
             </h3>
             <SignUpTable
               signupsPublic={event.signupsPublic}
@@ -256,7 +259,7 @@ async function SignUpList({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-async function Tldr({ event }: { event: IlmomasiinaEvent }) {
+async function Tldr({ event }: { event: UserEventResponse }) {
   const t = await getScopedI18n("ilmomasiina.headers");
   const locale = await getCurrentLocale();
   return (
@@ -303,17 +306,14 @@ async function Tldr({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpQuotas({ event }: { event: UserEventResponse }) {
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
   }
 
   const t = await getScopedI18n("ilmomasiina");
 
-  const quotas = getQuotasWithOpenAndQueue(event.quotas, event.openQuotaSize, {
-    openQuotaName: t("Avoin kiintiö"),
-    queueQuotaName: t("Jonossa"),
-  });
+  const signupsByQuota = getSignupsByQuota(event);
 
   return (
     <Card className="max-w-prose space-y-4">
@@ -321,14 +321,14 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
         {t("Ilmoittautuneet")}
       </h2>
       <ul className="flex flex-col gap-2">
-        {quotas.map((quota) => (
-          <li key={quota.id} className="contents">
-            {quota.id === QUEUE_QUOTA_ID ? (
+        {signupsByQuota.map((quota) => (
+          <li key={quota.id ?? quota.type} className="contents">
+            {quota.type === SignupStatus.IN_QUEUE ? (
               <span>
                 {t("status.Jonossa", {
                   queueCount: quota.signupCount,
-                  confirmedCount:
-                    quota.signups?.filter((s) => s.confirmed).length ?? 0,
+                  confirmedCount: quota.signups.filter((s) => s.confirmed)
+                    .length,
                 })}
               </span>
             ) : (
@@ -338,13 +338,12 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
                   <div className="relative">
                     <Progress
                       value={Math.min(
-                        ((quota.signupCount ?? 0) / quota.size) * 100,
+                        (quota.signupCount / quota.size) * 100,
                         100,
                       )}
                     />
                     <span className="absolute bottom-1/2 left-0 w-full translate-y-1/2 text-center text-sm">
-                      {Math.min(quota.signupCount ?? 0, quota.size)} /{" "}
-                      {quota.size}
+                      {Math.min(quota.signupCount, quota.size)} / {quota.size}
                     </span>
                   </div>
                 ) : (
@@ -364,7 +363,7 @@ async function SignUpQuotas({ event }: { event: IlmomasiinaEvent }) {
   );
 }
 
-async function SignUpActions({ event }: { event: IlmomasiinaEvent }) {
+async function SignUpActions({ event }: { event: UserEventResponse }) {
   const t = await getScopedI18n("ilmomasiina");
   return (
     <div className="max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
@@ -394,16 +393,16 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 
   const { slug } = params;
 
-  const event = await fetchEvent(slug);
+  const locale = await getCurrentLocale();
+  const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn("Failed to fetch event from Ilmomasiina", event.error);
     return {};
   }
-  const locale = await getCurrentLocale();
 
   return {
-    title: getLocalizedEventTitle(event.data.title, locale),
+    title: event.data.title,
     description: event.data.description,
     robots: {
       index: false,
@@ -417,7 +416,7 @@ export default async function Page(props: PageProps) {
 
   const locale = await getCurrentLocale();
 
-  const event = await fetchEvent(slug);
+  const event = await fetchEvent(slug, locale);
   const t = await getScopedI18n("action");
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
     notFound();
@@ -436,9 +435,7 @@ export default async function Page(props: PageProps) {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{t("Back")}</BackButton>
-          <h1 className="font-mono text-2xl md:text-4xl">
-            {getLocalizedEventTitle(event.data.title, locale)}
-          </h1>
+          <h1 className="font-mono text-2xl md:text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
               <div className="grow-2 flex max-w-xl flex-col gap-8">

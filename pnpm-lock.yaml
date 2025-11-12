@@ -11,7 +11,7 @@ catalogs:
       version: 9.35.0
     '@tailwindcss/postcss':
       specifier: ^4.1.13
-      version: 4.1.13
+      version: 4.1.12
     '@tailwindcss/typography':
       specifier: ^0.5.16
       version: 0.5.16
@@ -53,7 +53,7 @@ catalogs:
       version: 3.3.1
     tailwindcss:
       specifier: ^4.1.13
-      version: 4.1.13
+      version: 4.1.12
     tailwindcss-animate:
       specifier: ^1.0.7
       version: 1.0.7
@@ -133,6 +133,12 @@ importers:
       '@tailwindcss/postcss':
         specifier: 'catalog:'
         version: 4.1.13
+      '@tietokilta/ilmomasiina-client':
+        specifier: 2.0.0-rc.2
+        version: 2.0.0-rc.2(react@19.1.1)
+      '@tietokilta/ilmomasiina-models':
+        specifier: 2.0.0-rc.2
+        version: 2.0.0-rc.2
       '@tietokilta/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2464,6 +2470,9 @@ packages:
   '@selderee/plugin-htmlparser2@0.11.0':
     resolution: {integrity: sha512-P33hHGdldxGabLFjPPpaTxVolMrzrcegejx+0GxjrIb9Zv48D8yAIA/QTDR2dFl7Uz7urX8aX6+5bCZslr+gWQ==}
 
+  '@sinclair/typebox@0.32.35':
+    resolution: {integrity: sha512-Ul3YyOTU++to8cgNkttakC0dWvpERr6RYoHO2W47DLbFvrwBDJUY31B1sImH6JZSYc4Kt4PyHtoPNu+vL2r2dA==}
+
   '@smithy/abort-controller@4.1.1':
     resolution: {integrity: sha512-vkzula+IwRvPR6oKQhMYioM3A/oX/lFCZiwuxkQbRhqJS2S4YRY2k7k/SyR2jMf3607HLtbEwlRxi0ndXHMjRg==}
     engines: {node: '>=18.0.0'}
@@ -2893,6 +2902,17 @@ packages:
     resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
+
+  '@tietokilta/ilmomasiina-client@2.0.0-rc.2':
+    resolution: {integrity: sha512-iPUMI9ekDjCPErbV8Te9/ax7ZFnVdUTc+l5+yOhj7XShJWfx6RElywe17EDsI6jeWsyVsFGr+veG4IRw9eymjQ==}
+    peerDependencies:
+      react: ^17 || ^18
+    peerDependenciesMeta:
+      react:
+        optional: true
+
+  '@tietokilta/ilmomasiina-models@2.0.0-rc.2':
+    resolution: {integrity: sha512-saFcQE6HvS+EPqEgp2/mbcsNOt1AnWt13JSWo2tD2u06uVHxgX9mEwiKxWp2/fb6wlBYyOvDC1lZuxrFPQVPNw==}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -8844,6 +8864,8 @@ snapshots:
       domhandler: 5.0.3
       selderee: 0.11.0
 
+  '@sinclair/typebox@0.32.35': {}
+
   '@smithy/abort-controller@4.1.1':
     dependencies:
       '@smithy/types': 4.5.0
@@ -9379,6 +9401,17 @@ snapshots:
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.13
+
+  '@tietokilta/ilmomasiina-client@2.0.0-rc.2(react@19.1.1)':
+    dependencies:
+      '@tietokilta/ilmomasiina-models': 2.0.0-rc.2
+      lodash-es: 4.17.21
+    optionalDependencies:
+      react: 19.1.1
+
+  '@tietokilta/ilmomasiina-models@2.0.0-rc.2':
+    dependencies:
+      '@sinclair/typebox': 0.32.35
 
   '@tokenizer/token@0.3.0': {}
 

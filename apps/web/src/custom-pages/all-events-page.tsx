@@ -1,13 +1,14 @@
 import { BackButton } from "../components/back-button";
 import EventCard from "../components/event-card";
 import { fetchEvents } from "../lib/api/external/ilmomasiina";
-import { getScopedI18n } from "../locales/server";
+import { getCurrentLocale, getScopedI18n } from "../locales/server";
 
 export default async function Page() {
   const t = await getScopedI18n("ilmomasiina.all-events");
   const ta = await getScopedI18n("action");
+  const locale = await getCurrentLocale();
   const maxAge = 180; // days, maximum for default Ilmomasiina config
-  const events = await fetchEvents(maxAge);
+  const events = await fetchEvents(locale, maxAge);
 
   return (
     <main

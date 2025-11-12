@@ -1,18 +1,19 @@
 import Link from "next/link";
 import { Button } from "@tietokilta/ui";
-import type { IlmomasiinaEvent } from "../lib/api/external/ilmomasiina";
+import { type UserEventListResponse } from "@tietokilta/ilmomasiina-models";
 import {
   fetchEvents,
   fetchUpcomingEvents,
 } from "../lib/api/external/ilmomasiina";
 import { BackButton } from "../components/back-button";
-import { getScopedI18n } from "../locales/server";
+import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { CalendarSubButton } from "../components/calendar-sub-button";
 import EventCard from "../components/event-card";
 import EventCalendar from "./event-calendar";
 
-async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
+async function Calendar({ events }: { events: UserEventListResponse }) {
   const t = await getScopedI18n("ilmomasiina");
+  const locale = await getCurrentLocale();
 
   return (
     <div className="flex flex-col gap-2">
@@ -20,6 +21,7 @@ async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
         <EventCalendar events={events} />
       </div>
       <CalendarSubButton
+        locale={locale}
         ctaText={t("Tilaa kalenteri")}
         copyingText={t("Kopioidaan leikepöydälle")}
         copiedText={t("Kopioitu leikepöydälle")}
@@ -31,8 +33,9 @@ async function Calendar({ events }: { events: IlmomasiinaEvent[] }) {
 export default async function Page() {
   const t = await getScopedI18n("ilmomasiina");
   const ta = await getScopedI18n("action");
-  const events = await fetchEvents();
-  const upcomingEvents = await fetchUpcomingEvents();
+  const locale = await getCurrentLocale();
+  const events = await fetchEvents(locale);
+  const upcomingEvents = await fetchUpcomingEvents(locale);
 
   if (!events.ok || !upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know

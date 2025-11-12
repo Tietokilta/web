@@ -2,14 +2,12 @@
 
 import * as z from "zod";
 import { useRouter } from "next/navigation";
-import { useCurrentLocale, useScopedI18n } from "../../../../locales/client";
 import {
-  baseUrl,
-  deleteSignUp,
-  getSignup,
-  patchSignUp,
-  type IlmomasiinaSignupResponse,
-} from ".";
+  QuestionType,
+  type SignupCreateResponse,
+} from "@tietokilta/ilmomasiina-models";
+import { useCurrentLocale, useScopedI18n } from "../../../../locales/client";
+import { baseUrl, deleteSignUp, getSignup, patchSignUp } from ".";
 
 export function useSignUp() {
   const router = useRouter();
@@ -32,7 +30,7 @@ export function useSignUp() {
       return;
     }
 
-    const data = (await response.json()) as IlmomasiinaSignupResponse;
+    const data = (await response.json()) as SignupCreateResponse;
 
     if ("statusCode" in data) {
       return;
@@ -53,7 +51,7 @@ const saveSignUpSchema = z
     firstName: z.string().optional(),
     lastName: z.string().optional(),
     namePublic: z.literal("on").optional(),
-    email: z.string().email().optional(),
+    email: z.email().optional(),
   })
   .and(z.record(z.string(), z.string().or(z.string().array())));
 
@@ -106,13 +104,12 @@ export function useSaveSignUpAction() {
       ...otherAnswers
     } = data.data;
 
-    const signupResult = await getSignup(signupId, signupEditToken);
+    const signupResult = await getSignup(signupId, signupEditToken, locale);
     const multipleChoiceQuestions = signupResult.data?.event.questions
-      .filter((question) => question.type === "checkbox")
+      .filter((question) => question.type === QuestionType.CHECKBOX)
       .map((question) => question.id);
 
     const updatedSignupResult = await patchSignUp(signupId, signupEditToken, {
-      id: signupId,
       answers: Object.entries(otherAnswers).map(([questionId, answer]) => ({
         questionId,
         answer:
@@ -130,7 +127,7 @@ export function useSaveSignUpAction() {
 
     if (!updatedSignupResult.ok) {
       if (updatedSignupResult.error === "ilmomasiina-validation-failed") {
-        const fieldErrors = updatedSignupResult.originalError?.errors?.answers
+        const fieldErrors = updatedSignupResult.originalError?.errors.answers
           ? Object.fromEntries(
               Object.entries(
                 updatedSignupResult.originalError.errors.answers,
@@ -188,7 +185,7 @@ export function useDeleteSignUpAction() {
 
     const { signupId, signupEditToken } = data.data;
 
-    const signupResult = await getSignup(signupId, signupEditToken);
+    const signupResult = await getSignup(signupId, signupEditToken, locale);
     const deleteResult = await deleteSignUp(signupId, signupEditToken);
 
     if (!deleteResult.ok) {

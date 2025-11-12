@@ -3,7 +3,7 @@
 import Form from "next/form";
 import { Button, type ButtonProps } from "@tietokilta/ui";
 import { useFormStatus } from "react-dom";
-import { type IlmomasiinaEvent } from "@lib/api/external/ilmomasiina";
+import { type UserEventResponse } from "@tietokilta/ilmomasiina-models";
 import { useSignUp } from "@lib/api/external/ilmomasiina/actions";
 import { cn } from "@lib/utils";
 import { useScopedI18n } from "@locales/client";
@@ -34,7 +34,7 @@ function SignUpButton({
   );
 }
 
-export function SignupButtons({ event }: { event: IlmomasiinaEvent }) {
+export function SignupButtons({ event }: { event: UserEventResponse }) {
   const { signUp } = useSignUp();
   const t = useScopedI18n("action");
 
