@@ -47,6 +47,12 @@ export const MainNavigation: GlobalConfig = {
       filterOptions: filterLogos,
     },
     {
+      name: "enableSystemSevenTheme",
+      type: "checkbox",
+      label: "Enable System Seven Theme",
+      defaultValue: false,
+    },
+    {
       name: "items",
       type: "array",
       required: true,

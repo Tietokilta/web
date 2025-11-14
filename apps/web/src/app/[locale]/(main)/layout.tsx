@@ -12,7 +12,7 @@ import "@tietokilta/ui/global.css";
 import "../globals.css";
 import { getScopedI18n, type Locale } from "@locales/server";
 import { DigiCommitteeRecruitmentAlert } from "@components/digi-committee-recruitment-alert";
-// import "./globals.css";
+import { fetchMainNavigation } from "@lib/api/main-navigation";
 import "./system-seven/system-seven.css";
 import "./system-seven/glitch.css";
 
@@ -77,9 +77,19 @@ export default async function RootLayout(
 
   const { children } = props;
 
+  const mainNav = await fetchMainNavigation(locale)({});
+  const systemSeven = mainNav?.enableSystemSevenTheme ?? false;
+
   return (
     <html lang={locale}>
-      <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
+      <body
+        className={cn(
+          inter.variable,
+          robotoMono.variable,
+          "font-sans",
+          systemSeven && "system-seven-theme",
+        )}
+      >
         <SkipLink />
         <DigiCommitteeRecruitmentAlert />
         <NextTopLoader color="var(--color-gray-100)" showSpinner={false} />

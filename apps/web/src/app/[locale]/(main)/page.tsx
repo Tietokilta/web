@@ -8,7 +8,8 @@ import { fetchLandingPage } from "@lib/api/landing-page";
 import { AnnouncementCard } from "@components/announcement-card";
 import { getCurrentLocale } from "@locales/server";
 import AprilFoolsAlert from "@components/april-fools/april-fools-alert";
-import { type NonNullableKeys } from "@lib/utils";
+import { type NonNullableKeys, cn } from "@lib/utils";
+import { fetchMainNavigation } from "@lib/api/main-navigation";
 
 function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
@@ -39,6 +40,9 @@ export default async function Home(props: {
     throw new Error("Unable to fetch landing page data");
   }
 
+  const mainNav = await fetchMainNavigation(locale)({});
+  const systemSeven = mainNav?.enableSystemSevenTheme ?? false;
+
   const body = landingPageData.body as unknown as EditorState | undefined;
   const announcement = landingPageData.announcement as News | undefined;
   const eventsListPage = landingPageData.eventsListPage as CMSPage | undefined;
@@ -60,12 +64,16 @@ export default async function Home(props: {
         texts={landingPageData.heroTexts
           .map(({ text }) => (typeof text === "string" ? text : null))
           .filter((url): url is string => Boolean(url))}
+        systemSeven={systemSeven}
       />
       {/* Desktop view */}
       <div className="container mx-auto hidden grid-cols-2 gap-12 px-6 py-12 lg:grid">
         <section className="order-first space-y-4">
           <h1
-            className="glitch layers font-mono text-4xl font-bold text-gray-900"
+            className={cn(
+              "font-mono text-4xl font-bold text-gray-900",
+              systemSeven && "glitch layers",
+            )}
             data-text="Tietokilta"
           >
             Tietokilta
@@ -77,6 +85,7 @@ export default async function Home(props: {
           <EventsDisplay
             eventsListPath={eventsListPage?.path ?? undefined}
             currentPage={!isNaN(pageInt) ? pageInt : undefined}
+            systemSeven={systemSeven}
           />
         </div>
       </div>
@@ -87,7 +96,10 @@ export default async function Home(props: {
         </div>
         <section className="space-y-4">
           <h1
-            className="glitch layers font-mono text-4xl font-bold text-gray-900"
+            className={cn(
+              "font-mono text-4xl font-bold text-gray-900",
+              systemSeven && "glitch layers",
+            )}
             data-text="Tietokilta"
           >
             Tietokilta
@@ -97,6 +109,7 @@ export default async function Home(props: {
         <EventsDisplay
           eventsListPath={eventsListPage?.path ?? undefined}
           currentPage={!isNaN(pageInt) ? pageInt : undefined}
+          systemSeven={systemSeven}
         />
       </div>
       <AprilFoolsAlert />

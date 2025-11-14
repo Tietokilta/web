@@ -45,6 +45,7 @@ export async function MobileNav({
       block.blockType === "partners-row",
   );
   const navLogo = mainNav.logo as Media;
+  const systemSeven = mainNav.enableSystemSevenTheme ?? false;
 
   return (
     <header
@@ -54,7 +55,7 @@ export async function MobileNav({
       )}
       {...rest}
     >
-      <LogoLink locale={locale} image={navLogo} />
+      <LogoLink locale={locale} image={navLogo} systemSeven={systemSeven} />
       <Link href={href} className="font-mono text-2xl">
         Tietokilta
       </Link>
