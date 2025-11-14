@@ -14,7 +14,7 @@ import {
 } from "../pagination";
 import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
 import { getCurrentLocale, getI18n } from "../../locales/server";
-import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
+import { formatDateTime, formatDateTimeOptions, cn } from "../../lib/utils";
 import { DateTime } from "../datetime";
 
 function EventListSkeleton() {
@@ -166,9 +166,11 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
 export async function EventsDisplay({
   eventsListPath,
   currentPage,
+  systemSeven,
 }: {
   eventsListPath?: string;
   currentPage?: number;
+  systemSeven?: boolean;
 }) {
   const locale = await getCurrentLocale();
   const t = await getI18n();
@@ -179,7 +181,10 @@ export async function EventsDisplay({
         href={eventsListPath ?? `/${locale}/${t("ilmomasiina.path.events")}`}
       >
         <h2
-          className="glitch layers font-mono text-2xl font-bold text-gray-900"
+          className={cn(
+            "font-mono text-2xl font-bold text-gray-900",
+            systemSeven && "glitch layers",
+          )}
           data-text={t("heading.Upcoming events")}
         >
           {t("heading.Upcoming events")}

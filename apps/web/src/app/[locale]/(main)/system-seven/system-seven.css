@@ -1,146 +1,3 @@
-.wrapper {
-  height: 70vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.header {
-  font-size: 1.5rem;
-  color: #dc2626;
-  text-shadow: 0 0 1rem #dc2626;
-  text-align: center;
-
-  @media (min-width: 640px) {
-    font-size: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 4rem;
-  }
-}
-
-.time {
-  margin: 0rem;
-  font-size: 3rem;
-  color: #dc2626;
-  text-shadow: 0 0 1rem #dc2626;
-
-  @media (min-width: 640px) {
-    font-size: 6rem;
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 8rem;
-  }
-}
-
-.header-container {
-  display: flex;
-  padding: 2rem;
-  width: 40rem;
-  max-width: 100vw;
-  flex-direction: column;
-  align-items: center;
-}
-
-.text-container {
-  display: flex;
-  padding: 2rem;
-  width: 60rem;
-  max-width: calc(100vw - 2rem);
-  flex-direction: column;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
-
-.video-container {
-  padding-top: 10rem;
-  padding-bottom: 10rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.video {
-  max-width: calc(100vw - 4rem);
-  box-shadow: 0 0 2rem 0.5rem #dc2626;
-}
-
-a,
-svg,
-h1,
-h2,
-p,
-li,
-span {
-  color: #dc2626;
-}
-
-img {
-  /* Filter that turns white to red */
-  filter: invert(8%) sepia(96%) saturate(5343%) hue-rotate(354deg)
-    brightness(108%) contrast(103%) !important;
-}
-
-/* Do NOT hue-shift partner logos */
-.partner-logos img {
-  filter: none !important;
-}
-
-/* But keep footer partner logos white on dark background */
-footer .partner-logos img {
-  filter: grayscale(1) invert(1) !important;
-}
-
-img[alt~="Tietokilta"] {
-  /* For some reason the above filter doesn't work on this image */
-  filter: invert(92%) sepia(96%) saturate(5343%) hue-rotate(354deg)
-    brightness(108%) contrast(103%) !important;
-}
-
-img[alt~="SystemSeven"] {
-  filter: none !important;
-}
-
-section {
-  :hover {
-    p,
-    h1,
-    h2,
-    span,
-    a {
-      animation: skew-x-shakeng 4s infinite;
-      animation-delay: 1s;
-      animation-timing-function: steps(1, end);
-    }
-  }
-}
-
-a:hover {
-  opacity: 0.9;
-  text-shadow:
-    0px -4px #ec2225,
-    0px 4px #00c2cb,
-    -4px 0px #ec2225,
-    4px 0px #00c2cb;
-  animation: glitch 12ms ease-in-out infinite;
-  z-index: 1;
-}
-
-a::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: #e0ffff;
-  z-index: -1;
-}
-
 @keyframes glitch {
   0%,
   100% {
@@ -238,20 +95,165 @@ a::before {
   }
 }
 
-section {
-  opacity: 1;
-
-  :hover {
-    opacity: 0;
-    transition: opacity 5s;
-    transition-delay: 5s;
+.system-seven-theme {
+  .wrapper {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
-}
 
-/* This makes the site completely unusable
+  .header {
+    font-size: 1.5rem;
+    color: #dc2626;
+    text-shadow: 0 0 1rem #dc2626;
+    text-align: center;
+
+    @media (min-width: 640px) {
+      font-size: 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 4rem;
+    }
+  }
+
+  .time {
+    margin: 0rem;
+    font-size: 3rem;
+    color: #dc2626;
+    text-shadow: 0 0 1rem #dc2626;
+
+    @media (min-width: 640px) {
+      font-size: 6rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 8rem;
+    }
+  }
+
+  .header-container {
+    display: flex;
+    padding: 2rem;
+    width: 40rem;
+    max-width: 100vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-container {
+    display: flex;
+    padding: 2rem;
+    width: 60rem;
+    max-width: calc(100vw - 2rem);
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .video-container {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video {
+    max-width: calc(100vw - 4rem);
+    box-shadow: 0 0 2rem 0.5rem #dc2626;
+  }
+
+  a,
+  svg,
+  h1,
+  h2,
+  p,
+  li,
+  span {
+    color: #dc2626;
+  }
+
+  img {
+    /* Filter that turns white to red */
+    filter: invert(8%) sepia(96%) saturate(5343%) hue-rotate(354deg)
+      brightness(108%) contrast(103%) !important;
+  }
+
+  /* Do NOT hue-shift partner logos */
+  .partner-logos img {
+    filter: none !important;
+  }
+
+  /* But keep footer partner logos white on dark background */
+  footer .partner-logos img {
+    filter: grayscale(1) invert(1) !important;
+  }
+
+  img[alt~="Tietokilta"] {
+    /* For some reason the above filter doesn't work on this image */
+    filter: invert(92%) sepia(96%) saturate(5343%) hue-rotate(354deg)
+      brightness(108%) contrast(103%) !important;
+  }
+
+  img[alt~="SystemSeven"] {
+    filter: none !important;
+  }
+
+  section {
+    :hover {
+      p,
+      h1,
+      h2,
+      span,
+      a {
+        animation: skew-x-shakeng 4s infinite;
+        animation-delay: 1s;
+        animation-timing-function: steps(1, end);
+      }
+    }
+  }
+
+  a:hover {
+    opacity: 0.9;
+    text-shadow:
+      0px -4px #ec2225,
+      0px 4px #00c2cb,
+      -4px 0px #ec2225,
+      4px 0px #00c2cb;
+    animation: glitch 12ms ease-in-out infinite;
+    z-index: 1;
+  }
+
+  a::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #e0ffff;
+    z-index: -1;
+  }
+
+  section {
+    opacity: 1;
+
+    :hover {
+      opacity: 0;
+      transition: opacity 5s;
+      transition-delay: 5s;
+    }
+  }
+
+  /* This makes the site completely unusable
 section {
   :hover {
     display: none;
   }
 }
 */
+}

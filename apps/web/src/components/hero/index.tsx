@@ -66,24 +66,28 @@ function ImageWithCitation({
 export function Hero({
   images,
   texts,
+  systemSeven,
 }: {
   images: ImageWithPhotographer[];
   texts: string[];
+  systemSeven?: boolean;
 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(
     new Date().getUTCDate() % images.length,
   );
 
-  // eslint-disable-next-line no-param-reassign -- Syse code go brr
-  texts = [
-    "The destruction is near",
-    "Join System Seven today!",
-    "Maximize your potential",
-    "Productivity is the key to success",
-    "Stop the slack",
-    "Work hard, play hard",
-    "Down with the guild!",
-  ];
+  if (systemSeven) {
+    // eslint-disable-next-line no-param-reassign -- Syse code go brr
+    texts = [
+      "The destruction is near",
+      "Join System Seven today!",
+      "Maximize your potential",
+      "Productivity is the key to success",
+      "Stop the slack",
+      "Work hard, play hard",
+      "Down with the guild!",
+    ];
+  }
 
   const [currentText, setCurrentText] = useState(texts[0]);
   // eslint-disable-next-line react/hook-use-state -- prev index used directly in the setter

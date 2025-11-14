@@ -10,6 +10,8 @@ import { getCurrentLocale, getScopedI18n } from "../locales/server";
 import { CalendarSubButton } from "../components/calendar-sub-button";
 import EventCard from "../components/event-card";
 import EventCalendar from "./event-calendar";
+import { fetchMainNavigation } from "../lib/api/main-navigation";
+import { cn } from "../lib/utils";
 
 async function Calendar({ events }: { events: UserEventListResponse }) {
   const t = await getScopedI18n("ilmomasiina");
@@ -36,6 +38,8 @@ export default async function Page() {
   const locale = await getCurrentLocale();
   const events = await fetchEvents(locale);
   const upcomingEvents = await fetchUpcomingEvents(locale);
+  const mainNav = await fetchMainNavigation(locale)({});
+  const systemSeven = mainNav?.enableSystemSevenTheme ?? false;
 
   if (!events.ok || !upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know
@@ -52,7 +56,7 @@ export default async function Page() {
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{ta("Back")}</BackButton>
           <h1
-            className="glitch layers font-mono text-4xl"
+            className={cn("font-mono text-4xl", systemSeven && "glitch layers")}
             data-text={t("Tapahtumat")}
           >
             {t("Tapahtumat")}

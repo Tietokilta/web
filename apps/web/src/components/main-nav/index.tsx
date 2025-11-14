@@ -21,6 +21,7 @@ export async function MainNav({
   const rightLinks = links.slice(middleIndex);
 
   const logo = mainNav.logo as Media;
+  const systemSeven = mainNav.enableSystemSevenTheme ?? false;
 
   return (
     <NavigationMenu
@@ -29,7 +30,7 @@ export async function MainNav({
     >
       <NavigationMenuList>
         <LinkList links={leftLinks} />
-        <LogoLink image={logo} />
+        <LogoLink image={logo} systemSeven={systemSeven} />
         <LinkList links={rightLinks} />
         <LanguageSelector />
       </NavigationMenuList>
