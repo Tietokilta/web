@@ -56,6 +56,7 @@ const saveSignUpSchema = z
   .and(z.record(z.string(), z.string().or(z.string().array())));
 
 export function useSaveSignUpAction() {
+  const router = useRouter();
   const locale = useCurrentLocale();
   const t = useScopedI18n("errors");
 
@@ -153,6 +154,7 @@ export function useSaveSignUpAction() {
       };
     }
 
+    router.refresh();
     return {
       success: true,
     };
