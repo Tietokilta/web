@@ -27,6 +27,7 @@ import {
 } from "@lib/api/external/ilmomasiina/actions";
 import { useScopedI18n } from "@locales/client";
 import { cn } from "@lib/utils";
+import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
 
@@ -215,6 +216,7 @@ function Form({
   deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
   const t = useScopedI18n("ilmomasiina.form");
+  const isAndroidFirefox = useIsAndroidFirefox();
 
   const [state, formAction] = useActionState(saveAction, null);
   const isSignupPeriodEnded =
@@ -242,6 +244,7 @@ function Form({
   return (
     <NextForm
       action={formAction}
+      noValidate={isAndroidFirefox}
       className="w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 shadow-solid md:px-6 md:py-8"
     >
       <input type="hidden" name="signupId" value={signupId} />
