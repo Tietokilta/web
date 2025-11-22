@@ -14,6 +14,7 @@ import {
 } from "react";
 import Form from "next/form";
 import { toast } from "sonner";
+import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 import {
   I18nProviderClient,
   useCurrentLocale,
@@ -301,6 +302,7 @@ function InvoiceGeneratorForm() {
   const [state, formAction] = useActionState(SaveAction, null);
   const t = useScopedI18n("invoicegenerator");
   const formRef = useRef<HTMLFormElement>(null);
+  const isAndroidFirefox = useIsAndroidFirefox();
 
   // Form submission handler that doesn't reset the form
   // https://github.com/facebook/react/issues/29034#issuecomment-2143595195
@@ -365,6 +367,7 @@ function InvoiceGeneratorForm() {
     <Form
       className="w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 shadow-solid md:px-6 md:py-8"
       ref={formRef}
+      noValidate={isAndroidFirefox}
       // Use `onSubmit` instead of `action` to prevent form reset
       onSubmit={handleSubmit}
       // `action` is a required prop anyway
