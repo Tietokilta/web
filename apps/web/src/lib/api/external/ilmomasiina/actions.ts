@@ -6,7 +6,7 @@ import {
   QuestionType,
   type SignupCreateResponse,
 } from "@tietokilta/ilmomasiina-models";
-import { useCurrentLocale, useScopedI18n } from "../../../../locales/client";
+import { useCurrentLocale, useScopedI18n } from "@locales/client";
 import { baseUrl, deleteSignUp, getSignup, patchSignUp } from ".";
 
 export function useSignUp() {
@@ -128,19 +128,37 @@ export function useSaveSignUpAction() {
 
     if (!updatedSignupResult.ok) {
       if (updatedSignupResult.error === "ilmomasiina-validation-failed") {
-        const fieldErrors = updatedSignupResult.originalError?.errors.answers
-          ? Object.fromEntries(
-              Object.entries(
-                updatedSignupResult.originalError.errors.answers,
-              ).map(([questionId, error]) => [questionId, [error]]),
-            )
-          : {};
+        const originalErrors = updatedSignupResult.originalError?.errors;
+
+        const fieldErrors: Record<string, string[]> = Object.fromEntries(
+          [
+            originalErrors?.email
+              ? ["email", [t(`ilmo.fieldError.${originalErrors.email}`)]]
+              : null,
+            originalErrors?.firstName
+              ? [
+                  "firstName",
+                  [t(`ilmo.fieldError.${originalErrors.firstName}`)],
+                ]
+              : null,
+            originalErrors?.lastName
+              ? ["lastName", [t(`ilmo.fieldError.${originalErrors.lastName}`)]]
+              : null,
+            ...Object.entries(originalErrors?.answers ?? {}).map(
+              ([questionId, error]) => [
+                questionId,
+                [t(`ilmo.fieldError.${error}`)],
+              ],
+            ),
+          ].filter((entry): entry is [string, string[]] => entry !== null),
+        );
 
         return {
           errors: {
             _form: [
-              t(updatedSignupResult.error),
-              updatedSignupResult.originalError?.message,
+              updatedSignupResult.originalError?.code
+                ? t(`ilmo.code.${updatedSignupResult.originalError.code}`)
+                : t(updatedSignupResult.error),
             ].filter((x): x is string => !!x),
             ...fieldErrors,
           },
