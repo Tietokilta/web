@@ -267,7 +267,7 @@ function Form({
             className="w-full max-w-sm text-red-600"
             aria-live="polite"
           >
-            {state.errors._form.join(", ")}
+            {new Intl.ListFormat().format(state.errors._form)}
           </p>
         ) : null}
 
