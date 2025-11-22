@@ -21,12 +21,11 @@ import {
 import { useFormStatus } from "react-dom";
 import { useActionState, useEffect } from "react";
 import NextForm from "next/form";
-import Link from "next/link";
 import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
-import { useCurrentLocale, useScopedI18n } from "@locales/client";
+import { useScopedI18n } from "@locales/client";
 import { cn } from "@lib/utils";
 
 type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
@@ -215,10 +214,8 @@ function Form({
   saveAction: ReturnType<typeof useSaveSignUpAction>["saveSignUpAction"];
   deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
-  const locale = useCurrentLocale();
   const t = useScopedI18n("ilmomasiina.form");
-  const tp = useScopedI18n("ilmomasiina.path");
-  const ta = useScopedI18n("action");
+
   const [state, formAction] = useActionState(saveAction, null);
   const isSignupPeriodEnded =
     !!event.registrationEndDate &&
@@ -251,16 +248,15 @@ function Form({
       <input type="hidden" name="signupEditToken" value={signupEditToken} />
 
       <div className="flex flex-col items-center gap-4 *:scroll-mt-24">
-        <p data-form-status className="w-full max-w-sm" aria-live="polite">
-          <Link href={`/${locale}/${tp("events")}/${event.slug}`}>
-            <Button type="button" variant="backLink">
-              {ta("Back")}
-            </Button>
-          </Link>
-          {state?.success ? (
-            <p className="text-green-600">{t("Sign up saved")}</p>
-          ) : null}
-        </p>
+        {state?.success ? (
+          <p
+            data-form-status
+            className="w-full max-w-sm text-green-600"
+            aria-live="polite"
+          >
+            {t("Sign up saved")}
+          </p>
+        ) : null}
 
         {state?.errors?._form ? (
           <p

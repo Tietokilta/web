@@ -1,6 +1,9 @@
 /* eslint-disable no-nested-ternary -- I like */
 import { notFound } from "next/navigation";
 import { SignupStatus } from "@tietokilta/ilmomasiina-models";
+import Link from "next/link";
+import { Button } from "@tietokilta/ui";
+import { type Metadata } from "next";
 import { getSignup } from "@lib/api/external/ilmomasiina";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
 import { I18nProviderClient } from "@locales/client";
@@ -13,7 +16,7 @@ interface PageProps {
   }>;
 }
 
-export const generateMetadata = async (props: PageProps) => {
+export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   const params = await props.params;
 
   const { signupId, signupEditToken } = params;
@@ -52,6 +55,8 @@ export default async function Page(props: PageProps) {
   }
 
   const t = await getScopedI18n("ilmomasiina.form");
+  const tp = await getScopedI18n("ilmomasiina.path");
+  const ta = await getScopedI18n("action");
 
   return (
     <main
@@ -59,6 +64,13 @@ export default async function Page(props: PageProps) {
       className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
     >
       <div className="relative flex max-w-4xl flex-col items-center gap-8 p-4 md:p-6">
+        <Button className="self-start" type="button" variant="backLink" asChild>
+          <Link
+            href={`/${locale}/${tp("events")}/${signupInfo.data.event.slug}`}
+          >
+            {ta("Back")}
+          </Link>
+        </Button>
         <hgroup className="space-y-4 text-pretty">
           <h1 className="font-mono text-2xl md:text-4xl">
             {t("Edit sign up")} - {signupInfo.data.event.title}
