@@ -1,6 +1,11 @@
 {
   "name": "@tietokilta/ui",
   "version": "0.0.0-alpha.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tietokilta/web.git",
+    "directory": "packages/ui"
+  },
   "license": "MIT",
   "sideEffects": [
     "*.css"
