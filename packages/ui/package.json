@@ -1,26 +1,40 @@
 {
   "name": "@tietokilta/ui",
-  "version": "0.0.0-alpha.5",
+  "version": "0.0.0-alpha.6",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tietokilta/web.git",
+    "url": "git+https://github.com/Tietokilta/web.git",
     "directory": "packages/ui"
   },
   "license": "MIT",
   "sideEffects": [
     "*.css"
   ],
+  "type": "commonjs",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
-    "./global.css": "./dist/global.css",
+    "./global.css": {
+      "types": "./dist/global.d.ts",
+      "default": "./dist/global.css"
+    },
     "./preset": {
-      "types": "./dist/preset.d.ts",
-      "import": "./dist/preset.mjs",
-      "require": "./dist/preset.js"
+      "import": {
+        "types": "./dist/preset.d.mts",
+        "default": "./dist/preset.mjs"
+      },
+      "require": {
+        "types": "./dist/preset.d.ts",
+        "default": "./dist/preset.js"
+      }
     },
     "./*": {
       "types": "./dist/*",
