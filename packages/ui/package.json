@@ -1,7 +1,6 @@
 {
   "name": "@tietokilta/ui",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.0-alpha.3",
   "license": "MIT",
   "sideEffects": [
     "*.css"
@@ -75,5 +74,9 @@
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "catalog:"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
