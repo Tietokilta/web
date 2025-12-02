@@ -63,6 +63,43 @@ jobs:
       - name: Build all
         run: pnpm build
 
+  publish-npm:
+    name: Publish @tietokilta/ui to npm
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    # Publish on main branch pushes
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v5
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js for npm (OIDC)
+        uses: actions/setup-node@v5
+        with:
+          node-version-file: package.json
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Update npm to latest (required for OIDC)
+        run: npm install -g npm@^11
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build UI package
+        run: pnpm --filter @tietokilta/ui build
+
+      - name: Publish @tietokilta/ui (alpha and latest)
+        run: |
+          # Publish with both tags since there are no non-alpha releases yet
+          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --tag alpha --tag latest
+
   docker-build-and-push:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
     needs: build
