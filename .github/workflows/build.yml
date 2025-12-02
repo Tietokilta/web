@@ -97,7 +97,7 @@ jobs:
 
       - name: Publish @tietokilta/ui (alpha and latest)
         run: |
-          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag alpha --tag latest --access public
+          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag alpha --tag latest
 
   docker-build-and-push:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
