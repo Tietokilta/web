@@ -1,6 +1,6 @@
 # `@tietokilta/ui`
 
-Reusable React UI components built with Tailwind CSS and shadcn/ui. Designed to drop into any React + Tailwind project.
+Reusable React UI components built with Tailwind CSS v4 and shadcn/ui. Designed to drop into any React + Tailwind v4 project.
 
 ## Install
 
@@ -8,77 +8,58 @@ Reusable React UI components built with Tailwind CSS and shadcn/ui. Designed to 
 # with pnpm
 pnpm add @tietokilta/ui react react-dom
 
-# Tailwind + PostCSS peers (dev)
-pnpm add -D tailwindcss postcss @tailwindcss/postcss tailwindcss-animate @tailwindcss/typography
+# Tailwind CSS v4 (peer dependency)
+pnpm add -D tailwindcss @tailwindcss/vite
 ```
 
 Required peer dependencies:
 
 - `react`, `react-dom`
-- `tailwindcss`, `postcss`, `@tailwindcss/postcss`
-- `tailwindcss-animate`, `@tailwindcss/typography`
+- `tailwindcss` v4.0+
 
-## Tailwind setup
+## Setup
 
-Use the included preset for automatic configuration, or manually configure if you need more control.
+### 1. Add Vite plugin (or your bundler's equivalent)
 
-### Option 1: Using the preset (recommended)
+```ts
+// vite.config.ts
+import tailwindcss from "@tailwindcss/vite";
 
-```js
-// tailwind.config.js
-import { preset } from "@tietokilta/ui/preset";
-
-/** @type {import('tailwindcss').Config} */
 export default {
-  presets: [preset],
-  content: ["./src/**/*.{ts,tsx,js,jsx}"],
-  // Your customizations automatically extend the preset
+  plugins: [tailwindcss()],
 };
 ```
 
-### Option 2: Manual configuration
-
-```js
-// tailwind.config.js
-import tietokiltaUI from "@tietokilta/ui";
-
-/** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./src/**/*.{ts,tsx,js,jsx}",
-    "./node_modules/@tietokilta/ui/dist/**/*.{js,mjs}",
-  ],
-  plugins: [
-    tietokiltaUI,
-    require("@tailwindcss/typography"),
-    require("tailwindcss-animate"),
-  ],
-};
-```
-
-Notes:
-
-- The preset automatically includes component paths and the custom plugin
-- The plugin adds utilities like `content-alt` and `content-alt-empty`
-- Design tokens: the package ships default CSS variables (colors, shadows, fonts) in its global stylesheet. You only need to define your own `--color-*` / `--box-shadow-*` variables if you want to customize the theme
-
-## Global CSS
-
-Include Tailwind and the package styles in your global CSS file.
+### 2. Import CSS in your global styles
 
 ```css
-/* src/styles/globals.css */
+/* app/globals.css */
 @import "tailwindcss";
 
-/* UI package global styles (includes default design tokens) */
+/* Import UI package theme and utilities */
 @import "@tietokilta/ui/global.css";
 
-/* Optional: override tokens to match your brand */
+/* Scan UI package components for Tailwind classes */
+@source "../../node_modules/@tietokilta/ui/dist/**/*.{js,mjs}";
+
+/* Optional: override design tokens */
 :root {
   /* Example: change primary color */
-  /* --color-primary-500: #2563eb; */
+  /* --color-primary-500: #custom-color; */
 }
 ```
+
+That's it! No `tailwind.config.js` needed.
+
+### How it works
+
+The package uses Tailwind v4's CSS-first configuration:
+
+- **`@theme inline`** - Design tokens (colors, shadows, fonts) are defined in CSS
+- **`@source`** - Tells Tailwind to scan the UI package for utility classes
+- **`@layer utilities`** - Custom utilities like `content-alt-empty` are defined in CSS
+
+You can customize any design token by overriding the CSS variables in your own `:root` block.
 
 ## Usage
 
@@ -131,6 +112,7 @@ See the full list in the TypeScript definitions.
 
 ## Troubleshooting
 
-- Missing styles: ensure `content` includes your app code and `node_modules/@tietokilta/ui/dist`.
-- Unknown CSS variables: define the `--color-*` and `--box-shadow-*` tokens in global CSS.
-- Type errors: install `@types/react`/`@types/react-dom` if using TypeScript.
+- **Missing styles**: Ensure `@source` includes the UI package dist folder: `@source "../../node_modules/@tietokilta/ui/dist/**/*.{js,mjs}"`
+- **Unknown CSS variables**: Make sure you've imported `@import "@tietokilta/ui/global.css"` in your global CSS file
+- **Build errors**: Ensure you're using Tailwind CSS v4+ and have the `@tailwindcss/vite` plugin configured
+- **Type errors**: Install `@types/react`/`@types/react-dom` if using TypeScript

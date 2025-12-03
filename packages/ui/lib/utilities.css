@@ -1,0 +1,26 @@
+/**
+ * Custom Tailwind utilities for @tietokilta/ui
+ *
+ * These utilities provide accessible content for screen readers
+ * while displaying alternative visual content.
+ */
+
+@layer utilities {
+  /* Accessible content with visual alternative */
+  .content-alt-empty {
+    @supports (content: "x" / "y") {
+      content: var(--tw-content) / '';
+    }
+  }
+}
+
+/*
+ * Dynamic content-alt-* utilities
+ * Usage: content-alt-[value] where value is the accessible text
+ * Example: content-alt-['Accessible text']
+ */
+@utility content-alt-* {
+  @supports (content: "x" / "y") {
+    content: var(--tw-content) / *;
+  }
+}

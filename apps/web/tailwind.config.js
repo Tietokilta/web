@@ -1,25 +1,17 @@
-import path from "node:path";
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-import defaultTheme from "tailwindcss/defaultTheme.js";
-import tailwindcssAnimate from "tailwindcss-animate";
-import tietokiltaUI from "@tietokilta/ui";
-import tailwindcssTypography from "@tailwindcss/typography";
+/**
+ * Tailwind CSS v4 Hybrid Configuration
+ *
+ * This config is only used for complex typography customization.
+ * All other configuration (theme, plugins, content) is handled in globals.css
+ */
 
-const sans = ["var(--font-inter)", ...defaultTheme.fontFamily.sans];
-const mono = ["var(--font-roboto-mono)", ...defaultTheme.fontFamily.mono];
+const sans = "var(--font-inter), ui-sans-serif, system-ui, sans-serif";
+const mono = "var(--font-roboto-mono), ui-monospace, monospace";
+
 /** @type {import("tailwindcss").Config} */
 export default {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    path.join(path.dirname(require.resolve("@tietokilta/ui")), "**/*.js"),
-  ],
   theme: {
     extend: {
-      fontFamily: {
-        sans,
-        mono,
-      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
@@ -209,5 +201,4 @@ export default {
       }),
     },
   },
-  plugins: [tietokiltaUI, tailwindcssAnimate, tailwindcssTypography],
 };

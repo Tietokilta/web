@@ -1,6 +1,19 @@
 @import "tailwindcss";
 
+/* Import UI package theme and utilities */
+@import "@tietokilta/ui/global.css";
+
+/* Import animations (shadcn/ui v4 recommendation) */
+@import "tw-animate-css";
+
+/* Import typography plugin */
+@plugin "@tailwindcss/typography";
+
+/* Use JavaScript config for complex typography customization (hybrid approach) */
 @config "../../../tailwind.config.js";
+
+/* Scan UI package components for Tailwind classes */
+@source "../../node_modules/@tietokilta/ui/dist/**/*.{js,mjs}";
 
 @utility scroll-shadows {
   background:

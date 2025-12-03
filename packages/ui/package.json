@@ -22,20 +22,7 @@
         "default": "./dist/index.js"
       }
     },
-    "./global.css": {
-      "types": "./dist/global.d.ts",
-      "default": "./dist/global.css"
-    },
-    "./preset": {
-      "import": {
-        "types": "./dist/preset.d.mts",
-        "default": "./dist/preset.mjs"
-      },
-      "require": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
-      }
-    },
+    "./global.css": "./lib/global.css",
     "./*": {
       "types": "./dist/*",
       "import": "./dist/*",
@@ -53,10 +40,11 @@
     }
   },
   "files": [
-    "dist/**"
+    "dist/**",
+    "lib/*.css"
   ],
   "scripts": {
-    "build": "tsup lib/index.tsx lib/global.css lib/preset.ts --format esm,cjs --dts --external react",
+    "build": "tsup lib/index.tsx --format esm,cjs --dts --external react",
     "clean": "rm -rf dist",
     "dev": "tsup lib/index.tsx --format esm,cjs --watch --dts --external react",
     "lint": "eslint lib/",
