@@ -5,15 +5,17 @@ import {
   type LaskugeneraattoriRequest,
 } from "./index";
 
-type ErrorArray = [
-  string,
+type PathSegment = ["key", string] | ["index", number];
+
+type ErrorTuple = [
+  PathSegment[],
   {
     message: string;
   },
-][];
+];
 
 interface ErrorResponse {
-  errors?: ErrorArray;
+  errors?: ErrorTuple[];
 }
 
 // https://stackoverflow.com/a/22015930
@@ -101,7 +103,7 @@ export async function SaveAction(
 
   const body = await res.text();
 
-  function tryParse(): ErrorArray {
+  function tryParse(): ErrorTuple[] {
     try {
       const errorResponse = JSON.parse(body) as ErrorResponse;
       return errorResponse.errors ?? [];
@@ -110,17 +112,26 @@ export async function SaveAction(
     }
   }
 
-  const errors: string[][] = tryParse().map((error) => [
-    error[0].startsWith("data.") ? error[0].substring(5) : error[0],
-    error[1].message,
-  ]);
+  const rawErrors = tryParse();
+  const parsedErrors: Record<string, string> = {};
+
+  for (const [path, errorDetail] of rawErrors) {
+    let key = "";
+    for (const [segmentType, segmentValue] of path) {
+      if (segmentType === "key") {
+        if (segmentValue === "data" && key === "") continue;
+        if (key !== "") key += ".";
+        key += segmentValue;
+      } else if (segmentType === "index") {
+        key += `[${segmentValue}]`;
+      }
+    }
+    parsedErrors[key] = errorDetail.message;
+  }
 
   return {
     success: false,
     errorText: body,
-    errors: errors.reduce(
-      (obj, error) => ({ ...obj, [error[0]]: error[1] }),
-      {},
-    ),
+    errors: parsedErrors,
   };
 }
