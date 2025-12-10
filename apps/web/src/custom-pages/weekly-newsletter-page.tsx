@@ -25,7 +25,7 @@ async function NewsItemContent({ item }: { item: NewsItem }) {
   const content = item.content as unknown as EditorState | null;
 
   return (
-    <div className="prose max-w-prose hyphens-auto text-pretty prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
+    <div className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
       {item.linkToSignUp ? (
         <Link
           // Do not create relative links
@@ -65,7 +65,7 @@ function NewsletterCategory({
   if (newsItems.length === 0) return null;
 
   return (
-    <section className="prose max-w-prose hyphens-auto text-pretty prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
+    <section className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
       <h2 className="font-mono text-2xl" id={stringToId(title)}>
         {title}
       </h2>
@@ -96,7 +96,7 @@ async function Calendar({
   }
 
   return (
-    <section className="prose max-w-prose hyphens-auto text-pretty prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
+    <section className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
       <h2 id={stringToId(t("calendar"))}>{t("calendar")}</h2>
       {eventsThisWeek.length > 0 ? (
         <div>
@@ -154,7 +154,7 @@ function Greetings({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <div className="prose max-w-prose hyphens-auto text-pretty prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
+    <div className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
       <LexicalSerializer nodes={content.root.children} />
     </div>
   );
@@ -308,7 +308,7 @@ export default async function Page({ slug }: { slug?: string }) {
           />
         </div>
 
-        <footer className="prose max-w-prose hyphens-auto text-pretty prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
+        <footer className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
           <p>
             {t("read")} <a href={`/${locale}/${t("path")}`}>{t("old-link")}</a>
           </p>

@@ -7,24 +7,24 @@ import { cn } from "../../utils";
  * Adds button styles to any component, for use with Next.js <Link /> components.
  */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center text-pretty rounded-md font-mono text-sm font-bold ring-offset-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center rounded-md font-mono text-sm font-bold text-pretty ring-offset-gray-100 transition-colors focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         default:
-          "hover:bg-primary-600/90 border-2 border-gray-900 bg-primary-500 text-primary-900 shadow-solid",
+          "border-2 border-gray-900 bg-primary-500 text-primary-900 shadow-solid hover:bg-primary-600/90",
         destructive:
-          "hover:bg-danger-500/90 border-2 border-gray-900 bg-danger-500 text-danger-100 shadow-solid",
+          "border-2 border-gray-900 bg-danger-500 text-danger-100 shadow-solid hover:bg-danger-500/90",
         outline:
-          "hover:bg-gray-300/90 border-2 border-gray-900 hover:border-gray-800 hover:text-gray-800",
+          "border-2 border-gray-900 hover:border-gray-800 hover:bg-gray-300/90 hover:text-gray-800",
         secondary:
-          "hover:bg-gray-300/80 border-2 border-gray-900 bg-gray-200 text-gray-800 shadow-solid",
+          "border-2 border-gray-900 bg-gray-200 text-gray-800 shadow-solid hover:bg-gray-300/80",
         ghost: "hover:bg-gray-100",
         link: "justify-between rounded-none border-b-2 border-gray-900 text-gray-900 after:ml-2 after:content-['>>'] after:content-alt-empty hover:after:translate-x-1 aria-[current='page']:shadow-underline aria-[current='page']:after:content-['xx'] aria-[current='page']:after:content-alt-empty aria-[current='page']:hover:after:translate-x-0",
         backLink:
           "justify-between rounded-none text-gray-900 before:mr-2 before:content-['<<'] before:content-alt-empty hover:before:-translate-x-1 aria-[current='page']:shadow-underline aria-[current='page']:before:content-['xx'] aria-[current='page']:before:content-alt-empty aria-[current='page']:hover:before:translate-x-0",
         outlineLink:
-          "hover:bg-gray-300/90 border-2 border-gray-900 shadow-solid hover:border-gray-800",
+          "border-2 border-gray-900 shadow-solid hover:border-gray-800 hover:bg-gray-300/90",
       },
       size: {
         default: "h-10 px-4 py-2",

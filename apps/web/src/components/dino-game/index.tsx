@@ -436,7 +436,7 @@ export function DinoGame() {
       />
       {Boolean(hasEnded) && (
         <button
-          className="absolute left-1/2 top-1/2 z-10 w-1/12 -translate-x-1/2 -translate-y-1/2"
+          className="absolute top-1/2 left-1/2 z-10 w-1/12 -translate-x-1/2 -translate-y-1/2"
           onClick={handleClick}
           type="button"
         >

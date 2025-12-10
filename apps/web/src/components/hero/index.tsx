@@ -52,7 +52,7 @@ function ImageWithCitation({
       <footer className="contents">
         <cite
           className={cn(
-            "absolute right-2 top-0 text-gray-100 opacity-50",
+            "absolute top-0 right-2 text-gray-100 opacity-50",
             isCurrentImage ? "block" : "hidden",
           )}
         >
@@ -112,9 +112,9 @@ export function Hero({
           isCurrentImage={imageIndex === currentImageIndex}
         />
       ))}
-      <div className="container z-20 mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-3xl lg:text-4xl">
+      <div className="z-20 container mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-3xl lg:text-4xl">
         <p
-          className="line-clamp-4 w-full max-w-2xl break-words pb-2 lg:w-1/2"
+          className="line-clamp-4 w-full max-w-2xl pb-2 break-words lg:w-1/2"
           ref={ref}
         />
       </div>

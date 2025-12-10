@@ -25,7 +25,7 @@ export default async function Page() {
           <h1 className="text-4xl font-bold">{t("title")}</h1>
           {weeklyNewsletters.map((newsletter) => (
             <Link
-              className="not-prose hover:bg-gray-300/90 my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 shadow-solid hover:border-gray-800"
+              className="not-prose my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 shadow-solid hover:border-gray-800 hover:bg-gray-300/90"
               data-relation
               href={`/${locale}/${t("path")}/${newsletter.slug ?? "#no-path"}`}
               key={newsletter.id}

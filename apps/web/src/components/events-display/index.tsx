@@ -36,7 +36,7 @@ async function EventItem({ event }: { event: UserEventListItem }) {
   return (
     <li className="flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 shadow-solid md:flex-row md:items-center">
       <div className="flex-1 shrink-0">
-        <span className="block text-pretty text-lg font-bold">
+        <span className="block text-lg font-bold text-pretty">
           {event.title}
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
@@ -53,11 +53,11 @@ async function EventItem({ event }: { event: UserEventListItem }) {
       <div className="flex shrink-0 flex-col font-medium md:w-2/5">
         {event.date ? (
           <time
-            className="line-clamp-2 text-pretty pl-5"
+            className="line-clamp-2 pl-5 text-pretty"
             dateTime={event.date}
             // title={formatDateTime(event.date, locale)}
           >
-            <ClockIcon className="-ml-5 mr-1 inline-block size-4" />
+            <ClockIcon className="mr-1 -ml-5 inline-block size-4" />
             <DateTime
               as="span"
               rawDate={event.date}
@@ -68,10 +68,10 @@ async function EventItem({ event }: { event: UserEventListItem }) {
         ) : null}
         {event.location ? (
           <span
-            className="line-clamp-3 text-pretty pl-5"
+            className="line-clamp-3 pl-5 text-pretty"
             title={event.location}
           >
-            <MapPinIcon className="-ml-5 mr-1 inline-block size-4" />
+            <MapPinIcon className="mr-1 -ml-5 inline-block size-4" />
             <span>{event.location}</span>
           </span>
         ) : null}

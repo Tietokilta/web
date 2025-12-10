@@ -22,7 +22,7 @@ const SheetOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
-      "bg-gray-100/80 fixed inset-0 z-50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-gray-100/80 backdrop-blur-sm data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:animate-in data-[state=open]:fade-in-0",
       className,
     )}
     {...props}
@@ -32,7 +32,7 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  "fixed z-50 gap-4 border-gray-900 bg-gray-100 transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
+  "fixed z-50 gap-4 border-gray-900 bg-gray-100 transition ease-in-out data-[state=closed]:duration-300 data-[state=closed]:animate-out data-[state=open]:duration-500 data-[state=open]:animate-in",
   {
     variants: {
       side: {
@@ -81,7 +81,7 @@ const SheetContent = React.forwardRef<
         {...props}
       >
         {children}
-        <SheetPrimitive.Close className="absolute right-4 top-4 -m-2 rounded-full p-2 hover:bg-gray-300 focus:ring-2 focus:ring-gray-900 focus-visible:outline-none disabled:pointer-events-none data-[state=open]:bg-gray-900">
+        <SheetPrimitive.Close className="absolute top-4 right-4 -m-2 rounded-full p-2 hover:bg-gray-300 focus:ring-2 focus:ring-gray-900 focus-visible:outline-none disabled:pointer-events-none data-[state=open]:bg-gray-900">
           <XIcon className="size-6" />
           <span className="sr-only">{closeLabel ?? "Close"}</span>
         </SheetPrimitive.Close>
