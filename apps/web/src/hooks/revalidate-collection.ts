@@ -25,10 +25,10 @@ export function revalidateCollection<T extends TypeWithID>(
     }
 
     req.payload.logger.info(`revalidating ${collectionSlug}`);
-    revalidateTag(`collection-${collectionSlug}`);
+    revalidateTag(`collection-${collectionSlug}`, "max");
     if (collectionSlug !== "pages") {
       req.payload.logger.info(`revalidating pages`);
-      revalidateTag("collection-pages");
+      revalidateTag("collection-pages", "max");
     }
     revalidatePath("/[locale]/[...path]", "page");
 
