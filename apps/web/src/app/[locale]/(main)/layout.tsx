@@ -11,6 +11,7 @@ import { cn } from "@lib/utils";
 import "@tietokilta/ui/global.css";
 import "../globals.css";
 import { getScopedI18n, type Locale } from "@locales/server";
+import I18nProvider from "@components/i18n-provider";
 import { DigiCommitteeRecruitmentAlert } from "@components/digi-committee-recruitment-alert";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -71,6 +72,9 @@ export default async function RootLayout(
   const params = await props.params;
 
   const { locale } = params;
+  const messages: Record<string, string> = (
+    await import(`../../locales/${locale}`)
+  ).default;
 
   const { children } = props;
 
@@ -80,13 +84,15 @@ export default async function RootLayout(
         <SkipLink />
         <DigiCommitteeRecruitmentAlert />
         <NextTopLoader color="var(--color-gray-100)" showSpinner={false} />
-        <div className="flex min-h-screen flex-col">
+        <I18nProvider locale={locale} messages={messages}>
+          <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
           <MainNav className="sticky top-0 z-50 hidden lg:block" />
           <div className="min-h-screen flex-1">{children}</div>
           <Toaster richColors />
           <Footer />
-        </div>
+          </div>
+        </I18nProvider>
       </body>
     </html>
   );

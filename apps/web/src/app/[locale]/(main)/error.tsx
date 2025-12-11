@@ -1,11 +1,7 @@
 "use client";
 
 import { Button, Card } from "@tietokilta/ui";
-import {
-  I18nProviderClient,
-  useCurrentLocale,
-  useScopedI18n,
-} from "@locales/client";
+import { NextIntlClientProvider, useLocale, useTranslations } from "@locales/client";
 
 function Error({
   error,
@@ -14,7 +10,7 @@ function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const t = useScopedI18n("error");
+  const t = useTranslations("error");
 
   return (
     <main className="relative mb-8 flex flex-col items-center gap-2 md:gap-6">
@@ -47,11 +43,11 @@ function ErrorWrapper({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   return (
-    <I18nProviderClient locale={locale}>
+    <NextIntlClientProvider locale={locale}>
       <Error error={error} reset={reset} />
-    </I18nProviderClient>
+    </NextIntlClientProvider>
   );
 }
 export default ErrorWrapper;

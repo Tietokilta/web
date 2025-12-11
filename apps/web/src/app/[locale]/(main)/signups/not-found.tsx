@@ -3,13 +3,13 @@ import { Button, Card } from "@tietokilta/ui";
 import Link from "next/link";
 import { DinoGame } from "@components/dino-game";
 import {
-  I18nProviderClient,
-  useCurrentLocale,
-  useScopedI18n,
+  NextIntlClientProvider,
+  useLocale,
+  useTranslations,
 } from "@locales/client";
 
 function Page() {
-  const t = useScopedI18n("not-found");
+  const t = useTranslations("not-found");
   return (
     <main
       id="main"
@@ -38,11 +38,11 @@ function Page() {
   );
 }
 function PageWrapper() {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   return (
-    <I18nProviderClient locale={locale}>
+    <NextIntlClientProvider locale={locale}>
       <Page />
-    </I18nProviderClient>
+    </NextIntlClientProvider>
   );
 }
 export default PageWrapper;

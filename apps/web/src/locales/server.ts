@@ -1,11 +1,7 @@
-import { createI18nServer } from "next-international/server";
+import { getTranslations, getLocale } from "next-intl/server";
 import type fi from "./fi";
 
-export const { getI18n, getScopedI18n, getStaticParams, getCurrentLocale } =
-  createI18nServer({
-    fi: () => import("./fi"),
-    en: () => import("./en"),
-  });
+export { getTranslations, getLocale };
 
 export type Locale = (typeof locales)[number];
 export type Dictionary = typeof fi;

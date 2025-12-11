@@ -1,17 +1,25 @@
-import type { NextRequest } from "next/server";
-import { createI18nMiddleware } from "next-international/middleware";
+import { type NextRequest, NextResponse } from "next/server";
+import createMiddleware from "next-intl/middleware";
 
-const i18nMiddleware = createI18nMiddleware({
+const intlMiddleware = createMiddleware({
   locales: ["fi", "en"],
   defaultLocale: "fi",
-  resolveLocaleFromRequest: () => {
-    // ignore Accept-Language header and use the default locale always
-    return "fi";
-  },
+  localePrefix: "always",
+  localeDetection: false,
 });
 
 export function middleware(request: NextRequest) {
-  return i18nMiddleware(request);
+  const response = intlMiddleware(request);
+  // Persist locale cookie similar to previous patch behavior
+  const res = NextResponse.next();
+  const url = new URL(request.url);
+  const locale = url.pathname.split("/")[1] || "fi";
+  res.cookies.set("NEXT_LOCALE", locale, {
+    sameSite: "strict",
+    maxAge: 60 * 60 * 24 * 365, // 1 year
+    path: "/",
+  });
+  return response ?? res;
 }
 
 export const config = {

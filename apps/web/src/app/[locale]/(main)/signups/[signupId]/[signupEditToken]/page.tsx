@@ -6,7 +6,7 @@ import { Button } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import { getSignup } from "@lib/api/external/ilmomasiina";
 import { getCurrentLocale, getScopedI18n } from "@locales/server";
-import { I18nProviderClient } from "@locales/client";
+import { NextIntlClientProvider } from "@locales/client";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
@@ -106,14 +106,14 @@ export default async function Page(props: PageProps) {
                     )}
           </p>
         </hgroup>
-        <I18nProviderClient locale={locale}>
+        <NextIntlClientProvider locale={locale}>
           <SignupForm
             signupId={signupId}
             signupEditToken={signupEditToken}
             signup={signupInfo.data.signup}
             event={signupInfo.data.event}
           />
-        </I18nProviderClient>
+        </NextIntlClientProvider>
       </div>
     </main>
   );

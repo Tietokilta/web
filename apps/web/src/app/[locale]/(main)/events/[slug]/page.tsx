@@ -23,8 +23,8 @@ import {
   formatDatetimeYearOptions,
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
-import { getCurrentLocale, getScopedI18n } from "@locales/server";
-import { I18nProviderClient } from "@locales/client";
+import { getLocale, getTranslations, type Locale } from "@locales/server";
+import { NextIntlClientProvider } from "@locales/client";
 import { DateTime } from "@components/datetime";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
 import { SignupButtons } from "./signup-buttons";
@@ -38,11 +38,11 @@ async function SignUpText({
   endDate?: string | null;
   className?: string;
 }) {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("ilmomasiina.status");
+  const locale = await getLocale();
+  const t = await getTranslations();
   if (!startDate || !endDate) {
     return (
-      <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
+      <span className={className}>{t("ilmomasiina.status.Tapahtumaan ei voi ilmoittautua")}</span>
     );
   }
 
@@ -51,25 +51,25 @@ async function SignUpText({
 
   if (hasStarted && hasEnded) {
     return (
-      <span className={className}>{t("Ilmoittautuminen on päättynyt")}</span>
+      <span className={className}>{t("ilmomasiina.status.Ilmoittautuminen on päättynyt")}</span>
     );
   }
 
   if (hasStarted && !hasEnded) {
     return (
       <span className={className}>
-        {t("Ilmoittautuminen auki", {
-          endDate: formatDatetimeYear(endDate, locale),
-        })}
+        {t("ilmomasiina.status.Ilmoittautuminen auki", {
+          endDate: formatDatetimeYear(endDate, locale as Locale),
+        } as any)}
       </span>
     );
   }
 
   return (
     <span className={className}>
-      {t("Ilmoittautuminen alkaa", {
-        startDate: formatDatetimeYear(startDate, locale),
-      })}
+      {t("ilmomasiina.status.Ilmoittautuminen alkaa", {
+        startDate: formatDatetimeYear(startDate, locale as Locale),
+      } as any)}
     </span>
   );
 }
@@ -100,7 +100,7 @@ async function SignUpRow({
   publicQuestions: Question[];
   isGeneratedQuota: boolean;
 }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations();
   return (
     <tr className="odd:bg-gray-300 even:bg-gray-200">
       <td className="border-b border-gray-900 px-2 py-1">
@@ -113,7 +113,9 @@ async function SignUpRow({
           </span>
         ) : (
           <span className="italic">
-            {signup.confirmed ? t("Piilotettu") : t("Vahvistamaton")}
+            {signup.confirmed
+              ? t("ilmomasiina.Piilotettu")
+              : t("ilmomasiina.Vahvistamaton")}
           </span>
         )}
       </td>
@@ -157,15 +159,17 @@ async function SignUpTable({
   publicQuestions: Question[];
   signupsPublic?: boolean;
 }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations();
 
   if (!signupsPublic) {
-    return <p>{t("status.Ilmoittautumistiedot eivät ole julkisia")}</p>;
+    return (
+      <p>{t("ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia")}</p>
+    );
   }
 
   const signups = quota.signups;
   if (signups.length === 0) {
-    return <p>{t("status.Ei ilmoittautuneita vielä")}</p>;
+    return <p>{t("ilmomasiina.status.Ei ilmoittautuneita vielä")}</p>;
   }
 
   const isOpenQuota = quota.type === SignupStatus.IN_OPEN_QUOTA;
@@ -178,10 +182,10 @@ async function SignUpTable({
         <thead>
           <tr className="bg-gray-200">
             <th className="rounded-tl-md border-b border-gray-900 p-2">
-              {t("headers.Sija")}
+              {t("ilmomasiina.headers.Sija")}
             </th>
             <th className="border-b border-gray-900 p-2">
-              {t("headers.Nimi")}
+              {t("ilmomasiina.headers.Nimi")}
             </th>
             {publicQuestions.map((question) => (
               <th key={question.id} className="border-b border-gray-900 p-2">
@@ -190,11 +194,11 @@ async function SignUpTable({
             ))}
             {isGeneratedQuota ? (
               <th className="border-b border-gray-900 p-2">
-                {t("headers.Kiintiö")}
+                {t("ilmomasiina.headers.Kiintiö")}
               </th>
             ) : null}
             <th className="rounded-tr-md border-b border-gray-900 p-2">
-              {t("headers.Ilmoittautumisaika")}
+              {t("ilmomasiina.headers.Ilmoittautumisaika")}
             </th>
           </tr>
         </thead>
@@ -226,7 +230,7 @@ async function SignUpList({ event }: { event: UserEventResponse }) {
     return null;
   }
 
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations();
 
   const signupsByQuota = getSignupsByQuota(event);
 
@@ -235,16 +239,16 @@ async function SignUpList({ event }: { event: UserEventResponse }) {
   return (
     <div className="space-y-4">
       <h2 className="font-mono text-xl font-semibold text-gray-900">
-        {t("Ilmoittautuneet")}
+        {t("ilmomasiina.Ilmoittautuneet")}
       </h2>
       <ul className="space-y-16">
         {signupsByQuota.map((quota) => (
           <li key={quota.id ?? quota.type} className="space-y-2">
             <h3 className="font-mono text-lg font-semibold text-gray-900">
               {quota.type === SignupStatus.IN_OPEN_QUOTA
-                ? t("Avoin kiintiö")
+                ? t("ilmomasiina.Avoin kiintiö")
                 : quota.type === SignupStatus.IN_QUEUE
-                  ? t("Jonossa")
+                  ? t("ilmomasiina.Jonossa")
                   : quota.title}
             </h3>
             <SignUpTable
@@ -260,45 +264,45 @@ async function SignUpList({ event }: { event: UserEventResponse }) {
 }
 
 async function Tldr({ event }: { event: UserEventResponse }) {
-  const t = await getScopedI18n("ilmomasiina.headers");
-  const locale = await getCurrentLocale();
+  const t = await getTranslations();
+  const locale = await getLocale();
   return (
     <div className="rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       {event.category ? (
         <span className="block">
-          <span className="font-medium">{t("Kategoria")}:</span>{" "}
+          <span className="font-medium">{t("ilmomasiina.headers.Kategoria")}:</span>{" "}
           <span>{event.category}</span>
         </span>
       ) : null}
       {event.location ? (
         <span className="block">
-          <span className="font-medium">{t("Paikka")}:</span>{" "}
+          <span className="font-medium">{t("ilmomasiina.headers.Paikka")}:</span>{" "}
           <span>{event.location}</span>
         </span>
       ) : null}
       {event.date ? (
         <span className="block">
-          <span className="font-medium">{t("Alkaa")}:</span>{" "}
+          <span className="font-medium">{t("ilmomasiina.headers.Alkaa")}:</span>{" "}
           <DateTime
             rawDate={event.date}
-            defaultFormattedDate={formatDatetimeYear(event.date, locale)}
+            defaultFormattedDate={formatDatetimeYear(event.date, locale as Locale)}
             formatOptions={formatDatetimeYearOptions}
           />
         </span>
       ) : null}
       {event.endDate ? (
         <span className="block">
-          <span className="font-medium">{t("Loppuu")}:</span>{" "}
+          <span className="font-medium">{t("ilmomasiina.headers.Loppuu")}:</span>{" "}
           <DateTime
             rawDate={event.endDate}
-            defaultFormattedDate={formatDatetimeYear(event.endDate, locale)}
+            defaultFormattedDate={formatDatetimeYear(event.endDate, locale as Locale)}
             formatOptions={formatDatetimeYearOptions}
           />
         </span>
       ) : null}
       {event.price ? (
         <span className="block">
-          <span className="font-medium">{t("Hinta")}:</span>{" "}
+          <span className="font-medium">{t("ilmomasiina.headers.Hinta")}:</span>{" "}
           <span>{event.price}</span>
         </span>
       ) : null}
@@ -311,25 +315,25 @@ async function SignUpQuotas({ event }: { event: UserEventResponse }) {
     return null;
   }
 
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations();
 
   const signupsByQuota = getSignupsByQuota(event);
 
   return (
     <Card className="max-w-prose space-y-4">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
-        {t("Ilmoittautuneet")}
+        {t("ilmomasiina.Ilmoittautuneet")}
       </h2>
       <ul className="flex flex-col gap-2">
         {signupsByQuota.map((quota) => (
           <li key={quota.id ?? quota.type} className="contents">
             {quota.type === SignupStatus.IN_QUEUE ? (
               <span>
-                {t("status.Jonossa", {
+                {t("ilmomasiina.status.Jonossa", {
                   queueCount: quota.signupCount,
                   confirmedCount: quota.signups.filter((s) => s.confirmed)
                     .length,
-                })}
+                } as any)}
               </span>
             ) : (
               <>
@@ -364,20 +368,20 @@ async function SignUpQuotas({ event }: { event: UserEventResponse }) {
 }
 
 async function SignUpActions({ event }: { event: UserEventResponse }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations();
   return (
     <div className="max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
-        {t("Ilmoittautuminen")}
+        {t("ilmomasiina.Ilmoittautuminen")}
       </h2>
       <SignUpText
         className="block"
         startDate={event.registrationStartDate}
         endDate={event.registrationEndDate}
       />
-      <I18nProviderClient locale={await getCurrentLocale()}>
+      <NextIntlClientProvider locale={await getLocale()}>
         <SignupButtons event={event} />
-      </I18nProviderClient>
+      </NextIntlClientProvider>
     </div>
   );
 }
@@ -393,7 +397,7 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 
   const { slug } = params;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
@@ -414,10 +418,10 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const { slug } = params;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
 
   const event = await fetchEvent(slug, locale);
-  const t = await getScopedI18n("action");
+  const t = await getTranslations();
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
     notFound();
   }
@@ -434,7 +438,7 @@ export default async function Page(props: PageProps) {
     >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
-          <BackButton>{t("Back")}</BackButton>
+          <BackButton>{t("action.Back")}</BackButton>
           <h1 className="font-mono text-2xl md:text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">

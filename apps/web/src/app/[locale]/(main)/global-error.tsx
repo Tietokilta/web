@@ -1,11 +1,7 @@
 "use client";
 
 import { Button, Card } from "@tietokilta/ui";
-import {
-  I18nProviderClient,
-  useCurrentLocale,
-  useScopedI18n,
-} from "@locales/client";
+import { NextIntlClientProvider, useLocale, useTranslations } from "@locales/client";
 
 function GlobalError({
   error,
@@ -14,7 +10,7 @@ function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const t = useScopedI18n("error");
+  const t = useTranslations("error");
   return (
     <body className="font-sans">
       <div className="flex min-h-screen flex-col">
@@ -53,13 +49,13 @@ function GlobalErrorWrapper({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   return (
-    <I18nProviderClient locale={locale}>
+    <NextIntlClientProvider locale={locale}>
       <html lang={locale}>
         <GlobalError error={error} reset={reset} />
       </html>
-    </I18nProviderClient>
+    </NextIntlClientProvider>
   );
 }
 export default GlobalErrorWrapper;
