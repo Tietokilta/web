@@ -67,7 +67,9 @@ export async function SaveAction(
 
   const attachments = formData.getAll("attachments") as File[];
 
-  const FormattedBankAccountNumber = (formData.get("bank_account_number") as string).replace(" ", "")
+  const FormattedBankAccountNumber = (
+    formData.get("bank_account_number") as string
+  ).replace(" ", "");
 
   const json: LaskugeneraattoriRequest = {
     recipient_name: formData.get("recipient_name") as string,
