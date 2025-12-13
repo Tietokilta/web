@@ -31,8 +31,8 @@ function CommitteeMemberCard({
         src={photo?.url ?? TikLogo}
         width={photo?.width ? Math.trunc(photo.width) : undefined}
       />
-      {isChair ? <GavelIcon className="absolute left-0 top-0 size-6" /> : null}
-      <p className="flex grow flex-col justify-center text-balance bg-gray-100 text-center">
+      {isChair ? <GavelIcon className="absolute top-0 left-0 size-6" /> : null}
+      <p className="flex grow flex-col justify-center bg-gray-100 text-center text-balance">
         <span className="font-medium">{name}</span>
         <span className="text-sm">
           {insertSoftHyphens(committeeMember.title)}
@@ -88,7 +88,7 @@ export function CommitteeCard({
       )}
     >
       <details open className="group w-full">
-        <summary className="absolute left-0 top-0 flex w-full cursor-pointer justify-between border-b-2 border-gray-900 bg-gray-100 p-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+        <summary className="absolute top-0 left-0 flex w-full cursor-pointer justify-between border-b-2 border-gray-900 bg-gray-100 p-2 [&::-webkit-details-marker]:hidden [&::marker]:hidden">
           <span className="flex w-5 gap-1 sm:w-8">
             <span className="size-2 rounded-full border border-gray-900 bg-secondary-600 sm:size-3" />
             <span className="size-2 rounded-full border border-gray-900 bg-primary-600 sm:size-3" />

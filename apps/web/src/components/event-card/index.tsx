@@ -102,7 +102,7 @@ async function SignupQuotas({
   if (compact) {
     return (
       <ul className={cn(className, "text-xl")}>
-        <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
+        <li className="flex w-full justify-between gap-4 font-medium whitespace-nowrap">
           <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
         </li>
         {quotas.map((quota) => (
@@ -127,7 +127,7 @@ async function SignupQuotas({
   if (isSingleQuota) {
     return (
       <div className={className}>
-        <span className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
+        <span className="flex w-full justify-between gap-4 font-medium whitespace-nowrap">
           <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
           <span className="w-1/4 text-left">
             {totalSignupCount} / {totalSize}
@@ -139,7 +139,7 @@ async function SignupQuotas({
 
   return (
     <ul className={cn(className)}>
-      <li className="flex w-full justify-between gap-4 whitespace-nowrap font-medium">
+      <li className="flex w-full justify-between gap-4 font-medium whitespace-nowrap">
         <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
         <span className="w-1/4 text-left">
           {totalSignupCount} / {totalSize}
@@ -189,7 +189,7 @@ export async function EventCardCompact({
         <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
           <Link
             href={`/${locale}/${t("path.events")}/${event.slug}`}
-            className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline"
+            className="text-lg font-bold text-pretty underline-offset-2 group-hover:underline before:absolute before:top-0 before:left-0 before:z-0 before:block before:size-full before:cursor-[inherit]"
           >
             <h2 className="text-2xl">
               {event.title}
@@ -252,7 +252,7 @@ export default async function EventCard({
     <li className="group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 shadow-solid md:flex-row md:gap-4 md:p-6">
       <Link
         href={`/${locale}/${t("events")}/${event.slug}`}
-        className="text-pretty text-lg font-bold underline-offset-2 before:absolute before:left-0 before:top-0 before:z-0 before:block before:size-full before:cursor-[inherit] group-hover:underline md:w-1/3"
+        className="text-lg font-bold text-pretty underline-offset-2 group-hover:underline before:absolute before:top-0 before:left-0 before:z-0 before:block before:size-full before:cursor-[inherit] md:w-1/3"
       >
         <h2>{event.title}</h2>
       </Link>

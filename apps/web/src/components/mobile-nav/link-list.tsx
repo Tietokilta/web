@@ -57,12 +57,12 @@ async function NavigationLink({
       <CollapsibleContent className="space-y-3 p-3 text-base">
         {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
           <ul key={linkCategorySublist.title}>
-            <li className="pb-2 pt-4 text-xl">{linkCategorySublist.title}</li>
+            <li className="pt-4 pb-2 text-xl">{linkCategorySublist.title}</li>
             {linkCategorySublist.pages?.map(({ page }) => (
               <li key={(page as Page).id}>
                 <Button
                   asChild
-                  className="mb-2 mr-2 w-full border-b-0 px-0 pb-0"
+                  className="mr-2 mb-2 w-full border-b-0 px-0 pb-0"
                   variant="link"
                 >
                   <Link href={(page as Page).path ?? "#broken"}>

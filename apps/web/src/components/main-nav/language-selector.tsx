@@ -11,7 +11,7 @@ export function LanguageSelector() {
 
   return (
     <>
-      <NavigationMenuItem className="absolute right-16 top-0 flex h-20 items-center justify-center xl:right-24">
+      <NavigationMenuItem className="absolute top-0 right-16 flex h-20 items-center justify-center xl:right-24">
         <NavigationMenuLink active={isFinnish} asChild>
           <NextLink
             className="underline-offset-2 hover:text-gray-400 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline"
@@ -23,7 +23,7 @@ export function LanguageSelector() {
           </NextLink>
         </NavigationMenuLink>
       </NavigationMenuItem>
-      <NavigationMenuItem className="absolute right-6 top-0 flex h-20 items-center justify-center xl:right-12">
+      <NavigationMenuItem className="absolute top-0 right-6 flex h-20 items-center justify-center xl:right-12">
         <NavigationMenuLink active={isEnglish} asChild>
           <NextLink
             className="underline-offset-2 hover:text-gray-400 hover:underline aria-[current=page]:font-bold aria-[current=page]:underline"

@@ -13,7 +13,7 @@ import react from "../rules/react.js";
  */
 const config = [
   reactPlugin.configs.flat.recommended,
-  reactHooks.configs["recommended-latest"],
+  reactHooks.configs.flat["recommended-latest"],
   jsxA11y.flatConfigs.recommended,
   importPlugin.flatConfigs.react,
   prettier,

@@ -38,33 +38,31 @@ export default async function Image() {
   const tikLogoSrc = Uint8Array.from(tikLogoData).buffer;
 
   return new ImageResponse(
-    (
-      <div
-        style={{
-          fontSize: 64,
-          background: "#f8f9fa",
-          color: "#0a0d10",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "2em",
-          gap: "1em",
-        }}
-      >
-        {/* @ts-expect-error -- this works with ArrayBuffer src specifically in Next.js ImageResponse*/}
-        <img src={tikLogoSrc} alt="" width="196" height="196" />
-        <div tw="flex flex-col max-w-4/5">
-          <span style={{ fontFamily: "Roboto Mono", fontSize: "1.5em" }}>
-            {t("title")}
-          </span>
-          <span style={{ fontFamily: "Inter", fontSize: "1em" }}>
-            {t("description")}
-          </span>
-        </div>
+    <div
+      style={{
+        fontSize: 64,
+        background: "#f8f9fa",
+        color: "#0a0d10",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "2em",
+        gap: "1em",
+      }}
+    >
+      {/* @ts-expect-error -- this works with ArrayBuffer src specifically in Next.js ImageResponse*/}
+      <img src={tikLogoSrc} alt="" width="196" height="196" />
+      <div tw="flex flex-col max-w-4/5">
+        <span style={{ fontFamily: "Roboto Mono", fontSize: "1.5em" }}>
+          {t("title")}
+        </span>
+        <span style={{ fontFamily: "Inter", fontSize: "1em" }}>
+          {t("description")}
+        </span>
       </div>
-    ),
+    </div>,
     {
       ...size,
       fonts: [

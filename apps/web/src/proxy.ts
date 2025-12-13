@@ -10,7 +10,7 @@ const i18nMiddleware = createI18nMiddleware({
   },
 });
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   return i18nMiddleware(request);
 }
 
