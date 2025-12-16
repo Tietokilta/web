@@ -39,14 +39,17 @@ export async function PartnerLogos({
       <ul className="flex flex-wrap items-center justify-center gap-4">
         {logos.map((logo) => (
           <li
-            className={`relative ${type === "row" ? "w-60" : "max-w-60"}`}
+            className={`relative flex items-center justify-center ${type === "row" ? "h-16 max-w-48" : "h-24 max-w-60 p-2"}`}
             key={logo.image.id}
           >
-            <Link href={logo.externalLink}>
+            <Link
+              href={logo.externalLink}
+              className="flex h-full w-full items-center justify-center"
+            >
               {/* TODO: actually check image color and invert / modify according to contrast or something */}
               <Image
                 alt={logo.image.alt}
-                className={`object-contain grayscale invert ${type === "row" ? "w-full" : "h-[6.0rem] w-full p-2"}`}
+                className="h-full w-full object-contain grayscale invert"
                 height={logo.image.height ?? 0}
                 src={logo.image.url ?? ""}
                 width={logo.image.width ?? 0}
@@ -63,12 +66,18 @@ export async function PartnerLogos({
     return (
       <ul className="flex flex-wrap items-center justify-center gap-4">
         {logos.map((logo) => (
-          <li className="relative w-60" key={logo.image.id}>
-            <MobileLink href={logo.externalLink}>
+          <li
+            className="relative flex h-16 max-w-48 items-center justify-center"
+            key={logo.image.id}
+          >
+            <MobileLink
+              href={logo.externalLink}
+              className="flex h-full w-full items-center justify-center"
+            >
               {/* TODO: actually check image color and invert / modify according to contrast or something */}
               <Image
                 alt={logo.image.alt}
-                className="h-auto w-full object-contain"
+                className="h-full w-full object-contain"
                 height={logo.image.height ?? 0}
                 src={logo.image.url ?? ""}
                 width={logo.image.width ?? 0}
