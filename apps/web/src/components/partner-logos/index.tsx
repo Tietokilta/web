@@ -26,7 +26,10 @@ export async function PartnerLogos({
   }
 
   const logos = partners.map((partner) => {
-    return { image: partner.logo as Media, externalLink: partner.externalLink };
+    // Use grayscale logo if available, fallback to regular logo
+    const image =
+      (partner.logoGrayscale as Media | null) ?? (partner.logo as Media);
+    return { image, externalLink: partner.externalLink };
   });
 
   if (type === "row" || type === "infoscreen") {

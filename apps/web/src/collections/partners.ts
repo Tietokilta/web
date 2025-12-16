@@ -37,6 +37,16 @@ export const Partners = {
       relationTo: "media",
       required: true,
     },
+    {
+      name: "logoGrayscale",
+      type: "relationship",
+      relationTo: "media",
+      required: false,
+      admin: {
+        description:
+          "Grayscale logo variant for different backgrounds (inverted based on contrast when needed)",
+      },
+    },
     PartnerStatusField,
     {
       name: "externalLink",
