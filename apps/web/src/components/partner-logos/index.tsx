@@ -6,6 +6,7 @@ import { ImageLinkGrid } from "@components/image-link-grid";
 import { fetchPartners } from "@lib/api/partners";
 import { getCurrentLocale } from "@locales/server";
 import { Link as MobileLink } from "@components/mobile-nav/link";
+import { cn } from "@lib/utils";
 
 export async function PartnerLogos({
   statuses,
@@ -29,7 +30,7 @@ export async function PartnerLogos({
     // Use grayscale logo only in footer contexts (row/mobileRow), fallback to regular logo
     const image =
       type === "row" || type === "mobileRow"
-        ? (partner.logoGrayscale as Media | null) ?? (partner.logo as Media)
+        ? ((partner.logoGrayscale as Media | null) ?? (partner.logo as Media))
         : (partner.logo as Media);
     return { image, externalLink: partner.externalLink };
   });
@@ -39,7 +40,10 @@ export async function PartnerLogos({
       <ul className="flex flex-wrap items-center justify-center gap-4">
         {logos.map((logo) => (
           <li
-            className={`relative flex items-center justify-center ${type === "row" ? "h-16 max-w-48" : "h-24 max-w-60 p-2"}`}
+            className={cn(
+              "relative flex items-center justify-center",
+              type === "row" ? "h-16 max-w-48" : "h-24 max-w-60 p-2",
+            )}
             key={logo.image.id}
           >
             <Link
