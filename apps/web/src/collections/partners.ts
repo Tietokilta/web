@@ -43,7 +43,8 @@ export const Partners = {
       relationTo: "media",
       required: false,
       admin: {
-        description: "Monochrome logo variant for different backgrounds (inverted based on contrast when needed)",
+        description:
+          "Monochrome logo variant for different backgrounds (inverted based on contrast when needed)",
       },
     },
     PartnerStatusField,

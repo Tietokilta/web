@@ -27,7 +27,8 @@ export async function PartnerLogos({
 
   const logos = partners.map((partner) => {
     // Use monochrome logo if available, fallback to regular logo
-    const image = (partner.logoMonochrome as Media | null) ?? (partner.logo as Media);
+    const image =
+      (partner.logoMonochrome as Media | null) ?? (partner.logo as Media);
     return { image, externalLink: partner.externalLink };
   });
 
