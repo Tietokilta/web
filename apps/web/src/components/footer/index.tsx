@@ -66,6 +66,7 @@ function RenderFooterRow({
             {block.logos?.map((logo) => (
               <li className="relative w-60" key={logo.id}>
                 <Link href={logo.link}>
+                  {/* TODO: actually check image color and invert / modify according to contrast or something */}
                   <Image
                     alt={(logo.image as Media).alt}
                     className="h-auto w-full object-contain invert"

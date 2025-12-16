@@ -38,13 +38,13 @@ export const Partners = {
       required: true,
     },
     {
-      name: "logoMonochrome",
+      name: "logoGrayscale",
       type: "relationship",
       relationTo: "media",
       required: false,
       admin: {
         description:
-          "Monochrome logo variant for different backgrounds (inverted based on contrast when needed)",
+          "Grayscale logo variant for different backgrounds (inverted based on contrast when needed)",
       },
     },
     PartnerStatusField,
