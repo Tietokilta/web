@@ -26,9 +26,11 @@ export async function PartnerLogos({
   }
 
   const logos = partners.map((partner) => {
-    // Use grayscale logo if available, fallback to regular logo
+    // Use grayscale logo only in footer contexts (row/mobileRow), fallback to regular logo
     const image =
-      (partner.logoGrayscale as Media | null) ?? (partner.logo as Media);
+      type === "row" || type === "mobileRow"
+        ? (partner.logoGrayscale as Media | null) ?? (partner.logo as Media)
+        : (partner.logo as Media);
     return { image, externalLink: partner.externalLink };
   });
 
