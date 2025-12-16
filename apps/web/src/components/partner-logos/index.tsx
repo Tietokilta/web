@@ -26,7 +26,9 @@ export async function PartnerLogos({
   }
 
   const logos = partners.map((partner) => {
-    return { image: partner.logo as Media, externalLink: partner.externalLink };
+    // Use monochrome logo if available, fallback to regular logo
+    const image = (partner.logoMonochrome as Media | null) ?? (partner.logo as Media);
+    return { image, externalLink: partner.externalLink };
   });
 
   if (type === "row" || type === "infoscreen") {
@@ -38,7 +40,6 @@ export async function PartnerLogos({
             key={logo.image.id}
           >
             <Link href={logo.externalLink}>
-              {/* TODO: actually check image color and invert / modify according to contrast or something */}
               <Image
                 alt={logo.image.alt}
                 className={`object-contain grayscale invert ${type === "row" ? "w-full" : "h-[6.0rem] w-full p-2"}`}
@@ -60,7 +61,6 @@ export async function PartnerLogos({
         {logos.map((logo) => (
           <li className="relative w-60" key={logo.image.id}>
             <MobileLink href={logo.externalLink}>
-              {/* TODO: actually check image color and invert / modify according to contrast or something */}
               <Image
                 alt={logo.image.alt}
                 className="h-auto w-full object-contain"
