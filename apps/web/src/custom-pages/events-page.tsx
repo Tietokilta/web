@@ -34,7 +34,10 @@ export default async function Page() {
   const t = await getScopedI18n("ilmomasiina");
   const ta = await getScopedI18n("action");
   const locale = await getCurrentLocale();
-  const events = await fetchEvents(locale);
+  // Use maxAge to fetch historical events (180 days is the maximum for default Ilmomasiina config)
+  // This allows past events to show in the calendar for a while
+  const maxAge = 180; // days
+  const events = await fetchEvents(locale, maxAge);
   const upcomingEvents = await fetchUpcomingEvents(locale);
 
   if (!events.ok || !upcomingEvents.ok) {
