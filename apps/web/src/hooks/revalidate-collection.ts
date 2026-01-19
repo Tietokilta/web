@@ -14,7 +14,12 @@ type CollectionSlug = keyof Config["collections"];
 export function revalidateCollection<T extends TypeWithID>(
   collectionSlug: CollectionSlug,
 ): CollectionAfterChangeHook<T> {
-  return ({ doc, req }): T => {
+  return ({ doc, req, context }): T => {
+    // Skip revalidation for analytics updates (view count increments)
+    if (context?.skipRevalidation) {
+      return doc;
+    }
+
     const isPage = collectionSlug === "pages";
     const isPublished = "_status" in doc && doc._status === "published";
     if (isPage && !isPublished) {

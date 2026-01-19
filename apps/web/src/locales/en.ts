@@ -302,6 +302,19 @@ const en = {
     template: "%s - Tietokilta",
     description: "Homepage of the Computer Science Guild",
   },
+  feedback: {
+    wasThisHelpful: "Was this page helpful?",
+    yes: "Yes",
+    no: "No",
+    helpful: "Helpful",
+    notHelpful: "Not helpful",
+    thankYou: "Thanks for your feedback!",
+    wantToTellMore: "Want to tell us more?",
+    commentPlaceholder: "Tell us how we can improve this page...",
+    skip: "Skip",
+    send: "Send",
+    error: "Failed to submit feedback. Please try again.",
+  },
 } as const;
 
 // Type check: ensure en has the same keys as fi (values can differ)

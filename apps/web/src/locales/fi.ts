@@ -302,6 +302,19 @@ const fi = {
     template: "%s - Tietokilta",
     description: "Tietokilta ry:n kotisivut",
   },
+  feedback: {
+    wasThisHelpful: "Oliko tästä sivusta apua?",
+    yes: "Kyllä",
+    no: "Ei",
+    helpful: "Hyödyllinen",
+    notHelpful: "Ei hyödyllinen",
+    thankYou: "Kiitos palautteestasi!",
+    wantToTellMore: "Haluatko kertoa lisää?",
+    commentPlaceholder: "Kerro, miten voimme parantaa sivua...",
+    skip: "Ohita",
+    send: "Lähetä",
+    error: "Palautteen lähettäminen epäonnistui. Yritä uudelleen.",
+  },
 } as const;
 
 export default fi;

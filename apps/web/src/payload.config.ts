@@ -34,6 +34,7 @@ import { Pages } from "./collections/pages";
 import { Partners } from "./collections/partners";
 import { Topics } from "./collections/topics";
 import { Users } from "./collections/users";
+import { ViewSessions } from "./collections/view-sessions";
 import { NewsItems } from "./collections/weekly-newsletters/news-items";
 import { WeeklyNewsletters } from "./collections/weekly-newsletters/weekly-newsletters";
 import { Footer } from "./globals/footer";
@@ -111,6 +112,7 @@ export default buildConfig({
     Honors,
     AwardedHonors,
     Partners,
+    ViewSessions,
   ],
   globals: [Footer, LandingPage, MainNavigation, InfoScreen],
   localization: {
@@ -275,6 +277,25 @@ export default buildConfig({
     payloadInstance.logger.info(
       `Payload Admin URL: ${payloadInstance.getAdminURL()}`,
     );
+
+    // Create TTL index for view-sessions collection (auto-delete after 24 hours)
+    try {
+      const db = payloadInstance.db;
+      // Access the underlying mongoose connection
+      if ("connection" in db && db.connection) {
+        const mongoose = db.connection as typeof import("mongoose");
+        const collection = mongoose.connection.collection("view-sessions");
+        // Create TTL index - documents expire 24 hours after createdAt
+        await collection.createIndex(
+          { createdAt: 1 },
+          { expireAfterSeconds: 86400, background: true },
+        );
+        payloadInstance.logger.info("TTL index created for view-sessions collection");
+      }
+    } catch (error) {
+      // Index might already exist, that's fine
+      payloadInstance.logger.debug("TTL index setup:", error);
+    }
     if (isCloudStorageEnabled()) {
       payloadInstance.logger.info("Using Azure Blob Storage");
     }
