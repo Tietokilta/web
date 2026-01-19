@@ -11,6 +11,7 @@ import { customAlphabet } from "nanoid";
 import type { Page, Topic, Page as PageType } from "@payload-types";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
+import { signedInFieldLevel } from "../access/signed-in-field-level";
 import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../util/preview";
 import { iconField } from "../fields/icon-field";
@@ -192,7 +193,7 @@ export const Pages = {
   slug: "pages",
   admin: {
     useAsTitle: "path",
-    defaultColumns: ["path", "title"],
+    defaultColumns: ["path", "title", "viewCount"],
     listSearchableFields: ["path", "title"],
     preview: generatePreviewUrl<Page>((doc) => {
       return doc.path ?? "/";
@@ -332,6 +333,20 @@ export const Pages = {
       label: "Hide from public",
       admin: {
         position: "sidebar",
+      },
+    },
+    {
+      name: "viewCount",
+      type: "number",
+      defaultValue: 0,
+      admin: {
+        position: "sidebar",
+        readOnly: true,
+        description: "Unique daily page views",
+      },
+      access: {
+        // Only visible to signed-in users in API responses
+        read: signedInFieldLevel,
       },
     },
   ],
