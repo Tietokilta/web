@@ -17,8 +17,8 @@ export const newsItemCategoryField = (
     },
     {
       label: {
-        fi: "Ayy & Aalto",
-        en: "Ayy & Aalto",
+        fi: "AYY & Aalto",
+        en: "AYY & Aalto",
       },
       value: "ayy-aalto",
     },

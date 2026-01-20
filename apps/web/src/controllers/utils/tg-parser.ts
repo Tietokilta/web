@@ -81,7 +81,7 @@ export const parseToc = (
     en: {
       calendar: "Calendar",
       guild: "Guild",
-      "ayy-aalto": "Ayy & Aalto",
+      "ayy-aalto": "AYY & Aalto",
       other: "Other",
       "bottom-corner": "Bottom Corner",
       read: "Read",
@@ -92,7 +92,7 @@ export const parseToc = (
     fi: {
       calendar: "Kalenteri",
       guild: "Kilta",
-      "ayy-aalto": "Ayy & Aalto",
+      "ayy-aalto": "AYY & Aalto",
       other: "Muut",
       "bottom-corner": "Pohjanurkkaus",
       read: "Lue",
