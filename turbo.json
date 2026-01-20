@@ -35,7 +35,8 @@
     "PUBLIC_LEGACY_URL",
     "PUBLIC_PRODUCTION_URL",
     "PORT",
-    "SKIP_ENV_VALIDATION"
+    "SKIP_ENV_VALIDATION",
+    "XFF_DEPTH"
   ],
   "tasks": {
     "build": {

@@ -34,14 +34,29 @@ async function generateSessionHash(
 
 /**
  * Extract client IP from request headers.
- * Checks common proxy headers first, falls back to connection info.
+ *
+ * For X-Forwarded-For, reads from the RIGHT side to prevent spoofing.
+ * Uses XFF_DEPTH env var to determine how many trusted proxies are in front.
+ *
+ * Example with XFF_DEPTH=2 (e.g., Azure Front Door + App Service):
+ *   X-Forwarded-For: <spoofed>, <client>, <proxy1>
+ *   We read index -2 from the right = <client>
+ *
+ * @see https://learn.microsoft.com/en-us/azure/frontdoor/front-door-http-headers-protocol
  */
 function getClientIp(headers: Headers): string {
-  // Check common proxy headers
   const forwardedFor = headers.get("x-forwarded-for");
   if (forwardedFor) {
-    // x-forwarded-for can contain multiple IPs, take the first one
-    return forwardedFor.split(",")[0].trim();
+    const ips = forwardedFor.split(",").map((ip) => ip.trim());
+
+    // XFF_DEPTH = number of trusted proxies between client and this server
+    // Default to 1 (assumes one reverse proxy like Azure Front Door)
+    const depth = parseInt(process.env.XFF_DEPTH ?? "1", 10);
+
+    // Read from the right: if depth=1, take last IP; if depth=2, take second-to-last, etc.
+    // The IP at position (length - depth) is the client IP
+    const clientIndex = Math.max(0, ips.length - depth);
+    return ips[clientIndex] ?? "unknown";
   }
 
   const realIp = headers.get("x-real-ip");
