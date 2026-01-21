@@ -18,11 +18,7 @@ import {
   type UserEventListResponse,
   type UserEventListItem,
 } from "@tietokilta/ilmomasiina-models";
-import {
-  useScopedI18n,
-  useCurrentLocale,
-  I18nProviderClient,
-} from "../locales/client";
+import { useTranslations, useLocale } from "next-intl";
 import type { Locale } from "../locales/server";
 
 type EventWithDate = UserEventListItem & { date: string };
@@ -46,8 +42,8 @@ function EventCalendar({
   eventsUrl: string;
   locale: Locale;
 }) {
-  const t = useScopedI18n("calendar");
-  const ta = useScopedI18n("action");
+  const t = useTranslations("calendar");
+  const ta = useTranslations("action");
 
   // Filter events without a start date.
   const filteredEvents = events.filter(
@@ -146,12 +142,8 @@ function EventCalendar({
 }
 
 function CalendarWrapper({ events }: { events: UserEventListResponse }) {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   const eventsUrl = `/${locale}/events/`;
-  return (
-    <I18nProviderClient locale={locale}>
-      <EventCalendar events={events} eventsUrl={eventsUrl} locale={locale} />
-    </I18nProviderClient>
-  );
+  return <EventCalendar events={events} eventsUrl={eventsUrl} locale={locale} />;
 }
 export default CalendarWrapper;

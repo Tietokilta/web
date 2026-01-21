@@ -1,9 +1,9 @@
 "use client";
 import { useEffect } from "react";
-import { useCurrentLocale } from "@locales/client";
+import { useLocale } from "next-intl";
 
 export default function AprilFoolsAlert() {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   useEffect(() => {
     const isAprilFoolsDay =
       new Date().getDate() === 1 && new Date().getMonth() === 3;

@@ -2,14 +2,10 @@
 import { Button, Card } from "@tietokilta/ui";
 import Link from "next/link";
 import { DinoGame } from "@components/dino-game";
-import {
-  I18nProviderClient,
-  useCurrentLocale,
-  useScopedI18n,
-} from "@locales/client";
+import { useTranslations } from "next-intl";
 
-function Page() {
-  const t = useScopedI18n("not-found");
+export default function EventNotFound() {
+  const t = useTranslations("not-found");
   return (
     <main
       id="main"
@@ -23,11 +19,7 @@ function Page() {
 
       <div className="relative m-auto flex max-w-prose flex-col gap-8 p-4 md:p-6">
         <Card className="max-w-prose">
-          <p>
-            {t(
-              "Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.",
-            )}
-          </p>
+          <p>{t("eventNotFoundDescription")}</p>
         </Card>
         <Button asChild variant="link">
           <Link href="/">{t("Tapahtumalistaukseen")}</Link>
@@ -37,12 +29,3 @@ function Page() {
     </main>
   );
 }
-function PageWrapper() {
-  const locale = useCurrentLocale();
-  return (
-    <I18nProviderClient locale={locale}>
-      <Page />
-    </I18nProviderClient>
-  );
-}
-export default PageWrapper;

@@ -23,8 +23,7 @@ import {
   formatDatetimeYearOptions,
 } from "@lib/utils";
 import { BackButton } from "@components/back-button";
-import { getCurrentLocale, getScopedI18n } from "@locales/server";
-import { I18nProviderClient } from "@locales/client";
+import { getLocale, getTranslations } from "next-intl/server";
 import { DateTime } from "@components/datetime";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
 import { SignupButtons } from "./signup-buttons";
@@ -38,8 +37,8 @@ async function SignUpText({
   endDate?: string | null;
   className?: string;
 }) {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("ilmomasiina.status");
+  const locale = await getLocale();
+  const t = await getTranslations("ilmomasiina.status");
   if (!startDate || !endDate) {
     return (
       <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
@@ -100,7 +99,7 @@ async function SignUpRow({
   publicQuestions: Question[];
   isGeneratedQuota: boolean;
 }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
   return (
     <tr className="odd:bg-gray-300 even:bg-gray-200">
       <td className="border-b border-gray-900 px-2 py-1">
@@ -157,7 +156,7 @@ async function SignUpTable({
   publicQuestions: Question[];
   signupsPublic?: boolean;
 }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
 
   if (!signupsPublic) {
     return <p>{t("status.Ilmoittautumistiedot eivät ole julkisia")}</p>;
@@ -226,7 +225,7 @@ async function SignUpList({ event }: { event: UserEventResponse }) {
     return null;
   }
 
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
 
   const signupsByQuota = getSignupsByQuota(event);
 
@@ -260,8 +259,8 @@ async function SignUpList({ event }: { event: UserEventResponse }) {
 }
 
 async function Tldr({ event }: { event: UserEventResponse }) {
-  const t = await getScopedI18n("ilmomasiina.headers");
-  const locale = await getCurrentLocale();
+  const t = await getTranslations("ilmomasiina.headers");
+  const locale = await getLocale();
   return (
     <div className="rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       {event.category ? (
@@ -311,7 +310,7 @@ async function SignUpQuotas({ event }: { event: UserEventResponse }) {
     return null;
   }
 
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
 
   const signupsByQuota = getSignupsByQuota(event);
 
@@ -364,7 +363,7 @@ async function SignUpQuotas({ event }: { event: UserEventResponse }) {
 }
 
 async function SignUpActions({ event }: { event: UserEventResponse }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
   return (
     <div className="max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
@@ -375,9 +374,7 @@ async function SignUpActions({ event }: { event: UserEventResponse }) {
         startDate={event.registrationStartDate}
         endDate={event.registrationEndDate}
       />
-      <I18nProviderClient locale={await getCurrentLocale()}>
-        <SignupButtons event={event} />
-      </I18nProviderClient>
+      <SignupButtons event={event} />
     </div>
   );
 }
@@ -393,7 +390,7 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 
   const { slug } = params;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
@@ -414,10 +411,10 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
   const { slug } = params;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
 
   const event = await fetchEvent(slug, locale);
-  const t = await getScopedI18n("action");
+  const t = await getTranslations("action");
   if (!event.ok && event.error === "ilmomasiina-event-not-found") {
     notFound();
   }

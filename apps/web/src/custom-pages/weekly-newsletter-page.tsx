@@ -6,7 +6,7 @@ import {
   fetchWeeklyNewsletter,
   fetchWeeklyNewsletterBySlug,
 } from "../lib/api/weekly-newsletters";
-import { getCurrentLocale, getScopedI18n } from "../locales/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import {
   formatDate,
   formatDateYear,
@@ -21,7 +21,7 @@ import { TableOfContents } from "../components/table-of-contents";
 import { DateTime } from "../components/datetime";
 
 async function NewsItemContent({ item }: { item: NewsItem }) {
-  const t = await getScopedI18n("weeklyNewsletter");
+  const t = await getTranslations("weeklyNewsletter");
   const content = item.content as unknown as EditorState | null;
 
   return (
@@ -85,7 +85,7 @@ async function Calendar({
   eventsNextWeek: NewsItem[];
   signupsThisWeek: NewsItem[];
 }) {
-  const t = await getScopedI18n("weeklyNewsletter");
+  const t = await getTranslations("weeklyNewsletter");
 
   if (
     eventsThisWeek.length === 0 &&
@@ -164,8 +164,8 @@ export const legacyUrl =
   process.env.PUBLIC_LEGACY_URL ?? "https://tietokilta.fi";
 
 export default async function Page({ slug }: { slug?: string }) {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("weeklyNewsletter");
+  const locale = await getLocale();
+  const t = await getTranslations("weeklyNewsletter");
   const weeklyNewsletter = await (slug
     ? fetchWeeklyNewsletterBySlug({
         where: { slug: { equals: slug } },

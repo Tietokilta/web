@@ -1,4 +1,4 @@
-import { getScopedI18n } from "@locales/server.ts";
+import { getTranslations } from "next-intl/server";
 import type { Stop, StopType } from "../types/hsl-helper-types.ts";
 import { HSLSchedules } from "./fetcher.ts";
 
@@ -14,7 +14,7 @@ const getColor = (type: StopType): string => {
 };
 
 const stopName = async (type: StopType) => {
-  const t = await getScopedI18n("infoscreen");
+  const t = await getTranslations("infoscreen");
   switch (type) {
     case "metro":
       return t("Metro");
@@ -60,7 +60,7 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
 
 export async function HSLcombinedSchedule() {
   const stopData = await HSLSchedules();
-  const t = await getScopedI18n("infoscreen");
+  const t = await getTranslations("infoscreen");
 
   if (stopData.length === 0) {
     return null;

@@ -11,7 +11,7 @@ import {
   formatDateYearOptions,
   formatDatetimeYear,
 } from "@lib/utils.ts";
-import { getCurrentLocale, getScopedI18n } from "@locales/server.ts";
+import { getLocale, getTranslations } from "next-intl/server";
 import { DateTime } from "../datetime";
 
 async function SignUpText({
@@ -25,8 +25,8 @@ async function SignUpText({
   className?: string;
   compact?: boolean;
 }) {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("ilmomasiina.status");
+  const locale = await getLocale();
+  const t = await getTranslations("ilmomasiina.status");
   if (!startDate || !endDate) {
     return (
       <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
@@ -89,7 +89,7 @@ async function SignupQuotas({
   className?: string;
   compact?: boolean;
 }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
   const totalSignupCount = quotas.reduce(
     (acc, quota) => acc + quota.signupCount,
     0,
@@ -180,9 +180,9 @@ export async function EventCardCompact({
     showSignupQuotas = false;
   }
 
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   return (
     <li className="relative flex flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 px-3 py-1 shadow-solid">
       <div className="flex flex-row justify-between">
@@ -244,10 +244,10 @@ export default async function EventCard({
 }: {
   event: UserEventListItem;
 }) {
-  const t = await getScopedI18n("ilmomasiina.path");
+  const t = await getTranslations("ilmomasiina.path");
   const hasSignup = event.registrationStartDate && event.registrationEndDate;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   return (
     <li className="group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 shadow-solid md:flex-row md:gap-4 md:p-6">
       <Link

@@ -8,7 +8,7 @@ import {
 import Link from "next/link";
 import type { News, Page } from "@payload-types";
 import { cn } from "../../lib/utils";
-import { getScopedI18n } from "../../locales/server";
+import { getTranslations } from "next-intl/server";
 
 function AnnouncementIcon({
   type,
@@ -43,7 +43,7 @@ function AnnouncementIcon({
 }
 
 export async function AnnouncementCard({ news }: { news: News }) {
-  const t = await getScopedI18n("action");
+  const t = await getTranslations("action");
 
   return (
     <section className="relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pb-6 pt-12 font-mono shadow-solid md:px-6 lg:-mt-48">

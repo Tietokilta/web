@@ -1,4 +1,4 @@
-import { getCurrentLocale, getScopedI18n } from "@locales/server.ts";
+import { getLocale, getTranslations } from "next-intl/server";
 import type { RestaurantMenu, Food } from "../types/kanttiinit-types";
 import { fetchMenus } from "./fetcher";
 
@@ -33,12 +33,12 @@ function MenuItem(menuProp: MenuProps) {
 }
 
 export async function KanttiinitCombined() {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const menus = await fetchMenus(locale);
   if (menus.length === 0) {
     return null;
   }
-  const t = await getScopedI18n("infoscreen");
+  const t = await getTranslations("infoscreen");
 
   return (
     <div className="h-full">

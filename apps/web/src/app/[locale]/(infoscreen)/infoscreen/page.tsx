@@ -4,11 +4,11 @@ import { KanttiinitCombined } from "@components/infoscreen/kanttiinit";
 import InfoScreenSwitcher from "@components/infoscreen/infoscreen-switcher/index";
 import EventListInfoscreen from "@components/infoscreen/events-list";
 import { fetchInfoScreen } from "@lib/api/info-screen";
-import { getCurrentLocale } from "@locales/server";
+import { getLocale } from "next-intl/server";
 import { CustomIframe } from "@components/infoscreen/custom-iframe";
 
 export default async function InfoScreenContents() {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const infoScreenConfig = await fetchInfoScreen(locale)({});
   if (!infoScreenConfig) {
     return (

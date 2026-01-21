@@ -6,7 +6,7 @@ import { Hero } from "@components/hero";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import { fetchLandingPage } from "@lib/api/landing-page";
 import { AnnouncementCard } from "@components/announcement-card";
-import { getCurrentLocale } from "@locales/server";
+import { getLocale } from "next-intl/server";
 import AprilFoolsAlert from "@components/april-fools/april-fools-alert";
 import { type NonNullableKeys } from "@lib/utils";
 
@@ -32,7 +32,7 @@ export default async function Home(props: {
   const searchParams = await props.searchParams;
   const { page } = searchParams;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
 
   const landingPageData = await fetchLandingPage(locale)({});
   if (!landingPageData) {

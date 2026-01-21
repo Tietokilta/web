@@ -3,12 +3,12 @@ import Link from "next/link";
 import { FileIcon } from "@tietokilta/ui";
 import { type Node } from "@lexical-types";
 import { fetchWeeklyNewsletters } from "../lib/api/weekly-newsletters";
-import { getCurrentLocale, getScopedI18n } from "../locales/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { lexicalNodeToTextContent } from "../lib/utils";
 
 export default async function Page() {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("weeklyNewsletter");
+  const locale = await getLocale();
+  const t = await getTranslations("weeklyNewsletter");
   const weeklyNewsletters = await fetchWeeklyNewsletters({ locale });
 
   if (!weeklyNewsletters || weeklyNewsletters.length === 0) {

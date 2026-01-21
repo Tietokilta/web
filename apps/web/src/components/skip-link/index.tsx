@@ -1,7 +1,7 @@
-import { getScopedI18n } from "../../locales/server";
+import { getTranslations } from "next-intl/server";
 
 export async function SkipLink() {
-  const t = await getScopedI18n("action");
+  const t = await getTranslations("action");
   return (
     <a
       href="#main"

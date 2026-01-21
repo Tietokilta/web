@@ -12,7 +12,7 @@ import type { Media } from "@payload-types";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
-import { getCurrentLocale, getI18n } from "../../locales/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
@@ -21,8 +21,8 @@ export async function MobileNav({
   className,
   ...rest
 }: React.ComponentPropsWithoutRef<"header">) {
-  const t = await getI18n();
-  const locale = await getCurrentLocale();
+  const t = await getTranslations();
+  const locale = await getLocale();
   const href = `/${locale}`;
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});

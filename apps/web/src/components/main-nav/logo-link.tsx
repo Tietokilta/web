@@ -5,11 +5,11 @@ import NextLink from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import type { Media } from "@payload-types";
-import { useCurrentLocale } from "../../locales/client";
+import { useLocale } from "next-intl";
 import TiKLogo from "../../assets/TiK-logo-white.png";
 
 export function LogoLink({ image }: { image: Media | undefined }) {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   const href = `/${locale}`;
   const pathname = usePathname();
   const isActive = pathname === href;

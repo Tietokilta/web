@@ -1,0 +1,216 @@
+{
+  "action": {
+    "Back": "Takaisin",
+    "Close": "Sulje",
+    "Go to next page": "Siirry seuraavalle sivulle",
+    "Go to previous page": "Siirry edelliselle sivulle",
+    "More pages": "Lisää sivuja",
+    "Next": "Seuraava",
+    "Open": "Avaa",
+    "Previous": "Edellinen",
+    "Read more": "Lue lisää",
+    "Read more about {something}": "Lue lisää tapahtumasta {something}",
+    "Sign up": "Ilmoittaudu",
+    "Skip to main content": "Siirry pääsisältöön",
+    "Toggle menu": "Avaa valikko"
+  },
+  "error": {
+    "oops": "Hups, jotain meni pieleen.",
+    "somethingWentWrong": "Jotain meni pieleen",
+    "fatalError": "Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
+    "errorWithId": "Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on",
+    "tryAgain": "Yritä uudelleen"
+  },
+  "errors": {
+    "ilmomasiina-event-not-found": "Tapahtumaa ei löytynyt, tarkista osoite.",
+    "ilmomasiina-fetch-fail": "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
+    "ilmomasiina-ilmo-missing-quota-id": "Virheellinen pyyntö, yritä uudelleen.",
+    "ilmomasiina-signup-not-found": "Ilmoittautumista ei löytynyt, tarkista osoite.",
+    "ilmomasiina-unknown-error": "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
+    "ilmomasiina-validation-failed": "Validointi epäonnistui. Tarkista lomake.",
+    "ilmo": {
+      "code": {
+        "BadSession": "Istunto on vanhentunut. Kirjaudu uudelleen.",
+        "EditConflict": "Muokkausristiriita. Yritä uudelleen.",
+        "WouldMoveSignupsToQueue": "Ilmoittautumisia siirrettäisiin jonoon.",
+        "WrongOldPassword": "Väärä vanha salasana.",
+        "SignupsClosed": "Ilmoittautuminen on suljettu.",
+        "NoSuchQuota": "Kiintiötä ei löytynyt.",
+        "NoSuchSignup": "Ilmoittautumista ei löytynyt.",
+        "BadEditToken": "Virheellinen muokkaustunniste.",
+        "CannotDeleteSelf": "Et voi poistaa itseäsi.",
+        "InitialSetupNeeded": "Alustava asetus tarvitaan.",
+        "InitialSetupAlreadyDone": "Alustava asetus on jo tehty.",
+        "SignupValidationError": "Ilmoittautumisen validointi epäonnistui.",
+        "EventValidationError": "Tapahtuman validointi epäonnistui.",
+        "FST_ERR_VALIDATION": "Validointi epäonnistui."
+      },
+      "fieldError": {
+        "missing": "Tämä kenttä on pakollinen.",
+        "wrongType": "Virheellinen tyyppi.",
+        "tooLong": "Liian pitkä arvo.",
+        "invalidEmail": "Virheellinen sähköpostiosoite.",
+        "notANumber": "Arvon tulee olla numero.",
+        "notAnOption": "Virheellinen valinta."
+      }
+    }
+  },
+  "generic": {
+    "Page": "Sivu",
+    "Version": "Versio"
+  },
+  "heading": {
+    "Main navigation": "Päävalikko",
+    "Upcoming events": "Tulevat tapahtumat"
+  },
+  "infoscreen": {
+    "Ruokalistat": "Ruokalistat",
+    "allergeenit": "A+ = Sisältää Allergeenejä | L = Laktoositon | VL = Vähälaktoosinen | G = Gluteeniton | M = Maidoton | O+ = Sisältää valkosipulia | VV = Vegaaninen",
+    "Bussit": "Bussit",
+    "Raide-Jokeri": "Raide-Jokeri",
+    "Metro": "Metro",
+    "Aalto-yliopisto": "Aalto-yliopisto"
+  },
+  "invoicegenerator": {
+    "Invoicer name": "Laskuttajan nimi",
+    "Invoicer email": "Laskuttajan sähköpostiosoite",
+    "Phone number": "Puhelinnumero",
+    "Subject": "Aihe",
+    "Description": "Perustelut",
+    "Bank account number": "Pankkitilin numero (IBAN)",
+    "Date": "Päiväys",
+    "Submit": "Lähetä",
+    "Street name": "Katuosoite",
+    "City": "Kaupunki",
+    "Postal code": "Postinumero",
+    "Product": "Tuote",
+    "Quantity": "Määrä",
+    "Unit": "Yksikkö",
+    "Unit price": "Yksikköhinta",
+    "Total price": "Yhteensä",
+    "Attachment": "Liite",
+    "Attachments": "Liitteet",
+    "Items": "Erittely",
+    "Receipt/Product": "Kuitti/Tuote",
+    "Sent invoice": "Lasku lähetetty",
+    "Remove": "Poista",
+    "Add": "Lisää",
+    "Address": "Osoite",
+    "Confirmation": "Vakuutan antamani tiedot oikeiksi ja olen tarkistanut, että kuvat kuiteista ovat selkeitä.",
+    "Invoicer information": "Laskuttajan tiedot"
+  },
+  "ilmomasiina": {
+    "form": {
+      "You are in queue at position {position}": "Olet jonossa sijalla {position}.",
+      "You are in the open quota at position {position}/{quotaSize}": "Olet avoimessa kiintiössä sijalla {position}/{quotaSize}.",
+      "You are in the quota {quotaName} at position {position}": "Olet kiintiössä {quotaName} sijalla {position}.",
+      "You are in the quota {quotaName} at position {position}/{quotaSize}": "Olet kiintiössä {quotaName} sijalla {position}/{quotaSize}.",
+      "fieldError": {
+        "missing": "Tämä kenttä on pakollinen.",
+        "wrongType": "Kentän vastaus on väärää tyyppiä. Kokeile päivittää sivu.",
+        "tooLong": "Kentän vastaus on liian pitkä.",
+        "invalidEmail": "sähköpostiosoite on virheellinen. Syötä sallittu sähköpostiosoite.",
+        "notANumber": "Kentän vastauksen tulee olla numero.",
+        "notAnOption": "Kentän vastaus ei ole sallituissa vaihtoehdoissa. Kokeile päivittää sivu."
+      },
+      "optional": "valinnainen",
+      "Shown in the public list of sign ups": "Näytetään julkisessa osallistujalistassa",
+      "Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}": "Huomio: Ilmoittautuminen suoraan sivuilla on beta-vaiheessa, jos kohtaat ongelmia voit ilmoittautua tapahtuman sivulla ilmomasiinassa: {eventUrl}",
+      "First name": "Etunimi",
+      "Last name": "Sukunimi",
+      "Email": "Sähköposti",
+      "Show name in the public list of sign ups": "Näytä nimi julkisessa osallistujalistassa",
+      "Submit": "Tallenna",
+      "Update": "Päivitä",
+      "Edit sign up": "Muokkaa ilmoittautumista",
+      "Delete sign up": "Poista ilmoittautuminen",
+      "Sign up saved": "Ilmoittautuminen tallennettu!",
+      "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message": "Voit muokata ilmoittautumistasi tai poistaa sen myöhemmin tästä osoitteesta, joka lähetetään sähköpostiisi vahvistusviestissä.",
+      "confirmDeleteSignup": "Oletka varma, että haluat poistaa ilmoittautumisesi tapahtumaan {eventTitle}? Jos poistat ilmoittautumisesi, menetät paikkasi jonossa.",
+      "cannotBeUndone": "Tätä toimintoa ei voi perua.",
+      "Your signup cannot be changed anymore as the signup for the event has closed": "Ilmoittautumistasi ei voi enää muokata tai perua, koska tapahtuman ilmoittautuminen on sulkeutunut.",
+      "Cancel": "Peruuta"
+    },
+    "headers": {
+      "Alkaa": "Alkaa",
+      "Ilmoittautumisaika": "Ilmoittautumisaika",
+      "Kategoria": "Kategoria",
+      "Kiintiö": "Kiintiö",
+      "Loppuu": "Loppuu",
+      "Nimi": "Nimi",
+      "Paikka": "Paikka",
+      "Hinta": "Hinta",
+      "Sija": "Sija"
+    },
+    "Ilmoittautuminen": "Ilmoittautuminen",
+    "Ilmoittautuneet": "Ilmoittautuneet",
+    "Ilmoittautuneita": "Ilmoittautuneita",
+    "Ei ilmoittautumista": "Ei ilmoittautumista",
+    "Piilotettu": "Piilotettu",
+    "Vahvistamaton": "Vahvistamaton",
+    "Avoin kiintiö": "Avoin kiintiö",
+    "Jonossa": "Jonossa",
+    "path": {
+      "events": "tapahtumat",
+      "all-events": "kaikki-tapahtumat"
+    },
+    "all-events": {
+      "Kaikki tapahtumat": "Kaikki tapahtumat"
+    },
+    "status": {
+      "Ei ilmoittautuneita vielä": "Ei ilmoittautuneita vielä.",
+      "Ilmoittautuminen alkaa": "Ilmoittautuminen alkaa {startDate}",
+      "Ilmo alkaa": "Ilmo alkaa {startDate}",
+      "Ilmoittautuminen auki": "Ilmoittautuminen auki {endDate} asti",
+      "Ilmo auki": "Ilmo auki {endDate} asti",
+      "Ilmoittautuminen on päättynyt": "Ilmoittautuminen on päättynyt",
+      "Ilmoittautumistiedot eivät ole julkisia": "Ilmoittautumistiedot eivät ole julkisia.",
+      "Jonossa": "Jonossa {queueCount} ({confirmedCount} vahvistettu)",
+      "Tapahtumaan ei voi ilmoittautua": "Tapahtumaan ei voi ilmoittautua"
+    },
+    "Tapahtumat": "Tapahtumat",
+    "Tilaa kalenteri": "Tilaa kalenteri",
+    "Kopioidaan leikepöydälle": "Kopioidaan leikepöydälle",
+    "Kopioitu leikepöydälle": "Kopioitu leikepöydälle",
+    "Selaa vanhoja tapahtumia": "Selaa vanhoja tapahtumia"
+  },
+  "not-found": {
+    "Etusivulle": "Etusivulle",
+    "Tapahtumalistaukseen": "Tapahtumalistaukseen",
+    "Sivua ei löytynyt": "Sivua ei löytynyt",
+    "Tapahtumaa ei löytynyt": "Tapahtumaa ei löytynyt",
+    "Ilmoittautumista ei löytynyt": "Ilmoit­tau­tumista ei löytynyt",
+    "pageNotFoundDescription": "Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.",
+    "eventNotFoundDescription": "Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.",
+    "signupNotFoundDescription": "Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen."
+  },
+  "weeklyNewsletter": {
+    "ayy-aalto": "AYY & Aalto",
+    "bottom-corner": "Pohjanurkkaus",
+    "calendar": "Kalenteri",
+    "guild": "Kilta",
+    "next-week": "Ensi viikolla",
+    "old-link": "vanhoja viikkotiedotteita",
+    "other": "Muu",
+    "read": "Lue",
+    "super-old-link": "erittäin vanhoja viikkotiedotteita",
+    "this-week": "Tällä viikolla",
+    "this-week-signups": "Tällä viikolla avoinna olevat ilmoittautumiset",
+    "title": "Viikkotiedotteet",
+    "path": "viikkotiedotteet",
+    "link-to-sign-up": "Ilmoittautumiseen",
+    "for-event": "tapahtumalle"
+  },
+  "calendar": {
+    "Week": "Viikko",
+    "Work Week": "Työviikko",
+    "Day": "Päivä",
+    "Month": "Kuukausi",
+    "Today": "Tänään"
+  },
+  "metadata": {
+    "title": "Tietokilta",
+    "template": "%s - Tietokilta",
+    "description": "Tietokilta ry:n kotisivut"
+  }
+}

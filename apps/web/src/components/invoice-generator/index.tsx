@@ -15,11 +15,7 @@ import {
 import Form from "next/form";
 import { toast } from "sonner";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
-import {
-  I18nProviderClient,
-  useCurrentLocale,
-  useScopedI18n,
-} from "../../locales/client";
+import { useLocale, useTranslations } from "next-intl";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
 
@@ -88,7 +84,7 @@ function SubmitButton({
 }: {
   formState: InvoiceGeneratorFormState | null;
 }) {
-  const t = useScopedI18n("invoicegenerator");
+  const t = useTranslations("invoicegenerator");
   const { pending } = useFormStatus();
   const errorKeys = formState?.errors ? Object.keys(formState.errors) : [];
 
@@ -117,7 +113,7 @@ function DeleteButton({
   onClick: () => void;
   disabled: boolean;
 }) {
-  const t = useScopedI18n("invoicegenerator");
+  const t = useTranslations("invoicegenerator");
   return (
     <Button
       className="my-8"
@@ -154,7 +150,7 @@ function InputRowArray({
   const [rows, setRows] = useState<number[]>(minimumRows === 1 ? [0] : []);
   const [counter, setCounter] = useState<number>(1);
   const htmlId = `inputRowArray.${name}`;
-  const t = useScopedI18n("invoicegenerator");
+  const t = useTranslations("invoicegenerator");
 
   function addRow() {
     setRows([...rows, counter]);
@@ -219,7 +215,7 @@ function InvoiceItem({
   state: InvoiceGeneratorFormState | null;
   index: number;
 }) {
-  const t = useScopedI18n("invoicegenerator");
+  const t = useTranslations("invoicegenerator");
 
   return (
     <fieldset className="flex">
@@ -266,7 +262,7 @@ function AttachmentRow({
   state: InvoiceGeneratorFormState | null;
   index: number;
 }) {
-  const t = useScopedI18n("invoicegenerator");
+  const t = useTranslations("invoicegenerator");
 
   return (
     <fieldset>
@@ -300,7 +296,7 @@ function AttachmentRow({
 
 function InvoiceGeneratorForm() {
   const [state, formAction] = useActionState(SaveAction, null);
-  const t = useScopedI18n("invoicegenerator");
+  const t = useTranslations("invoicegenerator");
   const formRef = useRef<HTMLFormElement>(null);
   const isAndroidFirefox = useIsAndroidFirefox();
 
@@ -497,11 +493,5 @@ function InvoiceGeneratorForm() {
 }
 
 export function InvoiceGenerator() {
-  const locale = useCurrentLocale();
-
-  return (
-    <I18nProviderClient locale={locale}>
-      <InvoiceGeneratorForm />
-    </I18nProviderClient>
-  );
+  return <InvoiceGeneratorForm />;
 }

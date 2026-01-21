@@ -5,7 +5,7 @@ import {
   type GetDateTimeFormatterOptions,
   getDateTimeFormatter,
 } from "../lib/utils";
-import { useCurrentLocale } from "../locales/client";
+import { useLocale } from "next-intl";
 
 interface SharedProps {
   defaultFormattedDate: string;
@@ -30,7 +30,7 @@ export function DateTime({
   ...rest
 }: Props) {
   const ref = useRef<HTMLTimeElement | HTMLSpanElement | null>(null);
-  const locale = useCurrentLocale();
+  const locale = useLocale();
 
   useEffect(() => {
     if (ref.current) {

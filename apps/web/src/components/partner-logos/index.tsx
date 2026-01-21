@@ -4,7 +4,7 @@ import type { Media, Partner } from "@payload-types";
 import type { PartnersBlockNode } from "@lexical-types";
 import { ImageLinkGrid } from "@components/image-link-grid";
 import { fetchPartners } from "@lib/api/partners";
-import { getCurrentLocale } from "@locales/server";
+import { getLocale } from "next-intl/server";
 import { Link as MobileLink } from "@components/mobile-nav/link";
 import { cn } from "@lib/utils";
 
@@ -17,7 +17,7 @@ export async function PartnerLogos({
   size: PartnersBlockNode["fields"]["size"];
   type?: "grid" | "row" | "mobileRow" | "infoscreen";
 }) {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const partners = await fetchPartners({
     where: { or: statuses.map((status) => ({ status: { equals: status } })) },
     locale,

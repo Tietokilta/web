@@ -5,8 +5,7 @@ import Link from "next/link";
 import { Button } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import { getSignup } from "@lib/api/external/ilmomasiina";
-import { getCurrentLocale, getScopedI18n } from "@locales/server";
-import { I18nProviderClient } from "@locales/client";
+import { getLocale, getTranslations } from "next-intl/server";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
@@ -20,10 +19,10 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   const params = await props.params;
 
   const { signupId, signupEditToken } = params;
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
 
   const signupInfo = await getSignup(signupId, signupEditToken, locale);
-  const t = await getScopedI18n("ilmomasiina.form");
+  const t = await getTranslations("ilmomasiina.form");
 
   if (!signupInfo.ok) {
     return {};
@@ -42,7 +41,7 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
 
   const { signupId, signupEditToken } = params;
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
 
   const signupInfo = await getSignup(signupId, signupEditToken, locale);
 
@@ -54,9 +53,9 @@ export default async function Page(props: PageProps) {
     throw new Error("Failed to fetch signup info");
   }
 
-  const t = await getScopedI18n("ilmomasiina.form");
-  const tp = await getScopedI18n("ilmomasiina.path");
-  const ta = await getScopedI18n("action");
+  const t = await getTranslations("ilmomasiina.form");
+  const tp = await getTranslations("ilmomasiina.path");
+  const ta = await getTranslations("action");
 
   return (
     <main
@@ -106,14 +105,12 @@ export default async function Page(props: PageProps) {
                     )}
           </p>
         </hgroup>
-        <I18nProviderClient locale={locale}>
-          <SignupForm
-            signupId={signupId}
-            signupEditToken={signupEditToken}
-            signup={signupInfo.data.signup}
-            event={signupInfo.data.event}
-          />
-        </I18nProviderClient>
+        <SignupForm
+          signupId={signupId}
+          signupEditToken={signupEditToken}
+          signup={signupInfo.data.signup}
+          event={signupInfo.data.event}
+        />
       </div>
     </main>
   );

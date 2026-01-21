@@ -2,7 +2,7 @@ import { NavigationMenu, NavigationMenuList } from "@tietokilta/ui";
 import type { Media } from "@payload-types";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
-import { getCurrentLocale } from "../../locales/server";
+import { getLocale } from "next-intl/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
@@ -11,7 +11,7 @@ export async function MainNav({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<typeof NavigationMenu>) {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const mainNav = await fetchMainNavigation(locale)({});
   if (!mainNav || mainNav.items.length === 0) return null;
 

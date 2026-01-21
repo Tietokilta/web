@@ -2,7 +2,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { getScopedI18n } from "@locales/server";
+import { getTranslations } from "next-intl/server";
 
 const size = {
   width: 1200,
@@ -10,7 +10,7 @@ const size = {
 };
 
 export async function generateImageMetadata() {
-  const t = await getScopedI18n("metadata");
+  const t = await getTranslations("metadata");
   return [
     {
       id: 1,
@@ -22,7 +22,7 @@ export async function generateImageMetadata() {
 }
 
 export default async function Image() {
-  const t = await getScopedI18n("metadata");
+  const t = await getTranslations("metadata");
   const interRegular = await readFile(
     join(process.cwd(), "public/og/fonts/Inter/static/Inter_18pt-Regular.ttf"),
   );

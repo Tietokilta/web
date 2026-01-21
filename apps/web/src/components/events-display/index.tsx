@@ -13,7 +13,7 @@ import {
   PaginationPrevious,
 } from "../pagination";
 import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
-import { getCurrentLocale, getI18n } from "../../locales/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
 import { DateTime } from "../datetime";
 
@@ -28,8 +28,8 @@ function EventListSkeleton() {
 }
 
 async function EventItem({ event }: { event: UserEventListItem }) {
-  const locale = await getCurrentLocale();
-  const t = await getI18n();
+  const locale = await getLocale();
+  const t = await getTranslations();
 
   const eventUrl = `/${locale}/${t("ilmomasiina.path.events")}/${event.slug}`;
 
@@ -91,9 +91,9 @@ async function EventItem({ event }: { event: UserEventListItem }) {
 }
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const upcomingEvents = await fetchUpcomingEvents(locale);
-  const t = await getI18n();
+  const t = await getTranslations();
   if (!upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn(
@@ -170,8 +170,8 @@ export async function EventsDisplay({
   eventsListPath?: string;
   currentPage?: number;
 }) {
-  const locale = await getCurrentLocale();
-  const t = await getI18n();
+  const locale = await getLocale();
+  const t = await getTranslations();
   return (
     <section className="space-y-4">
       <Link

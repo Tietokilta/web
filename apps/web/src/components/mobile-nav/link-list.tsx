@@ -18,7 +18,7 @@ import type {
 } from "@payload-types";
 import { PartnerLogos } from "@components/partner-logos";
 import { cn } from "../../lib/utils";
-import { getScopedI18n } from "../../locales/server";
+import { getTranslations } from "next-intl/server";
 import { Link } from "./link";
 
 async function NavigationLink({
@@ -39,7 +39,7 @@ async function NavigationLink({
     );
   }
 
-  const t = await getScopedI18n("action");
+  const t = await getTranslations("action");
 
   return (
     <Collapsible>

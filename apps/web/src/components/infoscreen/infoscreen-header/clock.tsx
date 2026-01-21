@@ -1,11 +1,11 @@
 "use client";
 import dynamic from "next/dynamic";
-import { useCurrentLocale } from "@locales/client";
+import { useLocale } from "next-intl";
 
 const Clock = dynamic(() => import("react-live-clock"), { ssr: false });
 
 export function InfoscreenClock() {
-  const locale = useCurrentLocale();
+  const locale = useLocale();
   return (
     <div className="flex h-full flex-col">
       <Clock

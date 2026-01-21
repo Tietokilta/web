@@ -6,14 +6,14 @@ import {
   fetchUpcomingEvents,
 } from "../lib/api/external/ilmomasiina";
 import { BackButton } from "../components/back-button";
-import { getCurrentLocale, getScopedI18n } from "../locales/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { CalendarSubButton } from "../components/calendar-sub-button";
 import EventCard from "../components/event-card";
 import EventCalendar from "./event-calendar";
 
 async function Calendar({ events }: { events: UserEventListResponse }) {
-  const t = await getScopedI18n("ilmomasiina");
-  const locale = await getCurrentLocale();
+  const t = await getTranslations("ilmomasiina");
+  const locale = await getLocale();
 
   return (
     <div className="flex flex-col gap-2">
@@ -31,9 +31,9 @@ async function Calendar({ events }: { events: UserEventListResponse }) {
 }
 
 export default async function Page() {
-  const t = await getScopedI18n("ilmomasiina");
-  const ta = await getScopedI18n("action");
-  const locale = await getCurrentLocale();
+  const t = await getTranslations("ilmomasiina");
+  const ta = await getTranslations("action");
+  const locale = await getLocale();
   const events = await fetchEvents(locale);
   const upcomingEvents = await fetchUpcomingEvents(locale);
 
