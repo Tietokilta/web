@@ -92,7 +92,7 @@ function Content({ content }: { content?: EditorState }) {
   if (!content) return null;
 
   return (
-    <article className="prose max-w-prose hyphens-auto text-pretty prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
+    <article className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
       <LexicalSerializer nodes={content.root.children} />
     </article>
   );

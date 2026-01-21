@@ -25,7 +25,7 @@ export default async function EventListInfoscreen({
 
   return (
     <main id="main" className="flex flex-col p-4 align-top">
-      <h1 className="mb-2 mt-4 text-center font-mono text-5xl font-bold">
+      <h1 className="mt-4 mb-2 text-center font-mono text-5xl font-bold">
         {t("ilmomasiina.Tapahtumat")}
       </h1>
       <ul className="flex flex-row flex-wrap">
@@ -40,7 +40,7 @@ export default async function EventListInfoscreen({
           .map(([weekYear, eventsInWeek]) => {
             return (
               <div key={weekYear} className="flex w-1/2 flex-col p-1">
-                <span className="text-pretty py-1 text-center text-3xl font-bold">
+                <span className="py-1 text-center text-3xl font-bold text-pretty">
                   {t("calendar.Week")} {Number(weekYear.split("-")[1])}
                 </span>
                 <div className="flex flex-col gap-2">

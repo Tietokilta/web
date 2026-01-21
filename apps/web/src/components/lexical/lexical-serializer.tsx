@@ -227,7 +227,7 @@ function LexicalNodeSerializer({
         <a
           href={node.value.url ?? "#broken-url"}
           target="_blank"
-          className="not-prose hover:bg-gray-300/90 my-4 flex w-fit max-w-full items-center gap-4 text-clip rounded-md border-2 border-gray-900 p-4 shadow-solid hover:border-gray-800"
+          className="not-prose my-4 flex w-fit max-w-full items-center gap-4 rounded-md border-2 border-gray-900 p-4 text-clip shadow-solid hover:border-gray-800 hover:bg-gray-300/90"
           rel="noopener"
         >
           <div className="flex max-w-full flex-col items-center gap-2">
@@ -270,7 +270,7 @@ function Relationship({ node }: { node: RelationshipNode }) {
     case "pages": {
       return (
         <Link
-          className="not-prose hover:bg-gray-300/90 my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 shadow-solid hover:border-gray-800"
+          className="not-prose my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 shadow-solid hover:border-gray-800 hover:bg-gray-300/90"
           data-relation
           href={node.value.path ?? "#no-path"}
         >

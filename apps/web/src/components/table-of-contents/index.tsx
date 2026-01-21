@@ -21,9 +21,9 @@ function HeadingList({
           className={cn(
             "before:text-gray-600",
             item.level === 2 &&
-              "mb-2 ms-[2ch] text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'] before:content-alt-empty last:mb-0",
+              "ms-[2ch] mb-2 text-base before:-ms-[2ch] before:me-[1ch] before:content-['#'] before:content-alt-empty last:mb-0",
             item.level === 3 &&
-              "mb-1 ms-[3ch] text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'] before:content-alt-empty last:mb-0",
+              "ms-[3ch] mb-1 text-sm before:-ms-[3ch] before:me-[1ch] before:content-['##'] before:content-alt-empty last:mb-0",
           )}
           key={item.id}
         >
@@ -59,7 +59,7 @@ function Desktop({
         className,
       )}
     >
-      <nav className="scroll-shadows sticky top-32 max-h-[70dvh] w-64 overflow-y-auto rounded-md border-2 border-gray-900 p-6 shadow-solid 2xl:w-72">
+      <nav className="sticky top-32 max-h-[70dvh] w-64 overflow-y-auto rounded-md border-2 border-gray-900 scroll-shadows p-6 shadow-solid 2xl:w-72">
         <HeadingList activeHeadingId={activeHeadingId} toc={toc} />
       </nav>
     </div>
@@ -83,12 +83,12 @@ function Mobile({
   return (
     <details
       className={cn(
-        "backdrop-blur-xs bg-gray-100/80 group fixed left-0 top-24 -mt-4 flex w-screen flex-col gap-2 font-mono",
+        "group fixed top-24 left-0 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 font-mono backdrop-blur-xs",
         className,
       )}
       ref={detailsRef}
     >
-      <summary className="shadow-xs drop-shadow-xs flex cursor-pointer items-center justify-between p-4 group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+      <summary className="flex cursor-pointer items-center justify-between p-4 shadow-xs drop-shadow-xs group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto [&::-webkit-details-marker]:hidden [&::marker]:hidden">
         <span
           className={cn(
             "truncate text-2xl font-bold before:me-[2ch] before:text-gray-600",
@@ -102,7 +102,7 @@ function Mobile({
         </span>
         <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
       </summary>
-      <nav className="scroll-shadows-sm shadow-xs drop-shadow-xs max-h-[50lvh] overflow-y-scroll px-4 py-2">
+      <nav className="max-h-[50lvh] overflow-y-scroll scroll-shadows-sm px-4 py-2 shadow-xs drop-shadow-xs">
         <HeadingList
           activeHeadingId={activeHeadingId}
           onHeadingClick={() => detailsRef.current?.removeAttribute("open")}
