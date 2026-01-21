@@ -46,10 +46,10 @@ export async function AnnouncementCard({ news }: { news: News }) {
   const t = await getScopedI18n("action");
 
   return (
-    <section className="relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pb-6 pt-12 font-mono shadow-solid md:px-6 lg:-mt-48">
+    <section className="relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pt-12 pb-6 font-mono shadow-solid md:px-6 lg:-mt-48">
       <div
         className={cn(
-          "absolute left-0 top-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2",
+          "absolute top-0 left-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2",
           news.type === "announcement" && "bg-success-500",
           news.type === "warning" && "bg-warning-500",
           news.type === "danger" && "bg-danger-500",

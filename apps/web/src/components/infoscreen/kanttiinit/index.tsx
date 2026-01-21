@@ -44,7 +44,7 @@ export async function KanttiinitCombined() {
     <div className="h-full">
       <div className="h-[95%] w-full flex-row justify-center">
         <div className="flex w-full justify-center">
-          <h1 className="mb-1 mt-2 text-center font-mono text-5xl font-bold">
+          <h1 className="mt-2 mb-1 text-center font-mono text-5xl font-bold">
             {t("Ruokalistat")}
           </h1>
         </div>

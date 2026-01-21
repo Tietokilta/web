@@ -438,7 +438,7 @@ export default async function Page(props: PageProps) {
           <h1 className="font-mono text-2xl md:text-4xl">{event.data.title}</h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
-              <div className="grow-2 flex max-w-xl flex-col gap-8">
+              <div className="flex max-w-xl grow-2 flex-col gap-8">
                 <Tldr event={event.data} />
                 {event.data.description ? (
                   <div className="prose">
