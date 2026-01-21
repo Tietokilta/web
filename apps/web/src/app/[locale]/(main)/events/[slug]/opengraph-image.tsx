@@ -76,113 +76,111 @@ export default async function Image(props: PageProps) {
   ).toString();
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        fontSize: 64,
+        background: "#f8f9fa",
+        color: "#0a0d10",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        padding: "2em",
+        gap: "1em",
+        fontFamily: "Inter",
+      }}
+    >
       <div
         style={{
-          fontSize: 64,
-          background: "#f8f9fa",
-          color: "#0a0d10",
-          width: "100%",
-          height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column",
-          padding: "2em",
           gap: "1em",
-          fontFamily: "Inter",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1em",
-          }}
-        >
-          {/* @ts-expect-error -- this works with ArrayBuffer src specifically in Next.js ImageResponse*/}
-          <img src={tikLogoSrc} alt="" width="196" height="196" />
-          <div tw="flex flex-col max-w-4/5">
-            <div
-              style={{
-                fontFamily: "Roboto Mono",
-                fontSize: "1.25em",
-                fontWeight: 700,
-                overflow: "hidden",
-                display: "block",
-                lineClamp: 2,
-              }}
-            >
-              {event.data.title}
-            </div>
-            <div
-              style={{
-                fontSize: "0.75em",
-                overflow: "hidden",
-                display: "block",
-                lineClamp: 2,
-              }}
-            >
-              {description}
-            </div>
+        {/* @ts-expect-error -- this works with ArrayBuffer src specifically in Next.js ImageResponse*/}
+        <img src={tikLogoSrc} alt="" width="196" height="196" />
+        <div tw="flex flex-col max-w-4/5">
+          <div
+            style={{
+              fontFamily: "Roboto Mono",
+              fontSize: "1.25em",
+              fontWeight: 700,
+              overflow: "hidden",
+              display: "block",
+              lineClamp: 2,
+            }}
+          >
+            {event.data.title}
+          </div>
+          <div
+            style={{
+              fontSize: "0.75em",
+              overflow: "hidden",
+              display: "block",
+              lineClamp: 2,
+            }}
+          >
+            {description}
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            fontFamily: "Roboto Mono",
-            fontWeight: 500,
-          }}
-        >
-          {event.data.date ? (
-            <div tw="line-clamp-2 text-pretty pl-5 flex items-center">
-              <svg
-                style={{ width: "48px", height: "48px", display: "block" }}
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <polyline points="12 6 12 12 16 14" />
-              </svg>
-              <div style={{ fontSize: "0.75em", marginLeft: "0.5em" }}>
-                {formatDateTime(event.data.date, locale)}
-              </div>
-            </div>
-          ) : null}
-          {event.data.location ? (
-            <div tw="line-clamp-2 text-pretty pl-5 flex items-center">
-              <svg
-                style={{ width: "48px", height: "48px", display: "block" }}
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-              <div style={{ fontSize: "0.75em", marginLeft: "0.5em" }}>
-                {event.data.location}
-              </div>
-            </div>
-          ) : null}
-        </div>
       </div>
-    ),
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          fontFamily: "Roboto Mono",
+          fontWeight: 500,
+        }}
+      >
+        {event.data.date ? (
+          <div tw="line-clamp-2 text-pretty pl-5 flex items-center">
+            <svg
+              style={{ width: "48px", height: "48px", display: "block" }}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <div style={{ fontSize: "0.75em", marginLeft: "0.5em" }}>
+              {formatDateTime(event.data.date, locale)}
+            </div>
+          </div>
+        ) : null}
+        {event.data.location ? (
+          <div tw="line-clamp-2 text-pretty pl-5 flex items-center">
+            <svg
+              style={{ width: "48px", height: "48px", display: "block" }}
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <div style={{ fontSize: "0.75em", marginLeft: "0.5em" }}>
+              {event.data.location}
+            </div>
+          </div>
+        ) : null}
+      </div>
+    </div>,
     {
       ...size,
       fonts: [

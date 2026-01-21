@@ -42,60 +42,58 @@ export async function GET(req: NextRequest) {
   const tikLogoSrc = Uint8Array.from(tikLogoData).buffer;
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        fontSize: 64,
+        background: "#f8f9fa",
+        color: "#0a0d10",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        padding: "2em",
+        gap: "1em",
+        fontFamily: "Inter",
+      }}
+    >
       <div
         style={{
-          fontSize: 64,
-          background: "#f8f9fa",
-          color: "#0a0d10",
-          width: "100%",
-          height: "100%",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          flexDirection: "column",
-          padding: "2em",
           gap: "1em",
-          fontFamily: "Inter",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1em",
-          }}
-        >
-          {/* @ts-expect-error -- this works with ArrayBuffer src specifically in Next.js ImageResponse*/}
-          <img src={tikLogoSrc} alt="" width="196" height="196" />
-          <div tw="flex flex-col max-w-4/5">
-            <div
-              style={{
-                fontFamily: "Roboto Mono",
-                fontSize: "1.25em",
-                fontWeight: 700,
-                overflow: "hidden",
-                display: "block",
-                lineClamp: 2,
-              }}
-            >
-              {title}
-            </div>
-            <div
-              style={{
-                fontSize: "0.75em",
-                overflow: "hidden",
-                display: "block",
-                lineClamp: 2,
-              }}
-            >
-              {description}
-            </div>
+        {/* @ts-expect-error -- this works with ArrayBuffer src specifically in Next.js ImageResponse*/}
+        <img src={tikLogoSrc} alt="" width="196" height="196" />
+        <div tw="flex flex-col max-w-4/5">
+          <div
+            style={{
+              fontFamily: "Roboto Mono",
+              fontSize: "1.25em",
+              fontWeight: 700,
+              overflow: "hidden",
+              display: "block",
+              lineClamp: 2,
+            }}
+          >
+            {title}
+          </div>
+          <div
+            style={{
+              fontSize: "0.75em",
+              overflow: "hidden",
+              display: "block",
+              lineClamp: 2,
+            }}
+          >
+            {description}
           </div>
         </div>
       </div>
-    ),
+    </div>,
     {
       ...size,
       fonts: [

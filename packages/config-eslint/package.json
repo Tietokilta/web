@@ -6,16 +6,16 @@
   "type": "module",
   "exports": {
     "./server": {
-      "import": "./server.js",
-      "types": "./server.js"
+      "types": "./server.js",
+      "import": "./server.js"
     },
     "./next": {
-      "import": "./next.js",
-      "types": "./next.js"
+      "types": "./next.js",
+      "import": "./next.js"
     },
     "./react": {
-      "import": "./react.js",
-      "types": "./react.js"
+      "types": "./react.js",
+      "import": "./react.js"
     }
   },
   "devDependencies": {
