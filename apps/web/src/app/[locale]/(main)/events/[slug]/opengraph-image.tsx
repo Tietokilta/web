@@ -5,9 +5,9 @@ import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
 import stripMarkdown from "strip-markdown";
 import { remark } from "remark";
-import { getCurrentLocale } from "@locales/server";
 import { fetchEvent } from "@lib/api/external/ilmomasiina";
 import { formatDateTime } from "@lib/utils";
+import type { Locale } from "@i18n/routing";
 
 const size = {
   width: 1200,
@@ -16,14 +16,13 @@ const size = {
 
 interface PageProps {
   params: Promise<{
+    locale: Locale;
     slug: string;
   }>;
 }
 
 export async function generateImageMetadata(props: PageProps) {
-  const params = await props.params;
-  const { slug } = params;
-  const locale = await getCurrentLocale();
+  const { locale, slug } = await props.params;
   const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     return notFound();
@@ -40,9 +39,7 @@ export async function generateImageMetadata(props: PageProps) {
 }
 
 export default async function Image(props: PageProps) {
-  const params = await props.params;
-  const { slug } = params;
-  const locale = await getCurrentLocale();
+  const { locale, slug } = await props.params;
   const event = await fetchEvent(slug, locale);
 
   if (!event.ok) {

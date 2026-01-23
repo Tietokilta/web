@@ -1,18 +1,7 @@
-import type { NextRequest } from "next/server";
-import { createI18nMiddleware } from "next-international/middleware";
+import createMiddleware from "next-intl/middleware";
+import { routing } from "@i18n/routing";
 
-const i18nMiddleware = createI18nMiddleware({
-  locales: ["fi", "en"],
-  defaultLocale: "fi",
-  resolveLocaleFromRequest: () => {
-    // ignore Accept-Language header and use the default locale always
-    return "fi";
-  },
-});
-
-export function middleware(request: NextRequest) {
-  return i18nMiddleware(request);
-}
+export default createMiddleware(routing);
 
 export const config = {
   matcher: [

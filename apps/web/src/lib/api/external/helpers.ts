@@ -1,10 +1,11 @@
-import { type Dictionary } from "../../../locales/server";
-
-export type ErrorType = keyof {
-  [Property in keyof Dictionary as Property extends `errors.${infer S}`
-    ? S
-    : never]?: string;
-};
+// Error types matching the keys in messages/en.json under "errors"
+export type ErrorType =
+  | "ilmomasiina-event-not-found"
+  | "ilmomasiina-fetch-fail"
+  | "ilmomasiina-ilmo-missing-quota-id"
+  | "ilmomasiina-signup-not-found"
+  | "ilmomasiina-unknown-error"
+  | "ilmomasiina-validation-failed";
 
 export interface OkResponse<T> {
   ok: true;

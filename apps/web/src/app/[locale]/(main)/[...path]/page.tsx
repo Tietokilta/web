@@ -11,7 +11,7 @@ import { AdminBar } from "@components/admin-bar";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import { TableOfContents } from "@components/table-of-contents";
 import { fetchPage } from "@lib/api/pages";
-import { getCurrentLocale, type Locale } from "@locales/server";
+import { getLocale, type Locale } from "@locales/server";
 import { generateTocFromRichText } from "@lib/utils";
 
 interface NextPage<Params extends Record<string, unknown>> {
@@ -73,7 +73,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
   const { path } = params;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const page = await getPage(path, locale);
 
   return {
@@ -102,7 +102,7 @@ async function Page(props: Props) {
   const params = await props.params;
   const { path } = params;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const page = await getPage(path, locale);
 
   if (page.type === "events-list") {

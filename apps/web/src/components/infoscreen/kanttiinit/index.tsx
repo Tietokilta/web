@@ -1,4 +1,4 @@
-import { getCurrentLocale, getScopedI18n } from "@locales/server.ts";
+import { getLocale, getTranslations } from "@locales/server";
 import type { RestaurantMenu, Food } from "../types/kanttiinit-types";
 import { fetchMenus } from "./fetcher";
 
@@ -33,19 +33,19 @@ function MenuItem(menuProp: MenuProps) {
 }
 
 export async function KanttiinitCombined() {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const menus = await fetchMenus(locale);
   if (menus.length === 0) {
     return null;
   }
-  const t = await getScopedI18n("infoscreen");
+  const t = await getTranslations("infoscreen");
 
   return (
     <div className="h-full">
       <div className="h-[95%] w-full flex-row justify-center">
         <div className="flex w-full justify-center">
           <h1 className="mt-2 mb-1 text-center font-mono text-5xl font-bold">
-            {t("Ruokalistat")}
+            {t("Menus")}
           </h1>
         </div>
         <div className="top-3 flex w-full justify-between gap-x-4 gap-y-2 p-3 pt-0">
@@ -68,7 +68,7 @@ export async function KanttiinitCombined() {
         </div>
       </div>
       <div className="absolute inset-x-0 bottom-0 z-10 h-[5%] content-center text-center align-text-bottom">
-        {t("allergeenit")}
+        {t("allergens")}
       </div>
     </div>
   );
