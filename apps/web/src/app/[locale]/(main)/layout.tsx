@@ -10,7 +10,7 @@ import { SkipLink } from "@components/skip-link";
 import { cn } from "@lib/utils";
 import "@tietokilta/ui/global.css";
 import "../globals.css";
-import { getScopedI18n, type Locale } from "@locales/server";
+import { getTranslations, getLocale } from "@locales/server";
 import { DigiCommitteeRecruitmentAlert } from "@components/digi-committee-recruitment-alert";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -18,12 +18,6 @@ const robotoMono = Roboto_Mono({
   subsets: ["latin"],
   variable: "--font-roboto-mono",
 });
-
-export interface LayoutProps {
-  params: Promise<{
-    locale: Locale;
-  }>;
-}
 
 const icons = {
   icon: [
@@ -45,7 +39,7 @@ const icons = {
 const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const t = await getScopedI18n("metadata");
+  const t = await getTranslations("metadata");
   return {
     title: {
       template: t("template"),
@@ -63,14 +57,11 @@ export const viewport: Viewport = {
   themeColor: "black",
 };
 
-export default async function RootLayout(
-  props: {
-    children: React.ReactNode;
-  } & LayoutProps,
-) {
-  const params = await props.params;
-
-  const { locale } = params;
+export default async function RootLayout(props: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const locale = await getLocale();
 
   const { children } = props;
 

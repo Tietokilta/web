@@ -6,12 +6,12 @@ import {
   QuestionType,
   type SignupCreateResponse,
 } from "@tietokilta/ilmomasiina-models";
-import { useCurrentLocale, useScopedI18n } from "@locales/client";
+import { useLocale, useTranslations } from "@locales/client";
 import { baseUrl, deleteSignUp, getSignup, patchSignUp } from ".";
 
 export function useSignUp() {
   const router = useRouter();
-  const locale = useCurrentLocale();
+  const locale = useLocale();
 
   async function signUp(formData: FormData): Promise<void> {
     const quotaId = formData.get("quotaId");
@@ -57,8 +57,8 @@ const saveSignUpSchema = z
 
 export function useSaveSignUpAction() {
   const router = useRouter();
-  const locale = useCurrentLocale();
-  const t = useScopedI18n("errors");
+  const locale = useLocale();
+  const t = useTranslations("errors");
 
   async function saveSignUpAction(
     currentState: unknown,
@@ -191,8 +191,8 @@ const deleteSignUpSchema = z.object({
 export function useDeleteSignUpAction() {
   const router = useRouter();
 
-  const locale = useCurrentLocale();
-  const tp = useScopedI18n("ilmomasiina.path");
+  const locale = useLocale();
+  const tp = useTranslations("ilmomasiina.path");
 
   async function deleteSignUpAction(formData: FormData): Promise<void> {
     const data = deleteSignUpSchema.safeParse(

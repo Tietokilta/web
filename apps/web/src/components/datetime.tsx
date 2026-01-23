@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { usePathnameLocale } from "@lib/use-pathname-locale";
 import {
   type GetDateTimeFormatterOptions,
   getDateTimeFormatter,
 } from "../lib/utils";
-import { useCurrentLocale } from "../locales/client";
 
 interface SharedProps {
   defaultFormattedDate: string;
@@ -30,7 +30,7 @@ export function DateTime({
   ...rest
 }: Props) {
   const ref = useRef<HTMLTimeElement | HTMLSpanElement | null>(null);
-  const locale = useCurrentLocale();
+  const locale = usePathnameLocale();
 
   useEffect(() => {
     if (ref.current) {

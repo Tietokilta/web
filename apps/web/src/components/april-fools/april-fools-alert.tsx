@@ -1,9 +1,9 @@
 "use client";
 import { useEffect } from "react";
-import { useCurrentLocale } from "@locales/client";
+import { usePathnameLocale } from "@lib/use-pathname-locale";
 
 export default function AprilFoolsAlert() {
-  const locale = useCurrentLocale();
+  const locale = usePathnameLocale();
   useEffect(() => {
     const isAprilFoolsDay =
       new Date().getDate() === 1 && new Date().getMonth() === 3;

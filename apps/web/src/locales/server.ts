@@ -1,14 +1,16 @@
-import { createI18nServer } from "next-international/server";
-import type fi from "./fi";
+import { routing } from "@i18n/routing";
 
-export const { getI18n, getScopedI18n, getStaticParams, getCurrentLocale } =
-  createI18nServer({
-    fi: () => import("./fi"),
-    en: () => import("./en"),
-  });
+export { getTranslations, getLocale, setRequestLocale } from "next-intl/server";
 
-export type Locale = (typeof locales)[number];
-export type Dictionary = typeof fi;
+export { routing };
+export type { Locale } from "@i18n/routing";
 
-export const locales = ["fi", "en"] as const;
-export const defaultLocale = "fi";
+export const locales = routing.locales;
+export const defaultLocale = routing.defaultLocale;
+
+/**
+ * For static params generation - returns all locales.
+ */
+export function getStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}

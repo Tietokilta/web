@@ -2,14 +2,14 @@ import type { JSX } from "react";
 import type { CommitteesYearBlockNode } from "@lexical-types";
 import { fetchCommittees } from "../../lib/api/committees";
 import { CommitteeCard } from "../committee-card";
-import { getCurrentLocale } from "../../locales/server";
+import { getLocale } from "../../locales/server";
 
 export async function CommitteeList({
   year,
 }: {
   year: CommitteesYearBlockNode["fields"]["year"];
 }): Promise<JSX.Element | null> {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const committees = await fetchCommittees({
     where: { year: { equals: year }, hidden: { not_equals: true } },
     locale,
