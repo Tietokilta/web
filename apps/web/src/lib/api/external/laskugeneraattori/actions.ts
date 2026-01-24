@@ -91,7 +91,7 @@ export async function SaveAction(
   const data = new FormData();
   data.append("data", JSON.stringify(json));
   attachments.forEach((attachment) => {
-    data.append("attachments", attachment);
+    data.append("attachments", attachment, encodeURIComponent(attachment.name));
   });
 
   const res = await fetch(`${laskugeneraattoriBaseUrl}/invoices`, {
