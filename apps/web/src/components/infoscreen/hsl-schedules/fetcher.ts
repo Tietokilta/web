@@ -116,7 +116,6 @@ function mapStop(stop: StopHSL): Omit<Stop, "type"> {
           headSign: headSign || "Null",
           hours: Math.floor((arrivalTimeLocal - arr.serviceDay) / 60 / 60) % 24,
           minutes: Math.floor(((arrivalTimeLocal - arr.serviceDay) / 60) % 60),
-          realtimeArrival: arrivalTimeLocal,
           fullTime,
         };
       })
