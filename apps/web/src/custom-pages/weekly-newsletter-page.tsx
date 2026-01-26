@@ -6,7 +6,7 @@ import {
   fetchWeeklyNewsletter,
   fetchWeeklyNewsletterBySlug,
 } from "../lib/api/weekly-newsletters";
-import { getCurrentLocale, getScopedI18n } from "../locales/server";
+import { getLocale, getTranslations } from "../locales/server";
 import {
   formatDate,
   formatDateYear,
@@ -21,7 +21,7 @@ import { TableOfContents } from "../components/table-of-contents";
 import { DateTime } from "../components/datetime";
 
 async function NewsItemContent({ item }: { item: NewsItem }) {
-  const t = await getScopedI18n("weeklyNewsletter");
+  const t = await getTranslations("weeklyNewsletter");
   const content = item.content as unknown as EditorState | null;
 
   return (
@@ -37,8 +37,8 @@ async function NewsItemContent({ item }: { item: NewsItem }) {
           target="_blank"
           rel="noopener"
         >
-          {t("link-to-sign-up")}{" "}
-          <span className="sr-only">{` ${t("for-event")} ${item.title}`}</span>
+          {t("To sign up")}{" "}
+          <span className="sr-only">{` ${t("for event")} ${item.title}`}</span>
         </Link>
       ) : null}
       {content ? <LexicalSerializer nodes={content.root.children} /> : null}
@@ -85,7 +85,7 @@ async function Calendar({
   eventsNextWeek: NewsItem[];
   signupsThisWeek: NewsItem[];
 }) {
-  const t = await getScopedI18n("weeklyNewsletter");
+  const t = await getTranslations("weeklyNewsletter");
 
   if (
     eventsThisWeek.length === 0 &&
@@ -97,10 +97,10 @@ async function Calendar({
 
   return (
     <section className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
-      <h2 id={stringToId(t("calendar"))}>{t("calendar")}</h2>
+      <h2 id={stringToId(t("Calendar"))}>{t("Calendar")}</h2>
       {eventsThisWeek.length > 0 ? (
         <div>
-          <span>{t("this-week")}:</span>
+          <span>{t("This week")}:</span>
           <ol className="not-prose ml-[4ch]">
             {eventsThisWeek.map((newsItem) => (
               <li key={newsItem.id}>
@@ -115,7 +115,7 @@ async function Calendar({
       ) : null}
       {eventsNextWeek.length > 0 ? (
         <div>
-          <span>{t("next-week")}:</span>
+          <span>{t("Next week")}:</span>
           <ol className="not-prose ml-[4ch]">
             {eventsNextWeek.map((newsItem) => (
               <li key={newsItem.id}>
@@ -130,7 +130,7 @@ async function Calendar({
       ) : null}
       {signupsThisWeek.length > 0 ? (
         <div>
-          <span>{t("this-week-signups")}:</span>
+          <span>{t("Sign ups open this week")}:</span>
           <ol className="not-prose ml-[4ch]">
             {signupsThisWeek.map((newsItem) => (
               <li key={newsItem.id}>
@@ -164,8 +164,8 @@ export const legacyUrl =
   process.env.PUBLIC_LEGACY_URL ?? "https://tietokilta.fi";
 
 export default async function Page({ slug }: { slug?: string }) {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("weeklyNewsletter");
+  const locale = await getLocale();
+  const t = await getTranslations("weeklyNewsletter");
   const weeklyNewsletter = await (slug
     ? fetchWeeklyNewsletterBySlug({
         where: { slug: { equals: slug } },
@@ -176,6 +176,8 @@ export default async function Page({ slug }: { slug?: string }) {
   if (!weeklyNewsletter) {
     return notFound();
   }
+
+  const path = t("path");
 
   const greetings = weeklyNewsletter.greetings as unknown as
     | EditorState
@@ -215,16 +217,16 @@ export default async function Page({ slug }: { slug?: string }) {
     eventsNextWeek.length > 0 ||
     signupsThisWeek.length > 0
       ? {
-          id: makeUniqueId(stringToId(t("calendar")), seenIds),
+          id: makeUniqueId(stringToId(t("Calendar")), seenIds),
           level: 2 as const,
-          text: t("calendar"),
+          text: t("Calendar"),
         }
       : null,
     guildNewsItems.length > 0
       ? {
-          id: makeUniqueId(stringToId(t("guild")), seenIds),
+          id: makeUniqueId(stringToId(t("Guild")), seenIds),
           level: 2 as const,
-          text: t("guild"),
+          text: t("Guild"),
         }
       : null,
     ...guildNewsItems.map((newsItem) => ({
@@ -234,9 +236,9 @@ export default async function Page({ slug }: { slug?: string }) {
     })),
     ayyAaltoNewsItems.length > 0
       ? {
-          id: makeUniqueId(stringToId(t("ayy-aalto")), seenIds),
+          id: makeUniqueId(stringToId(t("AYY & Aalto")), seenIds),
           level: 2 as const,
-          text: t("ayy-aalto"),
+          text: t("AYY & Aalto"),
         }
       : null,
     ...ayyAaltoNewsItems.map((newsItem) => ({
@@ -246,9 +248,9 @@ export default async function Page({ slug }: { slug?: string }) {
     })),
     otherNewsItems.length > 0
       ? {
-          id: makeUniqueId(stringToId(t("other")), seenIds),
+          id: makeUniqueId(stringToId(t("Other")), seenIds),
           level: 2 as const,
-          text: t("other"),
+          text: t("Other"),
         }
       : null,
     ...otherNewsItems.map((newsItem) => ({
@@ -258,9 +260,9 @@ export default async function Page({ slug }: { slug?: string }) {
     })),
     bottomCornerNewsItems.length > 0
       ? {
-          id: makeUniqueId(stringToId(t("bottom-corner")), seenIds),
+          id: makeUniqueId(stringToId(t("Bottom Corner")), seenIds),
           level: 2 as const,
-          text: t("bottom-corner"),
+          text: t("Bottom Corner"),
         }
       : null,
     ...bottomCornerNewsItems.map((newsItem) => ({
@@ -296,24 +298,25 @@ export default async function Page({ slug }: { slug?: string }) {
             eventsNextWeek={eventsNextWeek}
             signupsThisWeek={signupsThisWeek}
           />
-          <NewsletterCategory title={t("guild")} newsItems={guildNewsItems} />
+          <NewsletterCategory title={t("Guild")} newsItems={guildNewsItems} />
           <NewsletterCategory
-            title={t("ayy-aalto")}
+            title={t("AYY & Aalto")}
             newsItems={ayyAaltoNewsItems}
           />
-          <NewsletterCategory title={t("other")} newsItems={otherNewsItems} />
+          <NewsletterCategory title={t("Other")} newsItems={otherNewsItems} />
           <NewsletterCategory
-            title={t("bottom-corner")}
+            title={t("Bottom Corner")}
             newsItems={bottomCornerNewsItems}
           />
         </div>
 
         <footer className="prose max-w-prose text-pretty hyphens-auto prose-headings:scroll-mt-40 xl:prose-headings:scroll-mt-24">
           <p>
-            {t("read")} <a href={`/${locale}/${t("path")}`}>{t("old-link")}</a>
+            {t("Read")}{" "}
+            <a href={`/${locale}/${path}`}>{t("old weekly newsletters")}</a>
           </p>
           <p>
-            {t("read")}{" "}
+            {t("Read")}{" "}
             <a
               target="_blank"
               href={
@@ -323,7 +326,7 @@ export default async function Page({ slug }: { slug?: string }) {
               }
               rel="noopener"
             >
-              {t("super-old-link")}
+              {t("very old weekly newsletters")}
             </a>
           </p>
         </footer>

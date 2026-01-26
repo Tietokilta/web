@@ -6,7 +6,7 @@ import { useFormStatus } from "react-dom";
 import { type UserEventResponse } from "@tietokilta/ilmomasiina-models";
 import { useSignUp } from "@lib/api/external/ilmomasiina/actions";
 import { cn } from "@lib/utils";
-import { useScopedI18n } from "@locales/client";
+import { useTranslations } from "@locales/client";
 
 function StatusButton({ disabled, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
@@ -36,7 +36,7 @@ function SignUpButton({
 
 export function SignupButtons({ event }: { event: UserEventResponse }) {
   const { signUp } = useSignUp();
-  const t = useScopedI18n("action");
+  const t = useTranslations("action");
 
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
