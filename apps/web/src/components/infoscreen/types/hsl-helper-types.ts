@@ -10,7 +10,6 @@ export interface HSLStopTime {
   realtimeArrival: number;
   serviceDay: number;
   trip: {
-    gtfsId: string;
     tripHeadsign: string;
     routeShortName: string;
   };
@@ -18,7 +17,6 @@ export interface HSLStopTime {
 export type StopType = "metro" | "tram" | "bus";
 
 export interface Arrival {
-  tripId: string;
   route: string;
   headSign: string;
   arrivalTimeUnix: number;

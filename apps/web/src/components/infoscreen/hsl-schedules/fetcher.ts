@@ -63,7 +63,6 @@ const getData = async (stop: string) => {
               realtimeArrival
               serviceDay
               trip{
-                gtfsId
                 tripHeadsign
                 routeShortName
               }
@@ -102,7 +101,6 @@ function mapStop(stop: StopHSL): Omit<Stop, "type"> {
     name: stop.name,
     arrivals: stop.stoptimesWithoutPatterns
       .map((arr: HSLStopTime) => {
-        const tripId = arr.trip.gtfsId;
         const route = arr.trip.routeShortName;
         const headSign = arr.trip.tripHeadsign;
         const arrivalTimeLocal = arr.realtimeArrival + arr.serviceDay;
@@ -112,7 +110,6 @@ function mapStop(stop: StopHSL): Omit<Stop, "type"> {
           return null;
         }
         return {
-          tripId,
           arrivalTimeUnix: arrivalTimeLocal,
           serviceDay,
           route: route ? route.replace(" ", "") : "Null",
