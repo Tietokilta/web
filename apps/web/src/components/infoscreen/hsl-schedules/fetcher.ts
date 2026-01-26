@@ -63,6 +63,7 @@ const getData = async (stop: string) => {
               realtimeArrival
               serviceDay
               trip{
+                gtfsId
                 tripHeadsign
                 routeShortName
               }
@@ -101,6 +102,7 @@ function mapStop(stop: StopHSL): Omit<Stop, "type"> {
     name: stop.name,
     arrivals: stop.stoptimesWithoutPatterns
       .map((arr: HSLStopTime) => {
+        const tripId = arr.trip.gtfsId;
         const route = arr.trip.routeShortName;
         const headSign = arr.trip.tripHeadsign;
         const arrivalTimeLocal = arr.realtimeArrival + arr.serviceDay;
@@ -110,13 +112,13 @@ function mapStop(stop: StopHSL): Omit<Stop, "type"> {
           return null;
         }
         return {
+          tripId,
           arrivalTimeUnix: arrivalTimeLocal,
           serviceDay,
           route: route ? route.replace(" ", "") : "Null",
           headSign: headSign || "Null",
           hours: Math.floor((arrivalTimeLocal - arr.serviceDay) / 60 / 60) % 24,
           minutes: Math.floor(((arrivalTimeLocal - arr.serviceDay) / 60) % 60),
-          realtimeArrival: arrivalTimeLocal,
           fullTime,
         };
       })
@@ -153,24 +155,11 @@ const getStop = async ({ stopType, stops }: StopConfig) => {
 
   if (!result1 || !result2) return null;
 
-  // Combine and deduplicate arrivals from both stops
-  // Use route + headSign + arrivalTimeUnix as a unique key to avoid duplicates
-  const seen = new Set<string>();
-  const deduplicatedArrivals = result1.arrivals
-    .concat(result2.arrivals)
-    .filter((arr) => {
-      const key = `${arr.route}-${arr.headSign}-${arr.arrivalTimeUnix}`;
-      if (seen.has(key)) {
-        return false;
-      }
-      seen.add(key);
-      return true;
-    });
-
   const result: Stop = {
     name: result1.name,
     type: stopType,
-    arrivals: deduplicatedArrivals
+    arrivals: result1.arrivals
+      .concat(result2.arrivals)
       .sort((arr1, arr2) => arr1.arrivalTimeUnix - arr2.arrivalTimeUnix)
       .slice(0, N_ARRIVALS),
   };

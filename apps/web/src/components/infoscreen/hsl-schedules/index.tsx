@@ -43,7 +43,7 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
       <ul className="space-y-4 font-bold">
         {stop.arrivals.map((arr) => (
           <li
-            key={`${arr.route}-${arr.headSign}-${arr.arrivalTimeUnix}`}
+            key={arr.tripId}
             className="grid grid-cols-[1fr_2fr_1fr] items-center rounded-md border-2 border-(--infonayttoHSLcolor) p-3 font-mono text-gray-900 shadow-(--infonayttoHSLcolor) shadow-solid md:items-center"
           >
             <div className="text-left text-3xl text-(--infonayttoHSLcolor)">
