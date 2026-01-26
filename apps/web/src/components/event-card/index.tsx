@@ -3,6 +3,7 @@ import {
   type QuotaWithSignupCount,
   type UserEventListItem,
 } from "@tietokilta/ilmomasiina-models";
+import { countOverflowSignups } from "@tietokilta/ilmomasiina-client/dist/utils/signupUtils";
 import {
   cn,
   formatDateTime,
@@ -82,21 +83,27 @@ async function SignUpText({
 
 async function SignupQuotas({
   quotas,
+  openQuotaSize,
   className,
   compact = false,
 }: {
   quotas: QuotaWithSignupCount[];
+  openQuotaSize: number;
   className?: string;
   compact?: boolean;
 }) {
   const t = await getScopedI18n("ilmomasiina");
-  const totalSignupCount = quotas.reduce(
-    (acc, quota) => acc + quota.signupCount,
-    0,
-  );
-  const totalSize = quotas.reduce((acc, quota) => acc + (quota.size ?? 0), 0);
 
-  const isSingleQuota = quotas.length === 1;
+  // Calculate overflow signups (open quota and queue)
+  const { openQuotaCount } = countOverflowSignups(quotas, openQuotaSize);
+
+  const totalSignupCount =
+    quotas.reduce((acc, quota) => acc + quota.signupCount, 0) + openQuotaCount;
+  const totalSize =
+    quotas.reduce((acc, quota) => acc + (quota.size ?? 0), 0) + openQuotaSize;
+
+  // Consider it a single quota display if there's only one quota and no open quota signups
+  const isSingleQuota = quotas.length === 1 && openQuotaCount === 0;
 
   // Compact Mode is used on infoscreen
   if (compact) {
@@ -120,6 +127,14 @@ async function SignupQuotas({
             )}
           </li>
         ))}
+        {openQuotaCount > 0 ? (
+          <li className="flex w-full justify-between gap-4 whitespace-nowrap">
+            <span className="w-1/2 truncate">{t("Avoin kiintiö")}</span>{" "}
+            <span className="w-1/2 text-right">
+              {openQuotaCount} / {openQuotaSize}
+            </span>
+          </li>
+        ) : null}
       </ul>
     );
   }
@@ -160,6 +175,14 @@ async function SignupQuotas({
           )}
         </li>
       ))}
+      {openQuotaCount > 0 ? (
+        <li className="flex w-full justify-between gap-4 whitespace-nowrap">
+          <span className="w-3/4 truncate">{t("Avoin kiintiö")}</span>{" "}
+          <span className="w-1/4 text-left">
+            {openQuotaCount} / {openQuotaSize}
+          </span>
+        </li>
+      ) : null}
     </ul>
   );
 }
@@ -227,6 +250,7 @@ export async function EventCardCompact({
                   (quota.size && quota.size <= 5)
                 ),
             )}
+            openQuotaSize={event.openQuotaSize}
             compact
           />
         ) : (
@@ -273,7 +297,11 @@ export default async function EventCard({
         startDate={event.registrationStartDate}
       />
       {event.quotas.length > 0 && hasSignup ? (
-        <SignupQuotas className="md:w-1/4" quotas={event.quotas} />
+        <SignupQuotas
+          className="md:w-1/4"
+          quotas={event.quotas}
+          openQuotaSize={event.openQuotaSize}
+        />
       ) : null}
     </li>
   );
