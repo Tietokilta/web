@@ -333,7 +333,11 @@ async function SignUpQuotas({ event }: { event: UserEventResponse }) {
               </span>
             ) : (
               <>
-                <span>{quota.title}</span>
+                <span>
+                  {quota.type === SignupStatus.IN_OPEN_QUOTA
+                    ? t("Avoin kiintiö")
+                    : quota.title}
+                </span>
                 {typeof quota.size === "number" ? (
                   <div className="relative">
                     <Progress
