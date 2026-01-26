@@ -1,4 +1,3 @@
-import payload from "payload";
 import * as Papa from "papaparse";
 import type { PayloadRequest } from "payload";
 import type { Board, Committee } from "@payload-types";
@@ -76,13 +75,13 @@ async function createCommittee(
   committeeName: string,
   members: CommitteeMember[],
   guildYear: Committee["year"],
-  transactionID?: string,
+  req: PayloadRequest,
 ): Promise<void> {
   const promises = [];
   for (const [index, member] of members.entries()) {
     if (member.name === "") continue;
     promises.push(
-      payload.create({
+      req.payload.create({
         collection: CommitteeMembers.slug,
         data: {
           guildYear,
@@ -91,21 +90,17 @@ async function createCommittee(
           chair: index === 0,
         },
         locale: "fi",
-        req: transactionID
-          ? ({
-              transactionID,
-            } as PayloadRequest)
-          : undefined,
+        req,
       }),
     );
   }
 
   const committeeMembers = (await Promise.all(promises)).map((member) => ({
-    committeeMember: String(member.id),
+    committeeMember: member.id,
   }));
 
   const collection: CommitteesSlug = "committees";
-  await payload.create({
+  await req.payload.create({
     collection,
     data: {
       year: guildYear,
@@ -114,23 +109,19 @@ async function createCommittee(
       hidden: false,
     },
     locale: "fi",
-    req: transactionID
-      ? ({
-          transactionID,
-        } as PayloadRequest)
-      : undefined,
+    req,
   });
 }
 
 async function createBoard(
   members: CommitteeMember[],
   guildYear: Board["year"],
-  transactionID?: string,
+  req: PayloadRequest,
 ): Promise<void> {
   const promises = [];
   for (const member of members) {
     promises.push(
-      payload.create({
+      req.payload.create({
         collection: BoardMembers.slug,
         data: {
           guildYear,
@@ -138,40 +129,33 @@ async function createBoard(
           title: member.title,
         },
         locale: "fi",
-        req: transactionID
-          ? ({
-              transactionID,
-            } as PayloadRequest)
-          : undefined,
+        req,
       }),
     );
   }
 
   const boardMembers = (await Promise.all(promises)).map((member) => ({
-    boardMember: String(member.id),
+    boardMember: member.id,
   }));
 
-  await payload.create({
+  await req.payload.create({
     collection: Boards.slug,
     data: {
       year: guildYear,
       boardMembers,
     },
     locale: "fi",
-    req: transactionID
-      ? ({
-          transactionID,
-        } as PayloadRequest)
-      : undefined,
+    req,
   });
 }
 
 async function createCommittees(
   year: number,
   committees: Record<string, CommitteeMember[]>,
+  req: PayloadRequest,
 ): Promise<void> {
   const collection: CommitteesSlug = "committees";
-  const existingCommittees = await payload.find({
+  const existingCommittees = await req.payload.find({
     collection,
     where: {
       year: {
@@ -181,7 +165,7 @@ async function createCommittees(
     pagination: false,
   });
 
-  const existingBoards = await payload.find({
+  const existingBoards = await req.payload.find({
     collection: Boards.slug,
     where: {
       year: {
@@ -195,40 +179,33 @@ async function createCommittees(
     throw new Error("A committee already exists for this year");
   }
 
-  const transactionID = (await payload.db.beginTransaction?.()) as
-    | string
-    | null;
-  if (transactionID === null) {
-    throw new Error("Failed to start transaction");
-  }
-
   const committeesToBeCreated: Promise<void>[] = [];
   for (const [committeeName, members] of Object.entries(committees)) {
     if (committeeName.toLocaleLowerCase() === "hallitus") {
       if (existingBoards.docs.length === 0) {
         committeesToBeCreated.push(
-          createBoard(members, year.toString() as Board["year"], transactionID),
+          createBoard(members, year.toString() as Board["year"], req),
         );
       }
     } else {
+      if (committeeName.trim() === "") continue;
       committeesToBeCreated.push(
         createCommittee(
           committeeName,
           members,
           year.toString() as Committee["year"],
-          transactionID,
+          req,
         ),
       );
     }
   }
   await Promise.all(committeesToBeCreated);
-
-  await payload.db.commitTransaction?.(transactionID);
 }
 
 export async function importCommittees(
   rawCsv: string,
   committeeYear: number,
+  req: PayloadRequest,
 ): Promise<string> {
   try {
     const data = parseCSV(rawCsv);
@@ -236,7 +213,7 @@ export async function importCommittees(
     if (!committees) {
       return "Failed to parse committees";
     }
-    await createCommittees(committeeYear, committees);
+    await createCommittees(committeeYear, committees, req);
   } catch (error) {
     if (error instanceof Error) {
       return error.message;

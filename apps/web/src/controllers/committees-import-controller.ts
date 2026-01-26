@@ -17,7 +17,7 @@ export const committeesImportController: PayloadHandler = async (req) => {
     return new Response("Missing required fields", { status: 400 });
   }
 
-  const error = await importCommittees(csv, year);
+  const error = await importCommittees(csv, year, req);
 
   if (!error) {
     return new Response(null, { status: 200 });
