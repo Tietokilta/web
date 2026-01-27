@@ -336,6 +336,16 @@ export const Pages = {
       },
     },
     {
+      name: "feedbackEnabled",
+      type: "checkbox",
+      defaultValue: true,
+      label: "Show feedback widget",
+      admin: {
+        position: "sidebar",
+        description: "Allow visitors to rate this page",
+      },
+    },
+    {
       name: "viewCount",
       type: "number",
       defaultValue: 0,

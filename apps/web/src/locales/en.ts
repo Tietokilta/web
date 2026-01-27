@@ -212,6 +212,17 @@ const en = {
   "metadata.title": "Tietokilta",
   "metadata.template": "%s - Tietokilta",
   "metadata.description": "Homepage of the Computer Science Guild",
+  "feedback.wasThisHelpful": "Was this page helpful?",
+  "feedback.yes": "Yes",
+  "feedback.no": "No",
+  "feedback.helpful": "Helpful",
+  "feedback.notHelpful": "Not helpful",
+  "feedback.thankYou": "Thanks for your feedback!",
+  "feedback.wantToTellMore": "Want to tell us more?",
+  "feedback.commentPlaceholder": "Tell us how we can improve this page...",
+  "feedback.skip": "Skip",
+  "feedback.send": "Send",
+  "feedback.error": "Failed to submit feedback. Please try again.",
 } as const;
 
 // assert types equal at typescript level

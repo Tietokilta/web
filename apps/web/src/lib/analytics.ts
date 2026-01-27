@@ -14,7 +14,7 @@ import config from "../payload.config";
  * Hash includes: IP + User-Agent + path + YYYY-MM-DD
  * This ensures the same visitor is only counted once per day per page.
  */
-async function generateSessionHash(
+export async function generateSessionHash(
   ip: string,
   userAgent: string,
   path: string,
@@ -44,7 +44,7 @@ async function generateSessionHash(
  *
  * @see https://learn.microsoft.com/en-us/azure/frontdoor/front-door-http-headers-protocol
  */
-function getClientIp(headers: Headers): string {
+export function getClientIp(headers: Headers): string {
   const forwardedFor = headers.get("x-forwarded-for");
   if (forwardedFor) {
     const ips = forwardedFor.split(",").map((ip) => ip.trim());

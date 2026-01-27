@@ -27,6 +27,7 @@ import { Honors } from "./collections/honors/honors";
 import { AwardedHonors } from "./collections/honors/awarded-honors";
 import { Partners } from "./collections/partners";
 import { ViewSessions } from "./collections/view-sessions";
+import { PageFeedback } from "./collections/page-feedback";
 import { Footer } from "./globals/footer";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
@@ -110,6 +111,7 @@ export default buildConfig({
     AwardedHonors,
     Partners,
     ViewSessions,
+    PageFeedback,
   ],
   globals: [Footer, LandingPage, MainNavigation, InfoScreen],
   localization: {

@@ -216,6 +216,17 @@ const fi = {
   "metadata.title": "Tietokilta",
   "metadata.template": "%s - Tietokilta",
   "metadata.description": "Tietokilta ry:n kotisivut",
+  "feedback.wasThisHelpful": "Oliko tästä sivusta apua?",
+  "feedback.yes": "Kyllä",
+  "feedback.no": "Ei",
+  "feedback.helpful": "Hyödyllinen",
+  "feedback.notHelpful": "Ei hyödyllinen",
+  "feedback.thankYou": "Kiitos palautteestasi!",
+  "feedback.wantToTellMore": "Haluatko kertoa lisää?",
+  "feedback.commentPlaceholder": "Kerro, miten voimme parantaa sivua...",
+  "feedback.skip": "Ohita",
+  "feedback.send": "Lähetä",
+  "feedback.error": "Palautteen lähettäminen epäonnistui. Yritä uudelleen.",
 } as const;
 
 type EnKey = keyof typeof en;
