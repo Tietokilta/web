@@ -14,7 +14,7 @@ import config from "../payload.config";
  * Hash includes: IP + User-Agent + path + YYYY-MM-DD
  * This ensures the same visitor is only counted once per day per page.
  */
-async function generateSessionHash(
+export async function generateSessionHash(
   ip: string,
   userAgent: string,
   path: string,
@@ -27,7 +27,9 @@ async function generateSessionHash(
   const dataBuffer = encoder.encode(data);
   const hashBuffer = await crypto.subtle.digest("SHA-256", dataBuffer);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
+  const hashHex = hashArray
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
 
   return hashHex;
 }
@@ -44,7 +46,7 @@ async function generateSessionHash(
  *
  * @see https://learn.microsoft.com/en-us/azure/frontdoor/front-door-http-headers-protocol
  */
-function getClientIp(headers: Headers): string {
+export function getClientIp(headers: Headers): string {
   const forwardedFor = headers.get("x-forwarded-for");
   if (forwardedFor) {
     const ips = forwardedFor.split(",").map((ip) => ip.trim());
@@ -127,10 +129,7 @@ export async function trackPageView({
     const pages = await payload.find({
       collection: "pages",
       where: {
-        or: [
-          { "path.fi": { equals: path } },
-          { "path.en": { equals: path } },
-        ],
+        or: [{ "path.fi": { equals: path } }, { "path.en": { equals: path } }],
       },
       limit: 1,
       depth: 0,

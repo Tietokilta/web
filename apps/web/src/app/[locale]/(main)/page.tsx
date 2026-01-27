@@ -40,8 +40,8 @@ export default async function Home(props: {
   }
 
   const body = landingPageData.body as unknown as EditorState | undefined;
-  const announcement = landingPageData.announcement as News | undefined;
-  const eventsListPage = landingPageData.eventsListPage as CMSPage | undefined;
+  const announcement = landingPageData.announcement;
+  const eventsListPage = landingPageData.eventsListPage;
   const pageInt = parseInt(String(page), 10);
 
   return (

@@ -30,6 +30,7 @@ import { MagazineIssues } from "./collections/magazines/magazine-issues";
 import { Magazines } from "./collections/magazines/magazines";
 import { Media } from "./collections/media";
 import { News } from "./collections/news";
+import { PageFeedback } from "./collections/page-feedback";
 import { Pages } from "./collections/pages";
 import { Partners } from "./collections/partners";
 import { Topics } from "./collections/topics";
@@ -113,6 +114,7 @@ export default buildConfig({
     AwardedHonors,
     Partners,
     ViewSessions,
+    PageFeedback,
   ],
   globals: [Footer, LandingPage, MainNavigation, InfoScreen],
   localization: {
@@ -290,7 +292,9 @@ export default buildConfig({
           { createdAt: 1 },
           { expireAfterSeconds: 86400, background: true },
         );
-        payloadInstance.logger.info("TTL index created for view-sessions collection");
+        payloadInstance.logger.info(
+          "TTL index created for view-sessions collection",
+        );
       }
     } catch (error) {
       // Index might already exist, that's fine

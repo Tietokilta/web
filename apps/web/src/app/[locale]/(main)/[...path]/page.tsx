@@ -130,7 +130,7 @@ async function Page(props: Props) {
   }
 
   if (page.type === "redirect") {
-    const redirectToPage = page.redirectToPage as CMSPage | undefined;
+    const redirectToPage = page.redirectToPage;
     if (!redirectToPage?.path) {
       // eslint-disable-next-line no-console -- nice to know
       console.error("Redirect page missing redirect target", page);

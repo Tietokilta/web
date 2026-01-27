@@ -101,8 +101,8 @@ const formatPath: FieldHook<
       collection: "pages",
       limit: 5,
       pagination: false,
-      where: {
-        ...(typeof formattedPath === "string"
+      where:
+        typeof formattedPath === "string"
           ? {
               [`path.${reqLocale}`]: { equals: formattedPath },
             }
@@ -110,8 +110,7 @@ const formatPath: FieldHook<
               or: Object.entries(formattedPath).map(([locale, path]) => ({
                 [`path.${locale}`]: { equals: path },
               })),
-            }),
-      },
+            },
       locale: req.locale,
     })
   ).docs;
@@ -337,6 +336,16 @@ export const Pages = {
       label: "Hide from public",
       admin: {
         position: "sidebar",
+      },
+    },
+    {
+      name: "feedbackEnabled",
+      type: "checkbox",
+      defaultValue: true,
+      label: "Show feedback widget",
+      admin: {
+        position: "sidebar",
+        description: "Allow visitors to rate this page",
       },
     },
     {
