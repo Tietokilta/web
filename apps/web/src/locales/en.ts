@@ -1,221 +1,274 @@
-import { assertType } from "../lib/utils";
 import type fi from "./fi";
 
 /**
- * English localizations, supports one level of nesting.
+ * English localizations in nested structure for next-intl.
  */
 const en = {
-  "action.Back": "Back",
-  "action.Close": "Close",
-  "action.Go to next page": "Go to next page",
-  "action.Go to previous page": "Go to previous page",
-  "action.More pages": "More pages",
-  "action.Next": "Next",
-  "action.Open": "Open",
-  "action.Previous": "Previous",
-  "action.Read more": "Read more",
-  "action.Read more about {something}": "Read more about {something}",
-  "action.Sign up": "Sign up",
-  "action.Skip to main content": "Skip to main content",
-  "action.Toggle menu": "Toggle menu",
-  "error.Hups, jotain meni pieleen.": "Oops, something went wrong.",
-  "error.Jotain meni pieleen": "Something went wrong",
-  "error.Oho, nyt meni jotain pahasti pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
-    "Oops, something went terribly wrong. Contact the site administrator. The error ID is",
-  "error.Oho, nyt meni jotain pieleen. Ota yhteyttä sivuston ylläpitäjään. Virheen tunniste on":
-    "Oops, something went wrong. Contact the site administrator. The error ID is",
-  "error.Yritä uudelleen": "Try again",
-  "errors.ilmomasiina-event-not-found":
-    "Event not found. Please check the URL.",
-  "errors.ilmomasiina-fetch-fail":
-    "Failed to fetch events from Ilmomasiina. Please try again later.",
-  "errors.ilmomasiina-ilmo-missing-quota-id":
-    "Invalid request. Please try again.",
-  "errors.ilmomasiina-signup-not-found":
-    "Sign up not found. Please check the URL.",
-  "errors.ilmomasiina-unknown-error":
-    "An unknown error occurred. Please try again later.",
-  "errors.ilmomasiina-validation-failed":
-    "Validation failed. Please check the form.",
-  "errors.ilmo.code.BadSession": "Session has expired. Please log in again.",
-  "errors.ilmo.code.EditConflict": "Edit conflict. Please try again.",
-  "errors.ilmo.code.WouldMoveSignupsToQueue":
-    "Signups would be moved to the queue.",
-  "errors.ilmo.code.WrongOldPassword": "Incorrect old password.",
-  "errors.ilmo.code.SignupsClosed": "Signups are closed.",
-  "errors.ilmo.code.NoSuchQuota": "Quota not found.",
-  "errors.ilmo.code.NoSuchSignup": "Signup not found.",
-  "errors.ilmo.code.BadEditToken": "Invalid edit token.",
-  "errors.ilmo.code.CannotDeleteSelf": "You cannot delete yourself.",
-  "errors.ilmo.code.InitialSetupNeeded": "Initial setup needed.",
-  "errors.ilmo.code.InitialSetupAlreadyDone": "Initial setup already done.",
-  "errors.ilmo.code.SignupValidationError": "Signup validation failed.",
-  "errors.ilmo.code.EventValidationError": "Event validation failed.",
-  "errors.ilmo.code.FST_ERR_VALIDATION": "Validation failed.",
-  "errors.ilmo.fieldError.missing": "This field is required.",
-  "errors.ilmo.fieldError.wrongType": "Invalid type.",
-  "errors.ilmo.fieldError.tooLong": "Value is too long.",
-  "errors.ilmo.fieldError.invalidEmail": "Invalid email address.",
-  "errors.ilmo.fieldError.notANumber": "Value must be a number.",
-  "errors.ilmo.fieldError.notAnOption": "Invalid option.",
-  "generic.Page": "Page",
-  "generic.Version": "Version",
-  "heading.Main navigation": "Main navigation",
-  "heading.Upcoming events": "Upcoming events",
-  "infoscreen.Ruokalistat": "Menus",
-  "infoscreen.allergeenit":
-    "A+ = Contains Allergens | L = Lactosefree | VL = low-lactose | G" +
-    " = Glutenfree | M = Milkfree | O+ = Contains" +
-    " garlic | VV = Vegan",
-  "infoscreen.Bussit": "Buses",
-  "infoscreen.Raide-Jokeri": "Raide-Jokeri (Tram)",
-  "infoscreen.Metro": "Metro",
-  "infoscreen.Aalto-yliopisto": "Aalto-university",
-  "invoicegenerator.Invoicer name": "Invoicer name",
-  "invoicegenerator.Invoicer email": "Invoicer email",
-  "invoicegenerator.Phone number": "Phone number",
-  "invoicegenerator.Subject": "Subject",
-  "invoicegenerator.Description": "Description",
-  "invoicegenerator.Bank account number": "Bank account number (IBAN)",
-  "invoicegenerator.Date": "Date",
-  "invoicegenerator.Submit": "Submit",
-  "invoicegenerator.Street name": "Street name",
-  "invoicegenerator.City": "City",
-  "invoicegenerator.Postal code": "Postal code",
-  "invoicegenerator.Product": "Product",
-  "invoicegenerator.Quantity": "Quantity",
-  "invoicegenerator.Unit": "Unit",
-  "invoicegenerator.Unit price": "Unit price",
-  "invoicegenerator.Total price": "Total price",
-  "invoicegenerator.Attachment": "Attachment",
-  "invoicegenerator.Attachments": "Attachments",
-  "invoicegenerator.Items": "Items",
-  "invoicegenerator.Receipt/Product": "Receipt/Product",
-  "invoicegenerator.Sent invoice": "Sent invoice",
-  "invoicegenerator.Remove": "Remove",
-  "invoicegenerator.Add": "Add",
-  "invoicegenerator.Address": "Address",
-  "invoicegenerator.Confirmation":
-    "I confirm that the information I have provided is correct and I have checked that the pictures of the receipts are clear.",
-  "invoicegenerator.Invoicer information": "Invoicer information",
-  "ilmomasiina.form.You are in queue at position {position}":
-    "You are in queue at position {position}.",
-  "ilmomasiina.form.You are in the open quota at position {position}/{quotaSize}":
-    "You are in the open quota at position {position}/{quotaSize}.",
-  "ilmomasiina.form.You are in the quota {quotaName} at position {position}":
-    "You are in the quota {quotaName} at position {position}.",
-  "ilmomasiina.form.You are in the quota {quotaName} at position {position}/{quotaSize}":
-    "You are in the quota {quotaName} at position {position}/{quotaSize}.",
-  "ilmomasiina.form.fieldError.missing": "This field is required.",
-  "ilmomasiina.form.fieldError.wrongType":
-    "The answer to this field is of the wrong type. Try refreshing the page.",
-  "ilmomasiina.form.fieldError.tooLong":
-    "Please enter a shorter value for this field.",
-  "ilmomasiina.form.fieldError.invalidEmail":
-    "Please enter a valid email address.",
-  "ilmomasiina.form.fieldError.notANumber": "Please enter a valid number.",
-  "ilmomasiina.form.fieldError.notAnOption":
-    "The answer to this question isn't in the allowed options. Try refreshing the page.",
-  "ilmomasiina.form.optional": "optional",
-  "ilmomasiina.form.Shown in the public list of sign ups":
-    "Shown in the public list of sign ups",
-  "ilmomasiina.form.Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}":
-    "Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}",
-  "ilmomasiina.form.First name": "First name",
-  "ilmomasiina.form.Last name": "Last name",
-  "ilmomasiina.form.Email": "Email",
-  "ilmomasiina.form.Show name in the public list of sign ups":
-    "Show name in the public list of sign ups",
-  "ilmomasiina.form.Submit": "Submit",
-  "ilmomasiina.form.Update": "Update",
-  "ilmomasiina.form.Edit sign up": "Edit sign up",
-  "ilmomasiina.form.Delete sign up": "Delete sign up",
-  "ilmomasiina.form.Sign up saved": "Sign up saved!",
-  "ilmomasiina.form.You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
-    "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message.",
-  "ilmomasiina.form.Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.":
-    "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
-  "ilmomasiina.form.This action cannot be undone.":
-    "This action cannot be undone.",
-  "ilmomasiina.form.Your signup cannot be changed anymore as the signup for the event has closed":
-    "Your signup cannot be changed anymore as the signup for the event has closed.",
-  "ilmomasiina.form.Cancel": "Cancel",
-  "ilmomasiina.headers.Alkaa": "Starts",
-  "ilmomasiina.headers.Ilmoittautumisaika": "Sign up time",
-  "ilmomasiina.headers.Kategoria": "Category",
-  "ilmomasiina.headers.Kiintiö": "Quota",
-  "ilmomasiina.headers.Loppuu": "Ends",
-  "ilmomasiina.headers.Nimi": "Name",
-  "ilmomasiina.headers.Paikka": "Location",
-  "ilmomasiina.headers.Hinta": "Price",
-  "ilmomasiina.headers.Sija": "Place",
-  "ilmomasiina.Ilmoittautuminen": "Sign up",
-  "ilmomasiina.Ilmoittautuneet": "Signed up",
-  "ilmomasiina.Ilmoittautuneita": "Signed up",
-  "ilmomasiina.Ei ilmoittautumista": "No Signup",
-  "ilmomasiina.Piilotettu": "Hidden",
-  "ilmomasiina.Vahvistamaton": "Unconfirmed",
-  "ilmomasiina.Avoin kiintiö": "Open quota",
-  "ilmomasiina.Jonossa": "In queue",
-  "ilmomasiina.path.events": "events",
-  "ilmomasiina.path.all-events": "all-events",
-  "ilmomasiina.all-events.Kaikki tapahtumat": "All events",
-  "ilmomasiina.status.Ei ilmoittautuneita vielä": "No sign ups yet.",
-  "ilmomasiina.status.Ilmoittautuminen alkaa": "Sign up starts on {startDate}",
-  "ilmomasiina.status.Ilmo alkaa": "Sign up starts {startDate}",
-  "ilmomasiina.status.Ilmoittautuminen auki":
-    "Open for sign ups until {endDate}",
-  "ilmomasiina.status.Ilmo auki": "Sign up until {endDate}",
-  "ilmomasiina.status.Ilmoittautuminen on päättynyt": "Sign up has ended",
-  "ilmomasiina.status.Ilmoittautumistiedot eivät ole julkisia":
-    "Sign ups are not public",
-  "ilmomasiina.status.Jonossa":
-    "{queueCount} in the queue ({confirmedCount} confirmed)",
-  "ilmomasiina.status.Tapahtumaan ei voi ilmoittautua":
-    "This event does not have sign ups",
-  "ilmomasiina.Tapahtumat": "Events",
-  "ilmomasiina.Tilaa kalenteri": "Subscribe to calendar",
-  "ilmomasiina.Kopioidaan leikepöydälle": "Copying to clipboard",
-  "ilmomasiina.Kopioitu leikepöydälle": "Copied to clipboard",
-  "ilmomasiina.Selaa vanhoja tapahtumia": "Browse old events",
-  "not-found.Etusivulle": "To front page",
-  "not-found.Tapahtumalistaukseen": "To event list",
-  "not-found.Sivua ei löytynyt": "Page not found",
-  "not-found.Tapahtumaa ei löytynyt": "Event not found",
-  "not-found.Ilmoittautumista ei löytynyt": "Sign up not found",
-  "not-found.Sivua ei löytynyt. Tarkista osoite tai palaa etusivulle.":
-    "Page not found. Check the URL or return to the front page.",
-  "not-found.Tapahtumaa ei löytynyt. Tarkista osoite tai palaa tapahtumalistaukseen.":
-    "Event not found. Check the URL or return to the event list.",
-  "not-found.Ilmoittautumista ei löytynyt tai muokkaustunniste oli väärin. Tarkista osoite tai palaa tapahtumalistaukseen.":
-    "Sign up not found or the edit token was invalid. Check the URL or return to the event list.",
-  "weeklyNewsletter.ayy-aalto": "AYY & Aalto",
-  "weeklyNewsletter.bottom-corner": "Bottom Corner",
-  "weeklyNewsletter.calendar": "Calendar",
-  "weeklyNewsletter.guild": "Guild",
-  "weeklyNewsletter.next-week": "Next week",
-  "weeklyNewsletter.old-link": "old weekly newsletters",
-  "weeklyNewsletter.other": "Other",
-  "weeklyNewsletter.read": "Read",
-  "weeklyNewsletter.super-old-link": "very old weekly newsletters",
-  "weeklyNewsletter.this-week": "This week",
-  "weeklyNewsletter.this-week-signups": "Sign ups open this week",
-  "weeklyNewsletter.title": "Weekly newsletters",
-  "weeklyNewsletter.path": "weekly-newsletters",
-  "weeklyNewsletter.link-to-sign-up": "To sign up",
-  "weeklyNewsletter.for-event": "for event",
-  "calendar.Week": "Week",
-  "calendar.Work Week": "Work Week",
-  "calendar.Day": "Day",
-  "calendar.Month": "Month",
-  "calendar.Today": "Today",
-  "metadata.title": "Tietokilta",
-  "metadata.template": "%s - Tietokilta",
-  "metadata.description": "Homepage of the Computer Science Guild",
+  action: {
+    Back: "Back",
+    Close: "Close",
+    "Go to next page": "Go to next page",
+    "Go to previous page": "Go to previous page",
+    "More pages": "More pages",
+    Next: "Next",
+    Open: "Open",
+    Previous: "Previous",
+    "Read more": "Read more",
+    "Read more about {something}": "Read more about {something}",
+    "Sign up": "Sign up",
+    "Skip to main content": "Skip to main content",
+    "Toggle menu": "Toggle menu",
+  },
+  error: {
+    "Something went wrong": "Something went wrong",
+    errorWithId:
+      "Oops, something went wrong. Contact the site administrator. The error ID is",
+    "Try again": "Try again",
+  },
+  errors: {
+    "ilmomasiina-event-not-found": "Event not found. Please check the URL.",
+    "ilmomasiina-fetch-fail":
+      "Failed to fetch events from Ilmomasiina. Please try again later.",
+    "ilmomasiina-ilmo-missing-quota-id": "Invalid request. Please try again.",
+    "ilmomasiina-signup-not-found": "Sign up not found. Please check the URL.",
+    "ilmomasiina-unknown-error":
+      "An unknown error occurred. Please try again later.",
+    "ilmomasiina-validation-failed":
+      "Validation failed. Please check the form.",
+    ilmo: {
+      code: {
+        BadSession: "Session has expired. Please log in again.",
+        EditConflict: "Edit conflict. Please try again.",
+        WouldMoveSignupsToQueue: "Signups would be moved to the queue.",
+        WrongOldPassword: "Incorrect old password.",
+        SignupsClosed: "Signups are closed.",
+        NoSuchQuota: "Quota not found.",
+        NoSuchSignup: "Signup not found.",
+        BadEditToken: "Invalid edit token.",
+        CannotDeleteSelf: "You cannot delete yourself.",
+        InitialSetupNeeded: "Initial setup needed.",
+        InitialSetupAlreadyDone: "Initial setup already done.",
+        SignupValidationError: "Signup validation failed.",
+        EventValidationError: "Event validation failed.",
+        FST_ERR_VALIDATION: "Validation failed.",
+      },
+      fieldError: {
+        missing: "This field is required.",
+        wrongType: "Invalid type.",
+        tooLong: "Value is too long.",
+        invalidEmail: "Invalid email address.",
+        notANumber: "Value must be a number.",
+        notAnOption: "Invalid option.",
+      },
+    },
+  },
+  generic: {
+    Page: "Page",
+    Version: "Version",
+  },
+  heading: {
+    "Main navigation": "Main navigation",
+    "Upcoming events": "Upcoming events",
+  },
+  infoscreen: {
+    Menus: "Menus",
+    allergens:
+      "A+ = Contains Allergens | L = Lactosefree | VL = low-lactose | G = Glutenfree | M = Milkfree | O+ = Contains garlic | VV = Vegan",
+    Buses: "Buses",
+    "Raide-Jokeri": "Raide-Jokeri (Tram)",
+    Metro: "Metro",
+    "Aalto-university": "Aalto-university",
+  },
+  invoicegenerator: {
+    "Invoicer name": "Invoicer name",
+    "Invoicer email": "Invoicer email",
+    "Phone number": "Phone number",
+    Subject: "Subject",
+    Description: "Description",
+    "Bank account number": "Bank account number (IBAN)",
+    Date: "Date",
+    Submit: "Submit",
+    "Street name": "Street name",
+    City: "City",
+    "Postal code": "Postal code",
+    Product: "Product",
+    Quantity: "Quantity",
+    Unit: "Unit",
+    "Unit price": "Unit price",
+    "Total price": "Total price",
+    Attachment: "Attachment",
+    Attachments: "Attachments",
+    Items: "Items",
+    "Receipt/Product": "Receipt/Product",
+    "Sent invoice": "Sent invoice",
+    Remove: "Remove",
+    Add: "Add",
+    Address: "Address",
+    Confirmation:
+      "I confirm that the information I have provided is correct and I have checked that the pictures of the receipts are clear.",
+    "Invoicer information": "Invoicer information",
+  },
+  ilmomasiina: {
+    form: {
+      "You are in queue at position {position}":
+        "You are in queue at position {position}.",
+      "You are in the open quota at position {position}/{quotaSize}":
+        "You are in the open quota at position {position}/{quotaSize}.",
+      "You are in the quota {quotaName} at position {position}":
+        "You are in the quota {quotaName} at position {position}.",
+      "You are in the quota {quotaName} at position {position}/{quotaSize}":
+        "You are in the quota {quotaName} at position {position}/{quotaSize}.",
+      fieldError: {
+        missing: "This field is required.",
+        wrongType:
+          "The answer to this field is of the wrong type. Try refreshing the page.",
+        tooLong: "Please enter a shorter value for this field.",
+        invalidEmail: "Please enter a valid email address.",
+        notANumber: "Please enter a valid number.",
+        notAnOption:
+          "The answer to this question isn't in the allowed options. Try refreshing the page.",
+      },
+      optional: "optional",
+      "Shown in the public list of sign ups":
+        "Shown in the public list of sign ups",
+      "Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}":
+        "Note: Sign up integration is in beta, if you encounter any issues you can sign up directly on the event page: {eventUrl}",
+      "First name": "First name",
+      "Last name": "Last name",
+      Email: "Email",
+      "Show name in the public list of sign ups":
+        "Show name in the public list of sign ups",
+      Submit: "Submit",
+      Update: "Update",
+      "Edit sign up": "Edit sign up",
+      "Delete sign up": "Delete sign up",
+      "Sign up saved": "Sign up saved!",
+      "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message":
+        "You can edit your sign up or delete it later from this page, which will be sent to your email in the confirmation message.",
+      "Your signup cannot be changed anymore as the signup for the event has closed":
+        "Your signup cannot be changed anymore as the signup for the event has closed.",
+      deleteConfirmation:
+        "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
+      actionCannotBeUndone: "This action cannot be undone.",
+      Cancel: "Cancel",
+    },
+    headers: {
+      Starts: "Starts",
+      "Sign up time": "Sign up time",
+      Category: "Category",
+      Quota: "Quota",
+      Ends: "Ends",
+      Name: "Name",
+      Location: "Location",
+      Price: "Price",
+      Position: "Position",
+    },
+    "Sign up": "Sign up",
+    Signups: "Signups",
+    "Signed up count": "Signed up",
+    "No signup": "No Signup",
+    Hidden: "Hidden",
+    Unconfirmed: "Unconfirmed",
+    "Open quota": "Open quota",
+    "In queue": "In queue",
+    Queue: "Queue",
+    Category: "Category",
+    Location: "Location",
+    Starts: "Starts",
+    Ends: "Ends",
+    Price: "Price",
+    Signup: "Sign up",
+    Back: "Back",
+    path: {
+      events: "events",
+      "all-events": "all-events",
+    },
+    "all-events": {
+      "All events": "All events",
+    },
+    "Event does not have signups": "This event does not have sign ups",
+    "Signups have ended": "Sign up has ended",
+    "Signups open until {endDate}": "Open for sign ups until {endDate}",
+    "Signups open on {startDate}": "Sign up starts on {startDate}",
+    "Signup information is not public": "Sign ups are not public",
+    "No signups yet": "No sign ups yet.",
+    Position: "Position",
+    Name: "Name",
+    Quota: "Quota",
+    "Signup time": "Sign up time",
+    "In queue: {queueCount} ({confirmedCount} confirmed)":
+      "{queueCount} in the queue ({confirmedCount} confirmed)",
+    status: {
+      "No signups yet": "No sign ups yet.",
+      "Sign up starts on {startDate}": "Sign up starts on {startDate}",
+      "Sign up starts {startDate}": "Sign up starts {startDate}",
+      "Open for sign ups until {endDate}": "Open for sign ups until {endDate}",
+      "Sign up until {endDate}": "Sign up until {endDate}",
+      "Sign up has ended": "Sign up has ended",
+      "Sign ups are not public": "Sign ups are not public",
+      "{queueCount} in the queue ({confirmedCount} confirmed)":
+        "{queueCount} in the queue ({confirmedCount} confirmed)",
+      "This event does not have sign ups": "This event does not have sign ups",
+    },
+    Events: "Events",
+    "Subscribe to calendar": "Subscribe to calendar",
+    "Copying to clipboard": "Copying to clipboard",
+    "Copied to clipboard": "Copied to clipboard",
+    "Browse old events": "Browse old events",
+  },
+  "not-found": {
+    "To front page": "To front page",
+    "To event list": "To event list",
+    "Page not found": "Page not found",
+    "Event not found": "Event not found",
+    "Sign up not found": "Sign up not found",
+    pageNotFoundDescription:
+      "Page not found. Check the URL or return to the front page.",
+    eventNotFoundDescription:
+      "Event not found. Check the URL or return to the event list.",
+    signupNotFoundDescription:
+      "Sign up not found or the edit token was invalid. Check the URL or return to the event list.",
+  },
+  weeklyNewsletter: {
+    "AYY & Aalto": "AYY & Aalto",
+    "Bottom Corner": "Bottom Corner",
+    Calendar: "Calendar",
+    Guild: "Guild",
+    "Next week": "Next week",
+    "old weekly newsletters": "old weekly newsletters",
+    Other: "Other",
+    Read: "Read",
+    "very old weekly newsletters": "very old weekly newsletters",
+    "This week": "This week",
+    "Sign ups open this week": "Sign ups open this week",
+    title: "Weekly newsletters",
+    path: "weekly-newsletters",
+    "To sign up": "To sign up",
+    "for event": "for event",
+  },
+  calendar: {
+    Week: "Week",
+    "Work Week": "Work Week",
+    Day: "Day",
+    Month: "Month",
+    Today: "Today",
+    Previous: "Previous",
+    Next: "Next",
+  },
+  metadata: {
+    title: "Tietokilta",
+    template: "%s - Tietokilta",
+    description: "Homepage of the Computer Science Guild",
+  },
 } as const;
 
-// assert types equal at typescript level
-type FiKey = keyof typeof fi;
-assertType<Record<FiKey, string>>(en);
+// Type check: ensure en has the same keys as fi (values can differ)
+type AssertSameKeys<T, U> = keyof T extends keyof U
+  ? keyof U extends keyof T
+    ? true
+    : never
+  : never;
+// eslint-disable-next-line @typescript-eslint/naming-convention -- compile-time only
+type _CheckSameKeys = AssertSameKeys<typeof en, typeof fi>;
 
 export default en;

@@ -1,4 +1,4 @@
-import { getScopedI18n } from "../../locales/server";
+import { getTranslations } from "@locales/server";
 
 const versionShaLong = process.env.GIT_COMMIT_SHA ?? "development";
 const year = new Date().getFullYear();
@@ -10,7 +10,7 @@ const shaLinkUrl =
     : "https://youtu.be/dQw4w9WgXcQ";
 
 export async function VersionSha() {
-  const t = await getScopedI18n("generic");
+  const t = await getTranslations("generic");
   return (
     <span className="text-sm">
       <span>© {year} Tietokilta ry</span>

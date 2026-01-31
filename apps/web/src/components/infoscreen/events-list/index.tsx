@@ -1,7 +1,7 @@
 import { getISOWeek, getISOWeekYear } from "date-fns";
 import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
 import { fetchUpcomingEvents } from "../../../lib/api/external/ilmomasiina";
-import { getCurrentLocale, getI18n } from "../../../locales/server.ts";
+import { getLocale, getTranslations } from "../../../locales/server";
 import { EventCardCompact } from "../../event-card/index.tsx";
 
 export default async function EventListInfoscreen({
@@ -9,8 +9,9 @@ export default async function EventListInfoscreen({
 }: {
   showIlmostatus?: boolean;
 }) {
-  const t = await getI18n();
-  const locale = await getCurrentLocale();
+  const tIlmo = await getTranslations("ilmomasiina");
+  const tCal = await getTranslations("calendar");
+  const locale = await getLocale();
   const eventsResponse = await fetchUpcomingEvents(locale);
   const events = Array.isArray(eventsResponse.data) ? eventsResponse.data : [];
 
@@ -26,7 +27,7 @@ export default async function EventListInfoscreen({
   return (
     <main id="main" className="flex flex-col p-4 align-top">
       <h1 className="mt-4 mb-2 text-center font-mono text-5xl font-bold">
-        {t("ilmomasiina.Tapahtumat")}
+        {tIlmo("Events")}
       </h1>
       <ul className="flex flex-row flex-wrap">
         {Object.entries(upcomingEventsDataByWeek)
@@ -41,7 +42,7 @@ export default async function EventListInfoscreen({
             return (
               <div key={weekYear} className="flex w-1/2 flex-col p-1">
                 <span className="py-1 text-center text-3xl font-bold text-pretty">
-                  {t("calendar.Week")} {Number(weekYear.split("-")[1])}
+                  {tCal("Week")} {Number(weekYear.split("-")[1])}
                 </span>
                 <div className="flex flex-col gap-2">
                   {eventsInWeek.map((event) => {

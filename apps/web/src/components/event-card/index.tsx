@@ -12,7 +12,7 @@ import {
   formatDateYearOptions,
   formatDatetimeYear,
 } from "@lib/utils.ts";
-import { getCurrentLocale, getScopedI18n } from "@locales/server.ts";
+import { getLocale, getTranslations } from "@locales/server";
 import { DateTime } from "../datetime";
 
 async function SignUpText({
@@ -26,11 +26,13 @@ async function SignUpText({
   className?: string;
   compact?: boolean;
 }) {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("ilmomasiina.status");
+  const locale = await getLocale();
+  const t = await getTranslations("ilmomasiina.status");
   if (!startDate || !endDate) {
     return (
-      <span className={className}>{t("Tapahtumaan ei voi ilmoittautua")}</span>
+      <span className={className}>
+        {t("This event does not have sign ups")}
+      </span>
     );
   }
 
@@ -38,16 +40,14 @@ async function SignUpText({
   const hasEnded = new Date(endDate) < new Date();
 
   if (hasStarted && hasEnded) {
-    return (
-      <span className={className}>{t("Ilmoittautuminen on päättynyt")}</span>
-    );
+    return <span className={className}>{t("Sign up has ended")}</span>;
   }
 
   if (compact) {
     if (hasStarted && !hasEnded) {
       return (
         <span className={className}>
-          {t("Ilmo auki", {
+          {t("Sign up until {endDate}", {
             endDate: formatDatetimeYear(endDate, locale),
           })}
         </span>
@@ -55,7 +55,7 @@ async function SignUpText({
     }
     return (
       <span className={className}>
-        {t("Ilmo alkaa", {
+        {t("Sign up starts {startDate}", {
           startDate: formatDatetimeYear(startDate, locale),
         })}
       </span>
@@ -65,7 +65,7 @@ async function SignUpText({
   if (hasStarted && !hasEnded) {
     return (
       <span className={className}>
-        {t("Ilmoittautuminen auki", {
+        {t("Open for sign ups until {endDate}", {
           endDate: formatDatetimeYear(endDate, locale),
         })}
       </span>
@@ -74,7 +74,7 @@ async function SignUpText({
 
   return (
     <span className={className}>
-      {t("Ilmoittautuminen alkaa", {
+      {t("Sign up starts on {startDate}", {
         startDate: formatDatetimeYear(startDate, locale),
       })}
     </span>
@@ -92,7 +92,7 @@ async function SignupQuotas({
   className?: string;
   compact?: boolean;
 }) {
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
 
   // Calculate overflow signups (open quota and queue)
   const { openQuotaCount } = countOverflowSignups(quotas, openQuotaSize);
@@ -110,7 +110,7 @@ async function SignupQuotas({
     return (
       <ul className={cn(className, "text-xl")}>
         <li className="flex w-full justify-between gap-4 font-medium whitespace-nowrap">
-          <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+          <span className="w-3/4">{t("Signed up count")}</span>{" "}
         </li>
         {quotas.map((quota) => (
           <li
@@ -129,7 +129,7 @@ async function SignupQuotas({
         ))}
         {openQuotaCount > 0 ? (
           <li className="flex w-full justify-between gap-4 whitespace-nowrap">
-            <span className="w-1/2 truncate">{t("Avoin kiintiö")}</span>{" "}
+            <span className="w-1/2 truncate">{t("Open quota")}</span>{" "}
             <span className="w-1/2 text-right">
               {openQuotaCount} / {openQuotaSize}
             </span>
@@ -143,7 +143,7 @@ async function SignupQuotas({
     return (
       <div className={className}>
         <span className="flex w-full justify-between gap-4 font-medium whitespace-nowrap">
-          <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+          <span className="w-3/4">{t("Signed up count")}</span>{" "}
           <span className="w-1/4 text-left">
             {totalSignupCount} / {totalSize}
           </span>
@@ -155,7 +155,7 @@ async function SignupQuotas({
   return (
     <ul className={cn(className)}>
       <li className="flex w-full justify-between gap-4 font-medium whitespace-nowrap">
-        <span className="w-3/4">{t("Ilmoittautuneita")}</span>{" "}
+        <span className="w-3/4">{t("Signed up count")}</span>{" "}
         <span className="w-1/4 text-left">
           {totalSignupCount} / {totalSize}
         </span>
@@ -177,7 +177,7 @@ async function SignupQuotas({
       ))}
       {openQuotaCount > 0 ? (
         <li className="flex w-full justify-between gap-4 whitespace-nowrap">
-          <span className="w-3/4 truncate">{t("Avoin kiintiö")}</span>{" "}
+          <span className="w-3/4 truncate">{t("Open quota")}</span>{" "}
           <span className="w-1/4 text-left">
             {openQuotaCount} / {openQuotaSize}
           </span>
@@ -189,7 +189,7 @@ async function SignupQuotas({
 
 export async function EventCardCompact({
   event,
-  showSignup = true,
+  showSignup,
 }: {
   event: UserEventListItem;
   showSignup: boolean;
@@ -203,15 +203,16 @@ export async function EventCardCompact({
     showSignupQuotas = false;
   }
 
-  const t = await getScopedI18n("ilmomasiina");
+  const t = await getTranslations("ilmomasiina");
+  const tPath = await getTranslations("ilmomasiina.path");
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   return (
     <li className="relative flex flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 px-3 py-1 shadow-solid">
       <div className="flex flex-row justify-between">
         <div className={`flex grow ${showSignupQuotas ? "flex-col" : ""}`}>
           <Link
-            href={`/${locale}/${t("path.events")}/${event.slug}`}
+            href={`/${locale}/${tPath("events")}/${event.slug}`}
             className="text-lg font-bold text-pretty underline-offset-2 group-hover:underline before:absolute before:top-0 before:left-0 before:z-0 before:block before:size-full before:cursor-[inherit]"
           >
             <h2 className="text-2xl">
@@ -255,7 +256,7 @@ export async function EventCardCompact({
           />
         ) : (
           <span>
-            <h3 className="text-xl font-medium">{t("Ei ilmoittautumista")}</h3>
+            <h3 className="text-xl font-medium">{t("No signup")}</h3>
           </span>
         )}
       </div>
@@ -268,14 +269,14 @@ export default async function EventCard({
 }: {
   event: UserEventListItem;
 }) {
-  const t = await getScopedI18n("ilmomasiina.path");
+  const tp = await getTranslations("ilmomasiina.path");
   const hasSignup = event.registrationStartDate && event.registrationEndDate;
 
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   return (
     <li className="group relative flex max-w-4xl flex-col gap-2 rounded-md border-2 border-gray-900 bg-gray-100 p-4 shadow-solid md:flex-row md:gap-4 md:p-6">
       <Link
-        href={`/${locale}/${t("events")}/${event.slug}`}
+        href={`/${locale}/${tp("events")}/${event.slug}`}
         className="text-lg font-bold text-pretty underline-offset-2 group-hover:underline before:absolute before:top-0 before:left-0 before:z-0 before:block before:size-full before:cursor-[inherit] md:w-1/3"
       >
         <h2>{event.title}</h2>

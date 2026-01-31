@@ -8,7 +8,7 @@ import {
 import Link from "next/link";
 import type { News, Page } from "@payload-types";
 import { cn } from "../../lib/utils";
-import { getScopedI18n } from "../../locales/server";
+import { getTranslations } from "../../locales/server";
 
 function AnnouncementIcon({
   type,
@@ -18,11 +18,7 @@ function AnnouncementIcon({
   className?: string;
 }): React.ReactNode {
   if (type === "announcement") {
-    return (
-      <MegaphoneIcon
-        className={cn("mt-2 h-8 w-8 shrink-0 fill-success-500", className)}
-      />
-    );
+    return <MegaphoneIcon />;
   }
   if (type === "warning") {
     return (
@@ -43,7 +39,7 @@ function AnnouncementIcon({
 }
 
 export async function AnnouncementCard({ news }: { news: News }) {
-  const t = await getScopedI18n("action");
+  const t = await getTranslations("action");
 
   return (
     <section className="relative z-20 -mt-24 flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 px-4 pt-12 pb-6 font-mono shadow-solid md:px-6 lg:-mt-48">

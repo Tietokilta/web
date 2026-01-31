@@ -3,17 +3,19 @@ import Link from "next/link";
 import { FileIcon } from "@tietokilta/ui";
 import { type Node } from "@lexical-types";
 import { fetchWeeklyNewsletters } from "../lib/api/weekly-newsletters";
-import { getCurrentLocale, getScopedI18n } from "../locales/server";
+import { getLocale, getTranslations } from "../locales/server";
 import { lexicalNodeToTextContent } from "../lib/utils";
 
 export default async function Page() {
-  const locale = await getCurrentLocale();
-  const t = await getScopedI18n("weeklyNewsletter");
+  const locale = await getLocale();
+  const t = await getTranslations("weeklyNewsletter");
   const weeklyNewsletters = await fetchWeeklyNewsletters({ locale });
 
   if (!weeklyNewsletters || weeklyNewsletters.length === 0) {
     return notFound();
   }
+
+  const path = t("path");
 
   return (
     <main
@@ -27,7 +29,7 @@ export default async function Page() {
             <Link
               className="not-prose my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 shadow-solid hover:border-gray-800 hover:bg-gray-300/90"
               data-relation
-              href={`/${locale}/${t("path")}/${newsletter.slug ?? "#no-path"}`}
+              href={`/${locale}/${path}/${newsletter.slug ?? "#no-path"}`}
               key={newsletter.id}
             >
               <FileIcon className="size-6" />

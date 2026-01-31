@@ -13,7 +13,7 @@ import {
   PaginationPrevious,
 } from "../pagination";
 import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
-import { getCurrentLocale, getI18n } from "../../locales/server";
+import { getLocale, getTranslations } from "../../locales/server";
 import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
 import { DateTime } from "../datetime";
 
@@ -28,10 +28,11 @@ function EventListSkeleton() {
 }
 
 async function EventItem({ event }: { event: UserEventListItem }) {
-  const locale = await getCurrentLocale();
-  const t = await getI18n();
+  const locale = await getLocale();
+  const tAction = await getTranslations("action");
+  const tPath = await getTranslations("ilmomasiina.path");
 
-  const eventUrl = `/${locale}/${t("ilmomasiina.path.events")}/${event.slug}`;
+  const eventUrl = `/${locale}/${tPath("events")}/${event.slug}`;
 
   return (
     <li className="flex flex-col justify-between gap-4 rounded-md border-2 border-gray-900 p-4 font-mono text-gray-900 shadow-solid md:flex-row md:items-center">
@@ -41,9 +42,9 @@ async function EventItem({ event }: { event: UserEventListItem }) {
         </span>
         <Button asChild className="hidden md:inline-flex" variant="link">
           <Link href={eventUrl}>
-            <span aria-hidden="true">{t("action.Read more")}</span>
+            <span aria-hidden="true">{tAction("Read more")}</span>
             <span className="sr-only">
-              {t("action.Read more about {something}", {
+              {tAction("Read more about {something}", {
                 something: event.title,
               })}
             </span>
@@ -78,9 +79,9 @@ async function EventItem({ event }: { event: UserEventListItem }) {
       </div>
       <Button asChild className="md:hidden" variant="link">
         <Link href={eventUrl}>
-          <span aria-hidden="true">{t("action.Read more")}</span>
+          <span aria-hidden="true">{tAction("Read more")}</span>
           <span className="sr-only">
-            {t("action.Read more about {something}", {
+            {tAction("Read more about {something}", {
               something: event.title,
             })}
           </span>
@@ -91,9 +92,10 @@ async function EventItem({ event }: { event: UserEventListItem }) {
 }
 
 async function EventList({ currentPage = 1 }: { currentPage?: number }) {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const upcomingEvents = await fetchUpcomingEvents(locale);
-  const t = await getI18n();
+  const tAction = await getTranslations("action");
+  const tGeneric = await getTranslations("generic");
   if (!upcomingEvents.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
     console.warn(
@@ -129,9 +131,9 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationPrevious
                   href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
-                  ariaLabel={t("action.Go to previous page")}
+                  ariaLabel={tAction("Go to previous page")}
                 >
-                  {t("action.Back")}
+                  {tAction("Back")}
                 </PaginationPrevious>
               </PaginationItem>
             ) : null}
@@ -141,7 +143,7 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
                   isActive={page === currentPage}
                   href={`/${locale}/?page=${page.toFixed()}`}
                 >
-                  <span className="sr-only">{t("generic.Page")}</span>
+                  <span className="sr-only">{tGeneric("Page")}</span>
                   <span>{page}</span>
                 </PaginationLink>
               </PaginationItem>
@@ -150,9 +152,9 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
               <PaginationItem>
                 <PaginationNext
                   href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
-                  ariaLabel={t("action.Go to next page")}
+                  ariaLabel={tAction("Go to next page")}
                 >
-                  {t("action.Next")}
+                  {tAction("Next")}
                 </PaginationNext>
               </PaginationItem>
             ) : null}
@@ -170,16 +172,17 @@ export async function EventsDisplay({
   eventsListPath?: string;
   currentPage?: number;
 }) {
-  const locale = await getCurrentLocale();
-  const t = await getI18n();
+  const locale = await getLocale();
+  const tHeading = await getTranslations("heading");
+  const tPath = await getTranslations("ilmomasiina.path");
   return (
     <section className="space-y-4">
       <Link
         className="font-mono text-2xl font-bold text-gray-900 underline-offset-2 hover:underline"
-        href={eventsListPath ?? `/${locale}/${t("ilmomasiina.path.events")}`}
+        href={eventsListPath ?? `/${locale}/${tPath("events")}`}
       >
         <h2 className="font-mono text-2xl font-bold text-gray-900">
-          {t("heading.Upcoming events")}
+          {tHeading("Upcoming events")}
         </h2>
       </Link>
 

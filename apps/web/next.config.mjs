@@ -1,5 +1,7 @@
 import { withPayload } from "@payloadcms/next/withPayload";
+import createNextIntlPlugin from "next-intl/plugin";
 
+const withNextIntl = createNextIntlPlugin();
 const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 
 /** @type {import("next").NextConfig} */
@@ -35,4 +37,6 @@ const nextConfig = {
   },
 };
 
-export default withPayload(nextConfig, { devBundleServerPackages: false });
+export default withPayload(withNextIntl(nextConfig), {
+  devBundleServerPackages: false,
+});
