@@ -35,33 +35,30 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v6
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version-file: package.json
-          cache: "pnpm"
+          bun-version: latest
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: "Build ui package"
-        run: pnpm turbo run build --filter=@tietokilta/ui --force
+        run: bun turbo run build --filter=@tietokilta/ui --force
 
       - name: Format (to ensure that code has been formatted)
-        run: pnpm format && git diff --exit-code
+        run: bun format && git diff --exit-code
 
       - name: Generate Payload types
-        run: pnpm codegen
+        run: bun codegen
 
       - name: Lint
-        run: pnpm lint
+        run: bun lint
 
       - name: Typecheck
-        run: pnpm typecheck
+        run: bun typecheck
 
       - name: Build all
-        run: pnpm build
+        run: bun run build
 
   publish-npm:
     name: Publish @tietokilta/ui to npm
@@ -77,27 +74,28 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v6
 
-      - uses: pnpm/action-setup@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
 
       - name: Setup Node.js for npm (OIDC)
         uses: actions/setup-node@v6
         with:
-          node-version-file: package.json
-          cache: "pnpm"
+          node-version: 24
           registry-url: "https://registry.npmjs.org"
 
       - name: Update npm to latest (required for OIDC)
         run: npm install -g npm@^11
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: bun install --frozen-lockfile
 
       - name: Build UI package
-        run: pnpm --filter @tietokilta/ui build
+        run: bun --filter @tietokilta/ui build
 
       - name: Publish @tietokilta/ui (alpha and latest)
         run: |
-          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag alpha --tag latest
+          npm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag alpha --tag latest
 
   docker-build-and-push:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')

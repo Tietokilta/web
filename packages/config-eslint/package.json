@@ -20,12 +20,12 @@
   },
   "devDependencies": {
     "@eslint/compat": "^2.0.1",
-    "@eslint/js": "catalog:",
+    "@eslint/js": "^9.39.2",
     "@next/eslint-plugin-next": "^15.5.9",
-    "@typescript-eslint/eslint-plugin": "catalog:",
-    "@typescript-eslint/parser": "catalog:",
-    "@typescript-eslint/utils": "catalog:",
-    "eslint": "catalog:",
+    "@typescript-eslint/eslint-plugin": "^8.53.1",
+    "@typescript-eslint/parser": "^8.53.1",
+    "@typescript-eslint/utils": "^8.53.1",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-typescript": "^4.4.4",
@@ -39,10 +39,10 @@
     "eslint-plugin-turbo": "^2.7.5",
     "eslint-plugin-unicorn": "^62.0.0",
     "globals": "^17.0.0",
-    "typescript-eslint": "catalog:"
+    "typescript-eslint": "^8.53.1"
   },
   "peerDependencies": {
-    "eslint": "catalog:",
-    "typescript-eslint": "catalog:"
+    "eslint": "^9.39.2",
+    "typescript-eslint": "^8.53.1"
   }
 }
