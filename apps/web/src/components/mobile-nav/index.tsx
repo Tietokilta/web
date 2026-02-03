@@ -9,10 +9,10 @@ import {
 } from "@tietokilta/ui";
 import Link from "next/link";
 import type { Media } from "@payload-types";
+import { getLocale, getTranslations } from "@locales/server";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";
-import { getCurrentLocale, getI18n } from "../../locales/server";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
@@ -21,8 +21,9 @@ export async function MobileNav({
   className,
   ...rest
 }: React.ComponentPropsWithoutRef<"header">) {
-  const t = await getI18n();
-  const locale = await getCurrentLocale();
+  const tAction = await getTranslations("action");
+  const tHeading = await getTranslations("heading");
+  const locale = await getLocale();
   const href = `/${locale}`;
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});
@@ -62,15 +63,15 @@ export async function MobileNav({
         <SheetTrigger asChild>
           <Button className="hover:bg-transparent" variant="ghost">
             <MenuIcon className="size-6" />
-            <span className="sr-only">{t("action.Toggle menu")}</span>
+            <span className="sr-only">{tAction("Toggle menu")}</span>
           </Button>
         </SheetTrigger>
         <SheetContent
-          closeLabel={t("action.Close")}
+          closeLabel={tAction("Close")}
           aria-describedby={undefined}
         >
           <SheetHeader className="sr-only">
-            <SheetTitle>{t("heading.Main navigation")}</SheetTitle>
+            <SheetTitle>{tHeading("Main navigation")}</SheetTitle>
           </SheetHeader>
           <nav className="flex h-full flex-col">
             <LanguageSelector />

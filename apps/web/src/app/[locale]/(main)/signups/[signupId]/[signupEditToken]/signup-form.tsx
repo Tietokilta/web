@@ -25,11 +25,11 @@ import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
-import { useScopedI18n } from "@locales/client";
+import { useTranslations } from "@locales/client";
 import { cn } from "@lib/utils";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 
-type FieldErrorI18n = ReturnType<typeof useScopedI18n>;
+type FieldErrorI18n = ReturnType<typeof useTranslations>;
 
 function renderError(error: string, t: FieldErrorI18n) {
   const isFieldError = error in SignupFieldError;
@@ -54,8 +54,8 @@ function InputRow({
   defaultValue?: string[] | string;
   errors?: string[];
 }) {
-  const t = useScopedI18n("ilmomasiina.form");
-  const tfe = useScopedI18n("ilmomasiina.form.fieldError");
+  const t = useTranslations("ilmomasiina.form");
+  const tfe = useTranslations("ilmomasiina.form.fieldError");
 
   const sharedInputProps = {
     id: `question-${question.id}`,
@@ -159,7 +159,7 @@ function ConfirmDeletePopover({
   eventTitle: string;
   deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
-  const t = useScopedI18n("ilmomasiina.form");
+  const t = useTranslations("ilmomasiina.form");
   return (
     <Card
       id={id}
@@ -168,14 +168,13 @@ function ConfirmDeletePopover({
     >
       <p>
         {t(
-          "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
-          {
-            eventTitle,
-          },
+          "deleteConfirmation",
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any -- next-intl ICU parameter type inference doesn't work for literal string types
+          { eventTitle } as any,
         )}
       </p>
       <p>
-        <strong>{t("This action cannot be undone.")}</strong>
+        <strong>{t("actionCannotBeUndone")}</strong>
       </p>
       <input
         type="button"
@@ -215,7 +214,7 @@ function Form({
   saveAction: ReturnType<typeof useSaveSignUpAction>["saveSignUpAction"];
   deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
-  const t = useScopedI18n("ilmomasiina.form");
+  const t = useTranslations("ilmomasiina.form");
   const isAndroidFirefox = useIsAndroidFirefox();
 
   const [state, formAction] = useActionState(saveAction, null);

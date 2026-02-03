@@ -4,9 +4,10 @@ import { SignupStatus } from "@tietokilta/ilmomasiina-models";
 import Link from "next/link";
 import { Button } from "@tietokilta/ui";
 import { type Metadata } from "next";
+import { getMessages } from "next-intl/server";
 import { getSignup } from "@lib/api/external/ilmomasiina";
-import { getCurrentLocale, getScopedI18n } from "@locales/server";
-import { I18nProviderClient } from "@locales/client";
+import { getLocale, getTranslations } from "@locales/server";
+import { NextIntlClientProvider } from "@locales/client";
 import { SignupForm } from "./signup-form";
 
 interface PageProps {
@@ -20,10 +21,10 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   const params = await props.params;
 
   const { signupId, signupEditToken } = params;
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
 
   const signupInfo = await getSignup(signupId, signupEditToken, locale);
-  const t = await getScopedI18n("ilmomasiina.form");
+  const t = await getTranslations("ilmomasiina.form");
 
   if (!signupInfo.ok) {
     return {};
@@ -42,7 +43,7 @@ export default async function Page(props: PageProps) {
   const params = await props.params;
 
   const { signupId, signupEditToken } = params;
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
 
   const signupInfo = await getSignup(signupId, signupEditToken, locale);
 
@@ -54,9 +55,10 @@ export default async function Page(props: PageProps) {
     throw new Error("Failed to fetch signup info");
   }
 
-  const t = await getScopedI18n("ilmomasiina.form");
-  const tp = await getScopedI18n("ilmomasiina.path");
-  const ta = await getScopedI18n("action");
+  const t = await getTranslations("ilmomasiina.form");
+  const tAction = await getTranslations("action");
+  const tp = await getTranslations("ilmomasiina.path");
+  const messages = await getMessages();
 
   return (
     <main
@@ -68,7 +70,7 @@ export default async function Page(props: PageProps) {
           <Link
             href={`/${locale}/${tp("events")}/${signupInfo.data.event.slug}`}
           >
-            {ta("Back")}
+            {tAction("Back")}
           </Link>
         </Button>
         <hgroup className="space-y-4 text-pretty">
@@ -78,14 +80,14 @@ export default async function Page(props: PageProps) {
           <p>
             {signupInfo.data.signup.status === SignupStatus.IN_QUEUE
               ? t("You are in queue at position {position}", {
-                  position: signupInfo.data.signup.position,
+                  position: String(signupInfo.data.signup.position ?? "-"),
                 })
               : signupInfo.data.signup.status === SignupStatus.IN_OPEN_QUOTA
                 ? t(
                     "You are in the open quota at position {position}/{quotaSize}",
                     {
-                      position: signupInfo.data.signup.position,
-                      quotaSize: signupInfo.data.event.openQuotaSize,
+                      position: String(signupInfo.data.signup.position ?? "-"),
+                      quotaSize: String(signupInfo.data.event.openQuotaSize),
                     },
                   )
                 : signupInfo.data.signup.status === SignupStatus.IN_QUOTA
@@ -93,27 +95,33 @@ export default async function Page(props: PageProps) {
                       "You are in the quota {quotaName} at position {position}/{quotaSize}",
                       {
                         quotaName: signupInfo.data.signup.quota.title,
-                        position: signupInfo.data.signup.position,
-                        quotaSize: signupInfo.data.signup.quota.size,
+                        position: String(
+                          signupInfo.data.signup.position ?? "-",
+                        ),
+                        quotaSize: String(
+                          signupInfo.data.signup.quota.size ?? "-",
+                        ),
                       },
                     )
                   : t(
                       "You are in the quota {quotaName} at position {position}",
                       {
                         quotaName: signupInfo.data.signup.quota.title,
-                        position: signupInfo.data.signup.position,
+                        position: String(
+                          signupInfo.data.signup.position ?? "-",
+                        ),
                       },
                     )}
           </p>
         </hgroup>
-        <I18nProviderClient locale={locale}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
           <SignupForm
             signupId={signupId}
             signupEditToken={signupEditToken}
             signup={signupInfo.data.signup}
             event={signupInfo.data.event}
           />
-        </I18nProviderClient>
+        </NextIntlClientProvider>
       </div>
     </main>
   );

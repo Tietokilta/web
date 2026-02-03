@@ -2,27 +2,45 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { getScopedI18n } from "@locales/server";
+import type { Locale } from "@i18n/routing";
 
 const size = {
   width: 1200,
   height: 630,
 };
 
-export async function generateImageMetadata() {
-  const t = await getScopedI18n("metadata");
+// Direct message imports for opengraph images (no request context during build)
+const messages = {
+  en: {
+    title: "Tietokilta",
+    description: "Homepage of the Computer Science Guild",
+  },
+  fi: {
+    title: "Tietokilta",
+    description: "Tietotekniikan opiskelijoiden kilta",
+  },
+} as const;
+
+interface ImageProps {
+  params: Promise<{ locale: Locale }>;
+}
+
+export async function generateImageMetadata({ params }: ImageProps) {
+  const { locale } = await params;
+  const t = messages[locale] ?? messages.en;
   return [
     {
       id: 1,
       size,
-      alt: `${t("title")} - ${t("description")}`,
+      alt: `${t.title} - ${t.description}`,
       contentType: "image/png",
     },
   ];
 }
 
-export default async function Image() {
-  const t = await getScopedI18n("metadata");
+export default async function Image({ params }: ImageProps) {
+  const { locale } = await params;
+  const t = messages[locale] ?? messages.en;
   const interRegular = await readFile(
     join(process.cwd(), "public/og/fonts/Inter/static/Inter_18pt-Regular.ttf"),
   );
@@ -56,10 +74,10 @@ export default async function Image() {
       <img src={tikLogoSrc} alt="" width="196" height="196" />
       <div tw="flex flex-col max-w-4/5">
         <span style={{ fontFamily: "Roboto Mono", fontSize: "1.5em" }}>
-          {t("title")}
+          {t.title}
         </span>
         <span style={{ fontFamily: "Inter", fontSize: "1em" }}>
-          {t("description")}
+          {t.description}
         </span>
       </div>
     </div>,

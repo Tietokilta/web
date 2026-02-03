@@ -1,10 +1,12 @@
-import { type Dictionary } from "../../../locales/server";
+import type { Messages } from "@locales/index";
 
-export type ErrorType = keyof {
-  [Property in keyof Dictionary as Property extends `errors.${infer S}`
-    ? S
-    : never]?: string;
-};
+// Error types derived from the "errors" namespace in locale files
+// Only includes top-level string keys (not nested objects like "ilmo")
+export type ErrorType = {
+  [K in keyof Messages["errors"]]: Messages["errors"][K] extends string
+    ? K
+    : never;
+}[keyof Messages["errors"]];
 
 export interface OkResponse<T> {
   ok: true;

@@ -11,7 +11,7 @@ import type {
 import { PartnerLogos } from "@components/partner-logos";
 import { fetchFooter } from "../../lib/api/footer";
 import { assertUnreachable, cn } from "../../lib/utils";
-import { getCurrentLocale } from "../../locales/server";
+import { getLocale } from "../../locales/server";
 import { VersionSha } from "./version-sha";
 
 function RenderFooterRow({
@@ -97,7 +97,7 @@ function RenderFooterRow({
 }
 
 export async function Footer() {
-  const locale = await getCurrentLocale();
+  const locale = await getLocale();
   const footer = await fetchFooter(locale)({});
   if (!footer) return null;
 

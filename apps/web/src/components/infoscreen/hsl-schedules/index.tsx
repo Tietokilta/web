@@ -1,6 +1,6 @@
-import { getScopedI18n } from "@locales/server.ts";
-import type { Stop, StopType } from "../types/hsl-helper-types.ts";
-import { HSLSchedules } from "./fetcher.ts";
+import { getTranslations } from "@locales/server";
+import type { Stop, StopType } from "../types/hsl-helper-types";
+import { HSLSchedules } from "./fetcher";
 
 const getColor = (type: StopType): string => {
   switch (type) {
@@ -14,14 +14,14 @@ const getColor = (type: StopType): string => {
 };
 
 const stopName = async (type: StopType) => {
-  const t = await getScopedI18n("infoscreen");
+  const t = await getTranslations("infoscreen");
   switch (type) {
     case "metro":
       return t("Metro");
     case "tram":
       return t("Raide-Jokeri");
     case "bus":
-      return t("Bussit");
+      return t("Buses");
   }
 };
 interface HSLScheduleProps {
@@ -60,7 +60,7 @@ function HSLSchedule({ stop }: HSLScheduleProps) {
 
 export async function HSLcombinedSchedule() {
   const stopData = await HSLSchedules();
-  const t = await getScopedI18n("infoscreen");
+  const t = await getTranslations("infoscreen");
 
   if (stopData.length === 0) {
     return null;
@@ -69,7 +69,7 @@ export async function HSLcombinedSchedule() {
     <div className="w-full flex-row justify-center">
       <div className="flex w-full justify-center">
         <h1 className="flex justify-center pt-4 text-4xl font-bold">
-          {t("Aalto-yliopisto")}
+          {t("Aalto-university")}
         </h1>
       </div>
       <div className="flex w-full justify-between gap-4 p-8 pt-0">
