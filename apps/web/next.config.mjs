@@ -11,6 +11,9 @@ const nextConfig = {
     minimumCacheTTL: 3600,
     contentDispositionType: "inline",
   },
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
