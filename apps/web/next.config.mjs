@@ -11,9 +11,6 @@ const nextConfig = {
     minimumCacheTTL: 3600,
     contentDispositionType: "inline",
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   typescript: {
     ignoreBuildErrors: true,
   },

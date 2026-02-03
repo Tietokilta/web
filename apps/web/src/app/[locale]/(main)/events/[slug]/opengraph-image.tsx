@@ -23,6 +23,12 @@ interface PageProps {
 
 export async function generateImageMetadata(props: PageProps) {
   const { locale, slug } = await props.params;
+  // Next.js 16 calls generateImageMetadata with undefined params during the
+  // "collecting page data" build phase to probe the route structure. Return
+  // an empty array so the build doesn't fail with NEXT_HTTP_ERROR_FALLBACK.
+  if (!slug) {
+    return [];
+  }
   const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     return notFound();

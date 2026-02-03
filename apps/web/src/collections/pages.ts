@@ -26,8 +26,8 @@ const getFormattedPath = async (
 ): Promise<Page["path"] | Localized<Page["path"]>> => {
   if (!data?.slug || !req.payload.config.localization) {
     req.payload.logger.warn(
+      { data },
       "Could not format page path: missing slug or localization config",
-      data,
     );
     return;
   }
@@ -82,7 +82,10 @@ const formatPath: FieldHook<
 > = async ({ originalDoc, data, req }) => {
   const reqLocale = getLocale(req);
   if (!reqLocale) {
-    req.payload.logger.warn("Could not format page path: missing locale", data);
+    req.payload.logger.warn(
+      { data },
+      "Could not format page path: missing locale",
+    );
     return data?.path;
   }
   const formattedPath = await getFormattedPath(data, req);

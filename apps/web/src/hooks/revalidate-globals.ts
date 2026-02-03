@@ -11,7 +11,7 @@ export const revalidateGlobal: GlobalAfterChangeHook = ({
   req,
 }) => {
   req.payload.logger.info(`revalidating ${global.slug}`);
-  revalidateTag(`global-${global.slug}`);
+  revalidateTag(`global-${global.slug}`, "default");
   revalidatePath("/[locale]", "layout");
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- ¯\_(ツ)_/¯
