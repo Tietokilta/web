@@ -11,8 +11,8 @@ const nextConfig = {
     minimumCacheTTL: 3600,
     contentDispositionType: "inline",
   },
-  eslint: {
-    ignoreDuringBuilds: true,
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
   },
   typescript: {
     ignoreBuildErrors: true,

@@ -27,6 +27,7 @@ import { ActionsLink as ActionsLink_86608735ec280265d7bd55dfdf381db4 } from '../
 import { OAuthButton as OAuthButton_c8e03f4512c32570e57acd2027fdf5e3 } from '../../../../src/components/admin-sign-up-button'
 import { AzureClientUploadHandler as AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104 } from '@payloadcms/storage-azure/client'
 import { ActionsView as ActionsView_86608735ec280265d7bd55dfdf381db4 } from '../../../../src/views/actions-view'
+import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -57,5 +58,6 @@ export const importMap = {
   "/src/views/actions-view#ActionsLink": ActionsLink_86608735ec280265d7bd55dfdf381db4,
   "/src/components/admin-sign-up-button#OAuthButton": OAuthButton_c8e03f4512c32570e57acd2027fdf5e3,
   "@payloadcms/storage-azure/client#AzureClientUploadHandler": AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104,
-  "/src/views/actions-view#ActionsView": ActionsView_86608735ec280265d7bd55dfdf381db4
+  "/src/views/actions-view#ActionsView": ActionsView_86608735ec280265d7bd55dfdf381db4,
+  "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }
