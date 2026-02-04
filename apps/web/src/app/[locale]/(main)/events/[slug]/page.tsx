@@ -437,7 +437,9 @@ export default async function Page(props: PageProps) {
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{t("Back")}</BackButton>
-          <h1 className="font-mono text-2xl md:text-4xl">{event.data.title}</h1>
+          <h1 className="font-mono text-2xl hyphens-auto md:text-4xl">
+            {event.data.title}
+          </h1>
           <div className="flex flex-col gap-16">
             <div className="flex flex-col gap-4 md:flex-row md:gap-16">
               <div className="flex max-w-xl grow-2 flex-col gap-8">

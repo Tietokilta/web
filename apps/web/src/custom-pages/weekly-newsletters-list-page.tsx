@@ -24,7 +24,7 @@ export default async function Page() {
     >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
         <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
-          <h1 className="text-4xl font-bold">{t("title")}</h1>
+          <h1 className="text-4xl font-bold hyphens-auto">{t("title")}</h1>
           {weeklyNewsletters.map((newsletter) => (
             <Link
               className="not-prose my-4 flex w-fit items-center gap-4 rounded-md border-2 border-gray-900 p-4 shadow-solid hover:border-gray-800 hover:bg-gray-300/90"
