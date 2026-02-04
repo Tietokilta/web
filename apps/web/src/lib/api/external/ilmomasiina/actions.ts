@@ -71,7 +71,7 @@ export function useSaveSignUpAction() {
       Record<string, string | string[]>
     >((acc, [key, value]) => {
       if (
-        value instanceof File ||
+        typeof value !== "string" ||
         value === "" ||
         value.startsWith("$ACTION")
       ) {
