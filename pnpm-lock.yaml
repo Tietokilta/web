@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@eslint/js':
+      specifier: ^9.39.2
+      version: 9.39.2
     '@tailwindcss/postcss':
       specifier: ^4.1.18
       version: 4.1.18
@@ -21,6 +24,15 @@ catalogs:
     '@types/react-dom':
       specifier: ^19.2.3
       version: 19.2.3
+    '@typescript-eslint/eslint-plugin':
+      specifier: ^8.53.1
+      version: 8.53.1
+    '@typescript-eslint/parser':
+      specifier: ^8.53.1
+      version: 8.53.1
+    '@typescript-eslint/utils':
+      specifier: ^8.53.1
+      version: 8.53.1
     clsx:
       specifier: ^2.1.1
       version: 2.1.1
@@ -100,16 +112,16 @@ importers:
         version: 3.55.1(@aws-sdk/credential-providers@3.768.0)(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(socks@2.8.4)
       '@payloadcms/next':
         specifier: ^3.55.1
-        version: 3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@payloadcms/richtext-lexical':
         specifier: ^3.55.1
-        version: 3.55.1(@faceless-ui/modal@3.0.0-beta.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@faceless-ui/scroll-info@2.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@payloadcms/next@3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)(yjs@13.6.19)
+        version: 3.55.1(@faceless-ui/modal@3.0.0-beta.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@faceless-ui/scroll-info@2.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@payloadcms/next@3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)(yjs@13.6.19)
       '@payloadcms/storage-azure':
         specifier: ^3.55.1
-        version: 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@payloadcms/ui':
         specifier: ^3.55.1
-        version: 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+        version: 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@react-email/components':
         specifier: ^1.0.6
         version: 1.0.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -138,14 +150,14 @@ importers:
         specifier: ^5.1.6
         version: 5.1.6
       next:
-        specifier: ^15.5.9
-        version: 15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
+        specifier: ^15.5.10
+        version: 15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
       next-intl:
         specifier: ^4.7.0
-        version: 4.7.0(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react@19.2.3)(typescript@5.9.3)
+        version: 4.7.0(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react@19.2.3)(typescript@5.9.3)
       nextjs-toploader:
         specifier: ^3.9.17
-        version: 3.9.17(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+        version: 3.9.17(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       papaparse:
         specifier: ^5.5.3
         version: 5.5.3
@@ -329,7 +341,7 @@ importers:
         version: 0.5.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       eslint-plugin-turbo:
         specifier: ^2.7.5
-        version: 2.7.5(eslint@9.39.2(jiti@2.6.1))(turbo@2.7.5)
+        version: 2.7.5(eslint@9.39.2(jiti@2.6.1))(turbo@2.8.3)
       eslint-plugin-unicorn:
         specifier: ^62.0.0
         version: 62.0.0(eslint@9.39.2(jiti@2.6.1))
@@ -559,8 +571,8 @@ packages:
     resolution: {integrity: sha512-sN1l559zrixeh5x+pttrnd0A3+r34r0tmPkJ/eaaMaAzXqsmKU/xYre9K3FNnsSS1J1k4PEfk/nHDTVUgFYjnw==}
     engines: {node: '>=18.0.0'}
 
-  '@aws-sdk/util-locate-window@3.965.2':
-    resolution: {integrity: sha512-qKgO7wAYsXzhwCHhdbaKFyxd83Fgs8/1Ka+jjSPrv2Ll7mB55Wbwlo0kkfMLh993/yEc8aoDIAc1Fz9h4Spi4Q==}
+  '@aws-sdk/util-locate-window@3.965.4':
+    resolution: {integrity: sha512-H1onv5SkgPBK2P6JR2MjGgbOnttoNzSPIRoeZTNPZYyaplwGg50zS3amXvXqF0/qfXpWEC9rLWU564QTB9bSog==}
     engines: {node: '>=20.0.0'}
 
   '@aws-sdk/util-user-agent-browser@3.734.0':
@@ -1716,8 +1728,8 @@ packages:
   '@next/env@15.3.5':
     resolution: {integrity: sha512-7g06v8BUVtN2njAX/r8gheoVffhiKFVt4nx74Tt6G4Hqw9HCLYQVx/GkH2qHvPtAHZaUNZ0VXAa0pQP6v1wk7g==}
 
-  '@next/env@15.5.9':
-    resolution: {integrity: sha512-4GlTZ+EJM7WaW2HEZcyU317tIQDjkQIyENDLxYJfSWlfqguN+dHkZgyQTV/7ykvobU7yEH5gKvreNrH4B6QgIg==}
+  '@next/env@15.5.10':
+    resolution: {integrity: sha512-plg+9A/KoZcTS26fe15LHg+QxReTazrIOoKKUC3Uz4leGGeNPgLHdevVraAAOX0snnUs3WkRx3eUQpj9mreG6A==}
 
   '@next/eslint-plugin-next@15.5.9':
     resolution: {integrity: sha512-kUzXx0iFiXw27cQAViE1yKWnz/nF8JzRmwgMRTMh8qMY90crNsdXJRh2e+R0vBpFR3kk1yvAR7wev7+fCCb79Q==}
@@ -2579,8 +2591,8 @@ packages:
     resolution: {integrity: sha512-qJpzYC64kaj3S0fueiu3kXm8xPrR3PcXDPEgnaNMRn0EjNSZFoFjvbUp0YUDsRhN1CB90EnHJtbxWKevnH99UQ==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/core@3.20.7':
-    resolution: {integrity: sha512-aO7jmh3CtrmPsIJxUwYIzI5WVlMK8BMCPQ4D4nTzqTqBhbzvxHNzBMGcEg13yg/z9R2Qsz49NUFl0F0lVbTVFw==}
+  '@smithy/core@3.22.1':
+    resolution: {integrity: sha512-x3ie6Crr58MWrm4viHqqy2Du2rHYZjwu8BekasrQx4ca+Y24dzVAwq3yErdqIbc2G3I0kLQA13PQ+/rde+u65g==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/credential-provider-imds@4.2.8':
@@ -2611,12 +2623,12 @@ packages:
     resolution: {integrity: sha512-RO0jeoaYAB1qBRhfVyq0pMgBoUK34YEJxVxyjOWYZiOKOq2yMZ4MnVXMZCUDenpozHue207+9P5ilTV1zeda0A==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/middleware-endpoint@4.4.8':
-    resolution: {integrity: sha512-TV44qwB/T0OMMzjIuI+JeS0ort3bvlPJ8XIH0MSlGADraXpZqmyND27ueuAL3E14optleADWqtd7dUgc2w+qhQ==}
+  '@smithy/middleware-endpoint@4.4.13':
+    resolution: {integrity: sha512-x6vn0PjYmGdNuKh/juUJJewZh7MoQ46jYaJ2mvekF4EesMuFfrl4LaW/k97Zjf8PTCPQmPgMvwewg7eNoH9n5w==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/middleware-retry@4.4.24':
-    resolution: {integrity: sha512-yiUY1UvnbUFfP5izoKLtfxDSTRv724YRRwyiC/5HYY6vdsVDcDOXKSXmkJl/Hovcxt5r+8tZEUAdrOaCJwrl9Q==}
+  '@smithy/middleware-retry@4.4.30':
+    resolution: {integrity: sha512-CBGyFvN0f8hlnqKH/jckRDz78Snrp345+PVk8Ux7pnkUCW97Iinse59lY78hBt04h1GZ6hjBN94BRwZy1xC8Bg==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/middleware-serde@4.2.9':
@@ -2631,8 +2643,8 @@ packages:
     resolution: {integrity: sha512-aFP1ai4lrbVlWjfpAfRSL8KFcnJQYfTl5QxLJXY32vghJrDuFyPZ6LtUL+JEGYiFRG1PfPLHLoxj107ulncLIg==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/node-http-handler@4.4.8':
-    resolution: {integrity: sha512-q9u+MSbJVIJ1QmJ4+1u+cERXkrhuILCBDsJUBAW1MPE6sFonbCNaegFuwW9ll8kh5UdyY3jOkoOGlc7BesoLpg==}
+  '@smithy/node-http-handler@4.4.9':
+    resolution: {integrity: sha512-KX5Wml5mF+luxm1szW4QDz32e3NObgJ4Fyw+irhph4I/2geXwUy4jkIMUs5ZPGflRBeR6BUkC2wqIab4Llgm3w==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/property-provider@4.2.8':
@@ -2663,8 +2675,8 @@ packages:
     resolution: {integrity: sha512-6A4vdGj7qKNRF16UIcO8HhHjKW27thsxYci+5r/uVRkdcBEkOEiY8OMPuydLX4QHSrJqGHPJzPRwwVTqbLZJhg==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/smithy-client@4.10.9':
-    resolution: {integrity: sha512-Je0EvGXVJ0Vrrr2lsubq43JGRIluJ/hX17aN/W/A0WfE+JpoMdI8kwk2t9F0zTX9232sJDGcoH4zZre6m6f/sg==}
+  '@smithy/smithy-client@4.11.2':
+    resolution: {integrity: sha512-SCkGmFak/xC1n7hKRsUr6wOnBTJ3L22Qd4e8H1fQIuKTAjntwgU8lrdMe7uHdiT2mJAOWA/60qaW9tiMu69n1A==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/types@4.12.0':
@@ -2699,12 +2711,12 @@ packages:
     resolution: {integrity: sha512-YEjpl6XJ36FTKmD+kRJJWYvrHeUvm5ykaUS5xK+6oXffQPHeEM4/nXlZPe+Wu0lsgRUcNZiliYNh/y7q9c2y6Q==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/util-defaults-mode-browser@4.3.23':
-    resolution: {integrity: sha512-mMg+r/qDfjfF/0psMbV4zd7F/i+rpyp7Hjh0Wry7eY15UnzTEId+xmQTGDU8IdZtDfbGQxuWNfgBZKBj+WuYbA==}
+  '@smithy/util-defaults-mode-browser@4.3.29':
+    resolution: {integrity: sha512-nIGy3DNRmOjaYaaKcQDzmWsro9uxlaqUOhZDHQed9MW/GmkBZPtnU70Pu1+GT9IBmUXwRdDuiyaeiy9Xtpn3+Q==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/util-defaults-mode-node@4.2.26':
-    resolution: {integrity: sha512-EQqe/WkbCinah0h1lMWh9ICl0Ob4lyl20/10WTB35SC9vDQfD8zWsOT+x2FIOXKAoZQ8z/y0EFMoodbcqWJY/w==}
+  '@smithy/util-defaults-mode-node@4.2.32':
+    resolution: {integrity: sha512-7dtFff6pu5fsjqrVve0YMhrnzJtccCWDacNKOkiZjJ++fmjGExmmSu341x+WU6Oc1IccL7lDuaUj7SfrHpWc5Q==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-endpoints@3.2.8':
@@ -2723,8 +2735,8 @@ packages:
     resolution: {integrity: sha512-CfJqwvoRY0kTGe5AkQokpURNCT1u/MkRzMTASWMPPo2hNSnKtF1D45dQl3DE2LKLr4m+PW9mCeBMJr5mCAVThg==}
     engines: {node: '>=18.0.0'}
 
-  '@smithy/util-stream@4.5.10':
-    resolution: {integrity: sha512-jbqemy51UFSZSp2y0ZmRfckmrzuKww95zT9BYMmuJ8v3altGcqjwoV1tzpOwuHaKrwQrCjIzOib499ymr2f98g==}
+  '@smithy/util-stream@4.5.11':
+    resolution: {integrity: sha512-lKmZ0S/3Qj2OF5H1+VzvDLb6kRxGzZHq6f3rAsoSu5cTLGsn3v3VQBA8czkNNXlLjoFEtVu3OQT2jEeOtOE2CA==}
     engines: {node: '>=18.0.0'}
 
   '@smithy/util-uri-escape@4.2.0':
@@ -3507,8 +3519,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001765:
-    resolution: {integrity: sha512-LWcNtSyZrakjECqmpP4qdg0MMGdN368D7X8XvvAqOcqMv0RxnlqVKZl2V6/mBR68oYMxOZPLw/gO7DuisMHUvQ==}
+  caniuse-lite@1.0.30001768:
+    resolution: {integrity: sha512-qY3aDRZC5nWPgHUgIB84WL+nySuo19wk0VJpp/XI9T34lrvkyhRvNVOFJOp2kxClQhiFBu+TaUSudf6oa3vkSA==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -4383,11 +4395,13 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   glob@11.0.3:
     resolution: {integrity: sha512-2Nim7dha1KVkaiF4q6Dj+ngPPMdfvLJEOpZk/jKiUAkqKebpGAWQXAq9z1xu9HKu5lWfqw/FASuccEjyznjPaA==}
     engines: {node: 20 || >=22}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   global-modules@1.0.0:
@@ -5374,8 +5388,8 @@ packages:
       typescript:
         optional: true
 
-  next@15.5.9:
-    resolution: {integrity: sha512-agNLK89seZEtC5zUHwtut0+tNrc0Xw4FT/Dg+B/VLEo9pAcS9rtTKpek3V6kVcVwsB2YlqMaHdfZL4eLEVYuCg==}
+  next@15.5.10:
+    resolution: {integrity: sha512-r0X65PNwyDDyOrWNKpQoZvOatw7BcsTPRKdwEqtc9cj3wv7mbBIk9tKed4klRaFXJdX0rugpuMTHslDrAU1bBg==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
     hasBin: true
     peerDependencies:
@@ -6465,8 +6479,18 @@ packages:
     cpu: [x64]
     os: [darwin]
 
+  turbo-darwin-64@2.8.3:
+    resolution: {integrity: sha512-4kXRLfcygLOeNcP6JquqRLmGB/ATjjfehiojL2dJkL7GFm3SPSXbq7oNj8UbD8XriYQ5hPaSuz59iF1ijPHkTw==}
+    cpu: [x64]
+    os: [darwin]
+
   turbo-darwin-arm64@2.7.5:
     resolution: {integrity: sha512-wCoDHMiTf3FgLAbZHDDx/unNNonSGhsF5AbbYODbxnpYyoKDpEYacUEPjZD895vDhNvYCH0Nnk24YsP4n/cD6g==}
+    cpu: [arm64]
+    os: [darwin]
+
+  turbo-darwin-arm64@2.8.3:
+    resolution: {integrity: sha512-xF7uCeC0UY0Hrv/tqax0BMbFlVP1J/aRyeGQPZT4NjvIPj8gSPDgFhfkfz06DhUwDg5NgMo04uiSkAWE8WB/QQ==}
     cpu: [arm64]
     os: [darwin]
 
@@ -6475,8 +6499,18 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  turbo-linux-64@2.8.3:
+    resolution: {integrity: sha512-vxMDXwaOjweW/4etY7BxrXCSkvtwh0PbwVafyfT1Ww659SedUxd5rM3V2ZCmbwG8NiCfY7d6VtxyHx3Wh1GoZA==}
+    cpu: [x64]
+    os: [linux]
+
   turbo-linux-arm64@2.7.5:
     resolution: {integrity: sha512-8PIva4L6BQhiPikUTds9lSFSHXVDAsEvV6QUlgwPsXrtXVQMVi6Sv9p+IxtlWQFvGkdYJUgX9GnK2rC030Xcmw==}
+    cpu: [arm64]
+    os: [linux]
+
+  turbo-linux-arm64@2.8.3:
+    resolution: {integrity: sha512-mQX7uYBZFkuPLLlKaNe9IjR1JIef4YvY8f21xFocvttXvdPebnq3PK1Zjzl9A1zun2BEuWNUwQIL8lgvN9Pm3Q==}
     cpu: [arm64]
     os: [linux]
 
@@ -6485,13 +6519,27 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  turbo-windows-64@2.8.3:
+    resolution: {integrity: sha512-YLGEfppGxZj3VWcNOVa08h6ISsVKiG85aCAWosOKNUjb6yErWEuydv6/qImRJUI+tDLvDvW7BxopAkujRnWCrw==}
+    cpu: [x64]
+    os: [win32]
+
   turbo-windows-arm64@2.7.5:
     resolution: {integrity: sha512-G377Gxn6P42RnCzfMyDvsqQV7j69kVHKlhz9J4RhtJOB5+DyY4yYh/w0oTIxZQ4JRMmhjwLu3w9zncMoQ6nNDw==}
     cpu: [arm64]
     os: [win32]
 
+  turbo-windows-arm64@2.8.3:
+    resolution: {integrity: sha512-afTUGKBRmOJU1smQSBnFGcbq0iabAPwh1uXu2BVk7BREg30/1gMnJh9DFEQTah+UD3n3ru8V55J83RQNFfqoyw==}
+    cpu: [arm64]
+    os: [win32]
+
   turbo@2.7.5:
     resolution: {integrity: sha512-7Imdmg37joOloTnj+DPrab9hIaQcDdJ5RwSzcauo/wMOSAgO+A/I/8b3hsGGs6PWQz70m/jkPgdqWsfNKtwwDQ==}
+    hasBin: true
+
+  turbo@2.8.3:
+    resolution: {integrity: sha512-8Osxz5Tu/Dw2kb31EAY+nhq/YZ3wzmQSmYa1nIArqxgCAldxv9TPlrAiaBUDVnKA4aiPn0OFBD1ACcpc5VFOAQ==}
     hasBin: true
 
   type-check@0.4.0:
@@ -6838,7 +6886,7 @@ snapshots:
       '@aws-crypto/supports-web-crypto': 5.2.0
       '@aws-crypto/util': 5.2.0
       '@aws-sdk/types': 3.734.0
-      '@aws-sdk/util-locate-window': 3.965.2
+      '@aws-sdk/util-locate-window': 3.965.4
       '@smithy/util-utf8': 2.3.0
       tslib: 2.8.1
     optional: true
@@ -6878,26 +6926,26 @@ snapshots:
       '@aws-sdk/util-user-agent-browser': 3.734.0
       '@aws-sdk/util-user-agent-node': 3.758.0
       '@smithy/config-resolver': 4.4.6
-      '@smithy/core': 3.20.7
+      '@smithy/core': 3.22.1
       '@smithy/fetch-http-handler': 5.3.9
       '@smithy/hash-node': 4.2.8
       '@smithy/invalid-dependency': 4.2.8
       '@smithy/middleware-content-length': 4.2.8
-      '@smithy/middleware-endpoint': 4.4.8
-      '@smithy/middleware-retry': 4.4.24
+      '@smithy/middleware-endpoint': 4.4.13
+      '@smithy/middleware-retry': 4.4.30
       '@smithy/middleware-serde': 4.2.9
       '@smithy/middleware-stack': 4.2.8
       '@smithy/node-config-provider': 4.3.8
-      '@smithy/node-http-handler': 4.4.8
+      '@smithy/node-http-handler': 4.4.9
       '@smithy/protocol-http': 5.3.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
       '@smithy/url-parser': 4.2.8
       '@smithy/util-base64': 4.3.0
       '@smithy/util-body-length-browser': 4.2.0
       '@smithy/util-body-length-node': 4.2.1
-      '@smithy/util-defaults-mode-browser': 4.3.23
-      '@smithy/util-defaults-mode-node': 4.2.26
+      '@smithy/util-defaults-mode-browser': 4.3.29
+      '@smithy/util-defaults-mode-node': 4.2.32
       '@smithy/util-endpoints': 3.2.8
       '@smithy/util-middleware': 4.2.8
       '@smithy/util-retry': 4.2.8
@@ -6922,26 +6970,26 @@ snapshots:
       '@aws-sdk/util-user-agent-browser': 3.734.0
       '@aws-sdk/util-user-agent-node': 3.758.0
       '@smithy/config-resolver': 4.4.6
-      '@smithy/core': 3.20.7
+      '@smithy/core': 3.22.1
       '@smithy/fetch-http-handler': 5.3.9
       '@smithy/hash-node': 4.2.8
       '@smithy/invalid-dependency': 4.2.8
       '@smithy/middleware-content-length': 4.2.8
-      '@smithy/middleware-endpoint': 4.4.8
-      '@smithy/middleware-retry': 4.4.24
+      '@smithy/middleware-endpoint': 4.4.13
+      '@smithy/middleware-retry': 4.4.30
       '@smithy/middleware-serde': 4.2.9
       '@smithy/middleware-stack': 4.2.8
       '@smithy/node-config-provider': 4.3.8
-      '@smithy/node-http-handler': 4.4.8
+      '@smithy/node-http-handler': 4.4.9
       '@smithy/protocol-http': 5.3.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
       '@smithy/url-parser': 4.2.8
       '@smithy/util-base64': 4.3.0
       '@smithy/util-body-length-browser': 4.2.0
       '@smithy/util-body-length-node': 4.2.1
-      '@smithy/util-defaults-mode-browser': 4.3.23
-      '@smithy/util-defaults-mode-node': 4.2.26
+      '@smithy/util-defaults-mode-browser': 4.3.29
+      '@smithy/util-defaults-mode-node': 4.2.32
       '@smithy/util-endpoints': 3.2.8
       '@smithy/util-middleware': 4.2.8
       '@smithy/util-retry': 4.2.8
@@ -6954,12 +7002,12 @@ snapshots:
   '@aws-sdk/core@3.758.0':
     dependencies:
       '@aws-sdk/types': 3.734.0
-      '@smithy/core': 3.20.7
+      '@smithy/core': 3.22.1
       '@smithy/node-config-provider': 4.3.8
       '@smithy/property-provider': 4.2.8
       '@smithy/protocol-http': 5.3.8
       '@smithy/signature-v4': 5.3.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
       '@smithy/util-middleware': 4.2.8
       fast-xml-parser: 4.4.1
@@ -6991,12 +7039,12 @@ snapshots:
       '@aws-sdk/core': 3.758.0
       '@aws-sdk/types': 3.734.0
       '@smithy/fetch-http-handler': 5.3.9
-      '@smithy/node-http-handler': 4.4.8
+      '@smithy/node-http-handler': 4.4.9
       '@smithy/property-provider': 4.2.8
       '@smithy/protocol-http': 5.3.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
-      '@smithy/util-stream': 4.5.10
+      '@smithy/util-stream': 4.5.11
       tslib: 2.8.1
     optional: true
 
@@ -7087,7 +7135,7 @@ snapshots:
       '@aws-sdk/credential-provider-web-identity': 3.758.0
       '@aws-sdk/nested-clients': 3.758.0
       '@aws-sdk/types': 3.734.0
-      '@smithy/core': 3.20.7
+      '@smithy/core': 3.22.1
       '@smithy/credential-provider-imds': 4.2.8
       '@smithy/property-provider': 4.2.8
       '@smithy/types': 4.12.0
@@ -7124,7 +7172,7 @@ snapshots:
       '@aws-sdk/core': 3.758.0
       '@aws-sdk/types': 3.734.0
       '@aws-sdk/util-endpoints': 3.743.0
-      '@smithy/core': 3.20.7
+      '@smithy/core': 3.22.1
       '@smithy/protocol-http': 5.3.8
       '@smithy/types': 4.12.0
       tslib: 2.8.1
@@ -7145,26 +7193,26 @@ snapshots:
       '@aws-sdk/util-user-agent-browser': 3.734.0
       '@aws-sdk/util-user-agent-node': 3.758.0
       '@smithy/config-resolver': 4.4.6
-      '@smithy/core': 3.20.7
+      '@smithy/core': 3.22.1
       '@smithy/fetch-http-handler': 5.3.9
       '@smithy/hash-node': 4.2.8
       '@smithy/invalid-dependency': 4.2.8
       '@smithy/middleware-content-length': 4.2.8
-      '@smithy/middleware-endpoint': 4.4.8
-      '@smithy/middleware-retry': 4.4.24
+      '@smithy/middleware-endpoint': 4.4.13
+      '@smithy/middleware-retry': 4.4.30
       '@smithy/middleware-serde': 4.2.9
       '@smithy/middleware-stack': 4.2.8
       '@smithy/node-config-provider': 4.3.8
-      '@smithy/node-http-handler': 4.4.8
+      '@smithy/node-http-handler': 4.4.9
       '@smithy/protocol-http': 5.3.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
       '@smithy/url-parser': 4.2.8
       '@smithy/util-base64': 4.3.0
       '@smithy/util-body-length-browser': 4.2.0
       '@smithy/util-body-length-node': 4.2.1
-      '@smithy/util-defaults-mode-browser': 4.3.23
-      '@smithy/util-defaults-mode-node': 4.2.26
+      '@smithy/util-defaults-mode-browser': 4.3.29
+      '@smithy/util-defaults-mode-node': 4.2.32
       '@smithy/util-endpoints': 3.2.8
       '@smithy/util-middleware': 4.2.8
       '@smithy/util-retry': 4.2.8
@@ -7210,7 +7258,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@aws-sdk/util-locate-window@3.965.2':
+  '@aws-sdk/util-locate-window@3.965.4':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -8316,7 +8364,7 @@ snapshots:
 
   '@next/env@15.3.5': {}
 
-  '@next/env@15.5.9': {}
+  '@next/env@15.5.10': {}
 
   '@next/eslint-plugin-next@15.5.9':
     dependencies:
@@ -8451,12 +8499,12 @@ snapshots:
     transitivePeerDependencies:
       - typescript
 
-  '@payloadcms/next@3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@payloadcms/next@3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@dnd-kit/core': 6.0.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@payloadcms/graphql': 3.55.1(graphql@16.9.0)(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(typescript@5.9.3)
       '@payloadcms/translations': 3.55.1
-      '@payloadcms/ui': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      '@payloadcms/ui': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       busboy: 1.6.0
       dequal: 2.0.3
       file-type: 19.3.0
@@ -8464,7 +8512,7 @@ snapshots:
       graphql-http: 1.22.4(graphql@16.9.0)
       graphql-playground-html: 1.6.30
       http-status: 2.1.0
-      next: 15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
+      next: 15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
       path-to-regexp: 6.3.0
       payload: 3.55.1(graphql@16.9.0)(typescript@5.9.3)
       qs-esm: 7.0.2
@@ -8478,9 +8526,9 @@ snapshots:
       - supports-color
       - typescript
 
-  '@payloadcms/plugin-cloud-storage@3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@payloadcms/plugin-cloud-storage@3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
-      '@payloadcms/ui': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      '@payloadcms/ui': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       find-node-modules: 2.1.3
       payload: 3.55.1(graphql@16.9.0)(typescript@5.9.3)
       range-parser: 1.2.1
@@ -8493,7 +8541,7 @@ snapshots:
       - supports-color
       - typescript
 
-  '@payloadcms/richtext-lexical@3.55.1(@faceless-ui/modal@3.0.0-beta.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@faceless-ui/scroll-info@2.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@payloadcms/next@3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)(yjs@13.6.19)':
+  '@payloadcms/richtext-lexical@3.55.1(@faceless-ui/modal@3.0.0-beta.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@faceless-ui/scroll-info@2.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(@payloadcms/next@3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3))(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)(yjs@13.6.19)':
     dependencies:
       '@faceless-ui/modal': 3.0.0-beta.2(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       '@faceless-ui/scroll-info': 2.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -8507,9 +8555,9 @@ snapshots:
       '@lexical/selection': 0.35.0
       '@lexical/table': 0.35.0
       '@lexical/utils': 0.35.0
-      '@payloadcms/next': 3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      '@payloadcms/next': 3.55.1(@types/react@19.2.9)(graphql@16.9.0)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@payloadcms/translations': 3.55.1
-      '@payloadcms/ui': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      '@payloadcms/ui': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       '@types/uuid': 10.0.0
       acorn: 8.12.1
       bson-objectid: 2.0.4
@@ -8536,11 +8584,11 @@ snapshots:
       - typescript
       - yjs
 
-  '@payloadcms/storage-azure@3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@payloadcms/storage-azure@3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@azure/abort-controller': 1.1.0
       '@azure/storage-blob': 12.27.0
-      '@payloadcms/plugin-cloud-storage': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
+      '@payloadcms/plugin-cloud-storage': 3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)
       payload: 3.55.1(graphql@16.9.0)(typescript@5.9.3)
       range-parser: 1.2.1
     transitivePeerDependencies:
@@ -8556,7 +8604,7 @@ snapshots:
     dependencies:
       date-fns: 4.1.0
 
-  '@payloadcms/ui@3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
+  '@payloadcms/ui@3.55.1(@types/react@19.2.9)(monaco-editor@0.38.0)(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(payload@3.55.1(graphql@16.9.0)(typescript@5.9.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(typescript@5.9.3)':
     dependencies:
       '@date-fns/tz': 1.2.0
       '@dnd-kit/core': 6.0.8(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -8571,7 +8619,7 @@ snapshots:
       date-fns: 4.1.0
       dequal: 2.0.3
       md5: 2.3.0
-      next: 15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
+      next: 15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
       object-to-formdata: 4.5.1
       payload: 3.55.1(graphql@16.9.0)(typescript@5.9.3)
       qs-esm: 7.0.2
@@ -9121,7 +9169,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@smithy/core@3.20.7':
+  '@smithy/core@3.22.1':
     dependencies:
       '@smithy/middleware-serde': 4.2.9
       '@smithy/protocol-http': 5.3.8
@@ -9129,7 +9177,7 @@ snapshots:
       '@smithy/util-base64': 4.3.0
       '@smithy/util-body-length-browser': 4.2.0
       '@smithy/util-middleware': 4.2.8
-      '@smithy/util-stream': 4.5.10
+      '@smithy/util-stream': 4.5.11
       '@smithy/util-utf8': 4.2.0
       '@smithy/uuid': 1.1.0
       tslib: 2.8.1
@@ -9184,9 +9232,9 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@smithy/middleware-endpoint@4.4.8':
+  '@smithy/middleware-endpoint@4.4.13':
     dependencies:
-      '@smithy/core': 3.20.7
+      '@smithy/core': 3.22.1
       '@smithy/middleware-serde': 4.2.9
       '@smithy/node-config-provider': 4.3.8
       '@smithy/shared-ini-file-loader': 4.4.3
@@ -9196,12 +9244,12 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@smithy/middleware-retry@4.4.24':
+  '@smithy/middleware-retry@4.4.30':
     dependencies:
       '@smithy/node-config-provider': 4.3.8
       '@smithy/protocol-http': 5.3.8
       '@smithy/service-error-classification': 4.2.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
       '@smithy/util-middleware': 4.2.8
       '@smithy/util-retry': 4.2.8
@@ -9230,7 +9278,7 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@smithy/node-http-handler@4.4.8':
+  '@smithy/node-http-handler@4.4.9':
     dependencies:
       '@smithy/abort-controller': 4.2.8
       '@smithy/protocol-http': 5.3.8
@@ -9287,14 +9335,14 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@smithy/smithy-client@4.10.9':
+  '@smithy/smithy-client@4.11.2':
     dependencies:
-      '@smithy/core': 3.20.7
-      '@smithy/middleware-endpoint': 4.4.8
+      '@smithy/core': 3.22.1
+      '@smithy/middleware-endpoint': 4.4.13
       '@smithy/middleware-stack': 4.2.8
       '@smithy/protocol-http': 5.3.8
       '@smithy/types': 4.12.0
-      '@smithy/util-stream': 4.5.10
+      '@smithy/util-stream': 4.5.11
       tslib: 2.8.1
     optional: true
 
@@ -9344,21 +9392,21 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@smithy/util-defaults-mode-browser@4.3.23':
+  '@smithy/util-defaults-mode-browser@4.3.29':
     dependencies:
       '@smithy/property-provider': 4.2.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
       tslib: 2.8.1
     optional: true
 
-  '@smithy/util-defaults-mode-node@4.2.26':
+  '@smithy/util-defaults-mode-node@4.2.32':
     dependencies:
       '@smithy/config-resolver': 4.4.6
       '@smithy/credential-provider-imds': 4.2.8
       '@smithy/node-config-provider': 4.3.8
       '@smithy/property-provider': 4.2.8
-      '@smithy/smithy-client': 4.10.9
+      '@smithy/smithy-client': 4.11.2
       '@smithy/types': 4.12.0
       tslib: 2.8.1
     optional: true
@@ -9388,10 +9436,10 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@smithy/util-stream@4.5.10':
+  '@smithy/util-stream@4.5.11':
     dependencies:
       '@smithy/fetch-http-handler': 5.3.9
-      '@smithy/node-http-handler': 4.4.8
+      '@smithy/node-http-handler': 4.4.9
       '@smithy/types': 4.12.0
       '@smithy/util-base64': 4.3.0
       '@smithy/util-buffer-from': 4.2.0
@@ -10121,7 +10169,7 @@ snapshots:
   browserslist@4.26.0:
     dependencies:
       baseline-browser-mapping: 2.9.16
-      caniuse-lite: 1.0.30001765
+      caniuse-lite: 1.0.30001768
       electron-to-chromium: 1.5.218
       node-releases: 2.0.21
       update-browserslist-db: 1.1.3(browserslist@4.26.0)
@@ -10129,7 +10177,7 @@ snapshots:
   browserslist@4.28.1:
     dependencies:
       baseline-browser-mapping: 2.9.16
-      caniuse-lite: 1.0.30001765
+      caniuse-lite: 1.0.30001768
       electron-to-chromium: 1.5.267
       node-releases: 2.0.27
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
@@ -10183,7 +10231,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001765: {}
+  caniuse-lite@1.0.30001768: {}
 
   ccount@2.0.1: {}
 
@@ -11034,11 +11082,11 @@ snapshots:
       - supports-color
       - typescript
 
-  eslint-plugin-turbo@2.7.5(eslint@9.39.2(jiti@2.6.1))(turbo@2.7.5):
+  eslint-plugin-turbo@2.7.5(eslint@9.39.2(jiti@2.6.1))(turbo@2.8.3):
     dependencies:
       dotenv: 16.0.3
       eslint: 9.39.2(jiti@2.6.1)
-      turbo: 2.7.5
+      turbo: 2.8.3
 
   eslint-plugin-unicorn@62.0.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
@@ -12533,13 +12581,13 @@ snapshots:
 
   next-intl-swc-plugin-extractor@4.7.0: {}
 
-  next-intl@4.7.0(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react@19.2.3)(typescript@5.9.3):
+  next-intl@4.7.0(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react@19.2.3)(typescript@5.9.3):
     dependencies:
       '@formatjs/intl-localematcher': 0.5.10
       '@parcel/watcher': 2.5.4
       '@swc/core': 1.15.3
       negotiator: 1.0.0
-      next: 15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
+      next: 15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
       next-intl-swc-plugin-extractor: 4.7.0
       po-parser: 2.1.1
       react: 19.2.3
@@ -12549,11 +12597,11 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3):
+  next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3):
     dependencies:
-      '@next/env': 15.5.9
+      '@next/env': 15.5.10
       '@swc/helpers': 0.5.15
-      caniuse-lite: 1.0.30001765
+      caniuse-lite: 1.0.30001768
       postcss: 8.4.31
       react: 19.2.3
       react-dom: 19.2.3(react@19.2.3)
@@ -12573,9 +12621,9 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  nextjs-toploader@3.9.17(next@15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  nextjs-toploader@3.9.17(next@15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3))(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
-      next: 15.5.9(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
+      next: 15.5.10(react-dom@19.2.3(react@19.2.3))(react@19.2.3)(sass@1.79.3)
       nprogress: 0.2.0
       prop-types: 15.8.1
       react: 19.2.3
@@ -13854,19 +13902,37 @@ snapshots:
   turbo-darwin-64@2.7.5:
     optional: true
 
+  turbo-darwin-64@2.8.3:
+    optional: true
+
   turbo-darwin-arm64@2.7.5:
+    optional: true
+
+  turbo-darwin-arm64@2.8.3:
     optional: true
 
   turbo-linux-64@2.7.5:
     optional: true
 
+  turbo-linux-64@2.8.3:
+    optional: true
+
   turbo-linux-arm64@2.7.5:
+    optional: true
+
+  turbo-linux-arm64@2.8.3:
     optional: true
 
   turbo-windows-64@2.7.5:
     optional: true
 
+  turbo-windows-64@2.8.3:
+    optional: true
+
   turbo-windows-arm64@2.7.5:
+    optional: true
+
+  turbo-windows-arm64@2.8.3:
     optional: true
 
   turbo@2.7.5:
@@ -13877,6 +13943,15 @@ snapshots:
       turbo-linux-arm64: 2.7.5
       turbo-windows-64: 2.7.5
       turbo-windows-arm64: 2.7.5
+
+  turbo@2.8.3:
+    optionalDependencies:
+      turbo-darwin-64: 2.8.3
+      turbo-darwin-arm64: 2.8.3
+      turbo-linux-64: 2.8.3
+      turbo-linux-arm64: 2.8.3
+      turbo-windows-64: 2.8.3
+      turbo-windows-arm64: 2.8.3
 
   type-check@0.4.0:
     dependencies:
