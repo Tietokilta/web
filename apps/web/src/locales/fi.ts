@@ -239,7 +239,6 @@ const fi = {
     "old weekly newsletters": "vanhoja viikkotiedotteita",
     Other: "Muu",
     Read: "Lue",
-    "very old weekly newsletters": "erittäin vanhoja viikkotiedotteita",
     "This week": "Tällä viikolla",
     "Sign ups open this week": "Tällä viikolla avoinna olevat ilmoittautumiset",
     title: "Viikkotiedotteet",

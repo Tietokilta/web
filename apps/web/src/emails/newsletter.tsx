@@ -32,7 +32,6 @@ export function Newsletter({
       read: "Read",
       path: "weekly-newsletters",
       "old-link": "old weekly newsletters",
-      "super-old-link": "very old weekly newsletters",
       summary: "Table of Contents",
     },
     fi: {
@@ -44,7 +43,6 @@ export function Newsletter({
       read: "Lue",
       path: "viikkotiedotteet",
       "old-link": "vanhoja viikkotiedotteita",
-      "super-old-link": "erittäin vanhoja viikkotiedotteita",
       summary: "Sisällysluettelo",
     },
   };
@@ -158,20 +156,6 @@ export function Newsletter({
         {t[locale].read}{" "}
         <a href={`${PUBLIC_FRONTEND_URL}/${locale}/${t[locale].path}`}>
           {t[locale]["old-link"]}
-        </a>
-      </p>
-      <p>
-        {t[locale].read}{" "}
-        <a
-          target="_blank"
-          href={
-            locale === "fi"
-              ? `${PUBLIC_LEGACY_URL}/arkisto/viikkomailit/`
-              : `${PUBLIC_LEGACY_URL}/arkisto/weekly_mails/`
-          }
-          rel="noopener"
-        >
-          {t[locale]["super-old-link"]}
         </a>
       </p>
     </div>
