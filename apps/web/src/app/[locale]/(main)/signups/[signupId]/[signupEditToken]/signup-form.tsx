@@ -85,36 +85,44 @@ function InputRow({
       </Label>
       {question.type === QuestionType.CHECKBOX ? (
         <div className="grid gap-2">
-          {(question.options ?? []).map((option) => (
-            <p key={option} className="w-full max-w-sm space-x-2">
-              <Checkbox
-                id={`checkbox-${question.id}-option-${option}`}
-                name={question.id}
-                value={option}
-                defaultChecked={defaultValue?.includes(option)}
-              />
-              <label htmlFor={`checkbox-${question.id}-option-${option}`}>
-                {option}
-              </label>
-            </p>
-          ))}
+          {(question.options ?? []).map((option, i) => {
+            const price = question.prices ? question.prices[i] : 0;
+            return (
+              <p key={option} className="w-full max-w-sm space-x-2">
+                <Checkbox
+                  id={`checkbox-${question.id}-option-${option}`}
+                  name={question.id}
+                  value={option}
+                  defaultChecked={defaultValue?.includes(option)}
+                />
+                <label htmlFor={`checkbox-${question.id}-option-${option}`}>
+                  {option}
+                  {price > 0 ? ` (+${(price / 100).toString()} €)` : ""}
+                </label>
+              </p>
+            );
+          })}
         </div>
       ) : question.type === QuestionType.SELECT ? (
         <div className="grid gap-2">
-          {(question.options ?? []).map((option) => (
-            <p key={option} className="flex items-center space-x-2">
-              <Radio
-                id={`radio-${question.id}-option-${option}`}
-                value={option}
-                required={question.required}
-                defaultChecked={defaultValue === option}
-                name={question.id}
-              />
-              <label htmlFor={`radio-${question.id}-option-${option}`}>
-                {option}
-              </label>
-            </p>
-          ))}
+          {(question.options ?? []).map((option, i) => {
+            const price = question.prices ? question.prices[i] : 0;
+            return (
+              <p key={option} className="flex items-center space-x-2">
+                <Radio
+                  id={`radio-${question.id}-option-${option}`}
+                  value={option}
+                  required={question.required}
+                  defaultChecked={defaultValue === option}
+                  name={question.id}
+                />
+                <label htmlFor={`radio-${question.id}-option-${option}`}>
+                  {option}
+                  {price > 0 ? ` (+${(price / 100).toString()} €)` : ""}
+                </label>
+              </p>
+            );
+          })}
         </div>
       ) : question.type === QuestionType.TEXT_AREA ? (
         <Textarea {...sharedInputProps} />

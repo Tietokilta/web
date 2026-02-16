@@ -60,6 +60,9 @@ export function SignupButtons({ event }: { event: UserEventResponse }) {
                 {event.quotas.length === 1 ? "" : `: `}
               </span>
               {event.quotas.length > 1 ? <span>{quota.title}</span> : null}
+              {quota.price > 0
+                ? ` (${(quota.price / 100).toString()} €)`
+                : null}
             </span>
           </SignUpButton>
         </li>
