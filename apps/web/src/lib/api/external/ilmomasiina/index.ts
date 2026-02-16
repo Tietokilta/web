@@ -13,6 +13,7 @@ import {
   type SignupUpdateResponse,
   type UserEventListResponse,
   type UserEventResponse,
+  type StartPaymentResponse,
 } from "@tietokilta/ilmomasiina-models";
 import type { ApiResponse } from "../helpers";
 import { err, ok } from "../helpers";
@@ -206,6 +207,45 @@ export const patchSignUp = async (
     }
 
     const data = (await response.json()) as SignupUpdateResponse;
+
+    return ok(data);
+  } catch (_) {
+    return err("ilmomasiina-fetch-fail");
+  }
+};
+
+export const startPayment = async (
+  signupId: string,
+  signupEditToken: string,
+): Promise<ApiResponse<StartPaymentResponse, SignupValidationError>> => {
+  try {
+    const response = await fetch(
+      `${baseUrl}/api/signups/${signupId}/payment/start`,
+      {
+        method: "POST",
+        headers: {
+          [EDIT_TOKEN_HEADER]: signupEditToken,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return err("ilmomasiina-signup-not-found");
+      }
+
+      const errorData = (await response.json()) as ErrorResponse;
+
+      if (errorData.code === ErrorCode.SIGNUP_VALIDATION_ERROR) {
+        return err("ilmomasiina-validation-failed", {
+          originalError: errorData as SignupValidationError,
+        });
+      }
+
+      return err("ilmomasiina-fetch-fail");
+    }
+
+    const data = (await response.json()) as StartPaymentResponse;
 
     return ok(data);
   } catch (_) {

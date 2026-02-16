@@ -1,3 +1,7 @@
+import { i18nResources } from "@tietokilta/ilmomasiina-client/dist/locales/index";
+
+const ilmo = i18nResources.fi.public;
+
 /**
  * Finnish localizations in nested structure for next-intl.
  */
@@ -50,6 +54,25 @@ const fi = {
         SignupValidationError: "Ilmoittautumisen validointi epäonnistui.",
         EventValidationError: "Tapahtuman validointi epäonnistui.",
         FST_ERR_VALIDATION: "Validointi epäonnistui.",
+        OnlinePaymentsDisabled:
+          ilmo["editSignup.paymentError.OnlinePaymentsDisabled.description"],
+        SignupAlreadyPaid:
+          ilmo["editSignup.paymentError.SignupAlreadyPaid.description"],
+        PaymentNotRequired:
+          ilmo["editSignup.paymentError.PaymentNotRequired.description"],
+        PaymentInProgress:
+          ilmo["editSignup.paymentError.PaymentInProgress.description"],
+        PaymentNotFound:
+          ilmo["editSignup.paymentError.PaymentNotFound.description"],
+        PaymentNotComplete:
+          ilmo["editSignup.paymentError.PaymentNotComplete.description"],
+        PaymentRateLimited:
+          ilmo["editSignup.paymentError.PaymentRateLimited.description"],
+        DefaultPaymentError:
+          ilmo["editSignup.paymentError.default.description"],
+        SignupInQueue:
+          ilmo["editSignup.paymentError.SignupInQueue.description"],
+        SignupNotConfirmed: "Ilmoittautumista ei ole vahvistettu.",
       },
       fieldError: {
         missing: "Tämä kenttä on pakollinen.",
@@ -58,6 +81,7 @@ const fi = {
         invalidEmail: "Virheellinen sähköpostiosoite.",
         notANumber: "Arvon tulee olla numero.",
         notAnOption: "Virheellinen valinta.",
+        duplicateOption: "Kentän vastaus sisältää monta samaa valintaa.",
       },
     },
   },
@@ -126,6 +150,7 @@ const fi = {
         notANumber: "Kentän vastauksen tulee olla numero.",
         notAnOption:
           "Kentän vastaus ei ole sallituissa vaihtoehdoissa. Kokeile päivittää sivu.",
+        duplicateOption: "Kentän vastaus sisältää monta samaa valintaa.",
       },
       optional: "valinnainen",
       "Shown in the public list of sign ups":
@@ -150,6 +175,24 @@ const fi = {
         "Oletka varma, että haluat poistaa ilmoittautumisesi tapahtumaan {eventTitle}? Jos poistat ilmoittautumisesi, menetät paikkasi jonossa.",
       actionCannotBeUndone: "Tätä toimintoa ei voi perua.",
       Cancel: "Peruuta",
+    },
+    payment: {
+      "Payment information": "Maksutiedot",
+      "Payment instructions":
+        "Maksu hoidetaan tapahtuman sivulla. Jatka alla olevasta painikkeesta.",
+      "Go to payment page": "Siirry maksusivulle",
+      infoMessage:
+        "Maksu hoidetaan tapahtuman sivulla. Jatka alla olevasta painikkeesta.",
+      pay: "Maksa",
+      paymentPageHint: "Maksusivu: {paymentUrl}",
+      status: {
+        pending: ilmo["editSignup.payment.status.pending"],
+        paid: ilmo["editSignup.payment.status.paid"],
+        refunded: ilmo["editSignup.payment.status.refunded"],
+        inQueue: ilmo["editSignup.payment.status.inQueue"],
+      },
+      processing: "Käsitellään...",
+      error: "Virhe maksun yhteydessä. Yritä uudelleen.",
     },
     headers: {
       Starts: "Alkaa",
