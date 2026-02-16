@@ -238,7 +238,6 @@ const en = {
     "old weekly newsletters": "old weekly newsletters",
     Other: "Other",
     Read: "Read",
-    "very old weekly newsletters": "very old weekly newsletters",
     "This week": "This week",
     "Sign ups open this week": "Sign ups open this week",
     title: "Weekly newsletters",

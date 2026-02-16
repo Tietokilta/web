@@ -315,20 +315,6 @@ export default async function Page({ slug }: { slug?: string }) {
             {t("Read")}{" "}
             <a href={`/${locale}/${path}`}>{t("old weekly newsletters")}</a>
           </p>
-          <p>
-            {t("Read")}{" "}
-            <a
-              target="_blank"
-              href={
-                locale === "fi"
-                  ? `${legacyUrl}/arkisto/viikkomailit/`
-                  : `${legacyUrl}/arkisto/weekly_mails/`
-              }
-              rel="noopener"
-            >
-              {t("very old weekly newsletters")}
-            </a>
-          </p>
         </footer>
       </div>
     </main>
