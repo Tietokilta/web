@@ -119,7 +119,7 @@ export const getSignup = async (
       },
       next: {
         tags: ["ilmomasiina-signup"],
-        revalidate: 10, // 10 seconds
+        revalidate: 0, // disabled cache to ensure payment status is up to date
       },
     });
 
