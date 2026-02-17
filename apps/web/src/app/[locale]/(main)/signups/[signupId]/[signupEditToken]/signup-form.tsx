@@ -94,19 +94,24 @@ function InputRow({
         <div className="grid gap-2">
           {(question.options ?? []).map((option, i) => {
             const price = question.prices?.[i] ?? 0;
+            const isChecked = defaultValue?.includes(option);
             return (
               <p key={option} className="w-full max-w-sm space-x-2">
                 <Checkbox
                   id={`checkbox-${question.id}-option-${option}`}
                   name={question.id}
                   value={option}
-                  defaultChecked={defaultValue?.includes(option)}
+                  defaultChecked={isChecked}
                   disabled={disabledPaid}
                 />
                 <label htmlFor={`checkbox-${question.id}-option-${option}`}>
                   {option}
                   {price > 0 ? ` (+${(price / 100).toString()} €)` : ""}
                 </label>
+                {/* Disabled fields are not included in the FormData, but ilmo requirs us to submit them */}
+                {disabledPaid && isChecked ? (
+                  <input type="hidden" name={question.id} value={option} />
+                ) : null}
               </p>
             );
           })}
@@ -115,13 +120,14 @@ function InputRow({
         <div className="grid gap-2">
           {(question.options ?? []).map((option, i) => {
             const price = question.prices?.[i] ?? 0;
+            const isChecked = defaultValue === option;
             return (
               <p key={option} className="flex items-center space-x-2">
                 <Radio
                   id={`radio-${question.id}-option-${option}`}
                   value={option}
                   required={question.required}
-                  defaultChecked={defaultValue === option}
+                  defaultChecked={isChecked}
                   name={question.id}
                   disabled={disabledPaid}
                 />
@@ -129,6 +135,10 @@ function InputRow({
                   {option}
                   {price > 0 ? ` (+${(price / 100).toString()} €)` : ""}
                 </label>
+                {/* Disabled fields are not included in the FormData, but ilmo requirs us to submit them */}
+                {disabledPaid && isChecked ? (
+                  <input type="hidden" name={question.id} value={option} />
+                ) : null}
               </p>
             );
           })}
