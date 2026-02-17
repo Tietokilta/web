@@ -179,13 +179,8 @@ const fi = {
     },
     payment: {
       "Payment information": "Maksutiedot",
-      "Payment instructions":
-        "Maksu hoidetaan tapahtuman sivulla. Jatka alla olevasta painikkeesta.",
-      "Go to payment page": "Siirry maksusivulle",
-      infoMessage:
-        "Maksu hoidetaan tapahtuman sivulla. Jatka alla olevasta painikkeesta.",
+      infoMessage: "Maksaminen tapahtuu erillisten ohjeiden mukaisesti.",
       pay: "Maksa",
-      paymentPageHint: "Maksusivu: {paymentUrl}",
       status: {
         pending: ilmo["editSignup.payment.status.pending"],
         paid: ilmo["editSignup.payment.status.paid"],
