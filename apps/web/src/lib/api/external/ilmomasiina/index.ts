@@ -252,3 +252,32 @@ export const startPayment = async (
     return err("ilmomasiina-fetch-fail");
   }
 };
+
+export const completePayment = async (
+  signupId: string,
+  signupEditToken: string,
+): Promise<ApiResponse<"ok">> => {
+  try {
+    const response = await fetch(
+      `${baseUrl}/api/signups/${signupId}/payment/complete`,
+      {
+        method: "POST",
+        headers: {
+          [EDIT_TOKEN_HEADER]: signupEditToken,
+        },
+      },
+    );
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return err("ilmomasiina-signup-not-found");
+      }
+
+      return err("ilmomasiina-fetch-fail");
+    }
+
+    return ok("ok");
+  } catch (_) {
+    return err("ilmomasiina-fetch-fail");
+  }
+};

@@ -175,6 +175,7 @@ const fi = {
         "Oletka varma, että haluat poistaa ilmoittautumisesi tapahtumaan {eventTitle}? Jos poistat ilmoittautumisesi, menetät paikkasi jonossa.",
       actionCannotBeUndone: "Tätä toimintoa ei voi perua.",
       Cancel: "Peruuta",
+      uneditablePaidQuestion: ilmo["editSignup.uneditablePaidQuestion"],
     },
     payment: {
       "Payment information": "Maksutiedot",
@@ -204,6 +205,7 @@ const fi = {
       Location: "Paikka",
       Price: "Hinta",
       Position: "Sija",
+      Product: "Tuote",
     },
     "Sign up": "Ilmoittautuminen",
     Signups: "Ilmoittautuneet",
@@ -219,6 +221,7 @@ const fi = {
     Starts: "Alkaa",
     Ends: "Loppuu",
     Price: "Hinta",
+    TotalPrice: "Yhteensä",
     Signup: "Ilmoittautuminen",
     Back: "Takaisin",
     path: {

@@ -7,7 +7,9 @@ import {
   SignupFieldError,
   type UserEventResponse,
   type SignupForEditResponse,
+  SignupPaymentStatus,
 } from "@tietokilta/ilmomasiina-models";
+import { questionHasPrices } from "@tietokilta/ilmomasiina-client/dist/utils/paymentUtils";
 import {
   Button,
   Checkbox,
@@ -21,6 +23,7 @@ import {
 import { useFormStatus } from "react-dom";
 import { useActionState, useEffect } from "react";
 import NextForm from "next/form";
+import { useRouter } from "next/navigation";
 import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
@@ -49,13 +52,17 @@ function InputRow({
   question,
   defaultValue,
   errors,
+  canEditPaidQuestions = true,
 }: {
   question: UserEventResponse["questions"][number];
   defaultValue?: string[] | string;
   errors?: string[];
+  canEditPaidQuestions?: boolean;
 }) {
   const t = useTranslations("ilmomasiina.form");
   const tfe = useTranslations("ilmomasiina.form.fieldError");
+
+  const disabledPaid = !canEditPaidQuestions && questionHasPrices(question);
 
   const sharedInputProps = {
     id: `question-${question.id}`,
@@ -86,7 +93,7 @@ function InputRow({
       {question.type === QuestionType.CHECKBOX ? (
         <div className="grid gap-2">
           {(question.options ?? []).map((option, i) => {
-            const price = question.prices ? question.prices[i] : 0;
+            const price = question.prices?.[i] ?? 0;
             return (
               <p key={option} className="w-full max-w-sm space-x-2">
                 <Checkbox
@@ -94,6 +101,7 @@ function InputRow({
                   name={question.id}
                   value={option}
                   defaultChecked={defaultValue?.includes(option)}
+                  disabled={disabledPaid}
                 />
                 <label htmlFor={`checkbox-${question.id}-option-${option}`}>
                   {option}
@@ -106,7 +114,7 @@ function InputRow({
       ) : question.type === QuestionType.SELECT ? (
         <div className="grid gap-2">
           {(question.options ?? []).map((option, i) => {
-            const price = question.prices ? question.prices[i] : 0;
+            const price = question.prices?.[i] ?? 0;
             return (
               <p key={option} className="flex items-center space-x-2">
                 <Radio
@@ -115,6 +123,7 @@ function InputRow({
                   required={question.required}
                   defaultChecked={defaultValue === option}
                   name={question.id}
+                  disabled={disabledPaid}
                 />
                 <label htmlFor={`radio-${question.id}-option-${option}`}>
                   {option}
@@ -123,6 +132,11 @@ function InputRow({
               </p>
             );
           })}
+          {disabledPaid ? (
+            <p className="text-sm text-gray-700">
+              {t("uneditablePaidQuestion")}
+            </p>
+          ) : null}
         </div>
       ) : question.type === QuestionType.TEXT_AREA ? (
         <Textarea {...sharedInputProps} />
@@ -363,6 +377,9 @@ function Form({
                 ?.answer ?? undefined
             }
             errors={state?.errors?.[question.id]}
+            canEditPaidQuestions={
+              signup.paymentStatus !== SignupPaymentStatus.PAID
+            }
           />
         ))}
         <p
@@ -409,13 +426,26 @@ function Form({
 export function SignupForm(
   props: Omit<React.ComponentProps<typeof Form>, "saveAction" | "deleteAction">,
 ) {
+  const router = useRouter();
   const { deleteSignUpAction } = useDeleteSignUpAction();
   const { saveSignUpAction } = useSaveSignUpAction();
+
+  const wrappedSaveAction = async (
+    currentState: unknown,
+    formData: FormData,
+  ) => {
+    const result = await saveSignUpAction(currentState, formData);
+    if (result?.success) {
+      // Refresh server component data to update payment info
+      router.refresh();
+    }
+    return result;
+  };
 
   return (
     <Form
       {...props}
-      saveAction={saveSignUpAction}
+      saveAction={wrappedSaveAction}
       deleteAction={deleteSignUpAction}
     />
   );

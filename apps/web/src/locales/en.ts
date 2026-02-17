@@ -176,6 +176,7 @@ const en = {
         "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
       actionCannotBeUndone: "This action cannot be undone.",
       Cancel: "Cancel",
+      uneditablePaidQuestion: ilmo["editSignup.uneditablePaidQuestion"],
     },
     payment: {
       "Payment information": "Payment information",
@@ -205,6 +206,7 @@ const en = {
       Location: "Location",
       Price: "Price",
       Position: "Position",
+      Product: "Product",
     },
     "Sign up": "Sign up",
     Signups: "Signups",
@@ -220,6 +222,7 @@ const en = {
     Starts: "Starts",
     Ends: "Ends",
     Price: "Price",
+    TotalPrice: "Total price",
     Signup: "Sign up",
     Back: "Back",
     path: {
@@ -281,6 +284,7 @@ const en = {
     "old weekly newsletters": "old weekly newsletters",
     Other: "Other",
     Read: "Read",
+    "very old weekly newsletters": "very old weekly newsletters",
     "This week": "This week",
     "Sign ups open this week": "Sign ups open this week",
     title: "Weekly newsletters",

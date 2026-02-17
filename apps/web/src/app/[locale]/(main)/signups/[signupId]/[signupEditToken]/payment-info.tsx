@@ -22,7 +22,6 @@ function PaymentInfoClient({ signup, onStartPayment }: PaymentInfoProps) {
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const t = useTranslations("ilmomasiina");
-  const tInvoice = useTranslations("invoicegenerator");
 
   const products = signup.signup.products;
   const price = signup.signup.price;
@@ -83,7 +82,7 @@ function PaymentInfoClient({ signup, onStartPayment }: PaymentInfoProps) {
             <thead>
               <tr className="bg-gray-200">
                 <th className="rounded-tl-md border-b border-gray-900 p-2 text-left">
-                  {tInvoice("Product")}
+                  {t("headers.Product")}
                 </th>
                 <th className="border-b border-gray-900 p-2 text-right">
                   {t("headers.Price")}
@@ -108,7 +107,7 @@ function PaymentInfoClient({ signup, onStartPayment }: PaymentInfoProps) {
             <tfoot>
               <tr className="bg-gray-200">
                 <td className="border-t border-gray-900 p-2 font-semibold">
-                  {tInvoice("Total price")}
+                  {t("TotalPrice")}
                 </td>
                 <td className="border-t border-gray-900 p-2 text-right font-semibold">
                   {formatPrice(totalPrice)}
