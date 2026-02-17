@@ -180,13 +180,8 @@ const en = {
     },
     payment: {
       "Payment information": "Payment information",
-      "Payment instructions":
-        "Payments are handled on the event page. Use the button below to continue.",
-      "Go to payment page": "Go to payment page",
-      infoMessage:
-        "Payments are handled on the event page. Use the button below to continue.",
+      infoMessage: "Payment is done according to separate instructions.",
       pay: "Pay",
-      paymentPageHint: "Payment page: {paymentUrl}",
       status: {
         pending: ilmo["editSignup.payment.status.pending"],
         paid: ilmo["editSignup.payment.status.paid"],
