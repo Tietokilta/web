@@ -5,8 +5,8 @@ import { Button, type ButtonProps } from "@tietokilta/ui";
 import { useFormStatus } from "react-dom";
 import { type UserEventResponse } from "@tietokilta/ilmomasiina-models";
 import { useSignUp } from "@lib/api/external/ilmomasiina/actions";
-import { cn } from "@lib/utils";
-import { useTranslations } from "@locales/client";
+import { cn, currencyFormatter } from "@lib/utils";
+import { useLocale, useTranslations } from "@locales/client";
 
 function StatusButton({ disabled, ...props }: ButtonProps) {
   const { pending } = useFormStatus();
@@ -37,6 +37,7 @@ function SignUpButton({
 export function SignupButtons({ event }: { event: UserEventResponse }) {
   const { signUp } = useSignUp();
   const t = useTranslations("action");
+  const locale = useLocale();
 
   if (!event.registrationStartDate || !event.registrationEndDate) {
     return null;
@@ -61,7 +62,7 @@ export function SignupButtons({ event }: { event: UserEventResponse }) {
               </span>
               {event.quotas.length > 1 ? <span>{quota.title}</span> : null}
               {quota.price > 0
-                ? ` (${(quota.price / 100).toString()} €)`
+                ? ` (${currencyFormatter(locale, quota.price)})`
                 : null}
             </span>
           </SignUpButton>

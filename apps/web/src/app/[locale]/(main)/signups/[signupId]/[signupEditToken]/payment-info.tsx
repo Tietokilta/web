@@ -8,8 +8,9 @@ import {
   SignupStatus,
   type SignupForEditResponse,
 } from "@tietokilta/ilmomasiina-models";
-import { useTranslations } from "@locales/client";
+import { useLocale, useTranslations } from "@locales/client";
 import { useStartPaymentAction } from "@lib/api/external/ilmomasiina/actions";
+import { currencyFormatter } from "@lib/utils";
 
 interface PaymentInfoProps {
   signup: SignupForEditResponse;
@@ -22,15 +23,13 @@ function PaymentInfoClient({ signup, onStartPayment }: PaymentInfoProps) {
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const t = useTranslations("ilmomasiina");
+  const locale = useLocale();
 
   const products = signup.signup.products;
   const price = signup.signup.price;
   if (!price || price === 0 || !products || products.length === 0) {
     return null;
   }
-
-  const currency = signup.signup.currency ?? "EUR";
-  const currencyLabel = currency === "EUR" ? "€" : currency;
   const totalPrice = price;
 
   const isInQuota =
@@ -42,7 +41,7 @@ function PaymentInfoClient({ signup, onStartPayment }: PaymentInfoProps) {
     signup.signup.paymentStatus !== SignupPaymentStatus.PAID;
 
   const formatPrice = (value: number | null | undefined) =>
-    !value ? "-" : `${(value / 100).toFixed(2)} ${currencyLabel}`;
+    !value ? "-" : currencyFormatter(locale, value);
 
   const paymentStatusText = (() => {
     switch (signup.signup.paymentStatus) {

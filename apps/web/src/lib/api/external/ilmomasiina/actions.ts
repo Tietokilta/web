@@ -238,7 +238,10 @@ export function useStartPaymentAction() {
     const result = await startPayment(signupId, signupEditToken);
 
     if (!result.ok) {
-      throw new Error(t(result.error));
+      const errorCode = result.originalError?.code
+        ? t(`ilmo.code.${result.originalError.code}`)
+        : t(result.error);
+      throw new Error(errorCode);
     }
 
     return {

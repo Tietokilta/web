@@ -28,8 +28,8 @@ import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
-import { useTranslations } from "@locales/client";
-import { cn } from "@lib/utils";
+import { useLocale, useTranslations } from "@locales/client";
+import { cn, currencyFormatter } from "@lib/utils";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 
 type FieldErrorI18n = ReturnType<typeof useTranslations>;
@@ -61,6 +61,7 @@ function InputRow({
 }) {
   const t = useTranslations("ilmomasiina.form");
   const tfe = useTranslations("ilmomasiina.form.fieldError");
+  const locale = useLocale();
 
   const disabledPaid = !canEditPaidQuestions && questionHasPrices(question);
 
@@ -106,7 +107,7 @@ function InputRow({
                 />
                 <label htmlFor={`checkbox-${question.id}-option-${option}`}>
                   {option}
-                  {price > 0 ? ` (+${(price / 100).toString()} €)` : ""}
+                  {price > 0 ? ` (+${currencyFormatter(locale, price)})` : ""}
                 </label>
                 {/* Disabled fields are not included in the FormData, but ilmo requirs us to submit them */}
                 {disabledPaid && isChecked ? (
@@ -115,6 +116,11 @@ function InputRow({
               </p>
             );
           })}
+          {disabledPaid ? (
+            <p className="text-sm text-gray-700">
+              {t("uneditablePaidQuestion")}
+            </p>
+          ) : null}
         </div>
       ) : question.type === QuestionType.SELECT ? (
         <div className="grid gap-2">
@@ -133,7 +139,7 @@ function InputRow({
                 />
                 <label htmlFor={`radio-${question.id}-option-${option}`}>
                   {option}
-                  {price > 0 ? ` (+${(price / 100).toString()} €)` : ""}
+                  {price > 0 ? ` (+${currencyFormatter(locale, price)})` : ""}
                 </label>
                 {/* Disabled fields are not included in the FormData, but ilmo requirs us to submit them */}
                 {disabledPaid && isChecked ? (

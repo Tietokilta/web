@@ -117,10 +117,7 @@ export const getSignup = async (
       headers: {
         "x-edit-token": signupEditToken,
       },
-      next: {
-        tags: ["ilmomasiina-signup"],
-        revalidate: 0, // disabled cache to ensure payment status is up to date
-      },
+      cache: "no-store", // disabled cache to ensure payment status is up to date
     });
 
     if (!response.ok) {
@@ -217,7 +214,7 @@ export const patchSignUp = async (
 export const startPayment = async (
   signupId: string,
   signupEditToken: string,
-): Promise<ApiResponse<StartPaymentResponse, SignupValidationError>> => {
+): Promise<ApiResponse<StartPaymentResponse, ErrorResponse>> => {
   try {
     const response = await fetch(
       `${baseUrl}/api/signups/${signupId}/payment/start`,
@@ -236,13 +233,9 @@ export const startPayment = async (
 
       const errorData = (await response.json()) as ErrorResponse;
 
-      if (errorData.code === ErrorCode.SIGNUP_VALIDATION_ERROR) {
-        return err("ilmomasiina-validation-failed", {
-          originalError: errorData as SignupValidationError,
-        });
-      }
-
-      return err("ilmomasiina-fetch-fail");
+      return err("ilmomasiina-fetch-fail", {
+        originalError: errorData,
+      });
     }
 
     const data = (await response.json()) as StartPaymentResponse;
