@@ -1,5 +1,7 @@
+import { i18nResources } from "@tietokilta/ilmomasiina-client/dist/locales/index";
 import type fi from "./fi";
 
+const ilmo = i18nResources.en.public;
 /**
  * English localizations in nested structure for next-intl.
  */
@@ -51,6 +53,25 @@ const en = {
         SignupValidationError: "Signup validation failed.",
         EventValidationError: "Event validation failed.",
         FST_ERR_VALIDATION: "Validation failed.",
+        OnlinePaymentsDisabled:
+          ilmo["editSignup.paymentError.OnlinePaymentsDisabled.description"],
+        SignupAlreadyPaid:
+          ilmo["editSignup.paymentError.SignupAlreadyPaid.description"],
+        PaymentNotRequired:
+          ilmo["editSignup.paymentError.PaymentNotRequired.description"],
+        PaymentInProgress:
+          ilmo["editSignup.paymentError.PaymentInProgress.description"],
+        PaymentNotFound:
+          ilmo["editSignup.paymentError.PaymentNotFound.description"],
+        PaymentNotComplete:
+          ilmo["editSignup.paymentError.PaymentNotComplete.description"],
+        PaymentRateLimited:
+          ilmo["editSignup.paymentError.PaymentRateLimited.description"],
+        DefaultPaymentError:
+          ilmo["editSignup.paymentError.default.description"],
+        SignupInQueue:
+          ilmo["editSignup.paymentError.SignupInQueue.description"],
+        SignupNotConfirmed: "Signup must be confirmed before payment",
       },
       fieldError: {
         missing: "This field is required.",
@@ -59,6 +80,8 @@ const en = {
         invalidEmail: "Invalid email address.",
         notANumber: "Value must be a number.",
         notAnOption: "Invalid option.",
+        duplicateOption:
+          "The answer to this question contains duplicate selections.",
       },
     },
   },
@@ -127,6 +150,8 @@ const en = {
         notANumber: "Please enter a valid number.",
         notAnOption:
           "The answer to this question isn't in the allowed options. Try refreshing the page.",
+        duplicateOption:
+          "The answer to this question contains duplicate selections.",
       },
       optional: "optional",
       "Shown in the public list of sign ups":
@@ -151,6 +176,25 @@ const en = {
         "Are you sure you want to delete your sign up to {eventTitle}? If you delete your sign up, you will lose your place in the queue.",
       actionCannotBeUndone: "This action cannot be undone.",
       Cancel: "Cancel",
+      uneditablePaidQuestion: ilmo["editSignup.uneditablePaidQuestion"],
+    },
+    payment: {
+      "Payment information": "Payment information",
+      "Payment instructions":
+        "Payments are handled on the event page. Use the button below to continue.",
+      "Go to payment page": "Go to payment page",
+      infoMessage:
+        "Payments are handled on the event page. Use the button below to continue.",
+      pay: "Pay",
+      paymentPageHint: "Payment page: {paymentUrl}",
+      status: {
+        pending: ilmo["editSignup.payment.status.pending"],
+        paid: ilmo["editSignup.payment.status.paid"],
+        refunded: ilmo["editSignup.payment.status.refunded"],
+        inQueue: ilmo["editSignup.payment.status.inQueue"],
+      },
+      processing: "Processing...",
+      error: "Payment error occurred. Please try again.",
     },
     headers: {
       Starts: "Starts",
@@ -162,6 +206,7 @@ const en = {
       Location: "Location",
       Price: "Price",
       Position: "Position",
+      Product: "Product",
     },
     "Sign up": "Sign up",
     Signups: "Signups",
@@ -177,6 +222,7 @@ const en = {
     Starts: "Starts",
     Ends: "Ends",
     Price: "Price",
+    TotalPrice: "Total price",
     Signup: "Sign up",
     Back: "Back",
     path: {
@@ -238,6 +284,7 @@ const en = {
     "old weekly newsletters": "old weekly newsletters",
     Other: "Other",
     Read: "Read",
+    "very old weekly newsletters": "very old weekly newsletters",
     "This week": "This week",
     "Sign ups open this week": "Sign ups open this week",
     title: "Weekly newsletters",

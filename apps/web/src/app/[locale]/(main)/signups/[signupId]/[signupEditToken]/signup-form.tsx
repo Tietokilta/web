@@ -7,7 +7,9 @@ import {
   SignupFieldError,
   type UserEventResponse,
   type SignupForEditResponse,
+  SignupPaymentStatus,
 } from "@tietokilta/ilmomasiina-models";
+import { questionHasPrices } from "@tietokilta/ilmomasiina-client/dist/utils/paymentUtils";
 import {
   Button,
   Checkbox,
@@ -21,12 +23,13 @@ import {
 import { useFormStatus } from "react-dom";
 import { useActionState, useEffect } from "react";
 import NextForm from "next/form";
+import { useRouter } from "next/navigation";
 import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
-import { useTranslations } from "@locales/client";
-import { cn } from "@lib/utils";
+import { useLocale, useTranslations } from "@locales/client";
+import { cn, currencyFormatter } from "@lib/utils";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 
 type FieldErrorI18n = ReturnType<typeof useTranslations>;
@@ -49,13 +52,18 @@ function InputRow({
   question,
   defaultValue,
   errors,
+  canEditPaidQuestions = true,
 }: {
   question: UserEventResponse["questions"][number];
   defaultValue?: string[] | string;
   errors?: string[];
+  canEditPaidQuestions?: boolean;
 }) {
   const t = useTranslations("ilmomasiina.form");
   const tfe = useTranslations("ilmomasiina.form.fieldError");
+  const locale = useLocale();
+
+  const disabledPaid = !canEditPaidQuestions && questionHasPrices(question);
 
   const sharedInputProps = {
     id: `question-${question.id}`,
@@ -85,36 +93,66 @@ function InputRow({
       </Label>
       {question.type === QuestionType.CHECKBOX ? (
         <div className="grid gap-2">
-          {(question.options ?? []).map((option) => (
-            <p key={option} className="w-full max-w-sm space-x-2">
-              <Checkbox
-                id={`checkbox-${question.id}-option-${option}`}
-                name={question.id}
-                value={option}
-                defaultChecked={defaultValue?.includes(option)}
-              />
-              <label htmlFor={`checkbox-${question.id}-option-${option}`}>
-                {option}
-              </label>
+          {(question.options ?? []).map((option, i) => {
+            const price = question.prices?.[i] ?? 0;
+            const isChecked = defaultValue?.includes(option);
+            return (
+              <p key={option} className="w-full max-w-sm space-x-2">
+                <Checkbox
+                  id={`checkbox-${question.id}-option-${option}`}
+                  name={question.id}
+                  value={option}
+                  defaultChecked={isChecked}
+                  disabled={disabledPaid}
+                />
+                <label htmlFor={`checkbox-${question.id}-option-${option}`}>
+                  {option}
+                  {price > 0 ? ` (+${currencyFormatter(locale, price)})` : ""}
+                </label>
+                {/* Disabled fields are not included in the FormData, but ilmo requirs us to submit them */}
+                {disabledPaid && isChecked ? (
+                  <input type="hidden" name={question.id} value={option} />
+                ) : null}
+              </p>
+            );
+          })}
+          {disabledPaid ? (
+            <p className="text-sm text-gray-700">
+              {t("uneditablePaidQuestion")}
             </p>
-          ))}
+          ) : null}
         </div>
       ) : question.type === QuestionType.SELECT ? (
         <div className="grid gap-2">
-          {(question.options ?? []).map((option) => (
-            <p key={option} className="flex items-center space-x-2">
-              <Radio
-                id={`radio-${question.id}-option-${option}`}
-                value={option}
-                required={question.required}
-                defaultChecked={defaultValue === option}
-                name={question.id}
-              />
-              <label htmlFor={`radio-${question.id}-option-${option}`}>
-                {option}
-              </label>
+          {(question.options ?? []).map((option, i) => {
+            const price = question.prices?.[i] ?? 0;
+            const isChecked = defaultValue === option;
+            return (
+              <p key={option} className="flex items-center space-x-2">
+                <Radio
+                  id={`radio-${question.id}-option-${option}`}
+                  value={option}
+                  required={question.required}
+                  defaultChecked={isChecked}
+                  name={question.id}
+                  disabled={disabledPaid}
+                />
+                <label htmlFor={`radio-${question.id}-option-${option}`}>
+                  {option}
+                  {price > 0 ? ` (+${currencyFormatter(locale, price)})` : ""}
+                </label>
+                {/* Disabled fields are not included in the FormData, but ilmo requirs us to submit them */}
+                {disabledPaid && isChecked ? (
+                  <input type="hidden" name={question.id} value={option} />
+                ) : null}
+              </p>
+            );
+          })}
+          {disabledPaid ? (
+            <p className="text-sm text-gray-700">
+              {t("uneditablePaidQuestion")}
             </p>
-          ))}
+          ) : null}
         </div>
       ) : question.type === QuestionType.TEXT_AREA ? (
         <Textarea {...sharedInputProps} />
@@ -355,6 +393,9 @@ function Form({
                 ?.answer ?? undefined
             }
             errors={state?.errors?.[question.id]}
+            canEditPaidQuestions={
+              signup.paymentStatus !== SignupPaymentStatus.PAID
+            }
           />
         ))}
         <p
@@ -401,13 +442,26 @@ function Form({
 export function SignupForm(
   props: Omit<React.ComponentProps<typeof Form>, "saveAction" | "deleteAction">,
 ) {
+  const router = useRouter();
   const { deleteSignUpAction } = useDeleteSignUpAction();
   const { saveSignUpAction } = useSaveSignUpAction();
+
+  const wrappedSaveAction = async (
+    currentState: unknown,
+    formData: FormData,
+  ) => {
+    const result = await saveSignUpAction(currentState, formData);
+    if (result?.success) {
+      // Refresh server component data to update payment info
+      router.refresh();
+    }
+    return result;
+  };
 
   return (
     <Form
       {...props}
-      saveAction={saveSignUpAction}
+      saveAction={wrappedSaveAction}
       deleteAction={deleteSignUpAction}
     />
   );

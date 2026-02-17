@@ -9,6 +9,7 @@ import { getSignup } from "@lib/api/external/ilmomasiina";
 import { getLocale, getTranslations } from "@locales/server";
 import { NextIntlClientProvider } from "@locales/client";
 import { SignupForm } from "./signup-form";
+import { PaymentInfo } from "./payment-info";
 
 interface PageProps {
   params: Promise<{
@@ -115,6 +116,11 @@ export default async function Page(props: PageProps) {
           </p>
         </hgroup>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          <PaymentInfo
+            signup={signupInfo.data}
+            signupId={signupId}
+            signupEditToken={signupEditToken}
+          />
           <SignupForm
             signupId={signupId}
             signupEditToken={signupEditToken}

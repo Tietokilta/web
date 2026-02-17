@@ -7,7 +7,7 @@ import {
   type SignupCreateResponse,
 } from "@tietokilta/ilmomasiina-models";
 import { useLocale, useTranslations } from "@locales/client";
-import { baseUrl, deleteSignUp, getSignup, patchSignUp } from ".";
+import { baseUrl, deleteSignUp, getSignup, patchSignUp, startPayment } from ".";
 
 export function useSignUp() {
   const router = useRouter();
@@ -225,5 +225,31 @@ export function useDeleteSignUpAction() {
 
   return {
     deleteSignUpAction,
+  };
+}
+
+export function useStartPaymentAction() {
+  const t = useTranslations("errors");
+
+  async function startPaymentAction(
+    signupId: string,
+    signupEditToken: string,
+  ): Promise<{ paymentUrl: string }> {
+    const result = await startPayment(signupId, signupEditToken);
+
+    if (!result.ok) {
+      const errorCode = result.originalError?.code
+        ? t(`ilmo.code.${result.originalError.code}`)
+        : t(result.error);
+      throw new Error(errorCode);
+    }
+
+    return {
+      paymentUrl: result.data.paymentUrl,
+    };
+  }
+
+  return {
+    startPaymentAction,
   };
 }

@@ -129,11 +129,11 @@ importers:
         specifier: 'catalog:'
         version: 4.1.18
       '@tietokilta/ilmomasiina-client':
-        specifier: 2.0.0
-        version: 2.0.0(react@19.2.3)
+        specifier: 3.0.0-alpha.7
+        version: 3.0.0-alpha.7(react@19.2.3)
       '@tietokilta/ilmomasiina-models':
-        specifier: 2.0.0
-        version: 2.0.0
+        specifier: 3.0.0-alpha.7
+        version: 3.0.0-alpha.7
       '@tietokilta/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2580,9 +2580,6 @@ packages:
   '@selderee/plugin-htmlparser2@0.11.0':
     resolution: {integrity: sha512-P33hHGdldxGabLFjPPpaTxVolMrzrcegejx+0GxjrIb9Zv48D8yAIA/QTDR2dFl7Uz7urX8aX6+5bCZslr+gWQ==}
 
-  '@sinclair/typebox@0.32.35':
-    resolution: {integrity: sha512-Ul3YyOTU++to8cgNkttakC0dWvpERr6RYoHO2W47DLbFvrwBDJUY31B1sImH6JZSYc4Kt4PyHtoPNu+vL2r2dA==}
-
   '@smithy/abort-controller@4.2.8':
     resolution: {integrity: sha512-peuVfkYHAmS5ybKxWcfraK7WBBP0J+rkfUcbHJJKQ4ir3UAUNQI+Y4Vt/PqSzGqgloJ5O1dk7+WzNL8wcCSXbw==}
     engines: {node: '>=18.0.0'}
@@ -2937,16 +2934,16 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
-  '@tietokilta/ilmomasiina-client@2.0.0':
-    resolution: {integrity: sha512-GTKn8Yu7j2e3p4GAZkofZgDxREh4kEPxzDXObDe3Vdlv4QyHSwU9w6RnysCte9pKFshcWQhK+tecUlXkluFRFQ==}
+  '@tietokilta/ilmomasiina-client@3.0.0-alpha.7':
+    resolution: {integrity: sha512-1N1eGzHtQuwxEJmpdmBkRrIhVvudAW/FAUvwuaR71YoqMg1WNDdd8URgOJ8S/NNhwRBK7v8ABXjw/+x5KPlCsw==}
     peerDependencies:
-      react: ^17 || ^18
+      react: ^17 || ^18 || ^19
     peerDependenciesMeta:
       react:
         optional: true
 
-  '@tietokilta/ilmomasiina-models@2.0.0':
-    resolution: {integrity: sha512-i5xUSrPleqEnqmOmfzAwA1g4ID+LtX/D7QdyFQ1KL3ljqcGZx7v5WbQiHBTCEddhfxn9JZ3NFnQzo3s2FUoslg==}
+  '@tietokilta/ilmomasiina-models@3.0.0-alpha.7':
+    resolution: {integrity: sha512-Nl184qipJNVNYk0w6wkQO2y8OO3OSXhmE12wWX9NI886YJT6G2wS5BX5Z8iZ+7jQRWIddrnb+OiRcgeocvZLFQ==}
 
   '@tokenizer/token@0.3.0':
     resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==}
@@ -5023,6 +5020,9 @@ packages:
   lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
 
+  lodash-es@4.17.23:
+    resolution: {integrity: sha512-kVI48u3PZr38HdYz98UmfPnXl2DXrpdctLrFLCd3kOx1xUkOmpFPx7gCWWM5MPkL/fD8zb+Ph0QzjGFs4+hHWg==}
+
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
@@ -6549,6 +6549,9 @@ packages:
   type-fest@5.4.1:
     resolution: {integrity: sha512-xygQcmneDyzsEuKZrFbRMne5HDqMs++aFzefrJTgEIKjQ3rekM+RPfFCVq2Gp1VIDqddoYeppCj4Pcb+RZW0GQ==}
     engines: {node: '>=20'}
+
+  typebox@1.0.81:
+    resolution: {integrity: sha512-bCslZUmZESHhBn4kHDghzH2oo3qu8m2W89xDLxQHv/aPvY4i81Nd1jvijlBp9wSpsVytDSfSoosbiBAjgsNb2Q==}
 
   typed-array-buffer@1.0.2:
     resolution: {integrity: sha512-gEymJYKZtKXzzBzM4jqa9w6Q1Jjm7x2d+sh19AdsD4wqnMPDYyvwpsIc2Q/835kHuo3BEQ7CjelGhfTsoBb2MQ==}
@@ -9151,8 +9154,6 @@ snapshots:
       domhandler: 5.0.3
       selderee: 0.11.0
 
-  '@sinclair/typebox@0.32.35': {}
-
   '@smithy/abort-controller@4.2.8':
     dependencies:
       '@smithy/types': 4.12.0
@@ -9602,16 +9603,16 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.18
 
-  '@tietokilta/ilmomasiina-client@2.0.0(react@19.2.3)':
+  '@tietokilta/ilmomasiina-client@3.0.0-alpha.7(react@19.2.3)':
     dependencies:
-      '@tietokilta/ilmomasiina-models': 2.0.0
-      lodash-es: 4.17.21
+      '@tietokilta/ilmomasiina-models': 3.0.0-alpha.7
+      lodash-es: 4.17.23
     optionalDependencies:
       react: 19.2.3
 
-  '@tietokilta/ilmomasiina-models@2.0.0':
+  '@tietokilta/ilmomasiina-models@3.0.0-alpha.7':
     dependencies:
-      '@sinclair/typebox': 0.32.35
+      typebox: 1.0.81
 
   '@tokenizer/token@0.3.0': {}
 
@@ -11999,6 +12000,8 @@ snapshots:
 
   lodash-es@4.17.21: {}
 
+  lodash-es@4.17.23: {}
+
   lodash.merge@4.6.2: {}
 
   lodash@4.17.21: {}
@@ -13960,6 +13963,8 @@ snapshots:
   type-fest@5.4.1:
     dependencies:
       tagged-tag: 1.0.0
+
+  typebox@1.0.81: {}
 
   typed-array-buffer@1.0.2:
     dependencies:

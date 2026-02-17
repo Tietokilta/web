@@ -240,3 +240,12 @@ export function assertType<_T>(_val: _T) {}
 export type NonNullableKeys<T, K extends keyof T> = T & {
   [P in K]-?: NonNullable<T[P]>;
 };
+
+export const currencyFormatter = (locale: Locale, amount: number): string => {
+  const fullLocale = `${locale}-FI`;
+  return new Intl.NumberFormat(fullLocale, {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: 0,
+  }).format(amount / 100);
+};
