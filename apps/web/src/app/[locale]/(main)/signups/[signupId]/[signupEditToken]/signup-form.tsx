@@ -20,8 +20,14 @@ import {
   type ButtonProps,
   buttonVariants,
 } from "@tietokilta/ui";
-import { useFormStatus } from "react-dom";
-import { useActionState, useEffect } from "react";
+import { requestFormReset, useFormStatus } from "react-dom";
+import {
+  FormEvent,
+  startTransition,
+  useActionState,
+  useEffect,
+  useRef,
+} from "react";
 import NextForm from "next/form";
 import { useRouter } from "next/navigation";
 import {
@@ -260,6 +266,22 @@ function Form({
     !!event.registrationEndDate &&
     new Date(event.registrationEndDate) < new Date();
 
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Form submission handler that doesn't reset the form
+  // https://github.com/facebook/react/issues/29034#issuecomment-2143595195
+  // Similar is implemented for the invoice-generator in PR #652
+  const handleSubmit = (event: FormEvent) => {
+    if (!(event.target instanceof HTMLFormElement))
+      throw new Error("Form submission event target is not a form element");
+
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    startTransition(() => {
+      formAction(formData);
+    });
+  };
+
   // On first render, scroll to top
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -276,11 +298,20 @@ function Form({
     } else if (!!state?.success || !!state?.errors?._form) {
       document.querySelector("[data-form-status]")?.scrollIntoView();
     }
+
+    // Reset form on success (because it is not done automatically with handleSubmit)
+    if (state?.success && formRef.current) {
+      requestFormReset(formRef.current);
+    }
   }, [state]);
 
   return (
     <NextForm
-      action={formAction}
+      ref={formRef}
+      // Use `onSubmit` instead of `action` to prevent form reset
+      onSubmit={handleSubmit}
+      // `action` is a required prop anyway
+      action={() => undefined}
       noValidate={isAndroidFirefox}
       className="w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 shadow-solid md:px-6 md:py-8"
     >
