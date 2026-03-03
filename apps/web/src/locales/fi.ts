@@ -121,6 +121,8 @@ const fi = {
     "Total price": "Yhteensä",
     Attachment: "Liite",
     Attachments: "Liitteet",
+    "Attachment preview": "Liitteen esikatselu",
+    "Compressing image": "Pakataan kuvaa",
     Items: "Erittely",
     "Receipt/Product": "Kuitti/Tuote",
     "Sent invoice": "Lasku lähetetty",

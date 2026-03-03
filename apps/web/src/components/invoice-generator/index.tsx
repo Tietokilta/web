@@ -10,7 +10,9 @@ import {
   useState,
   startTransition,
   type FormEvent,
+  type ChangeEvent,
   useRef,
+  useCallback,
 } from "react";
 import Form from "next/form";
 import { toast } from "sonner";
@@ -21,6 +23,16 @@ import { NextIntlClientProvider, useTranslations } from "../../locales/client";
 import { locales, type Messages } from "../../locales/index";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
+import { compressImage, isCompressibleImage } from "../../lib/compress-image";
+
+interface ProcessedAttachment {
+  id: number;
+  originalFile: File;
+  processedFile: File;
+  previewUrl: string | null;
+  isProcessing: boolean;
+  compressionRatio: number | null;
+}
 
 const MAX_PAYLOAD_SIZE = 24 * 1024 * 1024; // 24MB in bytes
 
@@ -84,8 +96,10 @@ function TextAreaInputRow({
 
 function SubmitButton({
   formState,
+  disabled,
 }: {
   formState: InvoiceGeneratorFormState | null;
+  disabled?: boolean;
 }) {
   const t = useTranslations("invoicegenerator");
   const { pending } = useFormStatus();
@@ -97,7 +111,11 @@ function SubmitButton({
 
   return (
     <div>
-      <Button className="w-full max-w-sm" type="submit" disabled={pending}>
+      <Button
+        className="w-full max-w-sm"
+        type="submit"
+        disabled={pending || disabled}
+      >
         {t("Submit")}
       </Button>
       {formState?.success === false && errorKeys.length === 0 ? (
@@ -258,49 +276,281 @@ function InvoiceItem({
   );
 }
 
-function AttachmentRow({
-  state,
+function formatFileSize(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function AttachmentInput({
+  attachment,
   index,
+  onFileChange,
+  onRemove,
+  formState,
+  canRemove,
 }: {
-  state: InvoiceGeneratorFormState | null;
+  attachment: ProcessedAttachment;
   index: number;
+  onFileChange: (id: number, file: File) => void;
+  onRemove: (id: number) => void;
+  formState: InvoiceGeneratorFormState | null;
+  canRemove: boolean;
 }) {
   const t = useTranslations("invoicegenerator");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      onFileChange(attachment.id, file);
+    }
+  };
+
+  const isImage = attachment.processedFile.type.startsWith("image/");
+  const showPreview =
+    isImage && attachment.previewUrl && !attachment.isProcessing;
 
   return (
-    <fieldset>
-      <ErrorMessageBlock
-        elementName={`attachment_descriptions[${index.toString()}]`}
-        formState={state}
+    <div className="mb-4 rounded-md border border-gray-300 p-4">
+      <h3 className="mb-2 font-medium">
+        {t("Attachment")} {index + 1}
+      </h3>
+
+      <fieldset className="space-y-3">
+        <ErrorMessageBlock
+          elementName={`attachment_descriptions[${index.toString()}]`}
+          formState={formState}
+        >
+          <TextAreaInputRow
+            label={t("Description")}
+            id={`attachment_descriptions[${index.toString()}]`}
+            name="attachment_descriptions"
+            maxLength={512}
+            required
+          />
+        </ErrorMessageBlock>
+
+        <ErrorMessageBlock
+          elementName={`attachments[${index.toString()}]`}
+          formState={formState}
+        >
+          <div>
+            <InputLabel
+              name={t("Attachment")}
+              htmlId={`attachments[${index.toString()}]`}
+            />
+            <Input
+              ref={fileInputRef}
+              id={`attachments[${index.toString()}]`}
+              type="file"
+              onChange={handleFileChange}
+              accept="image/*,.pdf,.doc,.docx"
+              required={attachment.originalFile.size === 0}
+            />
+          </div>
+        </ErrorMessageBlock>
+
+        {attachment.isProcessing ? (
+          <div className="flex items-center gap-2 text-sm text-gray-600">
+            <span className="inline-block size-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-900" />
+            {t("Compressing image")}...
+          </div>
+        ) : null}
+
+        {showPreview && attachment.previewUrl ? (
+          <div className="mt-2">
+            {/* eslint-disable-next-line @next/next/no-img-element -- Preview of user-uploaded file */}
+            <img
+              src={attachment.previewUrl}
+              alt={t("Attachment preview")}
+              className="max-h-32 max-w-full rounded border border-gray-200 object-contain"
+            />
+            <div className="mt-1 text-xs text-gray-500">
+              {attachment.compressionRatio !== null &&
+              attachment.compressionRatio < 1 ? (
+                <span>
+                  {formatFileSize(attachment.originalFile.size)} →{" "}
+                  {formatFileSize(attachment.processedFile.size)}{" "}
+                  <span className="text-green-600">
+                    (-{Math.round((1 - attachment.compressionRatio) * 100)}%)
+                  </span>
+                </span>
+              ) : (
+                <span>{formatFileSize(attachment.processedFile.size)}</span>
+              )}
+            </div>
+          </div>
+        ) : null}
+
+        {!isImage && attachment.processedFile.size > 0 ? (
+          <div className="mt-1 text-xs text-gray-500">
+            {attachment.processedFile.name} (
+            {formatFileSize(attachment.processedFile.size)})
+          </div>
+        ) : null}
+      </fieldset>
+
+      <Button
+        className="mt-4"
+        onClick={() => onRemove(attachment.id)}
+        type="button"
+        disabled={!canRemove}
       >
-        <TextAreaInputRow
-          label={t("Description")}
-          id={`attachment_descriptions[${index.toString()}]`}
-          name="attachment_descriptions"
-          maxLength={512}
-          required
-        />
-      </ErrorMessageBlock>
-      <ErrorMessageBlock
-        elementName={`attachments[${index.toString()}]`}
-        formState={state}
-      >
-        <InputRow
-          label={t("Attachment")}
-          id={`attachments[${index.toString()}]`}
-          name="attachments"
-          type="file"
-          required
-        />
-      </ErrorMessageBlock>
-    </fieldset>
+        {t("Remove")}
+      </Button>
+    </div>
+  );
+}
+
+function AttachmentsSection({
+  formState,
+  attachmentsRef,
+  onProcessingChange,
+}: {
+  formState: InvoiceGeneratorFormState | null;
+  attachmentsRef: React.RefObject<ProcessedAttachment[]>;
+  onProcessingChange: (isProcessing: boolean) => void;
+}) {
+  const t = useTranslations("invoicegenerator");
+  const [attachments, setAttachments] = useState<ProcessedAttachment[]>([]);
+  const [idCounter, setIdCounter] = useState(0);
+
+  // Sync attachments to ref for form submission
+  useEffect(() => {
+    // Using Object.assign to mutate the ref's current array in place
+    attachmentsRef.current.length = 0;
+    attachmentsRef.current.push(...attachments);
+  }, [attachments, attachmentsRef]);
+
+  // Notify parent of processing state changes
+  useEffect(() => {
+    const isAnyProcessing = attachments.some((a) => a.isProcessing);
+    onProcessingChange(isAnyProcessing);
+  }, [attachments, onProcessingChange]);
+
+  const addAttachment = () => {
+    const emptyFile = new File([], "");
+    const newAttachment: ProcessedAttachment = {
+      id: idCounter,
+      originalFile: emptyFile,
+      processedFile: emptyFile,
+      previewUrl: null,
+      isProcessing: false,
+      compressionRatio: null,
+    };
+    setAttachments((prev) => [...prev, newAttachment]);
+    setIdCounter((prev) => prev + 1);
+  };
+
+  const removeAttachment = (id: number) => {
+    setAttachments((prev) => {
+      const attachment = prev.find((a) => a.id === id);
+      if (attachment?.previewUrl) {
+        URL.revokeObjectURL(attachment.previewUrl);
+      }
+      return prev.filter((a) => a.id !== id);
+    });
+  };
+
+  const handleFileChange = useCallback(async (id: number, file: File) => {
+    // Mark as processing
+    setAttachments((prev) =>
+      prev.map((a) =>
+        a.id === id
+          ? { ...a, originalFile: file, isProcessing: true, previewUrl: null }
+          : a,
+      ),
+    );
+
+    try {
+      let processedFile = file;
+      let compressionRatio: number | null = null;
+
+      // Compress if it's an image
+      if (isCompressibleImage(file)) {
+        processedFile = await compressImage(file);
+        compressionRatio = processedFile.size / file.size;
+      }
+
+      // Create preview URL for images
+      let previewUrl: string | null = null;
+      if (processedFile.type.startsWith("image/")) {
+        previewUrl = URL.createObjectURL(processedFile);
+      }
+
+      setAttachments((prev) =>
+        prev.map((a) =>
+          a.id === id
+            ? {
+                ...a,
+                processedFile,
+                previewUrl,
+                isProcessing: false,
+                compressionRatio,
+              }
+            : a,
+        ),
+      );
+    } catch (error) {
+      console.error("Failed to process attachment:", error);
+      // Fall back to original file
+      setAttachments((prev) =>
+        prev.map((a) =>
+          a.id === id
+            ? {
+                ...a,
+                processedFile: file,
+                isProcessing: false,
+                compressionRatio: null,
+              }
+            : a,
+        ),
+      );
+    }
+  }, []);
+
+  // Cleanup preview URLs on unmount
+  useEffect(() => {
+    return () => {
+      attachments.forEach((a) => {
+        if (a.previewUrl) {
+          URL.revokeObjectURL(a.previewUrl);
+        }
+      });
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- only cleanup on unmount
+  }, []);
+
+  return (
+    <div>
+      <h2>{t("Attachments")}</h2>
+      <div className="mt-2">
+        {attachments.map((attachment, index) => (
+          <AttachmentInput
+            key={attachment.id}
+            attachment={attachment}
+            index={index}
+            onFileChange={handleFileChange}
+            onRemove={removeAttachment}
+            formState={formState}
+            canRemove={attachments.length > 0}
+          />
+        ))}
+      </div>
+      <Button type="button" className="mt-2" onClick={addAttachment}>
+        {t("Add")}
+      </Button>
+    </div>
   );
 }
 
 function InvoiceGeneratorContent() {
   const [state, formAction] = useActionState(SaveAction, null);
+  const [isProcessingAttachments, setIsProcessingAttachments] = useState(false);
   const t = useTranslations("invoicegenerator");
   const formRef = useRef<HTMLFormElement>(null);
+  const attachmentsRef = useRef<ProcessedAttachment[]>([]);
   const isAndroidFirefox = useIsAndroidFirefox();
 
   // Form submission handler that doesn't reset the form
@@ -311,6 +561,15 @@ function InvoiceGeneratorContent() {
 
     event.preventDefault();
     const formData = new FormData(event.target);
+
+    // Replace file input attachments with processed (compressed) versions
+    formData.delete("attachments");
+    const processedAttachments = attachmentsRef.current ?? [];
+    for (const attachment of processedAttachments) {
+      if (attachment.processedFile.size > 0) {
+        formData.append("attachments", attachment.processedFile);
+      }
+    }
 
     const payloadSize = calculateFormDataSize(formData);
 
@@ -477,19 +736,17 @@ function InvoiceGeneratorContent() {
           minimumRows={1}
         />
       </ErrorMessageBlock>
-      <InputRowArray
-        label={t("Attachments")}
-        itemLabel={t("Attachment")}
-        name="attachments"
-        state={state}
-        Row={AttachmentRow}
+      <AttachmentsSection
+        formState={state}
+        attachmentsRef={attachmentsRef}
+        onProcessingChange={setIsProcessingAttachments}
       />
       <div className="flex">
         <InputLabel name={t("Confirmation")} htmlId="confirmation-checkbox" />
         <Checkbox id="confirmation-checkbox" className="my-auto" required />
       </div>
       <fieldset>
-        <SubmitButton formState={state} />
+        <SubmitButton formState={state} disabled={isProcessingAttachments} />
       </fieldset>
     </Form>
   );
