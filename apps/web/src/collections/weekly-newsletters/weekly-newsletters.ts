@@ -44,6 +44,16 @@ export const WeeklyNewsletters: CollectionConfig = {
       localized: true,
     },
     {
+      name: "publishDate",
+      type: "date",
+      required: false,
+      localized: false,
+      admin: {
+        description:
+          "If empty, value will be set to publish date when newsletter is first published",
+      },
+    },
+    {
       name: "greetings",
       type: "richText",
       required: true,
@@ -87,6 +97,27 @@ export const WeeklyNewsletters: CollectionConfig = {
     },
   ],
   hooks: {
+    beforeChange: [
+      ({
+        data,
+        originalDoc,
+      }: {
+        data?: Partial<WeeklyNewsletter>;
+        originalDoc?: WeeklyNewsletter;
+      }) => {
+        const isPublishing =
+          data?._status === "published" && originalDoc?._status !== "published";
+
+        if (isPublishing && !originalDoc?.publishDate) {
+          return {
+            ...data,
+            publishDate: new Date().toISOString(),
+          };
+        }
+
+        return data;
+      },
+    ],
     afterChange: [revalidateCollection<WeeklyNewsletter>("weekly-newsletters")],
   },
   endpoints: [

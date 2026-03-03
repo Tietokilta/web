@@ -183,6 +183,9 @@ export default async function Page({ slug }: { slug?: string }) {
     | EditorState
     | undefined;
 
+  const publishDate =
+    weeklyNewsletter.publishDate ?? weeklyNewsletter.createdAt;
+
   const allNewsItems =
     weeklyNewsletter.newsItems?.map((item) => item.newsItem as NewsItem) ?? [];
 
@@ -287,9 +290,9 @@ export default async function Page({ slug }: { slug?: string }) {
             <h1 className="font-mono text-4xl">{weeklyNewsletter.title}</h1>
             <DateTime
               className="block text-lg text-gray-800"
-              rawDate={weeklyNewsletter.createdAt}
+              rawDate={publishDate}
               formatOptions={formatDateYearOptions}
-              defaultFormattedDate={formatDateYear(weeklyNewsletter.createdAt)}
+              defaultFormattedDate={formatDateYear(publishDate)}
             />
           </header>
           <Greetings content={greetings} />
