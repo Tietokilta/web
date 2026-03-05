@@ -2,6 +2,7 @@ import Image from "next/image";
 import { PartnerLogos } from "@components/partner-logos";
 import TiKLogo from "../../../assets/TiK-logo-white.png";
 import { InfoscreenClock } from "./clock";
+import { InfoscreenWeather } from "./weather";
 
 export function InfoScreenHeader() {
   return (
@@ -14,6 +15,7 @@ export function InfoScreenHeader() {
           src={TiKLogo}
         />
         <InfoscreenClock />
+        <InfoscreenWeather />
       </div>
       <div className="mx-10 flex h-[6.0rem] space-y-2">
         <PartnerLogos
