@@ -137,6 +137,9 @@ importers:
       '@tietokilta/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      browser-image-compression:
+        specifier: ^2.0.2
+        version: 2.0.2
       clsx:
         specifier: 'catalog:'
         version: 2.1.1
@@ -3457,6 +3460,9 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
+  browser-image-compression@2.0.2:
+    resolution: {integrity: sha512-pBLlQyUf6yB8SmmngrcOw3EoS4RpQ1BcylI3T9Yqn7+4nrQTXJD4sJDe5ODnJdrvNMaio5OicFo75rDyJD2Ucw==}
+
   browserslist@4.26.0:
     resolution: {integrity: sha512-P9go2WrP9FiPwLv3zqRD/Uoxo0RSHjzFCiQz7d4vbmwNqQFo9T9WCeP/Qn5EbcKQY6DBbkxEXNcpJOmncNrb7A==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -6725,6 +6731,9 @@ packages:
   uuid@10.0.0:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
     hasBin: true
+
+  uzip@0.20201231.0:
+    resolution: {integrity: sha512-OZeJfZP+R0z9D6TmBgLq2LHzSSptGMGDGigGiEe0pr8UBe/7fdflgHlHBNDASTXB5jnFuxHpNaJywSg8YFeGng==}
 
   vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
@@ -10166,6 +10175,10 @@ snapshots:
   braces@3.0.3:
     dependencies:
       fill-range: 7.1.1
+
+  browser-image-compression@2.0.2:
+    dependencies:
+      uzip: 0.20201231.0
 
   browserslist@4.26.0:
     dependencies:
@@ -14198,6 +14211,8 @@ snapshots:
   util-deprecate@1.0.2: {}
 
   uuid@10.0.0: {}
+
+  uzip@0.20201231.0: {}
 
   vary@1.1.2: {}
 
