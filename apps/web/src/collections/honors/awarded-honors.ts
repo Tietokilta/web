@@ -2,6 +2,7 @@ import type { CollectionConfig, FieldHook } from "payload";
 import type { AwardedHonor } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
 import { guildYearField } from "../../fields/guild-year";
+import { revalidateCollection } from "../../hooks/revalidate-collection";
 
 const formatDisplayTitle: FieldHook<AwardedHonor> = ({
   data: awardedHonor,
@@ -29,6 +30,12 @@ export const AwardedHonors = {
     create: signedIn,
     update: signedIn,
     delete: signedIn,
+  },
+  hooks: {
+    afterChange: [
+      revalidateCollection("awarded-honors"),
+      revalidateCollection("honors"),
+    ],
   },
   fields: [
     {
