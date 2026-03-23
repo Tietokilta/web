@@ -149,7 +149,7 @@ jobs:
     needs: docker-build-and-push
     steps:
       - name: Login via Azure CLI
-        uses: azure/login@v2
+        uses: azure/login@v3
         with:
           client-id: ${{secrets.AZURE_CLIENT_ID}}
           subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
