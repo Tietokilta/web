@@ -28,50 +28,7 @@ import { getLocale, getTranslations } from "@locales/server";
 import { NextIntlClientProvider } from "@locales/client";
 import { DateTime } from "@components/datetime";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
-import { SignupButtons } from "./signup-buttons";
-
-async function SignUpText({
-  startDate,
-  endDate,
-  className,
-}: {
-  startDate?: string | null;
-  endDate?: string | null;
-  className?: string;
-}) {
-  const locale = await getLocale();
-  const t = await getTranslations("ilmomasiina");
-  if (!startDate || !endDate) {
-    return (
-      <span className={className}>{t("Event does not have signups")}</span>
-    );
-  }
-
-  const hasStarted = new Date(startDate) < new Date();
-  const hasEnded = new Date(endDate) < new Date();
-
-  if (hasStarted && hasEnded) {
-    return <span className={className}>{t("Signups have ended")}</span>;
-  }
-
-  if (hasStarted && !hasEnded) {
-    return (
-      <span className={className}>
-        {t("Signups open until {endDate}", {
-          endDate: formatDatetimeYear(endDate, locale),
-        })}
-      </span>
-    );
-  }
-
-  return (
-    <span className={className}>
-      {t("Signups open on {startDate}", {
-        startDate: formatDatetimeYear(startDate, locale),
-      })}
-    </span>
-  );
-}
+import { SignupCountdown } from "./signup-countdown";
 
 function getFormattedAnswer(
   question: Question,
@@ -372,13 +329,12 @@ async function SignUpActions({ event }: { event: UserEventResponse }) {
       <h2 className="font-mono text-lg font-semibold text-gray-900">
         {t("Signup")}
       </h2>
-      <SignUpText
-        className="block"
-        startDate={event.registrationStartDate}
-        endDate={event.registrationEndDate}
-      />
       <NextIntlClientProvider locale={locale} messages={messages}>
-        <SignupButtons event={event} />
+        <SignupCountdown
+          startDate={event.registrationStartDate}
+          endDate={event.registrationEndDate}
+          event={event}
+        />
       </NextIntlClientProvider>
     </div>
   );
