@@ -230,7 +230,7 @@ const en = {
     "Event does not have signups": "This event does not have sign ups",
     "Signups have ended": "Sign up has ended",
     "Signups open until {endDate}": "Open for sign ups until {endDate}",
-    "Signups open on {startDate}": "Sign up starts on {startDate}",
+    "Signups open on {startDate}": "Starts on {startDate}",
     "Signup information is not public": "Sign ups are not public",
     "No signups yet": "No sign ups yet.",
     Position: "Position",

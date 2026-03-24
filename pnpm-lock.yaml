@@ -179,6 +179,9 @@ importers:
       react-big-calendar:
         specifier: ^1.19.4
         version: 1.19.4(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      react-countdown:
+        specifier: ^2.3.6
+        version: 2.3.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       react-dom:
         specifier: 'catalog:'
         version: 19.2.3(react@19.2.3)
@@ -5785,6 +5788,12 @@ packages:
     peerDependencies:
       react: ^16.14.0 || ^17 || ^18 || ^19
       react-dom: ^16.14.0 || ^17 || ^18 || ^19
+
+  react-countdown@2.3.6:
+    resolution: {integrity: sha512-ZfX6S08Hb6x6W6eCn1hMDvxPICI/T30fd+gaeVTCR/2cGZ2WJ3f26e4ImNIMX1fHkopJrUdnRpWXP13/D39+gg==}
+    peerDependencies:
+      react: '>= 15'
+      react-dom: '>= 15'
 
   react-datepicker@7.6.0:
     resolution: {integrity: sha512-9cQH6Z/qa4LrGhzdc3XoHbhrxNcMi9MKjZmYgF/1MNNaJwvdSjv3Xd+jjvrEEbKEf71ZgCA3n7fQbdwd70qCRw==}
@@ -13020,6 +13029,12 @@ snapshots:
       react-dom: 19.2.3(react@19.2.3)
       react-overlays: 5.2.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
       uncontrollable: 7.2.1(react@19.2.3)
+
+  react-countdown@2.3.6(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+    dependencies:
+      prop-types: 15.8.1
+      react: 19.2.3
+      react-dom: 19.2.3(react@19.2.3)
 
   react-datepicker@7.6.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:

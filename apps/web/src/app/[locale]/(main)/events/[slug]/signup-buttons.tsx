@@ -34,7 +34,13 @@ function SignUpButton({
   );
 }
 
-export function SignupButtons({ event }: { event: UserEventResponse }) {
+export function SignupButtons({
+  event,
+  disabled,
+}: {
+  event: UserEventResponse;
+  disabled: boolean;
+}) {
   const { signUp } = useSignUp();
   const t = useTranslations("action");
   const locale = useLocale();
@@ -43,16 +49,13 @@ export function SignupButtons({ event }: { event: UserEventResponse }) {
     return null;
   }
 
-  const hasStarted = new Date(event.registrationStartDate) < new Date();
-  const hasEnded = new Date(event.registrationEndDate) < new Date();
-
   return (
     <ul className="flex flex-col gap-2">
       {event.quotas.map((quota) => (
         <li key={quota.id} className="contents">
           <SignUpButton
             quotaId={quota.id}
-            isDisabled={!hasStarted || hasEnded}
+            isDisabled={disabled}
             signUpAction={signUp}
           >
             <span>

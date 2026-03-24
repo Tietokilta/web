@@ -229,7 +229,7 @@ const fi = {
     "Event does not have signups": "Tapahtumaan ei voi ilmoittautua",
     "Signups have ended": "Ilmoittautuminen on päättynyt",
     "Signups open until {endDate}": "Ilmoittautuminen auki {endDate} asti",
-    "Signups open on {startDate}": "Ilmoittautuminen alkaa {startDate}",
+    "Signups open on {startDate}": "Alkaa {startDate}",
     "Signup information is not public":
       "Ilmoittautumistiedot eivät ole julkisia.",
     "No signups yet": "Ei ilmoittautuneita vielä.",
