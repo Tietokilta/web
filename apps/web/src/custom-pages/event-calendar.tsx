@@ -22,7 +22,38 @@ import { useTranslations, useLocale } from "../locales/client";
 import type { Locale } from "../locales/server";
 
 type EventWithDate = UserEventListItem & { date: string };
-type CalendarEvent = Omit<Event, "resource"> & { resource: { url: string } };
+type CalendarEvent = Omit<Event, "resource"> & {
+  resource: { url: string; category: string };
+};
+
+const CATEGORY_COLORS = [
+  "#7ef98c", // primary-500 (green) — default
+  "#d690f6", // secondary-500 (purple)
+  "#e75d86", // danger-400 (pink)
+  "#f2e67d", // warning-400 (yellow)
+  "#93e552", // success-400 (lime)
+  "#9ff9a9", // primary-400 (light green)
+  "#e7c4f7", // secondary-300 (lavender)
+  "#ea8ca9", // danger-300 (salmon)
+  "#b1becb", // gray-500 (slate)
+  "#f1e04d", // warning-500 (gold)
+] as const;
+
+const CATEGORY_COLOR_OVERRIDES: Record<string, string> = {
+  AthleTiKs: "#F9A857",
+};
+
+function getCategoryColor(category: string): string {
+  if (!category) return CATEGORY_COLORS[0];
+  if (category in CATEGORY_COLOR_OVERRIDES)
+    return CATEGORY_COLOR_OVERRIDES[category]!;
+  // djb2 hash
+  let hash = 5381;
+  for (let i = 0; i < category.length; i++) {
+    hash = (hash * 33) ^ category.charCodeAt(i);
+  }
+  return CATEGORY_COLORS[Math.abs(hash) % CATEGORY_COLORS.length];
+}
 
 // Make calendar events into clickable links.
 function EventElement(props: EventProps<CalendarEvent>) {
@@ -65,6 +96,7 @@ function EventCalendar({
       title: event.title,
       resource: {
         url: eventUrl,
+        category: event.category,
       },
     };
   });
@@ -110,6 +142,15 @@ function EventCalendar({
     [setDate],
   );
 
+  const eventPropGetter = useCallback(
+    (event: CalendarEvent) => ({
+      style: {
+        backgroundColor: getCategoryColor(event.resource.category),
+      },
+    }),
+    [],
+  );
+
   return (
     <ReactCalendar
       view={view}
@@ -135,6 +176,7 @@ function EventCalendar({
       popup
       scrollToTime={date}
       events={parsedEvents}
+      eventPropGetter={eventPropGetter}
       onView={handleOnChangeView}
     />
   );
