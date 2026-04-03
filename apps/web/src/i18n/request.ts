@@ -12,6 +12,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
+    timeZone: "Europe/Helsinki",
     // Type assertion needed because en.ts and fi.ts have the same structure but different string literal values
     messages: locales[locale],
   };
