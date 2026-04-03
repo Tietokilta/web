@@ -391,14 +391,14 @@ export default async function Page(props: PageProps) {
       className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
     >
       <div className="relative m-auto flex max-w-full flex-col gap-8 p-4 md:p-6">
-        <div className="max-w-4xl space-y-4 md:my-8 md:space-y-8">
+        <div className="max-w-5xl space-y-4 md:my-8 md:space-y-8">
           <BackButton>{t("Back")}</BackButton>
           <h1 className="font-mono text-2xl hyphens-auto md:text-4xl">
             {event.data.title}
           </h1>
           <div className="flex flex-col gap-16">
-            <div className="flex flex-col gap-4 md:flex-row md:gap-16">
-              <div className="flex max-w-xl grow-2 flex-col gap-8">
+            <div className="flex flex-col gap-4 md:grid md:grid-cols-[2fr_1fr] md:gap-16">
+              <div className="flex min-w-0 flex-col gap-8">
                 <Tldr event={event.data} />
                 {event.data.description ? (
                   <div className="prose">
@@ -410,7 +410,7 @@ export default async function Page(props: PageProps) {
                   </div>
                 ) : null}
               </div>
-              <div className="flex grow flex-col gap-8">
+              <div className="flex min-w-0 flex-col gap-8">
                 <SignUpActions event={event.data} />
                 <SignUpQuotas event={event.data} />
               </div>
