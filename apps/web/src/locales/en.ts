@@ -121,6 +121,8 @@ const en = {
     "Total price": "Total price",
     Attachment: "Attachment",
     Attachments: "Attachments",
+    "Attachment preview": "Attachment preview",
+    "Compressing image": "Compressing image",
     Items: "Items",
     "Receipt/Product": "Receipt/Product",
     "Sent invoice": "Sent invoice",
