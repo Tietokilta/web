@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "sortTailwindcss": {
+    "stylesheet": "./apps/web/src/app/[locale]/globals.css",
+    "functions": ["cva", "cn", "clsx"],
+    "attributes": ["cva", "cn", "clsx"]
+  },
+  "printWidth": 80,
+  "sortPackageJson": {},
+  "ignorePatterns": [
+    "data/gen",
+    "apps/web/src/app/(payload)",
+    "apps/web/payload-types.ts"
+  ]
+}

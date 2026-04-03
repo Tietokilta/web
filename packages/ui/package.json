@@ -1,16 +1,29 @@
 {
   "name": "@tietokilta/ui",
   "version": "0.0.0-alpha.7",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tietokilta/web.git",
     "directory": "packages/ui"
   },
-  "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "type": "commonjs",
   "sideEffects": [
     "*.css"
   ],
-  "type": "commonjs",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.cts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*"
+      ]
+    }
+  },
   "exports": {
     ".": {
       "import": {
@@ -39,19 +52,10 @@
       "require": "./dist/*"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.cts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*"
-      ]
-    }
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
-  "files": [
-    "dist/**"
-  ],
   "scripts": {
     "build": "tsdown lib/index.tsx lib/preset.ts --format esm,cjs --dts && cp lib/global.css dist/global.css",
     "clean": "rm -rf dist",
@@ -96,9 +100,5 @@
     "react-dom": "catalog:",
     "tailwindcss": "catalog:",
     "tailwindcss-animate": "catalog:"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
   }
 }
