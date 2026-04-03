@@ -79,6 +79,19 @@ export default buildConfig({
       },
       actions: ["/src/views/actions-view#ActionsLink"],
     },
+    livePreview: {
+      url: ({ data }) => {
+        const path = data?.path as string | undefined;
+        if (!path) return "";
+        return `${env.PUBLIC_FRONTEND_URL}/next_api/preview?url=${path}`;
+      },
+      collections: ["pages"],
+      breakpoints: [
+        { label: "Mobile", name: "mobile", width: 414, height: 896 },
+        { label: "Tablet", name: "tablet", width: 1024, height: 768 },
+        { label: "Desktop", name: "desktop", width: 1440, height: 900 },
+      ],
+    },
   },
   collections: [
     Users,
