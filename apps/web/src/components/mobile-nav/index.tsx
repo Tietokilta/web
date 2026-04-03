@@ -1,5 +1,5 @@
 import {
-  Button,
+  buttonVariants,
   MenuIcon,
   Sheet,
   SheetContent,
@@ -60,11 +60,14 @@ export async function MobileNav({
         Tietokilta
       </Link>
       <Sheet>
-        <SheetTrigger asChild>
-          <Button className="hover:bg-transparent" variant="ghost">
-            <MenuIcon className="size-6" />
-            <span className="sr-only">{tAction("Toggle menu")}</span>
-          </Button>
+        <SheetTrigger
+          className={buttonVariants({
+            variant: "ghost",
+            className: "hover:bg-transparent",
+          })}
+        >
+          <MenuIcon className="size-6" />
+          <span className="sr-only">{tAction("Toggle menu")}</span>
         </SheetTrigger>
         <SheetContent
           closeLabel={tAction("Close")}
