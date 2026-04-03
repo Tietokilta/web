@@ -8,7 +8,11 @@ export default function AprilFoolsAlert() {
     const isAprilFoolsDay =
       new Date().getDate() === 1 && new Date().getMonth() === 3;
     const hasSeen = localStorage.getItem("april-fools-alert");
-    if (isAprilFoolsDay && !hasSeen) {
+    if (!isAprilFoolsDay) {
+      localStorage.removeItem("april-fools-alert");
+      return;
+    }
+    if (!hasSeen) {
       localStorage.setItem("april-fools-alert", "true");
       if (
         // eslint-disable-next-line no-alert -- funny message
