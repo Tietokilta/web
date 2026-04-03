@@ -3,7 +3,7 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 import defaultTheme from "tailwindcss/defaultTheme.js";
 import tailwindcssAnimate from "tailwindcss-animate";
-import tietokiltaUI from "@tietokilta/ui";
+import { plugin as tietokiltaUI } from "@tietokilta/ui";
 import tailwindcssTypography from "@tailwindcss/typography";
 
 const sans = ["var(--font-inter)", ...defaultTheme.fontFamily.sans];
@@ -12,7 +12,10 @@ const mono = ["var(--font-roboto-mono)", ...defaultTheme.fontFamily.mono];
 export default {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    path.join(path.dirname(require.resolve("@tietokilta/ui")), "**/*.js"),
+    path.join(
+      path.dirname(require.resolve("@tietokilta/ui")),
+      "**/*.{js,cjs,mjs}",
+    ),
   ],
   theme: {
     extend: {
