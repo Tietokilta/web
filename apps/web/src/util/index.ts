@@ -1,20 +1,21 @@
 import type { PayloadRequest } from "payload";
 import { type Locale } from "@locales/server";
+import { env } from "../env";
 
 // for internal requests
-export const SELF_URL = `http://localhost:${process.env.PORT ?? String(3000)}`;
+export const SELF_URL = `http://localhost:${env.PORT}`;
 
 export const isCloudStorageEnabled = (): boolean => {
   return (
-    typeof process.env.AZURE_STORAGE_CONNECTION_STRING === "string" &&
-    typeof process.env.AZURE_STORAGE_CONTAINER_NAME === "string" &&
-    typeof process.env.AZURE_STORAGE_ACCOUNT_BASEURL === "string"
+    typeof env.AZURE_STORAGE_CONNECTION_STRING === "string" &&
+    typeof env.AZURE_STORAGE_CONTAINER_NAME === "string" &&
+    typeof env.AZURE_STORAGE_ACCOUNT_BASEURL === "string"
   );
 };
 export const isGoogleAuthEnabled = (): boolean => {
   return (
-    typeof process.env.GOOGLE_OAUTH_CLIENT_ID === "string" &&
-    typeof process.env.GOOGLE_OAUTH_CLIENT_SECRET === "string"
+    typeof env.GOOGLE_OAUTH_CLIENT_ID === "string" &&
+    typeof env.GOOGLE_OAUTH_CLIENT_SECRET === "string"
   );
 };
 

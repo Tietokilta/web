@@ -12,6 +12,7 @@ const nextConfig = {
     contentDispositionType: "inline",
     qualities: [50, 75],
   },
+  transpilePackages: ["@t3-oss/env-nextjs", "@t3-oss/env-core"],
   experimental: {
     turbopackFileSystemCacheForDev: true,
   },

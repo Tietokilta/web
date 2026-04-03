@@ -1,6 +1,7 @@
 import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
 import { HttpLink } from "@apollo/client/link/http";
 import { TZDate } from "@date-fns/tz";
+import { env } from "../../../env";
 import type {
   HSLResponse,
   StopHSL,
@@ -30,8 +31,7 @@ const client = new ApolloClient({
     uri: "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1",
     headers: {
       "Content-Type": "application/json",
-      "digitransit-subscription-key":
-        process.env.DIGITRANSIT_SUBSCRIPTION_KEY ?? "",
+      "digitransit-subscription-key": env.DIGITRANSIT_SUBSCRIPTION_KEY ?? "",
     },
     fetchOptions: {
       next: {

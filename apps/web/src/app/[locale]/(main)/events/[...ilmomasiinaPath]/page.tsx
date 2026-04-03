@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { env } from "../../../../../env";
 
 interface PageProps {
   params: Promise<{
@@ -6,8 +7,7 @@ interface PageProps {
   }>;
 }
 
-const ilmomasiinaBaseUrl =
-  process.env.NEXT_PUBLIC_ILMOMASIINA_URL ?? "https://ilmo.tietokilta.fi";
+const ilmomasiinaBaseUrl = env.NEXT_PUBLIC_ILMOMASIINA_URL;
 
 /** workaround some ilmomasiina purkka */
 const languageMappings = {

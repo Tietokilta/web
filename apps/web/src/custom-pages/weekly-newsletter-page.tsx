@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { type EditorState } from "@lexical-types";
 import { type NewsItem } from "@payload-types";
+import { env } from "../env";
 import {
   fetchWeeklyNewsletter,
   fetchWeeklyNewsletterBySlug,
@@ -181,8 +182,7 @@ function Greetings({ content }: { content?: EditorState }) {
   );
 }
 
-export const legacyUrl =
-  process.env.PUBLIC_LEGACY_URL ?? "https://tietokilta.fi";
+export const legacyUrl = env.PUBLIC_LEGACY_URL;
 
 export default async function Page({ slug }: { slug?: string }) {
   const locale = await getLocale();

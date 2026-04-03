@@ -4,6 +4,7 @@ import {
   type InvoiceGeneratorFormState,
   type LaskugeneraattoriRequest,
 } from "./index";
+import { env } from "../../../../env";
 
 type PathSegment = ["key", string] | ["index", number];
 
@@ -24,9 +25,7 @@ const zip = <T>(...arr: T[][]) =>
     .fill(0)
     .map((_, i) => arr.map((a) => a[i]));
 
-const laskugeneraattoriBaseUrl =
-  process.env.NEXT_PUBLIC_LASKUGENERAATTORI_URL ??
-  "https://laskutus.tietokilta.fi";
+const laskugeneraattoriBaseUrl = env.NEXT_PUBLIC_LASKUGENERAATTORI_URL;
 
 export async function SaveAction(
   currentState: unknown,
