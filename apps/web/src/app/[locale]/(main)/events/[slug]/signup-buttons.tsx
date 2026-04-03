@@ -58,15 +58,21 @@ export function SignupButtons({
             isDisabled={disabled}
             signUpAction={signUp}
           >
-            <span>
+            <span className="flex min-w-0 items-center gap-1">
               <span className={cn(event.quotas.length > 1 && "sr-only")}>
                 {t("Sign up")}
                 {event.quotas.length === 1 ? "" : `: `}
               </span>
-              {event.quotas.length > 1 ? <span>{quota.title}</span> : null}
-              {quota.price > 0
-                ? ` (${currencyFormatter(locale, quota.price)})`
-                : null}
+              {event.quotas.length > 1 ? (
+                <span className="truncate" title={quota.title}>
+                  {quota.title}
+                </span>
+              ) : null}
+              {quota.price > 0 ? (
+                <span className="shrink-0">
+                  ({currencyFormatter(locale, quota.price)})
+                </span>
+              ) : null}
             </span>
           </SignUpButton>
         </li>
