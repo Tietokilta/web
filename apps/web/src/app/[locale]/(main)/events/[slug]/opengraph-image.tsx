@@ -1,13 +1,13 @@
 /* eslint-disable react/no-unknown-property -- Next.js og custom stuff https://vercel.com/guides/using-tailwind */
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
-import stripMarkdown from "strip-markdown";
+import { ImageResponse } from "next/og";
 import { remark } from "remark";
+import stripMarkdown from "strip-markdown";
+import type { Locale } from "@i18n/routing";
 import { fetchEvent } from "@lib/api/external/ilmomasiina";
 import { formatDateTime } from "@lib/utils";
-import type { Locale } from "@i18n/routing";
 
 const size = {
   width: 1200,

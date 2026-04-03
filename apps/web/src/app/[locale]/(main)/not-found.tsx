@@ -3,9 +3,9 @@ import { Button, Card } from "@tietokilta/ui";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { DinoGame } from "@components/dino-game";
+import type { Locale } from "@i18n/routing";
 import { NextIntlClientProvider, useTranslations } from "@locales/client";
 import { locales, type Messages } from "@locales/index";
-import type { Locale } from "@i18n/routing";
 
 function NotFoundContent() {
   const t = useTranslations("not-found");

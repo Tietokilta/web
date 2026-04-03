@@ -2,6 +2,7 @@
 
 /* eslint-disable no-nested-ternary -- this is pretty cool and readable here */
 
+import { questionHasPrices } from "@tietokilta/ilmomasiina-client/dist/utils/paymentUtils";
 import {
   QuestionType,
   SignupFieldError,
@@ -9,7 +10,6 @@ import {
   type SignupForEditResponse,
   SignupPaymentStatus,
 } from "@tietokilta/ilmomasiina-models";
-import { questionHasPrices } from "@tietokilta/ilmomasiina-client/dist/utils/paymentUtils";
 import {
   Button,
   Checkbox,
@@ -20,17 +20,17 @@ import {
   type ButtonProps,
   buttonVariants,
 } from "@tietokilta/ui";
-import { useFormStatus } from "react-dom";
-import { useActionState, useEffect } from "react";
 import NextForm from "next/form";
 import { useRouter } from "next/navigation";
+import { useActionState, useEffect } from "react";
+import { useFormStatus } from "react-dom";
 import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
 } from "@lib/api/external/ilmomasiina/actions";
-import { useLocale, useTranslations } from "@locales/client";
-import { cn, currencyFormatter } from "@lib/utils";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
+import { cn, currencyFormatter } from "@lib/utils";
+import { useLocale, useTranslations } from "@locales/client";
 
 type FieldErrorI18n = ReturnType<typeof useTranslations>;
 

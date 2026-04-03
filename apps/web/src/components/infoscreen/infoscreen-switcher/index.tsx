@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import { isTruthy } from "remeda";
 
 export default function InfoScreenSwitcher({

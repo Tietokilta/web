@@ -1,15 +1,15 @@
-/* eslint-disable no-nested-ternary -- I like */
-import { notFound } from "next/navigation";
 import { SignupStatus } from "@tietokilta/ilmomasiina-models";
-import Link from "next/link";
 import { Button } from "@tietokilta/ui";
 import { type Metadata } from "next";
 import { getMessages } from "next-intl/server";
+import Link from "next/link";
+/* eslint-disable no-nested-ternary -- I like */
+import { notFound } from "next/navigation";
 import { getSignup } from "@lib/api/external/ilmomasiina";
-import { getLocale, getTranslations } from "@locales/server";
 import { NextIntlClientProvider } from "@locales/client";
-import { SignupForm } from "./signup-form";
+import { getLocale, getTranslations } from "@locales/server";
 import { PaymentInfo } from "./payment-info";
+import { SignupForm } from "./signup-form";
 
 interface PageProps {
   params: Promise<{

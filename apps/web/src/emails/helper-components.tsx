@@ -1,8 +1,8 @@
+import { Link } from "@react-email/components";
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise*/
 import type { JSX } from "react";
-import { Link } from "@react-email/components";
-import { type NewsItem } from "@payload-types";
 import { type EditorState, type Node } from "@lexical-types";
+import { type NewsItem } from "@payload-types";
 import {
   IS_BOLD,
   IS_CODE,

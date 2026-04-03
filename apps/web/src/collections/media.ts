@@ -1,7 +1,7 @@
 import type { CollectionConfig } from "payload";
 import { signedIn } from "../access/signed-in";
-import { isCloudStorageEnabled } from "../util";
 import { mediaImportController } from "../controllers/media-import-controller";
+import { isCloudStorageEnabled } from "../util";
 
 export const Media = {
   slug: "media",

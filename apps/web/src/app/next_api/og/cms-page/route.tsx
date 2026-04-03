@@ -9,8 +9,8 @@
 
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { ImageResponse } from "next/og";
 import { notFound } from "next/navigation";
+import { ImageResponse } from "next/og";
 import { type NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {

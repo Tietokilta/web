@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { type ImageLinkGridBlockNode } from "@lexical-types";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn } from "../../lib/utils";

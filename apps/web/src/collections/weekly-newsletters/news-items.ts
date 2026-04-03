@@ -2,8 +2,8 @@ import type { CollectionConfig, FieldHook } from "payload";
 import type { NewsItem } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
 import { newsItemCategoryField } from "../../fields/news-item-category";
-import { getLocale } from "../../util";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
+import { getLocale } from "../../util";
 
 const formatDisplayTitle: FieldHook<NewsItem> = ({ data: newsItem, req }) => {
   if (!newsItem?.title) {

@@ -1,7 +1,7 @@
 "use client";
-import Countdown from "react-countdown";
-import { useLocale, useTranslations } from "next-intl";
 import type { UserEventResponse } from "@tietokilta/ilmomasiina-models";
+import { useLocale, useTranslations } from "next-intl";
+import Countdown from "react-countdown";
 import { formatDatetimeYear } from "@lib/utils";
 import { SignupButtons } from "./signup-buttons";
 

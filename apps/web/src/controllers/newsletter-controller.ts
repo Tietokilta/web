@@ -3,10 +3,10 @@ import { type PayloadHandler } from "payload";
 import { type Node } from "@lexical-types";
 import { type WeeklyNewsletter } from "@payload-types";
 import { signedIn } from "../access/signed-in";
-import { sendEmail } from "../mailgun";
 import { NewsletterEmail } from "../emails/newsletter-email";
 import { type Locale } from "../emails/utils/utils";
 import { env } from "../env";
+import { sendEmail } from "../mailgun";
 import { getLocale } from "../util";
 import { parseToc, parseToTelegramString } from "./utils/tg-parser";
 

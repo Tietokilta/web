@@ -8,8 +8,8 @@ import {
   SheetTrigger,
 } from "@tietokilta/ui";
 import Link from "next/link";
-import type { Media } from "@payload-types";
 import { getLocale, getTranslations } from "@locales/server";
+import type { Media } from "@payload-types";
 import { fetchFooter } from "../../lib/api/footer";
 import { fetchMainNavigation } from "../../lib/api/main-navigation";
 import { cn } from "../../lib/utils";

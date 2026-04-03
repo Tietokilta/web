@@ -1,0 +1,99 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["import", "unicorn", "react", "jsx-a11y", "typescript"],
+  "categories": {
+    "correctness": "warn",
+    "suspicious": "warn"
+  },
+  "env": {
+    "builtin": true,
+    "browser": true,
+    "es2024": true
+  },
+  "globals": {
+    "JSX": "readonly",
+    "React": "readonly"
+  },
+  "settings": {
+    "react": {
+      "version": "19.2"
+    }
+  },
+  "ignorePatterns": ["node_modules/", "dist/", ".next/"],
+  "rules": {
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "react/jsx-no-target-blank": ["warn", { "allowReferrer": true }],
+    "react/jsx-no-useless-fragment": ["warn", { "allowExpressions": true }],
+    "unicorn/filename-case": ["warn", { "case": "kebabCase" }],
+    "array-callback-return": ["warn", { "allowImplicit": true }],
+    "prefer-promise-reject-errors": ["warn", { "allowEmptyReject": true }],
+    "func-names": ["warn", "as-needed"],
+    "new-cap": ["warn", { "capIsNew": false }],
+    "react/react-in-jsx-scope": "off",
+    "react/iframe-missing-sandbox": "off",
+    "unicorn/consistent-function-scoping": "off",
+    "unicorn/no-array-sort": "off",
+    "unicorn/no-instanceof-builtins": "off",
+    "unicorn/no-array-reverse": "off",
+    "import/no-unassigned-import": "off",
+    "typescript/no-unsafe-type-assertion": "off",
+    "typescript/no-unnecessary-type-arguments": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "typescript/ban-ts-comment": [
+          "warn",
+          { "minimumDescriptionLength": 10 }
+        ],
+        "typescript/consistent-type-imports": [
+          "warn",
+          {
+            "disallowTypeAnnotations": true,
+            "fixStyle": "inline-type-imports",
+            "prefer": "type-imports"
+          }
+        ],
+        "typescript/explicit-function-return-type": [
+          "warn",
+          { "allowExpressions": true }
+        ],
+        "typescript/require-array-sort-compare": [
+          "warn",
+          { "ignoreStringArrays": true }
+        ],
+        "typescript/restrict-plus-operands": [
+          "warn",
+          {
+            "allowAny": false,
+            "allowBoolean": false,
+            "allowNullish": false,
+            "allowNumberAndString": false,
+            "allowRegExp": false
+          }
+        ],
+        "typescript/restrict-template-expressions": [
+          "warn",
+          {
+            "allowAny": false,
+            "allowBoolean": false,
+            "allowNever": false,
+            "allowNullish": false,
+            "allowNumber": false,
+            "allowRegExp": false
+          }
+        ],
+        "import/default": "off",
+        "import/namespace": "off"
+      }
+    }
+  ]
+}

@@ -61,8 +61,8 @@
     "build": "tsdown lib/index.tsx lib/preset.ts --format esm,cjs --dts",
     "clean": "rm -rf dist",
     "dev": "tsdown lib/index.tsx --format esm,cjs --watch --dts --no-clean",
-    "lint": "eslint lib/",
-    "lint:fix": "eslint --fix lib/",
+    "lint": "oxlint -c .oxlintrc.json lib/",
+    "lint:fix": "oxlint -c .oxlintrc.json --fix lib/",
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
@@ -82,16 +82,13 @@
   },
   "devDependencies": {
     "@tietokilta/config-typescript": "workspace:*",
-    "@tietokilta/eslint-config": "workspace:*",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "eslint": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
     "tsdown": "^0.21.7",
-    "typescript": "catalog:",
-    "typescript-eslint": "catalog:"
+    "typescript": "catalog:"
   },
   "peerDependencies": {
     "@tailwindcss/postcss": "catalog:",

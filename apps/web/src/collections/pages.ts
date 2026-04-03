@@ -1,3 +1,4 @@
+import { customAlphabet } from "nanoid";
 import type {
   CollectionConfig,
   Field,
@@ -7,15 +8,14 @@ import type {
   PayloadRequest,
   Locale,
 } from "payload";
-import { customAlphabet } from "nanoid";
 import type { Page, Topic, Page as PageType } from "@payload-types";
 import { publishedAndVisibleOrSignedIn } from "../access/published-and-visible-or-signed-in";
 import { signedIn } from "../access/signed-in";
-import { revalidateCollection } from "../hooks/revalidate-collection";
-import { generatePreviewUrl } from "../util/preview";
-import { iconField } from "../fields/icon-field";
-import { appendToStringOrLocalizedString, getLocale } from "../util";
 import { env } from "../env";
+import { iconField } from "../fields/icon-field";
+import { revalidateCollection } from "../hooks/revalidate-collection";
+import { appendToStringOrLocalizedString, getLocale } from "../util";
+import { generatePreviewUrl } from "../util/preview";
 
 const nanoid = customAlphabet("abcdefghjklmnpqrstuvwxyz23456789", 6);
 

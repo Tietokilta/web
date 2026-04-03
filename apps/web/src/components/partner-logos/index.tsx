@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Media, Partner } from "@payload-types";
-import type { PartnersBlockNode } from "@lexical-types";
 import { ImageLinkGrid } from "@components/image-link-grid";
-import { fetchPartners } from "@lib/api/partners";
-import { getLocale } from "@locales/server";
 import { Link as MobileLink } from "@components/mobile-nav/link";
+import type { PartnersBlockNode } from "@lexical-types";
+import { fetchPartners } from "@lib/api/partners";
 import { cn } from "@lib/utils";
+import { getLocale } from "@locales/server";
+import type { Media, Partner } from "@payload-types";
 
 export async function PartnerLogos({
   statuses,

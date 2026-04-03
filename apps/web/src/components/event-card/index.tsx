@@ -1,9 +1,9 @@
-import Link from "next/link";
+import { countOverflowSignups } from "@tietokilta/ilmomasiina-client/dist/utils/signupUtils";
 import {
   type QuotaWithSignupCount,
   type UserEventListItem,
 } from "@tietokilta/ilmomasiina-models";
-import { countOverflowSignups } from "@tietokilta/ilmomasiina-client/dist/utils/signupUtils";
+import Link from "next/link";
 import {
   cn,
   formatDateTime,

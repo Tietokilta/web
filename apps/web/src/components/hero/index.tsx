@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { useScramble } from "use-scramble";
 import { shuffle } from "remeda";
+import { useScramble } from "use-scramble";
 import { cn } from "../../lib/utils";
 
 export interface ImageWithPhotographer {

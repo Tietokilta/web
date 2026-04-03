@@ -4,10 +4,10 @@ import { FileIcon } from "@tietokilta/ui";
 import Image from "next/image";
 import Link from "next/link";
 import type { JSX } from "react";
+import { HighlightCard } from "@components/highlight-card";
+import { PartnerLogos } from "@components/partner-logos";
 import type { BlockNode, Node, RelationshipNode } from "@lexical-types";
 import { type Media } from "@payload-types";
-import { PartnerLogos } from "@components/partner-logos";
-import { HighlightCard } from "@components/highlight-card";
 import {
   cn,
   insertSoftHyphens,
@@ -16,15 +16,15 @@ import {
   stringToId,
 } from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
+import { CollapsibleBlock } from "../collapsible-block";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
-import { MagazineList } from "../magazine-list";
+import { EditorInChief } from "../editor-in-chief";
+import { GoogleForm } from "../google-form";
 import { HonorsList } from "../honors-list";
 import { ImageLinkGrid } from "../image-link-grid";
-import { GoogleForm } from "../google-form";
-import { EditorInChief } from "../editor-in-chief";
 import { InvoiceGenerator } from "../invoice-generator";
-import { CollapsibleBlock } from "../collapsible-block";
+import { MagazineList } from "../magazine-list";
 import {
   IS_BOLD,
   IS_CODE,

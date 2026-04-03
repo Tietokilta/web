@@ -1,10 +1,10 @@
-import path from "node:path";
 import { createRequire } from "node:module";
+import path from "node:path";
 const require = createRequire(import.meta.url);
-import defaultTheme from "tailwindcss/defaultTheme.js";
-import tailwindcssAnimate from "tailwindcss-animate";
-import { plugin as tietokiltaUI } from "@tietokilta/ui";
 import tailwindcssTypography from "@tailwindcss/typography";
+import { plugin as tietokiltaUI } from "@tietokilta/ui";
+import tailwindcssAnimate from "tailwindcss-animate";
+import defaultTheme from "tailwindcss/defaultTheme.js";
 
 const sans = ["var(--font-inter)", ...defaultTheme.fontFamily.sans];
 const mono = ["var(--font-roboto-mono)", ...defaultTheme.fontFamily.mono];

@@ -3,7 +3,6 @@ import {
   getLocalizedEventListItem,
   getLocalizedSignup,
 } from "@tietokilta/ilmomasiina-client/dist/utils/localizedEvent";
-import { env } from "../../../../env";
 import {
   EDIT_TOKEN_HEADER,
   ErrorCode,
@@ -16,6 +15,7 @@ import {
   type UserEventResponse,
   type StartPaymentResponse,
 } from "@tietokilta/ilmomasiina-models";
+import { env } from "../../../../env";
 import type { ApiResponse } from "../helpers";
 import { err, ok } from "../helpers";
 

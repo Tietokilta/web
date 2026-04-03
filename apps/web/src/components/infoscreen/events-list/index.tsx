@@ -1,5 +1,5 @@
-import { getISOWeek, getISOWeekYear } from "date-fns";
 import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
+import { getISOWeek, getISOWeekYear } from "date-fns";
 import { fetchUpcomingEvents } from "../../../lib/api/external/ilmomasiina";
 import { getLocale, getTranslations } from "../../../locales/server";
 import { EventCardCompact } from "../../event-card/index.tsx";

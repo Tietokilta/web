@@ -1,11 +1,11 @@
 import { isTruthy } from "remeda";
-import { HSLcombinedSchedule } from "@components/infoscreen/hsl-schedules";
-import { KanttiinitCombined } from "@components/infoscreen/kanttiinit";
-import InfoScreenSwitcher from "@components/infoscreen/infoscreen-switcher/index";
+import { CustomIframe } from "@components/infoscreen/custom-iframe";
 import EventListInfoscreen from "@components/infoscreen/events-list";
+import { HSLcombinedSchedule } from "@components/infoscreen/hsl-schedules";
+import InfoScreenSwitcher from "@components/infoscreen/infoscreen-switcher/index";
+import { KanttiinitCombined } from "@components/infoscreen/kanttiinit";
 import { fetchInfoScreen } from "@lib/api/info-screen";
 import { getLocale } from "@locales/server";
-import { CustomIframe } from "@components/infoscreen/custom-iframe";
 
 export default async function InfoScreenContents() {
   const locale = await getLocale();

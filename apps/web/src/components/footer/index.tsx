@@ -1,6 +1,7 @@
-import Image from "next/image";
 import { RenderIcon } from "@tietokilta/ui";
+import Image from "next/image";
 import Link from "next/link";
+import { PartnerLogos } from "@components/partner-logos";
 import type {
   LinkRowBlock,
   Media,
@@ -8,7 +9,6 @@ import type {
   PartnersRowBlock,
   SponsorLogoRowBlock,
 } from "@payload-types";
-import { PartnerLogos } from "@components/partner-logos";
 import { fetchFooter } from "../../lib/api/footer";
 import { assertUnreachable, cn } from "../../lib/utils";
 import { getLocale } from "../../locales/server";

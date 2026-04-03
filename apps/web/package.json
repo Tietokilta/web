@@ -11,8 +11,8 @@
     "email": "email dev --dir src/emails",
     "generate:importmap": "payload generate:importMap",
     "generate:types": "payload generate:types",
-    "lint": "eslint  \"./src/**/*.{js,ts,jsx,tsx}\"",
-    "lint:fix": "eslint --fix  \"./src/**/*.{js,ts,jsx,tsx}\"",
+    "lint": "oxlint -c .oxlintrc.json ./src/",
+    "lint:fix": "oxlint -c .oxlintrc.json --fix ./src/",
     "payload": "payload",
     "start": "next start",
     "typecheck": "tsgo --noEmit"
@@ -66,10 +66,8 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "catalog:",
     "@tailwindcss/typography": "catalog:",
     "@tietokilta/config-typescript": "workspace:*",
-    "@tietokilta/eslint-config": "workspace:*",
     "@types/mdast": "^4.0.4",
     "@types/node": "catalog:",
     "@types/papaparse": "^5.5.2",
@@ -78,10 +76,8 @@
     "@types/react-big-calendar": "^1.16.3",
     "@types/react-dom": "catalog:",
     "dotenv": "^17.4.0",
-    "eslint": "catalog:",
     "react-dvd-screensaver": "^0.1.1",
     "typescript": "catalog:",
-    "typescript-eslint": "catalog:",
     "unified": "^11.0.5"
   }
 }

@@ -1,8 +1,8 @@
-import * as React from "react";
 import { Head, Html, Font } from "@react-email/components";
+import * as React from "react";
 import { type WeeklyNewsletter } from "@payload-types";
-import { newsletterPreviewProps } from "./newsletter-example";
 import { Newsletter } from "./newsletter";
+import { newsletterPreviewProps } from "./newsletter-example";
 
 interface NewsletterEmailProps {
   finnishNewsletter: WeeklyNewsletter;

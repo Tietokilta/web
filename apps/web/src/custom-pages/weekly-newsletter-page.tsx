@@ -1,13 +1,15 @@
-import { notFound } from "next/navigation";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { type EditorState } from "@lexical-types";
 import { type NewsItem } from "@payload-types";
+import { DateTime } from "../components/datetime";
+import { LexicalSerializer } from "../components/lexical/lexical-serializer";
+import { TableOfContents } from "../components/table-of-contents";
 import { env } from "../env";
 import {
   fetchWeeklyNewsletter,
   fetchWeeklyNewsletterBySlug,
 } from "../lib/api/weekly-newsletters";
-import { getLocale, getTranslations } from "../locales/server";
 import {
   formatDate,
   formatDateYear,
@@ -20,9 +22,7 @@ import {
   stringToId,
   type TocItem,
 } from "../lib/utils";
-import { LexicalSerializer } from "../components/lexical/lexical-serializer";
-import { TableOfContents } from "../components/table-of-contents";
-import { DateTime } from "../components/datetime";
+import { getLocale, getTranslations } from "../locales/server";
 
 async function NewsItemContent({ item }: { item: NewsItem }) {
   const t = await getTranslations("weeklyNewsletter");

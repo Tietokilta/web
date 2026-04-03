@@ -1,10 +1,10 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
 import { FileIcon } from "@tietokilta/ui";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { type Node } from "@lexical-types";
 import { fetchWeeklyNewsletters } from "../lib/api/weekly-newsletters";
-import { getLocale, getTranslations } from "../locales/server";
 import { lexicalNodeToTextContent } from "../lib/utils";
+import { getLocale, getTranslations } from "../locales/server";
 
 export default async function Page() {
   const locale = await getLocale();

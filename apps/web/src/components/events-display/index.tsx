@@ -1,9 +1,13 @@
+import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
 import { Button, ClockIcon, MapPinIcon } from "@tietokilta/ui";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { chunk } from "remeda";
-import { notFound } from "next/navigation";
-import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
+import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
+import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
+import { getLocale, getTranslations } from "../../locales/server";
+import { DateTime } from "../datetime";
 import {
   Pagination,
   PaginationContent,
@@ -12,10 +16,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "../pagination";
-import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
-import { getLocale, getTranslations } from "../../locales/server";
-import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
-import { DateTime } from "../datetime";
 
 function EventListSkeleton() {
   return (
