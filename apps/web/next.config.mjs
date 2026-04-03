@@ -10,9 +10,10 @@ const nextConfig = {
   images: {
     minimumCacheTTL: 3600,
     contentDispositionType: "inline",
+    qualities: [50, 75],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
+  experimental: {
+    turbopackFileSystemCacheForDev: true,
   },
   typescript: {
     ignoreBuildErrors: true,

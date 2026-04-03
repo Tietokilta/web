@@ -30,7 +30,7 @@ function migrateLegacyCookie(request: NextRequest, response: NextResponse) {
   }
 }
 
-export default function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Check if URL already has a valid locale prefix
