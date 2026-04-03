@@ -60,7 +60,7 @@
   "scripts": {
     "build": "tsdown lib/index.tsx lib/preset.ts --format esm,cjs --dts",
     "clean": "rm -rf dist",
-    "dev": "tsdown lib/index.tsx --format esm,cjs --watch --dts",
+    "dev": "tsdown lib/index.tsx --format esm,cjs --watch --dts --no-clean",
     "lint": "eslint lib/",
     "lint:fix": "eslint --fix lib/",
     "typecheck": "tsgo --noEmit"
