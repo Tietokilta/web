@@ -1,6 +1,6 @@
 {
   "name": "@tietokilta/ui",
-  "version": "0.0.0-alpha.6",
+  "version": "0.0.0-alpha.7",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tietokilta/web.git",
@@ -18,22 +18,19 @@
         "default": "./dist/index.mjs"
       },
       "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
       }
     },
-    "./global.css": {
-      "types": "./dist/global.d.ts",
-      "default": "./dist/global.css"
-    },
+    "./global.css": "./dist/global.css",
     "./preset": {
       "import": {
         "types": "./dist/preset.d.mts",
         "default": "./dist/preset.mjs"
       },
       "require": {
-        "types": "./dist/preset.d.ts",
-        "default": "./dist/preset.js"
+        "types": "./dist/preset.d.cts",
+        "default": "./dist/preset.cjs"
       }
     },
     "./*": {
@@ -42,9 +39,9 @@
       "require": "./dist/*"
     }
   },
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/index.d.cts",
   "typesVersions": {
     "*": {
       "*": [
@@ -56,9 +53,9 @@
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup lib/index.tsx lib/global.css lib/preset.ts --format esm,cjs --dts --external react",
+    "build": "tsdown lib/index.tsx lib/preset.ts --format esm,cjs --dts && cp lib/global.css dist/global.css",
     "clean": "rm -rf dist",
-    "dev": "tsup lib/index.tsx --format esm,cjs --watch --dts --external react",
+    "dev": "mkdir -p dist && ln -sf ../lib/global.css dist/global.css && tsdown lib/index.tsx --format esm,cjs --watch --dts",
     "lint": "eslint lib/",
     "lint:fix": "eslint --fix lib/",
     "typecheck": "tsc --noEmit"
@@ -87,7 +84,7 @@
     "eslint": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.21.7",
     "typescript": "catalog:",
     "typescript-eslint": "catalog:"
   },

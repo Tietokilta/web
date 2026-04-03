@@ -26,8 +26,6 @@ const distPath = __dirname;
  */
 export const preset: Partial<Config> = {
   ...baseConfig,
-  content: [`${distPath}/**/*.{js,mjs,ts,tsx}`],
+  content: [`${distPath}/**/*.{js,cjs,mjs,ts,tsx}`],
   plugins: [plugin],
 };
-
-export default preset;

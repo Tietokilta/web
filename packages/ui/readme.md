@@ -40,13 +40,13 @@ export default {
 
 ```js
 // tailwind.config.js
-import tietokiltaUI from "@tietokilta/ui";
+import { plugin as tietokiltaUI } from "@tietokilta/ui";
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./src/**/*.{ts,tsx,js,jsx}",
-    "./node_modules/@tietokilta/ui/dist/**/*.{js,mjs}",
+    "./node_modules/@tietokilta/ui/dist/**/*.{js,cjs,mjs}",
   ],
   plugins: [
     tietokiltaUI,
