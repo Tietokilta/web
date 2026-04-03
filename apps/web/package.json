@@ -15,7 +15,7 @@
     "lint:fix": "eslint --fix  \"./src/**/*.{js,ts,jsx,tsx}\"",
     "payload": "payload",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
     "@apollo/client": "^4.1.6",
