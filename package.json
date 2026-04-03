@@ -17,7 +17,8 @@
     "docker:compose:build": "docker compose -f docker-compose.prod.yml up --build",
     "docker:compose:start": "docker compose -f docker-compose.prod.yml up",
     "docker:start:web": "docker run -p 3000:3000 web",
-    "format": "prettier --write \"**/*.{js,ts,ts,tsx,md,json}\"",
+    "format": "turbo run build --filter=@tietokilta/ui --cache-dir=.turbo && oxfmt --write .",
+    "format:check": "turbo run build --filter=@tietokilta/ui --cache-dir=.turbo && oxfmt --check .",
     "lint": "turbo run lint --cache-dir=.turbo",
     "lint:fix": "turbo run lint:fix",
     "payload": "dotenv -- pnpm -F web payload",
@@ -29,17 +30,15 @@
     "@types/node": "catalog:",
     "dotenv-cli": "^11.0.0",
     "eslint": "catalog:",
-    "prettier": "^3.8.1",
-    "prettier-plugin-packagejson": "^3.0.2",
-    "prettier-plugin-tailwindcss": "^0.7.2",
+    "oxfmt": "^0.43.0",
     "tsx": "^4.21.0",
     "turbo": "^2.9.3",
     "typescript": "catalog:"
   },
-  "packageManager": "pnpm@10.16.1",
   "engines": {
     "node": "22.22.0"
   },
+  "packageManager": "pnpm@10.16.1",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@swc/core",
