@@ -276,6 +276,7 @@ const fi = {
     "Bottom Corner": "Pohjanurkkaus",
     Calendar: "Kalenteri",
     Guild: "Kilta",
+    Later: "Myöhemmin",
     "Next week": "Ensi viikolla",
     "old weekly newsletters": "vanhoja viikkotiedotteita",
     Other: "Muu",

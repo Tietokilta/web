@@ -11,6 +11,9 @@ import {
   formatDate,
   formatDateYear,
   formatDateYearOptions,
+  byDate,
+  isLater,
+  isNextWeek,
   isThisWeek,
   makeUniqueId,
   stringToId,
@@ -79,10 +82,12 @@ function NewsletterCategory({
 async function Calendar({
   eventsThisWeek,
   eventsNextWeek,
+  eventsLater,
   signupsThisWeek,
 }: {
   eventsThisWeek: NewsItem[];
   eventsNextWeek: NewsItem[];
+  eventsLater: NewsItem[];
   signupsThisWeek: NewsItem[];
 }) {
   const t = await getTranslations("weeklyNewsletter");
@@ -90,6 +95,7 @@ async function Calendar({
   if (
     eventsThisWeek.length === 0 &&
     eventsNextWeek.length === 0 &&
+    eventsLater.length === 0 &&
     signupsThisWeek.length === 0
   ) {
     return null;
@@ -118,6 +124,21 @@ async function Calendar({
           <span>{t("Next week")}:</span>
           <ol className="not-prose ml-[4ch]">
             {eventsNextWeek.map((newsItem) => (
+              <li key={newsItem.id}>
+                {newsItem.date ? (
+                  <span>{formatDate(newsItem.date)} </span>
+                ) : null}
+                <span>{newsItem.title}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      ) : null}
+      {eventsLater.length > 0 ? (
+        <div>
+          <span>{t("Later")}:</span>
+          <ol className="not-prose ml-[4ch]">
+            {eventsLater.map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
                   <span>{formatDate(newsItem.date)} </span>
@@ -202,22 +223,28 @@ export default async function Page({ slug }: { slug?: string }) {
     (newsItem) => newsItem.newsItemCategory === "bottom-corner",
   );
 
-  const eventsThisWeek = allNewsItems.filter(
-    (newsItem) => newsItem.date && isThisWeek(newsItem.date),
-  );
-  const eventsNextWeek = allNewsItems.filter(
-    (newsItem) => newsItem.date && !isThisWeek(newsItem.date),
-  );
-  const signupsThisWeek = allNewsItems.filter(
-    (newsItem) =>
-      newsItem.signupStartDate && isThisWeek(newsItem.signupStartDate),
-  );
+  const eventsThisWeek = allNewsItems
+    .filter((newsItem) => newsItem.date && isThisWeek(newsItem.date))
+    .toSorted(byDate);
+  const eventsNextWeek = allNewsItems
+    .filter((newsItem) => newsItem.date && isNextWeek(newsItem.date))
+    .toSorted(byDate);
+  const eventsLater = allNewsItems
+    .filter((newsItem) => newsItem.date && isLater(newsItem.date))
+    .toSorted(byDate);
+  const signupsThisWeek = allNewsItems
+    .filter(
+      (newsItem) =>
+        newsItem.signupStartDate && isThisWeek(newsItem.signupStartDate),
+    )
+    .toSorted(byDate);
 
   const seenIds = new Map<string, number>();
 
   const toc: TocItem[] = [
     eventsThisWeek.length > 0 ||
     eventsNextWeek.length > 0 ||
+    eventsLater.length > 0 ||
     signupsThisWeek.length > 0
       ? {
           id: makeUniqueId(stringToId(t("Calendar")), seenIds),
@@ -299,6 +326,7 @@ export default async function Page({ slug }: { slug?: string }) {
           <Calendar
             eventsThisWeek={eventsThisWeek}
             eventsNextWeek={eventsNextWeek}
+            eventsLater={eventsLater}
             signupsThisWeek={signupsThisWeek}
           />
           <NewsletterCategory title={t("Guild")} newsItems={guildNewsItems} />
