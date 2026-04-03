@@ -62,7 +62,7 @@
     "dev": "mkdir -p dist && ln -sf ../lib/global.css dist/global.css && tsdown lib/index.tsx --format esm,cjs --watch --dts",
     "lint": "eslint lib/",
     "lint:fix": "eslint --fix lib/",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
