@@ -1,9 +1,10 @@
 import { getTranslations } from "@locales/server";
+import { env } from "../../env";
 
-const versionShaLong = process.env.GIT_COMMIT_SHA ?? "development";
+const versionShaLong = env.GIT_COMMIT_SHA;
 const year = new Date().getFullYear();
 const showVersionSha =
-  versionShaLong !== "development" || process.env.NODE_ENV === "development";
+  versionShaLong !== "development" || env.NODE_ENV === "development";
 const shaLinkUrl =
   versionShaLong !== "development"
     ? `https://github.com/Tietokilta/web/tree/${versionShaLong}`

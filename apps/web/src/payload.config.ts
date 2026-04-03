@@ -48,24 +48,14 @@ declare module "payload" {
   export interface GeneratedTypes extends Config {}
 }
 
-const {
-  GOOGLE_OAUTH_CLIENT_ID,
-  GOOGLE_OAUTH_CLIENT_SECRET,
-  PUBLIC_FRONTEND_URL,
-  AZURE_STORAGE_CONNECTION_STRING,
-  AZURE_STORAGE_CONTAINER_NAME,
-  AZURE_STORAGE_ACCOUNT_BASEURL,
-  AZURE_STORAGE_ALLOW_CONTAINER_CREATE,
-  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL,
-  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD,
-  PAYLOAD_SECRET,
-} = process.env;
+import { env } from "./env";
+
 const autoLogin =
-  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL &&
-  PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD
+  env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL &&
+  env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD
     ? {
-        email: PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL,
-        password: PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD,
+        email: env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_EMAIL,
+        password: env.PAYLOAD_PUBLIC_DEVELOPMENT_AUTOLOGIN_PASSWORD,
       }
     : undefined;
 export default buildConfig({
@@ -120,7 +110,7 @@ export default buildConfig({
     declare: false,
   },
   db: mongooseAdapter({
-    url: process.env.PAYLOAD_MONGO_CONNECTION_STRING ?? "",
+    url: env.PAYLOAD_MONGO_CONNECTION_STRING,
   }),
   editor: lexicalEditor({
     features: ({ defaultFeatures }) => [
@@ -160,9 +150,9 @@ export default buildConfig({
       enabled: isGoogleAuthEnabled(),
       strategyName: "google",
       useEmailAsIdentity: true,
-      serverURL: PUBLIC_FRONTEND_URL ?? "",
-      clientId: GOOGLE_OAUTH_CLIENT_ID ?? "",
-      clientSecret: GOOGLE_OAUTH_CLIENT_SECRET ?? "",
+      serverURL: env.PUBLIC_FRONTEND_URL,
+      clientId: env.GOOGLE_OAUTH_CLIENT_ID ?? "",
+      clientSecret: env.GOOGLE_OAUTH_CLIENT_SECRET ?? "",
       authorizePath: "/oauth/google/authorize",
       callbackPath: "/oauth/google/callback",
       authCollection: Users.slug,
@@ -182,11 +172,11 @@ export default buildConfig({
         return { email: user.email, sub: user.sub };
       },
       getToken: async (code, req) => {
-        const redirectUri = `${PUBLIC_FRONTEND_URL ?? "http://localhost:3000"}/api/users/oauth/google/callback`;
+        const redirectUri = `${env.PUBLIC_FRONTEND_URL}/api/users/oauth/google/callback`;
         const token = await defaultGetToken(
           "https://oauth2.googleapis.com/token",
-          GOOGLE_OAUTH_CLIENT_ID ?? "",
-          GOOGLE_OAUTH_CLIENT_SECRET ?? "",
+          env.GOOGLE_OAUTH_CLIENT_ID ?? "",
+          env.GOOGLE_OAUTH_CLIENT_SECRET ?? "",
           redirectUri,
           code,
         );
@@ -214,11 +204,11 @@ export default buildConfig({
     }),
     azureStorage({
       enabled: isCloudStorageEnabled(),
-      connectionString: AZURE_STORAGE_CONNECTION_STRING ?? "",
-      containerName: AZURE_STORAGE_CONTAINER_NAME ?? "",
+      connectionString: env.AZURE_STORAGE_CONNECTION_STRING ?? "",
+      containerName: env.AZURE_STORAGE_CONTAINER_NAME ?? "",
       // TODO: what with different container names?
-      allowContainerCreate: AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
-      baseURL: AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
+      allowContainerCreate: env.AZURE_STORAGE_ALLOW_CONTAINER_CREATE === "true",
+      baseURL: env.AZURE_STORAGE_ACCOUNT_BASEURL ?? "",
       collections: {
         [Media.slug]: {
           disableLocalStorage: true,
@@ -247,7 +237,7 @@ export default buildConfig({
       };
     },
   ],
-  secret: PAYLOAD_SECRET ?? "",
+  secret: env.PAYLOAD_SECRET,
   sharp,
   routes: {
     admin: "/admin",
@@ -278,11 +268,9 @@ export default buildConfig({
     if (isGoogleAuthEnabled()) {
       payloadInstance.logger.info("Using Google OAuth2");
     }
-    const { PAYLOAD_DEFAULT_USER_EMAIL, PAYLOAD_DEFAULT_USER_PASSWORD } =
-      process.env;
-    if (PAYLOAD_DEFAULT_USER_EMAIL && PAYLOAD_DEFAULT_USER_PASSWORD) {
-      const email = PAYLOAD_DEFAULT_USER_EMAIL;
-      const password = PAYLOAD_DEFAULT_USER_PASSWORD;
+    if (env.PAYLOAD_DEFAULT_USER_EMAIL && env.PAYLOAD_DEFAULT_USER_PASSWORD) {
+      const email = env.PAYLOAD_DEFAULT_USER_EMAIL;
+      const password = env.PAYLOAD_DEFAULT_USER_PASSWORD;
       if (!email || !password) {
         payloadInstance.logger.warn(
           `PAYLOAD_DEFAULT_USER_EMAIL and PAYLOAD_DEFAULT_USER_PASSWORD are not set, first user has to be created manually through the admin panel`,
@@ -295,7 +283,7 @@ export default buildConfig({
       });
       if (user.totalDocs === 0) {
         payloadInstance.logger.warn(`user ${email} not found, creating...`);
-        if (process.env.NODE_ENV !== "production") {
+        if (env.NODE_ENV !== "production") {
           payloadInstance.logger.warn(
             "NOTE that it is recommended to use the seeding scripts (`pnpm db:reset`) to a get filled database for local development",
           );

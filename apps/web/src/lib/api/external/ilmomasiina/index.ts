@@ -3,6 +3,7 @@ import {
   getLocalizedEventListItem,
   getLocalizedSignup,
 } from "@tietokilta/ilmomasiina-client/dist/utils/localizedEvent";
+import { env } from "../../../../env";
 import {
   EDIT_TOKEN_HEADER,
   ErrorCode,
@@ -18,11 +19,7 @@ import {
 import type { ApiResponse } from "../helpers";
 import { err, ok } from "../helpers";
 
-// TODO: better env handling since next.js doesn't have that built-in
-export const baseUrl =
-  process.env.NEXT_PUBLIC_ILMOMASIINA_URL ?? "https://ilmo.tietokilta.fi";
-// In prod, the NEXT_PUBLIC_ILMOMASIINA_URL is empty probably because
-// it needs to be set when building the docker image.
+export const baseUrl = env.NEXT_PUBLIC_ILMOMASIINA_URL;
 
 export const fetchEvents = async (
   locale: string,

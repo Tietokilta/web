@@ -3,10 +3,12 @@
 import { PayloadAdminBar } from "@payloadcms/admin-bar";
 
 export function AdminBarClient({
+  cmsURL,
   isPreviewMode,
   id,
   collection,
 }: {
+  cmsURL: string;
   isPreviewMode: boolean;
   id?: string;
   collection?: string;
@@ -19,7 +21,7 @@ export function AdminBarClient({
   return (
     <PayloadAdminBar
       className="bottom-0"
-      cmsURL={process.env.PUBLIC_FRONTEND_URL ?? window.location.origin}
+      cmsURL={cmsURL}
       collectionSlug={collection}
       id={id}
       onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:

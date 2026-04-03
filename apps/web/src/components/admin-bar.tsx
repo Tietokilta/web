@@ -1,5 +1,6 @@
 import { draftMode } from "next/headers";
 import type { Config } from "@payload-types";
+import { env } from "../env";
 import { AdminBarClient } from "./admin-bar-client";
 
 export async function AdminBar({
@@ -13,6 +14,7 @@ export async function AdminBar({
 
   return (
     <AdminBarClient
+      cmsURL={env.PUBLIC_FRONTEND_URL}
       collection={collection}
       id={id}
       isPreviewMode={isPreviewMode}

@@ -1,6 +1,7 @@
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise*/
 import { type Node } from "@lexical-types";
 import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
+import { env } from "../../env";
 import {
   IS_BOLD,
   IS_ITALIC,
@@ -75,7 +76,7 @@ export const parseToc = (
   newsletter: WeeklyNewsletter,
   locale: Locale,
 ): string => {
-  const { PUBLIC_FRONTEND_URL } = process.env;
+  const { PUBLIC_FRONTEND_URL } = env;
 
   const t = {
     en: {

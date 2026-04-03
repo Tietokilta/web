@@ -36,7 +36,9 @@ const icons = {
   ],
 };
 
-const mainUrl = process.env.PUBLIC_FRONTEND_URL ?? "https://tietokilta.fi";
+import { env } from "../../../env";
+
+const mainUrl = env.PUBLIC_FRONTEND_URL;
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const t = await getTranslations("metadata");

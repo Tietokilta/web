@@ -18,6 +18,8 @@ permissions:
 env:
   # Change this to upload the built image to your own organization.
   docker_tag_prefix: ghcr.io/tietokilta
+  # Skip env validation in CI where secrets are not available
+  SKIP_ENV_VALIDATION: "true"
 jobs:
   build:
     name: Format, Lint, Check types & Build

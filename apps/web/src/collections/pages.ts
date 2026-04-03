@@ -15,6 +15,7 @@ import { revalidateCollection } from "../hooks/revalidate-collection";
 import { generatePreviewUrl } from "../util/preview";
 import { iconField } from "../fields/icon-field";
 import { appendToStringOrLocalizedString, getLocale } from "../util";
+import { env } from "../env";
 
 const nanoid = customAlphabet("abcdefghjklmnpqrstuvwxyz23456789", 6);
 
@@ -339,7 +340,7 @@ export const Pages = {
     },
   ],
   versions: {
-    maxPerDoc: process.env.NODE_ENV === "production" ? 100 : 2,
+    maxPerDoc: env.NODE_ENV === "production" ? 100 : 2,
     drafts: {
       autosave: true,
     },

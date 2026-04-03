@@ -42,6 +42,7 @@ WORKDIR /app
 
 ARG GIT_COMMIT_SHA=development
 ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
+ENV SKIP_ENV_VALIDATION=true
 
 # Copy pruned lockfile and package.json files
 # This ensures that the builder stage has the exact dependencies needed for the project.
