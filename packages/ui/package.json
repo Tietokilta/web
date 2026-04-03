@@ -1,6 +1,6 @@
 {
   "name": "@tietokilta/ui",
-  "version": "0.0.0-alpha.7",
+  "version": "0.0.0-alpha.8",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -8,7 +8,8 @@
     "directory": "packages/ui"
   },
   "files": [
-    "dist/**"
+    "dist/**",
+    "lib/global.css"
   ],
   "type": "commonjs",
   "sideEffects": [
@@ -35,7 +36,7 @@
         "default": "./dist/index.cjs"
       }
     },
-    "./global.css": "./dist/global.css",
+    "./global.css": "./lib/global.css",
     "./preset": {
       "import": {
         "types": "./dist/preset.d.mts",
@@ -57,9 +58,9 @@
     "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
-    "build": "tsdown lib/index.tsx lib/preset.ts --format esm,cjs --dts && cp lib/global.css dist/global.css",
+    "build": "tsdown lib/index.tsx lib/preset.ts --format esm,cjs --dts",
     "clean": "rm -rf dist",
-    "dev": "mkdir -p dist && ln -sf ../lib/global.css dist/global.css && tsdown lib/index.tsx --format esm,cjs --watch --dts",
+    "dev": "tsdown lib/index.tsx --format esm,cjs --watch --dts",
     "lint": "eslint lib/",
     "lint:fix": "eslint --fix lib/",
     "typecheck": "tsgo --noEmit"
