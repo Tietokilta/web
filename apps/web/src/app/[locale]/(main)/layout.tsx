@@ -11,11 +11,7 @@ import { SkipLink } from "@components/skip-link";
 import "@tietokilta/ui/global.css";
 import "../globals.css";
 import { cn } from "@lib/utils";
-import { getTranslations, getLocale, getStaticParams } from "@locales/server";
-
-export function generateStaticParams() {
-  return getStaticParams();
-}
+import { getTranslations, getLocale } from "@locales/server";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({

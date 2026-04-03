@@ -15,13 +15,6 @@ import { generateTocFromRichText } from "@lib/utils";
 import { getLocale, type Locale } from "@locales/server";
 import type { Page as CMSPage } from "@payload-types";
 
-// Enable Full Route Cache — paths are generated on-demand and then cached as
-// static HTML.  The existing tag-based revalidation (via Payload afterChange
-// hooks) invalidates the cache when content is edited.
-export function generateStaticParams() {
-  return [];
-}
-
 interface NextPage<Params extends Record<string, unknown>> {
   params: Promise<Params>;
 }
