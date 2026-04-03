@@ -1,5 +1,5 @@
-import type { CollectionAfterChangeHook, TypeWithID } from "payload";
 import { revalidatePath, revalidateTag } from "next/cache";
+import type { CollectionAfterChangeHook, TypeWithID } from "payload";
 import type { Config } from "@payload-types";
 
 type CollectionSlug = keyof Config["collections"];

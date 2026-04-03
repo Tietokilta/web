@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { Button } from "@tietokilta/ui";
+import { useRouter } from "next/navigation";
 
 export function BackButton({ children }: { children: React.ReactNode }) {
   const router = useRouter();

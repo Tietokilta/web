@@ -1,5 +1,5 @@
-import * as migration_20250327_193012_migration from "./20250327_193012_migration";
 import * as migration_20240616_101649_Add_displayTitle_to_database from "./20240616_101649_Add_displayTitle_to_database";
+import * as migration_20250327_193012_migration from "./20250327_193012_migration";
 
 export const migrations = [
   {

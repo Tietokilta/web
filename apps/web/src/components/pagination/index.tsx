@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -9,6 +8,7 @@ import {
 } from "@tietokilta/ui";
 import type { ButtonProps } from "@tietokilta/ui";
 import Link from "next/link";
+import * as React from "react";
 import type { JSX } from "react";
 import { cn } from "../../lib/utils";
 

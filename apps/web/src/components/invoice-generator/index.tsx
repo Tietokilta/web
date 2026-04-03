@@ -1,7 +1,8 @@
 "use client";
 
 import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
-import { useFormStatus, requestFormReset } from "react-dom";
+import Form from "next/form";
+import { useParams } from "next/navigation";
 import {
   type InputHTMLAttributes,
   type ReactNode,
@@ -12,15 +13,14 @@ import {
   type FormEvent,
   useRef,
 } from "react";
-import Form from "next/form";
+import { useFormStatus, requestFormReset } from "react-dom";
 import { toast } from "sonner";
-import { useParams } from "next/navigation";
-import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 import type { Locale } from "@i18n/routing";
-import { NextIntlClientProvider, useTranslations } from "../../locales/client";
-import { locales, type Messages } from "../../locales/index";
+import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
+import { NextIntlClientProvider, useTranslations } from "../../locales/client";
+import { locales, type Messages } from "../../locales/index";
 
 const MAX_PAYLOAD_SIZE = 24 * 1024 * 1024; // 24MB in bytes
 

@@ -1,9 +1,9 @@
 import * as Papa from "papaparse";
 import type { PayloadRequest } from "payload";
 import type { Board, Committee } from "@payload-types";
-import { CommitteeMembers } from "../collections/committees/committee-members";
 import { BoardMembers } from "../collections/board/board-members";
 import { Boards } from "../collections/board/boards";
+import { CommitteeMembers } from "../collections/committees/committee-members";
 import type { CommitteesSlug } from "../collections/committees/committees";
 
 interface CommitteeMember {

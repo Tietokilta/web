@@ -1,6 +1,12 @@
 import * as React from "react";
-import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
 import { type EditorState } from "@lexical-types";
+import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
+import {
+  Calendar,
+  Greetings,
+  NewsletterCategory,
+  TableOfContents,
+} from "./helper-components";
 import {
   byDate,
   formatDateYear,
@@ -9,12 +15,6 @@ import {
   isThisWeek,
   type TocItem,
 } from "./utils/utils";
-import {
-  Calendar,
-  Greetings,
-  NewsletterCategory,
-  TableOfContents,
-} from "./helper-components";
 
 interface NewsletterEmailProps {
   newsletter: WeeklyNewsletter;

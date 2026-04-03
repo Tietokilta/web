@@ -1,9 +1,9 @@
 "use client";
+import { VT323 } from "next/font/google";
 /* eslint-disable @next/next/no-img-element -- we're doing some very custom stuff here */
 import type { StaticImageData } from "next/image";
 import type { KeyboardEvent } from "react";
 import { useEffect, useRef, useState } from "react";
-import { VT323 } from "next/font/google";
 import ErrorImage from "../../assets/DinoGame/Error.svg";
 import RestartImage from "../../assets/DinoGame/Restart.svg";
 import StandImage from "../../assets/DinoGame/Stand.svg";

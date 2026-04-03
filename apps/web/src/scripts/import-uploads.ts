@@ -1,9 +1,9 @@
 #!/usr/bin/env tsx
+import fs from "node:fs";
 /* eslint-disable no-console -- this is a script */
 import path from "node:path";
-import fs from "node:fs";
-import payloadInit from "payload";
 import dotenv from "dotenv";
+import payloadInit from "payload";
 
 const __dirname = import.meta.dirname;
 

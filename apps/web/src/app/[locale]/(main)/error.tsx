@@ -2,9 +2,9 @@
 
 import { Button, Card } from "@tietokilta/ui";
 import { useParams } from "next/navigation";
+import type { Locale } from "@i18n/routing";
 import { NextIntlClientProvider, useTranslations } from "@locales/client";
 import { locales, type Messages } from "@locales/index";
-import type { Locale } from "@i18n/routing";
 
 function ErrorContent({
   error,

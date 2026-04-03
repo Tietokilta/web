@@ -1,6 +1,6 @@
 import type { routing } from "@i18n/routing";
-import type fi from "../locales/fi";
 import type en from "../locales/en";
+import type fi from "../locales/fi";
 
 declare module "next-intl" {
   interface AppConfig {

@@ -1,9 +1,9 @@
-import { remark } from "remark";
-import strip from "strip-markdown";
 import {
   type UserEventListItem,
   type UserEventListResponse,
 } from "@tietokilta/ilmomasiina-models";
+import { remark } from "remark";
+import strip from "strip-markdown";
 
 export function createEvents(
   events: UserEventListResponse,

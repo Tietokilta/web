@@ -1,19 +1,19 @@
+import { Card } from "@tietokilta/ui";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
-import { Card } from "@tietokilta/ui";
-import type { Page as CMSPage } from "@payload-types";
-import type { EditorState } from "@lexical-types";
-import WeeklyNewslettersListPage from "@custom-pages/weekly-newsletters-list-page";
-import EventsPage from "@custom-pages/events-page";
-import AllEventsPage from "@custom-pages/all-events-page";
-import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
 import { AdminBar } from "@components/admin-bar";
-import { LivePreview } from "@components/live-preview-server";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";
+import { LivePreview } from "@components/live-preview-server";
 import { TableOfContents } from "@components/table-of-contents";
+import AllEventsPage from "@custom-pages/all-events-page";
+import EventsPage from "@custom-pages/events-page";
+import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
+import WeeklyNewslettersListPage from "@custom-pages/weekly-newsletters-list-page";
+import type { EditorState } from "@lexical-types";
 import { fetchPage } from "@lib/api/pages";
-import { getLocale, type Locale } from "@locales/server";
 import { generateTocFromRichText } from "@lib/utils";
+import { getLocale, type Locale } from "@locales/server";
+import type { Page as CMSPage } from "@payload-types";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Promise<Params>;

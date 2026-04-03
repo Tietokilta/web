@@ -1,11 +1,11 @@
 "use client";
 
 import { NavigationMenuItem, NavigationMenuLink } from "@tietokilta/ui";
-import NextLink from "next/link";
 import Image from "next/image";
+import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import type { Media } from "@payload-types";
 import { usePathnameLocale } from "@lib/use-pathname-locale";
+import type { Media } from "@payload-types";
 import TiKLogo from "../../assets/TiK-logo-white.png";
 
 export function LogoLink({ image }: { image: Media | undefined }) {

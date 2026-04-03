@@ -5,6 +5,27 @@
     "functions": ["cva", "cn", "clsx"],
     "attributes": ["cva", "cn", "clsx"]
   },
+  "sortImports": {
+    "newlinesBetween": false,
+    "internalPattern": [
+      "@components/",
+      "@lib/",
+      "@locales/",
+      "@i18n/",
+      "@custom-pages/",
+      "@payload-config",
+      "@payload-types",
+      "@lexical-types"
+    ],
+    "groups": [
+      "builtin",
+      "external",
+      ["internal", "subpath"],
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown"
+    ]
+  },
   "printWidth": 80,
   "sortPackageJson": {},
   "ignorePatterns": [

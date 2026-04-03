@@ -1,9 +1,9 @@
 import type { CollectionConfig, FieldHook } from "payload";
 import type { CommitteeMember } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
+import { linkCommitteePhotos } from "../../controllers/link-committee-photos";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
-import { linkCommitteePhotos } from "../../controllers/link-committee-photos";
 
 const formatDisplayTitle: FieldHook<CommitteeMember> = ({
   data: committeeMember,

@@ -1,9 +1,9 @@
 "use client";
 
-import Form from "next/form";
-import { Button, type ButtonProps } from "@tietokilta/ui";
-import { useFormStatus } from "react-dom";
 import { type UserEventResponse } from "@tietokilta/ilmomasiina-models";
+import { Button, type ButtonProps } from "@tietokilta/ui";
+import Form from "next/form";
+import { useFormStatus } from "react-dom";
 import { useSignUp } from "@lib/api/external/ilmomasiina/actions";
 import { cn, currencyFormatter } from "@lib/utils";
 import { useLocale, useTranslations } from "@locales/client";

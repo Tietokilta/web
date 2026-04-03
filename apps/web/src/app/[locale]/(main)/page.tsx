@@ -1,14 +1,14 @@
 import { type Metadata } from "next";
-import type { EditorState } from "@lexical-types";
-import type { News, Page as CMSPage } from "@payload-types";
+import { AnnouncementCard } from "@components/announcement-card";
+import AprilFoolsAlert from "@components/april-fools/april-fools-alert";
 import { EventsDisplay } from "@components/events-display";
 import { Hero } from "@components/hero";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";
+import type { EditorState } from "@lexical-types";
 import { fetchLandingPage } from "@lib/api/landing-page";
-import { AnnouncementCard } from "@components/announcement-card";
-import { getLocale } from "@locales/server";
-import AprilFoolsAlert from "@components/april-fools/april-fools-alert";
 import { type NonNullableKeys } from "@lib/utils";
+import { getLocale } from "@locales/server";
+import type { News, Page as CMSPage } from "@payload-types";
 
 function Content({ content }: { content?: EditorState }) {
   if (!content) return null;

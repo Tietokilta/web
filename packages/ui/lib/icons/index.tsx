@@ -41,12 +41,12 @@ import {
   HandshakeIcon,
 } from "lucide-react";
 import type { JSX } from "react";
-import { default as TikLogo } from "./tik-logo";
-import NavGuildIcon from "./nav/guild";
-import NavFuksisIcon from "./nav/fuksis";
+import NavApplicantsIcon from "./nav/applicants";
 import NavCompaniesIcon from "./nav/companies";
 import NavEventsIcon from "./nav/events";
-import NavApplicantsIcon from "./nav/applicants";
+import NavFuksisIcon from "./nav/fuksis";
+import NavGuildIcon from "./nav/guild";
+import { default as TikLogo } from "./tik-logo";
 
 export const icons = {
   AlertOctagon: AlertOctagonIcon,

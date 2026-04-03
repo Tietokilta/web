@@ -1,7 +1,6 @@
 /* eslint-disable no-bitwise -- lexical nodes are defined bitwise*/
 import { type Node } from "@lexical-types";
 import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
-import { env } from "../../env";
 import {
   IS_BOLD,
   IS_ITALIC,
@@ -12,6 +11,7 @@ import {
   type Locale,
   type TocItem,
 } from "../../emails/utils/utils";
+import { env } from "../../env";
 
 export const parseToTelegramString = (nodes: Node[]): string => {
   let result = "";

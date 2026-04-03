@@ -1,9 +1,9 @@
 import type { CollectionConfig, FilterOptions } from "payload";
 import type { Committee } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
+import { committeesImportController } from "../../controllers/committees-import-controller";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
-import { committeesImportController } from "../../controllers/committees-import-controller";
 
 const filterCurrentYear: FilterOptions<Committee> = ({ data }) => ({
   guildYear: {

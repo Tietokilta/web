@@ -1,7 +1,7 @@
 import type { Block, GlobalConfig } from "payload";
 import type { LinkRowBlockLink } from "@payload-types";
-import { iconField } from "../fields/icon-field";
 import { PartnerStatusField } from "../collections/partners";
+import { iconField } from "../fields/icon-field";
 
 const LinkRowBlock: Block = {
   slug: "link-row",

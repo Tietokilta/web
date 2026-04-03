@@ -1,16 +1,16 @@
-import Link from "next/link";
-import { Button } from "@tietokilta/ui";
 import { type UserEventListResponse } from "@tietokilta/ilmomasiina-models";
+import { Button } from "@tietokilta/ui";
 import { getMessages } from "next-intl/server";
+import Link from "next/link";
+import { BackButton } from "../components/back-button";
+import { CalendarSubButton } from "../components/calendar-sub-button";
+import EventCard from "../components/event-card";
 import {
   fetchEvents,
   fetchUpcomingEvents,
 } from "../lib/api/external/ilmomasiina";
-import { BackButton } from "../components/back-button";
-import { getLocale, getTranslations } from "../locales/server";
 import { NextIntlClientProvider } from "../locales/client";
-import { CalendarSubButton } from "../components/calendar-sub-button";
-import EventCard from "../components/event-card";
+import { getLocale, getTranslations } from "../locales/server";
 import EventCalendar from "./event-calendar";
 
 async function Calendar({ events }: { events: UserEventListResponse }) {

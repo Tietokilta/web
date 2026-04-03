@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { useDocumentInfo } from "@payloadcms/ui";
+import * as React from "react";
 
 const getTelegramMessage = async (
   locale: string,

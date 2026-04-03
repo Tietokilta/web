@@ -1,0 +1,48 @@
+{
+  "$schema": "../../node_modules/oxlint/configuration_schema.json",
+  "extends": ["../../.oxlintrc.json"],
+  "plugins": ["nextjs"],
+  "options": {
+    "typeAware": true
+  },
+  "env": {
+    "node": true
+  },
+  "ignorePatterns": ["src/app/(payload)"],
+  "rules": {
+    // Allow !! for boolean coercion in the Next.js app
+    "no-implicit-coercion": ["warn", { "boolean": false }],
+
+    // === Next.js rules ===
+    "nextjs/google-font-display": "warn",
+    "nextjs/google-font-preconnect": "warn",
+    "nextjs/next-script-for-ga": "warn",
+    "nextjs/no-async-client-component": "warn",
+    "nextjs/no-before-interactive-script-outside-document": "warn",
+    "nextjs/no-css-tags": "warn",
+    "nextjs/no-head-element": "warn",
+    "nextjs/no-html-link-for-pages": "warn",
+    "nextjs/no-img-element": "warn",
+    "nextjs/no-page-custom-font": "warn",
+    "nextjs/no-styled-jsx-in-document": "warn",
+    "nextjs/no-sync-scripts": "warn",
+    "nextjs/no-title-in-document-head": "warn",
+    "nextjs/no-typos": "warn",
+    "nextjs/no-unwanted-polyfillio": "warn",
+    "nextjs/inline-script-id": "warn",
+    "nextjs/no-assign-module-variable": "warn",
+    "nextjs/no-document-import-in-page": "warn",
+    "nextjs/no-duplicate-head": "warn",
+    "nextjs/no-head-import-in-document": "warn",
+    "nextjs/no-script-component-in-head": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        // Next.js app doesn't require explicit return types
+        "typescript/explicit-function-return-type": "off"
+      }
+    }
+  ]
+}

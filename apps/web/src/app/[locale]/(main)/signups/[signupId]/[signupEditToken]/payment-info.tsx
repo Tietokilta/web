@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@tietokilta/ui";
 import {
   PaymentMode,
   SignupPaymentStatus,
   SignupStatus,
   type SignupForEditResponse,
 } from "@tietokilta/ilmomasiina-models";
-import { useLocale, useTranslations } from "@locales/client";
+import { Button } from "@tietokilta/ui";
+import { useState } from "react";
 import { useStartPaymentAction } from "@lib/api/external/ilmomasiina/actions";
 import { currencyFormatter } from "@lib/utils";
+import { useLocale, useTranslations } from "@locales/client";
 
 interface PaymentInfoProps {
   signup: SignupForEditResponse;

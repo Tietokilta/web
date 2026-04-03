@@ -1,4 +1,4 @@
-import sharp from "sharp";
+import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import {
   BlocksFeature,
   HeadingFeature,
@@ -6,42 +6,42 @@ import {
   LinkFeature,
   RelationshipFeature,
 } from "@payloadcms/richtext-lexical";
-import { mongooseAdapter } from "@payloadcms/db-mongodb";
-import { buildConfig } from "payload";
 import { azureStorage } from "@payloadcms/storage-azure";
+import { buildConfig } from "payload";
 import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
+import sharp from "sharp";
 import type { Config } from "@payload-types";
-import { Users } from "./collections/users";
-import { Pages } from "./collections/pages";
-import { Topics } from "./collections/topics";
+import { Collapsible } from "./blocks/collapsible";
+import { CommitteesInYear } from "./blocks/committees-in-year";
+import { EditorInChief } from "./blocks/editor-in-chief";
+import { GoogleForm } from "./blocks/google-form";
+import { HighlightCard } from "./blocks/highlight-card";
+import { ImageLinkGrid } from "./blocks/image-link-grid";
+import { InvoiceGenerator } from "./blocks/invoice-generator";
+import { PartnersBlock } from "./blocks/partners-block";
 import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
 import { CommitteeMembers } from "./collections/committees/committee-members";
 import { Committees } from "./collections/committees/committees";
+import { Documents } from "./collections/documents";
+import { AwardedHonors } from "./collections/honors/awarded-honors";
+import { Honors } from "./collections/honors/honors";
 import { MagazineIssues } from "./collections/magazines/magazine-issues";
 import { Magazines } from "./collections/magazines/magazines";
+import { Media } from "./collections/media";
 import { News } from "./collections/news";
-import { WeeklyNewsletters } from "./collections/weekly-newsletters/weekly-newsletters";
-import { NewsItems } from "./collections/weekly-newsletters/news-items";
-import { Honors } from "./collections/honors/honors";
-import { AwardedHonors } from "./collections/honors/awarded-honors";
+import { Pages } from "./collections/pages";
 import { Partners } from "./collections/partners";
+import { Topics } from "./collections/topics";
+import { Users } from "./collections/users";
+import { NewsItems } from "./collections/weekly-newsletters/news-items";
+import { WeeklyNewsletters } from "./collections/weekly-newsletters/weekly-newsletters";
 import { Footer } from "./globals/footer";
+import { InfoScreen } from "./globals/info-screen";
 import { LandingPage } from "./globals/landing-page";
 import { MainNavigation } from "./globals/main-navigation";
-import { CommitteesInYear } from "./blocks/committees-in-year";
-import { ImageLinkGrid } from "./blocks/image-link-grid";
-import { GoogleForm } from "./blocks/google-form";
-import { HighlightCard } from "./blocks/highlight-card";
-import { EditorInChief } from "./blocks/editor-in-chief";
-import { InvoiceGenerator } from "./blocks/invoice-generator";
-import { PartnersBlock } from "./blocks/partners-block";
-import { Collapsible } from "./blocks/collapsible";
-import { Media } from "./collections/media";
-import { Documents } from "./collections/documents";
-import { isCloudStorageEnabled, isGoogleAuthEnabled } from "./util";
 import { revalidateGlobal } from "./hooks/revalidate-globals";
-import { InfoScreen } from "./globals/info-screen";
+import { isCloudStorageEnabled, isGoogleAuthEnabled } from "./util";
 
 declare module "payload" {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- not applicable

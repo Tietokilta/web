@@ -1,7 +1,7 @@
 "use client";
 
-import { DvdScreensaver } from "react-dvd-screensaver";
 import { useEffect, useState } from "react";
+import { DvdScreensaver } from "react-dvd-screensaver";
 import { type EditorInChiefBlockNode } from "@lexical-types";
 
 export function EditorInChief({

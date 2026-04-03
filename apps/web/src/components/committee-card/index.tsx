@@ -1,11 +1,11 @@
-import Image from "next/image";
-import type { JSX } from "react";
 import {
   ChevronDownIcon,
   GavelIcon,
   GmailIcon,
   TelegramIcon,
 } from "@tietokilta/ui";
+import Image from "next/image";
+import type { JSX } from "react";
 import type { Committee, CommitteeMember, Media } from "@payload-types";
 import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";

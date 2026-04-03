@@ -1,4 +1,15 @@
 "use client";
+import { tz } from "@date-fns/tz";
+import {
+  type UserEventListResponse,
+  type UserEventListItem,
+} from "@tietokilta/ilmomasiina-models";
+import "./event-calendar.css";
+import { format, parse, startOfWeek, getDay, endOfDay } from "date-fns";
+import { enUS } from "date-fns/locale/en-US";
+import { fi as fin } from "date-fns/locale/fi";
+import Link from "next/link";
+import { useState, useCallback } from "react";
 import {
   Calendar as ReactCalendar,
   type View,
@@ -7,17 +18,6 @@ import {
   Views,
   dateFnsLocalizer,
 } from "react-big-calendar";
-import { useState, useCallback } from "react";
-import "./event-calendar.css";
-import { format, parse, startOfWeek, getDay, endOfDay } from "date-fns";
-import { tz } from "@date-fns/tz";
-import { enUS } from "date-fns/locale/en-US";
-import { fi as fin } from "date-fns/locale/fi";
-import Link from "next/link";
-import {
-  type UserEventListResponse,
-  type UserEventListItem,
-} from "@tietokilta/ilmomasiina-models";
 import { useTranslations, useLocale } from "../locales/client";
 import type { Locale } from "../locales/server";
 

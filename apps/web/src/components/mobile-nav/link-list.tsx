@@ -9,6 +9,8 @@ import {
   CollapsibleTrigger,
   ExternalLinkIcon,
 } from "@tietokilta/ui";
+import { PartnerLogos } from "@components/partner-logos";
+import { getTranslations } from "@locales/server";
 import type {
   LinkRowBlock,
   MainNavigationItem,
@@ -16,8 +18,6 @@ import type {
   PartnersRowBlock,
   Topic,
 } from "@payload-types";
-import { PartnerLogos } from "@components/partner-logos";
-import { getTranslations } from "@locales/server";
 import { cn } from "../../lib/utils";
 import { Link } from "./link";
 

@@ -1,9 +1,3 @@
-/* eslint-disable no-nested-ternary -- much uglier without */
-import { notFound } from "next/navigation";
-import Markdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Card, Progress } from "@tietokilta/ui";
-import { type Metadata } from "next";
 import {
   getSignupsByQuota,
   type SignupWithQuota,
@@ -15,19 +9,25 @@ import {
   type UserEventResponse,
   SignupStatus,
 } from "@tietokilta/ilmomasiina-models";
+import { Card, Progress } from "@tietokilta/ui";
+import { type Metadata } from "next";
 import { getMessages } from "next-intl/server";
+/* eslint-disable no-nested-ternary -- much uglier without */
+import { notFound } from "next/navigation";
+import Markdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { BackButton } from "@components/back-button";
+import { DateTime } from "@components/datetime";
 import { fetchEvent } from "@lib/api/external/ilmomasiina";
+import { remarkI18n } from "@lib/plugins/remark-i18n";
 import {
   formatDateTimeSeconds,
   formatDateTimeSecondsOptions,
   formatDatetimeYear,
   formatDatetimeYearOptions,
 } from "@lib/utils";
-import { BackButton } from "@components/back-button";
-import { getLocale, getTranslations } from "@locales/server";
 import { NextIntlClientProvider } from "@locales/client";
-import { DateTime } from "@components/datetime";
-import { remarkI18n } from "@lib/plugins/remark-i18n";
+import { getLocale, getTranslations } from "@locales/server";
 import { SignupCountdown } from "./signup-countdown";
 
 function getFormattedAnswer(

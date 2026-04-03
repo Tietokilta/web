@@ -1,8 +1,8 @@
 import type { JSX } from "react";
 import type { CommitteesYearBlockNode } from "@lexical-types";
 import { fetchCommittees } from "../../lib/api/committees";
-import { CommitteeCard } from "../committee-card";
 import { getLocale } from "../../locales/server";
+import { CommitteeCard } from "../committee-card";
 
 export async function CommitteeList({
   year,
