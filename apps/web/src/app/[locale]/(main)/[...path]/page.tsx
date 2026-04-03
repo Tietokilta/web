@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { AdminBar } from "@components/admin-bar";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import { LivePreview } from "@components/live-preview-server";
+import { PageFeedback } from "@components/page-feedback";
 import { TableOfContents } from "@components/table-of-contents";
 import AllEventsPage from "@custom-pages/all-events-page";
 import EventsPage from "@custom-pages/events-page";
@@ -130,7 +131,7 @@ async function Page(props: Props) {
   }
 
   if (page.type === "redirect") {
-    const redirectToPage = page.redirectToPage;
+    const redirectToPage = page.redirectToPage as CMSPage | undefined;
     if (!redirectToPage?.path) {
       // eslint-disable-next-line no-console -- nice to know
       console.error("Redirect page missing redirect target", page);
@@ -187,6 +188,9 @@ async function Page(props: Props) {
             <p>{page.description}</p>
           </Card>
           <Content content={content} />
+          {page.feedbackEnabled && page.path ? (
+            <PageFeedback path={page.path} />
+          ) : null}
         </div>
       </main>
       <LivePreview />

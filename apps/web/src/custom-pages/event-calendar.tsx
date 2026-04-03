@@ -46,7 +46,7 @@ const CATEGORY_COLOR_OVERRIDES: Record<string, string> = {
 function getCategoryColor(category: string): string {
   if (!category) return CATEGORY_COLORS[0];
   if (category in CATEGORY_COLOR_OVERRIDES)
-    return CATEGORY_COLOR_OVERRIDES[category];
+    return CATEGORY_COLOR_OVERRIDES[category]!;
   // djb2 hash
   let hash = 5381;
   for (let i = 0; i < category.length; i++) {

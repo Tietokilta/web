@@ -37,7 +37,7 @@ function NavigationLink({
 }) {
   if (pageOrTopic.type === "page") {
     const localisedPath =
-      (pageOrTopic.pageConfig?.page)?.path ?? "#broken";
+      (pageOrTopic.pageConfig?.page as Page | undefined)?.path ?? "#broken";
     return (
       <div className="group/link relative flex h-20 items-center justify-center">
         <Link

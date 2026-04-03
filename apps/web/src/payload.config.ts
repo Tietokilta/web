@@ -285,8 +285,10 @@ export default buildConfig({
       const db = payloadInstance.db;
       // Access the underlying mongoose connection
       if ("connection" in db && db.connection) {
-        const mongoose = db.connection as typeof import("mongoose");
-        const collection = mongoose.connection.collection("view-sessions");
+        const conn = db.connection as unknown as {
+          connection: { collection: (name: string) => { createIndex: (index: Record<string, number>, options: Record<string, unknown>) => Promise<unknown> } };
+        };
+        const collection = conn.connection.collection("view-sessions");
         // Create TTL index - documents expire 24 hours after createdAt
         await collection.createIndex(
           { createdAt: 1 },
@@ -298,7 +300,7 @@ export default buildConfig({
       }
     } catch (error) {
       // Index might already exist, that's fine
-      payloadInstance.logger.debug("TTL index setup:", error);
+      payloadInstance.logger.debug(`TTL index setup: ${String(error)}`);
     }
     if (isCloudStorageEnabled()) {
       payloadInstance.logger.info("Using Azure Blob Storage");

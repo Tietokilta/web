@@ -15,7 +15,7 @@ function CommitteeMemberCard({
 }: {
   committeeMember: CommitteeMember;
 }) {
-  const photo = committeeMember.photo;
+  const photo = committeeMember.photo as Media | undefined;
   const isChair = !!committeeMember.chair;
   const name = committeeMember.name.replace(/-/g, "\u2011"); // use non-breaking hyphens
   const parseTG = (username: string) => username.replace("@", "");

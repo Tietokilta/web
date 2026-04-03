@@ -6,7 +6,7 @@ import TikLogo from "../../assets/TiK-logo.png";
 import { cn, insertSoftHyphens } from "../../lib/utils";
 
 function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
-  const photo = boardMember.photo;
+  const photo = boardMember.photo as Media | undefined;
   return (
     <li className="relative flex gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pt-12 pb-6 font-mono shadow-solid md:px-6">
       <div className="absolute top-0 left-0 flex w-full justify-between border-b-2 border-gray-900 bg-gray-100 p-2">
@@ -71,7 +71,7 @@ function BoardMemberCard({ boardMember }: { boardMember: BoardMember }) {
 }
 
 export function BoardGrid({ board }: { board: Board }): JSX.Element {
-  const groupPhoto = board.groupPhoto;
+  const groupPhoto = board.groupPhoto as Media | undefined;
   return (
     <>
       {groupPhoto ? (

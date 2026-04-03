@@ -221,7 +221,7 @@ function LexicalNodeSerializer({
         );
       }
 
-      const thumbnail = node.value.thumbnail;
+      const thumbnail = node.value.thumbnail as Media | undefined;
 
       return (
         <a

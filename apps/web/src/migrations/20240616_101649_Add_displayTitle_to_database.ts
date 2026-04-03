@@ -31,7 +31,7 @@ export async function up({ payload }: MigrateUpArgs): Promise<void> {
   }
 
   for (const item of newsItems.docs) {
-    const date = new Date(item.date);
+    const date = new Date(item.date!);
     const displayTitle = isNaN(date.getTime())
       ? item.title
       : `${item.title} - ${date.toLocaleDateString("fi-FI")}`;
