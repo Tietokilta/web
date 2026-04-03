@@ -27,6 +27,7 @@ function ImageWithCitation({
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
+        sizes="100vw"
         priority={isCurrentImage}
         loading="eager"
         quality={50}
@@ -44,6 +45,7 @@ function ImageWithCitation({
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
+        sizes="100vw"
         priority={isCurrentImage}
         loading="eager"
         quality={50}

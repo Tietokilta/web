@@ -237,6 +237,7 @@ function LexicalNodeSerializer({
                   alt={thumbnail.alt}
                   src={thumbnail.url ?? "#broken-url"}
                   fill
+                  sizes="128px"
                   className="object-contain object-center"
                 />
               </div>
