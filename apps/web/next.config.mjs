@@ -10,6 +10,7 @@ const nextConfig = {
   images: {
     minimumCacheTTL: 3600,
     contentDispositionType: "inline",
+    qualities: [50, 75],
   },
   experimental: {
     turbopackFileSystemCacheForDev: true,
