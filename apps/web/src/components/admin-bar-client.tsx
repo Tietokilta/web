@@ -19,16 +19,23 @@ export function AdminBarClient({
   };
 
   return (
-    <PayloadAdminBar
-      className="bottom-0"
-      cmsURL={cmsURL}
-      collectionSlug={collection}
-      id={id}
-      onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:
-      preview={isPreviewMode}
-      style={{
-        top: "auto",
-      }}
-    />
+    <>
+      {isPreviewMode ? (
+        <div className="fixed top-20 z-20 w-full bg-red-500 p-2 text-center text-white">
+          This is a draft preview
+        </div>
+      ) : null}
+      <PayloadAdminBar
+        className="bottom-0"
+        cmsURL={cmsURL}
+        collectionSlug={collection}
+        id={id}
+        onPreviewExit={() => void exitPreview()} // has to be likes this, otherwise it doesn't run for some reason :shrug:
+        preview={isPreviewMode}
+        style={{
+          top: "auto",
+        }}
+      />
+    </>
   );
 }

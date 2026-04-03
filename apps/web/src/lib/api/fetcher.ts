@@ -1,4 +1,6 @@
 import type { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies";
+// NOTE: Draft preview requires the payload-token cookie, which is only set
+// during normal login (not with autologin in dev). Preview works in production.
 import { cookies, draftMode } from "next/headers";
 import { stringify as qsStringify } from "qs";
 import { type Config } from "@payload-types";
@@ -29,26 +31,24 @@ export function fetcher<TRequest, TResponse>({
     // eslint-disable-next-line no-console -- for debugging purposes
     console.log("tagToCache", tags);
 
-    const res = await dataFetcher(
-      req,
-      Boolean(isDraftMode) && Boolean(payloadToken),
-      {
-        // this is the key we'll use to on-demand revalidate pages that use this data
-        // we do this by calling `revalidateTag()` using the same key
-        // see `app/api/revalidate.ts` for more info
-        next: {
-          revalidate: false,
-          tags,
-        },
-        ...(isDraftMode && payloadToken
-          ? {
-              headers: {
-                Authorization: `JWT ${payloadToken.value}`,
-              },
-            }
-          : {}),
+    const draft = Boolean(isDraftMode) && Boolean(payloadToken);
+
+    const res = await dataFetcher(req, draft, {
+      // this is the key we'll use to on-demand revalidate pages that use this data
+      // we do this by calling `revalidateTag()` using the same key
+      // see `app/api/revalidate.ts` for more info
+      next: {
+        revalidate: false,
+        tags,
       },
-    );
+      ...(draft && payloadToken
+        ? {
+            headers: {
+              Cookie: `payload-token=${payloadToken.value}`,
+            },
+          }
+        : {}),
+    });
 
     return res ?? null;
   };

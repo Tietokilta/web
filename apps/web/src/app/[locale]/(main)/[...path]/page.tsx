@@ -8,6 +8,7 @@ import EventsPage from "@custom-pages/events-page";
 import AllEventsPage from "@custom-pages/all-events-page";
 import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
 import { AdminBar } from "@components/admin-bar";
+import { LivePreview } from "@components/live-preview-server";
 import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import { TableOfContents } from "@components/table-of-contents";
 import { fetchPage } from "@lib/api/pages";
@@ -181,6 +182,7 @@ async function Page(props: Props) {
           <Content content={content} />
         </div>
       </main>
+      <LivePreview />
       <AdminBar collection="pages" id={page.id} />
     </>
   );
