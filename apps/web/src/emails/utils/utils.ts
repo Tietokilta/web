@@ -1,3 +1,5 @@
+import { TZDate } from "@date-fns/tz";
+import { getISOWeek, getISOWeekYear } from "date-fns";
 import type { JSX } from "react";
 import type { Node } from "@lexical-types";
 
@@ -164,28 +166,34 @@ export const formatDateOptions = {
  */
 export const formatDate = getDateTimeFormatter(formatDateOptions);
 
-export const getWeekNumber = (date: Date): number => {
-  const d = new Date(
-    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()),
-  );
-  const dayNum = d.getUTCDay() || 7;
-  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-  return Math.ceil(((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7);
-};
+const TIMEZONE = "Europe/Helsinki";
 
 export const isThisWeek = (date: string): boolean => {
-  const now = new Date();
-  const currentWeek = getWeekNumber(now);
-  const eventWeek = getWeekNumber(new Date(date));
-
-  return currentWeek === eventWeek;
+  const now = new TZDate(new Date(), TIMEZONE);
+  const eventDate = new TZDate(new Date(date), TIMEZONE);
+  return (
+    getISOWeek(now) === getISOWeek(eventDate) &&
+    getISOWeekYear(now) === getISOWeekYear(eventDate)
+  );
 };
 
 export const isNextWeek = (date: string): boolean => {
-  const now = new Date();
-  const currentWeek = getWeekNumber(now);
-  const eventWeek = getWeekNumber(new Date(date));
+  const now = new TZDate(new Date(), TIMEZONE);
+  const nextWeek = new TZDate(new Date(now.getTime() + 7 * 86400000), TIMEZONE);
+  const eventDate = new TZDate(new Date(date), TIMEZONE);
+  return (
+    getISOWeek(nextWeek) === getISOWeek(eventDate) &&
+    getISOWeekYear(nextWeek) === getISOWeekYear(eventDate)
+  );
+};
 
-  return currentWeek + 1 === eventWeek;
+export const isLater = (date: string): boolean =>
+  !isThisWeek(date) && !isNextWeek(date);
+
+export const byDate = (
+  a: { date?: string | null },
+  b: { date?: string | null },
+): number => {
+  if (!a.date || !b.date) return 0;
+  return new Date(a.date).getTime() - new Date(b.date).getTime();
 };

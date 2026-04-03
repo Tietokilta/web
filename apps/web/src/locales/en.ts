@@ -275,6 +275,7 @@ const en = {
     "Bottom Corner": "Bottom Corner",
     Calendar: "Calendar",
     Guild: "Guild",
+    Later: "Later",
     "Next week": "Next week",
     "old weekly newsletters": "old weekly newsletters",
     Other: "Other",

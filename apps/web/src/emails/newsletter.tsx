@@ -1,7 +1,14 @@
 import * as React from "react";
 import { type NewsItem, type WeeklyNewsletter } from "@payload-types";
 import { type EditorState } from "@lexical-types";
-import { formatDateYear, isThisWeek, type TocItem } from "./utils/utils";
+import {
+  byDate,
+  formatDateYear,
+  isLater,
+  isNextWeek,
+  isThisWeek,
+  type TocItem,
+} from "./utils/utils";
 import {
   Calendar,
   Greetings,
@@ -65,19 +72,25 @@ export function Newsletter({
     (newsItem) => newsItem.newsItemCategory === "bottom-corner",
   );
 
-  const eventsThisWeek = allNewsItems.filter(
-    (newsItem) => newsItem.date && isThisWeek(newsItem.date),
-  );
-  const eventsNextWeek = allNewsItems.filter(
-    (newsItem) => newsItem.date && !isThisWeek(newsItem.date),
-  );
-  const signupsThisWeek = allNewsItems.filter(
-    (newsItem) =>
-      newsItem.signupStartDate && isThisWeek(newsItem.signupStartDate),
-  );
+  const eventsThisWeek = allNewsItems
+    .filter((newsItem) => newsItem.date && isThisWeek(newsItem.date))
+    .toSorted(byDate);
+  const eventsNextWeek = allNewsItems
+    .filter((newsItem) => newsItem.date && isNextWeek(newsItem.date))
+    .toSorted(byDate);
+  const eventsLater = allNewsItems
+    .filter((newsItem) => newsItem.date && isLater(newsItem.date))
+    .toSorted(byDate);
+  const signupsThisWeek = allNewsItems
+    .filter(
+      (newsItem) =>
+        newsItem.signupStartDate && isThisWeek(newsItem.signupStartDate),
+    )
+    .toSorted(byDate);
   const showCalendar =
     eventsThisWeek.length > 0 ||
     eventsNextWeek.length > 0 ||
+    eventsLater.length > 0 ||
     signupsThisWeek.length > 0;
   const toc: TocItem[] = [
     showCalendar ? { text: t[locale].calendar, children: [] } : null,
@@ -132,6 +145,7 @@ export function Newsletter({
         <Calendar
           eventsThisWeek={eventsThisWeek}
           eventsNextWeek={eventsNextWeek}
+          eventsLater={eventsLater}
           signupsThisWeek={signupsThisWeek}
           locale={locale}
           order="1."

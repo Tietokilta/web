@@ -268,12 +268,14 @@ export function NewsletterCategory({
 export function Calendar({
   eventsThisWeek,
   eventsNextWeek,
+  eventsLater,
   signupsThisWeek,
   locale,
   order,
 }: {
   eventsThisWeek: NewsItem[];
   eventsNextWeek: NewsItem[];
+  eventsLater: NewsItem[];
   signupsThisWeek: NewsItem[];
   locale: "en" | "fi";
   order: string;
@@ -281,6 +283,7 @@ export function Calendar({
   if (
     eventsThisWeek.length === 0 &&
     eventsNextWeek.length === 0 &&
+    eventsLater.length === 0 &&
     signupsThisWeek.length === 0
   ) {
     return null;
@@ -288,12 +291,14 @@ export function Calendar({
   const t = {
     en: {
       calendar: "Calendar",
+      later: "Later",
       "next-week": "Next week",
       "this-week-signups": "Sign ups open this week",
       "this-week": "This week",
     },
     fi: {
       calendar: "Kalenteri",
+      later: "Myöhemmin",
       "next-week": "Ensi viikolla",
       "this-week": "Tällä viikolla",
       "this-week-signups": "Tällä viikolla avoinna olevat ilmoittautumiset",
@@ -324,6 +329,21 @@ export function Calendar({
           <span>{t[locale]["next-week"]}:</span>
           <ul>
             {eventsNextWeek.map((newsItem) => (
+              <li key={newsItem.id}>
+                {newsItem.date ? (
+                  <span>{formatDate(newsItem.date)} </span>
+                ) : null}
+                <span>{newsItem.title}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {eventsLater.length > 0 ? (
+        <div>
+          <span>{t[locale].later}:</span>
+          <ul>
+            {eventsLater.map((newsItem) => (
               <li key={newsItem.id}>
                 {newsItem.date ? (
                   <span>{formatDate(newsItem.date)} </span>
