@@ -1,6 +1,5 @@
-import { ApolloClient, gql, InMemoryCache } from "@apollo/client";
-import { HttpLink } from "@apollo/client/link/http";
 import { TZDate } from "@date-fns/tz";
+import { unstable_noStore as noStore } from "next/cache";
 import { env } from "../../../env";
 import type {
   HSLResponse,
@@ -14,6 +13,7 @@ interface StopConfig {
   stopType: StopType;
   stops: [string, string];
 }
+
 const STOPS = [
   // Metro east and west
   { stopType: "metro", stops: ["HSL:2222603", "HSL:2222604"] },
@@ -25,75 +25,86 @@ const STOPS = [
 
 // count of arrivals to render
 const N_ARRIVALS = 10;
+const REFRESH_INTERVAL_MS = 15_000;
+const ACTIVE_CLIENT_WINDOW_MS = 60_000;
+const DIGITRANSIT_URI = "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1";
 
-const client = new ApolloClient({
-  link: new HttpLink({
-    uri: "https://api.digitransit.fi/routing/v2/hsl/gtfs/v1",
-    headers: {
-      "Content-Type": "application/json",
-      "digitransit-subscription-key": env.DIGITRANSIT_SUBSCRIPTION_KEY ?? "",
-    },
-    fetchOptions: {
-      next: {
-        revalidate: 30,
-      },
-    },
-  }),
-  defaultOptions: {
-    query: {
-      fetchPolicy: "no-cache",
-    },
-  },
-  cache: new InMemoryCache({
-    resultCaching: false,
-  }),
-  ssrMode: true,
-});
+const cachedSchedules = new Map<StopType, Stop>();
+let lastRefreshAttemptAt = 0;
+let lastAccessAt = 0;
+let refreshPromise: Promise<void> | null = null;
+let refreshTimer: ReturnType<typeof setInterval> | null = null;
+
+interface DigitransitGraphQLResponse {
+  data?: HSLResponse;
+  errors?: unknown;
+}
+
+const makeStopQuery = (stop: string) => `
+  {
+    stop(id: "${stop}") {
+      name
+      stoptimesWithoutPatterns {
+        realtimeArrival
+        serviceDay
+        trip {
+          tripHeadsign
+          routeShortName
+        }
+      }
+    }
+  }
+`;
 
 const getData = async (stop: string) => {
   try {
-    const data = await client
-      .query<HSLResponse>({
-        // https://api.digitransit.fi/graphiql/hsl/v2/gtfs/v1?query=%257B%250A%2520%2520stop%28id%253A%2520%2522HSL%253A2222234%2522%29%2520%257B%250A%2520%2520%2520%2520name%250A%2520%2520%2520%2520stoptimesWithoutPatterns%2520%257B%250A%2520%2520%2520%2520%2520%2520realtimeArrival%250A%2520%2520%2520%2520%2520%2520serviceDay%250A%2520%2520%2520%2520%2520%2520trip%2520%257B%250A%2520%2520%2520%2520%2520%2520%2520%2520tripHeadsign%250A%2520%2520%2520%2520%2520%2520%2520%2520routeShortName%250A%2520%2520%2520%2520%2520%2520%257D%250A%2520%2520%2520%2520%257D%250A%2520%2520%257D%250A%257D
-        query: gql(`
-        {
-          stop(id: "${stop}") {
-            name
-              stoptimesWithoutPatterns {
-              realtimeArrival
-              serviceDay
-              trip{
-                tripHeadsign
-                routeShortName
-              }
-            }
-          }
-        }
-`),
-      })
-      .then((result) => {
-        if (!result.data) return null;
-        return mapStop(result.data.stop);
-      });
-    return data;
-  } catch (e) {
+    const response = await fetch(DIGITRANSIT_URI, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "digitransit-subscription-key": env.DIGITRANSIT_SUBSCRIPTION_KEY ?? "",
+      },
+      body: JSON.stringify({
+        query: makeStopQuery(stop),
+      }),
+      cache: "no-store",
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Digitransit request for stop ${stop} failed with status ${String(response.status)}`,
+      );
+    }
+
+    const result = (await response.json()) as DigitransitGraphQLResponse;
+
+    if (!result.data?.stop) {
+      if (result.errors) {
+        // eslint-disable-next-line no-console -- TODO: add actual logger
+        console.error(result.errors);
+      }
+      return null;
+    }
+
+    return mapStop(result.data.stop);
+  } catch (error) {
     // eslint-disable-next-line no-console -- TODO: add actual logger
-    console.error(e);
+    console.error(error);
     return null;
   }
 };
 
 export async function HSLSchedules() {
-  const stops = await Promise.all(STOPS.map(getStop));
-  return stops.filter((f) => f !== null);
-}
+  noStore();
+  noteClientAccess();
 
-function pad(number: number, size: number) {
-  let s = String(number);
-  while (s.length < (size || 2)) {
-    s = "0".concat(s);
+  if (cachedSchedules.size === 0) {
+    await refreshSchedules();
+  } else if (shouldRefresh()) {
+    void refreshSchedules();
   }
-  return s;
+
+  return getCachedScheduleList();
 }
 
 function mapStop(stop: StopHSL): Omit<Stop, "type"> {
@@ -134,10 +145,9 @@ function makePrintTime(
   const secondsFromMidnight = (hour * 60 + min) * 60 + sec;
   const arrivalTime = arrivalTimeUnix - serviceDay;
   if (arrivalTime - secondsFromMidnight > 600) {
-    return `${pad(
-      Math.floor((arrivalTimeUnix - serviceDay) / 60 / 60) % 24,
-      2,
-    )}:${pad(Math.floor(((arrivalTimeUnix - serviceDay) / 60) % 60), 2)}`;
+    const hours = Math.floor((arrivalTimeUnix - serviceDay) / 60 / 60) % 24;
+    const minutes = Math.floor(((arrivalTimeUnix - serviceDay) / 60) % 60);
+    return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
   }
   const t1 = Math.floor(arrivalTime - secondsFromMidnight);
   if (t1 < -60) {
@@ -147,12 +157,17 @@ function makePrintTime(
   return t <= 1 ? "~0" : String(t);
 }
 
-const getStop = async ({ stopType, stops }: StopConfig) => {
+const getStop = async ({
+  stopType,
+  stops,
+}: StopConfig): Promise<Stop | null> => {
   const [result1, result2] = await Promise.all(stops.map(getData));
 
-  if (!result1 || !result2) return null;
+  if (!result1 || !result2) {
+    return null;
+  }
 
-  const result: Stop = {
+  return {
     name: result1.name,
     type: stopType,
     arrivals: result1.arrivals
@@ -160,5 +175,73 @@ const getStop = async ({ stopType, stops }: StopConfig) => {
       .sort((arr1, arr2) => arr1.arrivalTimeUnix - arr2.arrivalTimeUnix)
       .slice(0, N_ARRIVALS),
   };
-  return result;
+};
+
+const getCachedScheduleList = (): Stop[] =>
+  STOPS.map(({ stopType }) => cachedSchedules.get(stopType)).filter(
+    (stop): stop is Stop => stop !== undefined,
+  );
+
+const shouldRefresh = () =>
+  Date.now() - lastRefreshAttemptAt >= REFRESH_INTERVAL_MS;
+
+const noteClientAccess = () => {
+  lastAccessAt = Date.now();
+
+  if (refreshTimer) {
+    return;
+  }
+
+  refreshTimer = setInterval(() => {
+    if (Date.now() - lastAccessAt > ACTIVE_CLIENT_WINDOW_MS) {
+      stopRefreshLoop();
+      return;
+    }
+
+    void refreshSchedules();
+  }, REFRESH_INTERVAL_MS);
+};
+
+const stopRefreshLoop = () => {
+  if (!refreshTimer) {
+    return;
+  }
+
+  clearInterval(refreshTimer);
+  refreshTimer = null;
+};
+
+const refreshSchedules = async (): Promise<void> => {
+  if (refreshPromise) {
+    return refreshPromise;
+  }
+
+  lastRefreshAttemptAt = Date.now();
+
+  refreshPromise = (async () => {
+    const stops = await Promise.all(STOPS.map(getStop));
+
+    let refreshedAny = false;
+    stops.forEach((stop) => {
+      if (!stop) {
+        return;
+      }
+
+      cachedSchedules.set(stop.type, stop);
+      refreshedAny = true;
+    });
+
+    if (!refreshedAny) {
+      throw new Error("Failed to refresh any HSL stop groups");
+    }
+  })()
+    .catch((error: unknown) => {
+      // eslint-disable-next-line no-console -- TODO: add actual logger
+      console.error(error);
+    })
+    .finally(() => {
+      refreshPromise = null;
+    });
+
+  return refreshPromise;
 };
