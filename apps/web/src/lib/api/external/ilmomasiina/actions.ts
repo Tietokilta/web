@@ -70,13 +70,11 @@ export function useSaveSignUpAction() {
     const formEntries = [...formData.entries()].reduce<
       Record<string, string | string[]>
     >((acc, [key, value]) => {
-      if (
-        value instanceof File ||
-        value === "" ||
-        value.startsWith("$ACTION")
-      ) {
+      if (value instanceof File || value.startsWith("$ACTION")) {
         return acc;
       }
+      // Empty strings are valid answers — a checkbox question may declare an
+      // option with an empty label, and ticking it submits `""` as the value.
 
       if (key in acc) {
         acc[key] = [value].concat(acc[key]);
