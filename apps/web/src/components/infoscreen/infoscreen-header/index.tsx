@@ -2,10 +2,11 @@ import Image from "next/image";
 import { PartnerLogos } from "@components/partner-logos";
 import TiKLogo from "../../../assets/TiK-logo-white.png";
 import { InfoscreenClock } from "./clock";
+import { InfoscreenTitle } from "./title";
 
 export function InfoScreenHeader() {
   return (
-    <div className="flex h-32 justify-between bg-black p-4 text-white">
+    <div className="flex h-32 items-center justify-between bg-black p-4 text-white">
       <div className="flex h-24 space-y-2">
         <Image
           alt="Tietokilta"
@@ -15,6 +16,7 @@ export function InfoScreenHeader() {
         />
         <InfoscreenClock />
       </div>
+      <InfoscreenTitle />
       <div className="mx-10 flex h-24 space-y-2">
         <PartnerLogos
           statuses={["mainPartner"]}

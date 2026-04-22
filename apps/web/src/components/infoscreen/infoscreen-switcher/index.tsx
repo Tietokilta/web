@@ -1,31 +1,44 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { isTruthy } from "remeda";
+import { useInfoscreenTitle } from "@components/infoscreen/infoscreen-header/title-context";
+
+export interface InfoScreenItem {
+  title: string;
+  content: React.ReactNode;
+}
 
 export default function InfoScreenSwitcher({
-  children,
+  items,
 }: {
-  children: React.ReactNode;
+  items: InfoScreenItem[];
 }) {
   const [current, setCurrent] = useState(0);
-  const childrenArray = React.Children.toArray(children).filter(isTruthy);
-  const count = childrenArray.length;
+  const count = items.length;
+  const activeIndex = count === 0 ? 0 : current % count;
+  const activeTitle = items[activeIndex]?.title ?? null;
   const router = useRouter();
+  const { setTitle } = useInfoscreenTitle();
 
   useEffect(() => {
-    const setNextChild = () => {
+    setTitle(activeTitle);
+    return () => {
+      setTitle(null);
+    };
+  }, [activeTitle, setTitle]);
+
+  useEffect(() => {
+    if (count === 0) return undefined;
+    const intervalId = setInterval(() => {
       setCurrent((prev) => (prev + 1) % count);
       router.refresh();
-    };
-    const intervalId = setInterval(setNextChild, 15000); // Change screen every x seconds
-
+    }, 15000); // Change screen every x seconds
     return () => {
       clearInterval(intervalId);
     };
   }, [count, router]);
 
-  if (childrenArray.length === 0) {
+  if (count === 0) {
     return (
       <div className="flex h-full flex-col">
         error, no info screen components functional
@@ -35,16 +48,16 @@ export default function InfoScreenSwitcher({
 
   return (
     <>
-      {childrenArray.map((child, index) => (
+      {items.map((item, index) => (
         <div
           key={index}
           style={{
-            display: index === current ? "block" : "none",
+            display: index === activeIndex ? "block" : "none",
             width: "100%",
             height: "100%",
           }}
         >
-          {child}
+          {item.content}
         </div>
       ))}
     </>

@@ -43,11 +43,6 @@ export async function KanttiinitCombined() {
   return (
     <div className="h-full">
       <div className="h-[95%] w-full flex-row justify-center">
-        <div className="flex w-full justify-center">
-          <h1 className="mt-2 mb-1 text-center font-mono text-5xl font-bold">
-            {t("Menus")}
-          </h1>
-        </div>
         <div className="top-3 flex w-full justify-between gap-x-4 gap-y-2 p-3 pt-0">
           {menus.map((menu) => (
             <div
