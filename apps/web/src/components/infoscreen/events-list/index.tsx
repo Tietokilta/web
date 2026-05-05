@@ -9,7 +9,6 @@ export default async function EventListInfoscreen({
 }: {
   showIlmostatus?: boolean;
 }) {
-  const tIlmo = await getTranslations("ilmomasiina");
   const tCal = await getTranslations("calendar");
   const locale = await getLocale();
   const eventsResponse = await fetchUpcomingEvents(locale);
@@ -26,9 +25,6 @@ export default async function EventListInfoscreen({
 
   return (
     <main id="main" className="flex flex-col p-4 align-top">
-      <h1 className="mt-4 mb-2 text-center font-mono text-5xl font-bold">
-        {tIlmo("Events")}
-      </h1>
       <ul className="flex flex-row flex-wrap">
         {Object.entries(upcomingEventsDataByWeek)
           .filter(

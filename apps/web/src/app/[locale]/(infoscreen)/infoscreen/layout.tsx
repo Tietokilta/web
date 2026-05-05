@@ -2,6 +2,7 @@
 import { Inter, Roboto_Mono } from "next/font/google";
 import React from "react";
 import { InfoScreenHeader } from "@components/infoscreen/infoscreen-header/index.tsx";
+import { InfoscreenTitleProvider } from "@components/infoscreen/infoscreen-header/title-context.tsx";
 import "../../globals.css";
 import { cn } from "@lib/utils.ts";
 
@@ -22,10 +23,12 @@ export default function ScreenLayout({
   return (
     <html lang="fi" className="h-full">
       <body className={cn(inter.variable, robotoMono.variable, "h-full")}>
-        <div className="flex h-full flex-col bg-gray-200 font-mono">
-          <InfoScreenHeader />
-          <div className="size-full">{children}</div>
-        </div>
+        <InfoscreenTitleProvider>
+          <div className="flex h-full flex-col bg-gray-200 font-mono">
+            <InfoScreenHeader />
+            <div className="size-full">{children}</div>
+          </div>
+        </InfoscreenTitleProvider>
       </body>
     </html>
   );
