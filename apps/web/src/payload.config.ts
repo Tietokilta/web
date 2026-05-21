@@ -5,6 +5,7 @@ import {
   lexicalEditor,
   LinkFeature,
   RelationshipFeature,
+  UploadFeature,
 } from "@payloadcms/richtext-lexical";
 import { azureStorage } from "@payloadcms/storage-azure";
 import { buildConfig } from "payload";
@@ -155,7 +156,22 @@ export default buildConfig({
           Collapsible,
         ],
       }),
-      // UploadFeature({})
+      UploadFeature({
+        collections: {
+          media: {
+            fields: [
+              {
+                name: "caption",
+                label: "Caption",
+                localized: true,
+                type: "text",
+                minLength: 20,
+                maxLength: 100,
+              },
+            ],
+          },
+        },
+      }),
     ],
   }),
   plugins: [
