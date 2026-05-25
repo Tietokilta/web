@@ -1,6 +1,7 @@
 import type { CollectionConfig } from "payload";
 import { signedIn } from "../access/signed-in";
 import { revalidateCollection } from "../hooks/revalidate-collection";
+import { revalidateLandingPageAnnouncement } from "../hooks/revalidate-landing-page-announcement";
 
 export const News: CollectionConfig = {
   slug: "news",
@@ -111,6 +112,9 @@ export const News: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [revalidateCollection("news")],
+    afterChange: [
+      revalidateCollection("news"),
+      revalidateLandingPageAnnouncement,
+    ],
   },
 };
