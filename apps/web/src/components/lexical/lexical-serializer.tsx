@@ -17,6 +17,7 @@ import {
 } from "../../lib/utils";
 import { BoardGrid } from "../board-grid";
 import { CollapsibleBlock } from "../collapsible-block";
+import { ColumnsBlock } from "../columns-block";
 import { CommitteeCard } from "../committee-card";
 import { CommitteeList } from "../committee-list";
 import { EditorInChief } from "../editor-in-chief";
@@ -343,6 +344,14 @@ function Block({ node }: { node: BlockNode }) {
         <CollapsibleBlock
           header={node.fields.header}
           content={node.fields.content.root.children}
+          Renderer={LexicalSerializer}
+        />
+      );
+    }
+    case "columns": {
+      return (
+        <ColumnsBlock
+          columns={node.fields.columns}
           Renderer={LexicalSerializer}
         />
       );

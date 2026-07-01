@@ -13,6 +13,7 @@ import { OAuth2Plugin, defaultGetToken } from "payload-oauth2";
 import sharp from "sharp";
 import type { Config } from "@payload-types";
 import { Collapsible } from "./blocks/collapsible";
+import { Columns } from "./blocks/columns";
 import { CommitteesInYear } from "./blocks/committees-in-year";
 import { EditorInChief } from "./blocks/editor-in-chief";
 import { GoogleForm } from "./blocks/google-form";
@@ -154,6 +155,7 @@ export default buildConfig({
           InvoiceGenerator,
           PartnersBlock,
           Collapsible,
+          Columns,
         ],
       }),
       UploadFeature({
