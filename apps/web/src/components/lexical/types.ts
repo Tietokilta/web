@@ -228,6 +228,16 @@ export type CollapsibleBlockNode = BaseBlockNode & {
   };
 };
 
+export type ColumnsBlockNode = BaseBlockNode & {
+  fields: BaseBlockFields & {
+    blockType: "columns";
+    columns: {
+      content: EditorState;
+      id?: string | null;
+    }[];
+  };
+};
+
 export type BlockNode =
   | CommitteesYearBlockNode
   | ImageLinkGridBlockNode
@@ -236,7 +246,8 @@ export type BlockNode =
   | EditorInChiefBlockNode
   | InvoiceGeneratorBlockNode
   | PartnersBlockNode
-  | CollapsibleBlockNode;
+  | CollapsibleBlockNode
+  | ColumnsBlockNode;
 
 export type Node =
   | TextNode
