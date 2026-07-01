@@ -61,6 +61,46 @@ export interface TocItem {
   id: string;
 }
 
+const collectHeadings = (
+  nodes: Node[],
+  toc: TocItem[],
+  seenIds: Map<string, number>,
+  onlyTopLevel: boolean,
+): void => {
+  for (const node of nodes) {
+    if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
+      const level = parseInt(node.tag[1], 10) as 2 | 3;
+      if (onlyTopLevel && level === 3) continue;
+
+      const text = lexicalNodeToTextContent(node);
+      const baseId = stringToId(text);
+      const id = makeUniqueId(baseId, seenIds);
+
+      toc.push({ text, level, id });
+    } else if (node.type === "block") {
+      walkBlockFields(node.fields, toc, seenIds, onlyTopLevel);
+    }
+  }
+};
+
+const walkBlockFields = (
+  value: unknown,
+  toc: TocItem[],
+  seenIds: Map<string, number>,
+  onlyTopLevel: boolean,
+): void => {
+  if (!value || typeof value !== "object") return;
+  const maybeRoot = (value as { root?: { children?: unknown } }).root;
+  if (maybeRoot && Array.isArray(maybeRoot.children)) {
+    collectHeadings(maybeRoot.children as Node[], toc, seenIds, onlyTopLevel);
+    return;
+  }
+  const children = Array.isArray(value) ? value : Object.values(value);
+  for (const child of children) {
+    walkBlockFields(child, toc, seenIds, onlyTopLevel);
+  }
+};
+
 export const generateTocFromRichText = (
   content?: EditorState,
   onlyTopLevel = false,
@@ -68,27 +108,7 @@ export const generateTocFromRichText = (
   if (!content) return [];
   const toc: TocItem[] = [];
   const seenIds = new Map<string, number>();
-
-  for (const node of content.root.children) {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- extra safety
-    if (node.type === "heading" && (node.tag === "h2" || node.tag === "h3")) {
-      const tag = node.tag;
-      const level = parseInt(tag[1], 10) as 2 | 3;
-
-      if (onlyTopLevel && level === 3) continue;
-
-      const text = lexicalNodeToTextContent(node);
-      const baseId = stringToId(text);
-      const id = makeUniqueId(baseId, seenIds);
-
-      toc.push({
-        text,
-        level,
-        id,
-      });
-    }
-  }
-
+  collectHeadings(content.root.children, toc, seenIds, onlyTopLevel);
   return toc;
 };
 
