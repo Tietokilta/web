@@ -114,8 +114,8 @@ importers:
         specifier: 'catalog:'
         version: 4.3.2
       '@tietokilta/ilmomasiina-client':
-        specifier: 3.0.0-alpha.7
-        version: 3.0.0-alpha.7(react@19.2.7)
+        specifier: 3.0.0-alpha.12
+        version: 3.0.0-alpha.12(react@19.2.7)
       '@tietokilta/ilmomasiina-models':
         specifier: 3.0.0-alpha.7
         version: 3.0.0-alpha.7
@@ -2944,13 +2944,16 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || >=4.0.0 || insiders'
 
-  '@tietokilta/ilmomasiina-client@3.0.0-alpha.7':
-    resolution: {integrity: sha512-1N1eGzHtQuwxEJmpdmBkRrIhVvudAW/FAUvwuaR71YoqMg1WNDdd8URgOJ8S/NNhwRBK7v8ABXjw/+x5KPlCsw==}
+  '@tietokilta/ilmomasiina-client@3.0.0-alpha.12':
+    resolution: {integrity: sha512-JRtlFPdT+J9w4RmEBY4pa8QR2xqrm4Tpx9qyQ1Y+OB0JxH5xSCzGGsNrLKdfeVeOgzh8FgQf2+5pPx7/FIBDyg==}
     peerDependencies:
       react: ^17 || ^18 || ^19
     peerDependenciesMeta:
       react:
         optional: true
+
+  '@tietokilta/ilmomasiina-models@3.0.0-alpha.12':
+    resolution: {integrity: sha512-VcTxGUZ/ns05V5epAD0F6+Nh58uvcI+u/U9XhHB8YkcK+45W43ehaYQJysYet30A1TZs2IkbfWpSY4sVYCPwyQ==}
 
   '@tietokilta/ilmomasiina-models@3.0.0-alpha.7':
     resolution: {integrity: sha512-Nl184qipJNVNYk0w6wkQO2y8OO3OSXhmE12wWX9NI886YJT6G2wS5BX5Z8iZ+7jQRWIddrnb+OiRcgeocvZLFQ==}
@@ -4156,9 +4159,6 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
-  lodash-es@4.17.23:
-    resolution: {integrity: sha512-kVI48u3PZr38HdYz98UmfPnXl2DXrpdctLrFLCd3kOx1xUkOmpFPx7gCWWM5MPkL/fD8zb+Ph0QzjGFs4+hHWg==}
-
   lodash-es@4.18.1:
     resolution: {integrity: sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==}
 
@@ -5322,6 +5322,9 @@ packages:
 
   typebox@1.0.81:
     resolution: {integrity: sha512-bCslZUmZESHhBn4kHDghzH2oo3qu8m2W89xDLxQHv/aPvY4i81Nd1jvijlBp9wSpsVytDSfSoosbiBAjgsNb2Q==}
+
+  typebox@1.3.6:
+    resolution: {integrity: sha512-Sc8RA0NCMEFmApHNU9ZMzqcpQj46She44J8ffpLM/bdhLNUZKq7DJumcLcsFx1gRmDfQPgCgOmFFJ7rcnfWNyA==}
 
   typescript@6.0.3:
     resolution: {integrity: sha512-y2TvuxSZPDyQakkFRPZHKFm+KKVqIisdg9/CZwm9ftvKXLP8NRWj38/ODjNbr43SsoXqNuAisEf1GdCxqWcdBw==}
@@ -8151,12 +8154,16 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.3.2
 
-  '@tietokilta/ilmomasiina-client@3.0.0-alpha.7(react@19.2.7)':
+  '@tietokilta/ilmomasiina-client@3.0.0-alpha.12(react@19.2.7)':
     dependencies:
-      '@tietokilta/ilmomasiina-models': 3.0.0-alpha.7
-      lodash-es: 4.17.23
+      '@tietokilta/ilmomasiina-models': 3.0.0-alpha.12
+      lodash-es: 4.18.1
     optionalDependencies:
       react: 19.2.7
+
+  '@tietokilta/ilmomasiina-models@3.0.0-alpha.12':
+    dependencies:
+      typebox: 1.3.6
 
   '@tietokilta/ilmomasiina-models@3.0.0-alpha.7':
     dependencies:
@@ -9277,8 +9284,6 @@ snapshots:
       lightningcss-win32-x64-msvc: 1.32.0
 
   lines-and-columns@1.2.4: {}
-
-  lodash-es@4.17.23: {}
 
   lodash-es@4.18.1: {}
 
@@ -10882,6 +10887,8 @@ snapshots:
       tagged-tag: 1.0.0
 
   typebox@1.0.81: {}
+
+  typebox@1.3.6: {}
 
   typescript@6.0.3: {}
 
