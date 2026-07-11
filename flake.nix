@@ -53,6 +53,7 @@
                   enable = true;
                   package = pkgs.nodejs-slim_24;
                   pnpm.enable = true;
+                  pnpm.package = pkgs.pnpm_11;
                   pnpm.install.enable = true;
                 };
               }

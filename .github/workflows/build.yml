@@ -37,7 +37,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v6
         with:
@@ -79,7 +79,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v7
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
 
       - name: Setup Node.js for npm (OIDC)
         uses: actions/setup-node@v6

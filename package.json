@@ -38,15 +38,7 @@
     "typescript": "catalog:"
   },
   "engines": {
-    "node": "22.22.0"
+    "node": ">=22.22.0 <23"
   },
-  "packageManager": "pnpm@10.16.1",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "es5-ext",
-      "esbuild",
-      "sharp"
-    ]
-  }
+  "packageManager": "pnpm@11.9.0"
 }
