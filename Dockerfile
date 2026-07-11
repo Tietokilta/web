@@ -1,5 +1,5 @@
 # Base image with Node.js
-ARG NODE_VERSION=22.22.0
+ARG NODE_VERSION=22.23.1
 # Use a specific version of the Node.js Alpine image as the base. Alpine images are minimal and lightweight.
 FROM node:${NODE_VERSION}-alpine AS base
 # Update the package list and install libc6-compat. This package is often required for binary Node.js modules.
@@ -9,7 +9,7 @@ RUN apk add --no-cache libc6-compat
 # Start a new stage based on the base image for setting up pnpm (a package manager) and turbo (for monorepo management).
 FROM base AS setup
 ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
+ENV PATH="$PNPM_HOME/bin:$PNPM_HOME:$PATH"
 RUN corepack enable
 RUN pnpm config set store-dir ~/.pnpm-store
 RUN pnpm install --global turbo
