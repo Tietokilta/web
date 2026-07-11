@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { DvdScreensaver } from "react-dvd-screensaver";
 import { type EditorInChiefBlockNode } from "@lexical-types";
+import { useDvdScreensaver } from "./use-dvd-screensaver";
 
 export function EditorInChief({
   name,
@@ -13,32 +12,28 @@ export function EditorInChief({
 }) {
   switch (type) {
     case "boring":
-      return Boring(name);
+      return <>{name}</>;
     case "dvd":
-      return DVD(name);
+      return <DvdEditor name={name} />;
   }
+
+  return null;
 }
 
-function Boring(name: string) {
-  return <>{name}</>;
-}
-
-function DVD(name: string) {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
+function DvdEditor({ name }: { name: string }) {
+  const { containerRef, elementRef } = useDvdScreensaver({ speed: 2 });
 
   return (
-    <div className="screensaver-container h-52 w-full md:h-80">
-      {!!isClient && (
-        <DvdScreensaver speed={2}>
-          <p className="m-0 w-fit font-mono text-lg font-bold md:text-2xl">
-            🔥 {name} 🔥
-          </p>
-        </DvdScreensaver>
-      )}
+    <div
+      className="screensaver-container relative h-52 w-full overflow-hidden md:h-80"
+      ref={containerRef}
+    >
+      <p
+        className="absolute top-0 left-0 m-0 w-fit font-mono text-lg font-bold md:text-2xl"
+        ref={elementRef}
+      >
+        🔥 {name} 🔥
+      </p>
     </div>
   );
 }

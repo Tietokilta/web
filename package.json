@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "turbo run build --cache-dir=.turbo",
+    "build": "dotenv -- turbo run build --cache-dir=.turbo",
     "clean": "turbo run clean --cache-dir=.turbo",
     "codegen": "dotenv -- turbo run codegen --cache-dir=.turbo",
     "db:clear": "docker compose down -v",
@@ -19,23 +19,23 @@
     "docker:start:web": "docker run -p 3000:3000 web",
     "format": "turbo run build --filter=@tietokilta/ui --cache-dir=.turbo && oxfmt --write .",
     "format:check": "turbo run build --filter=@tietokilta/ui --cache-dir=.turbo && oxfmt --check .",
-    "lint": "turbo run lint --cache-dir=.turbo",
-    "lint:fix": "turbo run lint:fix",
+    "lint": "dotenv -- turbo run lint --cache-dir=.turbo",
+    "lint:fix": "dotenv -- turbo run lint:fix",
     "payload": "dotenv -- pnpm -F web payload",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
-    "typecheck": "turbo run typecheck --cache-dir=.turbo",
+    "typecheck": "dotenv -- turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/web/uploads"
   },
   "devDependencies": {
     "@types/node": "catalog:",
     "@typescript/native-preview": "7.0.0-dev.20260401.1",
     "dotenv-cli": "^11.0.0",
-    "oxfmt": "^0.43.0",
-    "oxlint": "^1.58.0",
-    "oxlint-tsgolint": "^0.19.0",
-    "tsx": "^4.21.0",
-    "turbo": "^2.9.3",
-    "typescript": "catalog:"
+    "oxfmt": "^0.58.0",
+    "oxlint": "^1.73.0",
+    "oxlint-tsgolint": "^0.24.0",
+    "tsx": "^4.23.0",
+    "turbo": "^2.10.4",
+    "typescript": "^6.0.3"
   },
   "engines": {
     "node": ">=22.22.0 <23"
