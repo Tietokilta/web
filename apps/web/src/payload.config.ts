@@ -241,10 +241,17 @@ export default buildConfig({
       collections: {
         [Media.slug]: {
           disableLocalStorage: true,
+          // Payload 3.85 appends `?prefix=media` to proxied file URLs by
+          // default. Next.js rejects local image sources with query strings,
+          // and Payload's media file route rejects this prefix parameter.
+          generateFileURL: ({ filename }) =>
+            `/api/${Media.slug}/file/${encodeURIComponent(filename)}`,
           prefix: Media.slug,
         },
         [Documents.slug]: {
           disableLocalStorage: true,
+          generateFileURL: ({ filename }) =>
+            `/api/${Documents.slug}/file/${encodeURIComponent(filename)}`,
           prefix: Documents.slug,
         },
       },
