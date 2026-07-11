@@ -8,17 +8,17 @@
     linear-gradient(var(--color-gray-100) 30%, theme("colors.gray.100 / 0%"))
       center top,
     /* Shadow Cover BOTTOM */
-      linear-gradient(theme("colors.gray.100 / 0%"), var(--color-gray-100) 70%)
+    linear-gradient(theme("colors.gray.100 / 0%"), var(--color-gray-100) 70%)
       center bottom,
     /* Shadow TOP */
-      radial-gradient(
+    radial-gradient(
         farthest-side at 50% 0,
         theme("colors.gray.900 / 30%"),
         theme("colors.gray.900 / 0%")
       )
       center top,
     /* Shadow BOTTOM */
-      radial-gradient(
+    radial-gradient(
         farthest-side at 50% 100%,
         theme("colors.gray.900 / 30%"),
         theme("colors.gray.900 / 0%")
@@ -40,17 +40,17 @@
     linear-gradient(var(--color-gray-100) 10%, theme("colors.gray.100 / 0%"))
       center top,
     /* Shadow Cover BOTTOM */
-      linear-gradient(theme("colors.gray.100 / 0%"), var(--color-gray-100) 90%)
+    linear-gradient(theme("colors.gray.100 / 0%"), var(--color-gray-100) 90%)
       center bottom,
     /* Shadow TOP */
-      radial-gradient(
+    radial-gradient(
         farthest-side at 50% 0,
         theme("colors.gray.900 / 10%"),
         theme("colors.gray.900 / 0%")
       )
       center top,
     /* Shadow BOTTOM */
-      radial-gradient(
+    radial-gradient(
         farthest-side at 50% 100%,
         theme("colors.gray.900 / 10%"),
         theme("colors.gray.900 / 0%")

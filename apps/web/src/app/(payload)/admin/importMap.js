@@ -29,6 +29,7 @@ import { AzureClientUploadHandler as AzureClientUploadHandler_635fb302eaf52f6bac
 import { ActionsView as ActionsView_86608735ec280265d7bd55dfdf381db4 } from '../../../../src/views/actions-view'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
+/** @type import('payload').ImportMap */
 export const importMap = {
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,

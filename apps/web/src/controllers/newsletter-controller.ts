@@ -1,5 +1,5 @@
-import { render } from "@react-email/components";
 import { type PayloadHandler } from "payload";
+import { render } from "react-email";
 import { type Node } from "@lexical-types";
 import { type WeeklyNewsletter } from "@payload-types";
 import { signedIn } from "../access/signed-in";

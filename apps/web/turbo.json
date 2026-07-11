@@ -5,7 +5,12 @@
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "codegen": {
-      "outputs": ["src/app/*/payload/**", "payload-types.ts"]
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "!payload-types.ts",
+        "!src/app/**/importMap.js"
+      ],
+      "outputs": ["payload-types.ts", "src/app/**/importMap.js"]
     }
   }
 }
