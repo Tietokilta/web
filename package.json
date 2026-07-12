@@ -23,6 +23,7 @@
     "lint:fix": "dotenv -- turbo run lint:fix",
     "payload": "dotenv -- pnpm -F web payload",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
+    "test:e2e": "pnpm --filter e2e test",
     "typecheck": "dotenv -- turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/web/uploads"
   },
