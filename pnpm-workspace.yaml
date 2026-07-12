@@ -1,6 +1,7 @@
 packages:
   - apps/*
   - packages/*
+  - e2e
 
 catalog:
   "@tailwindcss/postcss": ^4.3.2
@@ -27,6 +28,9 @@ autoInstallPeers: true
 allowBuilds:
   "@parcel/watcher": true
   "@swc/core": true
+  cpu-features: false
   es5-ext: true
   esbuild: true
+  protobufjs: false
   sharp: true
+  ssh2: false

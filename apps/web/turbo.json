@@ -2,6 +2,7 @@
   "extends": ["//"],
   "tasks": {
     "build": {
+      "env": ["NEXT_OUTPUT"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "codegen": {
