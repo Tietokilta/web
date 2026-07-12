@@ -1,0 +1,18 @@
+{
+  "name": "e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "playwright test",
+    "lint": "oxlint -c ../.oxlintrc.json .",
+    "typecheck": "tsgo --noEmit"
+  },
+  "devDependencies": {
+    "@azure/storage-blob": "^12.33.0",
+    "@playwright/test": "^1.63.0",
+    "@tietokilta/config-typescript": "workspace:*",
+    "@types/node": "catalog:",
+    "sharp": "^0.35.3",
+    "testcontainers": "12.1.0"
+  }
+}
