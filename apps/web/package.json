@@ -11,10 +11,11 @@
     "email": "email dev --dir src/emails",
     "generate:importmap": "payload generate:importMap",
     "generate:types": "payload generate:types",
-    "lint": "oxlint -c .oxlintrc.json ./src/",
-    "lint:fix": "oxlint -c .oxlintrc.json --fix ./src/",
+    "lint": "oxlint -c .oxlintrc.json ./src/ ./tests/",
+    "lint:fix": "oxlint -c .oxlintrc.json --fix ./src/ ./tests/",
     "payload": "payload",
     "start": "next start",
+    "test:smoke": "vitest run tests/container-smoke.test.ts",
     "typecheck": "tsgo --noEmit"
   },
   "dependencies": {
@@ -75,7 +76,9 @@
     "@types/react-big-calendar": "^1.16.3",
     "@types/react-dom": "catalog:",
     "dotenv": "^17.4.2",
+    "testcontainers": "11.12.0",
     "typescript": "^6.0.3",
-    "unified": "^11.0.5"
+    "unified": "^11.0.5",
+    "vitest": "4.1.0"
   }
 }

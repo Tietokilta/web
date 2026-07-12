@@ -19,5 +19,5 @@
       "@lexical-types": ["./src/components/lexical/types.ts"]
     }
   },
-  "include": ["src", "next-env.d.ts", ".next/types/**/*.ts"]
+  "include": ["src", "tests", "next-env.d.ts", ".next/types/**/*.ts"]
 }
