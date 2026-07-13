@@ -15,6 +15,10 @@ updates:
         patterns:
           - "payload"
           - "@payloadcms/*"
+      ilmomasiina:
+        patterns:
+          - "@tietokilta/ilmomasiina-client"
+          - "@tietokilta/ilmomasiina-models"
       next:
         patterns:
           - "next"
