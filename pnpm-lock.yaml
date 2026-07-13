@@ -117,8 +117,8 @@ importers:
         specifier: 3.0.0-alpha.12
         version: 3.0.0-alpha.12(react@19.2.7)
       '@tietokilta/ilmomasiina-models':
-        specifier: 3.0.0-alpha.7
-        version: 3.0.0-alpha.7
+        specifier: 3.0.0-alpha.12
+        version: 3.0.0-alpha.12
       '@tietokilta/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2927,9 +2927,6 @@ packages:
 
   '@tietokilta/ilmomasiina-models@3.0.0-alpha.12':
     resolution: {integrity: sha512-VcTxGUZ/ns05V5epAD0F6+Nh58uvcI+u/U9XhHB8YkcK+45W43ehaYQJysYet30A1TZs2IkbfWpSY4sVYCPwyQ==}
-
-  '@tietokilta/ilmomasiina-models@3.0.0-alpha.7':
-    resolution: {integrity: sha512-Nl184qipJNVNYk0w6wkQO2y8OO3OSXhmE12wWX9NI886YJT6G2wS5BX5Z8iZ+7jQRWIddrnb+OiRcgeocvZLFQ==}
 
   '@tokenizer/inflate@0.4.1':
     resolution: {integrity: sha512-2mAv+8pkG6GIZiF1kNg1jAjh27IDxEPKwdGul3snfztFerfPGI1LjDezZp3i7BElXompqEtPmoPx6c2wgtWsOA==}
@@ -8052,10 +8049,6 @@ snapshots:
       react: 19.2.7
 
   '@tietokilta/ilmomasiina-models@3.0.0-alpha.12':
-    dependencies:
-      typebox: 1.3.6
-
-  '@tietokilta/ilmomasiina-models@3.0.0-alpha.7':
     dependencies:
       typebox: 1.3.6
 
