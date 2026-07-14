@@ -82,6 +82,9 @@ export async function SaveAction(
     subject: formData.get("subject") as string,
     description: formData.get("description") as string,
     bank_account_number: FormattedBankAccountNumber,
+    // An empty value means the cost pools could not be loaded: leave the field out entirely
+    // rather than sending "", which the backend would reject as an unknown cost pool
+    cost_pool: (formData.get("cost_pool") as string | null) || undefined,
     rows,
     attachment_descriptions: formData.getAll(
       "attachment_descriptions",

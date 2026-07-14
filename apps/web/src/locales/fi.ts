@@ -108,6 +108,8 @@ const fi = {
     "Phone number": "Puhelinnumero",
     Subject: "Aihe",
     Description: "Perustelut",
+    "Cost pool": "Valitse minkä toimikunnan/toiminnan kulu tämä on",
+    "Cost pool help": "Jos et tiedä niin vastaa unkown",
     "Bank account number": "Pankkitilin numero (IBAN)",
     Date: "Päiväys",
     Submit: "Lähetä",
