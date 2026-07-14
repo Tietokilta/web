@@ -39,7 +39,7 @@ jobs:
 
       - uses: pnpm/action-setup@v6
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version-file: package.json
           cache: "pnpm"
@@ -82,7 +82,7 @@ jobs:
       - uses: pnpm/action-setup@v6
 
       - name: Setup Node.js for npm (OIDC)
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version-file: package.json
           cache: "pnpm"
