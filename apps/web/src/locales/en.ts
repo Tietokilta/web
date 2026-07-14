@@ -109,6 +109,7 @@ const en = {
     Subject: "Subject",
     Description: "Description",
     "Cost pool": "Select which committee/activity this expense belongs to",
+    "Cost pool placeholder": "Select…",
     "Cost pool help": "If you don't know, answer unkown",
     "Bank account number": "Bank account number (IBAN)",
     Date: "Date",

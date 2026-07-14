@@ -17,12 +17,9 @@ import { useFormStatus, requestFormReset } from "react-dom";
 import { toast } from "sonner";
 import type { Locale } from "@i18n/routing";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
-import { env } from "../../env";
+import type { CostPool } from "@payload-types";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
-import {
-  type CostPool,
-  type InvoiceGeneratorFormState,
-} from "../../lib/api/external/laskugeneraattori/index";
+import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
 import { NextIntlClientProvider, useTranslations } from "../../locales/client";
 import { locales, type Messages } from "../../locales/index";
 
@@ -86,48 +83,18 @@ function TextAreaInputRow({
   );
 }
 
-// The cost pools live in the backend's cost_pools.toml and are served by GET /cost-pools, so
-// that adding a toimikunta never needs a change here
-function CostPoolRow() {
+// The cost pools are maintained in the CMS and fetched server-side, so adding or renaming a
+// toimikunta needs no deploy of either this app or laskugeneraattori
+function CostPoolRow({ costPools }: { costPools: CostPool[] }) {
   const t = useTranslations("invoicegenerator");
-  const [costPools, setCostPools] = useState<CostPool[] | null>(null);
-  const [failed, setFailed] = useState(false);
 
-  useEffect(() => {
-    const controller = new AbortController();
-
-    const load = async () => {
-      try {
-        const res = await fetch(
-          `${env.NEXT_PUBLIC_LASKUGENERAATTORI_URL}/cost-pools`,
-          { signal: controller.signal },
-        );
-        if (!res.ok) {
-          throw new Error(`GET /cost-pools returned ${res.status.toString()}`);
-        }
-        setCostPools((await res.json()) as CostPool[]);
-      } catch (error) {
-        if (controller.signal.aborted) return;
-        // Not being able to load the cost pools must not stop anyone from invoicing: the form
-        // submits without one and the backend books the invoice against an account that does
-        // not exist, which the treasurer picks up on
-        console.error("Failed to load cost pools", error);
-        setFailed(true);
-      }
-    };
-
-    void load();
-
-    return () => {
-      controller.abort();
-    };
-  }, []);
-
-  if (failed) return null;
+  // Without a list there is nothing to pick from. Leave the field out rather than blocking the
+  // form: the invoice is filed without a cost pool and the backend books it against an account
+  // that does not exist, which the treasurer picks up on.
+  if (costPools.length === 0) return null;
 
   const htmlId = "inputfield.cost_pool";
   const helpId = "inputfield.cost_pool.help";
-  const loading = costPools === null;
 
   return (
     <div>
@@ -136,15 +103,14 @@ function CostPoolRow() {
         aria-describedby={helpId}
         className="flex h-10 w-full rounded-md border-2 border-gray-900 bg-gray-100 px-3 py-2 text-sm ring-offset-gray-800 focus-visible:ring-2 focus-visible:ring-gray-600 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
         defaultValue=""
-        disabled={loading}
         id={htmlId}
         name="cost_pool"
         required
       >
         <option disabled value="">
-          {loading ? "…" : ""}
+          {t("Cost pool placeholder")}
         </option>
-        {costPools?.map((costPool) => (
+        {costPools.map((costPool) => (
           <option key={costPool.id} value={costPool.id}>
             {costPool.name}
           </option>
@@ -372,7 +338,7 @@ function AttachmentRow({
   );
 }
 
-function InvoiceGeneratorContent() {
+function InvoiceGeneratorContent({ costPools }: { costPools: CostPool[] }) {
   const [state, formAction] = useActionState(SaveAction, null);
   const t = useTranslations("invoicegenerator");
   const formRef = useRef<HTMLFormElement>(null);
@@ -533,7 +499,7 @@ function InvoiceGeneratorContent() {
         />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="cost_pool" formState={state}>
-        <CostPoolRow />
+        <CostPoolRow costPools={costPools} />
       </ErrorMessageBlock>
       <ErrorMessageBlock elementName="bank_account_number" formState={state}>
         {/* MDN: cc-number: A credit card number or other number identifying a payment method, such as an account number. */}
@@ -573,14 +539,14 @@ function InvoiceGeneratorContent() {
   );
 }
 
-export function InvoiceGenerator() {
+export function InvoiceGeneratorForm({ costPools }: { costPools: CostPool[] }) {
   const params = useParams<{ locale: Locale }>();
   const locale = params.locale;
   const messages = locales[locale] as Messages;
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <InvoiceGeneratorContent />
+      <InvoiceGeneratorContent costPools={costPools} />
     </NextIntlClientProvider>
   );
 }
