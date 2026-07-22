@@ -25,6 +25,7 @@ import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
 import { CommitteeMembers } from "./collections/committees/committee-members";
 import { Committees } from "./collections/committees/committees";
+import { CostPools } from "./collections/cost-pools";
 import { Documents } from "./collections/documents";
 import { AwardedHonors } from "./collections/honors/awarded-honors";
 import { Honors } from "./collections/honors/honors";
@@ -105,6 +106,7 @@ export default buildConfig({
     Boards,
     CommitteeMembers,
     Committees,
+    CostPools,
     MagazineIssues,
     Magazines,
     News,

@@ -82,6 +82,9 @@ export async function SaveAction(
     subject: formData.get("subject") as string,
     description: formData.get("description") as string,
     bank_account_number: FormattedBankAccountNumber,
+    // An empty value means the CMS had no cost pools to offer: leave the field out entirely
+    // rather than sending "", which the backend would reject as a malformed id
+    cost_pool: (formData.get("cost_pool") as string | null) || undefined,
     rows,
     attachment_descriptions: formData.getAll(
       "attachment_descriptions",
