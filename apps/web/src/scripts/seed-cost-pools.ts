@@ -16,8 +16,8 @@ if (!PAYLOAD_SECRET) {
 }
 
 /**
- * The toimikunnat as they were in laskugeneraattori's cost_pools.toml, which this collection
- * replaces. Seeded once; from here on the list is maintained in the admin UI.
+ * The toimikunnat as they were in laskugeneraattori, which this collection replaces. Seeded
+ * once; from here on the list is maintained in the admin UI.
  *
  * The account is the first four digits of the invoice's reference number, which is how the
  * accounting software knows where to book the payment.
