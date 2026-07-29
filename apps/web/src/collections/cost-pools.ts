@@ -32,6 +32,7 @@ export const CostPools = {
       name: "name",
       type: "text",
       required: true,
+      localized: true,
       admin: {
         description:
           "Näkyy laskugeneraattorin valikossa sekä laskun PDF:ssä ja rahastonhoitajan sähköpostissa.",
