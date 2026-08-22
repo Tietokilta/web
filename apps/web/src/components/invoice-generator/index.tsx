@@ -17,6 +17,7 @@ import { useFormStatus, requestFormReset } from "react-dom";
 import { toast } from "sonner";
 import type { Locale } from "@i18n/routing";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
+import type { CostPool } from "@payload-types";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
 import { type InvoiceGeneratorFormState } from "../../lib/api/external/laskugeneraattori/index";
 import { NextIntlClientProvider, useTranslations } from "../../locales/client";
@@ -78,6 +79,46 @@ function TextAreaInputRow({
         maxLength={maxLength}
         required={required}
       />
+    </div>
+  );
+}
+
+// The cost pools are maintained in the CMS and fetched server-side, so adding or renaming a
+// toimikunta needs no deploy of either this app or laskugeneraattori
+function CostPoolRow({ costPools }: { costPools: CostPool[] }) {
+  const t = useTranslations("invoicegenerator");
+
+  // Without a list there is nothing to pick from. Leave the field out rather than blocking the
+  // form: the invoice is filed without a cost pool and the backend books it against an account
+  // that does not exist, which the treasurer picks up on.
+  if (costPools.length === 0) return null;
+
+  const htmlId = "inputfield.cost_pool";
+  const helpId = "inputfield.cost_pool.help";
+
+  return (
+    <div>
+      <InputLabel name={t("Cost pool")} htmlId={htmlId} />
+      <select
+        aria-describedby={helpId}
+        className="flex h-10 w-full rounded-md border-2 border-gray-900 bg-gray-100 px-3 py-2 text-sm ring-offset-gray-800 focus-visible:ring-2 focus-visible:ring-gray-600 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+        defaultValue=""
+        id={htmlId}
+        name="cost_pool"
+        required
+      >
+        <option disabled value="">
+          {t("Cost pool placeholder")}
+        </option>
+        {costPools.map((costPool) => (
+          <option key={costPool.id} value={costPool.id}>
+            {costPool.name}
+          </option>
+        ))}
+      </select>
+      <p className="text-sm text-gray-700" id={helpId}>
+        {t("Cost pool help")}
+      </p>
     </div>
   );
 }
@@ -297,7 +338,7 @@ function AttachmentRow({
   );
 }
 
-function InvoiceGeneratorContent() {
+function InvoiceGeneratorContent({ costPools }: { costPools: CostPool[] }) {
   const [state, formAction] = useActionState(SaveAction, null);
   const t = useTranslations("invoicegenerator");
   const formRef = useRef<HTMLFormElement>(null);
@@ -457,6 +498,9 @@ function InvoiceGeneratorContent() {
           required
         />
       </ErrorMessageBlock>
+      <ErrorMessageBlock elementName="cost_pool" formState={state}>
+        <CostPoolRow costPools={costPools} />
+      </ErrorMessageBlock>
       <ErrorMessageBlock elementName="bank_account_number" formState={state}>
         {/* MDN: cc-number: A credit card number or other number identifying a payment method, such as an account number. */}
         <InputRow
@@ -495,14 +539,14 @@ function InvoiceGeneratorContent() {
   );
 }
 
-export function InvoiceGenerator() {
+export function InvoiceGeneratorForm({ costPools }: { costPools: CostPool[] }) {
   const params = useParams<{ locale: Locale }>();
   const locale = params.locale;
   const messages = locales[locale] as Messages;
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <InvoiceGeneratorContent />
+      <InvoiceGeneratorContent costPools={costPools} />
     </NextIntlClientProvider>
   );
 }

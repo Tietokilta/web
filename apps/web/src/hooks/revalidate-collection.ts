@@ -14,7 +14,13 @@ type CollectionSlug = keyof Config["collections"];
 export function revalidateCollection<T extends TypeWithID>(
   collectionSlug: CollectionSlug,
 ): CollectionAfterChangeHook<T> {
-  return ({ doc, req }): T => {
+  return ({ context, doc, req }): T => {
+    // Revalidation only works inside a Next request. Scripts that write through the local API
+    // (see src/scripts) run outside one and opt out with this flag.
+    if (context.disableRevalidate) {
+      return doc;
+    }
+
     const isPage = collectionSlug === "pages";
     const isPublished = "_status" in doc && doc._status === "published";
     if (isPage && !isPublished) {

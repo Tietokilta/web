@@ -24,7 +24,7 @@ import { EditorInChief } from "../editor-in-chief";
 import { GoogleForm } from "../google-form";
 import { HonorsList } from "../honors-list";
 import { ImageLinkGrid } from "../image-link-grid";
-import { InvoiceGenerator } from "../invoice-generator";
+import { InvoiceGenerator } from "../invoice-generator/block";
 import { MagazineList } from "../magazine-list";
 import {
   IS_BOLD,
