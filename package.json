@@ -10,6 +10,7 @@
     "db:export": "dotenv -- ./scripts/generate_seeding_data.sh",
     "db:populate": "dotenv -- ./scripts/import_seeding_data.sh --all",
     "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
+    "db:seed:cost-pools": "dotenv -- pnpx tsx apps/web/src/scripts/seed-cost-pools.ts",
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
     "dev": "pnpm db:start && dotenv -- turbo run dev --cache-dir=.turbo",

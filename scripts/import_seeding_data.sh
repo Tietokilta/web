@@ -65,6 +65,10 @@ elif [ "$ALL_FLAG" = true ] ; then
     mongoimport --uri="$PAYLOAD_MONGO_CONNECTION_STRING" --collection="$COLLECTION_NAME" --file="$file_path" --jsonArray $UPSERT_FLAG
   done
 fi
+# the cost pools are not part of the exported seeding data, they come from a fixed list
+echo "seeding cost pools"
+pnpx tsx apps/web/src/scripts/seed-cost-pools.ts
+
 # import images from production cuz ya yeet
 echo "starting image import from main site"
 pnpx tsx apps/web/src/scripts/import-uploads.ts media
