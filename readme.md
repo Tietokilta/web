@@ -49,6 +49,17 @@ attempts to fetch all images from production, run:
 pnpm uploads:clear
 ```
 
+### E2E tests
+
+Playwright tests the production image in Chromium, Firefox, and WebKit, with
+seeded MongoDB and Azurite containers. Requires Docker; no `.env` needed.
+
+```sh
+pnpm --filter e2e exec playwright install --with-deps chromium firefox webkit
+docker build -t web:e2e .
+E2E_IMAGE=web:e2e pnpm test:e2e
+```
+
 ### Recommended VSCode settings
 
 ```json
