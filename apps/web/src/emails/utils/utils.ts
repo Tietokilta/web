@@ -29,7 +29,7 @@ export const lexicalNodeToTextContent = (node: Node): string => {
     return "";
   }
 
-  const children = (node.children ?? []) as Node[];
+  const children = node.children;
   return children.map((child) => lexicalNodeToTextContent(child)).join("");
 };
 

@@ -25,9 +25,9 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 import { NewsletterButton as NewsletterButton_a197335bc71d3729f8a25f1784e01911 } from '../../../../src/collections/weekly-newsletters/newsletter-button'
 import { ActionsLink as ActionsLink_86608735ec280265d7bd55dfdf381db4 } from '../../../../src/views/actions-view'
 import { OAuthButton as OAuthButton_c8e03f4512c32570e57acd2027fdf5e3 } from '../../../../src/components/admin-sign-up-button'
-import { AzureClientUploadHandler as AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104 } from '@payloadcms/storage-azure/client'
 import { ActionsView as ActionsView_86608735ec280265d7bd55dfdf381db4 } from '../../../../src/views/actions-view'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
+import { AzureClientUploadHandler as AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104 } from '@payloadcms/storage-azure/client'
 
 /** @type import('payload').ImportMap */
 export const importMap = {
@@ -58,7 +58,7 @@ export const importMap = {
   "/src/collections/weekly-newsletters/newsletter-button#NewsletterButton": NewsletterButton_a197335bc71d3729f8a25f1784e01911,
   "/src/views/actions-view#ActionsLink": ActionsLink_86608735ec280265d7bd55dfdf381db4,
   "/src/components/admin-sign-up-button#OAuthButton": OAuthButton_c8e03f4512c32570e57acd2027fdf5e3,
-  "@payloadcms/storage-azure/client#AzureClientUploadHandler": AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104,
   "/src/views/actions-view#ActionsView": ActionsView_86608735ec280265d7bd55dfdf381db4,
-  "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
+  "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1,
+  "@payloadcms/storage-azure/client#AzureClientUploadHandler": AzureClientUploadHandler_635fb302eaf52f6baca4f9f8ad9ce104
 }

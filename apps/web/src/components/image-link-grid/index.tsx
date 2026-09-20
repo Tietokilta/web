@@ -8,7 +8,7 @@ function ImageLink({
   image,
   size,
 }: {
-  image: ImageLinkGridBlockNode["fields"]["images"][number];
+  image: NonNullable<ImageLinkGridBlockNode["fields"]["images"]>[number];
   size: ImageLinkGridBlockNode["fields"]["size"];
 }) {
   const img = (
@@ -36,8 +36,8 @@ export function ImageLinkGrid({
   size,
   images,
 }: {
-  size: "small" | "medium" | "large";
-  images: ImageLinkGridBlockNode["fields"]["images"];
+  size: ImageLinkGridBlockNode["fields"]["size"];
+  images: NonNullable<ImageLinkGridBlockNode["fields"]["images"]>;
 }) {
   return (
     <div className="not-prose relative my-8 flex flex-wrap items-center justify-center gap-4 overflow-hidden rounded-md border-2 border-gray-900 px-4 pt-12 pb-6 font-mono shadow-solid md:px-6">
