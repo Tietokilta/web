@@ -2,6 +2,7 @@ import type { Block } from "payload";
 
 export const EditorInChief = {
   slug: "editor-in-chief",
+  interfaceName: "EditorInChiefBlock",
   fields: [
     {
       name: "name",

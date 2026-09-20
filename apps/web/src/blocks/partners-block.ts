@@ -3,6 +3,7 @@ import { PartnerStatusField } from "../collections/partners";
 
 export const PartnersBlock = {
   slug: "partners",
+  interfaceName: "PartnersBlock",
   fields: [
     {
       name: "size",

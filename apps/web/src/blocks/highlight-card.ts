@@ -3,6 +3,7 @@ import type { Block } from "payload";
 
 export const HighlightCard = {
   slug: "highlight-card",
+  interfaceName: "HighlightCardBlock",
   fields: [
     {
       name: "content",

@@ -78,12 +78,11 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             const allowedPTypes = ["text", "link", "autolink", "linebreak"];
             const hasAllowedChildren = (n: Node): boolean => {
               if (!("children" in n)) return true;
-              const children = n.children as Node[];
+              const children = n.children;
               if (children.length === 0) return true;
               return children.every(
                 (child) =>
                   allowedPTypes.includes(child.type) ||
-                  (child.type === "upload" && !child.showCaption) ||
                   hasAllowedChildren(child),
               );
             };
@@ -93,11 +92,7 @@ export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
             );
           }
           case "heading": {
-            type Heading = Extract<
-              keyof JSX.IntrinsicElements,
-              "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-            >;
-            const Tag = node.tag as Heading;
+            const Tag = node.tag;
 
             return (
               <a href={`#${stringToId(lexicalNodeToTextContent(node))}`}>
