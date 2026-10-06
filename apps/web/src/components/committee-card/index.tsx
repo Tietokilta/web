@@ -15,6 +15,10 @@ function CommitteeMemberCard({
 }: {
   committeeMember: CommitteeMember;
 }) {
+  if (!committeeMember.name || !committeeMember.title) {
+    // Name and title are required, but the imported data might be incomplete
+    return null;
+  }
   const photo = committeeMember.photo as Media | undefined;
   const isChair = !!committeeMember.chair;
   const name = committeeMember.name.replace(/-/g, "\u2011"); // use non-breaking hyphens
