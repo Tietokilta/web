@@ -2,6 +2,7 @@ import type { CollectionConfig, FilterOptions } from "payload";
 import type { Committee } from "@payload-types";
 import { signedIn } from "../../access/signed-in";
 import { committeesImportController } from "../../controllers/committees-import-controller";
+import { validateCommitteesController } from "../../controllers/validate-committees-controller";
 import { guildYearField } from "../../fields/guild-year";
 import { revalidateCollection } from "../../hooks/revalidate-collection";
 
@@ -65,6 +66,11 @@ export const Committees = {
       path: "/import",
       method: "post",
       handler: committeesImportController,
+    },
+    {
+      path: "/validate",
+      method: "post",
+      handler: validateCommitteesController,
     },
   ],
 } as const satisfies CollectionConfig;
