@@ -3,6 +3,7 @@ import type { Block } from "payload";
 
 export const Collapsible = {
   slug: "collapsible",
+  interfaceName: "CollapsibleBlock",
   fields: [
     {
       name: "header",

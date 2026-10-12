@@ -2,6 +2,7 @@ import type { Block } from "payload";
 
 export const GoogleForm = {
   slug: "google-form",
+  interfaceName: "GoogleFormBlock",
   fields: [
     {
       name: "link",

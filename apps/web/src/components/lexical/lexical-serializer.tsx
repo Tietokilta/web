@@ -101,13 +101,11 @@ function LexicalNodeSerializer({
       const allowedPTypes = ["text", "link", "autolink", "linebreak"];
       const hasAllowedChildren = (n: Node): boolean => {
         if (!("children" in n)) return true;
-        const children = n.children as Node[];
+        const children = n.children;
         if (children.length === 0) return true;
         return children.every(
           (child) =>
-            allowedPTypes.includes(child.type) ||
-            (child.type === "upload" && !child.showCaption) ||
-            hasAllowedChildren(child),
+            allowedPTypes.includes(child.type) || hasAllowedChildren(child),
         );
       };
       const ParagraphTag = hasAllowedChildren(node) ? "p" : "div";
@@ -130,11 +128,7 @@ function LexicalNodeSerializer({
       );
     }
     case "heading": {
-      type Heading = Extract<
-        keyof JSX.IntrinsicElements,
-        "h1" | "h2" | "h3" | "h4" | "h5" | "h6"
-      >;
-      const Tag = node.tag as Heading;
+      const Tag = node.tag;
       const baseId = stringToId(lexicalNodeToTextContent(node));
       const uniqueId = makeUniqueId(baseId, seenIds);
 
@@ -147,9 +141,7 @@ function LexicalNodeSerializer({
     case "list": {
       type List = Extract<keyof JSX.IntrinsicElements, "ul" | "ol">;
       const Tag: List = node.tag;
-      return (
-        <Tag className={node.listType as string}>{serializedChildren}</Tag>
-      );
+      return <Tag className={node.listType}>{serializedChildren}</Tag>;
     }
     case "listitem": {
       const nestedList =
@@ -314,7 +306,10 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "image-link-grid": {
       return (
-        <ImageLinkGrid images={node.fields.images} size={node.fields.size} />
+        <ImageLinkGrid
+          images={node.fields.images ?? []}
+          size={node.fields.size}
+        />
       );
     }
     case "google-form": {
@@ -336,7 +331,10 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "partners": {
       return (
-        <PartnerLogos statuses={node.fields.types} size={node.fields.size} />
+        <PartnerLogos
+          statuses={node.fields.types ?? []}
+          size={node.fields.size}
+        />
       );
     }
     case "collapsible": {

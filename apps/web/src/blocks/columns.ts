@@ -3,6 +3,7 @@ import type { Block } from "payload";
 
 export const Columns = {
   slug: "columns",
+  interfaceName: "ColumnsBlock",
   fields: [
     {
       name: "columns",

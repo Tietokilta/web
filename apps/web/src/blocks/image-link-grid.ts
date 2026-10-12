@@ -2,6 +2,7 @@ import type { Block } from "payload";
 
 export const ImageLinkGrid = {
   slug: "image-link-grid",
+  interfaceName: "ImageLinkGridBlock",
   fields: [
     {
       name: "size",

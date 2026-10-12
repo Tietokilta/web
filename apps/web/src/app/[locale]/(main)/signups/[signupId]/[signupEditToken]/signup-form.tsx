@@ -22,8 +22,14 @@ import {
 } from "@tietokilta/ui";
 import NextForm from "next/form";
 import { useRouter } from "next/navigation";
-import { useActionState, useEffect } from "react";
-import { useFormStatus } from "react-dom";
+import {
+  FormEvent,
+  startTransition,
+  useActionState,
+  useEffect,
+  useRef,
+} from "react";
+import { requestFormReset, useFormStatus } from "react-dom";
 import {
   useDeleteSignUpAction,
   useSaveSignUpAction,
@@ -191,10 +197,14 @@ function StatusButton({ disabled, ...props }: ButtonProps) {
 function ConfirmDeletePopover({
   id,
   eventTitle,
+  signupId,
+  signupEditToken,
   deleteAction,
 }: {
   id: string;
   eventTitle: string;
+  signupId: string;
+  signupEditToken: string;
   deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
   const t = useTranslations("ilmomasiina.form");
@@ -204,35 +214,37 @@ function ConfirmDeletePopover({
       popover="auto"
       className="[&:popover-open]:inset-0 [&:popover-open]:m-auto [&:popover-open]:flex [&:popover-open]:h-fit [&:popover-open]:w-full [&:popover-open]:max-w-sm [&:popover-open]:flex-col [&:popover-open]:gap-2"
     >
-      <p>
-        {t(
-          "deleteConfirmation",
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any -- next-intl ICU parameter type inference doesn't work for literal string types
-          { eventTitle } as any,
-        )}
-      </p>
-      <p>
-        <strong>{t("actionCannotBeUndone")}</strong>
-      </p>
-      <input
-        type="button"
-        popoverTarget={id}
-        popoverTargetAction="hide"
-        className={cn(
-          buttonVariants({ variant: "outline" }),
-          "w-full max-w-sm cursor-pointer",
-        )}
-        value={t("Cancel")}
-      />
-      <StatusButton
-        type="submit"
-        formNoValidate
-        formAction={deleteAction}
-        variant="destructive"
-        className="w-full max-w-sm"
-      >
-        {t("Delete sign up")}
-      </StatusButton>
+      <form action={deleteAction} className="flex flex-col gap-2">
+        <input type="hidden" name="signupId" value={signupId} />
+        <input type="hidden" name="signupEditToken" value={signupEditToken} />
+        <p>
+          {t(
+            "deleteConfirmation",
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any -- next-intl ICU parameter type inference doesn't work for literal string types
+            { eventTitle } as any,
+          )}
+        </p>
+        <p>
+          <strong>{t("actionCannotBeUndone")}</strong>
+        </p>
+        <input
+          type="button"
+          popoverTarget={id}
+          popoverTargetAction="hide"
+          className={cn(
+            buttonVariants({ variant: "outline" }),
+            "w-full max-w-sm cursor-pointer",
+          )}
+          value={t("Cancel")}
+        />
+        <StatusButton
+          type="submit"
+          variant="destructive"
+          className="w-full max-w-sm"
+        >
+          {t("Delete sign up")}
+        </StatusButton>
+      </form>
     </Card>
   );
 }
@@ -243,14 +255,12 @@ function Form({
   event,
   signup,
   saveAction,
-  deleteAction,
 }: {
   signupId: string;
   signupEditToken: string;
   event: SignupForEditResponse["event"];
   signup: SignupForEditResponse["signup"];
   saveAction: ReturnType<typeof useSaveSignUpAction>["saveSignUpAction"];
-  deleteAction: ReturnType<typeof useDeleteSignUpAction>["deleteSignUpAction"];
 }) {
   const t = useTranslations("ilmomasiina.form");
   const isAndroidFirefox = useIsAndroidFirefox();
@@ -259,6 +269,22 @@ function Form({
   const isSignupPeriodEnded =
     !!event.registrationEndDate &&
     new Date(event.registrationEndDate) < new Date();
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Form submission handler that doesn't reset the form
+  // https://github.com/facebook/react/issues/29034#issuecomment-2143595195
+  // Similar is implemented for the invoice-generator in PR #652
+  const handleSubmit = (event: FormEvent) => {
+    if (!(event.target instanceof HTMLFormElement))
+      throw new Error("Form submission event target is not a form element");
+
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    startTransition(() => {
+      formAction(formData);
+    });
+  };
 
   // On first render, scroll to top
   useEffect(() => {
@@ -276,11 +302,20 @@ function Form({
     } else if (!!state?.success || !!state?.errors?._form) {
       document.querySelector("[data-form-status]")?.scrollIntoView();
     }
+
+    // Reset form on success (because it is not done automatically with handleSubmit)
+    if (state?.success && formRef.current) {
+      requestFormReset(formRef.current);
+    }
   }, [state]);
 
   return (
     <NextForm
-      action={formAction}
+      ref={formRef}
+      // Use `onSubmit` instead of `action` to prevent form reset
+      onSubmit={handleSubmit}
+      // `action` is a required prop anyway
+      action={() => undefined}
       noValidate={isAndroidFirefox}
       className="w-full max-w-prose space-y-4 overflow-x-clip rounded-md border-2 border-gray-900 p-4 py-6 shadow-solid md:px-6 md:py-8"
     >
@@ -429,18 +464,13 @@ function Form({
           )}
           value={t("Delete sign up")}
         />
-        <ConfirmDeletePopover
-          id="confirm-delete"
-          eventTitle={event.title}
-          deleteAction={deleteAction}
-        />
       </div>
     </NextForm>
   );
 }
 
 export function SignupForm(
-  props: Omit<React.ComponentProps<typeof Form>, "saveAction" | "deleteAction">,
+  props: Omit<React.ComponentProps<typeof Form>, "saveAction">,
 ) {
   const router = useRouter();
   const { deleteSignUpAction } = useDeleteSignUpAction();
@@ -459,10 +489,15 @@ export function SignupForm(
   };
 
   return (
-    <Form
-      {...props}
-      saveAction={wrappedSaveAction}
-      deleteAction={deleteSignUpAction}
-    />
+    <>
+      <Form {...props} saveAction={wrappedSaveAction} />
+      <ConfirmDeletePopover
+        id="confirm-delete"
+        eventTitle={props.event.title}
+        signupId={props.signupId}
+        signupEditToken={props.signupEditToken}
+        deleteAction={deleteSignUpAction}
+      />
+    </>
   );
 }
