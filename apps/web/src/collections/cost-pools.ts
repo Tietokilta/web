@@ -19,7 +19,7 @@ export const CostPools = {
     useAsTitle: "name",
     defaultColumns: ["name", "account"],
     description:
-      "Toimikunnat ja toiminnat, joille laskugeneraattorin laskut kohdistetaan. Tili päätyy laskun viitenumeron neljäksi ensimmäiseksi numeroksi.",
+      "The toimikunnat and activities that invoices from the invoice generator are booked against. The account becomes the first four digits of the invoice's reference number.",
   },
   access: {
     read: () => true,
@@ -35,7 +35,7 @@ export const CostPools = {
       localized: true,
       admin: {
         description:
-          "Näkyy laskugeneraattorin valikossa sekä laskun PDF:ssä ja rahastonhoitajan sähköpostissa.",
+          "Shown in the invoice generator's dropdown, on the invoice PDF and in the treasurer's email.",
       },
     },
     {
@@ -46,17 +46,17 @@ export const CostPools = {
       // A leading zero is stripped by banking systems, which would shift every digit of the
       // reference number and silently route the payment to the wrong account.
       validate: (value: string | null | undefined) => {
-        if (!value) return "Tili on pakollinen.";
+        if (!value) return "Account is required.";
         if (!/^[1-9]\d{3}$/.test(value)) {
-          return "Tilin on oltava nelinumeroinen eikä se saa alkaa nollalla, esim. 4212.";
+          return "Account must be four digits and must not start with a zero, e.g. 4212.";
         }
         if (value === UNASSIGNED_ACCOUNT) {
-          return `Tili ${UNASSIGNED_ACCOUNT} on varattu laskuille, joiden toimikunta ei ole tiedossa.`;
+          return `Account ${UNASSIGNED_ACCOUNT} is reserved for invoices whose toimikunta is unknown.`;
         }
         return true;
       },
       admin: {
-        description: "Nelinumeroinen kirjanpidon tili, esim. 4212.",
+        description: "Four-digit bookkeeping account, e.g. 4212.",
       },
     },
   ],

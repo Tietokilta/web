@@ -12,6 +12,7 @@ import {
   startTransition,
   type FormEvent,
   useRef,
+  useId,
 } from "react";
 import { useFormStatus, requestFormReset } from "react-dom";
 import { toast } from "sonner";
@@ -87,14 +88,13 @@ function TextAreaInputRow({
 // toimikunta needs no deploy of either this app or laskugeneraattori
 function CostPoolRow({ costPools }: { costPools: CostPool[] }) {
   const t = useTranslations("invoicegenerator");
+  const htmlId = useId();
+  const helpId = useId();
 
   // Without a list there is nothing to pick from. Leave the field out rather than blocking the
   // form: the invoice is filed without a cost pool and the backend books it against an account
   // that does not exist, which the treasurer picks up on.
   if (costPools.length === 0) return null;
-
-  const htmlId = "inputfield.cost_pool";
-  const helpId = "inputfield.cost_pool.help";
 
   return (
     <div>
