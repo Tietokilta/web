@@ -21,6 +21,10 @@ export interface LaskugeneraattoriRequest {
   subject: string;
   description: string;
   bank_account_number: string;
+  // The id of a cost-pools document in the CMS. Left out when the CMS has no cost pools, in
+  // which case the backend books the invoice against an account that does not exist so the
+  // treasurer assigns it by hand
+  cost_pool?: string;
   rows: LaskugeneraattoriRow[];
   attachment_descriptions: string[];
 }

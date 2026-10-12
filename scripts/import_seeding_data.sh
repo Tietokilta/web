@@ -65,6 +65,16 @@ elif [ "$ALL_FLAG" = true ] ; then
     mongoimport --uri="$PAYLOAD_MONGO_CONNECTION_STRING" --collection="$COLLECTION_NAME" --file="$file_path" --jsonArray $UPSERT_FLAG
   done
 fi
+# Exports made before the cost pools collection existed do not contain it, so fall back to the
+# initial list. Once the export has it, it is the source of truth: seeding on top of it would
+# bring back any pool that has since been deleted in the CMS.
+if [ -f data/gen/db/cost-pools.json ]; then
+  echo "cost pools are in the seeding data, not seeding them"
+else
+  echo "seeding cost pools"
+  pnpx tsx apps/web/src/scripts/seed-cost-pools.ts
+fi
+
 # import images from production cuz ya yeet
 echo "starting image import from main site"
 pnpx tsx apps/web/src/scripts/import-uploads.ts media
