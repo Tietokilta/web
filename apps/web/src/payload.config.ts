@@ -21,6 +21,8 @@ import { HighlightCard } from "./blocks/highlight-card";
 import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { InvoiceGenerator } from "./blocks/invoice-generator";
 import { PartnersBlock } from "./blocks/partners-block";
+import { AdminMembers } from "./collections/admin/admin-members";
+import { Admins } from "./collections/admin/admins";
 import { BoardMembers } from "./collections/board/board-members";
 import { Boards } from "./collections/board/boards";
 import { CommitteeMembers } from "./collections/committees/committee-members";
@@ -104,6 +106,8 @@ export default buildConfig({
     Topics,
     BoardMembers,
     Boards,
+    AdminMembers,
+    Admins,
     CommitteeMembers,
     Committees,
     CostPools,
@@ -142,6 +146,7 @@ export default buildConfig({
         enabledCollections: [
           Pages.slug,
           Boards.slug,
+          Admins.slug,
           Committees.slug,
           Magazines.slug,
           Honors.slug,

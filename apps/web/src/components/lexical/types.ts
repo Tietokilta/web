@@ -70,7 +70,7 @@ export type UploadNode = MediaUploadNode | DocumentUploadNode;
 export type RelationshipNode = PopulatedNode<
   Extract<
     SerializedRelationshipNode,
-    { relationTo: "pages" | "boards" | "committees" | "magazines" | "honors" }
+    { relationTo: "pages" | "boards" | "admins" | "committees" | "magazines" | "honors" }
   >
 >;
 
