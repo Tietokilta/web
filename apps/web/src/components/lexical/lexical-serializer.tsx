@@ -15,6 +15,7 @@ import {
   makeUniqueId,
   stringToId,
 } from "../../lib/utils";
+import { AdminGrid } from "../admin-grid";
 import { BoardGrid } from "../board-grid";
 import { CollapsibleBlock } from "../collapsible-block";
 import { ColumnsBlock } from "../columns-block";
@@ -280,6 +281,9 @@ function Relationship({ node }: { node: RelationshipNode }) {
     }
     case "boards": {
       return <BoardGrid board={node.value} />;
+    }
+    case "admins": {
+      return <AdminGrid admin={node.value} />;
     }
     case "committees": {
       return <CommitteeCard isTightLayout committee={node.value} />;
