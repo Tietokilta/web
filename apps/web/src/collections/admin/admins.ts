@@ -40,6 +40,7 @@ export const Admins = {
       fields: [
         {
           name: "adminMember",
+          required: true,
           type: "relationship",
           relationTo: "admin-members",
           filterOptions: filterCurrentYear,
