@@ -1,3 +1,4 @@
+import path from "node:path";
 import { withPayload } from "@payloadcms/next/withPayload";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -6,6 +7,16 @@ const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
+  output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
+  outputFileTracingRoot: path.join(import.meta.dirname, "../.."),
+  outputFileTracingIncludes: {
+    // Match only the real package directories: pnpm also links each libvips
+    // package into its sharp package, and Turbopack fails on those symlinks.
+    "/*": [
+      "../../node_modules/.pnpm/@img+sharp-linux*/node_modules/@img/sharp-linux*/**/*",
+      "../../node_modules/.pnpm/@img+sharp-libvips-*/node_modules/@img/sharp-libvips-*/**/*",
+    ],
+  },
   reactStrictMode: true,
   images: {
     minimumCacheTTL: 3600,
