@@ -10,7 +10,12 @@ const nextConfig = {
   output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
   outputFileTracingRoot: path.join(import.meta.dirname, "../.."),
   outputFileTracingIncludes: {
-    "/*": ["../../node_modules/.pnpm/@img+sharp-*/node_modules/@img/**/*"],
+    // Match only the real package directories: pnpm also links each libvips
+    // package into its sharp package, and Turbopack fails on those symlinks.
+    "/*": [
+      "../../node_modules/.pnpm/@img+sharp-linux*/node_modules/@img/sharp-linux*/**/*",
+      "../../node_modules/.pnpm/@img+sharp-libvips-*/node_modules/@img/sharp-libvips-*/**/*",
+    ],
   },
   reactStrictMode: true,
   images: {
