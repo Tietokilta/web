@@ -1,12 +1,12 @@
-node_modules
+**/node_modules
 npm-debug.log
 .git
 .gitignore
 *.md
 dist
 uploads/
-.env
-.env.*
+**/.env
+**/.env.*
 **/.next
 **/.turbo
 **/playwright-report

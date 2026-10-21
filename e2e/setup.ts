@@ -225,7 +225,7 @@ export default async function setup() {
       .poll(
         async () => {
           if (startupError) throw startupError;
-          if (server?.exitCode !== null)
+          if (server?.exitCode !== null || server.signalCode !== null)
             throw new Error(`Next.js exited during startup: ${webLogs}`);
           return fetch(`${url}/next_api/health`, {
             signal: AbortSignal.timeout(5000),
