@@ -39,12 +39,12 @@
     "turbo": "^2.10.4",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@12.15.0",
   "devEngines": {
     "runtime": {
       "name": "node",
       "version": "^24.15.0",
       "onFail": "error"
     }
-  }
+  },
+  "packageManager": "pnpm@12.15.0"
 }
