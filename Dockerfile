@@ -1,4 +1,4 @@
-ARG NODE_VERSION=22.23.1
+ARG NODE_VERSION=24.22.1
 FROM node:${NODE_VERSION}-alpine AS base
 RUN apk add --no-cache libc6-compat
 
@@ -35,6 +35,9 @@ ENV GIT_COMMIT_SHA=$GIT_COMMIT_SHA
 ENV NODE_ENV=production
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
+# Node 24 grows the young generation to 128 MiB, which costs ~100 MiB of RSS
+# under load. 16 MiB semi-spaces match Node 22 at the same throughput.
+ENV NODE_OPTIONS=--max-semi-space-size=16
 RUN addgroup --system --gid 1001 nodejs \
     && adduser --system --uid 1001 nodejs
 WORKDIR /app
