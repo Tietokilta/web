@@ -1,0 +1,79 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    "docker:pinDigests",
+    "customManagers:dockerfileVersions"
+  ],
+  "timezone": "Europe/Helsinki",
+  "schedule": ["before 6am on monday"],
+  "semanticCommits": "enabled",
+  "labels": ["dependencies"],
+  "dependencyDashboard": true,
+  "prHourlyLimit": 0,
+  "minimumReleaseAge": "3 days",
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on the first day of the month"],
+    "automerge": true
+  },
+  "vulnerabilityAlerts": {
+    "minimumReleaseAge": null,
+    "schedule": ["at any time"]
+  },
+  "packageRules": [
+    {
+      "description": "Patch and minor updates auto-merge once CI (lint, E2E, Docker smoke test) passes",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
+      "matchCurrentVersion": "!/^[~^]?v?0\\./",
+      "automerge": true
+    },
+    {
+      "description": "Payload migrates the CMS database; review its updates",
+      "matchPackageNames": ["payload", "@payloadcms/**"],
+      "groupName": "Payload",
+      "automerge": false
+    },
+    {
+      "description": "Next.js and React change the runtime; review their updates",
+      "matchPackageNames": ["next", "@next/**", "eslint-config-next"],
+      "groupName": "Next.js",
+      "automerge": false
+    },
+    {
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "groupName": "React",
+      "automerge": false
+    },
+    {
+      "matchPackageNames": [
+        "@tietokilta/ilmomasiina-client",
+        "@tietokilta/ilmomasiina-models"
+      ],
+      "groupName": "Ilmomasiina"
+    },
+    {
+      "matchPackageNames": ["turbo", "eslint-config-turbo"],
+      "groupName": "turbo"
+    },
+    {
+      "description": "Node.js majors move together: package.json devEngines, the Docker image and @types/node",
+      "matchPackageNames": ["node", "@types/node"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "Node.js",
+      "automerge": false
+    },
+    {
+      "description": "One weekly PR for GitHub Actions; build.yml publishes and deploys, so review it",
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions",
+      "automerge": false
+    }
+  ]
+}
