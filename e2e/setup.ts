@@ -1,6 +1,7 @@
 import { spawn, type ChildProcess } from "node:child_process";
 import { once } from "node:events";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
+import type { Server } from "node:http";
 import { createServer } from "node:net";
 import path from "node:path";
 import { BlobServiceClient } from "@azure/storage-blob";
@@ -12,6 +13,7 @@ import {
   type StartedTestContainer,
 } from "testcontainers";
 import { admin } from "./fixtures";
+import { startFakeIlmomasiina } from "./ilmomasiina";
 
 const AZURITE_ACCOUNT = "ci";
 const AZURITE_KEY = "Y2ktc21va2UtdGVzdC1rZXk=";
@@ -32,6 +34,7 @@ async function stopContainers(containers: StartedTestContainer[]) {
 export default async function setup() {
   const containers: StartedTestContainer[] = [];
   let server: ChildProcess | undefined;
+  let ilmomasiina: Server | undefined;
   let webLogs = "";
 
   async function cleanup() {
@@ -54,6 +57,7 @@ export default async function setup() {
         webLogs,
       );
     } finally {
+      ilmomasiina?.close();
       await stopContainers(containers);
     }
   }
@@ -175,6 +179,9 @@ export default async function setup() {
         });
     }
 
+    const fakeIlmomasiina = await startFakeIlmomasiina();
+    ilmomasiina = fakeIlmomasiina.server;
+
     const blobEndpoint = `http://${azurite.getHost()}:${azurite.getMappedPort(10000)}`;
     const port = await availablePort();
     const environment = {
@@ -194,6 +201,7 @@ export default async function setup() {
       AZURE_STORAGE_CONTAINER_NAME: "ci-e2e",
       AZURE_STORAGE_ACCOUNT_BASEURL: `${blobEndpoint}/ci/ci-e2e`,
       AZURE_STORAGE_ALLOW_CONTAINER_CREATE: "true",
+      NEXT_PUBLIC_ILMOMASIINA_URL: fakeIlmomasiina.url,
     };
 
     const webDirectory = path.join(repoRoot, "apps/web");

@@ -31,6 +31,9 @@ const localizedResponses = [
   "/fi/infoscreen",
   "/fi/kilta/ei-ole-olemassa",
   "/fi/tapahtumat/ei-ole-olemassa",
+  "/fi/tapahtumat/e2e-testitapahtuma",
+  "/en/events/e2e-testitapahtuma",
+  "/en/weekly-newsletters/csg-weekly-mail-192024",
 ];
 
 async function expectOk(response: APIResponse) {

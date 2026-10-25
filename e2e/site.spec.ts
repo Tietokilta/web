@@ -19,6 +19,7 @@ for (const [url, heading] of [
   ["/en/guild/rules", "Rules"],
   ["/fi/kilta/opinnot", "Opinnot"],
   ["/fi/viikkotiedotteet", "Viikkotiedotteet"],
+  ["/en/weekly-newsletters/csg-weekly-mail-192024", "CSG Weekly mail 19/2024"],
 ]) {
   test(`seeded page ${url} renders`, async ({ page }) => {
     const response = await page.goto(url);
@@ -27,6 +28,19 @@ for (const [url, heading] of [
       page.getByRole("heading", { name: heading, exact: true }).first(),
     ).toBeVisible();
     await expect(page.getByRole("main")).toBeVisible();
+  });
+}
+
+for (const url of [
+  "/fi/tapahtumat/e2e-testitapahtuma",
+  "/en/events/e2e-testitapahtuma",
+]) {
+  test(`event page ${url} renders from Ilmomasiina`, async ({ page }) => {
+    const response = await page.goto(url);
+    expect(response?.status()).toBe(200);
+    await expect(
+      page.getByRole("heading", { name: "E2E-testitapahtuma", exact: true }),
+    ).toBeVisible();
   });
 }
 
