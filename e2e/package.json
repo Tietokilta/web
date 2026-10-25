@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "test": "playwright test",
+    "test:production": "playwright test -c playwright.production.config.ts",
     "lint": "oxlint -c ../.oxlintrc.json .",
     "typecheck": "tsgo --noEmit"
   },
