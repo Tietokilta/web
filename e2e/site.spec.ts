@@ -35,8 +35,14 @@ test("desktop navigation opens a seeded page and browser back works", async ({
 }) => {
   await page.goto("/fi");
   const menu = page.getByRole("button", { name: "Kilta", exact: true });
-  await menu.hover();
-  await expect(menu).toHaveAttribute("aria-expanded", "true");
+  // A hover before hydration is lost, so repeat it until the menu opens
+  await expect(async () => {
+    await page.mouse.move(0, 0);
+    await menu.hover();
+    await expect(menu).toHaveAttribute("aria-expanded", "true", {
+      timeout: 1000,
+    });
+  }).toPass();
   await page.getByRole("link", { name: "Säännöt", exact: true }).click();
   await expect(page).toHaveURL(/\/fi\/kilta\/saannot$/);
   await expect(
