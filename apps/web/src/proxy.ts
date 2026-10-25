@@ -1,17 +1,10 @@
 import createMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
+import { LOCALE_COOKIE, localeCookieOptions } from "@i18n/locale-cookie";
 import { routing, type Locale } from "@i18n/routing";
 
-const LOCALE_COOKIE = "NEXT_LOCALE";
 // Old cookie name from next-international, used for migration fallback
 const LEGACY_LOCALE_COOKIE = "Next-Locale";
-const ONE_YEAR_IN_SECONDS = 60 * 60 * 24 * 365;
-
-const cookieOptions = {
-  path: "/",
-  maxAge: ONE_YEAR_IN_SECONDS,
-  sameSite: "strict",
-} as const;
 
 function isValidLocale(value: string | undefined): value is Locale {
   return routing.locales.includes(value as Locale);
@@ -39,17 +32,8 @@ export default function proxy(request: NextRequest) {
   );
 
   if (urlLocale) {
-    // URL has locale - proceed and update cookie if needed
-    const intlMiddleware = createMiddleware(routing);
-    const response = intlMiddleware(request);
-
-    const currentCookie = request.cookies.get(LOCALE_COOKIE)?.value;
-    if (currentCookie !== urlLocale) {
-      response.cookies.set(LOCALE_COOKIE, urlLocale, cookieOptions);
-    }
-    migrateLegacyCookie(request, response);
-
-    return response;
+    // Leave cookies alone so that the response stays cacheable
+    return createMiddleware(routing)(request);
   }
 
   // No locale in URL - check cookie (with legacy fallback), default to Finnish
@@ -63,9 +47,11 @@ export default function proxy(request: NextRequest) {
   url.pathname = `/${targetLocale}${pathname}`;
 
   const response = NextResponse.redirect(url);
+  // The target depends on the visitor's cookie, so shared caches must not store it
+  response.headers.set("Cache-Control", "private, no-store");
 
   // Always set new cookie and clean up legacy cookie
-  response.cookies.set(LOCALE_COOKIE, targetLocale, cookieOptions);
+  response.cookies.set(LOCALE_COOKIE, targetLocale, localeCookieOptions);
   migrateLegacyCookie(request, response);
 
   return response;

@@ -18,6 +18,8 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
+  // Caps how long shared caches may serve stale pages (stale-while-revalidate)
+  expireTime: 3600,
   images: {
     minimumCacheTTL: 3600,
     contentDispositionType: "inline",

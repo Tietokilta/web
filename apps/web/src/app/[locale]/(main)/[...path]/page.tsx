@@ -12,14 +12,17 @@ import WeeklyNewslettersListPage from "@custom-pages/weekly-newsletters-list-pag
 import type { EditorState } from "@lexical-types";
 import { fetchPage } from "@lib/api/pages";
 import { generateTocFromRichText } from "@lib/utils";
-import { getLocale, type Locale } from "@locales/server";
+import { setLocaleFromParams, type Locale } from "@locales/server";
 import type { Page as CMSPage } from "@payload-types";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Promise<Params>;
 }
 
-type Props = NextPage<{ path: string[] }>;
+type Props = NextPage<{ locale: string; path: string[] }>;
+
+// Render CMS pages on first request and cache them until Payload revalidates them
+export const generateStaticParams = () => [];
 
 const getPage = async (path: string[], locale: Locale) => {
   if (path.length !== 1 && path.length !== 2) {
@@ -71,10 +74,8 @@ const getPage = async (path: string[], locale: Locale) => {
 };
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
-  const params = await props.params;
-  const { path } = params;
-
-  const locale = await getLocale();
+  const locale = await setLocaleFromParams(props.params);
+  const { path } = await props.params;
   const page = await getPage(path, locale);
 
   return {
@@ -100,10 +101,8 @@ function Content({ content }: { content?: EditorState }) {
 }
 
 async function Page(props: Props) {
-  const params = await props.params;
-  const { path } = params;
-
-  const locale = await getLocale();
+  const locale = await setLocaleFromParams(props.params);
+  const { path } = await props.params;
   const page = await getPage(path, locale);
 
   if (page.type === "events-list") {

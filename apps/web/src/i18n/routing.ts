@@ -5,6 +5,8 @@ export const routing = defineRouting({
   defaultLocale: "fi",
   localePrefix: "always",
   localeDetection: false,
+  // src/proxy.ts owns the locale cookie
+  localeCookie: false,
 });
 
 export type Locale = (typeof routing.locales)[number];

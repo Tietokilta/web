@@ -18,10 +18,25 @@ const cmsPages = [
   "/en/guild/rules",
   "/fi/viikkotiedotteet",
   "/fi/viikkotiedotteet/tietokillan-viikkotiedote-192024",
+  "/en/weekly-newsletters/csg-weekly-mail-192024",
 ];
 
-// Shared caches cannot see Payload edits, so pages they may store must
-// expire within a minute and be dropped within an hour.
+const eventPages = [
+  "/fi/tapahtumat/e2e-testitapahtuma",
+  "/en/events/e2e-testitapahtuma",
+];
+
+// Shared caches cannot see Payload edits, so they may serve a page for a
+// minute and must drop it within an hour.
+const sharedCacheControl = "s-maxage=60, stale-while-revalidate=3540";
+// Event pages follow the 30 s revalidation of their Ilmomasiina data
+const eventCacheControl = "s-maxage=30, stale-while-revalidate=3570";
+
+const cachedPages = [
+  ...cmsPages.map((url) => [url, sharedCacheControl] as const),
+  ...eventPages.map((url) => [url, eventCacheControl] as const),
+];
+
 const personalPages = ["/fi/signups/abc/def", "/fi/payment/abc/def"];
 
 const localizedResponses = [
@@ -31,9 +46,7 @@ const localizedResponses = [
   "/fi/infoscreen",
   "/fi/kilta/ei-ole-olemassa",
   "/fi/tapahtumat/ei-ole-olemassa",
-  "/fi/tapahtumat/e2e-testitapahtuma",
-  "/en/events/e2e-testitapahtuma",
-  "/en/weekly-newsletters/csg-weekly-mail-192024",
+  ...eventPages,
 ];
 
 async function expectOk(response: APIResponse) {
@@ -73,6 +86,19 @@ async function expectOnNextRequest(
   expect(await (await request.get(url)).text()).toContain(text);
 }
 
+for (const [url, cacheControl] of cachedPages) {
+  test(`${url} is served from the shared cache`, async ({ visitor }) => {
+    const [first, second] = await getTwice(visitor, url);
+
+    for (const response of [first, second]) {
+      expect(response.headers()["cache-control"]).toBe(cacheControl);
+      expect(response.headers()["set-cookie"]).toBeUndefined();
+    }
+    // STALE is also served from the cache, with a background re-render
+    expect(second.headers()["x-nextjs-cache"]).toMatch(/^(HIT|STALE)$/);
+  });
+}
+
 for (const url of localizedResponses) {
   test(`${url} is private or expires from shared caches within a minute`, async ({
     visitor,
@@ -103,6 +129,27 @@ for (const url of personalPages) {
     expect(directives.has("no-store")).toBe(true);
   });
 }
+
+test("a cached page answers a matching conditional request with 304", async ({
+  visitor,
+}) => {
+  const [, cached] = await getTwice(visitor, cmsPages[0]);
+  const etag = cached.headers()["etag"];
+  expect(etag).toBeTruthy();
+
+  const conditional = await visitor.get(cmsPages[0], {
+    headers: { "If-None-Match": etag },
+  });
+  expect(conditional.status()).toBe(304);
+});
+
+test("the cookie-dependent root redirect is never cached", async ({
+  visitor,
+}) => {
+  const response = await visitor.get("/", { maxRedirects: 0 });
+  expect(response.status()).toBe(307);
+  expect(response.headers()["cache-control"]).toMatch(/private.*no-store/);
+});
 
 test("a published page edit reaches the next visitor", async ({
   request,

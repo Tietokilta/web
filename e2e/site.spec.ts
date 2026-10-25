@@ -83,6 +83,16 @@ test("the landing page can switch languages", async ({ page }) => {
   await expect(page).toHaveURL(/\/fi$/);
 });
 
+test("the root redirects to the language chosen earlier", async ({ page }) => {
+  await page.goto("/fi");
+  await page.getByRole("link", { name: "In English", exact: true }).click();
+  await expect(
+    page.getByRole("button", { name: "Guild", exact: true }),
+  ).toBeVisible();
+  await page.goto("/");
+  await expect(page).toHaveURL(/\/en$/);
+});
+
 test("mobile navigation opens and follows a link", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/fi");

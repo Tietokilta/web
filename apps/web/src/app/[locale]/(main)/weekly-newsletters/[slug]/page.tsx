@@ -1,15 +1,18 @@
 import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
+import { setLocaleFromParams } from "@locales/server";
 
 interface PageProps {
   params: Promise<{
+    locale: string;
     slug: string;
   }>;
 }
 
-export default async function Page(props: PageProps) {
-  const params = await props.params;
+export const generateStaticParams = () => [];
 
-  const { slug } = params;
+export default async function Page(props: PageProps) {
+  await setLocaleFromParams(props.params);
+  const { slug } = await props.params;
 
   return <WeeklyNewsletterPage slug={slug} />;
 }
