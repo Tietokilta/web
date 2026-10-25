@@ -27,7 +27,11 @@ import {
   formatDatetimeYearOptions,
 } from "@lib/utils";
 import { NextIntlClientProvider } from "@locales/client";
-import { getLocale, getTranslations } from "@locales/server";
+import {
+  getLocale,
+  getTranslations,
+  setLocaleFromParams,
+} from "@locales/server";
 import { SignupCountdown } from "./signup-countdown";
 
 function getFormattedAnswer(
@@ -342,16 +346,16 @@ async function SignUpActions({ event }: { event: UserEventResponse }) {
 
 interface PageProps {
   params: Promise<{
+    locale: string;
     slug: string;
   }>;
 }
 
+export const generateStaticParams = () => [];
+
 export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
-  const params = await props.params;
-
-  const { slug } = params;
-
-  const locale = await getLocale();
+  const locale = await setLocaleFromParams(props.params);
+  const { slug } = await props.params;
   const event = await fetchEvent(slug, locale);
   if (!event.ok) {
     // eslint-disable-next-line no-console -- nice to know if something goes wrong
@@ -369,10 +373,8 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
 };
 
 export default async function Page(props: PageProps) {
-  const params = await props.params;
-  const { slug } = params;
-
-  const locale = await getLocale();
+  const locale = await setLocaleFromParams(props.params);
+  const { slug } = await props.params;
 
   const event = await fetchEvent(slug, locale);
   const t = await getTranslations("ilmomasiina");

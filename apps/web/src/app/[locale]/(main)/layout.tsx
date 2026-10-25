@@ -11,7 +11,7 @@ import { SkipLink } from "@components/skip-link";
 import "@tietokilta/ui/global.css";
 import "../globals.css";
 import { cn } from "@lib/utils";
-import { getTranslations, getLocale } from "@locales/server";
+import { getTranslations, setLocaleFromParams } from "@locales/server";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({
@@ -40,7 +40,10 @@ import { env } from "../../../env";
 
 const mainUrl = env.PUBLIC_FRONTEND_URL;
 
-export const generateMetadata = async (): Promise<Metadata> => {
+export const generateMetadata = async (props: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> => {
+  await setLocaleFromParams(props.params);
   const t = await getTranslations("metadata");
   return {
     title: {
@@ -63,7 +66,7 @@ export default async function RootLayout(props: {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }) {
-  const locale = await getLocale();
+  const locale = await setLocaleFromParams(props.params);
 
   const { children } = props;
 
