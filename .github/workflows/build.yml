@@ -272,3 +272,15 @@ jobs:
           done
           echo "tietokilta.fi is still serving $deployed instead of $GITHUB_SHA"
           exit 1
+      # Cloudflare keeps pages for up to a minute, and stale pages would reference
+      # JS and CSS files that no longer exist after the deploy
+      - name: Purge cached pages from Cloudflare
+        env:
+          CLOUDFLARE_PURGE_TOKEN: ${{ secrets.CLOUDFLARE_PURGE_TOKEN }}
+          CLOUDFLARE_ZONE_ID: e3193fc9edbb2b28f743a6d7743176f8 # tietokilta.fi
+        run: |
+          curl --fail-with-body --silent --show-error -X POST \
+            "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+            -H "Authorization: Bearer $CLOUDFLARE_PURGE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"prefixes": ["tietokilta.fi/fi", "tietokilta.fi/en", "www.tietokilta.fi/fi", "www.tietokilta.fi/en"]}'
