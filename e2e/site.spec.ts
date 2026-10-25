@@ -19,6 +19,7 @@ for (const [url, heading] of [
   ["/en/guild/rules", "Rules"],
   ["/fi/kilta/opinnot", "Opinnot"],
   ["/fi/viikkotiedotteet", "Viikkotiedotteet"],
+  ["/en/weekly-newsletters/csg-weekly-mail-192024", "CSG Weekly mail 19/2024"],
 ]) {
   test(`seeded page ${url} renders`, async ({ page }) => {
     const response = await page.goto(url);
@@ -30,13 +31,32 @@ for (const [url, heading] of [
   });
 }
 
+for (const url of [
+  "/fi/tapahtumat/e2e-testitapahtuma",
+  "/en/events/e2e-testitapahtuma",
+]) {
+  test(`event page ${url} renders from Ilmomasiina`, async ({ page }) => {
+    const response = await page.goto(url);
+    expect(response?.status()).toBe(200);
+    await expect(
+      page.getByRole("heading", { name: "E2E-testitapahtuma", exact: true }),
+    ).toBeVisible();
+  });
+}
+
 test("desktop navigation opens a seeded page and browser back works", async ({
   page,
 }) => {
   await page.goto("/fi");
   const menu = page.getByRole("button", { name: "Kilta", exact: true });
-  await menu.hover();
-  await expect(menu).toHaveAttribute("aria-expanded", "true");
+  // A hover before hydration is lost, so repeat it until the menu opens
+  await expect(async () => {
+    await page.mouse.move(0, 0);
+    await menu.hover();
+    await expect(menu).toHaveAttribute("aria-expanded", "true", {
+      timeout: 1000,
+    });
+  }).toPass();
   await page.getByRole("link", { name: "Säännöt", exact: true }).click();
   await expect(page).toHaveURL(/\/fi\/kilta\/saannot$/);
   await expect(

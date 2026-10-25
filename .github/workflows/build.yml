@@ -106,7 +106,8 @@ jobs:
       - name: Build production app
         run: pnpm build
       - name: Run browser tests against production Node server
-        run: pnpm --filter e2e test --project=${{ matrix.browser }}
+        # The browserless cache checks only need to run once
+        run: pnpm --filter e2e test --project=${{ matrix.browser }} ${{ matrix.browser == 'chromium' && '--project=cache' || '' }}
       - name: Upload e2e diagnostics
         if: failure()
         uses: actions/upload-artifact@v4
