@@ -63,14 +63,14 @@ function cacheDirectives(response: APIResponse) {
   );
 }
 
-async function expectEventually(
+// Next serves a stale page while re-rendering it, so a re-render with stale
+// data would keep the old content cached until the page's revalidate period.
+async function expectOnNextRequest(
   request: APIRequestContext,
   url: string,
   text: string,
 ) {
-  await expect
-    .poll(async () => (await request.get(url)).text(), { timeout: 30_000 })
-    .toContain(text);
+  expect(await (await request.get(url)).text()).toContain(text);
 }
 
 for (const url of localizedResponses) {
@@ -104,7 +104,10 @@ for (const url of personalPages) {
   });
 }
 
-test("a published page edit reaches visitors", async ({ request, visitor }) => {
+test("a published page edit reaches the next visitor", async ({
+  request,
+  visitor,
+}) => {
   const url = "/fi/kilta/palautelomake";
   const description = `Cache test description ${Date.now()}`;
   await getTwice(visitor, url);
@@ -116,10 +119,10 @@ test("a published page edit reaches visitors", async ({ request, visitor }) => {
     }),
   );
 
-  await expectEventually(visitor, url, description);
+  await expectOnNextRequest(visitor, url, description);
 });
 
-test("a footer edit reaches visitors", async ({ request, visitor }) => {
+test("a footer edit reaches the next visitor", async ({ request, visitor }) => {
   const url = "/fi/kilta/yhteystiedot";
   const label = `Cache test footer ${Date.now()}`;
   await getTwice(visitor, url);
@@ -137,7 +140,7 @@ test("a footer edit reaches visitors", async ({ request, visitor }) => {
     }),
   );
 
-  await expectEventually(visitor, url, label);
+  await expectOnNextRequest(visitor, url, label);
 });
 
 test("preview mode shows drafts while visitors keep the published page", async ({
