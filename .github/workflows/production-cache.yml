@@ -24,5 +24,20 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: |
+          VERSION=$(pnpm --filter e2e exec playwright --version)
+          echo "version=${VERSION#Version }" >> "$GITHUB_OUTPUT"
+      - name: Cache Playwright browsers
+        uses: actions/cache@v6
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ runner.arch }}-production-headless-${{ steps.playwright-version.outputs.version }}
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        # The runner image already has the system libraries Chromium and Firefox need
+        run: pnpm --filter e2e exec playwright install --only-shell chromium firefox
       - name: Check tietokilta.fi
         run: pnpm --filter e2e test:production
