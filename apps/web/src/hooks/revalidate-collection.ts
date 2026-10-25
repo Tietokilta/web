@@ -1,6 +1,7 @@
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import type { CollectionAfterChangeHook, TypeWithID } from "payload";
 import type { Config } from "@payload-types";
+import { expireTag } from "./expire-tag";
 
 type CollectionSlug = keyof Config["collections"];
 
@@ -31,10 +32,10 @@ export function revalidateCollection<T extends TypeWithID>(
     }
 
     req.payload.logger.info(`revalidating ${collectionSlug}`);
-    revalidateTag(`collection-${collectionSlug}`, "default");
+    expireTag(`collection-${collectionSlug}`);
     if (collectionSlug !== "pages") {
       req.payload.logger.info(`revalidating pages`);
-      revalidateTag("collection-pages", "default");
+      expireTag("collection-pages");
     }
     revalidatePath("/[locale]/[...path]", "page");
 
