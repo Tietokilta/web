@@ -1,5 +1,10 @@
 import { test as base } from "@playwright/test";
 
+export const admin = {
+  email: "root@tietokilta.fi",
+  password: "ci-e2e-admin-password",
+};
+
 export const test = base.extend({
   // Playwright requires fixture dependencies to be destructured.
   // oxlint-disable-next-line no-empty-pattern

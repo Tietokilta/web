@@ -2,7 +2,6 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: ".",
-  testMatch: "site.spec.ts",
   globalSetup: "./setup.ts",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -10,9 +9,23 @@ export default defineConfig({
   expect: { timeout: 10_000 },
   reporter: [["list"], ["html", { open: "never" }]],
   projects: [
-    { name: "chromium", use: devices["Desktop Chrome"] },
-    { name: "firefox", use: devices["Desktop Firefox"] },
-    { name: "webkit", use: devices["Desktop Safari"] },
+    {
+      name: "chromium",
+      testMatch: "site.spec.ts",
+      use: devices["Desktop Chrome"],
+    },
+    {
+      name: "firefox",
+      testMatch: "site.spec.ts",
+      use: devices["Desktop Firefox"],
+    },
+    {
+      name: "webkit",
+      testMatch: "site.spec.ts",
+      use: devices["Desktop Safari"],
+    },
+    // HTTP-only checks that do not depend on the browser
+    { name: "cache", testMatch: "cache.spec.ts" },
   ],
   use: {
     locale: "fi-FI",

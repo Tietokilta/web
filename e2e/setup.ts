@@ -11,6 +11,7 @@ import {
   Wait,
   type StartedTestContainer,
 } from "testcontainers";
+import { admin } from "./fixtures";
 
 const AZURITE_ACCOUNT = "ci";
 const AZURITE_KEY = "Y2ktc21va2UtdGVzdC1rZXk=";
@@ -183,6 +184,8 @@ export default async function setup() {
       PORT: String(port),
       PAYLOAD_MONGO_CONNECTION_STRING: `mongodb://${mongo.getHost()}:${mongo.getMappedPort(27017)}/payload`,
       PAYLOAD_SECRET: "ci-e2e-secret",
+      PAYLOAD_DEFAULT_USER_EMAIL: admin.email,
+      PAYLOAD_DEFAULT_USER_PASSWORD: admin.password,
       PUBLIC_FRONTEND_URL: `http://127.0.0.1:${port}`,
       AZURE_STORAGE_CONNECTION_STRING: AZURITE_CONNECTION_STRING.replace(
         "http://azurite:10000",
