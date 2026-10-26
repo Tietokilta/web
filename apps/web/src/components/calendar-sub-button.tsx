@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@tietokilta/ui";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export function CalendarSubButton({
@@ -48,7 +47,7 @@ export function CalendarSubButton({
 
   return (
     <Button asChild variant="outlineLink" className="self-end">
-      <Link
+      <a
         onClick={(e) => {
           e.preventDefault();
           e.stopPropagation();
@@ -58,7 +57,7 @@ export function CalendarSubButton({
         href={calendarIcsUrl}
       >
         {buttonText}
-      </Link>
+      </a>
     </Button>
   );
 }
