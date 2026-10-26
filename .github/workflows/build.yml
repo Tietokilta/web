@@ -198,9 +198,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             GIT_COMMIT_SHA=${{github.sha}}
-          cache-from: type=gha
-          # Avoid uploading the full build dependency tree on every commit.
-          cache-to: type=gha,mode=min
 
       - name: Smoke test Docker image
         env:
