@@ -61,6 +61,20 @@ test("preview requests skip the edge cache", async ({ request }) => {
   expect(preview.headers()["cf-cache-status"]).not.toBe("HIT");
 });
 
+test("a browser gets a compressed page even after a request without compression", async ({
+  request,
+}) => {
+  // Cloudflare keeps the origin's bytes to preserve strong ETags, so it must
+  // cache a separate copy per compression instead of serving the first one
+  const url = fresh(cmsPage);
+  await request.get(url, { headers: { "Accept-Encoding": "identity" } });
+
+  const browser = await request.get(url, {
+    headers: { "Accept-Encoding": "gzip, deflate, br, zstd" },
+  });
+  expect(browser.headers()["content-encoding"]).toMatch(/^(gzip|br|zstd)$/);
+});
+
 test("the edge answers a matching conditional request with 304", async ({
   request,
 }) => {
