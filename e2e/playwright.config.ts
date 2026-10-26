@@ -20,7 +20,7 @@ export default defineConfig({
       use: devices["Desktop Firefox"],
     },
     // HTTP-only checks that do not depend on the browser
-    { name: "cache", testMatch: "cache.spec.ts" },
+    { name: "http", testMatch: ["cache.spec.ts", "payload.spec.ts"] },
   ],
   use: {
     locale: "fi-FI",
