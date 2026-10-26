@@ -27,7 +27,7 @@ export const generateMetadata = async (props: {
   const locale = await setLocaleFromParams(props.params);
   const { page } = await props.searchParams;
   const pageInt = parseInt(String(page), 10);
-  // Each page of the news list is its own page, not a copy of the first one
+  // Each page of the events list is its own page, not a copy of the first one
   const query = pageInt > 1 ? `?page=${pageInt.toString()}` : "";
 
   return {
