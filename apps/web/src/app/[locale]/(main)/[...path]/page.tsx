@@ -87,6 +87,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
       modifiedTime: page.updatedAt,
       images: `/next_api/og/cms-page?title=${encodeURIComponent(page.title)}&description=${encodeURIComponent(page.description)}`,
     },
+    ...(page.noIndex ? { robots: { index: false } } : {}),
   };
 };
 
