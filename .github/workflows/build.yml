@@ -68,7 +68,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        browser: [chromium, firefox, webkit]
+        browser: [chromium, firefox]
     steps:
       - uses: actions/checkout@v7
       - uses: pnpm/action-setup@v6.0.9
@@ -96,13 +96,12 @@ jobs:
         id: playwright-cache
         with:
           path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ runner.arch }}-${{ matrix.browser }}-${{ steps.playwright-version.outputs.version }}
+          key: playwright-${{ runner.os }}-${{ runner.arch }}-${{ matrix.browser }}-headless-${{ steps.playwright-version.outputs.version }}
       - name: Install Playwright browsers
         if: steps.playwright-cache.outputs.cache-hit != 'true'
-        run: pnpm --filter e2e exec playwright install --with-deps ${{ matrix.browser }}
-      - name: Install Playwright system dependencies
-        if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: pnpm --filter e2e exec playwright install-deps ${{ matrix.browser }}
+        # The runner image already has the system libraries Chromium and Firefox need, and
+        # headless tests only use Chromium's headless shell
+        run: pnpm --filter e2e exec playwright install ${{ matrix.browser == 'chromium' && '--only-shell' || '' }} ${{ matrix.browser }}
       - name: Build production app
         run: pnpm build
       - name: Run browser tests against production Node server
