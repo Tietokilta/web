@@ -22,15 +22,28 @@ function Content({ content }: { content?: EditorState }) {
 
 export const generateMetadata = async (props: {
   params: Promise<{ locale: string }>;
-}): Promise<Metadata> => ({
-  openGraph: {
-    type: "website",
-  },
-  alternates: {
-    canonical: `/${await setLocaleFromParams(props.params)}`,
-    languages: { fi: "/fi", en: "/en", "x-default": "/fi" },
-  },
-});
+  searchParams: Promise<{ page?: string | string[] }>;
+}): Promise<Metadata> => {
+  const locale = await setLocaleFromParams(props.params);
+  const { page } = await props.searchParams;
+  const pageInt = parseInt(String(page), 10);
+  // Each page of the news list is its own page, not a copy of the first one
+  const query = pageInt > 1 ? `?page=${pageInt.toString()}` : "";
+
+  return {
+    openGraph: {
+      type: "website",
+    },
+    alternates: {
+      canonical: `/${locale}${query}`,
+      languages: {
+        fi: `/fi${query}`,
+        en: `/en${query}`,
+        "x-default": `/fi${query}`,
+      },
+    },
+  };
+};
 
 export default async function Home(props: {
   searchParams: Promise<{ page?: string | string[] }>;
