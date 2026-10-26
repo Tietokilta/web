@@ -370,7 +370,7 @@ importers:
         version: 4.0.1
       remeda:
         specifier: ^2.39.0
-        version: 2.39.0
+        version: 2.53.0
       sharp:
         specifier: ^0.35.3
         version: 0.35.4(@types/node@24.19.2)
@@ -5679,8 +5679,8 @@ packages:
   remark@15.0.1:
     resolution: {integrity: sha512-Eht5w30ruCXgFmxVUSlNWQ9iiimq07URKeFS3hNc8cUWy1llX4KDWfyEDZRycMc+znsN9Ux5/tJ/BFdgdOwA3A==}
 
-  remeda@2.39.0:
-    resolution: {integrity: sha512-3Ki8dU1o3OVu4dwIQ2Pj+yiuP7OnEbmWAGmJ3yDRqopily5jsj8NWzPvbS89H85d6UdONKEcUnrfuHY6jN9vyw==}
+  remeda@2.53.0:
+    resolution: {integrity: sha512-1jeHr8AUMB3r089AOmaiHBPAcGTep27JCbMt8MeXXXquDkO3h2N4CtuK++4Oas8mulCUiOUDeZqN+ssrcatKlw==}
     engines: {node: '>=18.0.0'}
 
   require-directory@2.1.1:
@@ -11813,7 +11813,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  remeda@2.39.0: {}
+  remeda@2.53.0: {}
 
   require-directory@2.1.1: {}
 
