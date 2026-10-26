@@ -23,7 +23,7 @@ function ImageWithCitation({
       <Image
         alt=""
         className={cn(
-          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000",
+          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000 starting:opacity-0",
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
@@ -41,7 +41,7 @@ function ImageWithCitation({
       <Image
         alt=""
         className={cn(
-          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000",
+          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000 starting:opacity-0",
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
@@ -72,19 +72,24 @@ export function Hero({
   images: ImageWithPhotographer[];
   texts: string[];
 }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(
-    new Date().getUTCDate() % images.length,
+  // Picked in the browser, because every visitor gets the same cached page
+  const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(
+    null,
   );
   const [hasRotated, setHasRotated] = useState(false);
   // Only the image fading out, the current one and the next one are mounted,
   // so the browser downloads images as the rotation reaches them
-  const mountedImageIndexes = new Set([
-    currentImageIndex,
-    (currentImageIndex + 1) % images.length,
-    ...(hasRotated
-      ? [(currentImageIndex - 1 + images.length) % images.length]
-      : []),
-  ]);
+  const mountedImageIndexes = new Set(
+    currentImageIndex === null
+      ? []
+      : [
+          currentImageIndex,
+          (currentImageIndex + 1) % images.length,
+          ...(hasRotated
+            ? [(currentImageIndex - 1 + images.length) % images.length]
+            : []),
+        ],
+  );
 
   const [currentText, setCurrentText] = useState(texts[0]);
   // eslint-disable-next-line react/hook-use-state -- prev index used directly in the setter
@@ -100,9 +105,12 @@ export function Hero({
   useEffect(() => {
     const shuffledTexts = shuffle(texts);
     setCurrentText(shuffledTexts[0]);
+    setCurrentImageIndex(Math.floor(Math.random() * images.length));
 
     const interval = setInterval(() => {
-      setCurrentImageIndex((_current) => (_current + 1) % images.length);
+      setCurrentImageIndex((_current) =>
+        _current === null ? null : (_current + 1) % images.length,
+      );
       setHasRotated(true);
       setTextIndex((_textIndex) => {
         const newIndex = (_textIndex + 1) % texts.length;
