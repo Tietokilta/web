@@ -1,3 +1,4 @@
+import type { APIRequestContext } from "@playwright/test";
 import { test, expect } from "./fixtures";
 
 test.afterEach(async ({ page }) => {
@@ -123,15 +124,17 @@ test("mobile navigation opens and follows a link", async ({ page }) => {
   await expect(menu).not.toBeVisible();
 });
 
+async function fetchHeroURLs(request: APIRequestContext) {
+  const landingPage = (await (
+    await request.get("/api/globals/landing-page?depth=1")
+  ).json()) as { heroImages: { image: { url: string } }[] };
+  return new Set(landingPage.heroImages.map(({ image }) => image.url));
+}
+
 test("the landing page downloads only the hero images it is about to show", async ({
   page,
 }) => {
-  const landingPage = (await (
-    await page.request.get("/api/globals/landing-page?depth=1")
-  ).json()) as { heroImages: { image: { url: string } }[] };
-  const heroURLs = new Set(
-    landingPage.heroImages.map(({ image }) => image.url),
-  );
+  const heroURLs = await fetchHeroURLs(page.request);
   expect(heroURLs.size).toBeGreaterThan(2);
 
   const downloaded = new Set<string>();
@@ -149,6 +152,37 @@ test("the landing page downloads only the hero images it is about to show", asyn
 
   await page.clock.runFor(15_000);
   await expect.poll(() => downloaded.size).toBe(3);
+});
+
+test("the landing page hero starts from a random photo on each visit", async ({
+  context,
+}) => {
+  const heroURLs = await fetchHeroURLs(context.request);
+
+  async function startingPhoto(random: number) {
+    const page = await context.newPage();
+    await page.addInitScript((value) => {
+      Math.random = () => value;
+    }, random);
+    await page.goto("/fi");
+    const shownPhotos = () =>
+      page
+        .locator('main img[src^="/_next/image"]')
+        .evaluateAll((images) =>
+          images
+            .filter((image) => getComputedStyle(image).opacity !== "0")
+            .map((image) =>
+              new URL((image as HTMLImageElement).src).searchParams.get("url"),
+            ),
+        )
+        .then((sources) => sources.filter((source) => heroURLs.has(source!)));
+    await expect.poll(shownPhotos).toHaveLength(1);
+    const [photo] = await shownPhotos();
+    await page.close();
+    return photo;
+  }
+
+  expect(await startingPhoto(0)).not.toBe(await startingPhoto(0.99));
 });
 
 test("landing page images load through Payload and Next image optimization", async ({
