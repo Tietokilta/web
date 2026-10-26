@@ -20,11 +20,15 @@ function Content({ content }: { content?: EditorState }) {
   );
 }
 
-export const metadata: Metadata = {
+export const generateMetadata = async (): Promise<Metadata> => ({
   openGraph: {
     type: "website",
   },
-};
+  alternates: {
+    canonical: `/${await getLocale()}`,
+    languages: { fi: "/fi", en: "/en", "x-default": "/fi" },
+  },
+});
 
 export default async function Home(props: {
   searchParams: Promise<{ page?: string | string[] }>;
