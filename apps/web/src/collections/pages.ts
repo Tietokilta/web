@@ -194,6 +194,14 @@ const externalRedirectFields = [
 
 export const Pages = {
   slug: "pages",
+  // Other documents link to pages only for these fields, so populating a link never ships
+  // a page's whole content to the client (it once made every page carry ~500 KB of them)
+  defaultPopulate: {
+    title: true,
+    path: true,
+    icon: true,
+    description: true,
+  },
   admin: {
     useAsTitle: "path",
     defaultColumns: ["path", "title"],
