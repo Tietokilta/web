@@ -144,6 +144,32 @@ test("the landing page pages through upcoming events on mobile", async ({
   await expect(shownEvents(page)).toHaveText(secondEventPage);
 });
 
+for (const url of ["/en", "/en?page=2"]) {
+  test(`${url} links to its canonical page and translations`, async ({
+    page,
+  }) => {
+    await page.goto(url);
+    const linkedPath = async (selector: string) => {
+      const { pathname, search } = new URL(
+        (await page.locator(selector).getAttribute("href")) ?? "",
+        "http://localhost",
+      );
+      return pathname + search;
+    };
+
+    expect(await linkedPath('link[rel="canonical"]')).toBe("/en");
+    expect(await linkedPath('link[rel="alternate"][hreflang="fi"]')).toBe(
+      "/fi",
+    );
+    expect(await linkedPath('link[rel="alternate"][hreflang="en"]')).toBe(
+      "/en",
+    );
+    expect(
+      await linkedPath('link[rel="alternate"][hreflang="x-default"]'),
+    ).toBe("/fi");
+  });
+}
+
 test("the landing page can switch languages", async ({ page }) => {
   await page.goto("/fi");
   await page.getByRole("link", { name: "In English", exact: true }).click();
