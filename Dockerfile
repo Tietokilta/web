@@ -1,12 +1,13 @@
-ARG NODE_VERSION=24.22.1
-FROM node:${NODE_VERSION}-alpine AS base
+FROM node:24.22.1-alpine AS base
 RUN apk add --no-cache libc6-compat
 
 FROM base AS tooling
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-RUN npm install --global turbo@2.10.4
+# renovate: datasource=npm depName=turbo
+ARG TURBO_VERSION=2.10.4
+RUN npm install --global turbo@${TURBO_VERSION}
 WORKDIR /app
 
 FROM tooling AS pruner
