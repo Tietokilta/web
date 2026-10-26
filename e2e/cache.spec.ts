@@ -32,8 +32,11 @@ const sharedCacheControl = "s-maxage=60, stale-while-revalidate=3540";
 // Event pages follow the 30 s revalidation of their Ilmomasiina data
 const eventCacheControl = "s-maxage=30, stale-while-revalidate=3570";
 
+const landingPages = ["/fi", "/en"];
+
 const cachedPages = [
   ...cmsPages.map((url) => [url, sharedCacheControl] as const),
+  ...landingPages.map((url) => [url, sharedCacheControl] as const),
   ...eventPages.map((url) => [url, eventCacheControl] as const),
 ];
 
