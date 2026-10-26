@@ -150,9 +150,9 @@ jobs:
       - name: Build UI package
         run: pnpm --filter @tietokilta/ui build
 
-      - name: Publish @tietokilta/ui (alpha and latest)
+      - name: Publish @tietokilta/ui
         run: |
-          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag alpha --tag latest
+          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag latest
 
   docker-build-and-push:
     name: Build Docker image & smoke test
