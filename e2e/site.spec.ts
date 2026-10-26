@@ -123,6 +123,34 @@ test("mobile navigation opens and follows a link", async ({ page }) => {
   await expect(menu).not.toBeVisible();
 });
 
+test("the landing page downloads only the hero images it is about to show", async ({
+  page,
+}) => {
+  const landingPage = (await (
+    await page.request.get("/api/globals/landing-page?depth=1")
+  ).json()) as { heroImages: { image: { url: string } }[] };
+  const heroURLs = new Set(
+    landingPage.heroImages.map(({ image }) => image.url),
+  );
+  expect(heroURLs.size).toBeGreaterThan(2);
+
+  const downloaded = new Set<string>();
+  page.on("request", (request) => {
+    const url = new URL(request.url());
+    const source = url.searchParams.get("url");
+    if (url.pathname === "/_next/image" && source && heroURLs.has(source)) {
+      downloaded.add(source);
+    }
+  });
+  await page.clock.install();
+  await page.goto("/fi", { waitUntil: "networkidle" });
+  // The current image and the next one
+  expect(downloaded.size).toBe(2);
+
+  await page.clock.runFor(15_000);
+  await expect.poll(() => downloaded.size).toBe(3);
+});
+
 test("landing page images load through Payload and Next image optimization", async ({
   page,
 }) => {
