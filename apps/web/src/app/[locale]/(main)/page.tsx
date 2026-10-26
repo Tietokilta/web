@@ -20,10 +20,25 @@ function Content({ content }: { content?: EditorState }) {
   );
 }
 
-export const metadata: Metadata = {
-  openGraph: {
-    type: "website",
-  },
+// The events list pages in the browser, so `?page=` serves the same HTML as the landing page
+export const generateMetadata = async (props: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> => {
+  const locale = await setLocaleFromParams(props.params);
+
+  return {
+    openGraph: {
+      type: "website",
+    },
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        fi: "/fi",
+        en: "/en",
+        "x-default": "/fi",
+      },
+    },
+  };
 };
 
 // Render on first request and cache until Payload or the events revalidate

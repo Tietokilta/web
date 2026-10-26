@@ -230,3 +230,15 @@ test("landing page images load through Payload and Next image optimization", asy
   expect(mediaResponse.ok()).toBe(true);
   expect(mediaResponse.headers()["content-type"]).toMatch(/^image\//);
 });
+
+for (const [path, contentType] of [
+  ["/.well-known/security.txt", /^text\/plain/],
+  ["/favicon.ico", /^image\//],
+  ["/apple-touch-icon.png", /^image\/png/],
+] as const) {
+  test(`${path} is served as a file, not a page`, async ({ request }) => {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status()).toBe(200);
+    expect(response.headers()["content-type"]).toMatch(contentType);
+  });
+}
