@@ -1,3 +1,4 @@
+import type { Page } from "@playwright/test";
 import { test, expect } from "./fixtures";
 
 test.afterEach(async ({ page }) => {
@@ -69,25 +70,78 @@ test("desktop navigation opens a seeded page and browser back works", async ({
   ).toBeVisible();
 });
 
-test("the landing page pages through upcoming events", async ({ page }) => {
-  const shownEvents = page.getByText(/^E2E-(testi)?tapahtuma/).filter({
-    visible: true,
-  });
+const firstEventPage = [
+  "E2E-testitapahtuma",
+  "E2E-tapahtuma 2",
+  "E2E-tapahtuma 3",
+  "E2E-tapahtuma 4",
+  "E2E-tapahtuma 5",
+];
+const secondEventPage = ["E2E-tapahtuma 6", "E2E-tapahtuma 7"];
 
-  await page.goto("/fi");
-  await expect(shownEvents).toHaveCount(5);
-  await expect(shownEvents.first()).toHaveText("E2E-testitapahtuma");
+function shownEvents(page: Page) {
+  return page.getByText(/^E2E-(testi)?tapahtuma/).filter({ visible: true });
+}
 
-  await page
+function eventPagination(page: Page) {
+  return page
     .getByRole("navigation", { name: "pagination" })
-    .filter({ visible: true })
-    .getByRole("link", { name: /2$/ })
-    .click();
-  await expect(page).toHaveURL(/\/fi\/?\?page=2$/);
-  await expect(shownEvents).toHaveText(["E2E-tapahtuma 6", "E2E-tapahtuma 7"]);
+    .filter({ visible: true });
+}
 
-  await page.goto("/fi?page=2");
-  await expect(shownEvents).toHaveText(["E2E-tapahtuma 6", "E2E-tapahtuma 7"]);
+test("the landing page pages through upcoming events", async ({ page }) => {
+  await page.goto("/fi");
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+
+  await eventPagination(page).getByRole("link", { name: /2$/ }).click();
+  await expect(page).toHaveURL(/\/fi\/?\?page=2$/);
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
+
+  await eventPagination(page)
+    .getByRole("link", { name: "Siirry edelliselle sivulle" })
+    .click();
+  await expect(page).toHaveURL(/\/fi\/?\?page=1$/);
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+
+  await eventPagination(page)
+    .getByRole("link", { name: "Siirry seuraavalle sivulle" })
+    .click();
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
+
+  await page.goBack();
+  await expect(page).toHaveURL(/\/fi\/?\?page=1$/);
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+});
+
+test("the landing page opens a linked page of upcoming events", async ({
+  page,
+}) => {
+  await page.goto("/en?page=2");
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
+  await expect(
+    eventPagination(page).locator('[aria-current="page"]'),
+  ).toHaveText(/2$/);
+});
+
+for (const invalid of ["0", "3", "abc", "1.5"]) {
+  test(`the landing page shows the first events for page ${invalid}`, async ({
+    page,
+  }) => {
+    const response = await page.goto(`/fi?page=${invalid}`);
+    expect(response?.status()).toBe(200);
+    await expect(shownEvents(page)).toHaveText(firstEventPage);
+  });
+}
+
+test("the landing page pages through upcoming events on mobile", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/fi");
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+
+  await eventPagination(page).getByRole("link", { name: /2$/ }).click();
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
 });
 
 test("the landing page can switch languages", async ({ page }) => {
