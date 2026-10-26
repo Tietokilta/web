@@ -261,3 +261,14 @@ jobs:
         with:
           app-name: tikweb-web-prod # TODO: if we ever setup more envs than prod, make this variable customizable
           images: "${{ env.docker_tag_prefix }}/web:sha-${{ github.sha }}"
+      # Azure takes a few minutes to swap the container after the deploy call. Finishing
+      # only once the new version serves keeps the production checks from testing the swap.
+      - name: Wait for the new version to serve traffic
+        run: |
+          for _ in $(seq 1 60); do
+            deployed=$(curl -sI https://tietokilta.fi/next_api/health | tr -d '\r' | awk 'tolower($1) == "x-git-commit-sha:" { print $2 }' || true)
+            if [ "$deployed" = "$GITHUB_SHA" ]; then exit 0; fi
+            sleep 10
+          done
+          echo "tietokilta.fi is still serving $deployed instead of $GITHUB_SHA"
+          exit 1
