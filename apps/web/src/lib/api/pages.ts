@@ -10,3 +10,12 @@ export const fetchPage = getOneCollectionItem<
   },
   Page
 >("pages");
+
+export const fetchPagePaths = getOneCollectionItem<
+  {
+    where: { id: { equals: string } };
+    depth: number;
+    select: { path: true };
+  },
+  Pick<Page, "path">
+>("pages");
