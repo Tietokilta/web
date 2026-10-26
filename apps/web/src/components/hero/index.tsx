@@ -23,7 +23,7 @@ function ImageWithCitation({
       <Image
         alt=""
         className={cn(
-          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000",
+          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000 starting:opacity-0",
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
@@ -41,7 +41,7 @@ function ImageWithCitation({
       <Image
         alt=""
         className={cn(
-          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000",
+          "pointer-events-none z-10 object-cover object-center transition-opacity duration-1000 starting:opacity-0",
           isCurrentImage ? "opacity-25" : "opacity-0",
         )}
         fill
@@ -72,8 +72,23 @@ export function Hero({
   images: ImageWithPhotographer[];
   texts: string[];
 }) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(
-    new Date().getUTCDate() % images.length,
+  // Picked in the browser, because every visitor gets the same cached page
+  const [currentImageIndex, setCurrentImageIndex] = useState<number | null>(
+    null,
+  );
+  const [hasRotated, setHasRotated] = useState(false);
+  // Only the image fading out, the current one and the next one are mounted,
+  // so the browser downloads images as the rotation reaches them
+  const mountedImageIndexes = new Set(
+    currentImageIndex === null
+      ? []
+      : [
+          currentImageIndex,
+          (currentImageIndex + 1) % images.length,
+          ...(hasRotated
+            ? [(currentImageIndex - 1 + images.length) % images.length]
+            : []),
+        ],
   );
 
   const [currentText, setCurrentText] = useState(texts[0]);
@@ -90,9 +105,13 @@ export function Hero({
   useEffect(() => {
     const shuffledTexts = shuffle(texts);
     setCurrentText(shuffledTexts[0]);
+    setCurrentImageIndex(Math.floor(Math.random() * images.length));
 
     const interval = setInterval(() => {
-      setCurrentImageIndex((_current) => (_current + 1) % images.length);
+      setCurrentImageIndex((_current) =>
+        _current === null ? null : (_current + 1) % images.length,
+      );
+      setHasRotated(true);
       setTextIndex((_textIndex) => {
         const newIndex = (_textIndex + 1) % texts.length;
         setCurrentText(shuffledTexts[newIndex]);
@@ -107,13 +126,15 @@ export function Hero({
 
   return (
     <div className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
-      {images.map((image, imageIndex) => (
-        <ImageWithCitation
-          key={image.url}
-          image={image}
-          isCurrentImage={imageIndex === currentImageIndex}
-        />
-      ))}
+      {images.map((image, imageIndex) =>
+        mountedImageIndexes.has(imageIndex) ? (
+          <ImageWithCitation
+            key={image.url}
+            image={image}
+            isCurrentImage={imageIndex === currentImageIndex}
+          />
+        ) : null,
+      )}
       <div className="z-20 container mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-3xl lg:text-4xl">
         <p
           className="line-clamp-4 w-full max-w-2xl pb-2 break-words lg:w-1/2"
