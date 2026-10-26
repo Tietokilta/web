@@ -346,6 +346,16 @@ export const Pages = {
         position: "sidebar",
       },
     },
+    {
+      name: "noIndex",
+      type: "checkbox",
+      defaultValue: false,
+      label: "Hide from search engines",
+      admin: {
+        position: "sidebar",
+        description: "For pages with names or photos of people, e.g. officials",
+      },
+    },
   ],
   versions: {
     maxPerDoc: env.NODE_ENV === "production" ? 100 : 2,
