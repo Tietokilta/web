@@ -33,8 +33,21 @@ const quota = {
   signupCount: 0,
 };
 
+// Enough later events for the landing page to need a second page of five
+const laterEvents = Array.from({ length: 6 }, (_, i) => ({
+  ...event,
+  id: `e2e-event-${(i + 2).toFixed()}`,
+  slug: `e2e-tapahtuma-${(i + 2).toFixed()}`,
+  title: `E2E-tapahtuma ${(i + 2).toFixed()}`,
+  date: `2099-02-0${(i + 1).toFixed()}T16:00:00.000Z`,
+  endDate: `2099-02-0${(i + 1).toFixed()}T20:00:00.000Z`,
+}));
+
 const routes: Record<string, unknown> = {
-  "/api/events": [{ ...event, quotas: [quota] }],
+  "/api/events": [event, ...laterEvents].map((listed) => ({
+    ...listed,
+    quotas: [quota],
+  })),
   [`/api/events/${event.slug}`]: {
     ...event,
     registrationClosed: false,

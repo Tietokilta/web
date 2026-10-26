@@ -16,12 +16,14 @@ async function getTwice(
   return [first, second] as const;
 }
 
-test("content pages are served from the edge cache", async ({ request }) => {
-  const [, second] = await getTwice(request, fresh(cmsPage));
+for (const path of [cmsPage, "/fi"]) {
+  test(`${path} is served from the edge cache`, async ({ request }) => {
+    const [, second] = await getTwice(request, fresh(path));
 
-  expect(second.status()).toBe(200);
-  expect(second.headers()["cf-cache-status"]).toBe("HIT");
-});
+    expect(second.status()).toBe(200);
+    expect(second.headers()["cf-cache-status"]).toBe("HIT");
+  });
+}
 
 test("the edge refreshes a cached page within a minute", async ({
   request,
@@ -39,7 +41,6 @@ test("the edge refreshes a cached page within a minute", async ({
 
 for (const path of [
   "/",
-  "/fi",
   "/admin",
   "/api/pages?limit=1",
   "/api/globals/footer",

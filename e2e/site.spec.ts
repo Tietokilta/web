@@ -69,6 +69,27 @@ test("desktop navigation opens a seeded page and browser back works", async ({
   ).toBeVisible();
 });
 
+test("the landing page pages through upcoming events", async ({ page }) => {
+  const shownEvents = page.getByText(/^E2E-(testi)?tapahtuma/).filter({
+    visible: true,
+  });
+
+  await page.goto("/fi");
+  await expect(shownEvents).toHaveCount(5);
+  await expect(shownEvents.first()).toHaveText("E2E-testitapahtuma");
+
+  await page
+    .getByRole("navigation", { name: "pagination" })
+    .filter({ visible: true })
+    .getByRole("link", { name: /2$/ })
+    .click();
+  await expect(page).toHaveURL(/\/fi\/?\?page=2$/);
+  await expect(shownEvents).toHaveText(["E2E-tapahtuma 6", "E2E-tapahtuma 7"]);
+
+  await page.goto("/fi?page=2");
+  await expect(shownEvents).toHaveText(["E2E-tapahtuma 6", "E2E-tapahtuma 7"]);
+});
+
 test("the landing page can switch languages", async ({ page }) => {
   await page.goto("/fi");
   await page.getByRole("link", { name: "In English", exact: true }).click();

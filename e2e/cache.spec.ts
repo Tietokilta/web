@@ -21,6 +21,8 @@ const cmsPages = [
   "/en/weekly-newsletters/csg-weekly-mail-192024",
 ];
 
+const landingPages = ["/fi", "/en"];
+
 const eventPages = [
   "/fi/tapahtumat/e2e-testitapahtuma",
   "/en/events/e2e-testitapahtuma",
@@ -33,7 +35,9 @@ const sharedCacheControl = "s-maxage=60, stale-while-revalidate=3540";
 const eventCacheControl = "s-maxage=30, stale-while-revalidate=3570";
 
 const cachedPages = [
-  ...cmsPages.map((url) => [url, sharedCacheControl] as const),
+  ...[...cmsPages, ...landingPages].map(
+    (url) => [url, sharedCacheControl] as const,
+  ),
   ...eventPages.map((url) => [url, eventCacheControl] as const),
 ];
 
@@ -42,7 +46,7 @@ const personalPages = ["/fi/signups/abc/def", "/fi/payment/abc/def"];
 const localizedResponses = [
   ...cmsPages,
   ...personalPages,
-  "/fi",
+  ...landingPages,
   "/fi/infoscreen",
   "/fi/kilta/ei-ole-olemassa",
   "/fi/tapahtumat/ei-ole-olemassa",
