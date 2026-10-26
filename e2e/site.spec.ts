@@ -99,6 +99,22 @@ test("the events page shows the event calendar", async ({ page }) => {
   await expect(page.locator(".rbc-calendar")).toBeVisible();
 });
 
+test("the events page downloads the calendar feed only when asked", async ({
+  page,
+}) => {
+  const feedRequests: string[] = [];
+  page.on("request", (request) => {
+    if (new URL(request.url()).pathname === "/next_api/ilmo-calendar") {
+      feedRequests.push(request.url());
+    }
+  });
+  await page.goto("/fi/tapahtumat", { waitUntil: "networkidle" });
+  await page.getByRole("link", { name: "Tilaa kalenteri" }).hover();
+  await page.waitForLoadState("networkidle");
+
+  expect(feedRequests).toEqual([]);
+});
+
 test("the invoice generator form renders", async ({ page }) => {
   await page.goto("/fi/laskugeneraattori");
   await expect(
