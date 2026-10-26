@@ -6,7 +6,7 @@ ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
 # renovate: datasource=npm depName=turbo
-ARG TURBO_VERSION=2.10.4
+ARG TURBO_VERSION=2.11.10
 RUN npm install --global turbo@${TURBO_VERSION}
 WORKDIR /app
 
