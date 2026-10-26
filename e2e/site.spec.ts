@@ -93,6 +93,21 @@ test("the root redirects to the language chosen earlier", async ({ page }) => {
   await expect(page).toHaveURL(/\/en$/);
 });
 
+test("the events page shows the event calendar", async ({ page }) => {
+  await page.goto("/fi/tapahtumat");
+  await expect(page.locator(".rbc-calendar")).toBeVisible();
+});
+
+test("the invoice generator form renders", async ({ page }) => {
+  await page.goto("/fi/laskugeneraattori");
+  await expect(
+    page.getByRole("textbox", { name: "Laskuttajan nimi", exact: true }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Lähetä", exact: true }),
+  ).toBeVisible();
+});
+
 test("mobile navigation opens and follows a link", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/fi");
