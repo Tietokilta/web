@@ -1,21 +1,13 @@
 import { type UserEventListItem } from "@tietokilta/ilmomasiina-models";
 import { Button, ClockIcon, MapPinIcon } from "@tietokilta/ui";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { chunk } from "remeda";
 import { fetchUpcomingEvents } from "../../lib/api/external/ilmomasiina";
 import { formatDateTime, formatDateTimeOptions } from "../../lib/utils";
 import { getLocale, getTranslations } from "../../locales/server";
 import { DateTime } from "../datetime";
-import {
-  Pagination,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from "../pagination";
+import { EventPages } from "./event-pages";
 
 function EventListSkeleton() {
   return (
@@ -91,7 +83,7 @@ async function EventItem({ event }: { event: UserEventListItem }) {
   );
 }
 
-async function EventList({ currentPage = 1 }: { currentPage?: number }) {
+async function EventList() {
   const locale = await getLocale();
   const upcomingEvents = await fetchUpcomingEvents(locale);
   const tAction = await getTranslations("action");
@@ -110,67 +102,31 @@ async function EventList({ currentPage = 1 }: { currentPage?: number }) {
     return null;
   }
 
-  const paginatedEvents = chunk(eventsList, 5);
-  const pageCount = paginatedEvents.length;
-
-  if (pageCount !== 0 && (currentPage < 1 || currentPage > pageCount)) {
-    return notFound();
-  }
-
   return (
-    <>
-      <ul className="space-y-4">
-        {paginatedEvents[currentPage - 1].map((event) => (
-          <EventItem event={event} key={event.id} />
-        ))}
-      </ul>
-      {pageCount > 1 ? (
-        <Pagination>
-          <PaginationContent>
-            {currentPage > 1 ? (
-              <PaginationItem>
-                <PaginationPrevious
-                  href={`/${locale}/?page=${(currentPage - 1).toFixed()}`}
-                  ariaLabel={tAction("Go to previous page")}
-                >
-                  {tAction("Back")}
-                </PaginationPrevious>
-              </PaginationItem>
-            ) : null}
-            {Array.from({ length: pageCount }, (__, i) => i + 1).map((page) => (
-              <PaginationItem key={page}>
-                <PaginationLink
-                  isActive={page === currentPage}
-                  href={`/${locale}/?page=${page.toFixed()}`}
-                >
-                  <span className="sr-only">{tGeneric("Page")}</span>
-                  <span>{page}</span>
-                </PaginationLink>
-              </PaginationItem>
-            ))}
-            {currentPage < pageCount ? (
-              <PaginationItem>
-                <PaginationNext
-                  href={`/${locale}/?page=${(currentPage + 1).toFixed()}`}
-                  ariaLabel={tAction("Go to next page")}
-                >
-                  {tAction("Next")}
-                </PaginationNext>
-              </PaginationItem>
-            ) : null}
-          </PaginationContent>
-        </Pagination>
-      ) : null}
-    </>
+    <EventPages
+      pages={chunk(eventsList, 5).map((events) => (
+        <ul className="space-y-4" key={events[0].id}>
+          {events.map((event) => (
+            <EventItem event={event} key={event.id} />
+          ))}
+        </ul>
+      ))}
+      locale={locale}
+      labels={{
+        back: tAction("Back"),
+        next: tAction("Next"),
+        previousPage: tAction("Go to previous page"),
+        nextPage: tAction("Go to next page"),
+        page: tGeneric("Page"),
+      }}
+    />
   );
 }
 
 export async function EventsDisplay({
   eventsListPath,
-  currentPage,
 }: {
   eventsListPath?: string;
-  currentPage?: number;
 }) {
   const locale = await getLocale();
   const tHeading = await getTranslations("heading");
@@ -187,7 +143,7 @@ export async function EventsDisplay({
       </Link>
 
       <Suspense fallback={<EventListSkeleton />}>
-        <EventList currentPage={currentPage} />
+        <EventList />
       </Suspense>
     </section>
   );
