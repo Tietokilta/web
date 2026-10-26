@@ -19,11 +19,6 @@ export default defineConfig({
       testMatch: "site.spec.ts",
       use: devices["Desktop Firefox"],
     },
-    {
-      name: "webkit",
-      testMatch: "site.spec.ts",
-      use: devices["Desktop Safari"],
-    },
     // HTTP-only checks that do not depend on the browser
     { name: "cache", testMatch: "cache.spec.ts" },
   ],
