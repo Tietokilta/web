@@ -7,7 +7,7 @@ import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import type { EditorState } from "@lexical-types";
 import { fetchLandingPage } from "@lib/api/landing-page";
 import { type NonNullableKeys } from "@lib/utils";
-import { getLocale } from "@locales/server";
+import { getLocale, setLocaleFromParams } from "@locales/server";
 import type { News, Page as CMSPage } from "@payload-types";
 
 function Content({ content }: { content?: EditorState }) {
@@ -20,12 +20,14 @@ function Content({ content }: { content?: EditorState }) {
   );
 }
 
-export const generateMetadata = async (): Promise<Metadata> => ({
+export const generateMetadata = async (props: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> => ({
   openGraph: {
     type: "website",
   },
   alternates: {
-    canonical: `/${await getLocale()}`,
+    canonical: `/${await setLocaleFromParams(props.params)}`,
     languages: { fi: "/fi", en: "/en", "x-default": "/fi" },
   },
 });
