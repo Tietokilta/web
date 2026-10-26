@@ -7,7 +7,7 @@ import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import type { EditorState } from "@lexical-types";
 import { fetchLandingPage } from "@lib/api/landing-page";
 import { type NonNullableKeys } from "@lib/utils";
-import { getLocale } from "@locales/server";
+import { getLocale, setLocaleFromParams } from "@locales/server";
 import type { News, Page as CMSPage } from "@payload-types";
 
 function Content({ content }: { content?: EditorState }) {
@@ -20,10 +20,29 @@ function Content({ content }: { content?: EditorState }) {
   );
 }
 
-export const metadata: Metadata = {
-  openGraph: {
-    type: "website",
-  },
+export const generateMetadata = async (props: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ page?: string | string[] }>;
+}): Promise<Metadata> => {
+  const locale = await setLocaleFromParams(props.params);
+  const { page } = await props.searchParams;
+  const pageInt = parseInt(String(page), 10);
+  // Each page of the events list is its own page, not a copy of the first one
+  const query = pageInt > 1 ? `?page=${pageInt.toString()}` : "";
+
+  return {
+    openGraph: {
+      type: "website",
+    },
+    alternates: {
+      canonical: `/${locale}${query}`,
+      languages: {
+        fi: `/fi${query}`,
+        en: `/en${query}`,
+        "x-default": `/fi${query}`,
+      },
+    },
+  };
 };
 
 export default async function Home(props: {

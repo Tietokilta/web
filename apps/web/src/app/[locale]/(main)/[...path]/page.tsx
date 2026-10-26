@@ -10,7 +10,7 @@ import EventsPage from "@custom-pages/events-page";
 import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
 import WeeklyNewslettersListPage from "@custom-pages/weekly-newsletters-list-page";
 import type { EditorState } from "@lexical-types";
-import { fetchPage } from "@lib/api/pages";
+import { fetchPage, fetchPagePaths } from "@lib/api/pages";
 import { generateTocFromRichText } from "@lib/utils";
 import { setLocaleFromParams, type Locale } from "@locales/server";
 import type { Page as CMSPage } from "@payload-types";
@@ -77,9 +77,23 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const locale = await setLocaleFromParams(props.params);
   const { path } = await props.params;
   const page = await getPage(path, locale);
+  const pagePaths = await fetchPagePaths({
+    where: { id: { equals: page.id } },
+    depth: 0,
+    select: { path: true },
+    locale: "all",
+  });
+  // Slugs differ between locales, so each language version has its own path
+  const paths = pagePaths?.path as unknown as
+    | Partial<Record<Locale, string>>
+    | undefined;
 
   return {
     title: page.title,
+    alternates: {
+      canonical: page.path,
+      languages: { ...paths, "x-default": paths?.fi },
+    },
     description: page.description,
     openGraph: {
       type: "article",
