@@ -33,8 +33,21 @@ const quota = {
   signupCount: 0,
 };
 
+// The landing page lists upcoming events five per page, so seven give it a second page
+const listedEvents = [
+  event,
+  ...Array.from({ length: 6 }, (_, i) => ({
+    ...event,
+    id: `e2e-event-${i + 2}`,
+    slug: `e2e-listatapahtuma-${i + 2}`,
+    title: `E2E-listatapahtuma ${i + 2}`,
+    date: `2099-01-0${i + 2}T16:00:00.000Z`,
+    endDate: `2099-01-0${i + 2}T20:00:00.000Z`,
+  })),
+];
+
 const routes: Record<string, unknown> = {
-  "/api/events": [{ ...event, quotas: [quota] }],
+  "/api/events": listedEvents.map((listed) => ({ ...listed, quotas: [quota] })),
   [`/api/events/${event.slug}`]: {
     ...event,
     registrationClosed: false,

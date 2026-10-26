@@ -108,6 +108,36 @@ test("the invoice generator form renders", async ({ page }) => {
   ).toBeVisible();
 });
 
+test("the landing page lists upcoming events five per page", async ({
+  page,
+}) => {
+  // The list renders twice, for desktop and mobile, with one of them hidden
+  const shown = (title: string) =>
+    page.getByText(title, { exact: true }).filter({ visible: true });
+
+  await page.goto("/fi");
+  await expect(shown("E2E-testitapahtuma")).toHaveCount(1);
+  await expect(shown("E2E-listatapahtuma 7")).toHaveCount(0);
+
+  await page.goto("/fi/?page=2");
+  await expect(shown("E2E-listatapahtuma 7")).toHaveCount(1);
+  await expect(shown("E2E-testitapahtuma")).toHaveCount(0);
+});
+
+test("the landing page's event pagination switches pages", async ({ page }) => {
+  await page.goto("/fi");
+  await page
+    .getByRole("link", { name: "Sivu 2", exact: true })
+    .filter({ visible: true })
+    .click();
+  await expect(page).toHaveURL(/\/fi\/?\?page=2$/);
+  await expect(
+    page
+      .getByText("E2E-listatapahtuma 7", { exact: true })
+      .filter({ visible: true }),
+  ).toHaveCount(1);
+});
+
 test("mobile navigation opens and follows a link", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/fi");
