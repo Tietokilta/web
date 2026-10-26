@@ -86,3 +86,28 @@ test("assets referenced by a cached page exist", async ({ request }) => {
     expect((await request.get(asset)).status(), asset).toBe(200);
   }
 });
+
+test("optimized images are cached at the edge once per format", async ({
+  request,
+}) => {
+  const landing = await (await request.get("/fi")).text();
+  const image = landing
+    .match(/\/_next\/image\?[^"\s]+/)?.[0]
+    .replaceAll("&amp;", "&");
+  if (!image) throw new Error("The landing page has no optimized images");
+  const url = fresh(image);
+  const webp = { Accept: "image/avif,image/webp,*/*" };
+  const any = { Accept: "*/*" };
+
+  // A browser caches the WebP copy first, which must not reach other clients
+  await getTwice(request, url, webp);
+  const [anyFirst, anySecond] = await getTwice(request, url, any);
+  for (const response of [anyFirst, anySecond]) {
+    expect(response.headers()["content-type"]).not.toBe("image/webp");
+  }
+  expect(anySecond.headers()["cf-cache-status"]).toBe("HIT");
+
+  const webpAgain = await request.get(url, { headers: webp });
+  expect(webpAgain.headers()["content-type"]).toBe("image/webp");
+  expect(webpAgain.headers()["cf-cache-status"]).toBe("HIT");
+});
