@@ -1,8 +1,7 @@
 import { env } from "../../../env";
 
-// Built once per deploy, so every deploy pushes Expires a year ahead
-export const dynamic = "force-static";
-
+// Rendered per request, not at build time: the build has no PUBLIC_FRONTEND_URL,
+// and Expires then always stays a year ahead
 const ONE_YEAR_MS = 365 * 24 * 60 * 60 * 1000;
 
 // https://www.rfc-editor.org/rfc/rfc9116
