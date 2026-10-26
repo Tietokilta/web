@@ -75,6 +75,16 @@ export function Hero({
   const [currentImageIndex, setCurrentImageIndex] = useState(
     new Date().getUTCDate() % images.length,
   );
+  const [hasRotated, setHasRotated] = useState(false);
+  // Only the image fading out, the current one and the next one are mounted,
+  // so the browser downloads images as the rotation reaches them
+  const mountedImageIndexes = new Set([
+    currentImageIndex,
+    (currentImageIndex + 1) % images.length,
+    ...(hasRotated
+      ? [(currentImageIndex - 1 + images.length) % images.length]
+      : []),
+  ]);
 
   const [currentText, setCurrentText] = useState(texts[0]);
   // eslint-disable-next-line react/hook-use-state -- prev index used directly in the setter
@@ -93,6 +103,7 @@ export function Hero({
 
     const interval = setInterval(() => {
       setCurrentImageIndex((_current) => (_current + 1) % images.length);
+      setHasRotated(true);
       setTextIndex((_textIndex) => {
         const newIndex = (_textIndex + 1) % texts.length;
         setCurrentText(shuffledTexts[newIndex]);
@@ -107,13 +118,15 @@ export function Hero({
 
   return (
     <div className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
-      {images.map((image, imageIndex) => (
-        <ImageWithCitation
-          key={image.url}
-          image={image}
-          isCurrentImage={imageIndex === currentImageIndex}
-        />
-      ))}
+      {images.map((image, imageIndex) =>
+        mountedImageIndexes.has(imageIndex) ? (
+          <ImageWithCitation
+            key={image.url}
+            image={image}
+            isCurrentImage={imageIndex === currentImageIndex}
+          />
+        ) : null,
+      )}
       <div className="z-20 container mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-3xl lg:text-4xl">
         <p
           className="line-clamp-4 w-full max-w-2xl pb-2 break-words lg:w-1/2"
