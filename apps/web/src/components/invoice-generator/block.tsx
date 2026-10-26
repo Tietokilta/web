@@ -1,7 +1,7 @@
 import type { JSX } from "react";
 import { fetchCostPools } from "../../lib/api/cost-pools";
 import { getLocale } from "../../locales/server";
-import { InvoiceGeneratorForm } from "./index";
+import { InvoiceGeneratorForm } from "./lazy-form";
 
 export async function InvoiceGenerator(): Promise<JSX.Element> {
   const locale = await getLocale();

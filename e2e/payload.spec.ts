@@ -47,3 +47,22 @@ for (const global of ["main-navigation", "footer", "landing-page"]) {
     }
   });
 }
+
+// Raw bytes of the scripts a page loads up front; modern browsers skip nomodule scripts
+const scriptBudget = 1_100_000;
+
+for (const url of ["/fi/kilta/saannot", "/fi"]) {
+  test(`${url} stays within the JavaScript budget`, async ({ request }) => {
+    const html = await (await request.get(url)).text();
+    const sources = new Set(
+      [...html.matchAll(/<script(?![^>]*nomodule)[^>]*src="([^"]+\.js)"/g)].map(
+        (match) => match[1],
+      ),
+    );
+    let bytes = 0;
+    for (const source of sources) {
+      bytes += (await (await request.get(source)).body()).length;
+    }
+    expect(bytes).toBeLessThanOrEqual(scriptBudget);
+  });
+}
