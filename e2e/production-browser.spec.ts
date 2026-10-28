@@ -23,12 +23,16 @@ test("the browser gets optimized images as WebP from the edge cache", async ({
   browser,
   baseURL,
 }) => {
-  await landingImages(browser, baseURL);
+  const firstVisit = await landingImages(browser, baseURL);
   const images = await landingImages(browser, baseURL);
   expect(images.size).toBeGreaterThan(0);
 
+  // Each Cloudflare data center has its own cache, so tell where each visit was served
+  const servedBy = (headers?: Record<string, string>) =>
+    `${headers?.["cf-cache-status"] ?? "not requested"} from ${headers?.["cf-ray"]?.split("-")[1] ?? "?"}`;
   for (const [url, headers] of images) {
-    expect(headers["content-type"], url).toBe("image/webp");
-    expect(headers["cf-cache-status"], url).toBe("HIT");
+    const served = `${url}: first visit ${servedBy(firstVisit.get(url))}, second ${servedBy(headers)}`;
+    expect(headers["content-type"], served).toBe("image/webp");
+    expect(headers["cf-cache-status"], served).toBe("HIT");
   }
 });
