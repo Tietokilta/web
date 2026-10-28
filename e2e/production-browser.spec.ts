@@ -4,6 +4,10 @@ import { test, expect, type Browser } from "@playwright/test";
 // that its own cache cannot answer
 async function landingImages(browser: Browser, baseURL: string | undefined) {
   const context = await browser.newContext({ baseURL });
+  // Each visit would otherwise start the hero from a different random photo
+  await context.addInitScript(() => {
+    Math.random = () => 0;
+  });
   const page = await context.newPage();
   const responses = new Map<string, Record<string, string>>();
   page.on("response", async (response) => {
