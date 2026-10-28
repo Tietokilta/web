@@ -21,6 +21,8 @@ const cmsPages = [
   "/en/weekly-newsletters/csg-weekly-mail-192024",
 ];
 
+const landingPages = ["/fi", "/en"];
+
 const eventPages = [
   "/fi/tapahtumat/e2e-testitapahtuma",
   "/en/events/e2e-testitapahtuma",
@@ -33,7 +35,9 @@ const sharedCacheControl = "s-maxage=60, stale-while-revalidate=3540";
 const eventCacheControl = "s-maxage=30, stale-while-revalidate=3570";
 
 const cachedPages = [
-  ...cmsPages.map((url) => [url, sharedCacheControl] as const),
+  ...[...cmsPages, ...landingPages].map(
+    (url) => [url, sharedCacheControl] as const,
+  ),
   ...eventPages.map((url) => [url, eventCacheControl] as const),
 ];
 
@@ -42,7 +46,7 @@ const personalPages = ["/fi/signups/abc/def", "/fi/payment/abc/def"];
 const localizedResponses = [
   ...cmsPages,
   ...personalPages,
-  "/fi",
+  ...landingPages,
   "/fi/infoscreen",
   "/fi/kilta/ei-ole-olemassa",
   "/fi/tapahtumat/ei-ole-olemassa",
@@ -188,6 +192,46 @@ test("a footer edit reaches the next visitor", async ({ request, visitor }) => {
   );
 
   await expectOnNextRequest(visitor, url, label);
+});
+
+test("a landing page edit reaches the next visitor", async ({
+  request,
+  visitor,
+}) => {
+  const text = `Cache test hero ${Date.now()}`;
+  await getTwice(visitor, "/fi");
+
+  await signIn(request);
+  const landingPage = (await (
+    await request.get("/api/globals/landing-page?locale=fi&depth=0")
+  ).json()) as { heroTexts: { text: string }[] };
+  await expectOk(
+    await request.post("/api/globals/landing-page?locale=fi", {
+      data: { heroTexts: [...landingPage.heroTexts, { text }] },
+    }),
+  );
+
+  await expectOnNextRequest(visitor, "/fi", text);
+});
+
+test("an announcement edit reaches the next landing page visitor", async ({
+  request,
+  visitor,
+}) => {
+  const title = `Cache test announcement ${Date.now()}`;
+  await getTwice(visitor, "/fi");
+
+  await signIn(request);
+  const landingPage = (await (
+    await request.get("/api/globals/landing-page?locale=fi&depth=0")
+  ).json()) as { announcement: string };
+  await expectOk(
+    await request.patch(`/api/news/${landingPage.announcement}?locale=fi`, {
+      data: { title },
+    }),
+  );
+
+  await expectOnNextRequest(visitor, "/fi", title);
 });
 
 test("preview mode shows drafts while visitors keep the published page", async ({

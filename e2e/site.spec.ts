@@ -1,4 +1,4 @@
-import type { APIRequestContext } from "@playwright/test";
+import type { APIRequestContext, Page } from "@playwright/test";
 import { test, expect } from "./fixtures";
 
 test.afterEach(async ({ page }) => {
@@ -69,6 +69,106 @@ test("desktop navigation opens a seeded page and browser back works", async ({
     page.getByRole("heading", { name: "Tietokilta", exact: true }),
   ).toBeVisible();
 });
+
+const firstEventPage = [
+  "E2E-testitapahtuma",
+  "E2E-tapahtuma 2",
+  "E2E-tapahtuma 3",
+  "E2E-tapahtuma 4",
+  "E2E-tapahtuma 5",
+];
+const secondEventPage = ["E2E-tapahtuma 6", "E2E-tapahtuma 7"];
+
+function shownEvents(page: Page) {
+  return page.getByText(/^E2E-(testi)?tapahtuma/).filter({ visible: true });
+}
+
+function eventPagination(page: Page) {
+  return page
+    .getByRole("navigation", { name: "pagination" })
+    .filter({ visible: true });
+}
+
+test("the landing page pages through upcoming events", async ({ page }) => {
+  await page.goto("/fi");
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+
+  await eventPagination(page).getByRole("link", { name: /2$/ }).click();
+  await expect(page).toHaveURL(/\/fi\/?\?page=2$/);
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
+
+  await eventPagination(page)
+    .getByRole("link", { name: "Siirry edelliselle sivulle" })
+    .click();
+  await expect(page).toHaveURL(/\/fi\/?\?page=1$/);
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+
+  await eventPagination(page)
+    .getByRole("link", { name: "Siirry seuraavalle sivulle" })
+    .click();
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
+
+  await page.goBack();
+  await expect(page).toHaveURL(/\/fi\/?\?page=1$/);
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+});
+
+test("the landing page opens a linked page of upcoming events", async ({
+  page,
+}) => {
+  await page.goto("/en?page=2");
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
+  await expect(
+    eventPagination(page).locator('[aria-current="page"]'),
+  ).toHaveText(/2$/);
+});
+
+for (const invalid of ["0", "3", "abc", "1.5"]) {
+  test(`the landing page shows the first events for page ${invalid}`, async ({
+    page,
+  }) => {
+    const response = await page.goto(`/fi?page=${invalid}`);
+    expect(response?.status()).toBe(200);
+    await expect(shownEvents(page)).toHaveText(firstEventPage);
+  });
+}
+
+test("the landing page pages through upcoming events on mobile", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/fi");
+  await expect(shownEvents(page)).toHaveText(firstEventPage);
+
+  await eventPagination(page).getByRole("link", { name: /2$/ }).click();
+  await expect(shownEvents(page)).toHaveText(secondEventPage);
+});
+
+for (const url of ["/en", "/en?page=2"]) {
+  test(`${url} links to its canonical page and translations`, async ({
+    page,
+  }) => {
+    await page.goto(url);
+    const linkedPath = async (selector: string) => {
+      const { pathname, search } = new URL(
+        (await page.locator(selector).getAttribute("href")) ?? "",
+        "http://localhost",
+      );
+      return pathname + search;
+    };
+
+    expect(await linkedPath('link[rel="canonical"]')).toBe("/en");
+    expect(await linkedPath('link[rel="alternate"][hreflang="fi"]')).toBe(
+      "/fi",
+    );
+    expect(await linkedPath('link[rel="alternate"][hreflang="en"]')).toBe(
+      "/en",
+    );
+    expect(
+      await linkedPath('link[rel="alternate"][hreflang="x-default"]'),
+    ).toBe("/fi");
+  });
+}
 
 test("the landing page can switch languages", async ({ page }) => {
   await page.goto("/fi");

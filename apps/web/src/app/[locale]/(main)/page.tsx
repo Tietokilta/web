@@ -7,7 +7,7 @@ import { LexicalSerializer } from "@components/lexical/lexical-serializer";
 import type { EditorState } from "@lexical-types";
 import { fetchLandingPage } from "@lib/api/landing-page";
 import { type NonNullableKeys } from "@lib/utils";
-import { getLocale, setLocaleFromParams } from "@locales/server";
+import { setLocaleFromParams } from "@locales/server";
 import type { News, Page as CMSPage } from "@payload-types";
 
 function Content({ content }: { content?: EditorState }) {
@@ -20,38 +20,34 @@ function Content({ content }: { content?: EditorState }) {
   );
 }
 
+// The events list pages in the browser, so `?page=` serves the same HTML as the landing page
 export const generateMetadata = async (props: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ page?: string | string[] }>;
 }): Promise<Metadata> => {
   const locale = await setLocaleFromParams(props.params);
-  const { page } = await props.searchParams;
-  const pageInt = parseInt(String(page), 10);
-  // Each page of the events list is its own page, not a copy of the first one
-  const query = pageInt > 1 ? `?page=${pageInt.toString()}` : "";
 
   return {
     openGraph: {
       type: "website",
     },
     alternates: {
-      canonical: `/${locale}${query}`,
+      canonical: `/${locale}`,
       languages: {
-        fi: `/fi${query}`,
-        en: `/en${query}`,
-        "x-default": `/fi${query}`,
+        fi: "/fi",
+        en: "/en",
+        "x-default": "/fi",
       },
     },
   };
 };
 
-export default async function Home(props: {
-  searchParams: Promise<{ page?: string | string[] }>;
-}) {
-  const searchParams = await props.searchParams;
-  const { page } = searchParams;
+// Render on first request and cache until Payload or the events revalidate
+export const generateStaticParams = () => [];
 
-  const locale = await getLocale();
+export default async function Home(props: {
+  params: Promise<{ locale: string }>;
+}) {
+  const locale = await setLocaleFromParams(props.params);
 
   const landingPageData = await fetchLandingPage(locale)({});
   if (!landingPageData) {
@@ -61,7 +57,6 @@ export default async function Home(props: {
   const body = landingPageData.body as unknown as EditorState | undefined;
   const announcement = landingPageData.announcement as News | undefined;
   const eventsListPage = landingPageData.eventsListPage as CMSPage | undefined;
-  const pageInt = parseInt(String(page), 10);
 
   return (
     <main id="main" className="flex min-h-screen flex-col">
@@ -90,10 +85,7 @@ export default async function Home(props: {
         </section>
         <div className="space-y-8">
           {announcement ? <AnnouncementCard news={announcement} /> : null}
-          <EventsDisplay
-            eventsListPath={eventsListPage?.path ?? undefined}
-            currentPage={!isNaN(pageInt) ? pageInt : undefined}
-          />
+          <EventsDisplay eventsListPath={eventsListPage?.path ?? undefined} />
         </div>
       </div>
       {/* Mobile view */}
@@ -107,10 +99,7 @@ export default async function Home(props: {
           </h1>
           <Content content={body} />
         </section>
-        <EventsDisplay
-          eventsListPath={eventsListPage?.path ?? undefined}
-          currentPage={!isNaN(pageInt) ? pageInt : undefined}
-        />
+        <EventsDisplay eventsListPath={eventsListPage?.path ?? undefined} />
       </div>
       <AprilFoolsAlert />
     </main>
