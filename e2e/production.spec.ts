@@ -105,12 +105,15 @@ test("assets referenced by a cached page exist", async ({ request }) => {
 test("optimized images are cached at the edge once per format", async ({
   request,
 }) => {
-  const landing = await (await request.get("/fi")).text();
-  const image = landing
-    .match(/\/_next\/image\?[^"\s]+/)?.[0]
-    .replaceAll("&amp;", "&");
-  if (!image) throw new Error("The landing page has no optimized images");
-  const url = fresh(image);
+  // The hero photos are chosen in the browser, so they are not in the page's HTML
+  const landingPage = (await (
+    await request.get("/api/globals/landing-page?depth=1")
+  ).json()) as { heroImages: { image: { url: string } }[] };
+  const [photo] = landingPage.heroImages;
+  if (!photo) throw new Error("The landing page has no hero photos");
+  const url = fresh(
+    `/_next/image?url=${encodeURIComponent(photo.image.url)}&w=1920&q=50`,
+  );
   const webp = { Accept: "image/avif,image/webp,*/*" };
   const any = { Accept: "*/*" };
 
