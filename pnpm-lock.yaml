@@ -501,8 +501,8 @@ importers:
         specifier: 'catalog:'
         version: 2.1.1
       lucide-react:
-        specifier: ^0.577.0
-        version: 0.577.0(react@19.2.7)
+        specifier: ^1.0.0
+        version: 1.63.0(@types/react@19.2.17)(react@19.2.7)
       postcss:
         specifier: 'catalog:'
         version: 8.5.31
@@ -4462,10 +4462,14 @@ packages:
     resolution: {integrity: sha512-4pfM1Ff0x50o0tQwb5ucw/RzNyD0/YJME6IVcStalZuMWxdt3sR3huStTtxz4PUmvZfRguvDejasvQ2kifR11g==}
     engines: {node: 20 || >=22}
 
-  lucide-react@0.577.0:
-    resolution: {integrity: sha512-4LjoFv2eEPwYDPg/CUdBJQSDfPyzXCRrVW1X7jrx/trgxnxkHFjnVZINbzvzxjN70dxychOfg+FTYwBiS3pQ5A==}
+  lucide-react@1.63.0:
+    resolution: {integrity: sha512-GkBfQG+FUJ41x6y3/lNXiOziVU0Rcqqq0TCzhHS8avsFXHZmOdmfBqsVTvHSaVmbI+wbdGkxHRmhYWhD3N4/yA==}
     peerDependencies:
+      '@types/react': '*'
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   luxon@3.7.2:
     resolution: {integrity: sha512-vtEhXh/gNjI9Yg1u4jX/0YVPMvxzHuGgCm6tC5kZyb08yjGWGnqAjGJvcXbqQR2P3MyMEFnRbpcdFS6PBcLqew==}
@@ -9920,9 +9924,11 @@ snapshots:
 
   lru-cache@11.5.2: {}
 
-  lucide-react@0.577.0(react@19.2.7):
+  lucide-react@1.63.0(@types/react@19.2.17)(react@19.2.7):
     dependencies:
       react: 19.2.7
+    optionalDependencies:
+      '@types/react': 19.2.17
 
   luxon@3.7.2: {}
 
