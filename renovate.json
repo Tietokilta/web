@@ -13,6 +13,7 @@
   "dependencyDashboard": true,
   "prHourlyLimit": 0,
   "minimumReleaseAge": "3 days",
+  "postUpdateOptions": ["pnpmDedupe"],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 6am on the first day of the month"],
@@ -61,6 +62,16 @@
     {
       "matchPackageNames": ["turbo", "eslint-config-turbo"],
       "groupName": "turbo"
+    },
+    {
+      "description": "oxlint requires a matching oxlint-tsgolint",
+      "matchPackageNames": ["oxlint", "oxlint-tsgolint"],
+      "groupName": "oxlint"
+    },
+    {
+      "description": "Stay on TypeScript 6: Next.js and tsdown need the compiler API, which TypeScript 7.0 lacks. Type checking already uses tsgo. Remove this cap once 7.1 ships the new API",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
     },
     {
       "description": "Node.js majors move together: package.json devEngines, the Docker image and @types/node",
