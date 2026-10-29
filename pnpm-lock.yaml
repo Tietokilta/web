@@ -312,8 +312,8 @@ importers:
         specifier: ^4.4.0
         version: 4.4.0
       mailgun.js:
-        specifier: ^13.3.0
-        version: 13.3.0(debug@4.4.3)
+        specifier: ^14.0.0
+        version: 14.1.0(debug@4.4.3)
       nanoid:
         specifier: ^5.1.16
         version: 5.1.16
@@ -3385,8 +3385,8 @@ packages:
   atomically@2.1.1:
     resolution: {integrity: sha512-P4w9o2dqARji6P7MHprklbfiArZAWvo07yW7qs3pdljb3BWr12FIB7W+p0zJiuiVsUpRO0iZn1kFFcpPegg0tQ==}
 
-  axios@1.18.1:
-    resolution: {integrity: sha512-3nTvFlvpn9Zu/RkHUqtc7/+al4UpRW5az71ap5zccp6e8RAYEzhMTecX8Dz1wWDYrPpUoB1HAQEGEAEvUr7S9g==}
+  axios@1.21.0:
+    resolution: {integrity: sha512-YCzXMB53Q9PZBsh7yN7wtapit4WepwcHS2fP8QhGsBxSz5YtgYobV7GGlWlAJi+RxfU77GQTQi2DSLUma42EYA==}
 
   b4a@1.9.0:
     resolution: {integrity: sha512-dpfcF9fDNR6++cthXR67iyhgqWy9CBouAvIWhIntzBG6cvK/cnIPiZQjBwi/ZqjjBEDGfoNDtmB0kTjroOJ3pQ==}
@@ -4478,8 +4478,8 @@ packages:
   magic-string@0.30.21:
     resolution: {integrity: sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ==}
 
-  mailgun.js@13.3.0:
-    resolution: {integrity: sha512-8avnVhhaZJ17Pw91nPq+N4WuhCBBi9SJpsiAs5SV0CmLXZhz0UobTGP5p3bVTI+Zh1NZU6nXtL+N8KM/taBX4w==}
+  mailgun.js@14.1.0:
+    resolution: {integrity: sha512-sVrc6RbyYYZt6EccHIBBWxsnywIfSMlywmeu6lZ5hBabJqXr8/csifibt/ygOEQ7SncULWoKU9lTEC2v/sOpUA==}
     engines: {node: '>=18.0.0'}
 
   markdown-table@3.0.4:
@@ -8895,7 +8895,7 @@ snapshots:
       stubborn-fs: 2.0.0
       when-exit: 2.1.5
 
-  axios@1.18.1(debug@4.4.3):
+  axios@1.21.0(debug@4.4.3):
     dependencies:
       follow-redirects: 1.16.0(debug@4.4.3)
       form-data: 4.0.6
@@ -9936,9 +9936,9 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  mailgun.js@13.3.0(debug@4.4.3):
+  mailgun.js@14.1.0(debug@4.4.3):
     dependencies:
-      axios: 1.18.1(debug@4.4.3)
+      axios: 1.21.0(debug@4.4.3)
       base-64: 1.0.0
       url-join: 4.0.1
     transitivePeerDependencies:
