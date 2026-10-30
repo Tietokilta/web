@@ -2,13 +2,21 @@ import { draftMode, headers as nextHeaders } from "next/headers";
 import { redirect } from "next/navigation";
 import { getPayloadClient } from "@lib/api/payload";
 
+/** The path to redirect to, or null if a browser would leave the site. */
+function sitePath(url: string | null, base: URL): string | null {
+  if (!url?.startsWith("/") || !URL.canParse(url, base)) return null;
+  const target = new URL(url, base);
+  if (target.origin !== base.origin) return null;
+  const path = `${target.pathname}${target.search}${target.hash}`;
+  // Check the path the browser receives: "//host", "/\host", "/\t/host" and
+  // dot-segments like "/a/..//host" all lead to another site
+  return new URL(path, base).origin === base.origin ? path : null;
+}
+
 export async function GET(req: Request): Promise<Response> {
   const base = new URL(req.url);
-  const url = base.searchParams.get("url");
-  // Resolve the path like a browser would: "//host", "/\host" and "/\t/host"
-  // all lead to another site
-  const target = url?.startsWith("/") ? new URL(url, base) : null;
-  if (target?.origin !== base.origin) {
+  const path = sitePath(base.searchParams.get("url"), base);
+  if (!path) {
     return new Response("No URL provided", { status: 404 });
   }
   const headers = await nextHeaders();
@@ -24,5 +32,5 @@ export async function GET(req: Request): Promise<Response> {
 
   (await draftMode()).enable();
 
-  redirect(`${target.pathname}${target.search}${target.hash}`);
+  redirect(path);
 }
