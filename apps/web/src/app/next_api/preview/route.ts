@@ -6,7 +6,8 @@ export async function GET(req: Request): Promise<Response> {
   const { searchParams } = new URL(req.url);
   const url = searchParams.get("url");
 
-  if (!url) {
+  // Only paths on this site: "//host" and "/\host" would leave it
+  if (!url?.startsWith("/") || url.startsWith("//") || url.startsWith("/\\")) {
     return new Response("No URL provided", { status: 404 });
   }
   const headers = await nextHeaders();
