@@ -259,7 +259,13 @@ test("preview mode shows drafts while visitors keep the published page", async (
   expect(await (await visitor.get(url)).text()).not.toContain(description);
 });
 
-for (const url of ["https://example.com", "//example.com", "/\\example.com"]) {
+for (const url of [
+  "https://example.com",
+  "//example.com",
+  "/\\example.com",
+  "/\t/example.com",
+  "/\t\\example.com",
+]) {
   test(`preview does not redirect to ${url}`, async ({ request }) => {
     await signIn(request);
     const preview = await request.get(

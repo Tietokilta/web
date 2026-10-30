@@ -3,11 +3,12 @@ import { redirect } from "next/navigation";
 import { getPayloadClient } from "@lib/api/payload";
 
 export async function GET(req: Request): Promise<Response> {
-  const { searchParams } = new URL(req.url);
-  const url = searchParams.get("url");
-
-  // Only paths on this site: "//host" and "/\host" would leave it
-  if (!url?.startsWith("/") || url.startsWith("//") || url.startsWith("/\\")) {
+  const base = new URL(req.url);
+  const url = base.searchParams.get("url");
+  // Resolve the path like a browser would: "//host", "/\host" and "/\t/host"
+  // all lead to another site
+  const target = url?.startsWith("/") ? new URL(url, base) : null;
+  if (target?.origin !== base.origin) {
     return new Response("No URL provided", { status: 404 });
   }
   const headers = await nextHeaders();
@@ -23,5 +24,5 @@ export async function GET(req: Request): Promise<Response> {
 
   (await draftMode()).enable();
 
-  redirect(url);
+  redirect(`${target.pathname}${target.search}${target.hash}`);
 }
