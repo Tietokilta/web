@@ -1,4 +1,5 @@
 import { test, expect, type APIRequestContext } from "@playwright/test";
+import { expectSecurityHeaders } from "./security-headers";
 
 const cmsPage = "/fi/kilta/saannot";
 
@@ -22,6 +23,8 @@ for (const path of [cmsPage, "/fi"]) {
 
     expect(second.status()).toBe(200);
     expect(second.headers()["cf-cache-status"]).toBe("HIT");
+    // The edge must keep the headers the app sent
+    expectSecurityHeaders(second.headers());
   });
 }
 
