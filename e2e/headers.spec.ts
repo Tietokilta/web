@@ -12,3 +12,13 @@ for (const url of ["/fi", "/fi/kilta/saannot", "/admin", "/api/pages"]) {
     expect(headers["x-powered-by"]).toBeUndefined();
   });
 }
+
+test("uploaded SVGs keep Payload's script-blocking policy", async ({
+  request,
+}) => {
+  const headers = (await request.get("/api/media/file/TiK-logo.svg")).headers();
+  expect(headers["content-type"]).toBe("image/svg+xml");
+  expect(headers["content-security-policy"]).toContain("script-src 'none'");
+  expect(headers["strict-transport-security"]).toBe("max-age=31536000");
+  expect(headers["x-content-type-options"]).toBe("nosniff");
+});

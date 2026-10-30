@@ -51,11 +51,18 @@ const nextConfig = {
             key: "x-git-commit-sha",
             value: gitSha,
           },
-          { key: "Content-Security-Policy", value: contentSecurityPolicy },
           // Without includeSubDomains: other services live on our subdomains
           { key: "Strict-Transport-Security", value: "max-age=31536000" },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+        ],
+      },
+      {
+        // Config headers win over route handlers, so leave uploaded files to
+        // Payload, which blocks scripts in SVG and XML uploads with its own CSP
+        source: "/:path((?!api/[^/]+/file/).*)",
+        headers: [
+          { key: "Content-Security-Policy", value: contentSecurityPolicy },
         ],
       },
     ];
