@@ -10,7 +10,9 @@ function sitePath(url: string | null, base: URL): string | null {
   const path = `${target.pathname}${target.search}${target.hash}`;
   // Check the path the browser receives: "//host", "/\host", "/\t/host" and
   // dot-segments like "/a/..//host" all lead to another site
-  return new URL(path, base).origin === base.origin ? path : null;
+  return URL.canParse(path, base) && new URL(path, base).origin === base.origin
+    ? path
+    : null;
 }
 
 export async function GET(req: Request): Promise<Response> {

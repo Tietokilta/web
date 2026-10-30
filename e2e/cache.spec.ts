@@ -271,6 +271,8 @@ for (const url of [
   "/./\\example.com",
   "///",
   "//[",
+  "/a/..//[",
+  "/.//",
 ]) {
   test(`preview does not redirect to ${url}`, async ({ request }) => {
     await signIn(request);
