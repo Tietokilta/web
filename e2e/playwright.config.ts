@@ -11,12 +11,12 @@ export default defineConfig({
   projects: [
     {
       name: "chromium",
-      testMatch: "site.spec.ts",
+      testMatch: ["site.spec.ts", "frames.spec.ts"],
       use: devices["Desktop Chrome"],
     },
     {
       name: "firefox",
-      testMatch: "site.spec.ts",
+      testMatch: ["site.spec.ts", "frames.spec.ts"],
       use: devices["Desktop Firefox"],
     },
     // HTTP-only checks that do not depend on the browser
