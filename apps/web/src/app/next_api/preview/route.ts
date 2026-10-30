@@ -2,11 +2,23 @@ import { draftMode, headers as nextHeaders } from "next/headers";
 import { redirect } from "next/navigation";
 import { getPayloadClient } from "@lib/api/payload";
 
-export async function GET(req: Request): Promise<Response> {
-  const { searchParams } = new URL(req.url);
-  const url = searchParams.get("url");
+/** The path to redirect to, or null if a browser would leave the site. */
+function sitePath(url: string | null, base: URL): string | null {
+  if (!url?.startsWith("/") || !URL.canParse(url, base)) return null;
+  const target = new URL(url, base);
+  if (target.origin !== base.origin) return null;
+  const path = `${target.pathname}${target.search}${target.hash}`;
+  // Check the path the browser receives: "//host", "/\host", "/\t/host" and
+  // dot-segments like "/a/..//host" all lead to another site
+  return URL.canParse(path, base) && new URL(path, base).origin === base.origin
+    ? path
+    : null;
+}
 
-  if (!url) {
+export async function GET(req: Request): Promise<Response> {
+  const base = new URL(req.url);
+  const path = sitePath(base.searchParams.get("url"), base);
+  if (!path) {
     return new Response("No URL provided", { status: 404 });
   }
   const headers = await nextHeaders();
@@ -22,5 +34,5 @@ export async function GET(req: Request): Promise<Response> {
 
   (await draftMode()).enable();
 
-  redirect(url);
+  redirect(path);
 }

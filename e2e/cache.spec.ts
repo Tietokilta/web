@@ -248,6 +248,7 @@ test("preview mode shows drafts while visitors keep the published page", async (
     { maxRedirects: 0 },
   );
   expect(preview.status()).toBe(307);
+  expect(preview.headers()["location"]).toBe(url);
   await expectOk(
     await request.patch(
       "/api/pages/664a3058535bd11c1b1c59bd?locale=fi&draft=true",
@@ -258,3 +259,27 @@ test("preview mode shows drafts while visitors keep the published page", async (
   expect(await (await request.get(url)).text()).toContain(description);
   expect(await (await visitor.get(url)).text()).not.toContain(description);
 });
+
+for (const url of [
+  "https://example.com",
+  "//example.com",
+  "/\\example.com",
+  "/\t/example.com",
+  "/\t\\example.com",
+  "/.//example.com",
+  "/a/..//example.com",
+  "/./\\example.com",
+  "///",
+  "//[",
+  "/a/..//[",
+  "/.//",
+]) {
+  test(`preview does not redirect to ${url}`, async ({ request }) => {
+    await signIn(request);
+    const preview = await request.get(
+      `/next_api/preview?url=${encodeURIComponent(url)}`,
+      { maxRedirects: 0 },
+    );
+    expect(preview.status()).toBe(404);
+  });
+}
