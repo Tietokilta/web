@@ -5,6 +5,15 @@ import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 const gitSha = process.env.GIT_COMMIT_SHA ?? "dev";
 
+// Scripts stay unrestricted: nonces would make every page dynamic and bypass
+// the shared cache. Framing is limited to our own admin (live preview).
+const contentSecurityPolicy = [
+  "frame-ancestors 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
 /** @type {import("next").NextConfig} */
 const nextConfig = {
   output: process.env.NEXT_OUTPUT === "standalone" ? "standalone" : undefined,
@@ -18,6 +27,7 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
+  poweredByHeader: false,
   // Caps how long shared caches may serve stale pages (stale-while-revalidate)
   expireTime: 3600,
   images: {
@@ -41,6 +51,11 @@ const nextConfig = {
             key: "x-git-commit-sha",
             value: gitSha,
           },
+          { key: "Content-Security-Policy", value: contentSecurityPolicy },
+          // Without includeSubDomains: other services live on our subdomains
+          { key: "Strict-Transport-Security", value: "max-age=31536000" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
     ];
