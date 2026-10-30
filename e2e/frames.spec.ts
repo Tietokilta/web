@@ -37,31 +37,8 @@ test("live preview shows the edited page inside the admin", async ({
   ).toBeVisible();
 });
 
-test("the info screen embeds a page from another origin", async ({
-  page,
-  baseURL,
-}) => {
-  const otherOrigin = process.env.E2E_OTHER_ORIGIN;
-  if (!otherOrigin) throw new Error("E2E setup did not start the other origin");
-
-  // Both browser projects write the same configuration, so they cannot race.
-  await signIn(page);
-  const response = await page.request.post("/api/globals/info-screen", {
-    data: {
-      showKanttiinit: false,
-      showEvents: false,
-      showHSL: false,
-      additionalIframes: [
-        {
-          IframeUrl: `${otherOrigin}/e2e-embed`,
-          IframeTitle: "E2E-upotus",
-          enabled: true,
-        },
-      ],
-    },
-  });
-  expect(response.ok(), await response.text()).toBe(true);
-
+test("the info screen embeds a page from another origin", async ({ page }) => {
+  // The global setup points the info screen at the fake Ilmomasiina
   await page.goto("/fi/infoscreen");
   await expect(
     page

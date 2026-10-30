@@ -251,7 +251,6 @@ export default async function setup() {
       )
       .toBe(200);
     process.env.E2E_BASE_URL = url;
-    process.env.E2E_OTHER_ORIGIN = fakeIlmomasiina.url;
     // Payload rewrites the user's session list on every sign-in, so concurrent
     // sign-ins can drop each other's sessions. This one exists before any test runs.
     const login = await fetch(`${url}/api/users/login`, {
@@ -264,6 +263,30 @@ export default async function setup() {
     process.env.E2E_ADMIN_TOKEN = (
       (await login.json()) as { token: string }
     ).token;
+
+    // Show only an embed from another origin on the info screen. Editing a global
+    // expires every cached page, so do it before cache.spec.ts starts.
+    const infoScreen = await fetch(`${url}/api/globals/info-screen`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${process.env.E2E_ADMIN_TOKEN}`,
+      },
+      body: JSON.stringify({
+        showKanttiinit: false,
+        showEvents: false,
+        showHSL: false,
+        additionalIframes: [
+          {
+            IframeUrl: `${fakeIlmomasiina.url}/e2e-embed`,
+            IframeTitle: "E2E-upotus",
+            enabled: true,
+          },
+        ],
+      }),
+    });
+    if (!infoScreen.ok)
+      throw new Error(`Info screen setup failed: ${await infoScreen.text()}`);
     return cleanup;
   } catch (error) {
     if (webLogs) process.stderr.write(webLogs);
