@@ -63,7 +63,16 @@ export async function startFakeIlmomasiina(): Promise<{
   server: Server;
 }> {
   const server = createServer((request, response) => {
-    const body = routes[new URL(request.url ?? "/", "http://x").pathname];
+    const pathname = new URL(request.url ?? "/", "http://x").pathname;
+    // Any page on another origin, for the info screen to embed
+    if (pathname === "/e2e-embed") {
+      response.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      response.end(
+        "<!doctype html><title>E2E-upotus</title><h1>E2E-upotus</h1>",
+      );
+      return;
+    }
+    const body = routes[pathname];
     response.writeHead(body ? 200 : 404, {
       "Content-Type": "application/json",
     });

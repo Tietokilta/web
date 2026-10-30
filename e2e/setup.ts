@@ -251,6 +251,19 @@ export default async function setup() {
       )
       .toBe(200);
     process.env.E2E_BASE_URL = url;
+    process.env.E2E_OTHER_ORIGIN = fakeIlmomasiina.url;
+    // Payload rewrites the user's session list on every sign-in, so concurrent
+    // sign-ins can drop each other's sessions. This one exists before any test runs.
+    const login = await fetch(`${url}/api/users/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(admin),
+    });
+    if (!login.ok)
+      throw new Error(`Admin sign-in failed: ${await login.text()}`);
+    process.env.E2E_ADMIN_TOKEN = (
+      (await login.json()) as { token: string }
+    ).token;
     return cleanup;
   } catch (error) {
     if (webLogs) process.stderr.write(webLogs);
