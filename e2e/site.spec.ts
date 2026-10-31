@@ -1,4 +1,5 @@
 import type { APIRequestContext, Page } from "@playwright/test";
+import sharp from "sharp";
 import { test, expect } from "./fixtures";
 
 test.afterEach(async ({ page }) => {
@@ -223,6 +224,106 @@ test("the invoice generator form renders", async ({ page }) => {
   await expect(
     page.getByRole("button", { name: "Lähetä", exact: true }),
   ).toBeVisible();
+});
+
+async function fillInvoice(page: Page) {
+  const field = (name: string) =>
+    page.getByRole("textbox", { name, exact: true });
+  await field("Laskuttajan nimi").fill("Teemu Teekkari");
+  await field("Laskuttajan sähköpostiosoite").fill("teemu@example.com");
+  await field("Puhelinnumero").fill("+358451234567");
+  await field("Katuosoite").fill("Konemiehentie 2");
+  await field("Kaupunki").fill("Espoo");
+  await field("Postinumero").fill("02150");
+  await field("Aihe").fill("Kuitti");
+  await field("Perustelut").first().fill("Testi");
+  const costPool = page.getByRole("combobox");
+  if ((await costPool.count()) > 0) await costPool.selectOption({ index: 1 });
+  await field("Pankkitilin numero (IBAN)").fill("FI2112345600000785");
+  await field("Tuote").fill("Alepa-kuitti");
+  await page.getByRole("spinbutton", { name: "Yksikköhinta" }).fill("12.30");
+  await page.getByRole("button", { name: "Lisää", exact: true }).last().click();
+  await field("Perustelut").last().fill("Kuitti");
+  await page.getByRole("checkbox").check();
+}
+
+test("invoice attachments are shrunk before upload", async ({ page }) => {
+  // A 12 megapixel photo, like a phone camera takes
+  const photo = await sharp({
+    create: {
+      width: 4032,
+      height: 3024,
+      channels: 3,
+      background: "#ddd",
+      noise: { type: "gaussian", mean: 128, sigma: 20 },
+    },
+  })
+    .jpeg({ quality: 95 })
+    .toBuffer();
+
+  // Never let the form reach the real laskugeneraattori
+  const uploads: Buffer[] = [];
+  await page.route(/\/invoices$/, async (route) => {
+    uploads.push(route.request().postDataBuffer() ?? Buffer.alloc(0));
+    await route.fulfill({
+      status: 201,
+      headers: { "access-control-allow-origin": "*" },
+      json: {},
+    });
+  });
+
+  await page.goto("/fi/laskugeneraattori");
+  await fillInvoice(page);
+  await page.getByLabel("Liite", { exact: true }).setInputFiles({
+    name: "kuitti.jpeg",
+    mimeType: "image/jpeg",
+    buffer: photo,
+  });
+  await expect(page.getByText(/MB → /)).toBeVisible();
+  await expect(page.locator("img[src^='blob:']")).toBeVisible();
+
+  await page.getByRole("button", { name: "Lähetä", exact: true }).click();
+  await expect(page.getByText("Lasku lähetetty")).toBeVisible();
+  expect(uploads).toHaveLength(1);
+  expect(uploads[0].includes('filename="kuitti.jpg"')).toBe(true);
+  expect(uploads[0].length).toBeLessThan(photo.length / 2);
+});
+
+test("the invoice form rejects files it cannot convert", async ({ page }) => {
+  let uploads = 0;
+  await page.route(/\/invoices$/, (route) => {
+    uploads++;
+    return route.abort();
+  });
+  await page.goto("/fi/laskugeneraattori");
+  await fillInvoice(page);
+  const attachment = page.getByLabel("Liite", { exact: true });
+  await attachment.setInputFiles({
+    name: "kuitti.heic",
+    mimeType: "image/heic",
+    buffer: Buffer.from("not an image"),
+  });
+  await expect(
+    page.getByText("Tätä tiedostomuotoa ei tueta").first(),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Lähetä", exact: true }).click();
+  // The browser blocks the submit and moves focus to the invalid attachment
+  await expect(attachment).toBeFocused();
+  await page.waitForLoadState("networkidle");
+  expect(uploads).toBe(0);
+});
+
+test("the invoice form explains a failed upload", async ({ page }) => {
+  await page.route(/\/invoices$/, (route) => route.abort());
+  await page.goto("/fi/laskugeneraattori");
+  await fillInvoice(page);
+  await page.getByLabel("Liite", { exact: true }).setInputFiles({
+    name: "kuitti.pdf",
+    mimeType: "application/pdf",
+    buffer: Buffer.from("%PDF-1.4"),
+  });
+  await page.getByRole("button", { name: "Lähetä", exact: true }).click();
+  await expect(page.getByText("Lähetys epäonnistui")).toBeVisible();
 });
 
 test("mobile navigation opens and follows a link", async ({ page }) => {

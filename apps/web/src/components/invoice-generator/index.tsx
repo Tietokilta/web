@@ -4,7 +4,9 @@ import { Button, Checkbox, Input, Textarea } from "@tietokilta/ui";
 import Form from "next/form";
 import { useParams } from "next/navigation";
 import {
+  type ChangeEvent,
   type InputHTMLAttributes,
+  type Ref,
   type ReactNode,
   useActionState,
   useEffect,
@@ -17,6 +19,10 @@ import {
 import { useFormStatus, requestFormReset } from "react-dom";
 import { toast } from "sonner";
 import type { Locale } from "@i18n/routing";
+import {
+  prepareAttachment,
+  UnsupportedFileError,
+} from "@lib/prepare-attachment";
 import { useIsAndroidFirefox } from "@lib/use-is-android-firefox";
 import type { CostPool } from "@payload-types";
 import { SaveAction } from "../../lib/api/external/laskugeneraattori/actions";
@@ -30,6 +36,7 @@ interface GenericFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   unit?: string;
   name: string;
+  ref?: Ref<HTMLInputElement>;
 }
 
 function InputLabel({ name, htmlId }: { name: string; htmlId: string }) {
@@ -143,7 +150,11 @@ function SubmitButton({
       </Button>
       {formState?.success === false && errorKeys.length === 0 ? (
         <p data-form-status aria-live="polite" className="block text-red-600">
-          {formState.errorText}
+          {formState.failure === "rate-limited"
+            ? t("Rate limited")
+            : formState.failure === "unreachable"
+              ? t("Send failed")
+              : formState.errorText}
         </p>
       ) : null}
     </div>
@@ -299,6 +310,137 @@ function InvoiceItem({
   );
 }
 
+const fileSizeFormat = new Intl.NumberFormat(undefined, {
+  maximumFractionDigits: 1,
+});
+
+function formatFileSize(bytes: number) {
+  return bytes < 1024 * 1024
+    ? `${fileSizeFormat.format(bytes / 1024)} KB`
+    : `${fileSizeFormat.format(bytes / 1024 / 1024)} MB`;
+}
+
+type AttachmentStatus =
+  | { kind: "empty" }
+  | { kind: "processing" }
+  | { kind: "unsupported" }
+  | { kind: "ready"; file: File; originalSize: number; preview?: string };
+
+// Shrinks the picked image in place, so the form submits the processed file as usual
+function AttachmentInput({ id }: { id: string }) {
+  const t = useTranslations("invoicegenerator");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const latestPick = useRef(0);
+  const [status, setStatus] = useState<AttachmentStatus>({ kind: "empty" });
+  const preview = status.kind === "ready" ? status.preview : undefined;
+
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
+
+  useEffect(() => {
+    const picks = latestPick;
+    const form = inputRef.current?.form;
+    const clear = () => {
+      picks.current++;
+      inputRef.current?.setCustomValidity("");
+      setStatus({ kind: "empty" });
+    };
+    form?.addEventListener("reset", clear);
+    return () => {
+      form?.removeEventListener("reset", clear);
+      // A removed row must not finish processing and create a preview nobody revokes
+      picks.current++;
+    };
+  }, []);
+
+  async function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const input = event.currentTarget;
+    const original = input.files?.[0];
+    const pick = ++latestPick.current;
+    if (!original) {
+      input.setCustomValidity("");
+      setStatus({ kind: "empty" });
+      return;
+    }
+
+    // Holds the submit back until the processed file is in place
+    input.setCustomValidity(t("Processing attachment"));
+    setStatus({ kind: "processing" });
+
+    let file: File;
+    try {
+      file = await prepareAttachment(original);
+    } catch (error) {
+      if (pick !== latestPick.current) return;
+      if (!(error instanceof UnsupportedFileError)) throw error;
+      input.setCustomValidity(t("Unsupported attachment"));
+      setStatus({ kind: "unsupported" });
+      return;
+    }
+    if (pick !== latestPick.current) return;
+
+    if (file !== original) {
+      const files = new DataTransfer();
+      files.items.add(file);
+      input.files = files.files;
+    }
+    input.setCustomValidity("");
+    setStatus({
+      kind: "ready",
+      file,
+      originalSize: original.size,
+      preview: file.type.startsWith("image/")
+        ? URL.createObjectURL(file)
+        : undefined,
+    });
+  }
+
+  return (
+    <div>
+      <InputRow
+        ref={inputRef}
+        label={t("Attachment")}
+        id={id}
+        name="attachments"
+        type="file"
+        accept="image/*,application/pdf"
+        onChange={(event) => void handleChange(event)}
+        required
+      />
+      {status.kind === "processing" ? (
+        <p aria-live="polite" className="text-sm text-gray-700">
+          {t("Processing attachment")}
+        </p>
+      ) : null}
+      {status.kind === "unsupported" ? (
+        <p aria-live="polite" className="text-sm text-red-600">
+          {t("Unsupported attachment")}
+        </p>
+      ) : null}
+      {status.kind === "ready" ? (
+        <div className="mt-2 flex items-center gap-3">
+          {status.preview ? (
+            // eslint-disable-next-line @next/next/no-img-element -- a local object URL, nothing for next/image to optimise
+            <img
+              src={status.preview}
+              alt=""
+              className="size-20 rounded-sm border-2 border-gray-900 object-cover"
+            />
+          ) : null}
+          <p className="text-sm text-gray-700">
+            {status.file.size < status.originalSize
+              ? `${formatFileSize(status.originalSize)} → ${formatFileSize(status.file.size)}`
+              : formatFileSize(status.file.size)}
+          </p>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 function AttachmentRow({
   state,
   index,
@@ -326,13 +468,7 @@ function AttachmentRow({
         elementName={`attachments[${index.toString()}]`}
         formState={state}
       >
-        <InputRow
-          label={t("Attachment")}
-          id={`attachments[${index.toString()}]`}
-          name="attachments"
-          type="file"
-          required
-        />
+        <AttachmentInput id={`attachments[${index.toString()}]`} />
       </ErrorMessageBlock>
     </fieldset>
   );
@@ -351,6 +487,16 @@ function InvoiceGeneratorContent({ costPools }: { costPools: CostPool[] }) {
       throw new Error("Form submission event target is not a form element");
 
     event.preventDefault();
+
+    // Without browser validation (Android Firefox), still wait for attachments to finish processing
+    const pendingAttachment = Array.from(
+      event.target.querySelectorAll<HTMLInputElement>('input[type="file"]'),
+    ).find((input) => input.validity.customError);
+    if (pendingAttachment) {
+      pendingAttachment.focus();
+      return;
+    }
+
     const formData = new FormData(event.target);
 
     const payloadSize = calculateFormDataSize(formData);

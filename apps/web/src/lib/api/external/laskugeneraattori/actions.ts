@@ -96,15 +96,26 @@ export async function SaveAction(
     data.append("attachments", attachment);
   });
 
-  const res = await fetch(`${laskugeneraattoriBaseUrl}/invoices`, {
-    method: "post",
-    body: data,
-  });
+  let res: Response;
+  try {
+    res = await fetch(`${laskugeneraattoriBaseUrl}/invoices`, {
+      method: "post",
+      body: data,
+    });
+  } catch {
+    // Also what a rate-limited upload looks like: the server answers before the body has
+    // arrived and drops the connection, and its 429 carries no CORS headers
+    return { success: false, failure: "unreachable" };
+  }
 
   if (res.ok) {
     return {
       success: true,
     };
+  }
+
+  if (res.status === 429) {
+    return { success: false, failure: "rate-limited" };
   }
 
   const body = await res.text();
