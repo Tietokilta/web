@@ -133,6 +133,13 @@ const en = {
     Confirmation:
       "I confirm that the information I have provided is correct and I have checked that the pictures of the receipts are clear.",
     "Invoicer information": "Invoicer information",
+    "Processing attachment": "Processing the attachment…",
+    "Unsupported attachment":
+      "This file type isn't supported. Use a JPEG, PNG, GIF, SVG or PDF file, or take a screenshot of the photo.",
+    "Rate limited":
+      "Too many invoices in a short time. Wait a few minutes and try again.",
+    "Send failed":
+      "Sending failed. Check your connection. If you sent several invoices in a short time, wait a few minutes and try again.",
   },
   ilmomasiina: {
     form: {
