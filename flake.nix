@@ -41,6 +41,7 @@
                 packages = with pkgs; [
                   bash
                   mongodb-tools
+                  mongosh
                   docker
                 ];
 
