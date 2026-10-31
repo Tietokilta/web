@@ -14,6 +14,9 @@
   "prHourlyLimit": 0,
   "minimumReleaseAge": "3 days",
   "postUpdateOptions": ["pnpmDedupe"],
+  "nix": {
+    "enabled": true
+  },
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 6am on the first day of the month"],
@@ -67,6 +70,18 @@
       "description": "oxlint requires a matching oxlint-tsgolint",
       "matchPackageNames": ["oxlint", "oxlint-tsgolint"],
       "groupName": "oxlint"
+    },
+    {
+      "description": "Lock file maintenance has no release dates, so the release-age check would stay pending forever (npm still waits through --before). GitHub auto-merge waits only for required checks, so Renovate merges it once every check passes, including the Nix dev shell",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "minimumReleaseAge": null,
+      "platformAutomerge": false
+    },
+    {
+      "description": "Flake inputs only move with the monthly lock file maintenance",
+      "matchManagers": ["nix"],
+      "matchUpdateTypes": ["digest"],
+      "enabled": false
     },
     {
       "description": "Stay on TypeScript 6: Next.js and tsdown need the compiler API, which TypeScript 7.0 lacks. Type checking already uses tsgo. Remove this cap once 7.1 ships the new API",
