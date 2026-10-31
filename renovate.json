@@ -17,6 +17,16 @@
   "nix": {
     "enabled": true
   },
+  "customManagers": [
+    {
+      "description": "Container images that e2e/setup.ts starts with Testcontainers",
+      "customType": "regex",
+      "managerFilePatterns": ["/^e2e/setup\\.ts$/"],
+      "matchStrings": [
+        "// renovate: datasource=(?<datasource>\\S+)\\n\\s*const \\w+ =\\s*\"(?<depName>[^:\"]+):(?<currentValue>[^@\"]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?\""
+      ]
+    }
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 6am on the first day of the month"],

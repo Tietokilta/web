@@ -15,6 +15,14 @@ import {
 import { admin } from "./fixtures";
 import { startFakeIlmomasiina } from "./ilmomasiina";
 
+// Renovate keeps these current, and moves mongo together with docker-compose.yml
+// renovate: datasource=docker
+const MONGO_IMAGE =
+  "mongo:7@sha256:c53852c00c23ca9f23fc39690350ffa9a80e3642fe8f96879726d8da0abe80a7";
+// renovate: datasource=docker
+const AZURITE_IMAGE =
+  "mcr.microsoft.com/azure-storage/azurite:3.35.0@sha256:647c63a91102a9d8e8000aab803436e1fc85fbb285e7ce830a82ee5d6661cf37";
+
 const AZURITE_ACCOUNT = "ci";
 const AZURITE_KEY = "Y2ktc21va2UtdGVzdC1rZXk=";
 const AZURITE_CONNECTION_STRING = [
@@ -63,7 +71,7 @@ export default async function setup() {
   }
 
   try {
-    const mongo = await new GenericContainer("mongo:7")
+    const mongo = await new GenericContainer(MONGO_IMAGE)
       .withBindMounts([{ source: seedDirectory, target: "/seed", mode: "ro" }])
       .withExposedPorts(27017)
       .withHealthCheck({
@@ -84,9 +92,7 @@ export default async function setup() {
       .start();
     containers.push(mongo);
 
-    const azurite = await new GenericContainer(
-      "mcr.microsoft.com/azure-storage/azurite:3.35.0",
-    )
+    const azurite = await new GenericContainer(AZURITE_IMAGE)
       .withEnvironment({
         AZURITE_ACCOUNTS: `${AZURITE_ACCOUNT}:${AZURITE_KEY}`,
       })
