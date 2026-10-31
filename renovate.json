@@ -74,6 +74,11 @@
       "allowedVersions": "<7"
     },
     {
+      "description": "Stay on MongoDB 7 for dev and E2E: 8.0 and newer refuse to start on Linux 6.19+, which CI runners use (https://jira.mongodb.org/browse/SERVER-121912). Production on Atlas runs 8. Remove this cap once that is fixed",
+      "matchPackageNames": ["mongo"],
+      "allowedVersions": "<8"
+    },
+    {
       "description": "Node.js majors move together: package.json devEngines, the Docker image and @types/node",
       "matchPackageNames": ["node", "@types/node"],
       "matchUpdateTypes": ["major"],
