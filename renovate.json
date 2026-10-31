@@ -72,8 +72,9 @@
       "groupName": "oxlint"
     },
     {
-      "description": "GitHub auto-merge waits only for required checks; let Renovate merge lock file maintenance after every check passes, including the Nix dev shell",
+      "description": "Lock file maintenance has no release dates, so the release-age check would stay pending forever (npm still waits through --before). GitHub auto-merge waits only for required checks, so Renovate merges it once every check passes, including the Nix dev shell",
       "matchUpdateTypes": ["lockFileMaintenance"],
+      "minimumReleaseAge": null,
       "platformAutomerge": false
     },
     {
