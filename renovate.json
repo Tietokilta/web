@@ -72,6 +72,17 @@
       "groupName": "oxlint"
     },
     {
+      "description": "GitHub auto-merge waits only for required checks; let Renovate merge lock file maintenance after every check passes, including the Nix dev shell",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "platformAutomerge": false
+    },
+    {
+      "description": "Flake inputs only move with the monthly lock file maintenance",
+      "matchManagers": ["nix"],
+      "matchUpdateTypes": ["digest"],
+      "enabled": false
+    },
+    {
       "description": "Stay on TypeScript 6: Next.js and tsdown need the compiler API, which TypeScript 7.0 lacks. Type checking already uses tsgo. Remove this cap once 7.1 ships the new API",
       "matchPackageNames": ["typescript"],
       "allowedVersions": "<7"
