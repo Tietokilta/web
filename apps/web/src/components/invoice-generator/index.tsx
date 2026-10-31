@@ -341,14 +341,19 @@ function AttachmentInput({ id }: { id: string }) {
   }, [preview]);
 
   useEffect(() => {
+    const picks = latestPick;
     const form = inputRef.current?.form;
     const clear = () => {
-      latestPick.current++;
+      picks.current++;
       inputRef.current?.setCustomValidity("");
       setStatus({ kind: "empty" });
     };
     form?.addEventListener("reset", clear);
-    return () => form?.removeEventListener("reset", clear);
+    return () => {
+      form?.removeEventListener("reset", clear);
+      // A removed row must not finish processing and create a preview nobody revokes
+      picks.current++;
+    };
   }, []);
 
   async function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -365,18 +370,15 @@ function AttachmentInput({ id }: { id: string }) {
     input.setCustomValidity(t("Processing attachment"));
     setStatus({ kind: "processing" });
 
-    let file = original;
+    let file: File;
     try {
       file = await prepareAttachment(original);
     } catch (error) {
       if (pick !== latestPick.current) return;
-      if (error instanceof UnsupportedFileError) {
-        input.setCustomValidity(t("Unsupported attachment"));
-        setStatus({ kind: "unsupported" });
-        return;
-      }
-      // Anything else, such as running out of memory on a huge photo: send the original
-      console.warn("Could not process the attachment", error);
+      if (!(error instanceof UnsupportedFileError)) throw error;
+      input.setCustomValidity(t("Unsupported attachment"));
+      setStatus({ kind: "unsupported" });
+      return;
     }
     if (pick !== latestPick.current) return;
 

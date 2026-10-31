@@ -297,7 +297,8 @@ test("the invoice form rejects files it cannot convert", async ({ page }) => {
   });
   await page.goto("/fi/laskugeneraattori");
   await fillInvoice(page);
-  await page.getByLabel("Liite", { exact: true }).setInputFiles({
+  const attachment = page.getByLabel("Liite", { exact: true });
+  await attachment.setInputFiles({
     name: "kuitti.heic",
     mimeType: "image/heic",
     buffer: Buffer.from("not an image"),
@@ -306,7 +307,9 @@ test("the invoice form rejects files it cannot convert", async ({ page }) => {
     page.getByText("Tätä tiedostomuotoa ei tueta").first(),
   ).toBeVisible();
   await page.getByRole("button", { name: "Lähetä", exact: true }).click();
-  await expect(page.getByText("Lasku lähetetty")).not.toBeVisible();
+  // The browser blocks the submit and moves focus to the invalid attachment
+  await expect(attachment).toBeFocused();
+  await page.waitForLoadState("networkidle");
   expect(uploads).toBe(0);
 });
 
