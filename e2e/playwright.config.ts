@@ -22,7 +22,12 @@ export default defineConfig({
     // HTTP-only checks that do not depend on the browser
     {
       name: "http",
-      testMatch: ["cache.spec.ts", "headers.spec.ts", "payload.spec.ts"],
+      testMatch: [
+        "cache.spec.ts",
+        "calendar.spec.ts",
+        "headers.spec.ts",
+        "payload.spec.ts",
+      ],
     },
   ],
   use: {
