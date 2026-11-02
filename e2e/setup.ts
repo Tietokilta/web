@@ -18,7 +18,7 @@ import { startFakeIlmomasiina } from "./ilmomasiina";
 // Renovate keeps these current, and moves mongo together with docker-compose.yml
 // renovate: datasource=docker
 const MONGO_IMAGE =
-  "mongo:7@sha256:c53852c00c23ca9f23fc39690350ffa9a80e3642fe8f96879726d8da0abe80a7";
+  "mongo:7@sha256:8bb4442761a63a8dda452744082cdac9644b429807eb977b42324a63cef59ca4";
 // renovate: datasource=docker
 const AZURITE_IMAGE =
   "mcr.microsoft.com/azure-storage/azurite:3.35.0@sha256:647c63a91102a9d8e8000aab803436e1fc85fbb285e7ce830a82ee5d6661cf37";
