@@ -338,6 +338,7 @@ for (const [path, contentType] of [
   ["/.well-known/security.txt", /^text\/plain/],
   ["/favicon.ico", /^image\//],
   ["/apple-touch-icon.png", /^image\/png/],
+  ["/robots.txt", /^text\/plain/]
 ] as const) {
   test(`${path} is served as a file, not a page`, async ({ request }) => {
     const response = await request.get(path, { maxRedirects: 0 });
