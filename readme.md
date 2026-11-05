@@ -21,7 +21,7 @@ Prerequisites:
 cp .env.example .env
 
 # install pnpm
-corepack enable
+npm install --global pnpm
 
 # install dependencies
 pnpm install

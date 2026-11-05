@@ -82,6 +82,11 @@
       "groupName": "oxlint"
     },
     {
+      "description": "The Dockerfile copies pnpm from its image; keep it on the packageManager version",
+      "matchPackageNames": ["pnpm", "ghcr.io/pnpm/pnpm"],
+      "groupName": "pnpm"
+    },
+    {
       "description": "Lock file maintenance has no release dates, so the release-age check would stay pending forever (npm still waits through --before). GitHub auto-merge waits only for required checks, so Renovate merges it once every check passes, including the Nix dev shell",
       "matchUpdateTypes": ["lockFileMaintenance"],
       "minimumReleaseAge": null,

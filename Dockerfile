@@ -4,7 +4,9 @@ RUN apk add --no-cache libc6-compat
 FROM base AS tooling
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN corepack enable
+# pnpm 12 is a native binary; Renovate moves this image with packageManager
+COPY --from=ghcr.io/pnpm/pnpm:12.16.1-alpine@sha256:3b67e34454e18e4797a50ade3176dde31cec13ad6670f460a81bdf6e1d8b547b /opt/pnpm /opt/pnpm
+RUN for bin in pnpm pn pnpx pnx; do ln -s "/opt/pnpm/$bin" "/usr/local/bin/$bin"; done
 # renovate: datasource=npm depName=turbo
 ARG TURBO_VERSION=2.11.10
 RUN npm install --global turbo@${TURBO_VERSION}
