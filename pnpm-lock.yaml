@@ -203,6 +203,9 @@ catalogs:
     tailwindcss-animate:
       specifier: ^1.0.7
       version: 1.0.7
+    typescript:
+      specifier: ~6.0.3
+      version: 6.0.3
 
 importers:
 
@@ -233,7 +236,7 @@ importers:
         specifier: ^2.10.4
         version: 2.11.10
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
   apps/web:
@@ -405,7 +408,7 @@ importers:
         specifier: ^18.0.0
         version: 18.0.9
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
       unified:
         specifier: ^11.0.5
@@ -513,7 +516,7 @@ importers:
         specifier: ^0.23.0
         version: 0.23.4(@typescript/native-preview@7.0.0-dev.20260707.2)(tsx@4.23.15)(typescript@6.0.3)
       typescript:
-        specifier: ^6.0.3
+        specifier: 'catalog:'
         version: 6.0.3
 
 packages:
