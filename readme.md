@@ -20,7 +20,7 @@ Prerequisites:
 # copy .env.example to .env
 cp .env.example .env
 
-# install pnpm
+# install pnpm (or see https://pnpm.io/installation)
 npm install --global pnpm
 
 # install dependencies
