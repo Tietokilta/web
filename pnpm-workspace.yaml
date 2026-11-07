@@ -9,21 +9,24 @@ catalog:
   "@types/node": ^24.13.3
   "@types/react": ^19.2.17
   "@types/react-dom": ^19.2.3
-  autoprefixer: ^10.4.21
   clsx: ^2.1.1
   postcss: ^8.5.16
   react: ^19.2.7
   react-dom: ^19.2.7
+  sharp: ^0.35.3
   tailwind-merge: ^3.6.0
   tailwindcss: ^4.3.2
   tailwindcss-animate: ^1.0.7
   next: ^16.3.8
-  typescript: ~5.9.3
+  typescript: ~6.0.3
 
 # https://pnpm.io/supply-chain-security
 minimumReleaseAge: 1440
 
 autoInstallPeers: true
+
+# Drop catalog entries that no package uses anymore
+catalogPrune: true
 
 allowBuilds:
   "@parcel/watcher": true
