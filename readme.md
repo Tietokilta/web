@@ -20,8 +20,8 @@ Prerequisites:
 # copy .env.example to .env
 cp .env.example .env
 
-# install pnpm
-corepack enable
+# install pnpm (or see https://pnpm.io/installation)
+npm install --global pnpm
 
 # install dependencies
 pnpm install
