@@ -14,6 +14,11 @@ import NextLink, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
 import type { HTMLProps } from "react";
 import type { MainNavigationItem, Page, Topic } from "@payload-types";
+import { cn } from "../../lib/utils";
+
+// Padding shrinks from 1rem at 1280px to 0.5rem at 1024px so the bar fits
+// without shrinking the text
+const fluidPaddingClassName = "px-[clamp(0.5rem,3.125vw_-_1.5rem,1rem)]";
 
 function Link({
   href,
@@ -41,7 +46,11 @@ function NavigationLink({
     return (
       <div className="group/link relative flex h-20 items-center justify-center">
         <Link
-          className={`relative z-10 hover:underline ${navigationMenuTriggerStyle()}`}
+          className={cn(
+            navigationMenuTriggerStyle(),
+            fluidPaddingClassName,
+            "relative z-10 hover:underline",
+          )}
           href={localisedPath}
         >
           {(pageOrTopic.pageConfig?.page as Page).title}
@@ -67,7 +76,7 @@ function NavigationLink({
   return (
     <>
       <div className="group/link relative flex h-20 items-center justify-center">
-        <NavigationMenuTrigger>
+        <NavigationMenuTrigger className={fluidPaddingClassName}>
           <span className="hover:underline">
             {(pageOrTopic.topicConfig?.topic as Topic).title}
           </span>
@@ -90,7 +99,7 @@ function NavigationLink({
         </NavigationMenuTrigger>
       </div>
       <NavigationMenuContent>
-        <ul className="flex gap-16 p-8">
+        <ul className="flex flex-wrap justify-center gap-x-8 gap-y-6 p-6 xl:gap-x-16 xl:p-8">
           {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
             <li key={linkCategorySublist.title}>
               <header className="mb-4 text-xl font-bold">
