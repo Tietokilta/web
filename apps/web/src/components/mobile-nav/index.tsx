@@ -2,12 +2,10 @@ import {
   buttonVariants,
   MenuIcon,
   Sheet,
-  SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@tietokilta/ui";
-import Link from "next/link";
 import { getLocale, getTranslations } from "@locales/server";
 import type { Media } from "@payload-types";
 import { fetchFooter } from "../../lib/api/footer";
@@ -16,6 +14,7 @@ import { cn } from "../../lib/utils";
 import { LanguageSelector } from "./language-selector";
 import { LinkList } from "./link-list";
 import { LogoLink } from "./logo-link";
+import { MobileNavSheetContent } from "./sheet-content";
 
 export async function MobileNav({
   className,
@@ -24,7 +23,6 @@ export async function MobileNav({
   const tAction = await getTranslations("action");
   const tHeading = await getTranslations("heading");
   const locale = await getLocale();
-  const href = `/${locale}`;
   const mainNav = await fetchMainNavigation(locale)({});
   const footer = await fetchFooter(locale)({});
   if (
@@ -56,9 +54,6 @@ export async function MobileNav({
       {...rest}
     >
       <LogoLink locale={locale} image={navLogo} />
-      <Link href={href} className="font-mono text-2xl">
-        Tietokilta
-      </Link>
       <Sheet>
         <SheetTrigger
           className={buttonVariants({
@@ -69,7 +64,7 @@ export async function MobileNav({
           <MenuIcon className="size-6" />
           <span className="sr-only">{tAction("Toggle menu")}</span>
         </SheetTrigger>
-        <SheetContent
+        <MobileNavSheetContent
           closeLabel={tAction("Close")}
           aria-describedby={undefined}
         >
@@ -84,7 +79,7 @@ export async function MobileNav({
               footerSponsors={footerSponsors}
             />
           </nav>
-        </SheetContent>
+        </MobileNavSheetContent>
       </Sheet>
     </header>
   );

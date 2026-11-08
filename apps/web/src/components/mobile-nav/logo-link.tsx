@@ -19,29 +19,40 @@ export function LogoLink({
   const isActive = pathname === href;
 
   return (
-    <Link
-      aria-current={isActive ? "page" : undefined}
-      className="rounded-full hover:text-gray-400"
-      href={href}
-    >
-      {/*
-      <Image
-        alt="Tietokilta"
-        className="size-16 p-2"
-        priority
-        width={image?.width ? Math.trunc(image.width) : undefined}
-        height={image?.height ? Math.trunc(image.height) : undefined}
-        src={image?.url ?? TiKLogo}
-      />
-      */}
-      <Image
-        alt="SystemSeven"
-        className="size-16 p-2"
-        priority
-        width={image?.width ? Math.trunc(image.width) : undefined}
-        height={image?.height ? Math.trunc(image.height) : undefined}
-        src={SyseLogo}
-      />
-    </Link>
+    <>
+      {/* Same destination as the wordmark, so keyboard and screen reader users only get one stop */}
+      <Link
+        aria-hidden="true"
+        className="rounded-full hover:text-gray-400"
+        href={href}
+        tabIndex={-1}
+      >
+        {/*
+        <Image
+          alt=""
+          className="size-16 p-2"
+          priority
+          width={image?.width ? Math.trunc(image.width) : undefined}
+          height={image?.height ? Math.trunc(image.height) : undefined}
+          src={image?.url ?? TiKLogo}
+        />
+        */}
+        <Image
+          alt=""
+          className="size-16 p-2"
+          priority
+          width={image?.width ? Math.trunc(image.width) : undefined}
+          height={image?.height ? Math.trunc(image.height) : undefined}
+          src={SyseLogo}
+        />
+      </Link>
+      <Link
+        aria-current={isActive ? "page" : undefined}
+        className="font-mono text-2xl"
+        href={href}
+      >
+        Tietokilta
+      </Link>
+    </>
   );
 }
