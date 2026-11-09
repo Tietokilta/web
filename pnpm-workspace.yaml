@@ -37,3 +37,8 @@ allowBuilds:
   protobufjs: false
   sharp: true
   ssh2: false
+
+# fallow's agent skills duplicate its `fallow --help`, so don't link them
+permissions:
+  fallow:
+    skills: false
