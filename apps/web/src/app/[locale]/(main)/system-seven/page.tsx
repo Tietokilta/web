@@ -23,7 +23,7 @@ export default function Page() {
           e.preventDefault();
           const form = e.target as HTMLFormElement;
           const password = form.querySelector("input")?.value;
-          if (password === "masterseven") setLoggedIn(true);
+          if (password === "OskarinPullat") setLoggedIn(true);
           else setErrorText("Incorrect password");
         }}
         className="flex flex-col gap-4"

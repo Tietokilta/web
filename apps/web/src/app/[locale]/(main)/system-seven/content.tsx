@@ -56,7 +56,7 @@ export default function SyseContent() {
       <div className="video-container">
         <video
           className="video"
-          src="https://files.joonatanaatos.fi/mase.mp4"
+          src={`/api/documents/file/${encodeURIComponent("System Seven 17.11..mov")}`}
           controls
         >
           <track kind="captions" srcLang="en" default />
