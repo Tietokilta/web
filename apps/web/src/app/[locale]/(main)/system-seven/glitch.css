@@ -5,6 +5,8 @@
 .layers::before,
 .layers::after {
   content: attr(data-text);
+  /* Decorative copies: empty alt text keeps them out of the heading's accessible name */
+  content: attr(data-text) / "";
   position: absolute;
   width: 110%;
   z-index: -1;
