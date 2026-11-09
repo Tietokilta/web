@@ -1,7 +1,9 @@
+import { tz } from "@date-fns/tz";
 import {
   type UserEventListItem,
   type UserEventListResponse,
 } from "@tietokilta/ilmomasiina-models";
+import { format } from "date-fns";
 import { remark } from "remark";
 import strip from "strip-markdown";
 
@@ -130,10 +132,9 @@ function formatDates(start: string, end?: string | null) {
   const nowDate = new Date();
   const startDate = new Date(start);
   if (!end) {
-    // Make the event an all-day event if there's no end date.
+    // A DATE start without DTEND lasts one day (RFC 5545).
     return `DTSTAMP:${formatDateTime(nowDate)}Z\r
-DTSTART;VALUE=DATE:${formatDate(startDate)}\r
-DTEND;VALUE=DATE:${formatDate(startDate)}`;
+DTSTART;VALUE=DATE:${formatDate(startDate)}`;
   }
 
   const endDate = new Date(end);
@@ -144,7 +145,7 @@ DTEND:${formatDateTime(endDate)}Z`;
 }
 
 const formatDate = (date: Date) =>
-  date.toISOString().slice(0, 10).replace(/-/g, "");
+  format(date, "yyyyMMdd", { in: tz("Europe/Helsinki") });
 
 const formatDateTime = (date: Date) =>
   date.toISOString().slice(0, 19).replace(/[-:]/g, "");

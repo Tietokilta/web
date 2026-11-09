@@ -10,6 +10,7 @@
     "db:export": "dotenv -- ./scripts/generate_seeding_data.sh",
     "db:populate": "dotenv -- ./scripts/import_seeding_data.sh --all",
     "db:reset": "pnpm db:clear && pnpm db:start && pnpm db:populate",
+    "db:seed:cost-pools": "dotenv -- pnpx tsx apps/web/src/scripts/seed-cost-pools.ts",
     "db:start": "docker compose up -d",
     "db:stop": "docker compose down",
     "dev": "pnpm db:start && dotenv -- turbo run dev --cache-dir=.turbo",
@@ -23,22 +24,27 @@
     "lint:fix": "dotenv -- turbo run lint:fix",
     "payload": "dotenv -- pnpm -F web payload",
     "start": "dotenv -- turbo run start --cache-dir=.turbo",
+    "test:e2e": "pnpm --filter e2e test",
     "typecheck": "dotenv -- turbo run typecheck --cache-dir=.turbo",
     "uploads:clear": "rm -rf apps/web/uploads"
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "@typescript/native-preview": "7.0.0-dev.20260401.1",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
     "dotenv-cli": "^11.0.0",
-    "oxfmt": "^0.58.0",
+    "oxfmt": "^0.75.0",
     "oxlint": "^1.73.0",
-    "oxlint-tsgolint": "^0.24.0",
+    "oxlint-tsgolint": "^7.0.0",
     "tsx": "^4.23.0",
     "turbo": "^2.10.4",
-    "typescript": "^6.0.3"
+    "typescript": "catalog:"
   },
-  "engines": {
-    "node": ">=22.22.0 <23"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "^26.0.0",
+      "onFail": "error"
+    }
   },
-  "packageManager": "pnpm@11.9.0"
+  "packageManager": "pnpm@12.16.1"
 }

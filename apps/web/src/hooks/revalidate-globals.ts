@@ -1,8 +1,9 @@
 // revalidate the page in the background, so the user doesn't have to wait
 // notice that the hook itself is not async and we are not awaiting `revalidate`
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import type { GlobalAfterChangeHook } from "payload";
+import { expireTag } from "./expire-tag";
 
 // only revalidate existing docs that are published (not drafts)
 export const revalidateGlobal: GlobalAfterChangeHook = ({
@@ -11,7 +12,7 @@ export const revalidateGlobal: GlobalAfterChangeHook = ({
   req,
 }) => {
   req.payload.logger.info(`revalidating ${global.slug}`);
-  revalidateTag(`global-${global.slug}`, "default");
+  expireTag(`global-${global.slug}`);
   revalidatePath("/[locale]", "layout");
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- ¯\_(ツ)_/¯

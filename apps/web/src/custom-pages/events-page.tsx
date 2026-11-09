@@ -11,7 +11,7 @@ import {
 } from "../lib/api/external/ilmomasiina";
 import { NextIntlClientProvider } from "../locales/client";
 import { getLocale, getTranslations } from "../locales/server";
-import EventCalendar from "./event-calendar";
+import EventCalendar from "./lazy-event-calendar";
 
 async function Calendar({ events }: { events: UserEventListResponse }) {
   const t = await getTranslations("ilmomasiina");

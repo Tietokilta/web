@@ -22,24 +22,24 @@ env:
   SKIP_ENV_VALIDATION: "true"
 jobs:
   build:
-    name: Format, Lint, Check types & Build
+    name: Format, lint & typecheck
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           fetch-depth: 2
 
       - name: Setup turborepo cache
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: .turbo
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
 
-      - uses: pnpm/action-setup@v6.0.9
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
 
-      - uses: actions/setup-node@v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version-file: package.json
           cache: "pnpm"
@@ -48,7 +48,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: "Build ui package"
-        run: pnpm turbo run build --filter=@tietokilta/ui --force
+        run: pnpm turbo run build --filter=@tietokilta/ui --cache-dir=.turbo
 
       - name: Format (to ensure that code has been formatted)
         run: pnpm format && git diff --exit-code
@@ -62,12 +62,64 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
-      - name: Build all
+  e2e:
+    name: E2E (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chromium, firefox]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version-file: package.json
+          cache: "pnpm"
+      - name: Setup turborepo cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: .turbo
+          key: ${{ runner.os }}-turbo-e2e-${{ matrix.browser }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-turbo-e2e-${{ matrix.browser }}-
+            ${{ runner.os }}-turbo-
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: |
+          VERSION=$(pnpm --filter e2e exec playwright --version)
+          echo "version=${VERSION#Version }" >> "$GITHUB_OUTPUT"
+      - name: Cache Playwright browsers
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ runner.arch }}-${{ matrix.browser }}-headless-${{ steps.playwright-version.outputs.version }}
+      - name: Install Playwright browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        # The runner image already has the system libraries Chromium and Firefox need, and
+        # headless tests only use Chromium's headless shell
+        run: pnpm --filter e2e exec playwright install ${{ matrix.browser == 'chromium' && '--only-shell' || '' }} ${{ matrix.browser }}
+      - name: Build production app
         run: pnpm build
+      - name: Run browser tests against production Node server
+        # The browserless HTTP checks only need to run once
+        run: pnpm --filter e2e test --project=${{ matrix.browser }} ${{ matrix.browser == 'chromium' && '--project=http' || '' }}
+      - name: Upload e2e diagnostics
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: e2e-${{ matrix.browser }}-test-results
+          path: |
+            e2e/playwright-report/
+            e2e/test-results/
+          retention-days: 7
 
   publish-npm:
     name: Publish @tietokilta/ui to npm
-    needs: build
+    needs: [build, e2e, docker-build-and-push]
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -77,12 +129,12 @@ jobs:
     if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
-      - uses: pnpm/action-setup@v6.0.9
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
 
       - name: Setup Node.js for npm (OIDC)
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version-file: package.json
           cache: "pnpm"
@@ -97,66 +149,138 @@ jobs:
       - name: Build UI package
         run: pnpm --filter @tietokilta/ui build
 
-      - name: Publish @tietokilta/ui (alpha and latest)
+      - name: Publish @tietokilta/ui
         run: |
-          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag alpha --tag latest
+          pnpm publish --filter @tietokilta/ui --no-git-checks --access public --provenance --tag latest
 
   docker-build-and-push:
-    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
-    needs: build
-    name: Push Docker image to GitHub Packages
+    name: Build Docker image & smoke test
+    outputs:
+      tags: ${{ steps.meta.outputs.tags }}
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
+    env:
+      PUBLISH_IMAGE: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published') }}
+      SHA_IMAGE: ghcr.io/tietokilta/web:sha-${{ github.sha }}
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v4
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
       - name: Login to GHCR
-        uses: docker/login-action@v4
+        if: env.PUBLISH_IMAGE == 'true'
+        uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Generate Docker metadata
+        if: env.PUBLISH_IMAGE == 'true'
         id: meta
-        uses: docker/metadata-action@v6
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
         with:
           images: ${{env.docker_tag_prefix}}/web
           tags: |
             type=semver,pattern={{version}},enable=${{ github.ref_type == 'tag' }}
             type=semver,pattern={{major}}.{{minor}},enable=${{ github.ref_type == 'tag' }}
-            type=raw,value=sha-${{github.sha}}
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v7
+      - name: Build Docker image
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
         with:
           context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          load: ${{ env.PUBLISH_IMAGE != 'true' }}
+          push: ${{ env.PUBLISH_IMAGE == 'true' }}
+          tags: ${{ env.PUBLISH_IMAGE == 'true' && env.SHA_IMAGE || 'web:e2e' }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             GIT_COMMIT_SHA=${{github.sha}}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+
+      - name: Smoke test Docker image
+        env:
+          E2E_IMAGE: ${{ env.PUBLISH_IMAGE == 'true' && env.SHA_IMAGE || 'web:e2e' }}
+        run: |
+          docker run --detach --name web-smoke --publish 127.0.0.1:3000:3000 \
+            --env SKIP_ENV_VALIDATION=true "$E2E_IMAGE"
+          curl --fail --silent --show-error --retry 30 --retry-delay 2 \
+            --retry-all-errors --max-time 5 http://127.0.0.1:3000/next_api/health
+          curl --fail --silent --show-error --max-time 30 --output /dev/null \
+            'http://127.0.0.1:3000/_next/image?url=%2Ficon_light.png&w=64&q=75'
+      - name: Show container logs and clean up
+        if: always()
+        run: |
+          if docker container inspect web-smoke > /dev/null 2>&1; then
+            docker logs web-smoke
+            docker rm --force web-smoke
+          fi
+
+  publish-docker:
+    name: Publish tested Docker image
+    needs: [build, e2e, docker-build-and-push]
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      SHA_IMAGE: ghcr.io/tietokilta/web:sha-${{ github.sha }}
+    steps:
+      - uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
+      - uses: docker/login-action@81c6f93d4bc991e510b342a00b419b3bb4efc5c6 # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Promote tested Docker image
+        env:
+          TARGET_TAGS: ${{ needs.docker-build-and-push.outputs.tags }}
+        run: |
+          while IFS= read -r tag; do
+            if [[ -n "$tag" ]]; then
+              docker buildx imagetools create --tag "$tag" "$SHA_IMAGE"
+            fi
+          done <<< "$TARGET_TAGS"
 
   deploy:
     # only run on published releases, enable this when we release
     #if: github.event_name == 'release' && github.event.action == 'published'
+    if: (github.event_name == 'push' && github.ref == 'refs/heads/main') || (github.event_name == 'release' && github.event.action == 'published')
     name: Deploy to Azure
     runs-on: ubuntu-latest
-    needs: docker-build-and-push
+    needs: publish-docker
     steps:
       - name: Login via Azure CLI
-        uses: azure/login@v3
+        uses: azure/login@a641126d1b8aa4d1fa005f4f92df94a3a4c4c906 # v3
         with:
           client-id: ${{secrets.AZURE_CLIENT_ID}}
           subscription-id: ${{secrets.AZURE_SUBSCRIPTION_ID}}
           tenant-id: ${{secrets.AZURE_TENANT_ID}}
-      - uses: azure/webapps-deploy@v3
+      - uses: azure/webapps-deploy@02a81bead70021f5284939794bcec79c271ab383 # v3
         with:
           app-name: tikweb-web-prod # TODO: if we ever setup more envs than prod, make this variable customizable
           images: "${{ env.docker_tag_prefix }}/web:sha-${{ github.sha }}"
+      # Azure takes a few minutes to swap the container after the deploy call. Finishing
+      # only once the new version serves keeps the production checks from testing the swap.
+      - name: Wait for the new version to serve traffic
+        run: |
+          for _ in $(seq 1 60); do
+            deployed=$(curl -sI https://tietokilta.fi/next_api/health | tr -d '\r' | awk 'tolower($1) == "x-git-commit-sha:" { print $2 }' || true)
+            if [ "$deployed" = "$GITHUB_SHA" ]; then exit 0; fi
+            sleep 10
+          done
+          echo "tietokilta.fi is still serving $deployed instead of $GITHUB_SHA"
+          exit 1
+      # Cloudflare keeps pages for up to a minute, and stale pages would reference
+      # JS and CSS files that no longer exist after the deploy
+      - name: Purge cached pages from Cloudflare
+        env:
+          CLOUDFLARE_PURGE_TOKEN: ${{ secrets.CLOUDFLARE_PURGE_TOKEN }}
+          CLOUDFLARE_ZONE_ID: e3193fc9edbb2b28f743a6d7743176f8 # tietokilta.fi
+        run: |
+          curl --fail-with-body --silent --show-error -X POST \
+            "https://api.cloudflare.com/client/v4/zones/$CLOUDFLARE_ZONE_ID/purge_cache" \
+            -H "Authorization: Bearer $CLOUDFLARE_PURGE_TOKEN" \
+            -H "Content-Type: application/json" \
+            --data '{"prefixes": ["tietokilta.fi/fi", "tietokilta.fi/en", "www.tietokilta.fi/fi", "www.tietokilta.fi/en"]}'

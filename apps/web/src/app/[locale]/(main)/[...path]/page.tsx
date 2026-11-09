@@ -10,16 +10,19 @@ import EventsPage from "@custom-pages/events-page";
 import WeeklyNewsletterPage from "@custom-pages/weekly-newsletter-page";
 import WeeklyNewslettersListPage from "@custom-pages/weekly-newsletters-list-page";
 import type { EditorState } from "@lexical-types";
-import { fetchPage } from "@lib/api/pages";
+import { fetchPage, fetchPagePaths } from "@lib/api/pages";
 import { generateTocFromRichText } from "@lib/utils";
-import { getLocale, type Locale } from "@locales/server";
+import { setLocaleFromParams, type Locale } from "@locales/server";
 import type { Page as CMSPage } from "@payload-types";
 
 interface NextPage<Params extends Record<string, unknown>> {
   params: Promise<Params>;
 }
 
-type Props = NextPage<{ path: string[] }>;
+type Props = NextPage<{ locale: string; path: string[] }>;
+
+// Render CMS pages on first request and cache them until Payload revalidates them
+export const generateStaticParams = () => [];
 
 const getPage = async (path: string[], locale: Locale) => {
   if (path.length !== 1 && path.length !== 2) {
@@ -71,14 +74,26 @@ const getPage = async (path: string[], locale: Locale) => {
 };
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
-  const params = await props.params;
-  const { path } = params;
-
-  const locale = await getLocale();
+  const locale = await setLocaleFromParams(props.params);
+  const { path } = await props.params;
   const page = await getPage(path, locale);
+  const pagePaths = await fetchPagePaths({
+    where: { id: { equals: page.id } },
+    depth: 0,
+    select: { path: true },
+    locale: "all",
+  });
+  // Slugs differ between locales, so each language version has its own path
+  const paths = pagePaths?.path as unknown as
+    | Partial<Record<Locale, string>>
+    | undefined;
 
   return {
     title: page.title,
+    alternates: {
+      canonical: page.path,
+      languages: { ...paths, "x-default": paths?.fi },
+    },
     description: page.description,
     openGraph: {
       type: "article",
@@ -86,6 +101,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
       modifiedTime: page.updatedAt,
       images: `/next_api/og/cms-page?title=${encodeURIComponent(page.title)}&description=${encodeURIComponent(page.description)}`,
     },
+    ...(page.noIndex ? { robots: { index: false } } : {}),
   };
 };
 
@@ -100,10 +116,8 @@ function Content({ content }: { content?: EditorState }) {
 }
 
 async function Page(props: Props) {
-  const params = await props.params;
-  const { path } = params;
-
-  const locale = await getLocale();
+  const locale = await setLocaleFromParams(props.params);
+  const { path } = await props.params;
   const page = await getPage(path, locale);
 
   if (page.type === "events-list") {

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    "docker:pinDigests",
+    "customManagers:dockerfileVersions"
+  ],
+  "timezone": "Europe/Helsinki",
+  "schedule": ["before 6am on monday"],
+  "semanticCommits": "enabled",
+  "labels": ["dependencies"],
+  "dependencyDashboard": true,
+  "prHourlyLimit": 0,
+  "minimumReleaseAge": "3 days",
+  "postUpdateOptions": ["pnpmDedupe"],
+  "nix": {
+    "enabled": true
+  },
+  "customManagers": [
+    {
+      "description": "Container images that e2e/setup.ts starts with Testcontainers",
+      "customType": "regex",
+      "managerFilePatterns": ["/^e2e/setup\\.ts$/"],
+      "matchStrings": [
+        "// renovate: datasource=(?<datasource>\\S+)\\n\\s*const \\w+ =\\s*\"(?<depName>[^:\"]+):(?<currentValue>[^@\"]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?\""
+      ]
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 6am on the first day of the month"],
+    "automerge": true
+  },
+  "vulnerabilityAlerts": {
+    "minimumReleaseAge": null,
+    "schedule": ["at any time"]
+  },
+  "packageRules": [
+    {
+      "description": "Patch and minor updates auto-merge once CI (lint, E2E, Docker smoke test) passes",
+      "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
+      "matchCurrentVersion": "!/^[~^]?v?0\\./",
+      "automerge": true
+    },
+    {
+      "description": "Payload migrates the CMS database; review its updates",
+      "matchPackageNames": ["payload", "@payloadcms/**"],
+      "groupName": "Payload",
+      "automerge": false
+    },
+    {
+      "description": "Next.js and React change the runtime; review their updates",
+      "matchPackageNames": ["next", "@next/**", "eslint-config-next"],
+      "groupName": "Next.js",
+      "automerge": false
+    },
+    {
+      "matchPackageNames": [
+        "react",
+        "react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ],
+      "groupName": "React",
+      "automerge": false
+    },
+    {
+      "matchPackageNames": [
+        "@tietokilta/ilmomasiina-client",
+        "@tietokilta/ilmomasiina-models"
+      ],
+      "groupName": "Ilmomasiina"
+    },
+    {
+      "matchPackageNames": ["turbo", "eslint-config-turbo"],
+      "groupName": "turbo"
+    },
+    {
+      "description": "oxlint requires a matching oxlint-tsgolint",
+      "matchPackageNames": ["oxlint", "oxlint-tsgolint"],
+      "groupName": "oxlint"
+    },
+    {
+      "description": "The Dockerfile copies pnpm from its image; keep it on the packageManager version",
+      "matchPackageNames": ["pnpm", "ghcr.io/pnpm/pnpm"],
+      "groupName": "pnpm"
+    },
+    {
+      "description": "Lock file maintenance has no release dates, so the release-age check would stay pending forever (npm still waits through --before). GitHub auto-merge waits only for required checks, so Renovate merges it once every check passes, including the Nix dev shell",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "minimumReleaseAge": null,
+      "platformAutomerge": false
+    },
+    {
+      "description": "Flake inputs only move with the monthly lock file maintenance",
+      "matchManagers": ["nix"],
+      "matchUpdateTypes": ["digest"],
+      "enabled": false
+    },
+    {
+      "description": "Stay on TypeScript 6: Next.js and tsdown need the compiler API, which TypeScript 7.0 lacks. Type checking already uses tsgo. Remove this cap once 7.1 ships the new API",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<7"
+    },
+    {
+      "description": "Stay on MongoDB 7 for dev and E2E: 8.0 and newer refuse to start on Linux 6.19+, which CI runners use (https://jira.mongodb.org/browse/SERVER-121912). Production on Atlas runs 8. Remove this cap once that is fixed",
+      "matchPackageNames": ["mongo"],
+      "allowedVersions": "<8"
+    },
+    {
+      "description": "Node.js majors move together: package.json devEngines, the Docker image and @types/node",
+      "matchPackageNames": ["node", "@types/node"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "Node.js",
+      "automerge": false
+    },
+    {
+      "description": "One weekly PR for GitHub Actions; build.yml publishes and deploys, so review it",
+      "matchManagers": ["github-actions"],
+      "groupName": "GitHub Actions",
+      "automerge": false
+    }
+  ]
+}

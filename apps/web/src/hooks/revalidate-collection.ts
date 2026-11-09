@@ -1,6 +1,7 @@
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import type { CollectionAfterChangeHook, TypeWithID } from "payload";
 import type { Config } from "@payload-types";
+import { expireTag } from "./expire-tag";
 
 type CollectionSlug = keyof Config["collections"];
 
@@ -14,7 +15,13 @@ type CollectionSlug = keyof Config["collections"];
 export function revalidateCollection<T extends TypeWithID>(
   collectionSlug: CollectionSlug,
 ): CollectionAfterChangeHook<T> {
-  return ({ doc, req }): T => {
+  return ({ context, doc, req }): T => {
+    // Revalidation only works inside a Next request. Scripts that write through the local API
+    // (see src/scripts) run outside one and opt out with this flag.
+    if (context.disableRevalidate) {
+      return doc;
+    }
+
     const isPage = collectionSlug === "pages";
     const isPublished = "_status" in doc && doc._status === "published";
     if (isPage && !isPublished) {
@@ -25,10 +32,10 @@ export function revalidateCollection<T extends TypeWithID>(
     }
 
     req.payload.logger.info(`revalidating ${collectionSlug}`);
-    revalidateTag(`collection-${collectionSlug}`, "default");
+    expireTag(`collection-${collectionSlug}`);
     if (collectionSlug !== "pages") {
       req.payload.logger.info(`revalidating pages`);
-      revalidateTag("collection-pages", "default");
+      expireTag("collection-pages");
     }
     revalidatePath("/[locale]/[...path]", "page");
 

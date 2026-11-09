@@ -41,6 +41,7 @@
                 packages = with pkgs; [
                   bash
                   mongodb-tools
+                  mongosh
                   docker
                 ];
 
@@ -51,9 +52,9 @@
 
                 languages.javascript = {
                   enable = true;
-                  package = pkgs.nodejs-slim_24;
+                  package = pkgs.nodejs-slim_26;
                   pnpm.enable = true;
-                  pnpm.package = pkgs.pnpm_11;
+                  pnpm.package = pkgs.pnpm_12;
                   pnpm.install.enable = true;
                 };
               }
