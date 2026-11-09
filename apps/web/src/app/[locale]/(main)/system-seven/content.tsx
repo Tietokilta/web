@@ -26,7 +26,7 @@ const useCountdown = (date: Date) => {
 };
 
 export default function SyseContent() {
-  const eventDate = new Date("2025-11-13T17:00:00.000+02:00");
+  const eventDate = new Date("2026-11-17T16:07:00.000+02:00");
   const [days, hours, minutes, seconds] = useCountdown(eventDate);
   const f = (n: number) => `0${Math.max(0, n).toString()}`.slice(-2);
   const dateString = `${f(days)}:${f(hours)}:${f(minutes)}:${f(seconds)}`;
