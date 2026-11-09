@@ -12,6 +12,8 @@ import "@tietokilta/ui/global.css";
 import "../globals.css";
 import { cn } from "@lib/utils";
 import { getTranslations, setLocaleFromParams } from "@locales/server";
+import "./system-seven/system-seven.css";
+import "./system-seven/glitch.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const robotoMono = Roboto_Mono({

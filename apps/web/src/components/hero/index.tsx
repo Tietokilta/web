@@ -65,9 +65,19 @@ function ImageWithCitation({
   );
 }
 
+// System Seven takeover: shown instead of the CMS hero texts
+const SYSE_TEXTS = [
+  "The destruction is near",
+  "Join System Seven today!",
+  "Maximize your potential",
+  "Productivity is the key to success",
+  "Stop the slack",
+  "Work hard, play hard",
+  "Down with the guild!",
+];
+
 export function Hero({
   images,
-  texts,
 }: {
   images: ImageWithPhotographer[];
   texts: string[];
@@ -91,7 +101,7 @@ export function Hero({
         ],
   );
 
-  const [currentText, setCurrentText] = useState(texts[0]);
+  const [currentText, setCurrentText] = useState(SYSE_TEXTS[0]);
   // eslint-disable-next-line react/hook-use-state -- prev index used directly in the setter
   const [, setTextIndex] = useState(0);
 
@@ -103,7 +113,7 @@ export function Hero({
   });
 
   useEffect(() => {
-    const shuffledTexts = shuffle(texts);
+    const shuffledTexts = shuffle(SYSE_TEXTS);
     setCurrentText(shuffledTexts[0]);
     setCurrentImageIndex(Math.floor(Math.random() * images.length));
 
@@ -113,7 +123,7 @@ export function Hero({
       );
       setHasRotated(true);
       setTextIndex((_textIndex) => {
-        const newIndex = (_textIndex + 1) % texts.length;
+        const newIndex = (_textIndex + 1) % SYSE_TEXTS.length;
         setCurrentText(shuffledTexts[newIndex]);
         return newIndex;
       });
@@ -122,7 +132,7 @@ export function Hero({
     return () => {
       clearInterval(interval);
     };
-  }, [images.length, texts]);
+  }, [images.length]);
 
   return (
     <div className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
