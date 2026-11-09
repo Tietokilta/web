@@ -11,7 +11,7 @@ import {
   IS_SUBSCRIPT,
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
-} from "./utils/lexical";
+} from "../components/lexical/rich-text-node-format";
 import {
   formatDate,
   insertSoftHyphens,

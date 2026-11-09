@@ -5,7 +5,6 @@ import { type NewsItem } from "@payload-types";
 import { DateTime } from "../components/datetime";
 import { LexicalSerializer } from "../components/lexical/lexical-serializer";
 import { TableOfContents } from "../components/table-of-contents";
-import { env } from "../env";
 import {
   fetchWeeklyNewsletter,
   fetchWeeklyNewsletterBySlug,
@@ -181,8 +180,6 @@ function Greetings({ content }: { content?: EditorState }) {
     </div>
   );
 }
-
-export const legacyUrl = env.PUBLIC_LEGACY_URL;
 
 export default async function Page({ slug }: { slug?: string }) {
   const locale = await getLocale();

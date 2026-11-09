@@ -1,0 +1,19 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/v3.41.0/schema.json",
+  // Payload loads migrations from its migrationDir by convention
+  "entry": ["apps/web/src/migrations/*.ts"],
+  // Templates rendered by the react-email preview (`pnpm -F web email`)
+  "supportEntry": ["apps/web/src/emails/*.tsx"],
+  // Runtime of the react-email preview server, never imported
+  "ignoreDependencies": ["@react-email/ui"],
+  // next-intl's getLocale and the Payload request helper share a name only
+  "ignoreExports": [
+    { "file": "apps/web/src/util/index.ts", "exports": ["getLocale"] }
+  ],
+  "rules": {
+    // Next.js allows a [slug] next to a [...catchAll] at the same level
+    "dynamic-segment-name-conflict": "off",
+    // Email templates need a default export for the preview, and packages/ui is a published API
+    "duplicate-export-aliases": "off"
+  }
+}

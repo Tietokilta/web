@@ -64,5 +64,3 @@ export const CostPools = {
     afterChange: [revalidateCollection("cost-pools")],
   },
 } as const satisfies CollectionConfig;
-
-export type CostPoolsSlug = (typeof CostPools)["slug"];

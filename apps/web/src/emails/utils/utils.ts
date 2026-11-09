@@ -1,26 +1,10 @@
 import { TZDate } from "@date-fns/tz";
 import { getISOWeek, getISOWeekYear } from "date-fns";
-import type { JSX } from "react";
 import type { Node } from "@lexical-types";
 
 export type Locale = (typeof locales)[number];
 
-export const locales = ["fi", "en"] as const;
-
-export const jsxToTextContent = (element: JSX.Element | undefined): string => {
-  if (!element) return "";
-
-  if (typeof element === "string") return element;
-
-  const props = element.props as Record<string, unknown>;
-  const children = props.children as JSX.Element | JSX.Element[] | undefined;
-
-  if (children instanceof Array) {
-    return children.map(jsxToTextContent).join("");
-  }
-
-  return jsxToTextContent(children);
-};
+const locales = ["fi", "en"] as const;
 
 export const lexicalNodeToTextContent = (node: Node): string => {
   if (!("children" in node)) {
@@ -76,15 +60,12 @@ export const insertSoftHyphens = (text: string): string => {
   );
 };
 
-export type GetDateTimeFormatterOptions = Omit<
-  Intl.DateTimeFormatOptions,
-  "timeZone"
->;
+type GetDateTimeFormatterOptions = Omit<Intl.DateTimeFormatOptions, "timeZone">;
 
 /**
  * Construct a function that formats a date string to a given format.
  */
-export function getDateTimeFormatter(
+function getDateTimeFormatter(
   options: GetDateTimeFormatterOptions,
 ): (date: string, locale?: Locale, timeZone?: string) => string {
   const formatFn = (
@@ -103,51 +84,7 @@ export function getDateTimeFormatter(
   return formatFn;
 }
 
-export type DateFormatterFn = ReturnType<typeof getDateTimeFormatter>;
-
-export const formatDateTimeSecondsOptions = {
-  day: "numeric",
-  month: "numeric",
-  year: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-  second: "numeric",
-} as const;
-/**
- * Get date in format 12.2.2024 18:00:03
- */
-export const formatDateTimeSeconds = getDateTimeFormatter(
-  formatDateTimeSecondsOptions,
-);
-
-export const formatDateTimeOptions = {
-  weekday: "short",
-  day: "numeric",
-  month: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-} as const;
-/**
- * Get date in format "su 12.2. klo 18"
- */
-export const formatDateTime = getDateTimeFormatter(formatDateTimeOptions);
-
-export const formatDatetimeYearOptions = {
-  weekday: "short",
-  day: "numeric",
-  month: "numeric",
-  year: "numeric",
-  hour: "numeric",
-  minute: "numeric",
-} as const;
-/**
- * Get date in format "su 12.2.2024 klo 18"
- */
-export const formatDatetimeYear = getDateTimeFormatter(
-  formatDatetimeYearOptions,
-);
-
-export const formatDateYearOptions = {
+const formatDateYearOptions = {
   day: "numeric",
   month: "numeric",
   year: "numeric",
@@ -157,7 +94,7 @@ export const formatDateYearOptions = {
  */
 export const formatDateYear = getDateTimeFormatter(formatDateYearOptions);
 
-export const formatDateOptions = {
+const formatDateOptions = {
   day: "numeric",
   month: "numeric",
 } as const;

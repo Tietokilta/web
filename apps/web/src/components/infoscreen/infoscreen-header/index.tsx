@@ -27,4 +27,3 @@ export function InfoScreenHeader() {
     </div>
   );
 }
-export default InfoScreenHeader;

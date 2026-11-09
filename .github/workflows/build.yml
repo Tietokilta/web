@@ -56,6 +56,9 @@ jobs:
       - name: Generate Payload types
         run: pnpm codegen
 
+      - name: Dead code & import cycles
+        run: pnpm deadcode
+
       - name: Lint
         run: pnpm lint
 
