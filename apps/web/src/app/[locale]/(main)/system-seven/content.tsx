@@ -54,13 +54,14 @@ export default function SyseContent() {
         </p>
       </div>
       <div className="video-container">
-        <video
+        <iframe
           className="video"
-          src={`/api/documents/file/${encodeURIComponent("System Seven 17.11..mov")}`}
-          controls
-        >
-          <track kind="captions" srcLang="en" default />
-        </video>
+          src="https://www.youtube-nocookie.com/embed/eUzxB2WRfLU?rel=0"
+          title="System Seven"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
       </div>
     </div>
   );

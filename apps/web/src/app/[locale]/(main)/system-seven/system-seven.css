@@ -67,7 +67,9 @@
 }
 
 .video {
-  max-width: calc(100vw - 4rem);
+  width: min(960px, calc(100vw - 4rem));
+  aspect-ratio: 16 / 9;
+  border: 0;
   box-shadow: 0 0 2rem 0.5rem #dc2626;
 }
 
