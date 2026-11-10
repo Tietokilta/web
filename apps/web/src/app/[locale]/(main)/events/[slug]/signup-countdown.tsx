@@ -5,7 +5,7 @@ import Countdown from "react-countdown";
 import { formatDatetimeYear } from "@lib/utils";
 import { SignupButtons } from "./signup-buttons";
 
-export function SignUpText({
+function SignUpText({
   startDate,
   endDate,
   className,

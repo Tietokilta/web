@@ -58,5 +58,3 @@ export const Partners = {
     afterChange: [revalidateCollection("partners")],
   },
 } as const satisfies CollectionConfig;
-
-export type PartnersSlug = (typeof Partners)["slug"];

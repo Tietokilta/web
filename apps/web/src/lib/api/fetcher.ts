@@ -9,7 +9,7 @@ import { SELF_URL } from "../../util";
 export type CollectionSlug = keyof Config["collections"];
 export type GlobalSlug = keyof Config["globals"];
 
-export function fetcher<TRequest, TResponse>({
+function fetcher<TRequest, TResponse>({
   tags,
   dataFetcher,
 }: {

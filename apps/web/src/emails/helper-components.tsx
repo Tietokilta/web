@@ -11,7 +11,7 @@ import {
   IS_SUBSCRIPT,
   IS_SUPERSCRIPT,
   IS_UNDERLINE,
-} from "./utils/lexical";
+} from "../components/lexical/rich-text-node-format";
 import {
   formatDate,
   insertSoftHyphens,
@@ -29,7 +29,7 @@ export function Greetings({
   return <LexicalSerializer nodes={content.root.children} />;
 }
 
-export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
+function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
   return (
     <>
       {nodes.map((node, index): JSX.Element | null => {

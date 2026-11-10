@@ -3,20 +3,9 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@i18n/routing";
 
-export { getTranslations, getLocale, setRequestLocale } from "next-intl/server";
+export { getTranslations, getLocale } from "next-intl/server";
 
-export { routing };
 export type { Locale } from "@i18n/routing";
-
-export const locales = routing.locales;
-export const defaultLocale = routing.defaultLocale;
-
-/**
- * For static params generation - returns all locales.
- */
-export function getStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
 
 /**
  * Without this, next-intl reads the locale from request headers, which opts

@@ -3,7 +3,6 @@
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-  MoreHorizontalIcon,
   buttonVariants,
 } from "@tietokilta/ui";
 import type { ButtonProps } from "@tietokilta/ui";
@@ -118,28 +117,9 @@ function PaginationNext({
 }
 PaginationNext.displayName = "PaginationNext";
 
-function PaginationEllipsis({
-  className,
-  children,
-  ...props
-}: React.ComponentProps<"span">): JSX.Element {
-  return (
-    <span
-      aria-hidden
-      className={cn("flex h-9 w-9 items-center justify-center", className)}
-      {...props}
-    >
-      <MoreHorizontalIcon className="size-4" />
-      <span className="sr-only">{children}</span>
-    </span>
-  );
-}
-PaginationEllipsis.displayName = "PaginationEllipsis";
-
 export {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,

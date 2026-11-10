@@ -1,27 +1,11 @@
 import { TZDate } from "@date-fns/tz";
 import { clsx, type ClassValue } from "clsx";
 import { getISOWeek, getISOWeekYear } from "date-fns";
-import type { JSX } from "react";
 import { twMerge } from "tailwind-merge";
 import type { EditorState, Node } from "@lexical-types";
 import { type Locale } from "../locales/server";
 
 export const cn = (...inputs: ClassValue[]): string => twMerge(clsx(inputs));
-
-export const jsxToTextContent = (element: JSX.Element | undefined): string => {
-  if (!element) return "";
-
-  if (typeof element === "string") return element;
-
-  const props = element.props as Record<string, unknown>;
-  const children = props.children as JSX.Element | JSX.Element[] | undefined;
-
-  if (children instanceof Array) {
-    return children.map(jsxToTextContent).join("");
-  }
-
-  return jsxToTextContent(children);
-};
 
 export const lexicalNodeToTextContent = (node: Node): string => {
   if (!("children" in node)) {
@@ -160,8 +144,6 @@ export function getDateTimeFormatter(options: GetDateTimeFormatterOptions) {
   return formatFn;
 }
 
-export type DateFormatterFn = ReturnType<typeof getDateTimeFormatter>;
-
 export const formatDateTimeSecondsOptions = {
   day: "numeric",
   month: "numeric",
@@ -214,7 +196,7 @@ export const formatDateYearOptions = {
  */
 export const formatDateYear = getDateTimeFormatter(formatDateYearOptions);
 
-export const formatDateOptions = {
+const formatDateOptions = {
   day: "numeric",
   month: "numeric",
 } as const;
@@ -258,12 +240,6 @@ export const byDate = (
 export function assertUnreachable(value: never) {
   throw new Error("Didn't expect to get here", { cause: { value } });
 }
-
-/**
- * Typescript gymnastics
- */
-// eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/naming-convention, @typescript-eslint/no-unnecessary-type-parameters -- used for type assertion
-export function assertType<_T>(_val: _T) {}
 
 export type NonNullableKeys<T, K extends keyof T> = T & {
   [P in K]-?: NonNullable<T[P]>;

@@ -5,7 +5,7 @@ import {
   IS_BOLD,
   IS_ITALIC,
   IS_STRIKETHROUGH,
-} from "../../emails/utils/lexical";
+} from "../../components/lexical/rich-text-node-format";
 import {
   isThisWeek,
   type Locale,

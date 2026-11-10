@@ -151,4 +151,3 @@ export type Node =
   | BlockNode;
 
 export type EditorState = SerializedEditorState<Node>;
-export type RootNode = EditorState["root"];
