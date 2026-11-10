@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/v3.41.0/schema.json",
+  "$schema": "./node_modules/fallow/schema.json",
   // Payload loads migrations from its migrationDir by convention
   "entry": ["apps/web/src/migrations/*.ts"],
   // Templates rendered by the react-email preview (`pnpm -F web email`)
