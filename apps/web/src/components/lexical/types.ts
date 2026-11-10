@@ -24,6 +24,7 @@ import type {
   InvoiceGeneratorBlock,
   PartnersBlock,
   Page,
+  VanReservationBlock,
 } from "@payload-types";
 
 export type TextNode = SerializedTextNode;
@@ -89,6 +90,7 @@ export type EditorInChiefBlockNode = SerializedBlockNode<EditorInChiefBlock>;
 export type InvoiceGeneratorBlockNode =
   SerializedBlockNode<InvoiceGeneratorBlock>;
 export type PartnersBlockNode = SerializedBlockNode<PartnersBlock>;
+export type VanReservationBlockNode = SerializedBlockNode<VanReservationBlock>;
 
 /** Replaces generated rich-text JSON with the node union used by our renderers. */
 type WithEditorState<T extends { content: unknown }> = Omit<T, "content"> & {
@@ -131,6 +133,7 @@ export type BlockNode =
   | HighlightCardBlockNode
   | EditorInChiefBlockNode
   | InvoiceGeneratorBlockNode
+  | VanReservationBlockNode
   | PartnersBlockNode
   | CollapsibleBlockNode
   | ColumnsBlockNode;

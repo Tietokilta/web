@@ -42,6 +42,10 @@ export const env = createEnv({
     MAILGUN_DOMAIN: z.string().min(1).optional(),
     MAILGUN_URL: httpUrl.optional(),
 
+    // Pakuvaraus (van reservations). It sends no CORS headers, so only the
+    // server calls it
+    PAKUVARAUS_URL: httpUrl.default("https://pakuvaraus.tietokilta.fi"),
+
     // Digitransit API
     DIGITRANSIT_SUBSCRIPTION_KEY: z.string().min(1).optional(),
 

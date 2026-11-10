@@ -38,6 +38,8 @@ const fi = {
     "ilmomasiina-unknown-error":
       "Ilmomasiinassa tapahtui virhe. Yritä myöhemmin uudelleen.",
     "ilmomasiina-validation-failed": "Validointi epäonnistui. Tarkista lomake.",
+    "pakuvaraus-fetch-fail":
+      "Pakettiauton varaustilanteen haku epäonnistui. Yritä myöhemmin uudelleen.",
     ilmo: {
       code: {
         BadSession: "Istunto on vanhentunut. Kirjaudu uudelleen.",
@@ -290,6 +292,52 @@ const fi = {
     path: "viikkotiedotteet",
     "To sign up": "Ilmoittautumiseen",
     "for event": "tapahtumalle",
+  },
+  pakuvaraus: {
+    Availability: "Varaustilanne",
+    Reserved: "Varattu",
+    "Times are in Finnish time": "Ajat ovat Suomen aikaa.",
+    "Request a reservation": "Lähetä varauspyyntö",
+    Start: "Alkaa",
+    End: "Päättyy",
+    "Full name": "Koko nimi",
+    Email: "Sähköposti",
+    "Phone number": "Puhelinnumero",
+    Address: "Osoite",
+    "Personal identity code": "Henkilötunnus",
+    hetuHint: "Henkilötunnusta tarvitaan vuokrasopimukseen.",
+    internal: "Varaus on killan käyttöön, ei henkilökohtaiseen käyttöön",
+    usedOutsideFinland: "Pakettiautoa käytetään Suomen ulkopuolella",
+    termsAccepted: "Olen lukenut käyttöehdot ja hyväksyn ne",
+    "Send request": "Lähetä pyyntö",
+    "Request sent": "Pyyntö lähetetty",
+    requestSentDetails:
+      "Tarkista sähköpostisi. Vahvistusviestissä on linkki, josta voit perua pyynnön. Varaus on voimassa, kun kilta on hyväksynyt sen.",
+    formError: {
+      invalid: "Tarkista lomakkeen tiedot.",
+      overlap: "Aika menee päällekkäin toisen varauksen kanssa.",
+      failed: "Pyynnön lähetys epäonnistui. Yritä myöhemmin uudelleen.",
+    },
+    fieldError: {
+      required: "Pakollinen kenttä",
+      invalidEmail: "Virheellinen sähköpostiosoite",
+      invalidTime: "Virheellinen aika",
+      startInPast: "Alkuaika on menneisyydessä",
+      endBeforeStart: "Päättymisajan pitää olla alkuajan jälkeen",
+      termsNotAccepted: "Hyväksy käyttöehdot",
+    },
+    manage: {
+      "Your van reservation": "Pakettiautovarauksesi",
+      description:
+        "Voit perua varauksesi tai varauspyyntösi tällä sivulla. Linkki tälle sivulle lähetettiin sähköpostiisi.",
+      "Cancel reservation": "Peru varaus",
+      "Keep reservation": "Älä peru",
+      confirmation:
+        "Haluatko varmasti perua varauksen? Perumista ei voi kumota.",
+      cancelled: "Varaus on peruttu.",
+      "not-found": "Varausta ei löytynyt. Tarkista linkki.",
+      failed: "Peruminen epäonnistui. Yritä myöhemmin uudelleen.",
+    },
   },
   calendar: {
     Week: "Viikko",

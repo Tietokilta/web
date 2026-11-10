@@ -21,6 +21,7 @@ import { HighlightCard } from "./blocks/highlight-card";
 import { ImageLinkGrid } from "./blocks/image-link-grid";
 import { InvoiceGenerator } from "./blocks/invoice-generator";
 import { PartnersBlock } from "./blocks/partners-block";
+import { VanReservation } from "./blocks/van-reservation";
 import { AdminMembers } from "./collections/admin/admin-members";
 import { Admins } from "./collections/admin/admins";
 import { BoardMembers } from "./collections/board/board-members";
@@ -160,6 +161,7 @@ export default buildConfig({
           HighlightCard,
           EditorInChief,
           InvoiceGenerator,
+          VanReservation,
           PartnersBlock,
           Collapsible,
           Columns,

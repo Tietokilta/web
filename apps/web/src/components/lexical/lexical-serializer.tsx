@@ -27,6 +27,7 @@ import { HonorsList } from "../honors-list";
 import { ImageLinkGrid } from "../image-link-grid";
 import { InvoiceGenerator } from "../invoice-generator/block";
 import { MagazineList } from "../magazine-list";
+import { VanReservation } from "../van-reservation/block";
 import {
   IS_BOLD,
   IS_CODE,
@@ -332,6 +333,9 @@ function Block({ node }: { node: BlockNode }) {
     }
     case "invoice-generator": {
       return <InvoiceGenerator />;
+    }
+    case "van-reservation": {
+      return <VanReservation />;
     }
     case "partners": {
       return (

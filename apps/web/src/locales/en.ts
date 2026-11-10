@@ -37,6 +37,8 @@ const en = {
       "An unknown error occurred. Please try again later.",
     "ilmomasiina-validation-failed":
       "Validation failed. Please check the form.",
+    "pakuvaraus-fetch-fail":
+      "Failed to fetch the van's availability. Please try again later.",
     ilmo: {
       code: {
         BadSession: "Session has expired. Please log in again.",
@@ -290,6 +292,52 @@ const en = {
     path: "weekly-newsletters",
     "To sign up": "To sign up",
     "for event": "for event",
+  },
+  pakuvaraus: {
+    Availability: "Availability",
+    Reserved: "Reserved",
+    "Times are in Finnish time": "Times are in Finnish time.",
+    "Request a reservation": "Request a reservation",
+    Start: "Start",
+    End: "End",
+    "Full name": "Full name",
+    Email: "Email",
+    "Phone number": "Phone number",
+    Address: "Address",
+    "Personal identity code": "Finnish personal identity code",
+    hetuHint: "The personal identity code is needed for the rental contract.",
+    internal: "The reservation is for guild use, not personal use",
+    usedOutsideFinland: "The van will be driven outside Finland",
+    termsAccepted: "I have read and accept the terms of use",
+    "Send request": "Send request",
+    "Request sent": "Request sent",
+    requestSentDetails:
+      "Check your email. The confirmation has a link where you can cancel the request. The reservation is valid once the guild approves it.",
+    formError: {
+      invalid: "Please check the form.",
+      overlap: "The time overlaps another reservation.",
+      failed: "Sending the request failed. Please try again later.",
+    },
+    fieldError: {
+      required: "Required",
+      invalidEmail: "Invalid email address",
+      invalidTime: "Invalid time",
+      startInPast: "The start time is in the past",
+      endBeforeStart: "The end must be after the start",
+      termsNotAccepted: "Please accept the terms of use",
+    },
+    manage: {
+      "Your van reservation": "Your van reservation",
+      description:
+        "You can cancel your reservation or reservation request on this page. The link to this page was sent to your email.",
+      "Cancel reservation": "Cancel reservation",
+      "Keep reservation": "Keep it",
+      confirmation:
+        "Are you sure you want to cancel the reservation? This cannot be undone.",
+      cancelled: "The reservation is cancelled.",
+      "not-found": "Reservation not found. Please check the link.",
+      failed: "Cancelling failed. Please try again later.",
+    },
   },
   calendar: {
     Week: "Week",
