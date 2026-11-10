@@ -29,7 +29,7 @@ export function Greetings({
   return <LexicalSerializer nodes={content.root.children} />;
 }
 
-export function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
+function LexicalSerializer({ nodes }: { nodes: Node[] }): JSX.Element {
   return (
     <>
       {nodes.map((node, index): JSX.Element | null => {

@@ -3,7 +3,10 @@
   // Payload loads migrations from its migrationDir by convention
   "entry": ["apps/web/src/migrations/*.ts"],
   // Templates rendered by the react-email preview (`pnpm -F web email`)
-  "supportEntry": ["apps/web/src/emails/*.tsx"],
+  "supportEntry": [
+    "apps/web/src/emails/newsletter-email.tsx",
+    "apps/web/src/emails/newsletter.tsx"
+  ],
   // Runtime of the react-email preview server, never imported
   "ignoreDependencies": ["@react-email/ui"],
   // next-intl's getLocale and the Payload request helper share a name only
