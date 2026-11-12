@@ -109,16 +109,20 @@ img[alt~="SystemSeven"] {
   filter: none !important;
 }
 
-section {
-  :hover {
-    p,
-    h1,
-    h2,
-    span,
-    a {
-      animation: skew-x-shakeng 4s infinite;
-      animation-delay: 1s;
-      animation-timing-function: steps(1, end);
+/* Touch devices (e.g. iOS webviews) keep :hover on the last tapped element,
+   which would hide content there for good */
+@media (hover: hover) {
+  section {
+    :hover {
+      p,
+      h1,
+      h2,
+      span,
+      a {
+        animation: skew-x-shakeng 4s infinite;
+        animation-delay: 1s;
+        animation-timing-function: steps(1, end);
+      }
     }
   }
 }
@@ -240,13 +244,15 @@ a::before {
   }
 }
 
-section {
-  opacity: 1;
+@media (hover: hover) {
+  section {
+    opacity: 1;
 
-  :hover {
-    opacity: 0;
-    transition: opacity 5s;
-    transition-delay: 5s;
+    :hover {
+      opacity: 0;
+      transition: opacity 5s;
+      transition-delay: 5s;
+    }
   }
 }
 
