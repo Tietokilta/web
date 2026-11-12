@@ -78,7 +78,14 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={locale}>
-      <body className={cn(inter.variable, robotoMono.variable, "font-sans")}>
+      <body
+        className={cn(
+          inter.variable,
+          robotoMono.variable,
+          // Keeps the skip link target clear of the sticky header
+          "font-sans [&_#main]:scroll-mt-20",
+        )}
+      >
         <SkipLink />
         <DigiCommitteeRecruitmentAlert />
         <NextTopLoader color="var(--color-gray-100)" showSpinner={false} />

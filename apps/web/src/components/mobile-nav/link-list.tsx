@@ -10,7 +10,6 @@ import {
   ExternalLinkIcon,
 } from "@tietokilta/ui";
 import { PartnerLogos } from "@components/partner-logos";
-import { getTranslations } from "@locales/server";
 import type {
   LinkRowBlock,
   MainNavigationItem,
@@ -21,7 +20,7 @@ import type {
 import { cn } from "../../lib/utils";
 import { Link } from "./link";
 
-async function NavigationLink({
+function NavigationLink({
   pageOrTopic,
 }: {
   pageOrTopic: MainNavigationItem[number];
@@ -39,20 +38,18 @@ async function NavigationLink({
     );
   }
 
-  const t = await getTranslations("action");
-
   return (
     <Collapsible>
       <CollapsibleTrigger className="group flex cursor-pointer items-center gap-2">
         <span>{(pageOrTopic.topicConfig?.topic as Topic).title}</span>
-        <ChevronDownIcon className="block size-6 group-data-[state=open]:hidden" />
-        <span className="sr-only block group-data-[state=open]:hidden">
-          {t("Open")}
-        </span>
-        <ChevronUpIcon className="hidden size-6 group-data-[state=open]:block" />
-        <span className="sr-only hidden group-data-[state=open]:block">
-          {t("Close")}
-        </span>
+        <ChevronDownIcon
+          aria-hidden="true"
+          className="block size-6 group-data-[state=open]:hidden"
+        />
+        <ChevronUpIcon
+          aria-hidden="true"
+          className="hidden size-6 group-data-[state=open]:block"
+        />
       </CollapsibleTrigger>
       <CollapsibleContent className="space-y-3 p-3 text-base">
         {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
