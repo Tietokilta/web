@@ -53,7 +53,7 @@ test("events without a start date are omitted", () => {
 });
 
 // RFC 5545 3.1: CRLF line breaks, a space after each fold
-const unfold = (ics: string) => ics.replaceAll("\r\n ", "");
+const unfold = (text: string) => text.replaceAll("\r\n ", "");
 
 test("lines are folded to 75 octets without splitting links", () => {
   const calendarText = ics({
@@ -74,6 +74,13 @@ test("lines are folded to 75 octets without splitting links", () => {
   const description = unfold(calendarText)
     .split("\r\n")
     .find((line) => line.startsWith("DESCRIPTION:"));
+  // Some clients strip all whitespace after a line break when unfolding.
+  expect(
+    calendarText
+      .replaceAll(/\r\n[ \t]+/g, "")
+      .split("\r\n")
+      .find((line) => line.startsWith("DESCRIPTION:")),
+  ).toBe(description);
   // Every URL must sit whole on one physical line for apps that skip unfolding.
   for (const url of [
     "https://tietokilta.fi/fi/tapahtumat/winebeads",

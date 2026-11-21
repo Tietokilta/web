@@ -159,15 +159,17 @@ const encoder = new TextEncoder();
 const byteLength = (text: string) => encoder.encode(text).length;
 
 /**
- * Folds a content line to 75 octets (RFC 5545 3.1), breaking only before
+ * Folds a content line to 75 octets (RFC 5545 3.1), breaking only after
  * spaces. Google Calendar links URLs without unfolding them first, so a fold
  * inside a URL breaks the link. A word longer than a line stays whole.
+ * Keeping the space at the end of the line also survives clients that strip
+ * all leading whitespace when unfolding.
  */
 function foldLine(line: string): string {
   const lines: string[] = [];
   let current = "";
-  // Every piece after the first starts with the space it follows.
-  for (const piece of line.split(/(?= )/)) {
+  // Every piece but the last ends with the space it precedes.
+  for (const piece of line.split(/(?<= )/)) {
     // Continuation lines start with the folding space, so they fit one octet less.
     const limit = lines.length === 0 ? 75 : 74;
     if (current && byteLength(current + piece) > limit) {
