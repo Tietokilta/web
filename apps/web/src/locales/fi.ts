@@ -133,6 +133,13 @@ const fi = {
     Confirmation:
       "Vakuutan antamani tiedot oikeiksi ja olen tarkistanut, että kuvat kuiteista ovat selkeitä.",
     "Invoicer information": "Laskuttajan tiedot",
+    "Processing attachment": "Käsitellään liitettä…",
+    "Unsupported attachment":
+      "Tätä tiedostomuotoa ei tueta. Käytä JPEG-, PNG-, GIF-, SVG- tai PDF-tiedostoa, tai ota kuvasta kuvakaappaus.",
+    "Rate limited":
+      "Liian monta laskua lyhyessä ajassa. Odota muutama minuutti ja yritä uudelleen.",
+    "Send failed":
+      "Lähetys epäonnistui. Tarkista yhteytesi. Jos lähetit useita laskuja lyhyessä ajassa, odota muutama minuutti ja yritä uudelleen.",
   },
   ilmomasiina: {
     form: {
