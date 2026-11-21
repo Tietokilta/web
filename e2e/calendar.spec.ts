@@ -2,13 +2,12 @@ import { test, expect } from "@playwright/test";
 import { createEvents } from "../apps/web/src/lib/ics";
 import { event } from "./ilmomasiina";
 
-function calendar(date: string | null, endDate: string | null = null) {
+function ics(overrides: Partial<typeof event> = {}) {
   return createEvents(
     [
       {
         ...event,
-        date,
-        endDate,
+        ...overrides,
         payments: "disabled" as Parameters<
           typeof createEvents
         >[0][number]["payments"],
@@ -16,7 +15,13 @@ function calendar(date: string | null, endDate: string | null = null) {
       },
     ],
     { host: "tietokilta.fi", origin: "https://tietokilta.fi", locale: "fi" },
-  ).split("BEGIN:VEVENT")[1];
+  );
+}
+
+function calendar(date: string | null, endDate: string | null = null) {
+  return ics({ date, endDate } as Partial<typeof event>).split(
+    "BEGIN:VEVENT",
+  )[1];
 }
 
 for (const [date, expected] of [
@@ -45,4 +50,72 @@ test("timed events keep their UTC start and end", () => {
 
 test("events without a start date are omitted", () => {
   expect(calendar(null)).toBeUndefined();
+});
+
+// RFC 5545 3.1: CRLF line breaks, a space after each fold
+const unfold = (text: string) => text.replaceAll("\r\n ", "");
+
+test("lines are folded to 75 octets without splitting links", () => {
+  const calendarText = ics({
+    slug: "winebeads",
+    // Puts a run of two spaces across the fold point
+    title: `x ${"a".repeat(64)}  b`,
+    description: `Väsyttääkö marraskuun pimeys? ${"Hamahelmiä ".repeat(30)}Lue https://example.com/${"a".repeat(80)} ja tule!`,
+  });
+
+  const lines = calendarText.split("\r\n");
+  expect(lines.at(-1)).toBe("");
+  for (const line of lines) {
+    expect(line).not.toContain("\n");
+    // Only a link longer than a line may exceed the limit.
+    if (!line.includes("example.com")) {
+      expect(Buffer.byteLength(line)).toBeLessThanOrEqual(75);
+    }
+  }
+
+  const description = unfold(calendarText)
+    .split("\r\n")
+    .find((line) => line.startsWith("DESCRIPTION:"));
+  // Some clients strip all whitespace after a line break when unfolding.
+  expect(calendarText.replaceAll(/\r\n[ \t]+/g, "")).toBe(unfold(calendarText));
+  // Every URL must sit whole on one physical line for apps that skip unfolding.
+  for (const url of [
+    "https://tietokilta.fi/fi/tapahtumat/winebeads",
+    `https://example.com/${"a".repeat(80)}`,
+  ]) {
+    expect(description).toContain(url);
+    expect(lines.some((line) => line.includes(url))).toBe(true);
+  }
+});
+
+test("text values are escaped", () => {
+  const entry = ics({
+    title: "Sitsit; kokous, ja muuta",
+    location: "Otakaari 1, Espoo",
+  });
+  expect(entry).toContain("SUMMARY:Sitsit\\; kokous\\, ja muuta\r\n");
+  expect(entry).toContain("LOCATION:Otakaari 1\\, Espoo\r\n");
+});
+
+test("descriptions are plain text without markdown escapes", () => {
+  const description = unfold(
+    ics({
+      description:
+        "**Agenda** \\\n17.00 Doors open \\\n18.15 Break\n\nteemu.teekkari \\[at] example.com & co",
+    }),
+  )
+    .split("\r\n")
+    .find((line) => line.startsWith("DESCRIPTION:"));
+  expect(description).toContain(
+    "DESCRIPTION:Agenda \\n17.00 Doors open \\n18.15 Break\\n\\nteemu.teekkari [at] example.com & co\\n",
+  );
+});
+
+test("folding keeps emoji whole", () => {
+  // This offset put the old 60-unit fold point inside a surrogate pair.
+  const calendarText = ics({ description: `ab${"🔥 ".repeat(40)}` });
+  expect(unfold(calendarText)).toContain(`ab${"🔥 ".repeat(39)}🔥`);
+  expect(calendarText).not.toMatch(
+    /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/,
+  );
 });

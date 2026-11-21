@@ -86,12 +86,9 @@ TZOFFSETTO:+0200\r
 DTSTART:19961027T040000\r
 RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU\r
 END:STANDARD\r
-END:VTIMEZONE
-${events
-  .map((event) => createEvent(event, options))
-  .filter(Boolean)
-  .join("\r\n")}
-END:VCALENDAR`;
+END:VTIMEZONE\r
+${events.map((event) => createEvent(event, options)).join("")}END:VCALENDAR\r
+`;
 }
 
 function createEvent(
@@ -114,34 +111,37 @@ function createEvent(
     locale === "en"
       ? `${origin}/en/events/${event.slug}`
       : `${origin}/fi/tapahtumat/${event.slug}`;
+  const readMore = locale === "en" ? "Read more:" : "Lue lisää:";
+  const description = `${stripMarkdown(event.description ?? "").trim()}\n\n---\n${readMore} ${link}`;
 
-  return `BEGIN:VEVENT\r
-UID:${event.id}@${host}\r
-SUMMARY:${event.title}\r
-LOCATION:${event.location ?? ""}\r
-URL:${foldICSText(`${origin}/events/${event.slug}`)}\r
-CATEGORIES:${event.category}\r
-DESCRIPTION:
- ${formatDescription(event.description ?? "")}
- ${foldICSText(`\\n\\n---\\n${locale === "en" ? "Read more:" : "Lue lisää:"} ${link}`)}
-${formatDates(event.date, event.endDate)}
-END:VEVENT`;
+  return [
+    "BEGIN:VEVENT",
+    `UID:${event.id}@${host}`,
+    `SUMMARY:${escapeText(event.title)}`,
+    `LOCATION:${escapeText(event.location ?? "")}`,
+    `URL:${origin}/events/${event.slug}`,
+    `CATEGORIES:${escapeText(event.category)}`,
+    `DESCRIPTION:${escapeText(description)}`,
+    ...formatDates(event.date, event.endDate),
+    "END:VEVENT",
+  ]
+    .map((line) => `${foldLine(line)}\r\n`)
+    .join("");
 }
 
-function formatDates(start: string, end?: string | null) {
-  const nowDate = new Date();
+function formatDates(start: string, end?: string | null): string[] {
+  const stamp = `DTSTAMP:${formatDateTime(new Date())}Z`;
   const startDate = new Date(start);
   if (!end) {
     // A DATE start without DTEND lasts one day (RFC 5545).
-    return `DTSTAMP:${formatDateTime(nowDate)}Z\r
-DTSTART;VALUE=DATE:${formatDate(startDate)}`;
+    return [stamp, `DTSTART;VALUE=DATE:${formatDate(startDate)}`];
   }
 
-  const endDate = new Date(end);
-
-  return `DTSTAMP:${formatDateTime(nowDate)}Z\r
-DTSTART:${formatDateTime(startDate)}Z\r
-DTEND:${formatDateTime(endDate)}Z`;
+  return [
+    stamp,
+    `DTSTART:${formatDateTime(startDate)}Z`,
+    `DTEND:${formatDateTime(new Date(end))}Z`,
+  ];
 }
 
 const formatDate = (date: Date) =>
@@ -150,32 +150,51 @@ const formatDate = (date: Date) =>
 const formatDateTime = (date: Date) =>
   date.toISOString().slice(0, 19).replace(/[-:]/g, "");
 
-function formatDescription(description: string): string {
-  return foldICSText(escapeNewLines(stripMarkdown(description)));
+// RFC 5545 3.3.11: TEXT values escape backslashes, semicolons, commas and newlines.
+function escapeText(text: string): string {
+  return text.replace(/[\\;,]/g, "\\$&").replace(/\r?\n/g, "\\n");
 }
 
-function foldICSText(text: string): string {
-  const MAX_LENGTH = 60;
-  let foldedText = "";
+const encoder = new TextEncoder();
+const byteLength = (text: string) => encoder.encode(text).length;
 
-  for (let i = 0; i < text.length; i += MAX_LENGTH) {
-    const chunk = text.substring(i, i + MAX_LENGTH);
-
-    // If it's not the first line, prepend a space to the folded line.
-    if (i !== 0) {
-      foldedText += "\r\n ";
+/**
+ * Folds a content line to 75 octets (RFC 5545 3.1), breaking only after
+ * spaces. Google Calendar links URLs without unfolding them first, so a fold
+ * inside a URL breaks the link. A word longer than a line stays whole.
+ * Keeping the space at the end of the line also survives clients that strip
+ * all leading whitespace when unfolding.
+ */
+function foldLine(line: string): string {
+  const lines: string[] = [];
+  let current = "";
+  // Every piece but the last ends with its run of spaces.
+  for (const piece of line.split(/(?<= )(?! )/)) {
+    // Continuation lines start with the folding space, so they fit one octet less.
+    const limit = lines.length === 0 ? 75 : 74;
+    if (current && byteLength(current + piece) > limit) {
+      lines.push(current);
+      current = piece;
+    } else {
+      current += piece;
     }
-
-    foldedText += chunk;
   }
-
-  return foldedText;
+  lines.push(current);
+  return lines.join("\r\n ");
 }
 
-function escapeNewLines(text: string): string {
-  return text.replace(/\n/g, "\\n");
-}
-
+/**
+ * Turns markdown into plain text. Stringifying the stripped tree still escapes
+ * markdown syntax (`\[`, `&#x20;` before a hard break), so undo that.
+ */
 function stripMarkdown(text: string): string {
-  return remark().use(strip).processSync(text).toString();
+  return remark()
+    .use(strip)
+    .processSync(text)
+    .toString()
+    .replace(/\\([!-/:-@[-`{-~])|&#x([\da-f]+);/gi, (_, escaped, hex) =>
+      typeof escaped === "string"
+        ? escaped
+        : String.fromCodePoint(Number.parseInt(hex as string, 16)),
+    );
 }
