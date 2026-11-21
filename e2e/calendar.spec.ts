@@ -58,6 +58,8 @@ const unfold = (text: string) => text.replaceAll("\r\n ", "");
 test("lines are folded to 75 octets without splitting links", () => {
   const calendarText = ics({
     slug: "winebeads",
+    // Puts a run of two spaces across the fold point
+    title: `x ${"a".repeat(64)}  b`,
     description: `Väsyttääkö marraskuun pimeys? ${"Hamahelmiä ".repeat(30)}Lue https://example.com/${"a".repeat(80)} ja tule!`,
   });
 
@@ -75,12 +77,7 @@ test("lines are folded to 75 octets without splitting links", () => {
     .split("\r\n")
     .find((line) => line.startsWith("DESCRIPTION:"));
   // Some clients strip all whitespace after a line break when unfolding.
-  expect(
-    calendarText
-      .replaceAll(/\r\n[ \t]+/g, "")
-      .split("\r\n")
-      .find((line) => line.startsWith("DESCRIPTION:")),
-  ).toBe(description);
+  expect(calendarText.replaceAll(/\r\n[ \t]+/g, "")).toBe(unfold(calendarText));
   // Every URL must sit whole on one physical line for apps that skip unfolding.
   for (const url of [
     "https://tietokilta.fi/fi/tapahtumat/winebeads",

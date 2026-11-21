@@ -168,8 +168,8 @@ const byteLength = (text: string) => encoder.encode(text).length;
 function foldLine(line: string): string {
   const lines: string[] = [];
   let current = "";
-  // Every piece but the last ends with the space it precedes.
-  for (const piece of line.split(/(?<= )/)) {
+  // Every piece but the last ends with its run of spaces.
+  for (const piece of line.split(/(?<= )(?! )/)) {
     // Continuation lines start with the folding space, so they fit one octet less.
     const limit = lines.length === 0 ? 75 : 74;
     if (current && byteLength(current + piece) > limit) {
