@@ -62,8 +62,22 @@ export const generateMetadata = async (props: {
   };
 };
 
+// Sonner's default distance from the screen edges, measured from the safe area
+// instead so toasts stay clear of the notch and home bar
+function safeAreaOffset(base: string) {
+  return {
+    top: `calc(${base} + env(safe-area-inset-top))`,
+    right: `calc(${base} + env(safe-area-inset-right))`,
+    bottom: `calc(${base} + env(safe-area-inset-bottom))`,
+    left: `calc(${base} + env(safe-area-inset-left))`,
+  };
+}
+
 export const viewport: Viewport = {
   themeColor: "black",
+  // Draw under the notch on phones. The safe-area padding below keeps content
+  // clear of it.
+  viewportFit: "cover",
 };
 
 export default async function RootLayout(props: {
@@ -81,7 +95,10 @@ export default async function RootLayout(props: {
           inter.variable,
           robotoMono.variable,
           // Keeps the skip link target clear of the sticky header
-          "font-sans [&_#main]:scroll-mt-20",
+          "font-sans [&_#main]:scroll-mt-[calc(5rem+env(safe-area-inset-top))]",
+          // The larger side inset, for bars whose middle has to stay in the middle
+          // of the screen
+          "[--safe-x:max(env(safe-area-inset-left),env(safe-area-inset-right))]",
         )}
       >
         <SkipLink />
@@ -90,8 +107,14 @@ export default async function RootLayout(props: {
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
           <MainNav className="sticky top-0 z-50 hidden lg:block" />
-          <div className="min-h-screen flex-1">{children}</div>
-          <Toaster richColors />
+          <div className="min-h-screen flex-1 pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)]">
+            {children}
+          </div>
+          <Toaster
+            mobileOffset={safeAreaOffset("16px")}
+            offset={safeAreaOffset("24px")}
+            richColors
+          />
           <Footer />
         </div>
       </body>

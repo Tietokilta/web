@@ -21,7 +21,7 @@ export function AdminBarClient({
   return (
     <>
       {isPreviewMode ? (
-        <div className="fixed top-20 z-20 w-full bg-red-500 p-2 text-center text-white">
+        <div className="fixed inset-x-0 top-[calc(4.5rem+max(0.5rem,env(safe-area-inset-top)))] z-20 bg-red-500 p-2 text-center text-white">
           This is a draft preview
         </div>
       ) : null}

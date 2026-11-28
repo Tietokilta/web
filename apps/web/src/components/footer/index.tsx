@@ -102,7 +102,7 @@ export async function Footer() {
   if (!footer) return null;
 
   return (
-    <footer className="flex flex-col items-center gap-12 bg-gray-900 px-8 py-16 font-mono text-gray-100">
+    <footer className="flex flex-col items-center gap-12 bg-gray-900 px-[max(2rem,var(--safe-x))] pt-16 pb-[max(4rem,env(safe-area-inset-bottom))] font-mono text-gray-100">
       {footer.layout.map((block, i) => (
         <RenderFooterRow key={block.id ?? i} block={block} />
       ))}

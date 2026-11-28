@@ -50,7 +50,7 @@ export async function MobileNav({
       className={cn(
         // Equal side columns keep the wordmark centred whatever the logo and
         // menu button widths
-        "grid grid-cols-[1fr_auto_1fr] items-center bg-gray-900 p-2 text-gray-100",
+        "grid grid-cols-[1fr_auto_1fr] items-center bg-gray-900 p-2 px-[max(0.5rem,var(--safe-x))] pt-[max(0.5rem,env(safe-area-inset-top))] text-gray-100",
         className,
       )}
       {...rest}

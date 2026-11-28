@@ -54,7 +54,7 @@ function ImageWithCitation({
       <footer className="contents">
         <cite
           className={cn(
-            "absolute top-0 right-2 text-gray-100 opacity-50",
+            "absolute top-0 right-[max(0.5rem,env(safe-area-inset-right))] text-gray-100 opacity-50",
             isCurrentImage ? "block" : "hidden",
           )}
         >
@@ -125,7 +125,7 @@ export function Hero({
   }, [images.length, texts]);
 
   return (
-    <div className="relative flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
+    <div className="relative full-bleed flex h-[55vh] items-end bg-gray-900 py-24 md:h-[75vh]">
       {images.map((image, imageIndex) =>
         mountedImageIndexes.has(imageIndex) ? (
           <ImageWithCitation
@@ -135,7 +135,7 @@ export function Hero({
           />
         ) : null,
       )}
-      <div className="z-20 container mx-auto px-6 font-mono text-2xl font-semibold text-gray-100 md:text-3xl lg:text-4xl">
+      <div className="z-20 container mx-auto px-[max(1.5rem,var(--safe-x))] font-mono text-2xl font-semibold text-gray-100 md:text-3xl lg:text-4xl">
         <p
           className="line-clamp-4 w-full max-w-2xl pb-2 break-words lg:w-1/2"
           ref={ref}

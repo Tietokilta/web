@@ -10,7 +10,12 @@ export function MobileNavSheetContent({
 }: ComponentPropsWithoutRef<typeof SheetContent>) {
   return (
     <SheetContent
-      className={cn("focus-visible:outline-none", className)}
+      className={cn(
+        "pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pb-[env(safe-area-inset-bottom)] focus-visible:outline-none",
+        // The close button is positioned, so padding doesn't move it
+        "[&>button]:top-[calc(1rem+env(safe-area-inset-top))] [&>button]:right-[calc(1rem+env(safe-area-inset-right))]",
+        className,
+      )}
       // Radix skips links when picking what to focus, which would start
       // keyboard users in the middle of the menu. Start from the panel.
       onOpenAutoFocus={(event) => {

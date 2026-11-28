@@ -14,7 +14,7 @@ function NotFoundContent() {
       id="main"
       className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
     >
-      <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 text-gray-100 md:h-[25svh]">
+      <header className="full-bleed flex h-[15svh] items-center justify-center self-stretch bg-gray-900 p-2 px-[max(0.5rem,var(--safe-x))] text-gray-100 md:h-[25svh]">
         <h1 className="font-mono text-4xl md:text-5xl">
           404 - {t("Event not found")}
         </h1>

@@ -136,7 +136,7 @@ export async function MainNav({
         className="@container/main-nav grid h-20 grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] space-x-0"
         data-nav-split={splitId}
       >
-        <li className="flex h-full justify-end pl-4 xl:pl-8">
+        <li className="flex h-full justify-end pl-[max(1rem,var(--safe-x))] xl:pl-[max(2rem,var(--safe-x))]">
           <ul className="flex min-w-0 items-center">
             <LinkList links={leftLinks} />
             <LinkList
@@ -146,7 +146,7 @@ export async function MainNav({
           </ul>
         </li>
         <LogoLink image={logo} />
-        <li className="flex h-full items-center justify-between gap-4 pr-4 xl:pr-8">
+        <li className="flex h-full items-center justify-between gap-4 pr-[max(1rem,var(--safe-x))] xl:pr-[max(2rem,var(--safe-x))]">
           <ul className="flex min-w-0 items-center">
             <LinkList
               className={movesRight ? wideOnly : narrowOnly}

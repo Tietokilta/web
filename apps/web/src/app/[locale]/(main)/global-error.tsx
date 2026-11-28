@@ -19,7 +19,7 @@ function GlobalErrorContent({
           id="main"
           className="relative mb-8 flex flex-col items-center gap-2 md:gap-6"
         >
-          <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 text-gray-100 md:h-[25svh]">
+          <header className="flex h-[15svh] w-full items-center justify-center bg-gray-900 p-2 px-[max(0.5rem,env(safe-area-inset-left),env(safe-area-inset-right))] pt-[max(0.5rem,env(safe-area-inset-top))] text-gray-100 md:h-[25svh]">
             <h1 className="font-mono text-4xl hyphens-auto md:text-5xl">
               {t("Something went wrong")}
             </h1>
