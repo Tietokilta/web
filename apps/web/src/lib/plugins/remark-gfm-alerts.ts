@@ -51,7 +51,7 @@ export const remarkGfmAlerts: Plugin<[], Root> = () => (tree) => {
     if (!endsAtNewline && next?.type === "break") children.shift();
     if (rest !== "") children.unshift({ ...text, value: rest });
 
-    const body = [...node.children.slice(1)];
+    const body = node.children.slice(1);
     if (children.length > 0) body.unshift({ ...paragraph, children });
     if (body.length === 0) continue;
 
