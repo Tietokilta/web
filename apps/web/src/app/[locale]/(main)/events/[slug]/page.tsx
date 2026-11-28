@@ -18,7 +18,9 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { BackButton } from "@components/back-button";
 import { DateTime } from "@components/datetime";
+import { MarkdownBlockquote } from "@components/markdown-blockquote";
 import { fetchEvent } from "@lib/api/external/ilmomasiina";
+import { remarkGfmAlerts } from "@lib/plugins/remark-gfm-alerts";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
 import {
   formatDateTimeSeconds,
@@ -405,7 +407,14 @@ export default async function Page(props: PageProps) {
                 {event.data.description ? (
                   <div className="prose">
                     <Markdown
-                      remarkPlugins={[[remarkI18n, { locale }], remarkGfm]}
+                      remarkPlugins={[
+                        [remarkI18n, { locale }],
+                        remarkGfm,
+                        remarkGfmAlerts,
+                      ]}
+                      components={{
+                        blockquote: MarkdownBlockquote,
+                      }}
                     >
                       {event.data.description}
                     </Markdown>
