@@ -55,7 +55,12 @@ export const remarkGfmAlerts: Plugin<[], Root> = () => (tree) => {
 
     const body = node.children.slice(1);
     if (children.length > 0) body.unshift({ ...paragraph, children });
-    if (body.length === 0) continue;
+    const hasContent = body.some(
+      (child) =>
+        child.type !== "definition" &&
+        !(child.type === "html" && /^\s*<!--[\s\S]*-->\s*$/.test(child.value)),
+    );
+    if (!hasContent) continue;
 
     node.children = body;
     node.data = {

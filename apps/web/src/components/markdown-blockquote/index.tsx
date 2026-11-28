@@ -18,7 +18,7 @@ const headerColors: Record<AlertType, { bar: string; dot: [string, string] }> =
       dot: ["bg-warning-700", "bg-warning-700"],
     },
     caution: {
-      bar: "bg-danger-500",
+      bar: "bg-danger-400",
       dot: ["bg-danger-700", "bg-danger-700"],
     },
   };
