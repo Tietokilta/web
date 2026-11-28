@@ -26,6 +26,8 @@ const MARKER =
  * and that have content after it count. The marker is removed and the
  * blockquote gets a `data-alert` attribute with the lowercase type. Other
  * blockquotes are left untouched.
+ *
+ * Syntax: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
  */
 export const remarkGfmAlerts: Plugin<[], Root> = () => (tree) => {
   for (const node of tree.children) {
@@ -58,7 +60,10 @@ export const remarkGfmAlerts: Plugin<[], Root> = () => (tree) => {
     node.children = body;
     node.data = {
       ...node.data,
-      hProperties: { "data-alert": match[1].toLowerCase() },
+      hProperties: {
+        ...node.data?.hProperties,
+        "data-alert": match[1].toLowerCase(),
+      },
     };
   }
 };

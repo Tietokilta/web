@@ -45,12 +45,14 @@ export function MarkdownBlockquote({
     <div
       className="my-6 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 shadow-solid"
       role="note"
+      aria-label={type}
     >
       <div
         className={cn(
           "not-prose flex justify-between border-b-2 border-gray-900 p-2 font-mono text-gray-900",
           colors.bar,
         )}
+        aria-hidden="true"
       >
         <div className="flex w-5 gap-1">
           {colors.dot.map((dot, i) => (
@@ -64,7 +66,7 @@ export function MarkdownBlockquote({
         <span className="self-center text-sm font-medium">{type}.md</span>
         <div className="w-5" />
       </div>
-      <div className="px-4 py-3 md:px-6 [&>:first-child]:mt-0 [&>:last-child]:mb-0">
+      <div className="px-4 py-3 md:px-6 [&>:first-child:not(blockquote)]:mt-0 [&>:last-child:not(blockquote)]:mb-0">
         {children}
       </div>
     </div>
