@@ -77,11 +77,6 @@
       "groupName": "turbo"
     },
     {
-      "description": "oxlint requires a matching oxlint-tsgolint",
-      "matchPackageNames": ["oxlint", "oxlint-tsgolint"],
-      "groupName": "oxlint"
-    },
-    {
       "description": "The Dockerfile copies pnpm from its image; keep it on the packageManager version",
       "matchPackageNames": ["pnpm", "ghcr.io/pnpm/pnpm"],
       "groupName": "pnpm"

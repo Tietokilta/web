@@ -229,9 +229,6 @@ importers:
       oxlint:
         specifier: ^1.73.0
         version: 1.92.0(oxlint-tsgolint@7.0.2006)
-      oxlint-tsgolint:
-        specifier: ^7.0.0
-        version: 7.0.2006
       tsrs:
         specifier: 7.1.0-beta.tsrs5
         version: 7.1.0-beta.tsrs5
@@ -9819,6 +9816,7 @@ snapshots:
       '@oxlint-tsgolint/linux-x64': 7.0.2006
       '@oxlint-tsgolint/win32-arm64': 7.0.2006
       '@oxlint-tsgolint/win32-x64': 7.0.2006
+    optional: true
 
   oxlint@1.92.0(oxlint-tsgolint@7.0.2006):
     optionalDependencies:
