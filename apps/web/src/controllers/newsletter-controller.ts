@@ -1,4 +1,4 @@
-import { type PayloadHandler } from "payload";
+import { NotFound, type PayloadHandler } from "payload";
 import { render } from "react-email";
 import { type Node } from "@lexical-types";
 import { type WeeklyNewsletter } from "@payload-types";
@@ -80,21 +80,44 @@ export const getEmailController: PayloadHandler = async (req) => {
       );
     }
 
-    // Fetch the English version of the newsletter
-    const englishNewsletter = (await req.payload.findByID({
-      collection: "weekly-newsletters",
-      id: newsletterId,
-      depth: 2,
-      locale: "en",
-    })) as unknown as WeeklyNewsletter;
+    // Without ?locale the email has both languages; with ?locale=fi or
+    // ?locale=en it has only that one, to match the per-language mailing lists.
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- query may be undefined, payload types are scuffed
+    const requestedLocale = req.query?.locale;
+    if (
+      requestedLocale !== undefined &&
+      requestedLocale !== "fi" &&
+      requestedLocale !== "en"
+    ) {
+      return Response.json(
+        { error: "locale must be fi or en" },
+        { status: 400 },
+      );
+    }
+    const includeFinnish = requestedLocale !== "en";
+    const includeEnglish = requestedLocale !== "fi";
 
-    // Fetch the Finnish version of the newsletter
-    const finnishNewsletter = (await req.payload.findByID({
-      collection: "weekly-newsletters",
-      id: newsletterId,
-      depth: 2,
-      locale: "fi",
-    })) as unknown as WeeklyNewsletter;
+    // draft: download the latest saved version, which is what the editor shows,
+    // not the last published one (which may be stale, or missing entirely).
+    const englishNewsletter = includeEnglish
+      ? await req.payload.findByID({
+          collection: "weekly-newsletters",
+          id: newsletterId,
+          depth: 2,
+          locale: "en",
+          draft: true,
+        })
+      : undefined;
+
+    const finnishNewsletter = includeFinnish
+      ? await req.payload.findByID({
+          collection: "weekly-newsletters",
+          id: newsletterId,
+          depth: 2,
+          locale: "fi",
+          draft: true,
+        })
+      : undefined;
 
     const { PUBLIC_LEGACY_URL, PUBLIC_FRONTEND_URL } = env;
 
@@ -107,15 +130,28 @@ export const getEmailController: PayloadHandler = async (req) => {
         PUBLIC_FRONTEND_URL: PUBLIC_FRONTEND_URL ?? "",
       }),
     );
+
+    const filename = `${[finnishNewsletter?.title, englishNewsletter?.title]
+      .filter(Boolean)
+      .join(" - ")
+      // "viikkotiedote 16/2025": a slash isn't allowed in a file name.
+      .replaceAll("/", "-")}.html`;
+    // Titles hold ä/ö, which header values can't carry raw: give an ASCII
+    // fallback and the real name in RFC 5987 form.
+    const asciiFilename = filename.replace(/[^\x20-\x7e]|["\\]/g, "_");
+
     // Return the result to the client
     return new Response(html, {
       status: 200,
       headers: {
-        "Content-Type": "text/html",
-        "Content-Disposition": `attachment; filename=${finnishNewsletter.title}/${englishNewsletter.title}.html`,
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Disposition": `attachment; filename="${asciiFilename}"; filename*=UTF-8''${encodeURIComponent(filename)}`,
       },
     });
   } catch (error) {
+    if (error instanceof NotFound) {
+      return Response.json({ error: "Newsletter not found" }, { status: 404 });
+    }
     if (error instanceof Error) {
       return Response.json({ error: error.message }, { status: 500 });
     }

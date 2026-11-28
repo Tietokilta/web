@@ -5,8 +5,9 @@ import { Newsletter } from "./newsletter";
 import { newsletterPreviewProps } from "./newsletter-example";
 
 interface NewsletterEmailProps {
-  finnishNewsletter: WeeklyNewsletter;
-  englishNewsletter: WeeklyNewsletter;
+  /** Leave one language out to render a single-language email. */
+  finnishNewsletter?: WeeklyNewsletter;
+  englishNewsletter?: WeeklyNewsletter;
   PUBLIC_LEGACY_URL: string;
   PUBLIC_FRONTEND_URL: string;
 }
@@ -17,8 +18,12 @@ export function NewsletterEmail({
   PUBLIC_LEGACY_URL,
   PUBLIC_FRONTEND_URL,
 }: NewsletterEmailProps): React.ReactElement {
+  // Each section carries its own lang; the document's is the first one's,
+  // since <Html> would otherwise default to "en".
+  const lang = finnishNewsletter ? "fi" : "en";
+
   return (
-    <Html>
+    <Html lang={lang}>
       <Head>
         <Font
           fontFamily="Inter"
@@ -29,18 +34,22 @@ export function NewsletterEmail({
           }}
         />
       </Head>
-      <Newsletter
-        newsletter={finnishNewsletter}
-        locale="fi"
-        PUBLIC_LEGACY_URL={PUBLIC_LEGACY_URL}
-        PUBLIC_FRONTEND_URL={PUBLIC_FRONTEND_URL}
-      />
-      <Newsletter
-        newsletter={englishNewsletter}
-        locale="en"
-        PUBLIC_LEGACY_URL={PUBLIC_LEGACY_URL}
-        PUBLIC_FRONTEND_URL={PUBLIC_FRONTEND_URL}
-      />
+      {finnishNewsletter ? (
+        <Newsletter
+          newsletter={finnishNewsletter}
+          locale="fi"
+          PUBLIC_LEGACY_URL={PUBLIC_LEGACY_URL}
+          PUBLIC_FRONTEND_URL={PUBLIC_FRONTEND_URL}
+        />
+      ) : null}
+      {englishNewsletter ? (
+        <Newsletter
+          newsletter={englishNewsletter}
+          locale="en"
+          PUBLIC_LEGACY_URL={PUBLIC_LEGACY_URL}
+          PUBLIC_FRONTEND_URL={PUBLIC_FRONTEND_URL}
+        />
+      ) : null}
     </Html>
   );
 }

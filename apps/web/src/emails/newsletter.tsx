@@ -134,7 +134,7 @@ export function Newsletter({
     { title: t[locale]["bottom-corner"], newsItems: bottomCornerNewsItems },
   ];
   return (
-    <div>
+    <div lang={locale}>
       <div>
         <h1>{newsletter.title}</h1>
         <p>{formatDateYear(newsletter.createdAt)}</p>
