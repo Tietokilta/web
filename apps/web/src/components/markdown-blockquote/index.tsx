@@ -48,7 +48,7 @@ export function MarkdownBlockquote({
     >
       <div
         className={cn(
-          "not-prose flex justify-between border-b-2 border-gray-900 p-2 font-mono",
+          "not-prose flex justify-between border-b-2 border-gray-900 p-2 font-mono text-gray-900",
           colors.bar,
         )}
       >
