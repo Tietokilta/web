@@ -1,6 +1,8 @@
 export interface InvoiceGeneratorFormState {
   success?: boolean;
   errorText?: string;
+  // Failures the form explains itself, rather than showing the server response
+  failure?: "rate-limited" | "unreachable";
   errors?: Partial<Record<string, string>>;
 }
 
