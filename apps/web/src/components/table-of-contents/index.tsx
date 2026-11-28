@@ -83,12 +83,12 @@ function Mobile({
   return (
     <details
       className={cn(
-        "group fixed top-24 left-0 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 font-mono backdrop-blur-xs",
+        "group fixed top-[calc(5.5rem+max(0.5rem,env(safe-area-inset-top)))] left-0 -mt-4 flex w-screen flex-col gap-2 bg-gray-100/80 font-mono backdrop-blur-xs",
         className,
       )}
       ref={detailsRef}
     >
-      <summary className="flex cursor-pointer items-center justify-between p-4 shadow-xs drop-shadow-xs group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto [&::-webkit-details-marker]:hidden [&::marker]:hidden">
+      <summary className="flex cursor-pointer items-center justify-between p-4 px-[max(1rem,var(--safe-x))] shadow-xs drop-shadow-xs group-open:shadow-none group-open:drop-shadow-none group-open:before:fixed group-open:before:inset-0 group-open:before:h-screen group-open:before:w-screen group-open:before:cursor-auto [&::-webkit-details-marker]:hidden [&::marker]:hidden">
         <span
           className={cn(
             "truncate text-2xl font-bold before:me-[2ch] before:text-gray-600",
@@ -102,7 +102,7 @@ function Mobile({
         </span>
         <ChevronDownIcon className="size-6 transition-all group-open:rotate-180" />
       </summary>
-      <nav className="max-h-[50lvh] overflow-y-scroll scroll-shadows-sm px-4 py-2 shadow-xs drop-shadow-xs">
+      <nav className="max-h-[50lvh] overflow-y-scroll scroll-shadows-sm px-[max(1rem,var(--safe-x))] py-2 shadow-xs drop-shadow-xs">
         <HeadingList
           activeHeadingId={activeHeadingId}
           onHeadingClick={() => detailsRef.current?.removeAttribute("open")}

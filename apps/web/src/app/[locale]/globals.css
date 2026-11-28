@@ -2,6 +2,13 @@
 
 @config "../../../tailwind.config.js";
 
+/* Page content is padded clear of the notch, so a background that should reach
+   the screen edges takes that padding back */
+@utility full-bleed {
+  margin-left: calc(env(safe-area-inset-left) * -1);
+  margin-right: calc(env(safe-area-inset-right) * -1);
+}
+
 @utility scroll-shadows {
   background:
     /* Shadow Cover TOP */

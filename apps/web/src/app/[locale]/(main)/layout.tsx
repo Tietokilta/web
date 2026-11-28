@@ -64,6 +64,9 @@ export const generateMetadata = async (props: {
 
 export const viewport: Viewport = {
   themeColor: "black",
+  // Draw under the notch on phones. The safe-area padding below keeps content
+  // clear of it.
+  viewportFit: "cover",
 };
 
 export default async function RootLayout(props: {
@@ -81,7 +84,10 @@ export default async function RootLayout(props: {
           inter.variable,
           robotoMono.variable,
           // Keeps the skip link target clear of the sticky header
-          "font-sans [&_#main]:scroll-mt-20",
+          "font-sans [&_#main]:scroll-mt-[calc(5rem+env(safe-area-inset-top))]",
+          // The larger side inset, for bars whose middle has to stay in the middle
+          // of the screen
+          "[--safe-x:max(env(safe-area-inset-left),env(safe-area-inset-right))]",
         )}
       >
         <SkipLink />
@@ -90,7 +96,9 @@ export default async function RootLayout(props: {
         <div className="flex min-h-screen flex-col">
           <MobileNav className="sticky top-0 z-50 lg:hidden" />
           <MainNav className="sticky top-0 z-50 hidden lg:block" />
-          <div className="min-h-screen flex-1">{children}</div>
+          <div className="min-h-screen flex-1 pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)]">
+            {children}
+          </div>
           <Toaster richColors />
           <Footer />
         </div>
