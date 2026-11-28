@@ -15,7 +15,9 @@ import { getMessages } from "next-intl/server";
 /* eslint-disable no-nested-ternary -- much uglier without */
 import { notFound } from "next/navigation";
 import Markdown from "react-markdown";
+import { remark } from "remark";
 import remarkGfm from "remark-gfm";
+import stripMarkdown from "strip-markdown";
 import { BackButton } from "@components/back-button";
 import { DateTime } from "@components/datetime";
 import { MarkdownBlockquote } from "@components/markdown-blockquote";
@@ -365,9 +367,16 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
     return {};
   }
 
+  // Remove markdown from the description
+  const description = (
+    await remark()
+      .use(stripMarkdown)
+      .process(event.data.description ?? "")
+  ).toString();
+
   return {
     title: event.data.title,
-    description: event.data.description,
+    description: description,
     robots: {
       index: false,
     },
