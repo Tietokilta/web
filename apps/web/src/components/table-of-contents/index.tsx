@@ -160,8 +160,17 @@ const useActiveHeading = ({ topLevelOnly = false } = {}) => {
       }
     };
 
+    // The sticky nav grows by the top safe-area inset, so measure it instead
+    // of assuming 80px
+    const navBottom = Math.max(
+      0,
+      ...Array.from(
+        document.querySelectorAll(".sticky.top-0"),
+        (nav) => nav.getBoundingClientRect().bottom,
+      ),
+    );
     const observer = new IntersectionObserver(callback, {
-      rootMargin: "-96px 0px -60% 0px",
+      rootMargin: `-${String(Math.round(navBottom) + 16)}px 0px -60% 0px`,
     });
 
     const leadParagraph = document.querySelector("main p:first-of-type");
