@@ -85,20 +85,36 @@ export function NewsletterButton(): React.ReactElement {
       >
         Send email
       </button>
-      <a
-        href={`/api/weekly-newsletters/mail/${newsletterId}`}
-        style={buttonStyle}
-        onMouseOver={(e) =>
-          ((e.target as HTMLElement).style.backgroundColor =
-            buttonHoverStyle.backgroundColor)
-        }
-        onMouseOut={(e) =>
-          ((e.target as HTMLElement).style.backgroundColor =
-            buttonStyle.backgroundColor)
-        }
-      >
-        Download HTML
-      </a>
+      {[
+        { locale: undefined, label: "Download HTML (FI + EN)" },
+        { locale: "fi", label: "Download Finnish HTML" },
+        { locale: "en", label: "Download English HTML" },
+      ].map(({ locale, label }) => (
+        <a
+          key={label}
+          href={`/api/weekly-newsletters/mail/${newsletterId}${locale ? `?locale=${locale}` : ""}`}
+          download
+          style={{
+            ...buttonStyle,
+            // Look like the buttons: centred label, no link underline.
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            textAlign: "center",
+            textDecoration: "none",
+          }}
+          onMouseOver={(e) =>
+            ((e.target as HTMLElement).style.backgroundColor =
+              buttonHoverStyle.backgroundColor)
+          }
+          onMouseOut={(e) =>
+            ((e.target as HTMLElement).style.backgroundColor =
+              buttonStyle.backgroundColor)
+          }
+        >
+          {label}
+        </a>
+      ))}
       <button
         style={buttonStyle}
         onMouseOver={(e) =>
