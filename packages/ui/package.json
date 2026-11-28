@@ -63,7 +63,7 @@
     "dev": "tsdown lib/index.tsx --format esm,cjs --watch --dts --no-clean",
     "lint": "oxlint -c .oxlintrc.json lib/",
     "lint:fix": "oxlint -c .oxlintrc.json --fix lib/",
-    "typecheck": "tsgo --noEmit"
+    "typecheck": "tsrs --noEmit"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

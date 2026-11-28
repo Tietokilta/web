@@ -77,11 +77,6 @@
       "groupName": "turbo"
     },
     {
-      "description": "oxlint requires a matching oxlint-tsgolint",
-      "matchPackageNames": ["oxlint", "oxlint-tsgolint"],
-      "groupName": "oxlint"
-    },
-    {
       "description": "The Dockerfile copies pnpm from its image; keep it on the packageManager version",
       "matchPackageNames": ["pnpm", "ghcr.io/pnpm/pnpm"],
       "groupName": "pnpm"
@@ -99,7 +94,7 @@
       "enabled": false
     },
     {
-      "description": "Stay on TypeScript 6: Next.js and tsdown need the compiler API, which TypeScript 7.0 lacks. Type checking already uses tsgo. Remove this cap once 7.1 ships the new API",
+      "description": "Stay on TypeScript 6: Next.js and tsdown need the compiler API, which TypeScript 7.0 lacks. Type checking already uses tsrs. Remove this cap once 7.1 ships the new API",
       "matchPackageNames": ["typescript"],
       "allowedVersions": "<7"
     },
