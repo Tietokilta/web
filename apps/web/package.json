@@ -15,7 +15,7 @@
     "lint:fix": "oxlint -c .oxlintrc.json --fix ./src/",
     "payload": "payload",
     "start": "next start",
-    "typecheck": "tsgo --noEmit"
+    "typecheck": "tsrs --noEmit"
   },
   "dependencies": {
     "@date-fns/tz": "^1.5.0",

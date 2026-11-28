@@ -6,7 +6,7 @@
     "test": "playwright test",
     "test:production": "playwright test -c playwright.production.config.ts",
     "lint": "oxlint -c ../.oxlintrc.json .",
-    "typecheck": "tsgo --noEmit"
+    "typecheck": "tsrs --noEmit"
   },
   "devDependencies": {
     "@azure/storage-blob": "^12.33.0",
