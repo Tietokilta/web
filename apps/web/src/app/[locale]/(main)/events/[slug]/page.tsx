@@ -135,7 +135,7 @@ async function SignUpTable({
   const isGeneratedQuota = isOpenQuota || isQueueQuota;
 
   return (
-    <div className="shadow-solid block w-full overflow-x-auto rounded-md border-2 border-gray-900">
+    <div className="block w-full overflow-x-auto rounded-md border-2 border-gray-900 shadow-solid">
       <table className="w-full table-auto border-separate border-spacing-0">
         <thead>
           <tr className="bg-gray-200">
@@ -221,7 +221,7 @@ async function Tldr({ event }: { event: UserEventResponse }) {
   const t = await getTranslations("ilmomasiina");
   const locale = await getLocale();
   return (
-    <div className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
+    <div className="rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       {event.category ? (
         <span className="block">
           <span className="font-medium">{t("Category")}:</span>{" "}
@@ -331,7 +331,7 @@ async function SignUpActions({ event }: { event: UserEventResponse }) {
   const locale = await getLocale();
   const messages = await getMessages();
   return (
-    <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
+    <div className="max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
         {t("Signup")}
       </h2>

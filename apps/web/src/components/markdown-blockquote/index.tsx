@@ -43,7 +43,7 @@ export function MarkdownBlockquote({
   const colors = headerColors[type];
   return (
     <div
-      className="shadow-solid my-6 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100"
+      className="my-6 overflow-hidden rounded-md border-2 border-gray-900 bg-gray-100 shadow-solid"
       role="note"
     >
       <div
