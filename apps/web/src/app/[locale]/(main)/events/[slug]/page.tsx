@@ -18,7 +18,9 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { BackButton } from "@components/back-button";
 import { DateTime } from "@components/datetime";
+import { MarkdownBlockquote } from "@components/markdown-blockquote";
 import { fetchEvent } from "@lib/api/external/ilmomasiina";
+import { remarkGfmAlerts } from "@lib/plugins/remark-gfm-alerts";
 import { remarkI18n } from "@lib/plugins/remark-i18n";
 import {
   formatDateTimeSeconds,
@@ -133,7 +135,7 @@ async function SignUpTable({
   const isGeneratedQuota = isOpenQuota || isQueueQuota;
 
   return (
-    <div className="block w-full overflow-x-auto rounded-md border-2 border-gray-900 shadow-solid">
+    <div className="shadow-solid block w-full overflow-x-auto rounded-md border-2 border-gray-900">
       <table className="w-full table-auto border-separate border-spacing-0">
         <thead>
           <tr className="bg-gray-200">
@@ -219,7 +221,7 @@ async function Tldr({ event }: { event: UserEventResponse }) {
   const t = await getTranslations("ilmomasiina");
   const locale = await getLocale();
   return (
-    <div className="rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
+    <div className="shadow-solid rounded-md border-2 border-gray-900 p-4 md:p-6">
       {event.category ? (
         <span className="block">
           <span className="font-medium">{t("Category")}:</span>{" "}
@@ -329,7 +331,7 @@ async function SignUpActions({ event }: { event: UserEventResponse }) {
   const locale = await getLocale();
   const messages = await getMessages();
   return (
-    <div className="max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 shadow-solid md:p-6">
+    <div className="shadow-solid max-w-prose space-y-4 rounded-md border-2 border-gray-900 p-4 md:p-6">
       <h2 className="font-mono text-lg font-semibold text-gray-900">
         {t("Signup")}
       </h2>
@@ -372,14 +374,6 @@ export const generateMetadata = async (props: PageProps): Promise<Metadata> => {
   };
 };
 
-function MarkdownAlert({ children }: { children?: React.ReactNode }) {
-  return (
-    <section className="relative z-20 my-6 rounded-md border-2 border-gray-900 px-4 shadow-solid md:px-6">
-      {children}
-    </section>
-  );
-}
-
 export default async function Page(props: PageProps) {
   const locale = await setLocaleFromParams(props.params);
   const { slug } = await props.params;
@@ -413,9 +407,13 @@ export default async function Page(props: PageProps) {
                 {event.data.description ? (
                   <div className="prose">
                     <Markdown
-                      remarkPlugins={[[remarkI18n, { locale }], remarkGfm]}
+                      remarkPlugins={[
+                        [remarkI18n, { locale }],
+                        remarkGfm,
+                        remarkGfmAlerts,
+                      ]}
                       components={{
-                        blockquote: MarkdownAlert,
+                        blockquote: MarkdownBlockquote,
                       }}
                     >
                       {event.data.description}
