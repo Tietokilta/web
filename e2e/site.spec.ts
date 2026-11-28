@@ -231,7 +231,7 @@ test("mobile navigation opens and follows a link", async ({ page }) => {
   await page.getByRole("button", { name: "Avaa valikko", exact: true }).click();
   const menu = page.getByRole("dialog");
   await expect(menu).toBeVisible();
-  await menu.getByRole("button", { name: "Kilta Avaa", exact: true }).click();
+  await menu.getByRole("button", { name: "Kilta", exact: true }).click();
   await menu.getByRole("link", { name: "Opinnot", exact: true }).click();
   await expect(page).toHaveURL(/\/fi\/kilta\/opinnot$/);
   await expect(

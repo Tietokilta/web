@@ -12,8 +12,12 @@ import {
 } from "@tietokilta/ui";
 import NextLink, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import type { HTMLProps } from "react";
+import { Fragment, type HTMLProps } from "react";
 import type { MainNavigationItem, Page, Topic } from "@payload-types";
+import { cn } from "../../lib/utils";
+
+// Links keep 0.5rem of padding. The room around them comes from Spacer.
+const fluidPaddingClassName = "px-2";
 
 function Link({
   href,
@@ -41,7 +45,11 @@ function NavigationLink({
     return (
       <div className="group/link relative flex h-20 items-center justify-center">
         <Link
-          className={`relative z-10 hover:underline ${navigationMenuTriggerStyle()}`}
+          className={cn(
+            navigationMenuTriggerStyle(),
+            fluidPaddingClassName,
+            "relative z-10 hover:underline",
+          )}
           href={localisedPath}
         >
           {(pageOrTopic.pageConfig?.page as Page).title}
@@ -67,7 +75,7 @@ function NavigationLink({
   return (
     <>
       <div className="group/link relative flex h-20 items-center justify-center">
-        <NavigationMenuTrigger>
+        <NavigationMenuTrigger className={fluidPaddingClassName}>
           <span className="hover:underline">
             {(pageOrTopic.topicConfig?.topic as Topic).title}
           </span>
@@ -90,7 +98,7 @@ function NavigationLink({
         </NavigationMenuTrigger>
       </div>
       <NavigationMenuContent>
-        <ul className="flex gap-16 p-8">
+        <ul className="flex flex-wrap justify-center gap-x-8 gap-y-6 p-6 xl:gap-x-16 xl:p-8">
           {pageOrTopic.topicConfig?.categories?.map((linkCategorySublist) => (
             <li key={linkCategorySublist.title}>
               <header className="mb-4 text-xl font-bold">
@@ -141,9 +149,30 @@ function NavigationLink({
   );
 }
 
-export const LinkList = ({ links }: { links: MainNavigationItem }) =>
+/**
+ * Empty room beside a link. Every spacer starts the same width, and flexbox
+ * shrinks same-width items by the same amount, so when the bar runs out of room
+ * every gap gives up the same space whatever the labels say.
+ */
+function Spacer({ className }: { className?: string }) {
+  return (
+    <li aria-hidden="true" className={cn("w-2.5 min-w-0 xl:w-3", className)} />
+  );
+}
+
+export const LinkList = ({
+  links,
+  className,
+}: {
+  links: MainNavigationItem;
+  className?: string;
+}) =>
   links.map((pageOrTopic) => (
-    <NavigationMenuItem key={pageOrTopic.id}>
-      <NavigationLink pageOrTopic={pageOrTopic} />
-    </NavigationMenuItem>
+    <Fragment key={pageOrTopic.id}>
+      <Spacer className={className} />
+      <NavigationMenuItem className={cn("shrink-0", className)}>
+        <NavigationLink pageOrTopic={pageOrTopic} />
+      </NavigationMenuItem>
+      <Spacer className={className} />
+    </Fragment>
   ));
